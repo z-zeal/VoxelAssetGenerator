@@ -162,6 +162,8 @@ function footUnit(c, id, pose) {
   c.group('body');
 }
 
+
+
 /* --------------------------------------------------------- ground vehicles - */
 function groundVehicle(c, id, pose) {
   const wheeled = id === 'recon' || id === 'rockets' || id === 'missiles' || id === 'aegis';
@@ -752,7 +754,7 @@ function seaUnit(c, id, pose) {
 
 /* ---------------------------------------------------------------- dispatch -- */
 export function unitVoxels(c, id, pose) {
-  if (id === 'infantry' || id === 'mech' || id === 'engineer' || id === 'medic') {
+  if (id === 'infantry' || id === 'mech' || id === 'engineer' || id === 'medic' || id === 'rocket-infantry' || id === 'aa-infantry' || id === 'sniper') {
     footUnit(c, id, pose);
   } else if (id === 'copter' || id === 'lift-copter' || id === 'fighter' || id === 'bomber'
     || id === 'uav' || id === 'mpa' || id === 'specter') {
@@ -790,7 +792,7 @@ export const ARMY_VOXEL_STYLES = {
   },
 };
 
-const INFANTRY_UNITS = new Set(['infantry', 'mech', 'engineer', 'medic']);
+const INFANTRY_UNITS = new Set(['infantry', 'mech', 'engineer', 'medic', 'rocket-infantry', 'aa-infantry', 'sniper']);
 const AIR_UNITS = new Set(['copter', 'lift-copter', 'fighter', 'bomber', 'uav', 'mpa', 'specter']);
 const SEA_UNITS = new Set(['submarine', 'gunboat', 'cruiser', 'battleship', 'lander', 'uhac']);
 

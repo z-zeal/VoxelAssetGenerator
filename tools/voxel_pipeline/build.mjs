@@ -33,6 +33,9 @@ export const VOXEL_SIZE = [64, 64, 64];
 export const MODEL_POSES = {
   // foot: infantry, mech, engineer, medic
   infantry: { idle: 1, move: 4, attack: 3, death: 5 },
+  'rocket-infantry': { idle: 1, move: 4, attack: 3, death: 5 },
+  'aa-infantry': { idle: 1, move: 4, attack: 3, death: 5 },
+  'sniper': { idle: 1, move: 4, attack: 3, death: 5 },
   mech: { idle: 1, move: 4, attack: 3, death: 5 },
   engineer: { idle: 1, move: 4, death: 5 },
   medic: { idle: 1, move: 4, death: 5 },
@@ -574,6 +577,7 @@ import {terrainVoxels, siloMissileVoxels} from './models/terrain.mjs';
 
 export const UNIT_FAMILY = {
   infantry: 'foot', mech: 'foot', engineer: 'foot', medic: 'foot',
+  'rocket-infantry': 'foot', 'aa-infantry': 'foot', 'sniper': 'foot',
   apc: 'tracked', tank: 'tracked', heavy: 'tracked', artillery: 'tracked',
   antiair: 'tracked', mega: 'tracked',
   recon: 'wheeled', rockets: 'wheeled', missiles: 'wheeled',
@@ -585,7 +589,7 @@ export const UNIT_FAMILY = {
   bastion: 'tracked', specter: 'jet', aegis: 'wheeled',
 };
 export const UNIT_WEAPON = {
-  infantry: 'rifle', mech: 'cannon', recon: 'rifle', tank: 'cannon',
+  infantry: 'rifle', mech: 'cannon', 'rocket-infantry': 'rocket', 'aa-infantry': 'aa', 'sniper': 'rifle', recon: 'rifle', tank: 'cannon',
   heavy: 'heavy', artillery: 'shell', antiair: 'aa', mega: 'mega',
   rockets: 'rockets', missiles: 'sam', submarine: 'torpedo',
   gunboat: 'navalGun', cruiser: 'navalMissile', battleship: 'navalShell',
