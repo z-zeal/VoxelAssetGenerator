@@ -73,6 +73,7 @@ export const MODEL_POSES = {
 export const BUILDING_IDLE = {
   hq: 1, base: 2, city: 1, airport: 2, port: 1, farm: 1, mine: 1, depot: 1,
   landmine: 1, 'supply-depot': 1, 'repair-depot': 1, 'field-hospital': 1,
+  barracks: 1,
 };
 const [GX, GY, GZ] = VOXEL_SIZE;
 
@@ -81,7 +82,7 @@ const [GX, GY, GZ] = VOXEL_SIZE;
 // that terrain models never get. It is still never a terrain id — the explosive
 // lives in `s.landmines`, while `mine` remains the 2,000 G gold-mine property.
 export const BUILDINGS = ['hq', 'base', 'city', 'airport', 'port', 'farm', 'mine', 'depot', 'landmine',
-  'supply-depot', 'repair-depot', 'field-hospital'];
+  'supply-depot', 'repair-depot', 'field-hospital', 'barracks'];
 /** Playable armies that get their own unit models (Standard keeps the base names). */
 export const UNIT_ARMY_IDS = ARMY_IDS.filter(id => id !== 'standard');
 export const TERRAIN_MODELS = [

@@ -317,6 +317,24 @@ export function buildingVoxels(c, id, pose) {
     c.box(6, 48, 4, 12, 60, 20, METAL);                 // oxygen tank mast
     c.cylZ(9, 52, 20, 28, 2.6, '#b8dedc');
     c.box(6, 44, 4, 40, 46, 6, '#b0baa8');              // walkway
+  } else if (id === 'barracks') {
+    // Barracks: dedicated infantry-training facility — personnel block with
+    // windows, training yard with obstacle/rails, equipment store, team gate.
+    c.box(0, 0, 0, 64, 64, 2, '#7a6a5a');
+    c.box(6, 6, 2, 30, 26, 10, '#8a7a6a');
+    c.shell(6, 6, 10, 30, 26, 14, '#6b5d4f');
+    for (let x = 10; x < 26; x += 4) c.box(x, 6, 10, x + 2, 8, 14, '#a0a898');
+    c.box(10, 18, 2, 28, 22, 10, '#b8a68a');
+    c.box(14, 20, 10, 24, 24, 13, '#5a4a3a');
+    c.box(34, 8, 2, 58, 30, 4, '#9e9482');
+    for (const x of [40, 48, 54]) c.box(x, 10, 4, x + 2, 26, 5, '#646e74');
+    c.box(38, 36, 2, 58, 56, 8, '#8c8660');
+    c.box(40, 38, 10, 42, 54, 13, '#6b5d4f');
+    c.box(46, 36, 10, 56, 40, 14, '#a89872');
+    c.box(28, 58, 2, 36, 62, 6, TEAM);
+    c.box(30, 58, 6, 34, 62, 9, '#4a453a');
+    c.box(32, 36, 14, 36, 40, 18, METAL);
+    c.box(34, 36, 18, 38, 42, 20, TEAM);
   } else if (id === 'landmine') {
     // Small low disc: buried charge ring, steel casing, hazard band in the
     // OWNER colour, offset marker picket with tripwire (asymmetric on purpose,
