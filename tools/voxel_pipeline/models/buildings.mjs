@@ -318,48 +318,542 @@ export function buildingVoxels(c, id, pose) {
     c.cylZ(9, 52, 20, 28, 2.6, '#b8dedc');
     c.box(6, 44, 4, 40, 46, 6, '#b0baa8');              // walkway
   } else if (id === 'barracks') {
-    // Barracks: dedicated infantry-training facility — personnel block with
-    // windows, training yard with obstacle/rails, equipment store, team gate.
-    c.box(0, 0, 0, 64, 64, 2, '#7a6a5a');
-    c.box(6, 6, 2, 30, 26, 10, '#8a7a6a');
-    c.shell(6, 6, 10, 30, 26, 14, '#6b5d4f');
-    for (let x = 10; x < 26; x += 4) c.box(x, 6, 10, x + 2, 8, 14, '#a0a898');
-    c.box(10, 18, 2, 28, 22, 10, '#b8a68a');
-    c.box(14, 20, 10, 24, 24, 13, '#5a4a3a');
-    c.box(34, 8, 2, 58, 30, 4, '#9e9482');
-    for (const x of [40, 48, 54]) c.box(x, 10, 4, x + 2, 26, 5, '#646e74');
-    c.box(38, 36, 2, 58, 56, 8, '#8c8660');
-    c.box(40, 38, 10, 42, 54, 13, '#6b5d4f');
-    c.box(46, 36, 10, 56, 40, 14, '#a89872');
-    c.box(28, 58, 2, 36, 62, 6, TEAM);
-    c.box(30, 58, 6, 34, 62, 9, '#4a453a');
-    c.box(32, 36, 14, 36, 40, 18, METAL);
-    c.box(34, 36, 18, 38, 42, 20, TEAM);
-  } else if (id === 'landmine') {
-    // Small low disc: buried charge ring, steel casing, hazard band in the
-    // OWNER colour, offset marker picket with tripwire (asymmetric on purpose,
-    // so every facing and every team variant really differs).
-    const CASING = '#5a5f52', CASING_D = '#3b4238', RUBBER = '#2b3128';
-    const HAZARD = '#e8c468', PLATE = '#8b96a2';
-    for (let y = 0; y < 64; y++) {
-      for (let x = 0; x < 64; x++) {
-        const d = Math.hypot(x - 31.5, y - 31.5);
-        if (d <= 16.8) c.put(x, y, 0, RUBBER);
-        if (d <= 14.0) c.put(x, y, 1, CASING_D);
-        if (d <= 10.8) c.put(x, y, 2, CASING);
-        if (d <= 9.2) c.put(x, y, 3, HAZARD);
-        if (d <= 5.2) c.put(x, y, 4, PLATE);
-        if (d <= 3.2) c.put(x, y, 5, CASING_D);
+    // Barracks: dedicated infantry-training facility — two-storey troop
+    // dormitory with gabled team roof & porch, quartermaster armory bunker,
+    // parade ground with obstacle course & firing targets, and grounded flagpole.
+    c.box(0, 0, 0, 64, 64, 2, '#98a58c');
+    c.box(3, 3, 2, 61, 61, 3, '#aeb8a6');
+    // Main troop dormitory block (north-west)
+    c.shell(5, 6, 3, 38, 30, 19, STONE);
+    for (const x of [9, 17, 25, 31]) {
+      c.box(x, 6, 7, x + 4, 8, 11, GLASS);
+      c.box(x, 6, 13, x + 4, 8, 17, GLASS);
+      c.box(x, 28, 13, x + 4, 30, 17, GLASS);
+    }
+    // Covered troop entrance porch + pillars facing the parade ground
+    c.box(16, 28, 3, 26, 31, 13, '#3b4238');             // double doors
+    c.box(12, 30, 12, 30, 36, 14, ROOF_D);               // porch awning
+    c.box(13, 34, 3, 15, 36, 12, STONE_L);               // left pillar
+    c.box(27, 34, 3, 29, 36, 12, STONE_L);               // right pillar
+    // Gabled team roof over dormitory
+    c.box(3, 4, 19, 40, 32, 21, ROOF_D);
+    c.box(5, 6, 21, 38, 30, 23, ROOF);
+    c.box(8, 9, 23, 35, 27, 25, ROOF_L);
+    c.box(12, 14, 25, 31, 22, 26, TEAM);                 // roof ridge crest
+    // Quartermaster armory & gear store (south-west)
+    c.shell(6, 40, 3, 28, 56, 14, WALL);
+    c.box(5, 39, 14, 29, 57, 16, ROOF_D);
+    c.box(7, 41, 16, 27, 55, 18, ROOF);
+    for (const x of [10, 19]) c.box(x, 39, 3, x + 6, 41, 11, METAL); // armory roll doors
+    c.box(8, 36, 3, 24, 38, 6, '#c8b084');               // sandbag revetment
+    // Training yard & obstacle course (east)
+    c.box(42, 8, 3, 58, 52, 4, '#8a7a64');               // dirt drill pit
+    for (const y of [12, 20, 28]) {
+      c.box(44, y, 4, 56, y + 2, 8, '#8c6b42');          // timber vault hurdles
+      c.box(44, y, 8, 56, y + 2, 9, '#c9b284');
+    }
+    // Rifle range backstop berm & bullseye targets (south-east)
+    c.box(42, 46, 4, 58, 52, 11, '#6b5d4f');
+    for (const x of [44, 49, 54]) {
+      c.box(x, 44, 5, x + 3, 46, 10, '#ece7bc');         // target board
+      c.put(x + 1, 44, 7, '#d94c3d');                    // red bullseye
+    }
+    // Grounded compound flagpole & perimeter guard gate
+    c.box(33, 33, 3, 37, 37, 6, STONE_L);                // flagpole plinth
+    c.box(34, 34, 6, 36, 36, 36, METAL);                 // flagpole mast
+    c.box(36, 34, 28, 44, 36, 34, TEAM);                 // garrison flag
+    c.box(4, 58, 3, 60, 60, 7, WALL);                    // front perimeter wall
+    c.clearBox(28, 58, 3, 38, 61, 8);                    // gate opening
+    c.box(26, 57, 3, 29, 61, 11, TEAM);                  // left gatepost
+    c.box(37, 57, 3, 40, 61, 11, TEAM);                  // right gatepost
+  } else if (id === 'helipad') {
+    // Allied Helipad: elevated reinforced-concrete rotary landing deck with
+    // yellow/white 'H' landing circle, 4 corner approach beacons, aviation fuel
+    // tank + hose reel on the north-west, and flight-control tower booth + windsock.
+    c.box(0, 0, 0, 64, 64, 2, '#98a58c');
+    c.box(3, 3, 2, 61, 61, 3, '#aeb8a6');
+    // Elevated concrete landing pad (x=14..58, y=14..58, z=3..9)
+    c.box(14, 14, 3, 58, 58, 8, WALL);
+    c.box(16, 16, 8, 56, 56, 10, '#363c3a');              // dark non-skid tarmac deck
+    // Yellow octagonal landing ring & crisp white 'H' symbol
+    for (let y = 18; y < 54; y++) {
+      for (let x = 18; x < 54; x++) {
+        const d = Math.hypot(x - 36, y - 36);
+        if (d >= 13.5 && d <= 15.5) c.put(x, y, 10, '#e8c468');
       }
     }
-    c.box(18, 18, 6, 24, 24, 10, '#4a5245');            // detonator block
-    c.box(20, 20, 10, 22, 22, 12, '#d94b38');
-    for (let i = 0; i < 12; i++) { c.put(16 - i, 20 + i, 6, CASING_D); c.put(14 - i, 22 + i, 6, CASING_D); }
-    c.box(46, 42, 4, 48, 44, 16, '#8c6b42');            // warning picket
-    c.box(42, 38, 16, 52, 48, 18, TEAM);
-    c.box(44, 40, 18, 50, 46, 20, '#f2f4ef');
-    c.box(48, 16, 4, 50, 18, 12, CASING_D);             // tripwire stubs
-    c.box(50, 18, 10, 56, 20, 12, RUBBER);
+    c.box(29, 27, 10, 33, 45, 11, '#ece7bc');             // H left bar
+    c.box(39, 27, 10, 43, 45, 11, '#ece7bc');             // H right bar
+    c.box(33, 34, 10, 39, 38, 11, '#ece7bc');             // H crossbar
+    // Corner approach lights & team safety curb
+    c.box(14, 14, 8, 58, 16, 10, TEAM);
+    c.box(14, 56, 8, 58, 58, 10, TEAM);
+    for (const [bx, by] of [[16, 16], [54, 16], [16, 54], [54, 54]]) {
+      c.box(bx, by, 10, bx + 2, by + 2, 13, '#5fc4e8');
+    }
+    // Access ramp on the south-west (x=6..14, y=30..44)
+    c.ramp(6, 14, 30, 44, 3, 6, 8, STONE_L);
+    // Flight-ops control booth + windsock mast on north-west (x=4..14, y=6..24)
+    c.shell(4, 6, 3, 14, 24, 18, STONE);
+    c.box(6, 8, 12, 14, 22, 16, GLASS);
+    c.box(3, 5, 18, 15, 25, 20, ROOF_D);
+    c.box(5, 7, 20, 13, 23, 22, TEAM);
+    c.box(8, 8, 22, 10, 10, 36, METAL);                   // windsock pole
+    c.box(10, 8, 32, 18, 11, 35, TEAM);                   // windsock cone
+    c.box(14, 8, 32, 16, 11, 35, '#ece7bc');
+    // Aviation JP-8 fuel tank on south-west (x=4..12, y=46..58)
+    c.cylY(8, 46, 58, 7, 3.8, '#ece7bc');
+    c.box(6, 50, 4, 10, 54, 12, '#d94c3d');
+  } else if (id === 'power-plant') {
+    // Industrial Power Plant: turbine generator hall with team roof & HV
+    // insulator bushings, tall waisted hyperboloid concrete cooling tower with
+    // rising steam plume, and fenced high-voltage transformer switchyard.
+    c.box(0, 0, 0, 64, 64, 2, '#98a58c');
+    c.box(3, 3, 2, 61, 61, 3, '#aeb8a6');
+    // Main turbine hall (west, x=6..32, y=8..42, z=3..22)
+    c.shell(6, 8, 3, 32, 42, 20, STONE);
+    for (const y of [12, 20, 28, 34]) {
+      c.box(6, y, 8, 8, y + 4, 16, GLASS);
+      c.box(30, y, 8, 32, y + 4, 16, GLASS);
+    }
+    c.box(5, 7, 20, 33, 43, 22, ROOF_D);
+    c.box(7, 9, 22, 31, 41, 24, ROOF);
+    c.box(10, 12, 24, 28, 38, 26, ROOF_L);
+    // Twin exhaust smokestacks on turbine hall north end
+    for (const sx of [12, 22]) {
+      c.cylZ(sx, 12, 24, 42, 2.8, METAL);
+      c.cylZ(sx, 12, 38, 41, 3.0, TEAM);
+    }
+    // Hyperboloid natural-draft cooling tower (east, cx=46, cy=24, z=3..40)
+    for (let z = 3; z < 40; z++) {
+      const t = (z - 25) / 16;
+      const rOuter = 7.4 + t * t * 3.8;
+      const rInner = rOuter - 2.0;
+      for (let y = 10; y < 38; y++) {
+        for (let x = 32; x < 60; x++) {
+          const d = Math.hypot(x - 46, y - 24);
+          if (d <= rOuter && d >= rInner) {
+            const col = (z >= 33 && z <= 36) ? TEAM : (z < 6 ? METAL : STONE_L);
+            c.put(x, y, z, col);
+          } else if (z >= 37 && d < rInner && ((x + y + z) % 2 === 0)) {
+            c.put(x, y, z + 2, '#eef3f4');                // rising white steam vapor
+          }
+        }
+      }
+    }
+    // High-voltage transformer switchyard (south, x=8..56, y=46..58)
+    c.box(8, 46, 3, 56, 58, 5, '#7c8578');
+    for (const tx of [14, 26, 38, 50]) {
+      c.box(tx - 3, 49, 5, tx + 3, 55, 12, METAL);        // transformer core
+      c.box(tx - 1, 50, 12, tx + 1, 54, 18, '#5fc4e8');   // glowing HV insulator coil
+      c.put(tx, 52, 18, '#ffd84a');                       // arc terminal
+    }
+  } else if (id === 'refinery') {
+    // Resource Refinery: industrial ore/crude processing plant with covered
+    // dump-truck hopper bay, main smelting furnace hall, twin tall fractional
+    // distillation columns with pipe bridges, spherical storage tank, and gas flare stack.
+    c.box(0, 0, 0, 64, 64, 2, '#98a58c');
+    c.box(3, 3, 2, 61, 61, 3, '#aeb8a6');
+    // Main smelting & processing hall (north-west, x=6..34, y=6..34, z=3..22)
+    c.shell(6, 6, 3, 34, 34, 20, WALL);
+    c.box(5, 5, 20, 35, 35, 22, ROOF_D);
+    c.box(8, 8, 22, 32, 32, 24, ROOF);
+    c.box(12, 12, 24, 28, 28, 26, ROOF_L);
+    // Covered ore-receiving hopper bay (south-west, x=6..30, y=36..58)
+    c.box(6, 36, 3, 30, 58, 5, '#5a5348');
+    c.shell(10, 40, 5, 26, 54, 11, METAL);                // ore crusher hopper
+    c.box(12, 42, 11, 24, 52, 14, '#e0b84c');             // glowing raw gold/ore heap
+    c.box(8, 36, 16, 28, 56, 18, TEAM);                   // canopy roof over hopper
+    c.box(8, 54, 5, 11, 57, 16, METAL);                   // canopy support pillar L
+    c.box(25, 54, 5, 28, 57, 16, METAL);                  // canopy support pillar R
+    // Twin tall cylindrical fractional distillation towers (north-east)
+    for (const [cx, cy, topZ] of [[44, 16, 40], [44, 30, 35]]) {
+      c.cylZ(cx, cy, 3, topZ, 4.8, '#b8c2c8');
+      c.cylZ(cx, cy, topZ - 6, topZ - 3, 5.0, TEAM);
+      c.cylZ(cx, cy, 16, 18, 5.2, METAL);
+    }
+    // Overhead pipeline bridge linking furnace hall to distillation towers
+    c.box(32, 14, 15, 44, 18, 18, METAL);
+    c.box(32, 28, 15, 44, 32, 18, TEAM);
+    // Pressurized spherical storage tank (south-east, cx=46, cy=48)
+    for (let z = 5; z <= 21; z++) {
+      const r = Math.sqrt(Math.max(0, 68 - (z - 13) ** 2));
+      if (r > 1) c.cylZ(46, 48, z, z + 1, r, z >= 12 && z <= 14 ? TEAM : '#dfe6ea');
+    }
+    c.box(41, 43, 3, 43, 45, 9, METAL);
+    c.box(49, 43, 3, 51, 45, 9, METAL);
+    c.box(41, 51, 3, 43, 53, 9, METAL);
+    c.box(49, 51, 3, 51, 53, 9, METAL);
+    // Tall gas flare stack (x=54..57, y=10..13, z=3..46) with active flame
+    c.box(54, 10, 3, 57, 13, 44, METAL);
+    c.box(53, 9, 44, 58, 14, 48, '#ff7730');
+    c.box(54, 10, 48, 57, 13, 52, '#ffd84a');
+  } else if (id === 'radar-station') {
+    // Radar Station: hardened C4I early-warning bunker, geodesic secondary
+    // radome, steel lattice tower, and large rotating parabolic radar dish (`dish`).
+    c.box(0, 0, 0, 64, 64, 2, '#98a58c');
+    c.box(3, 3, 2, 61, 61, 3, '#aeb8a6');
+    // Hardened C4I operations bunker (x=8..40, y=12..46, z=3..18)
+    c.shell(8, 12, 3, 40, 46, 17, STONE);
+    c.box(38, 18, 8, 41, 40, 14, GLASS);                  // angled observation windows
+    c.box(7, 11, 17, 41, 47, 19, ROOF_D);
+    c.box(10, 14, 19, 38, 44, 21, ROOF);
+    // Secondary white geodesic satcom radome on south-east (cx=48, cy=46)
+    for (let z = 3; z <= 19; z++) {
+      const r = Math.sqrt(Math.max(0, 64 - (z - 9) ** 2));
+      if (r > 1) c.cylZ(48, 46, z, z + 1, r, z === 4 ? TEAM : '#e8ecee');
+    }
+    // Backup generator & cooling unit on north-east (x=44..56, y=12..26)
+    c.box(44, 12, 3, 56, 26, 12, METAL);
+    c.box(46, 14, 12, 54, 24, 14, TEAM);
+    // Steel lattice radar pedestal on bunker roof (x=19..29, y=24..34, z=21..31)
+    c.box(19, 24, 21, 29, 34, 31, METAL);
+    c.cylZ(24, 29, 31, 34, 4.2, ROOF_D);
+    // Rotating primary early-warning parabolic radar dish (`dish` group)
+    c.group('dish');
+    c.box(21, 10, 34, 27, 48, 46, '#c8d2d6');             // wide curved radar reflector
+    c.box(18, 12, 36, 21, 46, 44, METAL);                 // rear truss bracing
+    c.box(22, 12, 44, 26, 46, 47, TEAM);                  // team top warning stripe
+    c.box(27, 27, 38, 40, 31, 41, METAL);                 // forward feedhorn boom
+    c.box(38, 26, 37, 42, 32, 42, TEAM);                  // feedhorn receiver head
+    c.pivot('dish', [24, 29]);
+    c.group('body');
+  } else if (id === 'research-lab') {
+    // Research Laboratory: player-owned high-tech R&D complex — clean white
+    // modernist L-shaped laboratory wings with cyan cleanroom glazing, team
+    // roof trim, and a large glowing magnetic-containment observatory dome.
+    c.box(0, 0, 0, 64, 64, 2, '#98a58c');
+    c.box(3, 3, 2, 61, 61, 3, '#cfd8dc');
+    // North wing (x=6..56, y=6..28, z=3..20) & West wing (x=6..28, y=28..56, z=3..20)
+    c.shell(6, 6, 3, 56, 28, 20, '#e6ecee');
+    c.shell(6, 26, 3, 28, 56, 20, '#e6ecee');
+    // Continuous cyan cleanroom ribbon windows (two tiers)
+    for (const z of [7, 14]) {
+      c.box(8, 27, z, 54, 29, z + 4, GLASS);
+      c.box(27, 28, z, 29, 54, z + 4, GLASS);
+      c.box(8, 5, z, 54, 7, z + 4, GLASS);
+    }
+    // Team parapet roofs + solar/cryo rooftop banks
+    c.box(5, 5, 20, 57, 29, 22, TEAM);
+    c.box(5, 27, 20, 29, 57, 22, TEAM);
+    c.box(8, 8, 22, 54, 26, 24, ROOF_L);
+    c.box(8, 30, 22, 26, 54, 24, ROOF_L);
+    for (const x of [12, 24, 36, 46]) {
+      c.box(x, 11, 24, x + 6, 23, 26, '#3a5a78');         // rooftop solar/sensor panels
+    }
+    // Centerpiece high-energy containment / observatory dome (south-east, cx=43, cy=43)
+    c.cylZ(43, 43, 3, 12, 12.5, STONE_L);                 // cylindrical containment base
+    c.cylZ(43, 43, 10, 12, 12.8, TEAM);                   // team containment ring
+    for (let z = 12; z <= 27; z++) {
+      const r = Math.sqrt(Math.max(0, 144 - (z - 12) ** 2 * 0.95));
+      if (r > 1) {
+        c.cylZ(43, 43, z, z + 1, r, (z % 4 === 0) ? '#5fc4e8' : GLASS);
+      }
+    }
+    c.box(41, 30, 12, 45, 56, 28, TEAM);                  // dome meridian arch rib
+    c.box(41, 41, 27, 45, 45, 38, METAL);                 // lightning/telemetry spire
+    c.put(43, 43, 38, '#5fc4e8');
+  } else if (id === 'pillbox') {
+    // Machine-Gun Pillbox: compact octagonal ferro-concrete infantry strongpoint
+    // ringed by a sandbag revetment, horizontal firing embrasures, protruding
+    // twin heavy MG barrels (+X), and team recognition roof octagon.
+    c.box(0, 0, 0, 64, 64, 2, '#98a58c');
+    c.box(4, 4, 2, 60, 60, 3, '#8a7a64');
+    // Outer sandbag revetment ring (r=18..23, z=3..8) & octagonal concrete pillbox (r<=17, z=3..18)
+    for (let y = 8; y < 56; y++) {
+      for (let x = 8; x < 56; x++) {
+        const dx = Math.abs(x - 31.5), dy = Math.abs(y - 31.5);
+        const oct = Math.max(dx, dy, (dx + dy) * 0.72);
+        if (oct >= 16.5 && oct <= 21.5) {
+          c.box(x, y, 3, x + 1, y + 1, ((x + y) % 3 === 0) ? 7 : 8, '#c8b084');
+        } else if (oct <= 16.0) {
+          c.box(x, y, 3, x + 1, y + 1, 17, '#7c8578');
+          if (oct <= 14.0) c.box(x, y, 17, x + 1, y + 1, 19, '#5d6659');
+          if (oct <= 10.5) c.box(x, y, 19, x + 1, y + 1, 21, TEAM);
+          if (oct <= 6.5) c.box(x, y, 21, x + 1, y + 1, 22, ROOF_L);
+        }
+      }
+    }
+    // Dark recessed firing embrasure slits on front (+X) and sides (±Y)
+    c.box(44, 22, 10, 49, 42, 14, '#1e2420');
+    c.box(22, 14, 10, 42, 18, 14, '#1e2420');
+    c.box(22, 46, 10, 42, 50, 14, '#1e2420');
+    // Twin heavy machine-gun barrels protruding from the front (+X) embrasure
+    c.box(45, 27, 11, 59, 30, 13, '#354d42');
+    c.box(45, 34, 11, 59, 37, 13, '#354d42');
+    c.box(56, 26, 10, 60, 38, 14, METAL);                 // flash-hider bar
+    // Rear armored steel trench access door (-X) & roof periscope
+    c.box(14, 27, 3, 18, 37, 13, METAL);
+    c.cylZ(28, 32, 22, 26, 2.8, METAL);
+  } else if (id === 'bunker') {
+    // Reinforced Bunker: heavy rectangular ferro-concrete garrison fortification
+    // with sloped buttresses, front casemate cannon & searchlight, rooftop
+    // armored observation cupola, and rear blast door with sandbagged trench.
+    c.box(0, 0, 0, 64, 64, 2, '#98a58c');
+    c.box(3, 3, 2, 61, 61, 3, '#7c8578');
+    // Massive sloped ferro-concrete casemate block (x=10..54, y=10..54, z=3..22)
+    c.box(8, 8, 3, 56, 56, 10, '#5d6659');                // flared concrete skirt
+    c.shell(10, 10, 10, 54, 54, 22, '#7c8578');
+    // Heavy corner blast buttresses
+    for (const [bx, by] of [[8, 8], [8, 48], [48, 8], [48, 48]]) {
+      c.box(bx, by, 3, bx + 8, by + 8, 22, '#5d6659');
+    }
+    // Stepped blast-proof roof slab + team chevron markings
+    c.box(10, 10, 22, 54, 54, 24, '#5d6659');
+    c.box(14, 14, 24, 50, 50, 26, TEAM);
+    c.box(18, 18, 26, 46, 46, 28, ROOF_L);
+    // Front casemate aperture (+X) with heavy garrison gun & armored searchlight
+    c.box(50, 20, 10, 56, 44, 18, '#1e2420');
+    c.box(48, 29, 12, 62, 35, 16, '#354d42');             // casemate cannon barrel
+    c.box(58, 28, 11, 63, 36, 17, METAL);                 // muzzle brake
+    c.box(52, 12, 22, 57, 20, 28, METAL);                 // corner searchlight housing
+    c.box(55, 13, 23, 58, 19, 27, GLASS);
+    // Rooftop armored observation cupola & comms whip antenna
+    c.cylZ(28, 32, 28, 33, 5.5, METAL);
+    c.box(31, 28, 29, 35, 36, 32, GLASS);
+    c.box(18, 20, 28, 20, 22, 42, METAL);
+    // Rear recessed blast door (-X)
+    c.box(6, 26, 3, 11, 38, 16, METAL);
+  } else if (id === 'at-turret') {
+    // Anti-Tank Turret: sunken concrete octagonal gun pit with hazard stripes,
+    // armored turret ring, low-profile sloped tank-hunter turret in team colour,
+    // and extra-long high-velocity 120mm anti-tank cannon barrel (+X).
+    c.box(0, 0, 0, 64, 64, 2, '#98a58c');
+    c.box(4, 4, 2, 60, 60, 3, '#aeb8a6');
+    // Octagonal reinforced concrete gun emplacement base (z=3..12)
+    c.box(10, 10, 3, 54, 54, 11, WALL);
+    c.box(12, 12, 11, 52, 52, 13, STONE_L);
+    c.box(10, 10, 9, 14, 54, 12, '#e5b93c');              // rear hazard stripe
+    // Rear external ammunition ready-racks (x=6..12, y=18..46)
+    c.box(6, 18, 3, 12, 28, 11, METAL);
+    c.box(6, 36, 3, 12, 46, 11, METAL);
+    // Heavy turret barbette ring (cx=30, cy=32, z=13..17)
+    c.cylZ(30, 32, 13, 17, 13.5, METAL);
+    // Sloped anti-tank turret house (x=16..44, y=19..45, z=17..28)
+    c.shell(16, 19, 17, 44, 45, 26, TEAM);
+    c.box(18, 21, 26, 40, 43, 28, ROOF_L);
+    c.box(24, 16, 20, 34, 48, 25, METAL);                 // stereoscopic rangefinder ears
+    c.box(33, 16, 21, 35, 19, 24, GLASS);
+    c.box(33, 45, 21, 35, 48, 24, GLASS);
+    // Cast armor mantlet + extra-long HV anti-tank gun barrel (+X)
+    c.box(40, 26, 18, 48, 38, 26, METAL);
+    c.cylX(44, 63, 32, 22, 2.8, '#354d42');
+    c.box(52, 29, 19, 56, 35, 25, METAL);                 // bore evacuator
+    c.box(59, 28, 18, 63, 36, 26, ROOF_D);                // heavy double-baffle muzzle brake
+  } else if (id === 'sam-site') {
+    // SAM Missile Site: concrete blast pad with flame trenches, corner fire-
+    // control radar van, central rotatable pedestal, and 4-rail elevated launcher
+    // holding 4 white/red-tipped surface-to-air missiles angled skyward (+X/+Z).
+    c.box(0, 0, 0, 64, 64, 2, '#98a58c');
+    c.box(4, 4, 2, 60, 60, 3, '#aeb8a6');
+    c.box(8, 8, 3, 56, 56, 7, '#7c8578');                 // blast-deflector concrete pad
+    c.box(14, 14, 7, 50, 50, 8, '#4a5248');               // scorched blast apron
+    // Corner fire-control radar bunker & tracking dish (north-west, x=6..20, y=6..20)
+    c.shell(6, 6, 7, 20, 20, 17, STONE);
+    c.box(6, 6, 17, 20, 20, 19, TEAM);
+    c.box(11, 11, 19, 15, 15, 26, METAL);
+    c.box(13, 8, 24, 17, 18, 31, '#cfd8dc');              // tracking radar dish
+    // Central rotatable launcher turntable (cx=34, cy=34, z=8..18)
+    c.cylZ(34, 34, 8, 15, 10.5, METAL);
+    c.box(26, 22, 15, 42, 46, 21, TEAM);                  // launcher trunnion beam
+    // Four angled SAM launch rails + 4 white/red-cone missiles pointing skyward (+X/+Z)
+    for (const my of [20, 28, 38, 46]) {
+      for (let s = 0; s < 14; s++) {
+        const mx = 22 + s * 2;
+        const mz = 18 + Math.floor(s * 1.35);
+        c.box(mx, my, mz - 2, mx + 3, my + 3, mz, METAL); // launch rail
+        const tip = s >= 11 ? '#d94c3d' : s <= 2 ? TEAM : '#ece7bc';
+        c.box(mx + 2, my, mz, mx + 5, my + 3, mz + 3, tip); // SAM body & red warhead cone
+      }
+    }
+  } else if (id === 'flak-cannon') {
+    // Flak Cannon: circular sandbagged & concrete AA gun pit with ready ammo
+    // crates, cruciform outrigger mount, armored gun shield in team colour, and
+    // quad high-angle 40mm/88mm anti-aircraft autocannon barrels elevated at 45°.
+    c.box(0, 0, 0, 64, 64, 2, '#98a58c');
+    c.box(4, 4, 2, 60, 60, 3, '#8a7a64');
+    // Circular concrete & sandbagged AA gun pit wall (r=19..24, z=3..11)
+    for (let y = 6; y < 58; y++) {
+      for (let x = 6; x < 58; x++) {
+        const d = Math.hypot(x - 31.5, y - 31.5);
+        if (d >= 19.0 && d <= 24.0) {
+          c.box(x, y, 3, x + 1, y + 1, d > 21.5 ? 8 : 11, d > 21.5 ? '#c8b084' : WALL);
+        } else if (d < 19.0) {
+          c.put(x, y, 3, '#5d6659');
+        }
+      }
+    }
+    // Ready ammo crates stacked inside the rear (-X) of the pit
+    c.box(13, 22, 4, 20, 30, 10, '#a68246');
+    c.box(13, 34, 4, 20, 42, 10, '#a68246');
+    // Central cruciform AA outrigger pedestal & rotating turret shield
+    c.box(20, 29, 4, 44, 35, 8, METAL);
+    c.box(29, 20, 4, 35, 44, 8, METAL);
+    c.cylZ(32, 32, 8, 15, 8.5, METAL);
+    c.box(24, 20, 15, 38, 44, 26, TEAM);                  // armored AA gun shield
+    c.box(26, 22, 26, 36, 42, 28, ROOF_L);
+    c.box(28, 28, 28, 35, 36, 32, GLASS);                 // optical sky-director sight
+    // Quad high-elevation flak barrels pointing skyward (+X/+Z)
+    for (const gy of [22, 27, 35, 40]) {
+      for (let s = 0; s < 13; s++) {
+        const bx = 34 + s * 2;
+        const bz = 20 + Math.floor(s * 1.45);
+        c.box(bx, gy, bz, bx + 3, gy + 2, bz + 3, s === 12 ? METAL : '#354d42');
+      }
+    }
+  } else if (id === 'coastal-battery') {
+    // Coastal Defense Gun: massive tiered ferro-concrete shore casemate with
+    // thick overhanging blast visor, rooftop optical rangefinder director tower,
+    // and twin long naval-caliber 380mm guns protruding toward +X.
+    c.box(0, 0, 0, 64, 64, 2, '#98a58c');
+    c.box(2, 2, 2, 62, 62, 4, '#6b7368');
+    // Massive sloped concrete shore-battery casemate (x=6..50, y=6..58, z=4..26)
+    c.box(6, 6, 4, 52, 58, 12, '#5d6659');
+    c.shell(8, 8, 12, 50, 56, 25, '#7c8578');
+    // Thick overhanging front blast visor (x=36..54, y=8..56, z=23..28)
+    c.box(10, 8, 24, 54, 56, 28, '#5d6659');
+    c.box(14, 12, 28, 48, 52, 30, TEAM);
+    // Rooftop armored fire-control rangefinder tower (x=18..34, y=20..44, z=30..40)
+    c.shell(18, 20, 30, 34, 44, 38, STONE);
+    c.box(32, 22, 33, 35, 42, 36, GLASS);                 // sea-observation slit
+    c.box(22, 10, 34, 28, 54, 38, METAL);                 // wide stereoscopic rangefinder arms
+    c.box(26, 10, 35, 29, 13, 37, GLASS);
+    c.box(26, 51, 35, 29, 54, 37, GLASS);
+    c.box(17, 19, 38, 35, 45, 40, ROOF_D);
+    c.box(20, 22, 40, 32, 42, 42, TEAM);
+    // Heavy armored gun barbette & twin long naval-caliber coastal guns (+X)
+    c.box(38, 16, 12, 52, 48, 23, METAL);
+    for (const gy of [21, 37]) {
+      c.cylX(44, 63, gy + 3, 17, 3.2, '#354d42');
+      c.box(48, gy, 14, 54, gy + 6, 20, TEAM);            // recoil jacket
+      c.box(59, gy, 14, 63, gy + 6, 20, METAL);           // coastal muzzle ring
+    }
+  } else if (id === 'artillery-emplacement') {
+    // Long-Range Artillery Emplacement: fortified earthwork & concrete gun pit,
+    // rear recessed ammunition bunker with brass shells, heavy turntable carriage
+    // with recoil spades, and a huge long-range siege howitzer barrel (+X/+Z).
+    c.box(0, 0, 0, 64, 64, 2, '#98a58c');
+    c.box(3, 3, 2, 61, 61, 3, '#8a7a64');
+    // Horseshoe concrete & earthwork revetment wall on north/south/east
+    for (let y = 6; y < 58; y++) {
+      for (let x = 14; x < 58; x++) {
+        const d = Math.hypot(x - 34, y - 32);
+        if (d >= 18.5 && d <= 23.5 && x < 52) {
+          c.box(x, y, 3, x + 1, y + 1, 11, WALL);
+          c.put(x, y, 11, TEAM);
+        } else if (d < 18.5) {
+          c.put(x, y, 3, '#6b7368');
+        }
+      }
+    }
+    // Rear recessed ammunition bunker (-X, x=4..18, y=16..48, z=3..15)
+    c.shell(4, 16, 3, 18, 48, 14, STONE);
+    c.box(3, 15, 14, 19, 49, 16, TEAM);
+    c.box(6, 18, 16, 16, 46, 18, ROOF_L);
+    // Visible brass heavy artillery shells on loading rack (x=18..22, y=20..28)
+    for (const sy of [20, 23, 26]) c.box(18, sy, 4, 24, sy + 2, 7, '#e0b84c');
+    // Heavy turntable carriage, recoil spades, and trunnion block
+    c.cylZ(34, 32, 4, 10, 11.5, METAL);
+    c.box(22, 22, 4, 28, 27, 9, ROOF_D);                  // left recoil spade
+    c.box(22, 37, 4, 28, 42, 9, ROOF_D);                  // right recoil spade
+    c.box(26, 24, 10, 42, 40, 20, TEAM);                  // armored gun carriage
+    c.box(28, 26, 20, 40, 38, 23, METAL);                 // hydro-pneumatic recoil cradle
+    // Massive long-range siege howitzer barrel elevated at 35° (+X/+Z)
+    for (let s = 0; s < 14; s++) {
+      const bx = 34 + s * 2;
+      const bz = 18 + Math.floor(s * 1.4);
+      c.cylX(bx, bx + 3, 32, bz, s < 5 ? 3.8 : 2.8, s >= 12 ? ROOF_D : '#354d42');
+    }
+    c.box(58, 28, 35, 63, 36, 41, METAL);                 // multi-baffle siege muzzle brake
+  } else if (id === 'guard-tower') {
+    // Guard Tower: tall perimeter watchtower on cross-braced steel/concrete
+    // legs, ground-level sentry checkpoint booth & barrier gate, overhanging
+    // armored observation cab with wrap-around windows, searchlight & pintle MG.
+    c.box(0, 0, 0, 64, 64, 2, '#98a58c');
+    c.box(4, 4, 2, 60, 60, 3, '#aeb8a6');
+    c.box(12, 12, 3, 44, 44, 6, STONE);                   // tower foundation plinth
+    // Ground-level sentry booth & striped security barrier arm (south-east)
+    c.shell(44, 38, 3, 56, 52, 14, STONE);
+    c.box(43, 37, 14, 57, 53, 16, TEAM);
+    c.box(44, 36, 7, 54, 39, 12, GLASS);
+    for (let x = 26; x < 44; x += 2) {
+      c.box(x, 54, 6, x + 2, 56, 8, (x % 4 === 0) ? '#d94c3d' : '#ece7bc');
+    }
+    // Four tall cross-braced watchtower legs (x=16..40, y=16..40, z=6..36)
+    for (const lx of [16, 36]) {
+      for (const ly of [16, 36]) {
+        c.box(lx, ly, 6, lx + 4, ly + 4, 36, METAL);
+      }
+    }
+    for (const bz of [14, 22, 30]) {                      // horizontal & X-girder ties
+      c.box(16, 16, bz, 40, 40, bz + 2, '#58646a');
+      c.clearBox(19, 19, bz, 37, 37, bz + 2);
+    }
+    c.box(26, 17, 6, 30, 19, 36, '#8c6b42');              // access ladder up north face
+    // Overhanging armored observation cab & catwalk balcony (z=36..50)
+    c.box(12, 12, 36, 46, 44, 39, '#5d6659');             // catwalk deck
+    c.shell(12, 12, 39, 46, 44, 42, TEAM);                // team balcony parapet
+    c.shell(16, 16, 39, 40, 40, 49, STONE);               // enclosed guard cab
+    c.box(15, 15, 43, 41, 41, 47, GLASS);                 // 360-degree observation glazing
+    c.clearBox(18, 18, 43, 38, 38, 47);
+    // Peaked watchtower roof + antenna spire (z=49..60)
+    c.box(14, 14, 49, 42, 42, 51, ROOF_D);
+    c.box(17, 17, 51, 39, 39, 53, ROOF);
+    c.box(21, 21, 53, 35, 35, 55, ROOF_L);
+    c.box(27, 27, 55, 29, 29, 62, METAL);
+    // Balcony xenon searchlight & heavy pintle MG on the east (+X) rail
+    c.box(44, 20, 42, 50, 26, 47, METAL);                 // searchlight drum
+    c.box(48, 21, 43, 51, 25, 46, '#5fc4e8');             // xenon lens
+    c.box(44, 32, 42, 56, 35, 45, '#354d42');             // heavy pintle MG barrel
+  } else if (id === 'landmine') {
+    // Low-profile military anti-tank/anti-personnel landmine emplacement:
+    // disturbed soil rim, beveled olive-steel cylindrical casing with radial
+    // strengthening ribs, team-coloured stencil sectors, raised pressure plate
+    // with 4-prong spider fuze, and a grounded asymmetric tripwire stake.
+    const SOIL = '#4a4438', SOIL_D = '#353128', CASING = '#4a5245', CASING_L = '#5e6858';
+    const RIB = '#6b7566', PLATE = '#8b96a2', FUZE = '#2b3128', PIN = '#d94b38';
+    for (let y = 0; y < 64; y++) {
+      for (let x = 0; x < 64; x++) {
+        const dx = x - 31.5, dy = y - 31.5;
+        const d = Math.hypot(dx, dy);
+        // Disturbed earth & gravel burial ring at z=0
+        if (d <= 18.0) {
+          c.put(x, y, 0, ((x + y) % 3 === 0) ? SOIL : SOIL_D);
+        }
+        // Main heavy steel mine body (z=1..2)
+        if (d <= 14.8) {
+          c.put(x, y, 1, CASING);
+          c.put(x, y, 2, d > 13.2 ? SOIL_D : CASING);
+        }
+        // Beveled upper casing shoulder (z=3..4) with radial ribs & team stencil
+        if (d <= 12.6) {
+          const onAxisRib = Math.abs(dx) <= 1.2 || Math.abs(dy) <= 1.2;
+          const onDiagRib = Math.abs(Math.abs(dx) - Math.abs(dy)) <= 1.1;
+          const teamArc = d >= 7.8 && d <= 11.4 && ((dx > 2 && dy > 2) || (dx < -2 && dy < -2));
+          const col = teamArc ? (d > 9.8 ? TEAM : ROOF_L)
+            : (onAxisRib || onDiagRib) ? RIB : CASING_L;
+          c.put(x, y, 3, col);
+          if (d <= 11.2) c.put(x, y, 4, col);
+        }
+        // Central pressure plate disc (z=5..6)
+        if (d <= 6.8) {
+          c.put(x, y, 5, d > 5.4 ? FUZE : PLATE);
+          c.put(x, y, 6, d > 5.2 ? FUZE : PLATE);
+        }
+      }
+    }
+    // 4-prong spider pressure fuze cap & central red arming pin (z=7..8)
+    c.box(27, 30, 7, 37, 34, 8, FUZE);
+    c.box(30, 27, 7, 34, 37, 8, FUZE);
+    c.box(30, 30, 7, 34, 34, 9, PIN);
+    // Grounded asymmetric side fuze lug & low tripwire stake (ensures all 4 facings differ)
+    c.box(44, 29, 1, 49, 35, 5, CASING);                 // side secondary fuze well
+    c.box(46, 30, 5, 48, 34, 7, TEAM);                   // arming tag
+    c.box(52, 20, 0, 55, 23, 6, '#6b5a3a');              // grounded wooden tripwire stake
+    c.box(51, 19, 6, 56, 24, 8, TEAM);                   // stake warning band
+    for (let i = 0; i < 7; i++) {
+      c.put(46 + i, 29 - i, 3, RIB);                     // taut low tripwire
+    }
   }
   c.group('body');
 }

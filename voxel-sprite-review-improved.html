@@ -135,8 +135,12 @@ function renderAssets() {
   }
 }
 
+function isUnitAsset(asset) {
+  return Boolean(DATA.byCategory && DATA.byCategory.unit && DATA.byCategory.unit.includes(asset));
+}
+
 function renderDirRow() {
-  const dirs = [
+  const unitDirs = [
     ['up', 'up (N ↗)'],
     ['up-right', 'up-right (NE →)'],
     ['right', 'right (E ↘)'],
@@ -146,6 +150,16 @@ function renderDirRow() {
     ['left', 'left (W ↖)'],
     ['up-left', 'up-left (NW ↑)'],
   ];
+  const cardinalDirs = [
+    ['up', 'up (N ↗)'],
+    ['right', 'right (E ↘)'],
+    ['down', 'down (S ↙)'],
+    ['left', 'left (W ↖)'],
+  ];
+  const dirs = isUnitAsset(currentAsset) ? unitDirs : cardinalDirs;
+  if (!dirs.some(([d]) => d === currentDir)) {
+    currentDir = 'right';
+  }
   const row = document.getElementById('dirRow');
   row.innerHTML = '';
   for (const [d, label] of dirs) {
@@ -179,6 +193,7 @@ function renderStrip() {
 }
 
 function renderAll() {
+  renderDirRow();
   const candidates = [
     'game_assets/voxels/sheets/' + currentAsset + '-' + currentDir + '-0.png',
     'game_assets/voxels/sheets/' + currentAsset + '-' + currentDir + '-n.png',
@@ -192,7 +207,6 @@ function renderAll() {
   };
   mainImg.src = candidates[0];
   document.getElementById('previewMeta').textContent = currentAsset + ' · ' + currentDir + ' · frame ' + currentFrame;
-  renderDirRow();
   renderStrip();
 }
 
