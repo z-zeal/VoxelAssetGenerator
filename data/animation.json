@@ -1,0 +1,226 @@
+{
+ "format": "field-command-animation-1",
+ "frameBudgets": {
+  "classic": {
+   "particlesPerEvent": 12
+  },
+  "iso": {
+   "particlesPerEvent": 40,
+   "particlesLive": 120
+  }
+ },
+ "families": {
+  "foot": {
+   "idle": 1,
+   "move": 4,
+   "attack": 3,
+   "death": 5
+  },
+  "wheeled": {
+   "idle": 1,
+   "move": 4,
+   "attack": 3,
+   "death": 4
+  },
+  "tracked": {
+   "idle": 1,
+   "move": 4,
+   "attack": 3,
+   "death": 4
+  },
+  "rotor": {
+   "idle": 2,
+   "move": 4,
+   "attack": 2,
+   "death": 4
+  },
+  "jet": {
+   "idle": 1,
+   "move": 3,
+   "attack": 2,
+   "death": 4
+  },
+  "naval": {
+   "idle": 1,
+   "move": 4,
+   "attack": 2,
+   "death": 4
+  }
+ },
+ "units": {
+  "infantry": {
+   "family": "foot",
+   "weapon": "rifle",
+   "releaseFrame": 1
+  },
+  "mech": {
+   "family": "foot",
+   "weapon": "cannon",
+   "releaseFrame": 1
+  },
+  "engineer": {
+   "family": "foot",
+   "weapon": null
+  },
+  "medic": {
+   "family": "foot",
+   "weapon": null
+  },
+  "apc": {
+   "family": "tracked",
+   "weapon": null
+  },
+  "recon": {
+   "family": "wheeled",
+   "weapon": "rifle",
+   "releaseFrame": 1
+  },
+  "tank": {
+   "family": "tracked",
+   "weapon": "cannon",
+   "releaseFrame": 1
+  },
+  "heavy": {
+   "family": "tracked",
+   "weapon": "heavy",
+   "releaseFrame": 1
+  },
+  "artillery": {
+   "family": "tracked",
+   "weapon": "shell",
+   "releaseFrame": 1
+  },
+  "antiair": {
+   "family": "tracked",
+   "weapon": "aa",
+   "releaseFrame": 1
+  },
+  "mega": {
+   "family": "tracked",
+   "weapon": "mega",
+   "releaseFrame": 1
+  },
+  "rockets": {
+   "family": "wheeled",
+   "weapon": "rockets",
+   "releaseFrame": 1
+  },
+  "missiles": {
+   "family": "wheeled",
+   "weapon": "sam",
+   "releaseFrame": 1
+  },
+  "submarine": {
+   "family": "naval",
+   "weapon": "torpedo",
+   "releaseFrame": 1
+  },
+  "gunboat": {
+   "family": "naval",
+   "weapon": "navalGun",
+   "releaseFrame": 1
+  },
+  "cruiser": {
+   "family": "naval",
+   "weapon": "navalMissile",
+   "releaseFrame": 1
+  },
+  "battleship": {
+   "family": "naval",
+   "weapon": "navalShell",
+   "releaseFrame": 1
+  },
+  "lander": {
+   "family": "naval",
+   "weapon": null
+  },
+  "copter": {
+   "family": "rotor",
+   "weapon": "airRocket",
+   "releaseFrame": 1
+  },
+  "lift-copter": {
+   "family": "rotor",
+   "weapon": null
+  },
+  "fighter": {
+   "family": "jet",
+   "weapon": "airMissile",
+   "releaseFrame": 1
+  },
+  "bomber": {
+   "family": "jet",
+   "weapon": "bomb",
+   "releaseFrame": 1
+  },
+  "uhac": {
+   "family": "naval",
+   "weapon": null
+  },
+  "uav": {
+   "family": "rotor",
+   "weapon": null
+  },
+  "mpa": {
+   "family": "jet",
+   "weapon": "torpedo",
+   "releaseFrame": 1
+  },
+  "bastion": {
+   "family": "tracked",
+   "weapon": "heavy",
+   "releaseFrame": 1
+  },
+  "specter": {
+   "family": "jet",
+   "weapon": "bomb",
+   "releaseFrame": 1
+  },
+  "aegis": {
+   "family": "wheeled",
+   "weapon": "sam",
+   "releaseFrame": 1
+  }
+ },
+ "buildings": {
+  "hq": {
+   "idle": 1
+  },
+  "base": {
+   "idle": 2
+  },
+  "city": {
+   "idle": 1
+  },
+  "airport": {
+   "idle": 2
+  },
+  "port": {
+   "idle": 1
+  },
+  "farm": {
+   "idle": 1
+  },
+  "mine": {
+   "idle": 1
+  },
+  "depot": {
+   "idle": 1
+  },
+  "supply-depot": {
+   "idle": 1
+  },
+  "repair-depot": {
+   "idle": 1
+  },
+  "field-hospital": {
+   "idle": 1
+  }
+ },
+ "effects": {
+  "silo-missile": {
+   "mode": "voxel-in-iso",
+   "frames": 3
+  }
+ }
+}

@@ -1,0 +1,56 @@
+{
+  "standard": { "name": "Standard Forces", "short": "ST", "tagline": "The original field manual. No modifiers.", "unitOverrides": {} },
+
+  "allies": {
+    "name": "Allied Forces", "short": "AL", "tagline": "Precision, vision and speed.",
+    "style": { "hull": "#7d8a5a", "hullDark": "#5a6642", "trim": "#dfe6ea",
+               "insignia": "star-roundel", "silhouette": "sleek" },
+    "displayNames": { "tank": "Grizzly Tank" },
+    "unitOverrides": { "recon": {"cost": 3500, "vision": 5}, "tank": {"move": 7},
+                       "infantry": {"vision": 3}, "copter": {"vision": 4},
+                       "medic": {"cost": 2500,
+                                 "heal": {"foot": 3, "light": 2, "medium": 2, "heavy": 1}} },
+    "unavailable": [], "uniqueUnits": []
+  },
+
+  "soviets": {
+    "name": "Soviet Union", "short": "SU", "tagline": "Mass, armor and brute force.",
+    "style": { "hull": "#7a3b30", "hullDark": "#4d2520", "trim": "#e0b94a",
+               "insignia": "red-star", "silhouette": "slab" },
+    "displayNames": { "tank": "Rhino Tank", "heavy": "Mammoth Tank" },
+    "unitOverrides": { "infantry": {"cost": 850}, "tank": {"cost": 6500},
+                       "heavy": {"cost": 14500, "move": 4}, "artillery": {"cost": 5500},
+                       "engineer": {"cost": 1800} },
+    "unavailable": [], "uniqueUnits": []
+  },
+
+  "empire": {
+    "name": "Eastern Empire", "short": "EM", "tagline": "Rule the sea and sky.",
+    "style": { "hull": "#cfc9b6", "hullDark": "#8c8670", "trim": "#2f4a7a",
+               "insignia": "sun-disc", "silhouette": "angular" },
+    "displayNames": { "fighter": "Zero Interceptor", "battleship": "Flagship" },
+    "unitOverrides": {
+      "copter": {"cost": 8000, "move": 7}, "lift-copter": {"cost": 7500},
+      "fighter": {"cost": 18000, "move": 10}, "bomber": {"cost": 20000},
+      "gunboat": {"cost": 5500}, "cruiser": {"cost": 16500, "vision": 4},
+      "battleship": {"cost": 21500}, "lander": {"cost": 5500},
+      "submarine": {"move": 6},
+      "heavy": {"cost": 17500, "move": 4}, "mega": {"cost": 30500}
+    },
+    "unavailable": [], "uniqueUnits": []
+  },
+
+  "legion": {
+    "name": "Free Legion", "short": "FL", "tagline": "Cheap, fast and unpredictable.",
+    "style": { "hull": "#a58a5a", "hullDark": "#6e5a38", "trim": "#2b2b2b",
+               "insignia": "chevron", "silhouette": "improvised" },
+    "displayNames": { "tank": "Scrapper", "recon": "Technical" },
+    "unitOverrides": {
+      "infantry": {"cost": 850, "vision": 3}, "mech": {"cost": 2600, "move": 3},
+      "recon": {"cost": 3500}, "artillery": {"cost": 5500}, "rockets": {"cost": 13500},
+      "tank": {"cost": 7500},
+      "engineer": {"cost": 1400, "mineBuildTurns": 1}
+    },
+    "unavailable": ["mega", "battleship", "bomber"], "uniqueUnits": []
+  }
+}
