@@ -151,9 +151,25 @@ export const TERRAIN_MODELS = [
   'wall-empire',
   'wall-legion',
   'wall-end',
+  'wall-end-allies',
+  'wall-end-soviets',
+  'wall-end-empire',
+  'wall-end-legion',
   'wall-corner',
+  'wall-corner-allies',
+  'wall-corner-soviets',
+  'wall-corner-empire',
+  'wall-corner-legion',
   'wall-t',
+  'wall-t-allies',
+  'wall-t-soviets',
+  'wall-t-empire',
+  'wall-t-legion',
   'wall-cross',
+  'wall-cross-allies',
+  'wall-cross-soviets',
+  'wall-cross-empire',
+  'wall-cross-legion',
   'wall-gate',
   'wall-gate-allies',
   'wall-gate-soviets',
@@ -632,7 +648,7 @@ export const WHEEL_AXLES = {};
 
 /* ------------------------------------------------------------- assembly ---- */
 import {unitVoxels, applyArmyDelta} from './models/units.mjs';
-import {buildingVoxels} from './models/buildings.mjs';
+import {buildingVoxels, applyBuildingArmyDelta} from './models/buildings.mjs';
 import {terrainVoxels, siloMissileVoxels} from './models/terrain.mjs';
 
 export const UNIT_FAMILY = {
@@ -678,9 +694,10 @@ export const UNIT_WEAPON = {
 };
 
 export function clipsFor(id, kind) {
-  if (kind === 'unit') return MODEL_POSES[id];
-  if (kind === 'building') return { idle: BUILDING_IDLE[id] ?? 1 };
-  if (kind === 'effect') return MODEL_POSES[id] ?? { idle: 1 };
+  const baseId = id.includes('--') ? id.split('--')[0] : id;
+  if (kind === 'unit') return MODEL_POSES[baseId];
+  if (kind === 'building') return { idle: BUILDING_IDLE[baseId] ?? 1 };
+  if (kind === 'effect') return MODEL_POSES[baseId] ?? { idle: 1 };
   return { idle: 1 };
 }
 
@@ -692,6 +709,9 @@ export function modelRoster(unitsJson) {
     for (const type of Object.keys(unitsJson)) roster.push([`${type}--${armyId}`, 'unit', armyId]);
   }
   for (const t of BUILDINGS) roster.push([t, 'building', 'standard']);
+  for (const armyId of UNIT_ARMY_IDS) {
+    for (const t of BUILDINGS) roster.push([`${t}--${armyId}`, 'building', armyId]);
+  }
   for (const t of TERRAIN_MODELS) roster.push([t, t === 'silo-missile' ? 'effect' : 'terrain', 'standard']);
   return roster;
 }
@@ -699,15 +719,16 @@ export function modelRoster(unitsJson) {
 /** Sculpt one model for one pose; returns the tagged canvas (pre-hollow). */
 export function sculptModel(id, kind, armyId, pose) {
   const canvas = createCanvas();
+  const baseId = id.includes('--') ? id.split('--')[0] : id;
   if (kind === 'building') {
-    buildingVoxels(canvas, id, pose);
-    if (pose && pose.frame > 0) applyPoseOps(canvas, buildingPoseOps(id, pose.frame));
+    buildingVoxels(canvas, baseId, pose);
+    if (armyId && armyId !== 'standard') applyBuildingArmyDelta(canvas, baseId, armyId);
+    if (pose && pose.frame > 0) applyPoseOps(canvas, buildingPoseOps(baseId, pose.frame));
   } else if (kind === 'terrain') {
     terrainVoxels(canvas, id, pose);
   } else if (kind === 'effect') {
     siloMissileVoxels(canvas, id, pose);
   } else {
-    const baseId = id.includes('--') ? id.split('--')[0] : id;
     unitVoxels(canvas, baseId, pose);
     if (armyId && armyId !== 'standard') applyArmyDelta(canvas, baseId, armyId);
     const {action, frame} = pose ?? { action: 'idle', frame: 0 };
@@ -759,7 +780,14 @@ export function buildVoxels(unitsJson) {
   const models = {};
   const add = (id, kind, armyId = 'standard') => {
     const canvas = sculptModel(id, kind, armyId, { action: 'idle', frame: 0 });
-    canvas.hollow();
+    const solid = new Set(canvas.raw.keys());
+    for (const [key, [x, y, z]] of [...canvas.raw]) {
+      if (solid.has(`${x + 1},${y},${z}`) && solid.has(`${x - 1},${y},${z}`)
+        && solid.has(`${x},${y + 1},${z}`) && solid.has(`${x},${y - 1},${z}`)
+        && solid.has(`${x},${y},${z + 1}`)) {
+        canvas.raw.delete(key);
+      }
+    }
     const raw = canvas.finish();
     models[id] = {
       kind,
@@ -774,6 +802,9 @@ export function buildVoxels(unitsJson) {
     for (const type of Object.keys(unitsJson)) add(`${type}--${armyId}`, 'unit', armyId);
   }
   for (const t of BUILDINGS) add(t, 'building');
+  for (const armyId of UNIT_ARMY_IDS) {
+    for (const t of BUILDINGS) add(`${t}--${armyId}`, 'building', armyId);
+  }
   for (const t of TERRAIN_MODELS) add(t, t === 'silo-missile' ? 'effect' : 'terrain');
   return {
     format: 'field-command-voxel-64x64x64',

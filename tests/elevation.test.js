@@ -19,7 +19,10 @@ import {
 } from '../src/coast.js';
 import { renderIso } from '../src/iso-renderer.js';
 import { MapElevationEditor, createPresetMap } from '../src/map-editor.js';
-import { sculptModel, ELEVATION_MODELS } from '../tools/voxel_pipeline/build.mjs';
+import {
+  unitSheetKey, buildingSheetKey, fortificationSheetKey, resolveEntityArmy,
+} from '../src/armies.js';
+import { sculptModel, ELEVATION_MODELS, BUILDINGS, UNIT_ARMY_IDS } from '../tools/voxel_pipeline/build.mjs';
 import { bake } from '../tools/voxel_pipeline/bake.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -378,3 +381,137 @@ test('12. Generated elevation assets exist, manifest paths resolve, previews ren
     }
   }
 });
+
+test('13. All 58 base units have complete 4-faction unit models (290 total) with 8 facings and distinct silhouettes', () => {
+  const unitsJson = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/units.json'), 'utf8'));
+  const voxDoc = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/voxels.json'), 'utf8'));
+  const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'game_assets/voxels/sheets/manifest.json'), 'utf8'));
+
+  const unitIds = Object.keys(unitsJson);
+  assert.equal(unitIds.length, 58, 'Must have 58 base units');
+  assert.deepEqual(UNIT_ARMY_IDS, ['allies', 'soviets', 'empire', 'legion']);
+
+  for (const u of unitIds) {
+    assert.ok(voxDoc.models[u], `Missing standard unit model ${u}`);
+    assert.ok(manifest.models[u], `Missing standard unit manifest entry ${u}`);
+
+    const coordHashes = new Set();
+    for (const army of UNIT_ARMY_IDS) {
+      const fid = `${u}--${army}`;
+      assert.ok(voxDoc.models[fid], `Missing faction unit model ${fid} in voxels.json`);
+      assert.equal(voxDoc.models[fid].kind, 'unit');
+      assert.ok(fs.existsSync(path.join(ROOT, 'game_assets/voxels', `${fid}.png`)), `Missing preview ${fid}.png`);
+
+      const mEntry = manifest.models[fid];
+      assert.ok(mEntry, `Missing faction unit manifest entry ${fid}`);
+      assert.equal(Object.keys(mEntry).length, 8, `${fid} must have 8 directional facings`);
+      for (const facing of ['right', 'down-right', 'down', 'down-left', 'left', 'up-left', 'up', 'up-right']) {
+        assert.ok(mEntry[facing], `${fid} missing facing ${facing}`);
+        assert.equal(Object.keys(mEntry[facing].variants).length, 6, `${fid}-${facing} must have 6 team variants (0..5)`);
+      }
+
+      // Verify 3D coordinate geometry (ignoring palette index) differs across the 4 factions
+      const coordsOnly = voxDoc.models[fid].voxels.map(([x, y, z]) => `${x},${y},${z}`).join(';');
+      coordHashes.add(crypto.createHash('sha1').update(coordsOnly).digest('hex'));
+    }
+    assert.equal(coordHashes.size, 4, `Unit ${u} must have 4 distinct 3D voxel geometries across Allies, Soviets, Empire, and Legion`);
+  }
+});
+
+test('14. All 26 buildings/structures (130 total) and all 6 wall/gate fortifications (30 total) have 4-faction models with distinct geometry', () => {
+  const voxDoc = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/voxels.json'), 'utf8'));
+  const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'game_assets/voxels/sheets/manifest.json'), 'utf8'));
+
+  assert.equal(BUILDINGS.length, 26, 'Must have 26 base buildings/military structures');
+  for (const b of BUILDINGS) {
+    assert.ok(voxDoc.models[b], `Missing standard building model ${b}`);
+    assert.ok(manifest.models[b], `Missing standard building manifest entry ${b}`);
+
+    const coordHashes = new Set();
+    for (const army of UNIT_ARMY_IDS) {
+      const fid = `${b}--${army}`;
+      assert.ok(voxDoc.models[fid], `Missing faction building model ${fid} in voxels.json`);
+      assert.equal(voxDoc.models[fid].kind, 'building');
+      assert.ok(fs.existsSync(path.join(ROOT, 'game_assets/voxels', `${fid}.png`)), `Missing preview ${fid}.png`);
+
+      const mEntry = manifest.models[fid];
+      assert.ok(mEntry, `Missing faction building manifest entry ${fid}`);
+      assert.deepEqual(Object.keys(mEntry), ['right', 'up', 'left', 'down'], `${fid} must have 4 cardinal facings`);
+      for (const facing of ['right', 'up', 'left', 'down']) {
+        assert.equal(Object.keys(mEntry[facing].variants).length, 7, `${fid}-${facing} must have 7 team variants (0..5, n)`);
+      }
+
+      const coordsOnly = voxDoc.models[fid].voxels.map(([x, y, z]) => `${x},${y},${z}`).join(';');
+      coordHashes.add(crypto.createHash('sha1').update(coordsOnly).digest('hex'));
+    }
+    assert.equal(coordHashes.size, 4, `Building ${b} must have 4 distinct 3D architectural geometries across Allies, Soviets, Empire, and Legion`);
+  }
+
+  // Verify all 6 wall/gate fortification types have all 4 faction models + standard (30 models)
+  const fortBases = ['wall', 'wall-gate', 'wall-end', 'wall-corner', 'wall-t', 'wall-cross'];
+  for (const fBase of fortBases) {
+    for (const army of ['standard', ...UNIT_ARMY_IDS]) {
+      const fid = fortificationSheetKey(fBase, army);
+      assert.ok(voxDoc.models[fid], `Missing fortification model ${fid}`);
+      assert.ok(manifest.models[fid], `Missing fortification manifest entry ${fid}`);
+      assert.ok(fs.existsSync(path.join(ROOT, 'game_assets/voxels', `${fid}.png`)), `Missing fortification preview ${fid}.png`);
+    }
+  }
+});
+
+test('15. Runtime renderer and army helpers resolve faction models independently of player team colour', () => {
+  const map = createMap({ width: 6, height: 6 });
+  map.players = [
+    { owner: 0, army: 'allies' },
+    { owner: 1, army: 'soviets' },
+    { owner: 2, army: 'empire' },
+    { owner: 3, army: 'legion' },
+  ];
+  map.wallArmy = 'empire';
+  map.terrain[0][0] = 'wall';
+  map.terrain[0][1] = 'wall-gate';
+  map.properties.push(
+    { type: 'hq', x: 1, y: 1, owner: 0, facing: 'right' },
+    { type: 'barracks', x: 2, y: 1, owner: 1, facing: 'up' },
+    { type: 'research-lab', x: 3, y: 1, owner: 2, facing: 'left' },
+    { type: 'coastal-battery', x: 4, y: 1, owner: 3, facing: 'down' },
+  );
+  map.units.push(
+    { type: 'commando', x: 1, y: 2, owner: 3, army: 'legion', facing: 'down-right' },
+    { type: 'attack-dog', x: 2, y: 2, owner: 0, facing: 'up-left' },
+  );
+
+  assert.equal(resolveEntityArmy(map, map.properties[0]), 'allies');
+  assert.equal(resolveEntityArmy(map, map.properties[1]), 'soviets');
+  assert.equal(resolveEntityArmy(map, map.properties[2]), 'empire');
+  assert.equal(resolveEntityArmy(map, map.properties[3]), 'legion');
+  assert.equal(buildingSheetKey('hq', 'allies'), 'hq--allies');
+  assert.equal(unitSheetKey('commando', 'legion'), 'commando--legion');
+  assert.equal(fortificationSheetKey('wall', 'empire'), 'wall-empire');
+  assert.equal(fortificationSheetKey('wall-gate', 'soviets'), 'wall-gate-soviets');
+
+  const ctx = createRecordingContext();
+  const log = renderIso(ctx, map);
+  const bldgs = log.entities.filter(e => e.kind === 'building');
+  assert.equal(bldgs.length, 4);
+  assert.deepEqual(
+    bldgs.map(b => [b.modelId, b.army, b.variant]),
+    [
+      ['hq--allies', 'allies', '0'],
+      ['barracks--soviets', 'soviets', '1'],
+      ['research-lab--empire', 'empire', '2'],
+      ['coastal-battery--legion', 'legion', '3'],
+    ]
+  );
+
+  const units = log.entities.filter(e => e.kind === 'unit');
+  assert.equal(units.length, 2);
+  assert.deepEqual(
+    units.map(u => [u.modelId, u.army, u.variant]),
+    [
+      ['commando--legion', 'legion', '3'],
+      ['attack-dog--allies', 'allies', '0'],
+    ]
+  );
+});
+

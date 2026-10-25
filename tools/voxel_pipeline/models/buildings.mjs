@@ -857,3 +857,454 @@ export function buildingVoxels(c, id, pose) {
   }
   c.group('body');
 }
+
+/**
+ * Architectural palettes and structural silhouettes for the 4 playable factions.
+ * Note: Owner-0 accent colors (`TEAM` = `#df794b`, `ROOF_L` = `#ffc68b`, `ROOF_D` = `#934b32`)
+ * remain on team roof crests, banners, and recognition stripes so `bake.mjs` still produces
+ * all 7 owner variants (`0..5` and `n`) cleanly separated from faction architecture.
+ */
+export const BUILDING_ARMY_STYLES = {
+  allies: {
+    hull: '#7d8a5a',
+    hullLight: '#a6b27a',
+    hullDark: '#5a6642',
+    wall: '#c6d0d8',
+    stone: '#abb6c0',
+    stoneLight: '#dde5ec',
+    concrete: '#8a98a4',
+    concreteDark: '#64727e',
+    turf: '#8da47c',
+    pad: '#a8b4bc',
+    trim: '#3b6ea5',
+    trimLight: '#dfe6ea',
+    energy: '#5fc4e8',
+  },
+  soviets: {
+    hull: '#7a3b30',
+    hullLight: '#a85a48',
+    hullDark: '#4d2520',
+    wall: '#8c8078',
+    stone: '#72665e',
+    stoneLight: '#a69a90',
+    concrete: '#6c625c',
+    concreteDark: '#4c4440',
+    turf: '#7e8668',
+    pad: '#746c66',
+    trim: '#e0b94a',
+    trimLight: '#c84434',
+    energy: '#ff7730',
+  },
+  empire: {
+    hull: '#cfc9b6',
+    hullLight: '#ece8d8',
+    hullDark: '#8c8670',
+    wall: '#e6e2d2',
+    stone: '#d0cab6',
+    stoneLight: '#f4f0e4',
+    concrete: '#b8b29e',
+    concreteDark: '#86806c',
+    turf: '#9cb084',
+    pad: '#d8d2c0',
+    trim: '#2f4a7a',
+    trimLight: '#d4a238',
+    energy: '#5fc4e8',
+  },
+  legion: {
+    hull: '#a58a5a',
+    hullLight: '#c4aa78',
+    hullDark: '#6e5a38',
+    wall: '#a89272',
+    stone: '#8c785a',
+    stoneLight: '#c2ae8c',
+    concrete: '#7a6a52',
+    concreteDark: '#564a38',
+    turf: '#a49468',
+    pad: '#8e7e64',
+    trim: '#2b2b2b',
+    trimLight: '#8c6b42',
+    energy: '#ffd84a',
+  },
+};
+
+/**
+ * Applies faction-specific architectural palette and bespoke 3D structural geometry
+ * to any of the 26 buildings/structures for `allies`, `soviets`, `empire`, or `legion`.
+ */
+export function applyBuildingArmyDelta(c, id, armyId) {
+  const S = BUILDING_ARMY_STYLES[armyId];
+  if (!S) return;
+  c.group('body');
+
+  // 1. Recolor base structural masonry, concrete, pads, and turf while preserving TEAM accents
+  if (id === 'landmine') {
+    c.recolor({
+      '#4a5245': S.hullDark,
+      '#5e6858': S.hull,
+      '#6b7566': S.trim,
+      '#8b96a2': S.trimLight,
+    });
+  } else {
+    c.recolor({
+      [STONE]: S.stone,
+      [STONE_L]: S.stoneLight,
+      [WALL]: S.wall,
+      '#98a58c': S.turf,
+      '#a3b47d': S.turf,
+      '#aeb8a6': S.pad,
+      '#aab59e': S.pad,
+      '#cfc9b6': S.pad,
+      '#7c8578': S.concrete,
+      '#5d6659': S.concreteDark,
+      '#6b7368': S.concreteDark,
+    });
+  }
+
+  // 2. Helper primitives for faction architectural motifs
+  const addRadome = (cx, cy, z0, r) => {
+    for (let z = 0; z <= r; z++) {
+      const rz = Math.sqrt(Math.max(0, r * r - z * z));
+      if (rz >= 1) {
+        c.cylZ(cx, cy, z0 + z, z0 + z + 1, rz, z === 0 ? S.trim : S.trimLight);
+      }
+    }
+  };
+  const addPagodaCrown = (x0, y0, x1, y1, z0) => {
+    c.box(x0 - 2, y0 - 2, z0, x1 + 2, y1 + 2, z0 + 2, S.trim);
+    for (const [cx, cy] of [[x0 - 2, y0 - 2], [x1, y0 - 2], [x0 - 2, y1], [x1, y1]]) {
+      c.box(cx, cy, z0 + 2, cx + 2, cy + 2, z0 + 4, S.trimLight);
+    }
+    c.box(x0 + 2, y0 + 2, z0 + 2, x1 - 2, y1 - 2, z0 + 4, S.stoneLight);
+  };
+  const addSovietSpire = (cx, cy, z0, h) => {
+    c.box(cx - 4, cy - 4, z0, cx + 4, cy + 4, z0 + 4, S.hullDark);
+    c.box(cx - 3, cy - 3, z0 + 4, cx + 3, cy + 3, z0 + 8, S.hull);
+    c.box(cx - 1, cy - 1, z0 + 8, cx + 1, cy + 1, z0 + h, S.trim);
+    c.box(cx - 2, cy - 2, z0 + h - 3, cx + 2, cy + 2, z0 + h - 1, S.trimLight);
+  };
+  const addSalvageCrane = (x0, y0, z0, h) => {
+    c.box(x0, y0, z0, x0 + 3, y0 + 3, z0 + h, S.trim);
+    c.box(x0, y0, z0 + h - 2, x0 + 10, y0 + 3, z0 + h, S.trimLight);
+    c.box(x0 + 8, y0 + 1, z0 + h - 7, x0 + 10, y0 + 2, z0 + h - 2, METAL);
+  };
+
+  // 3. Per-building bespoke architectural geometry for each faction
+  if (id === 'hq') {
+    if (armyId === 'allies') {
+      // Allied C4I Command Center: twin white geodesic SATCOM radomes on roof deck, blue-steel penthouse & solar wings
+      addRadome(20, 20, 33, 5);
+      addRadome(44, 20, 33, 5);
+      c.box(22, 38, 33, 42, 46, 37, S.trim);
+      c.box(24, 39, 34, 40, 47, 36, GLASS);
+      c.box(16, 48, 20, 48, 55, 24, S.trim);
+    } else if (armyId === 'soviets') {
+      // Soviet Supreme Politburo Citadel: twin brutalist red-armor flanking towers, smokestacks & Star spire
+      c.box(8, 12, 20, 18, 34, 34, S.hull);
+      c.box(46, 12, 20, 56, 34, 34, S.hull);
+      c.box(10, 14, 34, 16, 32, 37, S.trim);
+      c.box(48, 14, 34, 54, 32, 37, S.trim);
+      addSovietSpire(32, 25, 44, 16);
+    } else if (armyId === 'empire') {
+      // Empire Shogunate Citadel: multi-tiered upturned cobalt pagoda roofs, torii gate & cyan crystal spire
+      addPagodaCrown(18, 14, 46, 36, 27);
+      addPagodaCrown(22, 18, 42, 32, 41);
+      c.box(30, 23, 45, 34, 27, 58, S.energy);
+      c.box(20, 54, 3, 23, 57, 16, S.trim);
+      c.box(41, 54, 3, 44, 57, 16, S.trim);
+      c.box(18, 53, 15, 46, 58, 18, S.trim);
+    } else if (armyId === 'legion') {
+      // Legion Warlord Compound: rooftop salvage crane, external fuel drums, corrugated awnings & sandbag bastion
+      addSalvageCrane(44, 16, 20, 18);
+      c.cylZ(14, 22, 20, 29, 4.0, S.trimLight);
+      c.box(6, 42, 3, 20, 48, 8, '#c8b084');
+      c.box(44, 42, 3, 58, 48, 8, '#c8b084');
+      c.box(22, 18, 42, 42, 32, 46, S.hullDark);
+    }
+  } else if (id === 'base') {
+    if (armyId === 'allies') {
+      // Allied War Factory: angled modular blue-steel sawtooth skylights, robotic gantry & SATCOM dome
+      for (const sx of [10, 20, 30]) {
+        c.box(sx, 16, 26, sx + 6, 50, 30, S.trim);
+        c.box(sx + 2, 18, 28, sx + 6, 48, 31, GLASS);
+      }
+      addRadome(50, 46, 4, 6);
+    } else if (armyId === 'soviets') {
+      // Soviet Heavy Tank Plant: massive twin blast-furnace cupolas, heavy red/gold gantry crane & concrete buttresses
+      c.cylZ(32, 12, 22, 38, 3.6, S.hullDark);
+      c.cylZ(32, 12, 34, 37, 3.8, S.trim);
+      c.box(40, 4, 14, 62, 26, 18, S.hull);
+      c.box(42, 6, 18, 60, 10, 21, S.trim);
+      for (const by of [20, 34, 48]) c.box(3, by, 3, 7, by + 6, 20, S.hullDark);
+    } else if (armyId === 'empire') {
+      // Empire Mecha Foundry: upturned angular roof wings, glowing cyan plasma conduits & precision laser gantry
+      addPagodaCrown(6, 14, 40, 54, 26);
+      c.box(20, 16, 28, 26, 52, 32, S.energy);
+      c.box(42, 6, 14, 60, 24, 18, S.trim);
+    } else if (armyId === 'legion') {
+      // Legion Salvage Foundry: high A-frame scrap hoist, bolted corrugated roof plates & stacked oil drums
+      addSalvageCrane(44, 28, 3, 24);
+      c.box(8, 18, 26, 24, 36, 29, S.hullDark);
+      c.box(22, 34, 26, 38, 52, 28, S.trimLight);
+      for (const dy of [30, 38, 46]) c.cylZ(54, dy, 3, 11, 3.2, S.hullDark);
+    }
+  } else if (id === 'barracks') {
+    if (armyId === 'allies') {
+      // Allied Infantry Academy: geodesic C3 dome on armory, covered blue-steel rifle canopy & comms array
+      addRadome(17, 48, 18, 5);
+      c.box(42, 42, 11, 58, 52, 15, S.trim);
+      c.box(8, 10, 25, 34, 26, 28, S.hull);
+    } else if (armyId === 'soviets') {
+      // Soviet Red Army Commissariat: corner concrete watch-bastion, parade-ground obelisk & heavy bunker roof
+      c.box(5, 5, 19, 17, 17, 32, S.hull);
+      c.box(7, 7, 32, 15, 15, 35, S.trim);
+      addSovietSpire(50, 36, 4, 18);
+      c.box(6, 40, 18, 28, 56, 21, S.hullDark);
+    } else if (armyId === 'empire') {
+      // Empire Imperial Dojo: upturned pagoda dormitory roof, ceremonial torii entrance & cyan holo-targets
+      addPagodaCrown(5, 6, 38, 30, 24);
+      c.box(25, 56, 11, 41, 61, 15, S.trim);
+      for (const x of [44, 49, 54]) c.box(x, 44, 5, x + 3, 46, 11, S.energy);
+    } else if (armyId === 'legion') {
+      // Legion Mercenary Camp: rooftop sniper crow's nest, corrugated scrap roof & tire-wall firing barriers
+      c.box(8, 8, 25, 18, 18, 34, S.trimLight);
+      c.box(7, 7, 34, 19, 19, 36, S.hull);
+      addSalvageCrane(6, 42, 18, 12);
+      for (const y of [12, 20, 28]) c.box(44, y, 4, 56, y + 3, 10, S.trim);
+    }
+  } else if (id === 'airport') {
+    if (armyId === 'allies') {
+      // Allied Airbase: white geodesic weather radome on hangar, blue-tinted ATC crown & twin approach beacons
+      addRadome(42, 46, 22, 5);
+      c.box(6, 6, 30, 22, 22, 33, S.trim);
+      c.box(28, 36, 22, 56, 56, 24, S.hull);
+    } else if (armyId === 'soviets') {
+      // Soviet Air Regiment Base: heavy reinforced arched concrete shelter ribs, tall red/gold radio mast & fuel tanks
+      for (const hx of [28, 38, 48]) c.box(hx, 32, 3, hx + 4, 60, 24, S.hull);
+      c.box(20, 6, 3, 26, 12, 34, S.hullDark);
+      c.box(21, 7, 34, 25, 11, 42, S.trim);
+    } else if (armyId === 'empire') {
+      // Empire Sky-Wing Airfield: upturned pagoda ATC tower crown, angular wing-hangar fins & cyan runway guide strips
+      addPagodaCrown(6, 6, 22, 22, 30);
+      c.box(26, 32, 20, 30, 60, 27, S.trim);
+      c.box(54, 32, 20, 58, 60, 27, S.trim);
+      c.box(6, 24, 3, 60, 26, 4, S.energy);
+    } else if (armyId === 'legion') {
+      // Legion Airstrip: salvage derrick crane next to hangar, corrugated metal patch roof & external fuel bladder
+      addSalvageCrane(24, 34, 3, 24);
+      c.box(30, 38, 22, 52, 54, 25, S.trimLight);
+      c.cylX(30, 48, 8, 7, 4.0, S.hullDark);
+    }
+  } else if (id === 'helipad') {
+    if (armyId === 'allies') {
+      // Allied Rotary Pad: geodesic nose-radome on flight booth, blue safety deck trim & twin JP-8 spheres
+      addRadome(9, 15, 22, 4);
+      c.box(14, 14, 8, 16, 58, 11, S.trim);
+      c.box(56, 14, 8, 58, 58, 11, S.trim);
+    } else if (armyId === 'soviets') {
+      // Soviet Hind Pad: thick concrete blast revetment walls on north/east, heavy fuel cistern & red-star pad corners
+      c.box(14, 12, 3, 58, 16, 15, S.hull);
+      c.box(56, 12, 3, 60, 58, 15, S.hull);
+      c.cylZ(8, 52, 3, 18, 4.5, S.hullDark);
+    } else if (armyId === 'empire') {
+      // Empire VTOL Sky-Pad: pagoda-crowned flight tower, corner cyan levitation beacons & cobalt deck ring
+      addPagodaCrown(4, 6, 14, 24, 20);
+      for (const [bx, by] of [[15, 15], [53, 15], [15, 53], [53, 53]]) {
+        c.box(bx, by, 10, bx + 4, by + 4, 17, S.energy);
+      }
+    } else if (armyId === 'legion') {
+      // Legion Chopper Pad: salvage maintenance gantry on pad edge, sandbag revetment & clustered fuel drums
+      addSalvageCrane(14, 14, 10, 16);
+      c.box(14, 56, 8, 56, 60, 14, '#c8b084');
+      for (const fy of [44, 50, 56]) c.cylZ(8, fy, 3, 12, 3.0, S.trimLight);
+    }
+  } else if (id === 'port') {
+    if (armyId === 'allies') {
+      // Allied Naval Dockyard: modern harbor-control radome tower, blue-steel hammerhead crane & covered slipway
+      addRadome(14, 14, 22, 5);
+      c.box(44, 22, 28, 58, 34, 33, S.trim);
+      c.box(6, 6, 18, 24, 24, 22, S.hull);
+    } else if (armyId === 'soviets') {
+      // Soviet Submarine/Naval Base: heavy concrete U-boat pen casemate roof over slipway, twin smokestacks & red crane
+      c.box(4, 4, 18, 28, 28, 26, S.hull);
+      c.cylZ(8, 8, 26, 38, 2.8, S.hullDark);
+      c.box(44, 22, 28, 58, 34, 34, S.trim);
+    } else if (armyId === 'empire') {
+      // Empire Imperial Fleet Dock: pagoda harbor master tower, cobalt crane boom & cyan drydock beacon pylons
+      addPagodaCrown(6, 6, 24, 24, 20);
+      c.box(34, 50, 5, 38, 56, 22, S.energy);
+      c.box(54, 50, 5, 58, 56, 22, S.energy);
+    } else if (armyId === 'legion') {
+      // Legion Corsair Quay: twin salvage cargo derricks, stacked shipping containers & timber pier bracing
+      addSalvageCrane(8, 8, 18, 16);
+      c.box(6, 26, 5, 22, 36, 13, S.hull);
+      c.box(8, 28, 13, 20, 34, 19, S.trimLight);
+    }
+  } else if (id === 'city') {
+    if (armyId === 'allies') {
+      // Allied Metropolis: rooftop corporate helipad & SATCOM spire on main high-rise, blue-glass skybridge
+      c.box(8, 8, 38, 28, 32, 41, S.trim);
+      addRadome(18, 20, 41, 4);
+      c.box(28, 24, 14, 36, 32, 18, GLASS);
+    } else if (armyId === 'soviets') {
+      // Soviet State Direktorat: monumental Seven-Sisters stepped tower spire & red-gold triumphal arch
+      c.box(10, 10, 38, 26, 30, 44, S.hull);
+      addSovietSpire(18, 20, 44, 14);
+      c.box(36, 22, 24, 56, 50, 28, S.hullDark);
+    } else if (armyId === 'empire') {
+      // Empire Neo-Capital: multi-tiered pagoda crowns on both towers & glowing cyan vertical holo-signs
+      addPagodaCrown(6, 6, 30, 34, 36);
+      addPagodaCrown(34, 20, 58, 52, 22);
+      c.box(29, 16, 10, 32, 22, 32, S.energy);
+    } else if (armyId === 'legion') {
+      // Legion Shanty-Citadel: rooftop wooden water tank, steel truss sky-catwalk & sandbagged street checkpoint
+      c.cylZ(46, 36, 24, 34, 5.0, S.trimLight);
+      c.box(28, 24, 16, 36, 30, 19, S.trim);
+      addSalvageCrane(10, 10, 38, 12);
+    }
+  } else if (id === 'power-plant') {
+    if (armyId === 'allies') {
+      // Allied Clean-Grid Plant: domed containment cap on turbine hall, blue HV capacitor banks & solar roof
+      addRadome(19, 25, 26, 6);
+      c.box(8, 10, 24, 30, 40, 26, S.trim);
+    } else if (armyId === 'soviets') {
+      // Soviet Heavy Coal/Nuclear Plant: third central smokestack, massive red-brick boiler annex & gold HV busbars
+      c.cylZ(17, 26, 26, 46, 3.2, S.hull);
+      c.cylZ(17, 26, 42, 45, 3.5, S.trim);
+      c.box(4, 6, 3, 10, 44, 22, S.hullDark);
+    } else if (armyId === 'empire') {
+      // Empire Plasma Reactor: glowing cyan plasma core rings around cooling tower & pagoda turbine hall roof
+      addPagodaCrown(6, 8, 32, 42, 24);
+      c.cylZ(46, 24, 18, 22, 9.2, S.energy);
+      c.cylZ(46, 24, 28, 31, 8.6, S.trim);
+    } else if (armyId === 'legion') {
+      // Legion Diesel Generator Yard: external fuel tank farm, salvage crane & corrugated iron exhaust shrouds
+      addSalvageCrane(6, 10, 24, 14);
+      c.cylZ(34, 48, 3, 16, 4.5, S.trimLight);
+      c.box(8, 14, 25, 28, 36, 28, S.hullDark);
+    }
+  } else if (id === 'refinery') {
+    if (armyId === 'allies') {
+      // Allied Petro-Chemical Plant: geodesic vapor-recovery dome on smelting hall & blue pipeline bridge
+      addRadome(20, 20, 26, 6);
+      c.box(32, 14, 18, 44, 32, 21, S.trim);
+    } else if (armyId === 'soviets') {
+      // Soviet State Smeltery: twin heavy blast-furnace smokestacks on smelting hall & red-oxide ore gantry
+      c.cylZ(14, 14, 26, 42, 3.2, S.hull);
+      c.cylZ(26, 14, 26, 42, 3.2, S.hull);
+      c.box(6, 36, 18, 30, 56, 22, S.hullDark);
+    } else if (armyId === 'empire') {
+      // Empire Matter-Refinery: pagoda furnace crown, cyan energy rings on distillation towers & cobalt sphere ribs
+      addPagodaCrown(6, 6, 34, 34, 24);
+      c.cylZ(44, 16, 24, 27, 5.4, S.energy);
+      c.cylZ(44, 30, 20, 23, 5.4, S.energy);
+    } else if (armyId === 'legion') {
+      // Legion Scrap Refinery: overhead ore conveyor derrick, corrugated hopper roof & extra salvage oil drums
+      addSalvageCrane(14, 14, 26, 14);
+      c.box(6, 34, 18, 30, 58, 20, S.trimLight);
+    }
+  } else if (id === 'radar-station') {
+    if (armyId === 'allies') {
+      // Allied NORAD Station: second geodesic radome on north-east & blue-steel phased-array cheek panels
+      addRadome(50, 18, 14, 5);
+      c.box(8, 12, 21, 16, 46, 25, S.trim);
+    } else if (armyId === 'soviets') {
+      // Soviet Duga Early-Warning Array: tall steel over-the-horizon lattice gantry & heavy bunker buttresses
+      c.box(8, 12, 21, 14, 46, 38, S.hull);
+      c.box(10, 14, 38, 13, 44, 42, S.trim);
+      c.box(44, 12, 14, 56, 26, 22, S.hullDark);
+    } else if (armyId === 'empire') {
+      // Empire Sky-Eye Array: pagoda telemetry spire on north-east & glowing cyan sensor rings
+      addPagodaCrown(44, 12, 56, 26, 14);
+      c.box(48, 17, 18, 52, 21, 36, S.energy);
+    } else if (armyId === 'legion') {
+      // Legion Listening Post: salvage scaffolding mast, sandbagged bunker roof & external generator exhaust
+      addSalvageCrane(44, 12, 14, 18);
+      c.box(8, 12, 21, 16, 44, 25, '#c8b084');
+    }
+  } else if (id === 'research-lab') {
+    if (armyId === 'allies') {
+      // Allied R&D Campus: twin geodesic cryo-radomes on north wing & high-gain blue telemetry array
+      addRadome(18, 16, 24, 5);
+      addRadome(42, 16, 24, 5);
+      c.box(10, 32, 24, 24, 52, 27, S.trim);
+    } else if (armyId === 'soviets') {
+      // Soviet Tesla Atomgrad Lab: towering high-voltage Tesla coil spire over containment dome & heavy boiler pipes
+      c.cylZ(43, 43, 28, 48, 3.5, S.hull);
+      for (const tz of [32, 38, 44]) c.cylZ(43, 43, tz, tz + 2, 6.5, S.trim);
+      c.cylZ(43, 43, 48, 53, 4.5, S.energy);
+      c.box(10, 10, 24, 52, 24, 29, S.hullDark);
+    } else if (armyId === 'empire') {
+      // Empire High-Science Sanctum: upturned pagoda lab wings & tall crystalline cyan energy spire
+      addPagodaCrown(6, 6, 56, 28, 22);
+      addPagodaCrown(6, 28, 28, 56, 22);
+      c.box(40, 40, 28, 46, 46, 50, S.energy);
+    } else if (armyId === 'legion') {
+      // Legion Skunkworks Lab: external overhead pipe gantry, salvage crane & bolted iron cage over dome
+      addSalvageCrane(12, 36, 24, 16);
+      c.box(30, 14, 22, 44, 44, 26, S.trimLight);
+      c.box(38, 38, 28, 48, 48, 34, S.trim);
+    }
+  } else if (id === 'depot' || id === 'supply-depot' || id === 'repair-depot' || id === 'field-hospital' || id === 'farm' || id === 'mine') {
+    // Economic & Logistics facilities: distinct roof/tower silhouettes per faction
+    if (armyId === 'allies') {
+      addRadome(18, 22, 24, 5);
+      c.box(6, 8, 20, 34, 12, 25, S.trim);
+    } else if (armyId === 'soviets') {
+      addSovietSpire(18, 22, 22, 14);
+      c.box(4, 6, 18, 36, 12, 24, S.hull);
+    } else if (armyId === 'empire') {
+      addPagodaCrown(6, 8, 34, 36, 22);
+      c.box(18, 20, 26, 22, 24, 36, S.energy);
+    } else if (armyId === 'legion') {
+      addSalvageCrane(12, 14, 22, 14);
+      c.box(6, 8, 20, 32, 16, 25, S.trimLight);
+    }
+  } else if (id === 'pillbox' || id === 'bunker' || id === 'at-turret' || id === 'sam-site' || id === 'flak-cannon' || id === 'coastal-battery' || id === 'artillery-emplacement' || id === 'guard-tower') {
+    // Defensive fortifications & weapon emplacements: distinct armor & sensor silhouettes per faction
+    const topZ = id === 'guard-tower' ? 53 : id === 'coastal-battery' ? 40 : id === 'bunker' ? 28 : 24;
+    if (armyId === 'allies') {
+      // Allied Phalanx/C-RAM optical dome & sloped blue-steel composite cheek armor
+      addRadome(28, 32, topZ, 4);
+      c.box(14, 10, 6, 46, 14, 14, S.trim);
+      c.box(14, 50, 6, 46, 54, 14, S.trim);
+    } else if (armyId === 'soviets') {
+      // Soviet heavy cast-iron armor casemate slabs, corner blast buttresses & gold Star crest
+      c.box(10, 8, 4, 50, 14, 18, S.hull);
+      c.box(10, 50, 4, 50, 56, 18, S.hull);
+      c.box(22, 26, topZ, 34, 38, topZ + 5, S.hullDark);
+      c.box(25, 29, topZ + 5, 31, 35, topZ + 8, S.trim);
+    } else if (armyId === 'empire') {
+      // Empire angular cobalt armor wings, upturned visor crown & cyan optical rangefinder
+      addPagodaCrown(18, 20, 38, 44, topZ);
+      c.box(26, 29, topZ + 4, 32, 35, topZ + 10, S.energy);
+      c.box(12, 10, 8, 48, 13, 16, S.trim);
+      c.box(12, 51, 8, 48, 54, 16, S.trim);
+    } else if (armyId === 'legion') {
+      // Legion Hesco sandbag bastions, welded slat-armor cage bars & rooftop ammo/drum stowage
+      c.box(8, 8, 3, 52, 14, 12, '#c8b084');
+      c.box(8, 50, 3, 52, 56, 12, '#c8b084');
+      c.box(20, 24, topZ, 36, 40, topZ + 5, S.trimLight);
+      c.box(24, 28, topZ + 5, 28, 32, topZ + 12, S.trim);
+    }
+  } else if (id === 'landmine') {
+    // Faction-specific landmine silhouette details (while keeping low ground profile)
+    if (armyId === 'allies') {
+      // Allied M19 square-bevel composite collar & blue-steel sensor antenna
+      c.box(22, 22, 2, 42, 42, 5, S.hull);
+      c.box(46, 30, 5, 49, 34, 10, S.trim);
+    } else if (armyId === 'soviets') {
+      // Soviet TM-62 heavy ribbed cast-iron drum & dual red/gold pressure lugs
+      c.cylZ(32, 32, 2, 6, 11.5, S.hull);
+      c.box(26, 26, 6, 38, 38, 8, S.trim);
+    } else if (armyId === 'empire') {
+      // Empire angular octagonal magnetic mine with glowing cyan proximity ring
+      c.box(23, 23, 2, 41, 41, 5, S.stoneLight);
+      c.cylZ(32, 32, 6, 8, 5.5, S.energy);
+    } else if (armyId === 'legion') {
+      // Legion improvised IED: strapped artillery shell booster & twin wooden tripwire stakes
+      c.box(16, 27, 1, 24, 37, 6, S.trimLight);
+      c.box(50, 40, 0, 54, 44, 8, '#8c6b42');
+    }
+  }
+}
+

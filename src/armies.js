@@ -257,12 +257,69 @@ export function unitDisplayName(state, owner, type, d = null) {
   return unitDef(state, owner, type, d)?.name ?? (d?.units ?? registry.units)?.[type]?.name ?? type;
 }
 
+/**
+ * Resolves the voxel model ID (`manifest.models` key) for a unit type + army.
+ * Standard falls back to the base unit type (`tank`), while playable factions
+ * resolve `<unit>--<armyId>` (`tank--allies`, `tank--soviets`, `tank--empire`, `tank--legion`).
+ */
+export function unitSheetKey(type, armyId) {
+  if (!type) return type;
+  if (type.includes('--')) return type;
+  if (!armyId || armyId === DEFAULT_ARMY || !ARMY_STYLES[armyId]) return type;
+  return `${type}--${armyId}`;
+}
+
+/**
+ * Resolves the voxel model ID (`manifest.models` key) for a building/structure type + army.
+ * Standard or neutral falls back to the base building id (`hq`, `base`, `barracks`, etc.),
+ * while playable factions resolve `<building>--<armyId>` (`hq--allies`, `barracks--soviets`, etc.).
+ */
+export function buildingSheetKey(type, armyId) {
+  if (!type) return type;
+  if (type.includes('--')) return type;
+  if (!armyId || armyId === DEFAULT_ARMY || !ARMY_STYLES[armyId]) return type;
+  return `${type}--${armyId}`;
+}
+
+/**
+ * Resolves the voxel model ID (`manifest.models` key) for a wall or gate fortification + army.
+ */
+export function fortificationSheetKey(type, armyId) {
+  if (!type) return type;
+  const validFaction = armyId && armyId !== DEFAULT_ARMY && ARMY_STYLES[armyId];
+  if (type === 'wall' || type === 'wall-standard') {
+    return validFaction ? `wall-${armyId}` : 'wall-standard';
+  }
+  if (type === 'wall-gate' || type === 'wall-end' || type === 'wall-corner' || type === 'wall-t' || type === 'wall-cross') {
+    return validFaction ? `${type}-${armyId}` : type;
+  }
+  return type;
+}
+
+/**
+ * Resolves the active army ID (`standard`, `allies`, `soviets`, `empire`, `legion`)
+ * for a unit, building, or owned structure from `entity.army` or its owner's faction in `map`/`state`.
+ */
+export function resolveEntityArmy(stateOrMap, entity) {
+  if (!entity) return DEFAULT_ARMY;
+  if (entity.army && ARMY_STYLES[entity.army]) return entity.army;
+  const owner = entity.owner;
+  if (owner != null && owner !== 'n') {
+    const fromArmies = stateOrMap?.armies?.[owner] ?? stateOrMap?.armies?.[String(owner)];
+    if (fromArmies && ARMY_STYLES[fromArmies]) return fromArmies;
+    const fromPlayers = stateOrMap?.players?.[owner]?.army ?? stateOrMap?.players?.[String(owner)]?.army;
+    if (fromPlayers && ARMY_STYLES[fromPlayers]) return fromPlayers;
+  }
+  if (stateOrMap?.defaultArmy && ARMY_STYLES[stateOrMap.defaultArmy]) return stateOrMap.defaultArmy;
+  return DEFAULT_ARMY;
+}
+
 /* ------------------------------------------------------------ migration --- */
 
 /**
  * Idempotent save/custom-map migration: every seat gets a valid army (default
- * `standard`) and every unit is stamped with its owner's army so renderers can
- * work from a single unit record. Mutates and returns `saved`.
+ * `standard`) and every unit/owned property is stamped with its owner's army so
+ * renderers can work from a single record. Mutates and returns `saved`.
  */
 export function normalizeArmyState(saved) {
   if (!saved || !Array.isArray(saved.players)) return saved;
@@ -274,5 +331,14 @@ export function normalizeArmyState(saved) {
     if (!u) continue;
     if (!validArmyId(u.army)) u.army = saved.players[u.owner]?.army ?? DEFAULT_ARMY;
   }
+  for (const prop of saved.properties ?? []) {
+    if (!prop) continue;
+    if (!validArmyId(prop.army)) {
+      prop.army = (prop.owner != null && prop.owner !== 'n')
+        ? (saved.players[prop.owner]?.army ?? DEFAULT_ARMY)
+        : DEFAULT_ARMY;
+    }
+  }
   return saved;
 }
+

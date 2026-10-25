@@ -10,6 +10,9 @@ import {
   getEntityRenderPosition, compareIsoDepth,
 } from './iso.js';
 import { drawShoalIso, drawWaterShimmer } from './coast.js';
+import {
+  unitSheetKey, buildingSheetKey, fortificationSheetKey, resolveEntityArmy,
+} from './armies.js';
 
 export const TERRAIN_PALETTES = {
   plains:               { top: '#7ba358', alt: '#8fb86a', dark: '#5e7d3b', tuft: '#a0c27a' },
@@ -491,7 +494,7 @@ export function renderIso(ctx, map, {
     const propModel = terrainId === 'road'
       ? `road-${roadConnectorMask(map, x, y).toString(16)}`
       : (terrainId !== 'plains' && terrainId !== 'sea' && terrainId !== 'river' && terrainId !== 'shoal')
-        ? (terrainId === 'wall' ? 'wall-standard' : terrainId)
+        ? fortificationSheetKey(terrainId, map.wallArmy ?? map.defaultArmy)
         : null;
 
     if (propModel && ctx) {
@@ -516,15 +519,18 @@ export function renderIso(ctx, map, {
       ctx.restore();
     }
 
-    // 5. Draw building / property on elevated tile (4 cardinal facings)
+    // 5. Draw building / property on elevated tile (4 cardinal facings, faction-aware model)
     const prop = propAt.get(`${x},${y}`);
     if (prop) {
       const pos = getEntityRenderPosition(map, prop, originX, originY, zoom);
       const facing = ['right', 'up', 'left', 'down'].includes(prop.facing) ? prop.facing : 'right';
       const variant = prop.owner == null || prop.owner === 'n' ? 'n' : String(prop.owner);
+      const army = resolveEntityArmy(map, prop);
+      const modelId = buildingSheetKey(prop.type, army);
       let blitted = false;
       if (ctx) {
-        blitted = blitSheet(ctx, manifest, prop.type, facing, variant, 0, pos.anchorX, pos.anchorY, zoom, basePath);
+        blitted = blitSheet(ctx, manifest, modelId, facing, variant, 0, pos.anchorX, pos.anchorY, zoom, basePath)
+          || blitSheet(ctx, manifest, prop.type, facing, variant, 0, pos.anchorX, pos.anchorY, zoom, basePath);
         if (!blitted) {
           // Clean procedural building fallback block at elevated anchor
           ctx.save();
@@ -540,6 +546,8 @@ export function renderIso(ctx, map, {
       renderLog.entities.push({
         kind: 'building',
         type: prop.type,
+        army,
+        modelId,
         x,
         y,
         elevation: H,
@@ -554,14 +562,15 @@ export function renderIso(ctx, map, {
       });
     }
 
-    // 6. Draw unit on elevated tile (8 directional facings)
+    // 6. Draw unit on elevated tile (8 directional facings, faction-aware model)
     const unit = unitAt.get(`${x},${y}`);
     if (unit) {
       const pos = getEntityRenderPosition(map, unit, originX, originY, zoom);
       drawEntityGroundMarkers(ctx, pos, { selected: isSelected, isUnit: true, zoom });
       const facing = unit.facing ?? 'right';
       const variant = String(unit.owner ?? 0);
-      const modelId = unit.army && unit.army !== 'standard' ? `${unit.type}--${unit.army}` : unit.type;
+      const army = resolveEntityArmy(map, unit);
+      const modelId = unitSheetKey(unit.type, army);
       let blitted = false;
       if (ctx) {
         blitted = blitSheet(ctx, manifest, modelId, facing, variant, 0, pos.anchorX, pos.anchorY, zoom, basePath)
@@ -582,7 +591,8 @@ export function renderIso(ctx, map, {
       renderLog.entities.push({
         kind: 'unit',
         type: unit.type,
-        army: unit.army ?? 'standard',
+        army,
+        modelId,
         x,
         y,
         elevation: H,
