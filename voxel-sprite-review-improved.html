@@ -126,7 +126,7 @@ function renderAssets() {
   if (search) list = list.filter(a => a.toLowerCase().includes(search));
   const box = document.getElementById('assetList');
   box.innerHTML = '';
-  for (const a of list.slice(0, 120)) {
+  for (const a of list) {
     const b = document.createElement('button');
     b.textContent = a;
     b.onclick = () => { currentAsset = a; renderAll(); };
@@ -136,13 +136,22 @@ function renderAssets() {
 }
 
 function renderDirRow() {
-  const dirs = ['right','up','left','down','up-right','down-right','down-left','up-left'];
+  const dirs = [
+    ['up', 'up (N ↗)'],
+    ['up-right', 'up-right (NE →)'],
+    ['right', 'right (E ↘)'],
+    ['down-right', 'down-right (SE ↓)'],
+    ['down', 'down (S ↙)'],
+    ['down-left', 'down-left (SW ←)'],
+    ['left', 'left (W ↖)'],
+    ['up-left', 'up-left (NW ↑)'],
+  ];
   const row = document.getElementById('dirRow');
   row.innerHTML = '';
-  for (const d of dirs) {
+  for (const [d, label] of dirs) {
     const b = document.createElement('button');
     b.className = 'dir-btn' + (d===currentDir?' active':'');
-    b.textContent = d;
+    b.textContent = label;
     b.onclick = () => { currentDir = d; currentFrame = 0; renderAll(); };
     row.appendChild(b);
   }
@@ -152,9 +161,10 @@ function renderStrip() {
   const strip = document.getElementById('sheetStrip');
   strip.innerHTML = '';
   const base = currentAsset;
-  let sheets = (DATA.sheetsByAsset && DATA.sheetsByAsset[base]) ? DATA.sheetsByAsset[base] : [];
-  if (!sheets.length) sheets = DATA.sheets.filter(s => s.includes(base) && s.includes(currentDir));
-  for (const s of sheets.slice(0, 6)) {
+  let allSheets = (DATA.sheetsByAsset && DATA.sheetsByAsset[base]) ? DATA.sheetsByAsset[base] : [];
+  let sheets = allSheets.filter(s => s.includes('-' + currentDir + '-'));
+  if (!sheets.length) sheets = allSheets;
+  for (const s of sheets.slice(0, 8)) {
     const img = document.createElement('img');
     let src = s;
     if (!src.startsWith('game_assets')) src = 'game_assets/voxels/sheets/'+s.split('/').pop();
@@ -169,17 +179,18 @@ function renderStrip() {
 }
 
 function renderAll() {
-  let previewPath = 'game_assets/voxels/' + currentAsset + '.png';
-  const sheetBase = currentAsset.split('--')[0];
   const candidates = [
-    'game_assets/voxels/sheets/' + sheetBase + '-' + currentDir + '-0.png',
-    'game_assets/voxels/sheets/' + sheetBase + '-' + currentDir + '-n.png',
     'game_assets/voxels/sheets/' + currentAsset + '-' + currentDir + '-0.png',
-    'game_assets/voxels/sheets/' + currentAsset + '-' + currentDir + '-n.png'
+    'game_assets/voxels/sheets/' + currentAsset + '-' + currentDir + '-n.png',
+    'game_assets/voxels/' + currentAsset + '.png'
   ];
-  const sheetPath = ('game_assets/voxels/sheets/' + currentAsset.split('--')[0] + '-' + currentDir + '-0.png');
-  document.getElementById('mainImg').onerror = function() { this.src = 'game_assets/voxels/' + currentAsset + '.png'; };
-  document.getElementById('mainImg').src = sheetPath;
+  let idx = 0;
+  const mainImg = document.getElementById('mainImg');
+  mainImg.onerror = function() {
+    idx++;
+    if (idx < candidates.length) this.src = candidates[idx];
+  };
+  mainImg.src = candidates[0];
   document.getElementById('previewMeta').textContent = currentAsset + ' · ' + currentDir + ' · frame ' + currentFrame;
   renderDirRow();
   renderStrip();

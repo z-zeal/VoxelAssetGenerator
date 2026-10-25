@@ -17,11 +17,13 @@ import {
   rasterize, downsampleCell, buildVariantLut, pngBytes,
   BUF_W, BUF_H,
 } from './bake.mjs';
+import { buildVoxels } from './build.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const DS = Number(process.env.PREVIEW_DS ?? 2);
 
-const doc = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/voxels.json'), 'utf8'));
+const units = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/units.json'), 'utf8'));
+const doc = buildVoxels(units);
 const lut = buildVariantLut(doc.palette, '0');
 const outDir = path.join(ROOT, 'game_assets/voxels');
 fs.mkdirSync(outDir, { recursive: true });
