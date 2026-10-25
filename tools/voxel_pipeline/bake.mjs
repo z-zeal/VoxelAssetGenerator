@@ -40,7 +40,7 @@ const TOP = [[1, 0], [2, 0], [0, 1], [1, 1], [2, 1], [3, 1]];
 const LEFT = [[0, 2], [1, 2], [0, 3], [1, 3]];
 const RIGHT = [[2, 2], [3, 2], [2, 3], [3, 3]];
 
-const FACINGS = [['right', 0], ['up', 1], ['left', 2], ['down', 3], ['up-right', 'diag'], ['down-right', 'diag'], ['down-left', 'diag'], ['up-left', 'diag']];
+const FACINGS = [['right', 0], ['up', 1], ['left', 2], ['down', 3], ['up-right', Math.PI/4], ['down-right', Math.PI*3/4], ['down-left', Math.PI*5/4], ['up-left', Math.PI*7/4]];
 const GRID = 64;
 export const DOWNSCALE = 4;                    // supersample px per runtime px
 const GROUND = 63;                      // projected y of the 64×64 ground centre
@@ -112,9 +112,9 @@ export function rotateVoxels(voxels, turns) {
   return out;
 }
 
-export function rotateVoxels45(voxels) {
+export function rotateVoxels45(voxels, angle = Math.PI / 4) {
   const cx = 31.5, cy = 31.5;
-  const cos = Math.cos(Math.PI / 4), sin = Math.sin(Math.PI / 4);
+  const cos = Math.cos(angle), sin = Math.sin(angle);
   const out = [];
   for (const [x, y, z, pi] of voxels) {
     const nx = Math.round((x - cx) * cos - (y - cy) * sin + cx);
@@ -272,7 +272,7 @@ export function bake(doc, palette, { only = null } = {}) {
     const allFrames = clipNames.flatMap(a => frameSets[a]);
     const entry = {};
     for (const [facing, turns] of FACINGS) {
-      const rotated = allFrames.map(v => (turns === 'diag' ? rotateVoxels45(v) : rotateVoxels(v, turns)));
+      const rotated = allFrames.map(v => (typeof turns === 'number' && turns <= 3 ? rotateVoxels(v, turns) : rotateVoxels45(v, turns)));
       const grids = [];
       const boxes = [];
       for (const vox of rotated) {
