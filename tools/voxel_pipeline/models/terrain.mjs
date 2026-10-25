@@ -312,6 +312,112 @@ export function terrainVoxels(c, id, pose) {
     c.box(10, 44, 2, 18, 50, 6, '#5a6450');          // scree outcrops
     c.box(44, 18, 2, 52, 24, 5, '#5a6450');
     c.box(11, 45, 6, 15, 48, 7, '#878f78');
+  } else if (id === 'snow-tile') {
+    // Frozen ground tile — snowy surface over packed ice, with subtle cracks
+    // and a few low snow mounds. Palettes drawn from mountain snow + road.
+    c.box(0, 0, 0, 64, 64, 1, '#c4cdd6'); // icy base
+    for (let y = 0; y < 64; y++) for (let x = 0; x < 64; x++) {
+      const noise = ((x * 7 + y * 13) % 5);
+      const col = noise === 0 ? '#e8eef0' : noise === 1 ? '#cfd6dc' : noise === 2 ? '#a8b5bf' : '#dce4eb';
+      c.put(x, y, 1, col);
+    }
+    // Subtle crack lines (dark icy grey)
+    for (let y = 10; y < 54; y += 12) for (let x = 8; x < 56; x += 4) {
+      if ((x + y) % 7 === 0) c.put(x, y, 1, '#8a9199');
+    }
+    // Snow piles (low mounds near edges and center)
+    const piles = [[10, 10, 12, 14, 3, '#ffffff'], [48, 48, 10, 14, 3, '#ffffff'],
+                   [30, 8, 14, 18, 2, '#f0f4f8'], [28, 50, 12, 16, 2, '#e0e8f0'],
+                   [6, 42, 10, 12, 2, '#dce4eb']];
+    for (const [cx, cy, w, h, hgt, col] of piles) {
+      c.box(cx, cy, 1, cx + w, cy + h, 1 + hgt, col);
+      c.box(cx + 2, cy + 2, 1 + hgt, cx + w - 2, cy + h - 2, 1 + hgt + 1, '#f7f9fc');
+    }
+    // Scattered ice crystals / highlights
+    for (const [x, y] of [[20, 24], [38, 16], [48, 32], [14, 44], [52, 20]]) {
+      c.put(x, y, 2, '#ffffff');
+      c.put(x + 1, y, 2, '#e6edf3');
+    }
+  } else if (id === 'cracked-dry-ground') {
+    // Cracked dry earth — tan base, dark fissures, scattered rocks.
+    c.box(0, 0, 0, 64, 64, 1, '#c49a72');
+    // Patchy lighter / darker tan surface
+    for (let y = 0; y < 64; y++) for (let x = 0; x < 64; x++) {
+      const v = ((x + y) % 11) / 11;
+      c.put(x, y, 1, v < 0.25 ? '#d4b896' : v < 0.55 ? '#b88a5a' : v < 0.8 ? '#9e7348' : '#c49a72');
+    }
+    // Cracks: dark brown irregular lines
+    for (let y = 6; y < 58; y += 8) {
+      for (let x = 4; x < 60; x += 5) {
+        if ((x + y * 3) % 7 < 2) {
+          c.put(x, y, 1, '#3e2a1d');
+          if (y + 1 < 64) c.put(x, y + 1, 1, '#5a4430');
+        }
+      }
+    }
+    // Short cross-cracks for irregularity
+    for (let y = 14; y < 50; y += 9) {
+      for (let x = 10; x < 54; x += 9) {
+        c.put(x, y, 1, '#5a4430');
+        c.put(x + 2, y, 1, '#3e2a1d');
+        c.put(x, y + 2, 1, '#3e2a1d');
+      }
+    }
+    // Scattered rocks
+    const rocks = [[12, 14, 8, 10, 3, '#7a6a5a'], [42, 36, 10, 12, 4, '#52453a'],
+                   [30, 16, 6, 8, 2, '#8a7a6a'], [50, 8, 4, 6, 3, '#6b5d4f'],
+                   [20, 44, 8, 10, 3, '#5a4a3a'], [6, 28, 6, 8, 2, '#7a6a5a']];
+    for (const [cx, cy, w, h, hgt, col] of rocks) {
+      c.box(cx, cy, 1, cx + w, cy + h, 1 + hgt, col);
+      c.box(cx + 1, cy + 1, 1 + hgt, cx + w - 1, cy + h - 1, 1 + hgt + 1, '#9e9082');
+    }
+    // Small dry grass tufts
+    for (const [x, y] of [[18, 8], [44, 20], [28, 52], [52, 40], [10, 36]]) {
+      c.put(x, y, 2, '#6b7a52');
+      c.put(x + 1, y, 2, '#7a8a60');
+    }
+  } else if (id === 'marsh') {
+    // Marsh / wetland — dark mud, shallow water patches, reeds, algae.
+    c.box(0, 0, 0, 64, 64, 1, '#5a4a3a'); // dark mud base
+    // Shallow water patches (low spots)
+    for (let y = 14; y < 22; y++) for (let x = 20; x < 36; x++) {
+      if ((x - 28) * (x - 28) + (y - 18) * (y - 18) <= 30) c.put(x, y, 0, '#3b6e75');
+    }
+    for (let y = 36; y < 44; y++) for (let x = 8; x < 24; x++) {
+      if ((x - 16) * (x - 16) + (y - 40) * (y - 40) <= 20) c.put(x, y, 0, '#3b6e75');
+    }
+    // Mud surface variation
+    for (let y = 0; y < 64; y++) for (let x = 0; x < 64; x++) {
+      const v = ((x * 3 + y * 5) % 7);
+      c.put(x, y, 1, v < 2 ? '#6b5a4a' : v < 4 ? '#7a6548' : '#584232');
+    }
+    // Reeds / cattails — clusters of vertical cylinders + thin stems
+    const reedClusters = [[14, 18, 6], [40, 22, 7], [22, 46, 5], [48, 38, 6],
+                          [8, 8, 4], [56, 18, 5], [30, 10, 6], [52, 48, 5]];
+    for (const [cx, cy, n] of reedClusters) {
+      for (let i = 0; i < n; i++) {
+        const rx = cx + (i - n / 2) * 2;
+        const ry = cy + ((i % 3) - 1) * 2;
+        // Stem
+        for (let z = 2; z <= 12; z++) {
+          const shade = z < 4 ? '#2f4a2a' : z < 9 ? '#4a7a3a' : '#7a9e5a';
+          c.put(rx, ry, z, shade);
+          c.put(rx + 1, ry, z, shade);
+          c.put(rx, ry + 1, z, shade);
+        }
+        // Light tip
+        c.put(rx, ry, 13, '#8eb06a');
+        c.put(rx + 1, ry, 13, '#a0c67a');
+      }
+    }
+    // Algae / moss at water edges
+    for (const [x, y] of [[26, 16], [22, 24], [36, 42], [10, 40], [42, 10], [18, 36]]) {
+      c.put(x, y, 1, '#5a7a4a');
+      c.put(x + 1, y, 1, '#6b8a5a');
+    }
+    // Small mud mounds near center
+    c.box(26, 26, 1, 34, 34, 3, '#6b5a3a');
+    c.box(28, 28, 3, 32, 32, 4, '#7a6548');
   } else {
     // Road connector variants: 24-voxel wide thoroughfare centred on the tile.
     const mask = Number.parseInt(id.split('-')[1], 16) & 15;
