@@ -42,9 +42,10 @@ export class MapElevationEditor {
     this.brushSize = 1;
     this.selectedUnitType = 'tank';
     this.selectedUnitFacing = 'right';
-    this.selectedUnitArmy = 'standard';
+    this.selectedUnitArmy = 'allies';
     this.selectedBuildingType = 'hq';
     this.selectedBuildingFacing = 'right';
+    this.selectedBuildingArmy = 'allies';
     this.selectedOwner = 0;
     this.selectedTile = { x: 0, y: 0 };
     this.hoveredTile = null;
@@ -236,6 +237,7 @@ export class MapElevationEditor {
   placeBuilding(x, y, {
     type = this.selectedBuildingType,
     facing = this.selectedBuildingFacing,
+    army = this.selectedBuildingArmy ?? this.selectedUnitArmy ?? 'standard',
     owner = this.selectedOwner,
     recordUndo = true,
   } = {}) {
@@ -243,9 +245,9 @@ export class MapElevationEditor {
     if (recordUndo && !this._activeStrokeSnapshot) this._pushUndo();
     this.map.properties = (this.map.properties ?? []).filter(p => !(p.x === x && p.y === y));
     if (type) {
-      this.map.properties.push({ type, x, y, facing, owner });
+      this.map.properties.push({ type, x, y, facing, army, owner });
     }
-    this.selectedTile = { x, y };
+    this.selectedTile = { x: y != null ? x : 0, y };
     return true;
   }
 
@@ -474,16 +476,16 @@ export function createPresetMap(presetName = 'showcase') {
   m.terrain[3][8] = 'tree';
   m.terrain[5][8] = 'hill';
 
-  // Buildings & Units on elevated and flat tiles
+  // Buildings & Units on elevated and flat tiles across all 4 playable factions
   m.properties.push(
-    { type: 'hq', x: 8, y: 0, facing: 'right', owner: 0 },
-    { type: 'barracks', x: 2, y: 3, facing: 'right', owner: 0 },
-    { type: 'base', x: 3, y: 5, facing: 'down', owner: 1 },
-    { type: 'radar-station', x: 5, y: 3, facing: 'right', owner: 0 },
+    { type: 'hq', x: 8, y: 0, facing: 'right', army: 'allies', owner: 0 },
+    { type: 'barracks', x: 2, y: 3, facing: 'right', army: 'soviets', owner: 1 },
+    { type: 'base', x: 3, y: 5, facing: 'down', army: 'empire', owner: 2 },
+    { type: 'radar-station', x: 5, y: 3, facing: 'right', army: 'legion', owner: 3 },
   );
   m.units.push(
     { type: 'elite-hero', x: 8, y: 1, facing: 'down-left', army: 'allies', owner: 0 },
-    { type: 'tank', x: 3, y: 4, facing: 'down-right', army: 'standard', owner: 0 },
+    { type: 'tank', x: 3, y: 4, facing: 'down-right', army: 'legion', owner: 3 },
     { type: 'ifv', x: 6, y: 3, facing: 'down', army: 'soviets', owner: 1 },
     { type: 'rocket-infantry', x: 5, y: 4, facing: 'right', army: 'empire', owner: 2 },
     { type: 'destroyer', x: 6, y: 8, facing: 'left', army: 'allies', owner: 1 },

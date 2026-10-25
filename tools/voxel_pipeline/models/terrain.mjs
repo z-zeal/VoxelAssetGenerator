@@ -558,9 +558,8 @@ export function terrainVoxels(c, id, pose) {
         buttress: '#5a5c64', trim: '#962c3c', accent: '#c4aa78',
       },
     };
-    const themeKey = id.startsWith('wall-gate-')
-      ? `wall-${id.slice('wall-gate-'.length)}`
-      : id;
+    const wallArmy = ['allies', 'soviets', 'empire', 'legion'].find(a => id.endsWith(`-${a}`)) ?? 'standard';
+    const themeKey = `wall-${wallArmy}`;
     const T = themes[themeKey] ?? themes['wall-standard'];
 
     // Subtle ground turf + gravel drainage bed across the 64×64 tile
@@ -674,20 +673,34 @@ export function terrainVoxels(c, id, pose) {
         c.box(mx, my, 37, mx + 5, my + 5, 39, T.top);
       }
       c.box(29, 29, 36, 35, 35, 38, T.plinth);
+      // Faction-specific bastion crown geometry
+      if (wallArmy === 'allies') {
+        c.cylZ(32, 32, 38, 43, 4.5, T.accent);
+        c.box(26, 26, 36, 38, 38, 38, T.trim);
+      } else if (wallArmy === 'soviets') {
+        c.box(27, 27, 38, 37, 37, 42, T.trim);
+        c.box(30, 30, 42, 34, 34, 47, T.accent);
+      } else if (wallArmy === 'empire') {
+        c.box(x0 - 3, y0 - 3, 39, x1 + 3, y1 + 3, 41, T.trim);
+        c.box(30, 30, 41, 34, 34, 46, '#5fc4e8');
+      } else if (wallArmy === 'legion') {
+        c.box(26, 26, 38, 38, 38, 41, '#c8b084');
+        c.box(30, 30, 41, 33, 33, 47, '#2b2b2b');
+      }
     };
 
-    if (id === 'wall-end') {
+    if (id === 'wall-end' || id.startsWith('wall-end-')) {
       concreteArmX(32, 64, [50]);
       concreteBastion(13);
-    } else if (id === 'wall-corner') {
+    } else if (id === 'wall-corner' || id.startsWith('wall-corner-')) {
       concreteArmX(32, 64, [50]);
       concreteArmY(32, 64, [50]);
       concreteBastion(12);
-    } else if (id === 'wall-t') {
+    } else if (id === 'wall-t' || id.startsWith('wall-t-')) {
       concreteArmX(0, 64, [8, 50]);
       concreteArmY(32, 64, [50]);
       concreteBastion(12);
-    } else if (id === 'wall-cross') {
+    } else if (id === 'wall-cross' || id.startsWith('wall-cross-')) {
       concreteArmX(0, 64, [8, 50]);
       concreteArmY(0, 64, [8, 50]);
       concreteBastion(12);

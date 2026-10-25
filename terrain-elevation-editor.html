@@ -327,6 +327,16 @@
       <div class="control-group">
         <h3>4. Units (8-Dir) &amp; Buildings (4-Dir) on Elevated Ground</h3>
         <div class="field-row">
+          <label for="factionSelect">Faction:</label>
+          <select id="factionSelect">
+            <option value="allies">Allies (--allies)</option>
+            <option value="soviets">Soviets (--soviets)</option>
+            <option value="empire">Empire (--empire)</option>
+            <option value="legion">Legion (--legion)</option>
+            <option value="standard">Standard (base)</option>
+          </select>
+        </div>
+        <div class="field-row">
           <label for="unitSelect">Unit:</label>
           <select id="unitSelect">
             <option value="tank">tank</option>
@@ -505,10 +515,16 @@
     });
 
     // 5. Unit & Building Controls
+    const factionSelect = document.getElementById('factionSelect');
     const unitSelect = document.getElementById('unitSelect');
     const unitFacingSelect = document.getElementById('unitFacingSelect');
     const buildingSelect = document.getElementById('buildingSelect');
     const buildingFacingSelect = document.getElementById('buildingFacingSelect');
+    factionSelect.addEventListener('change', () => {
+      editor.selectedUnitArmy = factionSelect.value;
+      editor.selectedBuildingArmy = factionSelect.value;
+      syncControls();
+    });
     unitSelect.addEventListener('change', () => {
       editor.selectedUnitType = unitSelect.value;
       editor.selectTool('place-unit');

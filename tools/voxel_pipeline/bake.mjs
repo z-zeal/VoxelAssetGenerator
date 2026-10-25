@@ -366,7 +366,9 @@ export function bake(doc, palette, { only = null } = {}) {
   const onlySet = only ? new Set(only) : null;
   if (onlySet) {
     for (const id of [...onlySet]) {
-      for (const armyId of UNIT_ARMY_IDS) onlySet.add(`${id}--${armyId}`);
+      if (!id.includes('--')) {
+        for (const armyId of UNIT_ARMY_IDS) onlySet.add(`${id}--${armyId}`);
+      }
     }
   }
   const roster = fullRoster.filter(([id]) => !onlySet || onlySet.has(id));

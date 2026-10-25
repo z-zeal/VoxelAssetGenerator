@@ -1617,13 +1617,78 @@ export function applyArmyDelta(c, id, armyId) {
 
   if (id === 'attack-dog') {
     c.group('upper');
-    c.box(26, 22, 16, 36, 42, 20, S.trim);
-    c.box(29, 29, 22, 34, 35, 25, S.accent);
+    if (armyId === 'allies') {
+      // Allied K9 tactical Kevlar vest, twin side saddle packs, and GPS/radio whip antenna
+      c.box(25, 20, 15, 37, 44, 21, S.hull);
+      c.box(27, 18, 14, 35, 21, 20, S.trim);
+      c.box(27, 43, 14, 35, 46, 20, S.trim);
+      c.box(28, 31, 21, 30, 33, 30, METAL);
+      c.put(29, 32, 30, S.accent);
+      c.box(38, 25, 18, 41, 39, 25, S.trim);
+    } else if (armyId === 'soviets') {
+      // Soviet heavy armored war-hound harness with spiked steel shoulder plates & red-star crest
+      c.box(24, 19, 14, 39, 45, 22, S.plate);
+      c.box(26, 22, 22, 37, 42, 25, S.hull);
+      for (const sx of [27, 33, 39]) {
+        c.box(sx, 18, 20, sx + 2, 21, 25, S.trim);
+        c.box(sx, 43, 20, sx + 2, 46, 25, S.trim);
+      }
+      c.box(29, 29, 25, 35, 35, 27, S.accent);
+    } else if (armyId === 'empire') {
+      // Empire cyber-recon hound with angular ivory/cobalt sensor fins & brow optic visor
+      c.box(25, 21, 15, 37, 43, 21, S.light);
+      c.box(26, 18, 17, 35, 22, 26, S.trim);
+      c.box(26, 42, 17, 35, 46, 26, S.trim);
+      c.box(28, 28, 21, 35, 36, 26, S.hull);
+      c.box(42, 26, 27, 47, 38, 30, S.trim);
+      c.box(45, 27, 28, 48, 37, 30, GLASS);
+    } else {
+      // Legion outrider salvage hound with riveted scrap flank armor & strapped stim canisters
+      c.box(25, 19, 14, 37, 45, 21, S.dark);
+      c.box(26, 20, 21, 35, 26, 26, '#8c6b42');
+      c.box(26, 38, 21, 35, 44, 26, '#8c6b42');
+      for (const mx of [28, 32, 36]) c.box(mx, 30, 21, mx + 2, 34, 27, S.trim);
+      c.box(29, 29, 21, 34, 35, 25, S.accent);
+    }
     c.group('body');
   } else if (CUSTOM_HEADGEAR_UNITS.has(id)) {
     c.group('upper');
-    c.box(21, 18, 26, 27, 22, 30, S.trim);
-    c.box(21, 42, 26, 27, 46, 30, S.trim);
+    if (armyId === 'allies') {
+      // Allied spec-ops: wide composite shoulder pauldrons, tactical comtac headset & SATCOM whip antenna
+      c.box(20, 16, 26, 28, 22, 31, S.hull);
+      c.box(20, 42, 26, 28, 48, 31, S.hull);
+      c.box(22, 17, 31, 26, 21, 32, S.trim);
+      c.box(22, 43, 31, 26, 47, 32, S.trim);
+      c.box(15, 20, 28, 18, 23, 44, METAL);
+      c.put(16, 21, 44, S.accent);
+      c.box(26, 19, 36, 32, 22, 42, S.trim);
+      c.box(26, 42, 36, 32, 45, 42, S.trim);
+    } else if (armyId === 'soviets') {
+      // Soviet shock-specialist: heavy slab pauldrons, armored high gorget collar, gold trim & twin assault cylinders
+      c.box(18, 14, 25, 30, 22, 33, S.plate);
+      c.box(18, 42, 25, 30, 50, 33, S.plate);
+      c.box(21, 15, 31, 27, 21, 34, S.trim);
+      c.box(21, 43, 31, 27, 49, 34, S.trim);
+      c.box(17, 22, 32, 23, 42, 39, S.dark);
+      c.box(13, 22, 22, 18, 29, 35, S.hull);
+      c.box(13, 35, 22, 18, 42, 35, S.hull);
+    } else if (armyId === 'empire') {
+      // Empire royal operative: upturned winged samurai sode pauldrons, dorsal sashimono banner mast & brow crest
+      c.box(19, 14, 27, 29, 21, 35, S.light);
+      c.box(19, 43, 27, 29, 50, 35, S.light);
+      c.box(20, 13, 33, 28, 16, 37, S.trim);
+      c.box(20, 48, 33, 28, 51, 37, S.trim);
+      c.box(14, 30, 26, 17, 34, 48, S.trim);
+      c.box(11, 29, 38, 15, 35, 47, S.accent);
+      c.box(34, 25, 41, 40, 39, 45, S.trim);
+    } else {
+      // Legion merc operative: asymmetrical spiked scrap left pauldron, survival bedroll & desert scarf tail
+      c.box(19, 13, 26, 30, 22, 35, S.dark);
+      c.box(22, 14, 35, 26, 18, 39, S.trim);
+      c.box(21, 42, 26, 27, 47, 31, '#8c6b42');
+      c.box(13, 20, 30, 20, 44, 36, '#8c6b42');
+      c.box(14, 26, 34, 20, 34, 40, S.accent);
+    }
     c.put(midX, midY, b.maxZ, S.accent);
     c.group('body');
   } else if (armyId === 'allies') {

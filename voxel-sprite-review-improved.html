@@ -51,10 +51,18 @@ p.subtitle{margin:0;color:var(--muted);font-size:13px}
   </div>
   <div class="toolbar" style="margin-top:12px;">
     <input id="search" type="search" placeholder="Search assets or filenames…" aria-label="Search">
-    <button onclick="setCategory('Unit')">Unit</button>
-    <button onclick="setCategory('Building')">Building</button>
-    <button onclick="setCategory('Terrain')">Terrain</button>
-    <button onclick="setCategory('All')">All</button>
+    <button onclick="setCategory('Unit')">Unit (290)</button>
+    <button onclick="setCategory('Building')">Building (130)</button>
+    <button onclick="setCategory('Terrain')">Terrain (80)</button>
+    <button onclick="setCategory('All')">All (500)</button>
+    <select id="factionFilter" onchange="renderAssets();renderAll();" style="background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 14px;color:var(--text);font:inherit;">
+      <option value="all">All Factions (Standard + 4 Armies)</option>
+      <option value="standard">Standard Only</option>
+      <option value="allies">Allies (--allies)</option>
+      <option value="soviets">Soviets (--soviets)</option>
+      <option value="empire">Empire (--empire)</option>
+      <option value="legion">Legion (--legion)</option>
+    </select>
   </div>
   <div style="display:grid;grid-template-columns:repeat(9,minmax(80px,1fr));gap:8px;margin-top:10px;padding-top:10px;border-top:1px solid var(--line);overflow-x:auto;">
     <div onclick="currentAsset='elevation-00';renderAll();" style="cursor:pointer;text-align:center;background:#11141c;border:1px solid var(--line);border-radius:8px;padding:6px;">
@@ -106,6 +114,13 @@ p.subtitle{margin:0;color:var(--muted);font-size:13px}
       <span class="frame-label" id="frameLabel">frame 0 / 5</span>
     </div>
     <div class="sheet-strip" id="sheetStrip"></div>
+    <div style="margin-top:20px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:8px;">
+        <strong style="font-size:13px;color:var(--accent);">Side-by-Side Faction Comparison (Standard · Allies · Soviets · Empire · Legion)</strong>
+        <span style="font-size:12px;color:var(--muted);">Click any faction card to inspect its 8/4 directional strips</span>
+      </div>
+      <div id="factionCompareGrid" style="display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px;"></div>
+    </div>
   </main>
 </div>
 <script>
@@ -149,6 +164,7 @@ function setCategory(cat) {
 
 function renderAssets() {
   const search = (document.getElementById('search').value||'').toLowerCase();
+  const faction = (document.getElementById('factionFilter')?.value) || 'all';
   const activeCatBtn = document.querySelector('#catButtons button.active');
   const activeCat = activeCatBtn ? activeCatBtn.textContent.trim() : 'Unit';
   let list = [];
@@ -156,6 +172,13 @@ function renderAssets() {
     list = (DATA.byCategory.unit||[]).concat(DATA.byCategory.building||[]).concat(DATA.byCategory.terrain||[]);
   } else {
     list = DATA.byCategory[activeCat.toLowerCase()] || [];
+  }
+  if (faction !== 'all') {
+    if (faction === 'standard') {
+      list = list.filter(a => !a.includes('--') && !/-(allies|soviets|empire|legion)$/.test(a));
+    } else {
+      list = list.filter(a => a.endsWith('--' + faction) || a.endsWith('-' + faction));
+    }
   }
   if (search) list = list.filter(a => a.toLowerCase().includes(search));
   const box = document.getElementById('assetList');
@@ -166,6 +189,52 @@ function renderAssets() {
     b.onclick = () => { currentAsset = a; renderAll(); };
     b.className = (a === currentAsset) ? 'active' : '';
     box.appendChild(b);
+  }
+}
+
+function renderFactionCompare() {
+  const grid = document.getElementById('factionCompareGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  const allAssets = new Set((DATA.byCategory.unit||[]).concat(DATA.byCategory.building||[]).concat(DATA.byCategory.terrain||[]));
+  let baseId = currentAsset.includes('--') ? currentAsset.split('--')[0] : currentAsset;
+  const wallMatch = baseId.match(/^(wall(?:-gate|-end|-corner|-t|-cross)?)-(?:standard|allies|soviets|empire|legion)$/);
+  const isWall = Boolean(wallMatch) || ['wall-end', 'wall-corner', 'wall-t', 'wall-cross', 'wall-gate'].includes(baseId);
+  if (wallMatch) baseId = wallMatch[1];
+
+  const armies = [
+    ['standard', 'Standard'],
+    ['allies', 'Allies'],
+    ['soviets', 'Soviets'],
+    ['empire', 'Empire'],
+    ['legion', 'Legion'],
+  ];
+  for (const [armyId, label] of armies) {
+    let targetId = baseId;
+    if (isWall) {
+      if (baseId === 'wall') targetId = `wall-${armyId}`;
+      else targetId = armyId === 'standard' ? baseId : `${baseId}-${armyId}`;
+    } else {
+      targetId = armyId === 'standard' ? baseId : `${baseId}--${armyId}`;
+    }
+    if (!allAssets.has(targetId)) continue;
+    const card = document.createElement('div');
+    card.style.cssText = 'cursor:pointer;text-align:center;background:#10131c;border:1px solid ' + (targetId === currentAsset ? 'var(--accent)' : 'var(--line)') + ';border-radius:10px;padding:10px;';
+    card.onclick = () => { currentAsset = targetId; renderAssets(); renderAll(); };
+    const img = document.createElement('img');
+    img.src = 'game_assets/voxels/' + targetId + '.png';
+    img.alt = targetId;
+    img.style.cssText = 'height:76px;max-width:100%;object-fit:contain;image-rendering:pixelated;';
+    const cap = document.createElement('div');
+    cap.style.cssText = 'font-size:12px;font-weight:600;margin-top:6px;color:var(--text);';
+    cap.textContent = label;
+    const sub = document.createElement('div');
+    sub.style.cssText = 'font-size:11px;color:var(--muted);';
+    sub.textContent = targetId;
+    card.appendChild(img);
+    card.appendChild(cap);
+    card.appendChild(sub);
+    grid.appendChild(card);
   }
 }
 
@@ -242,6 +311,7 @@ function renderAll() {
   mainImg.src = candidates[0];
   document.getElementById('previewMeta').textContent = currentAsset + ' · ' + currentDir + ' · frame ' + currentFrame;
   renderStrip();
+  renderFactionCompare();
 }
 
 function setFrame(v) {
