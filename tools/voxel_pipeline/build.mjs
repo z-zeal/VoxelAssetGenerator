@@ -98,6 +98,9 @@ export const TERRAIN_MODELS = [
   'pipe-ns',
   'pipe-seam-ew',
   'pipe-seam-ns',
+  'snow-tile',
+  'cracked-dry-ground',
+  'marsh',
   'rubble',
   // Silo missile: neutral effect model baked for iso silo combat.
   'silo-missile',

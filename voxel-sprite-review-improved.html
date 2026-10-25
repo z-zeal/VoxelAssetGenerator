@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Voxel Sprite Review — Improved</title>
+<style>
+:root{color-scheme:dark;--bg:#0b0e14;--surface:#131620;--surface-2:#1a1f2e;--line:#22283a;--line-hover:#2f3a5a;--text:#e8ecf2;--muted:#8a95ad;--accent:#7ee787;--accent-2:#6ec1e4;--danger:#e88;--radius:14px;--shadow:0 10px 30px rgba(0,0,0,.35)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;-webkit-font-smoothing:antialiased}
+header{position:sticky;top:0;z-index:10;background:rgba(11,14,20,.92);backdrop-filter:blur(14px) saturate(1.2);border-bottom:1px solid var(--line);padding:22px clamp(16px,3vw,40px)}
+h1{font-size:clamp(24px,4vw,36px);margin:0 0 4px;letter-spacing:-.03em;font-weight:780}
+p.subtitle{margin:0 0 10px;color:var(--muted);font-size:15px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:14px}
+input[type="search"]{flex:1;min-width:240px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:10px 16px;color:var(--text);font:inherit;outline:none;transition:border-color .15s}
+input[type="search"]:focus{border-color:var(--accent-2)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+button.chip{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:7px 14px;font:inherit;color:var(--muted);cursor:pointer;transition:.15s}
+button.chip:hover{border-color:var(--line-hover);color:var(--text)}
+button.chip.active{background:linear-gradient(135deg,#1b2a3a,#15253a);border-color:var(--accent-2);color:var(--text);box-shadow:0 0 0 2px rgba(110,193,228,.15)}
+.tag{display:inline-block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding:3px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.tag.preview{border-color:#44a3d8;color:#7ecaf5}
+.tag.sheet{border-color:#88cc88;color:#6ce07a}
+.tag.new{border-color:#e8a84d;color:#f0c060}
+main{padding:22px clamp(16px,3vw,40px);max-width:1600px;margin:0 auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}
+.card{background:linear-gradient(180deg,var(--surface) 0%,var(--surface-2) 100%);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--line-hover)}
+.thumb-wrap{position:relative;height:200px;background:linear-gradient(135deg,#111620,#0b0e16);display:flex;align-items:center;justify-content:center;padding:14px;cursor:pointer}
+.thumb-wrap img{max-width:100%;max-height:100%;object-fit:contain;image-rendering:pixelated;filter:drop-shadow(0 4px 10px rgba(0,0,0,.45))}
+.card-body{padding:14px}
+.card-title{font-weight:700;font-size:16px;margin:0 0 6px;overflow-wrap:anywhere;line-height:1.2}
+.card-meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.empty{grid-column:1/-1;padding:60px 20px;text-align:center;color:var(--muted)}
+dialog{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:0;color:var(--text);max-width:min(94vw,1200px);max-height:94vh;width:fit-content;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+dialog::backdrop{background:rgba(0,0,0,.55);backdrop-filter:blur(4px)}
+.modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;padding:20px 22px 0;border-bottom:1px solid var(--line)}
+.modal-head h2{font-size:22px;margin:0;overflow-wrap:anywhere;letter-spacing:-.02em}
+.modal-body{padding:20px 22px;display:grid;grid-template-columns:1fr 340px;gap:22px;align-items:start}
+@media(max-width:1000px){.modal-body{grid-template-columns:1fr}}
+.modal-img-area{background:linear-gradient(135deg,#111620,#0b0e16);border:1px solid var(--line);border-radius:var(--radius);padding:18px;display:flex;align-items:center;justify-content:center;min-height:320px}
+.modal-img-area img{max-width:100%;max-height:68vh;image-rendering:pixelated;filter:drop-shadow(0 8px 24px rgba(0,0,0,.5))}
+.meta-table{width:100%;border-collapse:collapse;font-size:13px}
+.meta-table td{padding:6px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.meta-table td:first-child{color:var(--muted);width:90px;font-weight:500}
+.related{margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.related h4{font-size:13px;margin:0 0 8px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px}
+.related-card{background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:8px;cursor:pointer;text-align:center;transition:.15s}
+.related-card:hover{border-color:var(--line-hover);transform:translateY(-2px)}
+.related-card img{max-width:100%;max-height:80px;object-fit:contain;image-rendering:pixelated}
+.related-card .rname{font-size:11px;margin-top:4px;color:var(--muted);overflow-wrap:anywhere}
+.close-btn{background:var(--surface-2);border:1px solid var(--line);border-radius:999px;width:34px;height:34px;display:grid;place-items:center;cursor:pointer;color:var(--text);font-size:20px;line-height:1;font-family:system-ui}
+.close-btn:hover{border-color:var(--accent-2)}
+.summary-count{font-size:14px;color:var(--muted);margin-top:4px}
+footer{padding:24px text-align:center;color:var(--muted);font-size:12px;border-top:1px solid var(--line);margin-top:10px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Voxel Sprite Review — Improved</h1>
+  <p class="subtitle">All 189 previews + baked strips. Click a card to inspect facing/variant details; use chips to filter.</p>
+  <div class="toolbar">
+    <input id="search" type="search" placeholder="Search filename / asset / facing…" aria-label="Search">
+    <div class="chips" aria-label="Filter chips">
+      <button class="chip active" data-filter="all" onclick="setFilter('all')">All</button>
+      <button class="chip" data-filter="preview" onclick="setFilter('preview')">Previews</button>
+      <button class="chip" data-filter="sheet" onclick="setFilter('sheet')">Baked sheets</button>
+      <button class="chip" data-filter="new" onclick="setFilter('new')">New assets</button>
+      <button class="chip" data-filter="terrain" onclick="setFilter('terrain')">Terrain</button>
+    </div>
+  </div>
+  <div class="summary-count" id="summary">Loading catalogue…</div>
+</header>
+
+<main>
+  <div class="grid" id="grid"></div>
+  <div class="empty hidden" id="empty">No assets match the current filter.</div>
+</main>
+
+<dialog id="modal" aria-modal="true" aria-label="Asset detail">
+  <div class="modal-head">
+    <h2 id="m-title">Asset</h2>
+    <button class="close-btn" onclick="closeModal()" aria-label="Close">×</button>
+  </div>
+  <div class="modal-body">
+    <div class="modal-img-area"><img id="m-img" src="" alt="" style="max-height:68vh;max-width:100%;image-rendering:pixelated;"></div>
+    <div>
+      <table class="meta-table" aria-label="Metadata">
+        <tr><td>File</td><td id="m-file" style="font-family:monospace;color:#ccc"></td></tr>
+        <tr><td>Kind</td><td id="m-kind"></td></tr>
+        <tr><td>Category</td><td id="m-cat"></td></tr>
+        <tr><td>Facing</td><td id="m-facing"></td></tr>
+        <tr><td>Variant</td><td id="m-variant"></td></tr>
+        <tr><td>Path</td><td id="m-path" style="font-family:monospace;color:#ccc;word-break:break-all"></td></tr>
+      </table>
+      <div class="related" id="m-related" style="margin-top:14px;padding-top:14px;border-top:1px solid var(--line)">
+        <h4>Related (same asset)</h4>
+        <div class="related-grid" id="m-related-grid"></div>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<footer>Voxel Asset Generator — agent-driven production workflow. No external fetches.</footer>
+
+<script>
+let assets=[];
+let currentFilter='all';
+let searchQuery='';
+
+function normalizeName(n){ return n.replace(/\.png$/,''); }
+function assetId(n){ const s=normalizeName(n); return s.split('--')[0]; }
+function isNew(n){ const s=normalizeName(n); return s==='snow-tile'||s==='cracked-dry-ground'||s==='marsh'; }
+function categoryOf(n){ return isNew(n)?'terrain':(/-allies|-empire|-legion|-soviets/.test(n))?'unit-variant':(n.includes('hq')||n.includes('base')||n.includes('city')||n.includes('airport')||n.includes('port')||n.includes('farm')||n.includes('mine'))?'building':'other'; }
+function facingOf(n){ const m=n.match(/-(right|up|left|down)-/); return m?m[1]:'-'; }
+function variantOf(n){ const m=n.match(/-([0-5n])\.png$/); return m?m[1]:'-'; }
+function kindOf(n){ return n.includes('/sheets/')?'sheet':'preview'; }
+
+async function loadAssets(){
+  try{
+    const res=await fetch('assets-list.json');
+    if(res.ok){ const data=await res.json(); assets=[...data.previews,...data.sheets]; }
+  }catch(e){ console.warn('assets-list.json not loaded, using embedded'); }
+  // Fallback embedded for reliability in file// mode: add new assets + a representative preview/sample
+  if(assets.length<10){
+    const embeddedPreviews=[
+      {name:'snow-tile.png',path:'game_assets/voxels/snow-tile.png',kind:'preview'},
+      {name:'cracked-dry-ground.png',path:'game_assets/voxels/cracked-dry-ground.png',kind:'preview'},
+      {name:'marsh.png',path:'game_assets/voxels/marsh.png',kind:'preview'},
+    ];
+    const embeddedSheets=[
+      {name:'snow-tile-right-n.png',path:'game_assets/voxels/sheets/snow-tile-right-n.png',kind:'sheet'},
+      {name:'snow-tile-up-n.png',path:'game_assets/voxels/sheets/snow-tile-up-n.png',kind:'sheet'},
+      {name:'snow-tile-left-n.png',path:'game_assets/voxels/sheets/snow-tile-left-n.png',kind:'sheet'},
+      {name:'snow-tile-down-n.png',path:'game_assets/voxels/sheets/snow-tile-down-n.png',kind:'sheet'},
+      {name:'cracked-dry-ground-right-n.png',path:'game_assets/voxels/sheets/cracked-dry-ground-right-n.png',kind:'sheet'},
+      {name:'cracked-dry-ground-up-n.png',path:'game_assets/voxels/sheets/cracked-dry-ground-up-n.png',kind:'sheet'},
+      {name:'marsh-right-n.png',path:'game_assets/voxels/sheets/marsh-right-n.png',kind:'sheet'},
+      {name:'marsh-up-n.png',path:'game_assets/voxels/sheets/marsh-up-n.png',kind:'sheet'},
+    ];
+    assets=[...embeddedPreviews,...embeddedSheets];
+  }
+  render();
+}
+
+function setFilter(f){
+  currentFilter=f;
+  document.querySelectorAll('.chip').forEach(b=>b.classList.toggle('active', b.dataset.filter===f));
+  render();
+}
+
+function matches(a){
+  if(currentFilter==='new'&&!isNew(a.name)) return false;
+  if(currentFilter==='preview'&&a.kind!=='preview') return false;
+  if(currentFilter==='sheet'&&a.kind!=='sheet') return false;
+  if(currentFilter==='terrain'&&!(isNew(a.name)||a.name.includes('tree')||a.name.includes('hill')||a.name.includes('mountain')||a.name.includes('reef')||a.name.includes('rubble')) ) return false;
+  if(searchQuery){
+    const q=searchQuery.toLowerCase();
+    if(!a.name.toLowerCase().includes(q)&&!a.path.toLowerCase().includes(q)) return false;
+  }
+  return true;
+}
+
+function render(){
+  const grid=document.getElementById('grid');
+  grid.innerHTML='';
+  const filtered=assets.filter(matches);
+  document.getElementById('summary').textContent=`Showing ${filtered.length} of ${assets.length} assets`;
+  if(filtered.length===0){ document.getElementById('empty').classList.remove('hidden'); return; }
+  document.getElementById('empty').classList.add('hidden');
+  for(const a of filtered){
+    const card=document.createElement('div');
+    card.className='card';
+    const isNewAsset=isNew(a.name);
+    const tagClass=a.kind==='sheet'?'sheet':(isNewAsset?'new':'preview');
+    const tagText=a.kind==='sheet'?'Baked sheet':(isNewAsset?'New asset':'Preview');
+    card.innerHTML=`
+      <div class="thumb-wrap" onclick="openModal('${a.name.replace(/'/g,"\\'")}','${a.path}')" role="button" tabindex="0" aria-label="Open ${a.name}">
+        <img src="${a.path}" alt="${a.name}" loading="lazy" onload="this.style.opacity='1'" style="opacity:0;transition:opacity .2s">
+      </div>
+      <div class="card-body">
+        <div class="card-title">${a.name.replace('.png','')}</div>
+        <div class="card-meta">
+          <span class="tag ${tagClass}">${tagText}</span>
+          ${isNewAsset?'<span class="tag new">terrain</span>':''}
+        </div>
+      </div>`;
+    grid.appendChild(card);
+  }
+}
+
+function openModal(name, path){
+  const img=document.getElementById('m-img');
+  img.src=path; img.alt=name;
+  document.getElementById('m-title').textContent=name.replace('.png','');
+  document.getElementById('m-file').textContent=name;
+  document.getElementById('m-kind').textContent=kindOf(path);
+  document.getElementById('m-cat').textContent=categoryOf(name);
+  document.getElementById('m-facing').textContent=facingOf(name)||'-';
+  document.getElementById('m-variant').textContent=variantOf(name)||'-';
+  document.getElementById('m-path').textContent=path;
+  // Related: same asset base name
+  const base=assetId(name);
+  const related=assets.filter(x=>assetId(x.name)===base && x.name!==name).slice(0,6);
+  const relGrid=document.getElementById('m-related-grid');
+  relGrid.innerHTML='';
+  if(related.length===0){ relGrid.innerHTML='<div style="color:var(--muted);font-size:12px">No related sheets/previews for this asset.</div>'; }
+  else{
+    for(const r of related){
+      const d=document.createElement('div');
+      d.className='related-card';
+      d.innerHTML=`<img src="${r.path}" alt="${r.name}" loading="lazy"><div class="rname">${r.name.replace('.png','')}</div>`;
+      d.onclick=()=>openModal(r.name,r.path);
+      relGrid.appendChild(d);
+    }
+  }
+  document.getElementById('modal').showModal();
+}
+function closeModal(){ document.getElementById('modal').close(); }
+document.getElementById('search').addEventListener('input',e=>{searchQuery=e.target.value.trim();render();});
+document.getElementById('modal').addEventListener('click',e=>{ if(e.target===document.getElementById('modal')) closeModal(); });
+window.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+loadAssets();
+</script>
+</body>
+</html>
