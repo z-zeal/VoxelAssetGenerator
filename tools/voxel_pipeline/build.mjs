@@ -36,6 +36,15 @@ export const MODEL_POSES = {
   'rocket-infantry': { idle: 1, move: 4, attack: 3, death: 5 },
   'aa-infantry': { idle: 1, move: 4, attack: 3, death: 5 },
   'sniper': { idle: 1, move: 4, attack: 3, death: 5 },
+  grenadier: { idle: 1, move: 4, attack: 3, death: 5 },
+  flamethrower: { idle: 1, move: 4, attack: 3, death: 5 },
+  demolitionist: { idle: 1, move: 4, attack: 3, death: 5 },
+  commando: { idle: 1, move: 4, attack: 3, death: 5 },
+  officer: { idle: 1, move: 4, attack: 3, death: 5 },
+  spy: { idle: 1, move: 4, attack: 3, death: 5 },
+  'elite-hero': { idle: 1, move: 4, attack: 3, death: 5 },
+  'attack-dog': { idle: 1, move: 4, attack: 3, death: 5 },
+  scout: { idle: 1, move: 4, attack: 3, death: 5 },
   mech: { idle: 1, move: 4, attack: 3, death: 5 },
   engineer: { idle: 1, move: 4, death: 5 },
   medic: { idle: 1, move: 4, death: 5 },
@@ -69,6 +78,24 @@ export const MODEL_POSES = {
   bastion: { idle: 1, move: 4, attack: 3, death: 4 },
   specter: { idle: 1, move: 3, attack: 2, death: 4 },
   aegis: { idle: 1, move: 4, attack: 3, death: 4 },
+  ifv: { idle: 1, move: 4, attack: 3, death: 4 },
+  'supply-truck': { idle: 1, move: 4, death: 4 },
+  'mobile-repair': { idle: 1, move: 4, death: 4 },
+  'command-vehicle': { idle: 1, move: 4, death: 4 },
+  'mine-layer': { idle: 1, move: 4, death: 4 },
+  'tank-destroyer': { idle: 1, move: 4, attack: 3, death: 4 },
+  'flame-tank': { idle: 1, move: 4, attack: 3, death: 4 },
+  'amphibious-tank': { idle: 1, move: 4, attack: 3, death: 4 },
+  'mine-clearing': { idle: 1, move: 4, death: 4 },
+  'ground-attack-jet': { idle: 1, move: 3, attack: 2, death: 4 },
+  'transport-plane': { idle: 1, move: 3, death: 4 },
+  'stealth-fighter': { idle: 1, move: 3, attack: 2, death: 4 },
+  'spy-plane': { idle: 1, move: 3, death: 4 },
+  destroyer: { idle: 1, move: 4, attack: 2, death: 4 },
+  'missile-boat': { idle: 1, move: 4, attack: 2, death: 4 },
+  carrier: { idle: 1, move: 4, attack: 2, death: 4 },
+  'naval-repair': { idle: 1, move: 4, death: 4 },
+  'mine-layer-ship': { idle: 1, move: 4, death: 4 },
   // silo-missile: neutral effect model; the 3-frame clip is its thrust cycle
   'silo-missile': { idle: 3 },
 };
@@ -76,7 +103,9 @@ export const MODEL_POSES = {
 export const BUILDING_IDLE = {
   hq: 1, base: 2, city: 1, airport: 2, port: 1, farm: 1, mine: 1, depot: 1,
   landmine: 1, 'supply-depot': 1, 'repair-depot': 1, 'field-hospital': 1,
-  barracks: 1,
+  barracks: 1, helipad: 1, 'power-plant': 1, refinery: 1, 'radar-station': 2,
+  'research-lab': 1, pillbox: 1, bunker: 1, 'at-turret': 1, 'sam-site': 1,
+  'flak-cannon': 1, 'coastal-battery': 1, 'artillery-emplacement': 1, 'guard-tower': 1,
 };
 const [GX, GY, GZ] = VOXEL_SIZE;
 
@@ -85,7 +114,10 @@ const [GX, GY, GZ] = VOXEL_SIZE;
 // that terrain models never get. It is still never a terrain id — the explosive
 // lives in `s.landmines`, while `mine` remains the 2,000 G gold-mine property.
 export const BUILDINGS = ['hq', 'base', 'city', 'airport', 'port', 'farm', 'mine', 'depot', 'landmine',
-  'supply-depot', 'repair-depot', 'field-hospital', 'barracks'];
+  'supply-depot', 'repair-depot', 'field-hospital', 'barracks',
+  'helipad', 'power-plant', 'refinery', 'radar-station', 'research-lab',
+  'pillbox', 'bunker', 'at-turret', 'sam-site', 'flak-cannon',
+  'coastal-battery', 'artillery-emplacement', 'guard-tower'];
 /** Playable armies that get their own unit models (Standard keeps the base names). */
 export const UNIT_ARMY_IDS = ARMY_IDS.filter(id => id !== 'standard');
 export const TERRAIN_MODELS = [
@@ -119,6 +151,11 @@ export const TERRAIN_MODELS = [
   'wall-corner',
   'wall-t',
   'wall-cross',
+  'wall-gate',
+  'wall-gate-allies',
+  'wall-gate-soviets',
+  'wall-gate-empire',
+  'wall-gate-legion',
   // Silo missile: neutral effect model baked for iso silo combat.
   'silo-missile',
   ...Array.from({ length: 16 }, (_, mask) => `road-${mask.toString(16)}`),
@@ -422,18 +459,22 @@ export function poseOpsFor(id, family, weapon, action, frame) {
     } else if (action === 'attack') {
       // Gun tanks run a real fire cycle: elevate → drop + recoil → recover,
       // so the muzzle brake crosses the hull skyline on every frame change.
-      const gunTank = id === 'tank' || id === 'heavy' || id === 'mega' || id === 'bastion';
+      const gunTank = id === 'tank' || id === 'heavy' || id === 'mega' || id === 'bastion'
+        || id === 'ifv' || id === 'tank-destroyer' || id === 'flame-tank' || id === 'amphibious-tank';
       // Gun tanks elevate positively (muzzle climbs above the hull skyline on
       // the aim frame, drops through it on the burst frame); launchers keep
       // their own depression/elevation maps.
       const elev = {artillery: -12, antiair: -26, missiles: -14, rockets: -10, recon: -30,
-        tank: -22, heavy: -22, mega: -22, bastion: -20, aegis: -16}[id] ?? 6;
+        tank: -22, heavy: -22, mega: -22, bastion: -20, aegis: -16,
+        ifv: -22, 'tank-destroyer': -18, 'flame-tank': -20, 'amphibious-tank': -22}[id] ?? 6;
       // The recon's pintle MG elevates past the roofline and swings wide so
       // every burst frame breaks the skyline (colour-only motion is gated).
       const swing = id === 'recon' ? -14 : 5;
-      const elevF1 = {recon: -10, tank: -2, heavy: -2, mega: -2, bastion: -2}[id] ?? elev;
+      const elevF1 = {recon: -10, tank: -2, heavy: -2, mega: -2, bastion: -2,
+        ifv: -2, 'tank-destroyer': -2, 'flame-tank': -2, 'amphibious-tank': -2}[id] ?? elev;
       const swingF2 = id === 'recon' ? 14 : -3;
-      const elevF2 = {recon: -20, tank: -10, heavy: -10, mega: -10, bastion: -10}[id] ?? Math.round(elev / 2);
+      const elevF2 = {recon: -20, tank: -10, heavy: -10, mega: -10, bastion: -10,
+        ifv: -10, 'tank-destroyer': -8, 'flame-tank': -10, 'amphibious-tank': -10}[id] ?? Math.round(elev / 2);
       const recF1 = gunTank ? -4 : -3;
       // Gun tanks also traverse: the barrel yaws about the turret ring (its
       // own pivot is a pitch centre) so the muzzle sweeps the skyline in
@@ -482,6 +523,7 @@ export function poseOpsFor(id, family, weapon, action, frame) {
       // Main-gun ships traverse and elevate hard so the muzzles sweep the
       // skyline from every facing; [turretX, barrelX, barrelZ] pivots.
       const gunship = id === 'gunboat' ? [44, 46, 14]
+        : id === 'destroyer' ? [46, 48, 15]
         : id === 'battleship' ? [45, 45, 16] : null;
       if (frame === 0) {
         if (gunship) {
@@ -504,8 +546,9 @@ export function poseOpsFor(id, family, weapon, action, frame) {
         }
         ops.push({g: 'hatch', move: [2, 0, 1]});
         // The submarine's torpedo clears the bow on launch; cruiser missiles
-        // rise straight out of their cells.
-        ops.push({g: 'ammo', move: id === 'submarine' ? [2, 0, 6] : [0, 0, 8]});
+        // rise straight out of their cells; carrier strike jet launches forward.
+        ops.push({g: 'ammo', move: id === 'submarine' ? [2, 0, 6]
+          : id === 'carrier' ? [8, 0, 5] : [0, 0, 8]});
       }
     } else if (action === 'death') {
       if (frame === 0) ops.push({g: 'upper', move: [0, 0, -1]}, {scorch: 1, seed: 31});
@@ -553,12 +596,13 @@ export function poseOpsFor(id, family, weapon, action, frame) {
       // The bomber's dorsal speed-brake rises clear of the spine (visible
       // against the sky from every facing) while the bombs leave the racks;
       // the fighter's ventral airbrake drops below its thin fuselage.
-      if (frame === 0) ops.push({g: 'bay', move: [0, 0, id === 'bomber' ? 3 : id === 'mpa' || id === 'specter' ? 2 : -1]});
+      const dorsalBay = id === 'mpa' || id === 'specter' || id === 'ground-attack-jet' || id === 'stealth-fighter';
+      if (frame === 0) ops.push({g: 'bay', move: [0, 0, id === 'bomber' ? 3 : dorsalBay ? 2 : -1]});
       else if (id === 'bomber') ops.push({g: 'bay', move: [0, 0, 6]}, {g: 'ammo', move: [4, 0, -8]});
-      else if (id === 'mpa' || id === 'specter')
+      else if (dorsalBay)
         // Dorsal doors/brake rise clear of the spine (reads from above) while
-        // the store drops clear of the belly (reads from every side facing).
-        ops.push({g: 'bay', move: [0, 0, 5]}, {g: 'ammo', move: [5, 0, -10]});
+        // the store drops/launches clear of the belly (reads from every side facing).
+        ops.push({g: 'bay', move: [0, 0, 5]}, {g: 'ammo', move: [6, 0, -10]});
       else ops.push({g: 'bay', move: [0, 0, -2]}, {g: 'ammo', hide: true});
     } else if (action === 'death') {
       if (frame === 0) ops.push({g: 'body', yaw: 12, move: [0, 0, -2]}, {scorch: 1, seed: 51});
@@ -573,7 +617,7 @@ export function poseOpsFor(id, family, weapon, action, frame) {
 
 /** Building idle operations (operational machinery only). */
 export function buildingPoseOps(id, frame) {
-  if (id === 'airport' && frame === 1) return [{g: 'dish', yaw: 60}];
+  if ((id === 'airport' || id === 'radar-station') && frame === 1) return [{g: 'dish', yaw: 60}];
   return [];
 }
 
@@ -591,6 +635,8 @@ import {terrainVoxels, siloMissileVoxels} from './models/terrain.mjs';
 export const UNIT_FAMILY = {
   infantry: 'foot', mech: 'foot', engineer: 'foot', medic: 'foot',
   'rocket-infantry': 'foot', 'aa-infantry': 'foot', 'sniper': 'foot',
+  grenadier: 'foot', flamethrower: 'foot', demolitionist: 'foot', commando: 'foot',
+  officer: 'foot', spy: 'foot', 'elite-hero': 'foot', 'attack-dog': 'foot', scout: 'foot',
   apc: 'tracked', tank: 'tracked', heavy: 'tracked', artillery: 'tracked',
   antiair: 'tracked', mega: 'tracked',
   recon: 'wheeled', rockets: 'wheeled', missiles: 'wheeled',
@@ -600,15 +646,32 @@ export const UNIT_FAMILY = {
   fighter: 'jet', bomber: 'jet',
   uhac: 'naval', uav: 'rotor', mpa: 'jet',
   bastion: 'tracked', specter: 'jet', aegis: 'wheeled',
+  ifv: 'tracked', 'supply-truck': 'wheeled', 'mobile-repair': 'tracked',
+  'command-vehicle': 'wheeled', 'mine-layer': 'tracked', 'tank-destroyer': 'tracked',
+  'flame-tank': 'tracked', 'amphibious-tank': 'tracked', 'mine-clearing': 'tracked',
+  'ground-attack-jet': 'jet', 'transport-plane': 'jet',
+  'stealth-fighter': 'jet', 'spy-plane': 'jet',
+  destroyer: 'naval', 'missile-boat': 'naval', carrier: 'naval',
+  'naval-repair': 'naval', 'mine-layer-ship': 'naval',
 };
 export const UNIT_WEAPON = {
-  infantry: 'rifle', mech: 'cannon', 'rocket-infantry': 'rocket', 'aa-infantry': 'aa', 'sniper': 'rifle', recon: 'rifle', tank: 'cannon',
+  infantry: 'rifle', mech: 'cannon', 'rocket-infantry': 'rocket', 'aa-infantry': 'aa', 'sniper': 'rifle',
+  grenadier: 'cannon', flamethrower: 'rifle', demolitionist: 'heavy', commando: 'rifle',
+  officer: 'rifle', spy: 'rifle', 'elite-hero': 'heavy', 'attack-dog': 'rifle', scout: 'rifle',
+  recon: 'rifle', tank: 'cannon',
   heavy: 'heavy', artillery: 'shell', antiair: 'aa', mega: 'mega',
   rockets: 'rockets', missiles: 'sam', submarine: 'torpedo',
   gunboat: 'navalGun', cruiser: 'navalMissile', battleship: 'navalShell',
   copter: 'airRocket', fighter: 'airMissile', bomber: 'bomb',
   uhac: null, uav: null, mpa: 'torpedo',
   bastion: 'heavy', specter: 'bomb', aegis: 'sam',
+  ifv: 'cannon', 'supply-truck': null, 'mobile-repair': null,
+  'command-vehicle': null, 'mine-layer': null, 'tank-destroyer': 'heavy',
+  'flame-tank': 'cannon', 'amphibious-tank': 'cannon', 'mine-clearing': null,
+  'ground-attack-jet': 'airRocket', 'transport-plane': null,
+  'stealth-fighter': 'airMissile', 'spy-plane': null,
+  destroyer: 'navalGun', 'missile-boat': 'navalMissile', carrier: 'airMissile',
+  'naval-repair': null, 'mine-layer-ship': null,
 };
 
 export function clipsFor(id, kind) {
@@ -672,14 +735,24 @@ export function buildVoxels(unitsJson) {
   const palette = [];
   const indexOf = new Map();
   const pix = color => {
-    let i = indexOf.get(color);
+    const lc = color.toLowerCase();
+    let i = indexOf.get(lc);
     if (i === undefined) {
       i = palette.length;
-      indexOf.set(color, i);
-      palette.push(color);
+      indexOf.set(lc, i);
+      palette.push(lc);
     }
     return i;
   };
+  try {
+    const existingPath = path.join(ROOT, 'data/voxels.json');
+    if (fs.existsSync(existingPath)) {
+      const existing = JSON.parse(fs.readFileSync(existingPath, 'utf8'));
+      if (Array.isArray(existing.palette)) {
+        for (const c of existing.palette) pix(c);
+      }
+    }
+  } catch {}
   const models = {};
   const add = (id, kind, armyId = 'standard') => {
     const canvas = sculptModel(id, kind, armyId, { action: 'idle', frame: 0 });

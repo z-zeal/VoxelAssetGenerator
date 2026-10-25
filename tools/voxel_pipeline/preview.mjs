@@ -17,13 +17,21 @@ import {
   rasterize, downsampleCell, buildVariantLut, pngBytes,
   BUF_W, BUF_H,
 } from './bake.mjs';
-import { buildVoxels } from './build.mjs';
+import { UNIT_ARMY_IDS } from './build.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const DS = Number(process.env.PREVIEW_DS ?? 2);
 
-const units = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/units.json'), 'utf8'));
-const doc = buildVoxels(units);
+const onlyArg = process.argv.indexOf('--only');
+const onlyList = onlyArg >= 0 ? process.argv[onlyArg + 1].split(',').map(s => s.trim()).filter(Boolean) : null;
+const onlySet = onlyList ? new Set(onlyList) : null;
+if (onlySet) {
+  for (const id of [...onlySet]) {
+    for (const armyId of UNIT_ARMY_IDS) onlySet.add(`${id}--${armyId}`);
+  }
+}
+
+const doc = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/voxels.json'), 'utf8'));
 const lut = buildVariantLut(doc.palette, '0');
 const outDir = path.join(ROOT, 'game_assets/voxels');
 fs.mkdirSync(outDir, { recursive: true });
@@ -31,6 +39,7 @@ fs.mkdirSync(outDir, { recursive: true });
 const grid = new Uint16Array(BUF_W * BUF_H);
 let count = 0;
 for (const [id, model] of Object.entries(doc.models)) {
+  if (onlySet && !onlySet.has(id)) continue;
   const box = rasterize(model.voxels, grid);
   const x0 = Math.floor(box.minX / DS) * DS;
   const y0 = Math.floor(box.minY / DS) * DS;

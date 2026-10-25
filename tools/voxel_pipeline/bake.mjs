@@ -75,6 +75,12 @@ const TEAM_LIGHT = ['#ffc68b', '#a9d0e1', '#b8e0a8', '#ffe79a', '#ffb0a8', '#d0b
 const TEAM_DARK = ['#934b32', '#345f78', '#2d4a2d', '#8a6a1a', '#7a2a2a', '#4a2e6b'];
 const NEUTRAL_COLOR = '#aaa78b';
 const TEAM_VARIANTS = ['0', '1', '2', '3', '4', '5', 'n'];
+const LEGACY_UNIT_IDS = new Set([
+  'infantry', 'mech', 'engineer', 'medic', 'rocket-infantry', 'aa-infantry', 'sniper',
+  'apc', 'recon', 'tank', 'heavy', 'artillery', 'antiair', 'rockets', 'missiles', 'mega', 'bastion', 'aegis',
+  'copter', 'lift-copter', 'fighter', 'bomber', 'uav', 'mpa', 'specter',
+  'submarine', 'gunboat', 'cruiser', 'battleship', 'lander', 'uhac',
+]);
 
 export const BUF_W = 288;
 export const BUF_H = 320;
@@ -356,8 +362,14 @@ function variantsFor(kind) {
 
 export function bake(doc, palette, { only = null } = {}) {
   const units = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/units.json'), 'utf8'));
-  const roster = modelRoster(units)
-    .filter(([id]) => !only || only.includes(id));
+  const fullRoster = modelRoster(units);
+  const onlySet = only ? new Set(only) : null;
+  if (onlySet) {
+    for (const id of [...onlySet]) {
+      for (const armyId of UNIT_ARMY_IDS) onlySet.add(`${id}--${armyId}`);
+    }
+  }
+  const roster = fullRoster.filter(([id]) => !onlySet || onlySet.has(id));
   const luts = {};
   for (const v of TEAM_VARIANTS) luts[v] = buildVariantLut(palette, v);
   // Sculpt canvases finish() with color strings; the raster wants the global
@@ -374,11 +386,28 @@ export function bake(doc, palette, { only = null } = {}) {
     tileSize: [64, 32],
     downscale: DOWNSCALE,
     facings: FACINGS.map(f => f[0]),
+    buildingFacings: ['right', 'up', 'left', 'down'],
     teamVariants: [...TEAM_VARIANTS],
     models: {},
   };
+  if (onlySet) {
+    try {
+      const existingManifestPath = path.join(ROOT, 'game_assets/voxels/sheets/manifest.json');
+      if (fs.existsSync(existingManifestPath)) {
+        const prev = JSON.parse(fs.readFileSync(existingManifestPath, 'utf8'));
+        if (prev && prev.models) manifest.models = prev.models;
+      }
+    } catch {}
+  }
   const files = new Map();
   let payload = 0;
+
+  const CARDINAL_FACINGS = [
+    ['right', 0],
+    ['up', 1],
+    ['left', 2],
+    ['down', 3],
+  ];
 
   for (const [id, kind] of roster) {
     const baseId = id.includes('--') ? id.split('--')[0] : id;
@@ -386,7 +415,6 @@ export function bake(doc, palette, { only = null } = {}) {
     const clips = clipsFor(baseId, kind);
     const clipNames = ['idle', 'move', 'attack', 'death'].filter(a => (clips[a] ?? 0) > 0);
     const isUnit = kind === 'unit';
-    const isWall = baseId.startsWith('wall-');
     const frameSets = {};
     const solidFrameSets = {};
     for (const action of clipNames) {
@@ -402,17 +430,7 @@ export function bake(doc, palette, { only = null } = {}) {
     const allFrames = clipNames.flatMap(a => frameSets[a]);
     const allSolidFrames = isUnit ? clipNames.flatMap(a => solidFrameSets[a]) : allFrames;
     const entry = {};
-    const LEGACY_STATIC_FACINGS = [
-      ['right', 0],
-      ['up', 1],
-      ['left', 2],
-      ['down', 3],
-      ['up-right', 1],
-      ['down-right', 3],
-      ['down-left', { angle: (Math.PI * 5) / 4 }],
-      ['up-left', { angle: (Math.PI * 7) / 4 }],
-    ];
-    const activeFacings = (isUnit || isWall) ? FACINGS : LEGACY_STATIC_FACINGS;
+    const activeFacings = isUnit ? FACINGS : CARDINAL_FACINGS;
     for (const [facing, turns] of activeFacings) {
       const rotated = typeof turns === 'number'
         ? allFrames.map(v => rotateVoxels(v, turns))
@@ -509,6 +527,13 @@ export function bake(doc, palette, { only = null } = {}) {
         for (let u = 0; u < uniqueSrc.length; u++) {
           downsampleCell(grids[uniqueSrc[u]], x0, y0, cellW, cellH, lut, strip, u * cellW, 0, cellW * uniqueSrc.length);
         }
+        if (isUnit && !LEGACY_UNIT_IDS.has(baseId)) {
+          for (let i = 0; i < strip.length; i += 4) {
+            strip[i] &= 0xf8;
+            strip[i + 1] &= 0xf8;
+            strip[i + 2] &= 0xf8;
+          }
+        }
         if (!strip.some((v, i) => i % 4 === 3 && v)) {
           throw new Error(`${id}-${facing}-${variant}: completely transparent`);
         }
@@ -535,6 +560,14 @@ export function bake(doc, palette, { only = null } = {}) {
     }
     manifest.models[id] = entry;
   }
+  const kindById = new Map(fullRoster.map(([id, kind]) => [id, kind]));
+  for (const [mId, mEntry] of Object.entries(manifest.models)) {
+    if (kindById.get(mId) && kindById.get(mId) !== 'unit') {
+      for (const diag of ['up-right', 'down-right', 'down-left', 'up-left']) {
+        delete mEntry[diag];
+      }
+    }
+  }
   files.set('manifest.json', Buffer.from(JSON.stringify(manifest, null, 2) + '\n'));
   return { manifest, files, payload };
 }
@@ -546,8 +579,7 @@ if (isMain) {
   const outDir = outArg >= 0 ? process.argv[outArg + 1] : path.join(ROOT, 'game_assets/voxels/sheets');
   const onlyArg = process.argv.indexOf('--only');
   const only = onlyArg >= 0 ? process.argv[onlyArg + 1].split(',').map(s => s.trim()).filter(Boolean) : null;
-  const units = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/units.json'), 'utf8'));
-  const doc = buildVoxels(units);
+  const doc = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/voxels.json'), 'utf8'));
   const { manifest, files, payload } = bake(doc, doc.palette, { only });
   fs.mkdirSync(outDir, { recursive: true });
   for (const [rel, blob] of files) fs.writeFileSync(path.join(outDir, rel), blob);

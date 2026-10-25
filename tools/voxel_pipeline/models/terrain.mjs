@@ -496,7 +496,10 @@ export function terrainVoxels(c, id, pose) {
         buttress: '#5a5c64', trim: '#962c3c', accent: '#c4aa78',
       },
     };
-    const T = themes[id] ?? themes['wall-standard'];
+    const themeKey = id.startsWith('wall-gate-')
+      ? `wall-${id.slice('wall-gate-'.length)}`
+      : id;
+    const T = themes[themeKey] ?? themes['wall-standard'];
 
     // Subtle ground turf + gravel drainage bed across the 64×64 tile
     c.box(0, 0, 0, 64, 64, 2, '#5a6352');
@@ -626,6 +629,59 @@ export function terrainVoxels(c, id, pose) {
       concreteArmX(0, 64, [8, 50]);
       concreteArmY(0, 64, [8, 50]);
       concreteBastion(12);
+    } else if (id.startsWith('wall-gate')) {
+      // Fortified Reinforced Concrete Wall Gate (z = 0..41):
+      // connects seamlessly to tall concrete walls on X (0..14 and 50..64),
+      // flanked by twin gatehouse towers, overhead concrete arch & walkway,
+      // paved armored roadway, and raised steel portcullis / blast doors.
+      concreteArmX(0, 14, []);
+      concreteArmX(50, 64, []);
+      // Paved armored roadway passing through the gateway (x=18..46, y=0..64)
+      c.box(18, 0, 1, 46, 64, 3, '#484e56');
+      for (let x = 20; x < 44; x += 4) {
+        c.box(x, 16, 2, x + 2, 20, 3, '#e5b93c');          // north hazard threshold
+        c.box(x, 44, 2, x + 2, 48, 3, '#e5b93c');          // south hazard threshold
+      }
+      // Twin flanking fortified concrete gatehouse towers (x=10..20 and x=44..54)
+      for (const tx of [10, 44]) {
+        c.box(tx - 2, 14, 1, tx + 12, 50, 4, T.base);
+        c.box(tx - 1, 16, 4, tx + 11, 48, 8, T.plinth);
+        c.box(tx, 18, 8, tx + 10, 46, 35, T.concrete);
+        c.box(tx - 1, 17, 17, tx + 11, 47, 21, T.trim);
+        c.box(tx + 2, 16, 12, tx + 8, 48, 28, T.buttress);
+        // Faction heraldic banner on outer tower faces
+        c.box(tx + 3, 15, 14, tx + 7, 49, 26, T.trim);
+        c.box(tx + 4, 15, 16, tx + 6, 49, 24, T.accent);
+        // Overhanging tower cornice & crenellated battlements (z=35..41)
+        c.box(tx - 2, 16, 35, tx + 12, 48, 38, T.coping);
+        c.box(tx - 2, 16, 38, tx + 12, 48, 40, T.top);
+        for (const [mx, my] of [[tx - 2, 16], [tx + 8, 16], [tx - 2, 44], [tx + 8, 44]]) {
+          c.box(mx, my, 40, mx + 4, my + 4, 42, T.top);
+        }
+      }
+      // Overhead reinforced concrete lintel arch & crenellated parapet walkway (x=20..44, z=24..37)
+      c.box(20, 22, 26, 44, 42, 32, T.concrete);
+      c.box(20, 22, 23, 25, 42, 26, T.buttress);           // left arch haunch
+      c.box(39, 22, 23, 44, 42, 26, T.buttress);           // right arch haunch
+      c.box(20, 21, 28, 44, 43, 30, T.trim);               // faction lintel band
+      c.box(28, 20, 27, 36, 44, 31, T.accent);             // keystone crest
+      c.box(20, 20, 32, 44, 44, 34, T.coping);
+      for (let x = 20; x < 44; x++) {
+        const h = ((x + 2) % 8 >= 6) ? 35 : 37;
+        c.box(x, 21, 34, x + 1, 25, h, T.top);
+        c.box(x, 39, 34, x + 1, 43, h, T.top);
+      }
+      // Raised steel portcullis teeth & parted armored blast-gate leaves inside archway
+      c.box(20, 29, 3, 25, 35, 23, '#383e46');             // left retracted blast door leaf
+      c.box(39, 29, 3, 44, 35, 23, '#383e46');             // right retracted blast door leaf
+      for (let x = 25; x < 40; x += 3) {
+        c.box(x, 30, 19, x + 2, 34, 26, '#2e343c');        // raised portcullis teeth
+        c.put(x, 30, 19, T.accent);
+      }
+      // Asymmetric gatehouse control annex & signal beacon on front-left tower (ensures 4 distinct facings)
+      c.box(11, 46, 4, 18, 52, 15, T.plinth);
+      c.box(12, 51, 9, 17, 53, 13, '#5fc4e8');             // guard booth window
+      c.box(13, 48, 42, 16, 51, 45, '#d94c3d');            // tower signal beacon
     } else {
       // Full straight fortified concrete wall segment (wall-standard & 4 armies)
       concreteArmX(0, 64, [6, 29, 52]);
