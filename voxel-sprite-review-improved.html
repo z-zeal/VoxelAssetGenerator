@@ -42,14 +42,48 @@ p.subtitle{margin:0;color:var(--muted);font-size:13px}
 </head>
 <body>
 <header>
-  <h1>Voxel Asset Preview</h1>
-  <p class="subtitle">Select category → asset → direction → frame. All rendered from source models.</p>
-  <div class="toolbar">
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+    <div>
+      <h1>Voxel Asset Preview</h1>
+      <p class="subtitle">Select category → asset → direction → frame. All rendered from source models.</p>
+    </div>
+    <a href="/terrain-elevation-editor.html" style="background:var(--accent);color:#0c0e13;text-decoration:none;font-weight:700;padding:8px 16px;border-radius:999px;font-size:13px;">Open Terrain Elevation Editor &amp; Map Preview (0..32) →</a>
+  </div>
+  <div class="toolbar" style="margin-top:12px;">
     <input id="search" type="search" placeholder="Search assets or filenames…" aria-label="Search">
     <button onclick="setCategory('Unit')">Unit</button>
     <button onclick="setCategory('Building')">Building</button>
     <button onclick="setCategory('Terrain')">Terrain</button>
     <button onclick="setCategory('All')">All</button>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(9,minmax(80px,1fr));gap:8px;margin-top:10px;padding-top:10px;border-top:1px solid var(--line);overflow-x:auto;">
+    <div onclick="currentAsset='elevation-00';renderAll();" style="cursor:pointer;text-align:center;background:#11141c;border:1px solid var(--line);border-radius:8px;padding:6px;">
+      <img src="game_assets/voxels/elevation-00.png" alt="elevation-00" style="height:54px;image-rendering:pixelated;object-fit:contain;"><div style="font-size:11px;color:var(--muted);">elevation-00 (Z=0)</div>
+    </div>
+    <div onclick="currentAsset='elevation-04';renderAll();" style="cursor:pointer;text-align:center;background:#11141c;border:1px solid var(--line);border-radius:8px;padding:6px;">
+      <img src="game_assets/voxels/elevation-04.png" alt="elevation-04" style="height:54px;image-rendering:pixelated;object-fit:contain;"><div style="font-size:11px;color:var(--muted);">elevation-04 (Z=4)</div>
+    </div>
+    <div onclick="currentAsset='elevation-08';renderAll();" style="cursor:pointer;text-align:center;background:#11141c;border:1px solid var(--line);border-radius:8px;padding:6px;">
+      <img src="game_assets/voxels/elevation-08.png" alt="elevation-08" style="height:54px;image-rendering:pixelated;object-fit:contain;"><div style="font-size:11px;color:var(--muted);">elevation-08 (Z=8)</div>
+    </div>
+    <div onclick="currentAsset='elevation-12';renderAll();" style="cursor:pointer;text-align:center;background:#11141c;border:1px solid var(--line);border-radius:8px;padding:6px;">
+      <img src="game_assets/voxels/elevation-12.png" alt="elevation-12" style="height:54px;image-rendering:pixelated;object-fit:contain;"><div style="font-size:11px;color:var(--muted);">elevation-12 (Z=12)</div>
+    </div>
+    <div onclick="currentAsset='elevation-16';renderAll();" style="cursor:pointer;text-align:center;background:#11141c;border:1px solid var(--line);border-radius:8px;padding:6px;">
+      <img src="game_assets/voxels/elevation-16.png" alt="elevation-16" style="height:54px;image-rendering:pixelated;object-fit:contain;"><div style="font-size:11px;color:var(--muted);">elevation-16 (Z=16)</div>
+    </div>
+    <div onclick="currentAsset='elevation-20';renderAll();" style="cursor:pointer;text-align:center;background:#11141c;border:1px solid var(--line);border-radius:8px;padding:6px;">
+      <img src="game_assets/voxels/elevation-20.png" alt="elevation-20" style="height:54px;image-rendering:pixelated;object-fit:contain;"><div style="font-size:11px;color:var(--muted);">elevation-20 (Z=20)</div>
+    </div>
+    <div onclick="currentAsset='elevation-24';renderAll();" style="cursor:pointer;text-align:center;background:#11141c;border:1px solid var(--line);border-radius:8px;padding:6px;">
+      <img src="game_assets/voxels/elevation-24.png" alt="elevation-24" style="height:54px;image-rendering:pixelated;object-fit:contain;"><div style="font-size:11px;color:var(--muted);">elevation-24 (Z=24)</div>
+    </div>
+    <div onclick="currentAsset='elevation-28';renderAll();" style="cursor:pointer;text-align:center;background:#11141c;border:1px solid var(--line);border-radius:8px;padding:6px;">
+      <img src="game_assets/voxels/elevation-28.png" alt="elevation-28" style="height:54px;image-rendering:pixelated;object-fit:contain;"><div style="font-size:11px;color:var(--muted);">elevation-28 (Z=28)</div>
+    </div>
+    <div onclick="currentAsset='elevation-32';renderAll();" style="cursor:pointer;text-align:center;background:#11141c;border:1px solid var(--line);border-radius:8px;padding:6px;">
+      <img src="game_assets/voxels/elevation-32.png" alt="elevation-32" style="height:54px;image-rendering:pixelated;object-fit:contain;"><div style="font-size:11px;color:var(--muted);">elevation-32 (Z=32)</div>
+    </div>
   </div>
 </header>
 <div class="layout">
