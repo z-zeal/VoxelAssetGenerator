@@ -120,6 +120,8 @@ export const BUILDINGS = ['hq', 'base', 'city', 'airport', 'port', 'farm', 'mine
   'coastal-battery', 'artillery-emplacement', 'guard-tower'];
 /** Playable armies that get their own unit models (Standard keeps the base names). */
 export const UNIT_ARMY_IDS = ARMY_IDS.filter(id => id !== 'standard');
+export const ELEVATION_LEVELS = [0, 4, 8, 12, 16, 20, 24, 28, 32];
+export const ELEVATION_MODELS = ELEVATION_LEVELS.map(h => `elevation-${String(h).padStart(2, '0')}`);
 export const TERRAIN_MODELS = [
   'tree',
   'mountain',
@@ -142,6 +144,7 @@ export const TERRAIN_MODELS = [
   'sea',
   'shoal',
   'rubble',
+  ...ELEVATION_MODELS,
   'wall-standard',
   'wall-allies',
   'wall-soviets',

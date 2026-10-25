@@ -431,6 +431,68 @@ export function terrainVoxels(c, id, pose) {
       c.box(cx, cy, 1, cx+6, cy+5, 2, '#7a9e58');
       c.put(cx+2, cy+2, 2, '#b5d48c');
     }
+  } else if (id.startsWith('elevation-')) {
+    // Multi-height terrain elevation blocks (z ∈ {0, 4, 8, 12, 16, 20, 24, 28, 32}):
+    //   - Preserves the exact 64×64 ground footprint (64×32 iso diamond, anchorX = 32).
+    //   - Top surface sits at z = elevZ .. elevZ + 1 with the exact grassland material
+    //     so elevated tiles match elevation 0 and join seamlessly with equal-height neighbors.
+    //   - Vertical cliff walls (z = 0 .. elevZ - 1) feature 4-voxel geological rock strata,
+    //     vertical fissure joints, and a sub-turf loam/root overhang right below the grass rim.
+    const elevZ = Math.max(0, Math.min(32, Number.parseInt(id.slice('elevation-'.length), 10) || 0));
+    if (elevZ > 0) {
+      // Base footprint anchor shell at z = 0 so ground anchor stays locked to tile center
+      c.box(0, 0, 0, 64, 64, 1, '#52453a');
+      for (let z = 0; z < elevZ; z++) {
+        const band = Math.floor(z / 4);
+        const inBand = z % 4;
+        const isSubTurf = z === elevZ - 1;
+        const isRootBand = z === elevZ - 2 && elevZ >= 4;
+        for (let t = 0; t < 64; t++) {
+          const cliffColor = (coord, sideSalt) => {
+            if (z === 0) return ((coord + sideSalt) % 6 === 0) ? '#3e2a1d' : '#52453a';
+            if (isSubTurf) {
+              return ((coord + sideSalt) % 5 === 0) ? '#5e7d3b'
+                : ((coord + sideSalt) % 2 === 0) ? '#6b5a3a' : '#7a6548';
+            }
+            if (isRootBand) {
+              return ((coord + sideSalt) % 3 === 0) ? '#5a4a3a' : '#6b5a3a';
+            }
+            if (inBand === 0) {
+              // 4-voxel terrace stratum seam line
+              return ((coord + band * 3 + sideSalt) % 8 === 0) ? '#3e2a1d' : '#5a4a3a';
+            }
+            const joint = ((coord + band * 7 + sideSalt * 3) % 11 === 0);
+            if (joint) return '#52453a';
+            if (inBand === 1) return ((coord + band) % 4 === 0) ? '#7a6a5a' : '#6b5d4f';
+            if (inBand === 2) return ((coord + band * 2) % 5 === 0) ? '#8a7a6a' : '#7a6a5a';
+            return ((coord + band * 3) % 4 === 0) ? '#9e9082' : '#8a7a6a';
+          };
+          const colN = cliffColor(t, 1);
+          const colS = cliffColor(t, 2);
+          const colW = cliffColor(t, 3);
+          const colE = cliffColor(t, 4);
+          // 2-voxel wall thickness on all 4 vertical sides avoids sub-pixel pinholes on downsample
+          c.put(t, 0, z, colN); c.put(t, 1, z, colN);
+          c.put(t, 62, z, colS); c.put(t, 63, z, colS);
+          c.put(0, t, z, colW); c.put(1, t, z, colW);
+          c.put(62, t, z, colE); c.put(63, t, z, colE);
+        }
+      }
+    }
+    // Elevated top surface at z = elevZ .. elevZ + 1 (identical material to plains at z = 0..1)
+    c.box(0, 0, elevZ, 64, 64, elevZ + 1, '#6e9049');
+    for (let y = 0; y < 64; y++) {
+      for (let x = 0; x < 64; x++) {
+        const v = ((x * 7 + y * 13) % 5);
+        const col = v === 0 ? '#7ba358' : v === 1 ? '#8fb86a' : v === 2 ? '#5e7d3b' : '#a0c27a';
+        c.put(x, y, elevZ + 1, col);
+      }
+    }
+    const clumps = [[8, 10], [24, 8], [40, 12], [12, 36], [48, 30], [28, 48], [52, 6]];
+    for (const [cx, cy] of clumps) {
+      c.box(cx, cy, elevZ + 1, cx + 6, cy + 5, elevZ + 2, '#7a9e58');
+      c.put(cx + 2, cy + 2, elevZ + 2, '#b5d48c');
+    }
   } else if (id === 'tallgrass') {
     // Tall grass: denser taller clumps with shade and light tips
     c.box(0, 0, 0, 64, 64, 1, '#5a7d3a');

@@ -1,0 +1,235 @@
+{
+  "format": "field-command-terrain-1",
+  "elevation": {
+    "levels": [0, 4, 8, 12, 16, 20, 24, 28, 32],
+    "step": 4,
+    "min": 0,
+    "max": 32,
+    "default": 0,
+    "voxelZPerStep": 4,
+    "runtimePixelsPerVoxelZ": 0.5,
+    "models": {
+      "0": "elevation-00",
+      "4": "elevation-04",
+      "8": "elevation-08",
+      "12": "elevation-12",
+      "16": "elevation-16",
+      "20": "elevation-20",
+      "24": "elevation-24",
+      "28": "elevation-28",
+      "32": "elevation-32"
+    }
+  },
+  "terrains": {
+    "plains": {
+      "id": "plains",
+      "name": "Plains",
+      "defense": 1,
+      "moveCost": { "foot": 1, "mech": 1, "tread": 1, "tires": 2, "air": 1, "sea": null, "lander": null },
+      "renderMode": "vector",
+      "voxelModel": "plains",
+      "supportsElevation": true,
+      "palette": { "top": "#7ba358", "topAlt": "#8fb86a", "topDark": "#5e7d3b", "highlight": "#a0c27a" }
+    },
+    "tallgrass": {
+      "id": "tallgrass",
+      "name": "Tall Grass",
+      "defense": 2,
+      "moveCost": { "foot": 1, "mech": 1, "tread": 2, "tires": 3, "air": 1, "sea": null, "lander": null },
+      "renderMode": "voxel",
+      "voxelModel": "tallgrass",
+      "supportsElevation": true,
+      "palette": { "top": "#6b8f4e", "topAlt": "#8aaf68", "topDark": "#4a6330", "highlight": "#8fa860" }
+    },
+    "road": {
+      "id": "road",
+      "name": "Road",
+      "defense": 0,
+      "moveCost": { "foot": 1, "mech": 1, "tread": 1, "tires": 1, "air": 1, "sea": null, "lander": null },
+      "renderMode": "voxel",
+      "voxelModel": "road-5",
+      "supportsElevation": true,
+      "palette": { "top": "#33363a", "topAlt": "#585c60", "topDark": "#25282c", "highlight": "#e9e7df" }
+    },
+    "bridge": {
+      "id": "bridge",
+      "name": "Bridge",
+      "defense": 0,
+      "moveCost": { "foot": 1, "mech": 1, "tread": 1, "tires": 1, "air": 1, "sea": 1, "lander": 1 },
+      "renderMode": "voxel",
+      "voxelModel": "bridge-ew",
+      "supportsElevation": true,
+      "palette": { "top": "#e1cf98", "topAlt": "#c9b284", "topDark": "#7a5a3a", "highlight": "#f0e2b6" }
+    },
+    "river": {
+      "id": "river",
+      "name": "River",
+      "defense": 0,
+      "moveCost": { "foot": 2, "mech": 1, "tread": null, "tires": null, "air": 1, "sea": null, "lander": null },
+      "renderMode": "vector",
+      "voxelModel": null,
+      "supportsElevation": true,
+      "palette": { "top": "#3a84a8", "topAlt": "#4d98bc", "topDark": "#2b6e8a", "highlight": "#8fd4f0" }
+    },
+    "sea": {
+      "id": "sea",
+      "name": "Sea",
+      "defense": 0,
+      "moveCost": { "foot": null, "mech": null, "tread": null, "tires": null, "air": 1, "sea": 1, "lander": 1 },
+      "renderMode": "vector",
+      "voxelModel": "sea",
+      "supportsElevation": true,
+      "palette": { "top": "#2b6e8a", "topAlt": "#356e8a", "topDark": "#1f556e", "highlight": "#7ec8e8" }
+    },
+    "shoal": {
+      "id": "shoal",
+      "name": "Shoal",
+      "defense": 0,
+      "moveCost": { "foot": 1, "mech": 1, "tread": 1, "tires": 1, "air": 1, "sea": null, "lander": 1 },
+      "renderMode": "vector",
+      "voxelModel": "shoal",
+      "supportsElevation": true,
+      "palette": { "top": "#d6c48e", "topAlt": "#c8b086", "topDark": "#b08d6a", "highlight": "#ece0b8" }
+    },
+    "reef": {
+      "id": "reef",
+      "name": "Reef",
+      "defense": 1,
+      "moveCost": { "foot": null, "mech": null, "tread": null, "tires": null, "air": 1, "sea": 2, "lander": 2 },
+      "renderMode": "voxel",
+      "voxelModel": "reef",
+      "supportsElevation": true,
+      "palette": { "top": "#3b7d90", "topAlt": "#657068", "topDark": "#2b5e6e", "highlight": "#e2f6f8" }
+    },
+    "tree": {
+      "id": "tree",
+      "name": "Woods",
+      "defense": 2,
+      "moveCost": { "foot": 1, "mech": 1, "tread": 2, "tires": 3, "air": 1, "sea": null, "lander": null },
+      "renderMode": "voxel",
+      "voxelModel": "tree",
+      "supportsElevation": true,
+      "palette": { "top": "#5a6642", "topAlt": "#648f48", "topDark": "#3f693b", "highlight": "#a8c97a" }
+    },
+    "hill": {
+      "id": "hill",
+      "name": "Hill",
+      "defense": 3,
+      "moveCost": { "foot": 2, "mech": 1, "tread": 2, "tires": 3, "air": 1, "sea": null, "lander": null },
+      "renderMode": "voxel",
+      "voxelModel": "hill",
+      "supportsElevation": true,
+      "palette": { "top": "#709e46", "topAlt": "#8fb268", "topDark": "#5a6450", "highlight": "#a8c97a" }
+    },
+    "mountain": {
+      "id": "mountain",
+      "name": "Mountain",
+      "defense": 4,
+      "moveCost": { "foot": 2, "mech": 1, "tread": null, "tires": null, "air": 1, "sea": null, "lander": null },
+      "renderMode": "voxel",
+      "voxelModel": "mountain",
+      "supportsElevation": true,
+      "palette": { "top": "#6d7859", "topAlt": "#838e70", "topDark": "#5a6450", "highlight": "#efebca" }
+    },
+    "snow-tile": {
+      "id": "snow-tile",
+      "name": "Snow Ground",
+      "defense": 1,
+      "moveCost": { "foot": 2, "mech": 1, "tread": 2, "tires": 3, "air": 1, "sea": null, "lander": null },
+      "renderMode": "voxel",
+      "voxelModel": "snow-tile",
+      "supportsElevation": true,
+      "palette": { "top": "#dce4eb", "topAlt": "#cfd6dc", "topDark": "#a8b5bf", "highlight": "#ffffff" }
+    },
+    "cracked-dry-ground": {
+      "id": "cracked-dry-ground",
+      "name": "Cracked Dry Ground",
+      "defense": 1,
+      "moveCost": { "foot": 1, "mech": 1, "tread": 1, "tires": 2, "air": 1, "sea": null, "lander": null },
+      "renderMode": "voxel",
+      "voxelModel": "cracked-dry-ground",
+      "supportsElevation": true,
+      "palette": { "top": "#c49a72", "topAlt": "#d4b896", "topDark": "#9e7348", "highlight": "#e4caa6" }
+    },
+    "marsh": {
+      "id": "marsh",
+      "name": "Marsh",
+      "defense": 1,
+      "moveCost": { "foot": 2, "mech": 2, "tread": 3, "tires": null, "air": 1, "sea": null, "lander": null },
+      "renderMode": "voxel",
+      "voxelModel": "marsh",
+      "supportsElevation": true,
+      "palette": { "top": "#6b5a4a", "topAlt": "#5a7a4a", "topDark": "#584232", "highlight": "#7a9e5a" }
+    },
+    "rubble": {
+      "id": "rubble",
+      "name": "Rubble",
+      "defense": 1,
+      "moveCost": { "foot": 1, "mech": 1, "tread": 2, "tires": 3, "air": 1, "sea": null, "lander": null },
+      "renderMode": "voxel",
+      "voxelModel": "rubble",
+      "supportsElevation": true,
+      "palette": { "top": "#7d8572", "topAlt": "#9e9788", "topDark": "#525b64", "highlight": "#8c96a0" }
+    },
+    "silo": {
+      "id": "silo",
+      "name": "Missile Silo",
+      "defense": 3,
+      "moveCost": { "foot": 1, "mech": 1, "tread": 1, "tires": 1, "air": 1, "sea": null, "lander": null },
+      "renderMode": "voxel",
+      "voxelModel": "silo",
+      "supportsElevation": true,
+      "palette": { "top": "#7c8578", "topAlt": "#98a098", "topDark": "#586064", "highlight": "#e5b93c" }
+    },
+    "silo-spent": {
+      "id": "silo-spent",
+      "name": "Spent Silo",
+      "defense": 3,
+      "moveCost": { "foot": 1, "mech": 1, "tread": 1, "tires": 1, "air": 1, "sea": null, "lander": null },
+      "renderMode": "voxel",
+      "voxelModel": "silo-spent",
+      "supportsElevation": true,
+      "palette": { "top": "#7c8578", "topAlt": "#98a098", "topDark": "#586064", "highlight": "#6b757e" }
+    },
+    "volcano": {
+      "id": "volcano",
+      "name": "Volcano",
+      "defense": 0,
+      "moveCost": { "foot": null, "mech": null, "tread": null, "tires": null, "air": 1, "sea": null, "lander": null },
+      "renderMode": "voxel",
+      "voxelModel": "volcano",
+      "supportsElevation": true,
+      "palette": { "top": "#4a3c2e", "topAlt": "#5c4632", "topDark": "#2c231c", "highlight": "#ff8c3a" }
+    },
+    "secret-lab": {
+      "id": "secret-lab",
+      "name": "Secret Lab",
+      "defense": 3,
+      "moveCost": { "foot": 1, "mech": 1, "tread": 1, "tires": 1, "air": 1, "sea": null, "lander": null },
+      "renderMode": "voxel",
+      "voxelModel": "secret-lab",
+      "supportsElevation": true,
+      "palette": { "top": "#6a7278", "topAlt": "#4c555c", "topDark": "#2b3a3f", "highlight": "#4ac2c9" }
+    },
+    "wall": {
+      "id": "wall",
+      "name": "Concrete Wall",
+      "defense": 4,
+      "moveCost": { "foot": null, "mech": null, "tread": null, "tires": null, "air": 1, "sea": null, "lander": null },
+      "renderMode": "voxel",
+      "voxelModel": "wall-standard",
+      "supportsElevation": true,
+      "palette": { "top": "#5a6352", "topAlt": "#8c9098", "topDark": "#5a5e66", "highlight": "#c2c6ce" }
+    },
+    "wall-gate": {
+      "id": "wall-gate",
+      "name": "Wall Gate",
+      "defense": 3,
+      "moveCost": { "foot": 1, "mech": 1, "tread": 1, "tires": 1, "air": 1, "sea": null, "lander": null },
+      "renderMode": "voxel",
+      "voxelModel": "wall-gate",
+      "supportsElevation": true,
+      "palette": { "top": "#484e56", "topAlt": "#8c9098", "topDark": "#5a5e66", "highlight": "#e5b93c" }
+    }
+  }
+}

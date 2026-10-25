@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Field Command — Isometric Terrain Elevation Editor &amp; Gallery (0..32)</title>
+  <style>
+    :root {
+      --bg: #11161d;
+      --panel: #19212c;
+      --panel-alt: #212b3a;
+      --border: #2e3c50;
+      --accent: #63b3ed;
+      --accent-strong: #f6ad55;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --success: #68d391;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 20px;
+      background: #0d1218;
+      border-bottom: 1px solid var(--border);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .nav-links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 13px;
+      padding: 6px 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--panel);
+    }
+    .nav-links a:hover {
+      background: var(--panel-alt);
+    }
+    .progression-section {
+      padding: 14px 20px;
+      background: var(--panel);
+      border-bottom: 1px solid var(--border);
+    }
+    .progression-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .progression-header h2 {
+      margin: 0;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+    }
+    .progression-grid {
+      display: grid;
+      grid-template-columns: repeat(9, minmax(105px, 1fr));
+      gap: 10px;
+      overflow-x: auto;
+    }
+    .elev-card {
+      background: #131a23;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.15s, transform 0.1s;
+    }
+    .elev-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+    .elev-card.active {
+      border-color: var(--accent-strong);
+      background: #1f2937;
+    }
+    .elev-card .img-box {
+      height: 112px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 6px;
+      background: radial-gradient(circle at 50% 75%, rgba(99,179,237,0.12), transparent 70%);
+      border-radius: 4px;
+      margin-bottom: 6px;
+    }
+    .elev-card img {
+      image-rendering: pixelated;
+      max-width: 100%;
+    }
+    .elev-card .lvl-title {
+      font-weight: 700;
+      font-size: 13px;
+      color: #fff;
+    }
+    .elev-card .lvl-meta {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .workspace {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 16px;
+      padding: 16px 20px;
+      align-items: start;
+    }
+    @media (max-width: 1024px) {
+      .workspace { grid-template-columns: 1fr; }
+    }
+    .sidebar {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .control-group {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+    }
+    .control-group:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .control-group h3 {
+      margin: 0 0 8px 0;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+    }
+    .btn-row, .height-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    button, select {
+      background: var(--panel-alt);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    button:hover {
+      border-color: var(--accent);
+    }
+    button.active {
+      background: #2b4c7e;
+      border-color: var(--accent);
+      color: #fff;
+      font-weight: 600;
+    }
+    button.accent {
+      border-color: var(--accent-strong);
+      color: var(--accent-strong);
+    }
+    .height-pill {
+      min-width: 38px;
+      text-align: center;
+      font-weight: 600;
+    }
+    .height-pill.active {
+      background: #b7791f;
+      border-color: var(--accent-strong);
+      color: #fff;
+    }
+    .field-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 6px;
+      font-size: 12px;
+    }
+    .field-row select {
+      flex: 1;
+    }
+    .canvas-panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .preset-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 14px;
+      background: #141b24;
+      border-bottom: 1px solid var(--border);
+    }
+    .preset-bar span {
+      font-size: 12px;
+      color: var(--muted);
+      margin-right: 4px;
+      font-weight: 600;
+    }
+    .canvas-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at 50% 45%, #1d2838, #0f141c);
+      min-height: 540px;
+      overflow: auto;
+    }
+    canvas {
+      cursor: crosshair;
+      display: block;
+    }
+    .status-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 14px;
+      background: #0d1218;
+      border-top: 1px solid var(--border);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 12px;
+      color: var(--success);
+    }
+    .inspector-box {
+      background: #121820;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 10px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 11.5px;
+      line-height: 1.5;
+      color: #cbd5e1;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Field Command — Multi-Height Terrain Elevation System (0..32 Voxel Z)</h1>
+    </div>
+    <div class="nav-links">
+      <a href="/voxel-sprite-review-improved.html">← Back to Voxel Sprite Reviewer (380 Models)</a>
+    </div>
+  </header>
+
+  <section class="progression-section">
+    <div class="progression-header">
+      <h2>Side-by-Side Voxel Elevation Asset Progression (`elevation-00` through `elevation-32`, 4-Voxel Z Steps)</h2>
+      <span style="font-size:12px;color:var(--muted);">Click any height card below to select that brush height in the editor</span>
+    </div>
+    <div class="progression-grid" id="progressionGrid"></div>
+  </section>
+
+  <main class="workspace">
+    <aside class="sidebar">
+      <div class="control-group">
+        <h3>1. Elevation Height Brush (Voxel Z Units)</h3>
+        <div class="height-pills" id="heightPills"></div>
+        <div class="btn-row" style="margin-top:8px;">
+          <button id="btnResetTile" title="Return selected tile to height 0">Return Tile to 0</button>
+          <button id="btnRaiseTile" title="Increase tile height by +4">+4 Step</button>
+          <button id="btnLowerTile" title="Decrease tile height by -4">-4 Step</button>
+          <button id="btnResetAll" class="accent" title="Return entire map to height 0">Reset Map to 0</button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <h3>2. Editor Tool Mode</h3>
+        <div class="btn-row" id="toolButtons">
+          <button data-tool="paint-elevation" class="active">Paint Height</button>
+          <button data-tool="reset-elevation">Erase Height (0)</button>
+          <button data-tool="raise-elevation">Raise (+4)</button>
+          <button data-tool="lower-elevation">Lower (-4)</button>
+          <button data-tool="paint-terrain">Paint Terrain</button>
+          <button data-tool="place-unit">Place Unit</button>
+          <button data-tool="place-building">Place Building</button>
+          <button data-tool="inspect">Inspect / Pick</button>
+        </div>
+        <div class="field-row" style="margin-top:8px;">
+          <label>Brush Size:</label>
+          <div class="btn-row" id="brushButtons">
+            <button data-brush="1" class="active">1×1</button>
+            <button data-brush="2">2×2</button>
+            <button data-brush="3">3×3</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <h3>3. Terrain Type (Orthogonal to Height)</h3>
+        <div class="field-row">
+          <label for="terrainSelect">Terrain:</label>
+          <select id="terrainSelect"></select>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <h3>4. Units (8-Dir) &amp; Buildings (4-Dir) on Elevated Ground</h3>
+        <div class="field-row">
+          <label for="unitSelect">Unit:</label>
+          <select id="unitSelect">
+            <option value="tank">tank</option>
+            <option value="elite-hero">elite-hero</option>
+            <option value="ifv">ifv</option>
+            <option value="tank-destroyer">tank-destroyer</option>
+            <option value="rocket-infantry">rocket-infantry</option>
+            <option value="commando">commando</option>
+            <option value="artillery">artillery</option>
+            <option value="heavy">heavy</option>
+            <option value="recon">recon</option>
+            <option value="destroyer">destroyer</option>
+            <option value="">(Remove Unit)</option>
+          </select>
+        </div>
+        <div class="field-row">
+          <label for="unitFacingSelect">Unit Facing (8):</label>
+          <select id="unitFacingSelect">
+            <option value="right">right (E)</option>
+            <option value="down-right">down-right (SE)</option>
+            <option value="down">down (S)</option>
+            <option value="down-left">down-left (SW)</option>
+            <option value="left">left (W)</option>
+            <option value="up-left">up-left (NW)</option>
+            <option value="up">up (N)</option>
+            <option value="up-right">up-right (NE)</option>
+          </select>
+        </div>
+        <div class="field-row">
+          <label for="buildingSelect">Building:</label>
+          <select id="buildingSelect">
+            <option value="hq">hq</option>
+            <option value="barracks">barracks</option>
+            <option value="base">base</option>
+            <option value="radar-station">radar-station</option>
+            <option value="guard-tower">guard-tower</option>
+            <option value="bunker">bunker</option>
+            <option value="pillbox">pillbox</option>
+            <option value="sam-site">sam-site</option>
+            <option value="">(Remove Building)</option>
+          </select>
+        </div>
+        <div class="field-row">
+          <label for="buildingFacingSelect">Bldg Facing (4):</label>
+          <select id="buildingFacingSelect">
+            <option value="right">right</option>
+            <option value="up">up</option>
+            <option value="left">left</option>
+            <option value="down">down</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <h3>5. History &amp; Map Serialization</h3>
+        <div class="btn-row">
+          <button id="btnUndo">Undo (Ctrl+Z)</button>
+          <button id="btnRedo">Redo (Ctrl+Y)</button>
+          <button id="btnExportJson">Export JSON</button>
+          <button id="btnImportJson">Import JSON</button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <h3>6. Selected Tile Inspector</h3>
+        <div class="inspector-box" id="tileInspector">Click or hover any tile on the canvas...</div>
+      </div>
+    </aside>
+
+    <section class="canvas-panel">
+      <div class="preset-bar" id="presetBar">
+        <span>Test Scenarios:</span>
+        <button data-preset="showcase" class="active">Showcase Battlefield</button>
+        <button data-preset="flat">Flat Ground (0)</button>
+        <button data-preset="single-raised">Single Raised Tile (16)</button>
+        <button data-preset="plateau">Wide Plateau (20)</button>
+        <button data-preset="staircase">9-Level Staircase (0..32)</button>
+        <button data-preset="equal-neighbors">Equal-Height Neighbours</button>
+        <button data-preset="steep-cliff">Steep 0→32 Cliff</button>
+        <button data-preset="mixed-corners">Mixed-Height Corners</button>
+      </div>
+      <div class="canvas-wrap">
+        <canvas id="isoCanvas" width="960" height="560"></canvas>
+      </div>
+      <div class="status-bar">
+        <span id="statusLeft">Ready</span>
+        <span id="statusRight">Selected Height: 8 vox (elevation-08)</span>
+      </div>
+    </section>
+  </main>
+
+  <script type="module">
+    import {
+      ELEVATION_LEVELS, elevationModelId, exportMapJson, importMapJson,
+    } from './src/iso.js';
+    import { renderIso } from './src/iso-renderer.js';
+    import { MapElevationEditor, EDITOR_TERRAINS, createPresetMap } from './src/map-editor.js';
+
+    const editor = new MapElevationEditor(createPresetMap('showcase'));
+    let manifest = null;
+    try {
+      const res = await fetch('game_assets/voxels/sheets/manifest.json');
+      if (res.ok) manifest = await res.json();
+    } catch {}
+
+    // 1. Populate Side-by-Side Progression Gallery (0..32)
+    const progGrid = document.getElementById('progressionGrid');
+    function renderProgressionCards() {
+      progGrid.innerHTML = '';
+      for (const h of ELEVATION_LEVELS) {
+        const id = elevationModelId(h);
+        const mInfo = manifest?.models?.[id]?.right;
+        const card = document.createElement('div');
+        card.className = 'elev-card' + (editor.selectedHeight === h ? ' active' : '');
+        card.dataset.height = String(h);
+        card.innerHTML = `
+          <div class="img-box">
+            <img src="game_assets/voxels/${id}.png" alt="${id}" />
+          </div>
+          <div class="lvl-title">Z = ${h} (${id})</div>
+          <div class="lvl-meta">
+            Offset: -${h * 0.5}px Y<br/>
+            ${mInfo ? `Sheet: ${mInfo.width}×${mInfo.height} (ay=${mInfo.anchorY})` : '64×32 iso footprint'}
+          </div>
+        `;
+        card.addEventListener('click', () => {
+          editor.selectHeight(h);
+          editor.selectTool('paint-elevation');
+          syncControls();
+        });
+        progGrid.appendChild(card);
+      }
+    }
+
+    // 2. Populate Height Pills
+    const heightPills = document.getElementById('heightPills');
+    for (const h of ELEVATION_LEVELS) {
+      const btn = document.createElement('button');
+      btn.className = 'height-pill' + (editor.selectedHeight === h ? ' active' : '');
+      btn.dataset.height = String(h);
+      btn.textContent = String(h);
+      btn.addEventListener('click', () => {
+        editor.selectHeight(h);
+        editor.selectTool('paint-elevation');
+        syncControls();
+      });
+      heightPills.appendChild(btn);
+    }
+
+    // 3. Populate Terrain Select
+    const terrainSelect = document.getElementById('terrainSelect');
+    for (const t of EDITOR_TERRAINS) {
+      const opt = document.createElement('option');
+      opt.value = t;
+      opt.textContent = t;
+      terrainSelect.appendChild(opt);
+    }
+    terrainSelect.addEventListener('change', () => {
+      editor.selectTerrain(terrainSelect.value);
+      editor.selectTool('paint-terrain');
+      syncControls();
+    });
+
+    // 4. Tool & Brush Buttons
+    document.querySelectorAll('#toolButtons button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        editor.selectTool(btn.dataset.tool);
+        syncControls();
+      });
+    });
+    document.querySelectorAll('#brushButtons button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        editor.setBrushSize(Number(btn.dataset.brush));
+        syncControls();
+      });
+    });
+
+    // 5. Unit & Building Controls
+    const unitSelect = document.getElementById('unitSelect');
+    const unitFacingSelect = document.getElementById('unitFacingSelect');
+    const buildingSelect = document.getElementById('buildingSelect');
+    const buildingFacingSelect = document.getElementById('buildingFacingSelect');
+    unitSelect.addEventListener('change', () => {
+      editor.selectedUnitType = unitSelect.value;
+      editor.selectTool('place-unit');
+      syncControls();
+    });
+    unitFacingSelect.addEventListener('change', () => {
+      editor.selectedUnitFacing = unitFacingSelect.value;
+      editor.selectTool('place-unit');
+      syncControls();
+    });
+    buildingSelect.addEventListener('change', () => {
+      editor.selectedBuildingType = buildingSelect.value;
+      editor.selectTool('place-building');
+      syncControls();
+    });
+    buildingFacingSelect.addEventListener('change', () => {
+      editor.selectedBuildingFacing = buildingFacingSelect.value;
+      editor.selectTool('place-building');
+      syncControls();
+    });
+
+    // 6. Quick Elevation Action Buttons
+    document.getElementById('btnResetTile').addEventListener('click', () => {
+      if (editor.selectedTile) {
+        editor.resetTileElevation(editor.selectedTile.x, editor.selectedTile.y);
+        syncControls();
+      }
+    });
+    document.getElementById('btnRaiseTile').addEventListener('click', () => {
+      if (editor.selectedTile) {
+        editor.stepTileElevation(editor.selectedTile.x, editor.selectedTile.y, +1);
+        syncControls();
+      }
+    });
+    document.getElementById('btnLowerTile').addEventListener('click', () => {
+      if (editor.selectedTile) {
+        editor.stepTileElevation(editor.selectedTile.x, editor.selectedTile.y, -1);
+        syncControls();
+      }
+    });
+    document.getElementById('btnResetAll').addEventListener('click', () => {
+      editor.resetAllElevation();
+      syncControls();
+    });
+
+    // 7. Undo / Redo / JSON
+    document.getElementById('btnUndo').addEventListener('click', () => {
+      editor.undo();
+      syncControls();
+    });
+    document.getElementById('btnRedo').addEventListener('click', () => {
+      editor.redo();
+      syncControls();
+    });
+    document.getElementById('btnExportJson').addEventListener('click', () => {
+      const json = exportMapJson(editor.map, true);
+      const blob = new Blob([json], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `${editor.map.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.json`;
+      a.click();
+    });
+    document.getElementById('btnImportJson').addEventListener('click', () => {
+      const raw = prompt('Paste exported map JSON:');
+      if (!raw) return;
+      try {
+        editor.map = importMapJson(raw);
+        syncControls();
+      } catch (err) {
+        alert('Map validation error: ' + err.message);
+      }
+    });
+
+    window.addEventListener('keydown', e => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') {
+        e.preventDefault();
+        if (e.shiftKey) editor.redo();
+        else editor.undo();
+        syncControls();
+      } else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'y') {
+        e.preventDefault();
+        editor.redo();
+        syncControls();
+      }
+    });
+
+    // 8. Preset Scenario Buttons
+    document.querySelectorAll('#presetBar button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#presetBar button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        editor.loadPreset(btn.dataset.preset);
+        syncControls();
+      });
+    });
+
+    // 9. Canvas Pointer & Touch Interactions
+    const canvas = document.getElementById('isoCanvas');
+    const ctx = canvas.getContext('2d');
+    const ORIGIN_X = 480;
+    const ORIGIN_Y = 125;
+    const ZOOM = 1.35;
+    let isPointerDown = false;
+
+    function canvasCoords(e) {
+      const rect = canvas.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      return {
+        x: (clientX - rect.left) * (canvas.width / rect.width),
+        y: (clientY - rect.top) * (canvas.height / rect.height),
+      };
+    }
+
+    canvas.addEventListener('mousedown', e => {
+      isPointerDown = true;
+      editor.beginStroke();
+      const pt = canvasCoords(e);
+      editor.handlePointerAtScreen(pt.x, pt.y, { originX: ORIGIN_X, originY: ORIGIN_Y, zoom: ZOOM, apply: true });
+      syncControls();
+    });
+    canvas.addEventListener('mousemove', e => {
+      const pt = canvasCoords(e);
+      editor.handlePointerAtScreen(pt.x, pt.y, { originX: ORIGIN_X, originY: ORIGIN_Y, zoom: ZOOM, apply: isPointerDown });
+      updateInspectorUI();
+    });
+    window.addEventListener('mouseup', () => {
+      if (isPointerDown) {
+        isPointerDown = false;
+        editor.endStroke();
+        syncControls();
+      }
+    });
+
+    canvas.addEventListener('touchstart', e => {
+      e.preventDefault();
+      isPointerDown = true;
+      editor.beginStroke();
+      const pt = canvasCoords(e);
+      editor.handlePointerAtScreen(pt.x, pt.y, { originX: ORIGIN_X, originY: ORIGIN_Y, zoom: ZOOM, apply: true });
+      syncControls();
+    }, { passive: false });
+    canvas.addEventListener('touchmove', e => {
+      e.preventDefault();
+      const pt = canvasCoords(e);
+      editor.handlePointerAtScreen(pt.x, pt.y, { originX: ORIGIN_X, originY: ORIGIN_Y, zoom: ZOOM, apply: true });
+      updateInspectorUI();
+    }, { passive: false });
+    window.addEventListener('touchend', () => {
+      if (isPointerDown) {
+        isPointerDown = false;
+        editor.endStroke();
+        syncControls();
+      }
+    });
+
+    function updateInspectorUI() {
+      const target = editor.hoveredTile ?? editor.selectedTile ?? { x: 0, y: 0 };
+      const info = editor.inspectTile(target.x, target.y);
+      if (!info) return;
+      document.getElementById('statusLeft').textContent = info.statusText;
+      document.getElementById('statusRight').textContent =
+        `Tool: ${editor.selectedTool} | Brush Height: ${editor.selectedHeight} vox (${elevationModelId(editor.selectedHeight)})`;
+      document.getElementById('tileInspector').innerHTML = [
+        `<strong>Tile:</strong> (${info.x}, ${info.y}) &nbsp; <strong>Map:</strong> ${editor.map.name}`,
+        `<strong>Terrain ID:</strong> ${info.terrain} &nbsp; <strong>Height:</strong> ${info.elevation} vox (${info.elevationModel})`,
+        `<strong>Cliff N:</strong> diff=${info.edges.north.diff} (${info.edges.north.owner ?? 'flat'}) &nbsp; <strong>Cliff E:</strong> diff=${info.edges.east.diff} (${info.edges.east.owner ?? 'flat'})`,
+        `<strong>Cliff S:</strong> diff=${info.edges.south.diff} (${info.edges.south.owner ?? 'flat'}) &nbsp; <strong>Cliff W:</strong> diff=${info.edges.west.diff} (${info.edges.west.owner ?? 'flat'})`,
+        `<strong>Unit:</strong> ${info.unit ? `${info.unit.type} (${info.unit.facing}, ${info.unit.army})` : 'none'}`,
+        `<strong>Building:</strong> ${info.building ? `${info.building.type} (${info.building.facing})` : 'none'}`,
+      ].join('<br/>');
+    }
+
+    function syncControls() {
+      document.querySelectorAll('#heightPills .height-pill').forEach(b => {
+        b.classList.toggle('active', Number(b.dataset.height) === editor.selectedHeight);
+      });
+      document.querySelectorAll('#toolButtons button').forEach(b => {
+        b.classList.toggle('active', b.dataset.tool === editor.selectedTool);
+      });
+      document.querySelectorAll('#brushButtons button').forEach(b => {
+        b.classList.toggle('active', Number(b.dataset.brush) === editor.brushSize);
+      });
+      renderProgressionCards();
+      updateInspectorUI();
+    }
+
+    function loop(now) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      renderIso(ctx, editor.map, {
+        manifest,
+        originX: ORIGIN_X,
+        originY: ORIGIN_Y,
+        zoom: ZOOM,
+        timeMs: now,
+        selectedTile: editor.selectedTile,
+        hoveredTile: editor.hoveredTile,
+      });
+      requestAnimationFrame(loop);
+    }
+
+    syncControls();
+    requestAnimationFrame(loop);
+  </script>
+</body>
+</html>
