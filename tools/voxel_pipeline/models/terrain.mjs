@@ -465,16 +465,189 @@ export function terrainVoxels(c, id, pose) {
       if (((x+y)%5)<2) c.put(x, y, 1, '#6e9ba8');
     }
   
-  } else if (id === 'wall-standard' || id === 'wall-allies' || id === 'wall-soviets' || id === 'wall-empire' || id === 'wall-legion') {
-    const fac = id === 'wall-allies' ? '#7d8a5a' : id === 'wall-soviets' ? '#7a3b30' : id === 'wall-empire' ? '#cfc9b6' : id === 'wall-legion' ? '#a58a5a' : '#8a7a5a';
-    c.box(0, 0, 0, 64, 64, 2, '#6b6450');
-    c.box(12, 10, 2, 52, 54, 6, fac);
-    c.box(14, 14, 6, 26, 26, 10, '#5a5040');
-    c.box(38, 14, 6, 50, 26, 10, '#5a5040');
-    c.box(28, 28, 4, 36, 36, 8, '#4a4030');
-    // Team-colored accent strip
-    c.box(14, 56, 2, 50, 58, 4, fac);
-  
+  } else if (id.startsWith('wall-')) {
+    // Tall fortified reinforced concrete walls (z = 0..38):
+    //   -wall-standard, wall-allies, wall-soviets, wall-empire, wall-legion
+    //   -wall-end, wall-corner, wall-t, wall-cross
+    const themes = {
+      'wall-standard': {
+        concrete: '#8c9098', coping: '#a8acb4', top: '#c2c6ce',
+        seam: '#6c7078', plinth: '#5a5e66', base: '#3e4248',
+        buttress: '#747880', trim: '#555962', accent: '#d8a032',
+      },
+      'wall-allies': {
+        concrete: '#9098a2', coping: '#b2bac4', top: '#d0d8e2',
+        seam: '#6e7680', plinth: '#58606a', base: '#3c424a',
+        buttress: '#76808a', trim: '#3b6ea5', accent: '#dce4ec',
+      },
+      'wall-soviets': {
+        concrete: '#86807a', coping: '#a29c94', top: '#bab4ac',
+        seam: '#68625c', plinth: '#544e4a', base: '#3a3634',
+        buttress: '#6e6862', trim: '#a83228', accent: '#e0b94a',
+      },
+      'wall-empire': {
+        concrete: '#989ea8', coping: '#bac2ce', top: '#d6dde8',
+        seam: '#767c86', plinth: '#5e646e', base: '#404650',
+        buttress: '#808690', trim: '#2f4a7a', accent: '#d4a238',
+      },
+      'wall-legion': {
+        concrete: '#6c6e76', coping: '#888c96', top: '#a4a8b2',
+        seam: '#52545c', plinth: '#42444c', base: '#2e3036',
+        buttress: '#5a5c64', trim: '#962c3c', accent: '#c4aa78',
+      },
+    };
+    const T = themes[id] ?? themes['wall-standard'];
+
+    // Subtle ground turf + gravel drainage bed across the 64×64 tile
+    c.box(0, 0, 0, 64, 64, 2, '#5a6352');
+
+    // Helper: draw a tall concrete wall arm along X from x0 to x1 (centered at y=32)
+    const concreteArmX = (x0, x1, buttressXs = []) => {
+      // Concrete foundation apron & stepped plinth (z = 2..7)
+      c.box(x0, 18, 1, x1, 46, 3, T.base);
+      c.box(x0, 20, 3, x1, 44, 6, T.plinth);
+      c.box(x0, 22, 6, x1, 42, 8, T.buttress);
+      // Tall poured-concrete curtain wall shaft (z = 8..30, 16 voxels thick)
+      c.box(x0, 24, 8, x1, 40, 30, T.concrete);
+      // Horizontal cast-concrete form seams & tie-rod holes
+      c.box(x0, 23, 14, x1, 41, 15, T.seam);
+      c.box(x0, 23, 23, x1, 41, 24, T.seam);
+      for (let x = x0 + 3; x < x1 - 2; x += 6) {
+        c.put(x, 23, 11, T.base);
+        c.put(x, 40, 11, T.base);
+        c.put(x, 23, 26, T.base);
+        c.put(x, 40, 26, T.base);
+      }
+      // Faction reinforced band along both vertical faces (z = 17..21)
+      c.box(x0, 23, 17, x1, 25, 21, T.trim);
+      c.box(x0, 39, 17, x1, 41, 21, T.trim);
+      c.box(x0, 23, 18, x1, 24, 20, T.accent);
+      c.box(x0, 40, 18, x1, 41, 20, T.accent);
+      // Cantilevered concrete cornice / coping overhang (z = 30..33)
+      c.box(x0, 21, 30, x1, 43, 32, T.coping);
+      c.box(x0, 22, 32, x1, 42, 33, T.top);
+      // Top recessed parapet walkway + raised concrete blast merlons (z = 33..37)
+      c.box(x0, 25, 33, x1, 39, 34, T.seam);
+      for (let x = x0; x < x1; x++) {
+        const isGap = ((x + 2) % 10) >= 7;
+        const h = isGap ? 35 : 37;
+        c.box(x, 22, 33, x + 1, 26, h, T.coping);
+        c.box(x, 38, 33, x + 1, 42, h, T.coping);
+        c.box(x, 22, h - 1, x + 1, 26, h, T.top);
+        c.box(x, 38, h - 1, x + 1, 42, h, T.top);
+      }
+      // Projecting vertical concrete buttresses / pilasters
+      for (const bx of buttressXs) {
+        c.box(bx, 18, 2, bx + 6, 46, 7, T.base);
+        c.box(bx, 20, 7, bx + 6, 44, 29, T.buttress);
+        c.box(bx + 1, 19, 8, bx + 5, 45, 27, T.concrete);
+        c.box(bx + 1, 19, 17, bx + 5, 45, 21, T.trim);
+        c.box(bx, 20, 29, bx + 6, 44, 34, T.coping);
+        c.box(bx, 21, 34, bx + 6, 43, 38, T.top);
+      }
+    };
+
+    // Helper: draw a tall concrete wall arm along Y from y0 to y1 (centered at x=32)
+    const concreteArmY = (y0, y1, buttressYs = []) => {
+      c.box(18, y0, 1, 46, y1, 3, T.base);
+      c.box(20, y0, 3, 44, y1, 6, T.plinth);
+      c.box(22, y0, 6, 42, y1, 8, T.buttress);
+      c.box(24, y0, 8, 40, y1, 30, T.concrete);
+      c.box(23, y0, 14, 41, y1, 15, T.seam);
+      c.box(23, y0, 23, 41, y1, 24, T.seam);
+      for (let y = y0 + 3; y < y1 - 2; y += 6) {
+        c.put(23, y, 11, T.base);
+        c.put(40, y, 11, T.base);
+        c.put(23, y, 26, T.base);
+        c.put(40, y, 26, T.base);
+      }
+      c.box(23, y0, 17, 25, y1, 21, T.trim);
+      c.box(39, y0, 17, 41, y1, 21, T.trim);
+      c.box(23, y0, 18, 24, y1, 20, T.accent);
+      c.box(40, y0, 18, 41, y1, 20, T.accent);
+      c.box(21, y0, 30, 43, y1, 32, T.coping);
+      c.box(22, y0, 32, 42, y1, 33, T.top);
+      c.box(25, y0, 33, 39, y1, 34, T.seam);
+      for (let y = y0; y < y1; y++) {
+        const isGap = ((y + 2) % 10) >= 7;
+        const h = isGap ? 35 : 37;
+        c.box(22, y, 33, 26, y + 1, h, T.coping);
+        c.box(38, y, 33, 42, y + 1, h, T.coping);
+        c.box(22, y, h - 1, 26, y + 1, h, T.top);
+        c.box(38, y, h - 1, 42, y + 1, h, T.top);
+      }
+      for (const by of buttressYs) {
+        c.box(18, by, 2, 46, by + 6, 7, T.base);
+        c.box(20, by, 7, 44, by + 6, 29, T.buttress);
+        c.box(19, by + 1, 8, 45, by + 5, 27, T.concrete);
+        c.box(19, by + 1, 17, 45, by + 5, 21, T.trim);
+        c.box(20, by, 29, 44, by + 6, 34, T.coping);
+        c.box(21, by, 34, 43, by + 6, 38, T.top);
+      }
+    };
+
+    // Helper: central reinforced concrete bastion tower for junctions/ends
+    const concreteBastion = (r = 12) => {
+      const x0 = 32 - r, x1 = 32 + r, y0 = 32 - r, y1 = 32 + r;
+      c.box(x0 - 3, y0 - 3, 1, x1 + 3, y1 + 3, 4, T.base);
+      c.box(x0 - 2, y0 - 2, 4, x1 + 2, y1 + 2, 8, T.plinth);
+      c.box(x0, y0, 8, x1, y1, 32, T.concrete);
+      // Corner concrete pilasters
+      for (const [px, py] of [[x0 - 1, y0 - 1], [x1 - 3, y0 - 1], [x0 - 1, y1 - 3], [x1 - 3, y1 - 3]]) {
+        c.box(px, py, 6, px + 4, py + 4, 33, T.buttress);
+      }
+      c.box(x0 - 1, y0 - 1, 14, x1 + 1, y1 + 1, 15, T.seam);
+      c.box(x0 - 1, y0 - 1, 23, x1 + 1, y1 + 1, 24, T.seam);
+      c.box(x0 - 1, y0 - 1, 17, x1 + 1, y1 + 1, 21, T.trim);
+      c.box(x0 - 1, y0 - 1, 18, x1 + 1, y1 + 1, 20, T.accent);
+      // Overhanging bastion cornice & crenellated roof parapet (z = 32..39)
+      c.box(x0 - 2, y0 - 2, 32, x1 + 2, y1 + 2, 35, T.coping);
+      c.box(x0 - 2, y0 - 2, 35, x1 + 2, y1 + 2, 37, T.top);
+      c.box(x0 + 2, y0 + 2, 35, x1 - 2, y1 - 2, 37, T.seam);
+      // Raised corner turret merlons up to z = 39
+      for (const [mx, my] of [[x0 - 2, y0 - 2], [x1 - 3, y0 - 2], [x0 - 2, y1 - 3], [x1 - 3, y1 - 3]]) {
+        c.box(mx, my, 37, mx + 5, my + 5, 39, T.top);
+      }
+      c.box(29, 29, 36, 35, 35, 38, T.plinth);
+    };
+
+    if (id === 'wall-end') {
+      concreteArmX(32, 64, [50]);
+      concreteBastion(13);
+    } else if (id === 'wall-corner') {
+      concreteArmX(32, 64, [50]);
+      concreteArmY(32, 64, [50]);
+      concreteBastion(12);
+    } else if (id === 'wall-t') {
+      concreteArmX(0, 64, [8, 50]);
+      concreteArmY(32, 64, [50]);
+      concreteBastion(12);
+    } else if (id === 'wall-cross') {
+      concreteArmX(0, 64, [8, 50]);
+      concreteArmY(0, 64, [8, 50]);
+      concreteBastion(12);
+    } else {
+      // Full straight fortified concrete wall segment (wall-standard & 4 armies)
+      concreteArmX(0, 64, [6, 29, 52]);
+      // Faction architectural crest on the central buttress (x = 28..36)
+      if (id === 'wall-allies') {
+        c.box(28, 19, 14, 36, 45, 25, T.trim);
+        c.box(30, 18, 16, 34, 46, 23, T.accent);
+        c.box(28, 20, 34, 36, 44, 39, T.accent);
+      } else if (id === 'wall-soviets') {
+        c.box(27, 19, 13, 37, 45, 26, T.trim);
+        c.box(30, 18, 16, 34, 46, 23, T.accent);
+        c.box(28, 20, 34, 36, 44, 39, T.trim);
+      } else if (id === 'wall-empire') {
+        c.box(28, 19, 12, 36, 45, 28, T.trim);
+        c.box(31, 18, 14, 33, 46, 26, T.accent);
+        c.box(27, 19, 34, 37, 45, 39, T.accent);
+      } else if (id === 'wall-legion') {
+        c.box(28, 19, 12, 36, 45, 27, T.trim);
+        c.box(29, 18, 15, 35, 46, 24, T.accent);
+        c.box(28, 20, 34, 36, 44, 39, T.trim);
+      }
+    }
   } else {
     // Road connector variants: 24-voxel wide thoroughfare centred on the tile.
     const mask = Number.parseInt(id.split('-')[1], 16) & 15;

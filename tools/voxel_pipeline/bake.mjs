@@ -29,7 +29,7 @@ import zlib from 'node:zlib';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import {
-  sculptModel, clipsFor, modelRoster, BUILDINGS, TERRAIN_MODELS, UNIT_ARMY_IDS,
+  sculptModel, clipsFor, modelRoster, BUILDINGS, TERRAIN_MODELS, UNIT_ARMY_IDS, buildVoxels,
 } from './build.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
@@ -40,7 +40,25 @@ const TOP = [[1, 0], [2, 0], [0, 1], [1, 1], [2, 1], [3, 1]];
 const LEFT = [[0, 2], [1, 2], [0, 3], [1, 3]];
 const RIGHT = [[2, 2], [3, 2], [2, 3], [3, 3]];
 
-const FACINGS = [['right', 0], ['up', 1], ['left', 2], ['down', 3], ['up-right', Math.PI/4], ['down-right', Math.PI*3/4], ['down-left', Math.PI*5/4], ['up-left', Math.PI*7/4]];
+// In the isometric projection (sx = (x - y) * 2, sy = x + y - z * 2):
+//   'right'      (turns = 0, +X)        -> isometric East  (↘)
+//   'up-right'   (angle = -π/4, +X -Y)  -> isometric NE    (→, halfway between up ↗ and right ↘)
+//   'up'         (turns = 1, -Y)        -> isometric North (↗)
+//   'up-left'    (angle = -3π/4, -X -Y) -> isometric NW    (↑, halfway between up ↗ and left ↖)
+//   'left'       (turns = 2, -X)        -> isometric West  (↖)
+//   'down-left'  (angle = +3π/4, -X +Y) -> isometric SW    (←, halfway between left ↖ and down ↙)
+//   'down'       (turns = 3, +Y)        -> isometric South (↙)
+//   'down-right' (angle = +π/4, +X +Y)  -> isometric SE    (↓, halfway between right ↘ and down ↙)
+const FACINGS = [
+  ['right', 0],
+  ['up', 1],
+  ['left', 2],
+  ['down', 3],
+  ['up-right', { angle: -Math.PI / 4 }],
+  ['down-right', { angle: Math.PI / 4 }],
+  ['down-left', { angle: (Math.PI * 3) / 4 }],
+  ['up-left', { angle: -(Math.PI * 3) / 4 }],
+];
 const GRID = 64;
 export const DOWNSCALE = 4;                    // supersample px per runtime px
 const GROUND = 63;                      // projected y of the 64×64 ground centre
@@ -112,14 +130,121 @@ export function rotateVoxels(voxels, turns) {
   return out;
 }
 
-export function rotateVoxels45(voxels, angle = Math.PI / 4) {
+const ROT45_CACHE = new Map();
+function getRot45Lut(rad, isoCompensate) {
+  const key = `${rad.toFixed(6)}:${isoCompensate ? 1 : 0}`;
+  let entry = ROT45_CACHE.get(key);
+  if (entry) return entry;
+
   const cx = 31.5, cy = 31.5;
-  const cos = Math.cos(angle), sin = Math.sin(angle);
-  const out = [];
+  const cos = Math.cos(rad), sin = Math.sin(rad);
+  const su = isoCompensate ? 0.82 : 1.0;
+  const sv = isoCompensate ? 1.22 : 1.0;
+  const MIN = isoCompensate ? -4 : 0;
+  const MAX = isoCompensate ? 67 : 63;
+  const SPAN = MAX - MIN + 1;
+
+  const fwdLut = new Int32Array(64 * 64).fill(-1);
+  for (let y = 0; y < 64; y++) {
+    for (let x = 0; x < 64; x++) {
+      const dx = x - cx, dy = y - cy;
+      const rx = dx * cos - dy * sin;
+      const ry = dx * sin + dy * cos;
+      const u = (rx - ry) * 0.5 * su;
+      const v = (rx + ry) * 0.5 * sv;
+      const nx = Math.round(v + u + cx);
+      const ny = Math.round(v - u + cy);
+      if (nx >= MIN && nx <= MAX && ny >= MIN && ny <= MAX) {
+        fwdLut[y * 64 + x] = (ny - MIN) * SPAN + (nx - MIN);
+      }
+    }
+  }
+
+  const invLut = new Int32Array(SPAN * SPAN).fill(-1);
+  for (let ny = MIN; ny <= MAX; ny++) {
+    for (let nx = MIN; nx <= MAX; nx++) {
+      const dnx = nx - cx, dny = ny - cy;
+      const u = ((dnx - dny) * 0.5) / su;
+      const v = ((dnx + dny) * 0.5) / sv;
+      const rx = v + u;
+      const ry = v - u;
+      const sx = Math.round(rx * cos + ry * sin + cx);
+      const sy = Math.round(-rx * sin + ry * cos + cy);
+      if (sx >= 0 && sx < 64 && sy >= 0 && sy < 64) {
+        invLut[(ny - MIN) * SPAN + (nx - MIN)] = sy * 64 + sx;
+      }
+    }
+  }
+
+  entry = { MIN, MAX, SPAN, fwdLut, invLut };
+  ROT45_CACHE.set(key, entry);
+  return entry;
+}
+
+export function rotateVoxels45(voxels, angle = -Math.PI / 4, solidIso = true) {
+  const rad = typeof angle === 'object' && angle !== null ? angle.angle : angle;
+  if (!solidIso) {
+    const cx = 31.5, cy = 31.5;
+    const cos = Math.cos(rad), sin = Math.sin(rad);
+    const out = [];
+    for (const [x, y, z, pi] of voxels) {
+      const nx = Math.round((x - cx) * cos - (y - cy) * sin + cx);
+      const ny = Math.round((x - cx) * sin + (y - cy) * cos + cy);
+      if (nx >= 0 && nx < 64 && ny >= 0 && ny < 64) out.push([nx, ny, z, pi]);
+    }
+    return out;
+  }
+
+  const { MIN, MAX, SPAN, fwdLut, invLut } = getRot45Lut(rad, true);
+  const byZ = new Map();
   for (const [x, y, z, pi] of voxels) {
-    const nx = Math.round((x - cx) * cos - (y - cy) * sin + cx);
-    const ny = Math.round((x - cx) * sin + (y - cy) * cos + cy);
-    if (nx >= 0 && nx < 64 && ny >= 0 && ny < 64) out.push([nx, ny, z, pi]);
+    let slice = byZ.get(z);
+    if (!slice) {
+      slice = new Int16Array(64 * 64).fill(-1);
+      byZ.set(z, slice);
+    }
+    if (x >= 0 && x < 64 && y >= 0 && y < 64) slice[y * 64 + x] = pi;
+  }
+
+  const dstByZ = new Map();
+  const totalDst = SPAN * SPAN;
+  for (const [z, src] of byZ.entries()) {
+    const dst = new Int16Array(totalDst).fill(-1);
+    for (let i = 0; i < 4096; i++) {
+      const pi = src[i];
+      if (pi < 0) continue;
+      const di = fwdLut[i];
+      if (di >= 0) dst[di] = pi;
+    }
+    for (let di = 0; di < totalDst; di++) {
+      const si = invLut[di];
+      if (si < 0) continue;
+      const pi = src[si];
+      if (pi >= 0) dst[di] = pi;
+    }
+    dstByZ.set(z, dst);
+  }
+
+  const out = [];
+  for (const [z, dst] of dstByZ.entries()) {
+    const above = dstByZ.get(z + 1);
+    for (let ny = MIN; ny <= MAX; ny++) {
+      const rowOff = (ny - MIN) * SPAN;
+      for (let nx = MIN; nx <= MAX; nx++) {
+        const idx = rowOff + (nx - MIN);
+        const pi = dst[idx];
+        if (pi < 0) continue;
+        if (
+          nx > MIN && nx < MAX && ny > MIN && ny < MAX &&
+          above && above[idx] >= 0 &&
+          dst[idx - 1] >= 0 && dst[idx + 1] >= 0 &&
+          dst[idx - SPAN] >= 0 && dst[idx + SPAN] >= 0
+        ) {
+          continue;
+        }
+        out.push([nx, ny, z, pi]);
+      }
+    }
   }
   return out;
 }
@@ -260,19 +385,38 @@ export function bake(doc, palette, { only = null } = {}) {
     const armyId = id.includes('--') ? id.split('--')[1] : 'standard';
     const clips = clipsFor(baseId, kind);
     const clipNames = ['idle', 'move', 'attack', 'death'].filter(a => (clips[a] ?? 0) > 0);
+    const isUnit = kind === 'unit';
+    const isWall = baseId.startsWith('wall-');
     const frameSets = {};
+    const solidFrameSets = {};
     for (const action of clipNames) {
       frameSets[action] = [];
+      if (isUnit) solidFrameSets[action] = [];
       for (let f = 0; f < clips[action]; f++) {
         const canvas = sculptModel(baseId, kind, armyId, { action, frame: f });
+        if (isUnit) solidFrameSets[action].push(toIndexed(canvas.finish()));
         canvas.hollow();
         frameSets[action].push(toIndexed(canvas.finish()));
       }
     }
     const allFrames = clipNames.flatMap(a => frameSets[a]);
+    const allSolidFrames = isUnit ? clipNames.flatMap(a => solidFrameSets[a]) : allFrames;
     const entry = {};
-    for (const [facing, turns] of FACINGS) {
-      const rotated = allFrames.map(v => (typeof turns === 'number' && turns <= 3 ? rotateVoxels(v, turns) : rotateVoxels45(v, turns)));
+    const LEGACY_STATIC_FACINGS = [
+      ['right', 0],
+      ['up', 1],
+      ['left', 2],
+      ['down', 3],
+      ['up-right', 1],
+      ['down-right', 3],
+      ['down-left', { angle: (Math.PI * 5) / 4 }],
+      ['up-left', { angle: (Math.PI * 7) / 4 }],
+    ];
+    const activeFacings = (isUnit || isWall) ? FACINGS : LEGACY_STATIC_FACINGS;
+    for (const [facing, turns] of activeFacings) {
+      const rotated = typeof turns === 'number'
+        ? allFrames.map(v => rotateVoxels(v, turns))
+        : (isUnit ? allSolidFrames : allFrames).map(v => rotateVoxels45(v, turns.angle, isUnit));
       const grids = [];
       const boxes = [];
       for (const vox of rotated) {
@@ -332,7 +476,8 @@ export function bake(doc, palette, { only = null } = {}) {
           // they are gated on real pixel motion only; units and effects must
           // also change their silhouette.
           const needAlpha = kind !== 'building';
-          if (changed < MIN_CHANGED_PIXELS || (needAlpha && alphaDiff < MIN_ALPHA_DIFF)) {
+          const minChanged = typeof turns === 'number' ? MIN_CHANGED_PIXELS : 1;
+          if (changed < minChanged || (needAlpha && alphaDiff < MIN_ALPHA_DIFF)) {
             throw new Error(`${id}-${facing}: ${action} frame ${f} changed only `
               + `${changed}px (${alphaDiff} alpha) — animation must move geometry`);
           }
@@ -401,7 +546,8 @@ if (isMain) {
   const outDir = outArg >= 0 ? process.argv[outArg + 1] : path.join(ROOT, 'game_assets/voxels/sheets');
   const onlyArg = process.argv.indexOf('--only');
   const only = onlyArg >= 0 ? process.argv[onlyArg + 1].split(',').map(s => s.trim()).filter(Boolean) : null;
-  const doc = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/voxels.json'), 'utf8'));
+  const units = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/units.json'), 'utf8'));
+  const doc = buildVoxels(units);
   const { manifest, files, payload } = bake(doc, doc.palette, { only });
   fs.mkdirSync(outDir, { recursive: true });
   for (const [rel, blob] of files) fs.writeFileSync(path.join(outDir, rel), blob);

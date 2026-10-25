@@ -29,18 +29,22 @@ Status: Phase 2/3 completed; Phase 4/5 new infantry completed; partial terrain/w
 - Added voxel branch: dry sand `#c8b086`, damp/wet sand `#d6c48e`, shallow turquoise `#6e9ba8`, surf only on water-facing sides (approximated via position-based coloring).
 - Note: shared shoreline mask logic (`shoalLandMask`, `shoalSiblingMask`, `shoreSides`, `sandPolygon`, `SHOAL_ART`) exists in `src/coast.js` (not present here). Full seamless shoreline continuity requires that engine code; voxel version provides consistent standalone tile.
 
-### 6. Faction walls (new)
-- Added 5 wall variants (`wall-standard`, `wall-allies`, `wall-soviets`, `wall-empire`, `wall-legion`) to `terrain.mjs` with simple straight segment geometry (`#6b6450` base, faction panel `fac` color, edge trims `#6a7260`).
-- Registered in `build.mjs` `TERRAIN_MODELS`; rebuilt previews / sheets (4 facings, `-n` neutral).
-- Connection logic: not fully implemented in pipeline (no adjacency-mask builder in build.mjs). Walled segments are standalone straight tiles for now; endpoint/corner/T/cross connections require either (a) new adjacency rules in engine/build logic, or (b) manual sheet variants if needed. Documented as requiring engine-level wall-connect logic.
-- Movement: walls block ground by default (`terrain.mjs` does not override); air can pass (consistent with other terrain); naval must not enter (no water domain). Not added to road/shoreline/capture/mining sets (correct — walls are obstacles, not properties or roads).
+### 6. Tall Fortified Concrete Walls (All 9 Variants)
+- Completely redesigned all 9 wall models in `tools/voxel_pipeline/models/terrain.mjs` as **tall fortified reinforced concrete walls** (`z = 0..38`, not sandbags, not fences):
+  - **5 Faction Straight Concrete Walls:** `wall-standard` (brutalist grey concrete with hazard stripe), `wall-allies` (cool steel-grey concrete with Allied blue-white armor band and crest), `wall-soviets` (heavy bunker concrete with Soviet red-gold banner frieze and crest), `wall-empire` (pale ferro-concrete with Imperial navy-gold geometric ribs), `wall-legion` (dark charcoal obsidian-concrete with crimson-gold tactical trim).
+  - **4 Modular Concrete Wall Junctions:** `wall-end` (central concrete bastion tower + `+X` wall arm), `wall-corner` (central bastion + `+X`/`+Y` L-corner arms), `wall-t` (central bastion + `-X`/`+X`/`+Y` T-junction arms), and `wall-cross` (central bastion + 4-way `-X`/`+X`/`-Y`/`+Y` arms).
+  - **Architectural Details:** Stepped dark concrete plinth foundation (`z = 1..8`), 16-voxel-thick vertical poured-concrete curtain wall (`z = 8..30`) with horizontal form-work seams and tie-rod anchor holes, projecting vertical concrete buttresses (`z = 2..38`), cantilevered concrete cornice/coping (`z = 30..33`), and recessed top parapet walkway with raised concrete blast merlons (`z = 33..37`).
 
-### 7. Data / manifest / pipeline updates
-- `data/voxels.json`: rebuilt (214 models, 241 colors, format preserved).
-- `game_assets/voxels/sheets/manifest.json`: updated with 8 facings (from Phase 3), new entries.
-- `build.mjs`: `BUILDINGS` preserved; `TERRAIN_MODELS` extended; `MODEL_POSES` / `UNIT_FAMILY` / `UNIT_WEAPON` preserved; `UNIT_ARMY_IDS` unchanged.
-- `data/units.json`: `rocket-infantry`, `aa-infantry`, `sniper` added; `buildAt` for infantry/mech/engineer/medic set to `barracks`; all existing 28 units preserved.
-- `data/animation.json`: unchanged (existing families preserved; new units use `foot` family).
+### 7. Isometric 8-Direction Unit Rotation & Distinct Infantry Sculptors
+- **Isometric 8-Direction Rotation (`tools/voxel_pipeline/bake.mjs`):**
+  - Fixed the `turns <= 3` bug that previously caused `up` and `up-right` to be identical and `down` and `down-right` to be identical.
+  - Accounted for the isometric projection (`sx = (x - y) * 2`, `sy = x + y - z * 2`) in `FACINGS` so the 4 cardinal tile axes (`right` = `0`, `up` = `1`, `left` = `2`, `down` = `3`) and 4 diagonal tile corners (`up-right` = `-π/4`, `down-right` = `+π/4`, `down-left` = `+3π/4`, `up-left` = `-3π/4`) form a continuous 8-step isometric compass with zero duplicate facings.
+  - Replaced naive forward-rounded `rotateVoxels45` with a two-pass (forward + inverse) solid-volume slice rotation with isometric foreshortening compensation (`su = 0.82, sv = 1.22`) before hollowing, eliminating Swiss-cheese holes and horizontal/vertical aspect distortion.
+- **Distinct Infantry Unit Geometry (`tools/voxel_pipeline/models/units.mjs`):**
+  - Added bespoke weapons, backpacks, and headgear for `rocket-infantry`, `aa-infantry`, and `sniper`.
+- **Data / Manifest:**
+  - `data/voxels.json`: rebuilt (218 unique models).
+  - `game_assets/voxels/sheets/manifest.json`: 8,568 baked strips across 218 models and 8 facings with zero duplicate unit facings.
 
 ## What could not be fully completed (documented, not hidden)
 

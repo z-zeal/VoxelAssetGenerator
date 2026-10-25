@@ -97,7 +97,8 @@ function wake(c, bowX, sternX, y0, y1, pose) {
 /* ------------------------------------------------------------- foot units -- */
 function footUnit(c, id, pose) {
   const isMech = id === 'mech', isEng = id === 'engineer', isMed = id === 'medic';
-  const vest = isMech ? PLATE : isMed ? '#d8dede' : TEAM;
+  const isRocket = id === 'rocket-infantry', isAA = id === 'aa-infantry', isSniper = id === 'sniper';
+  const vest = isMech || isRocket ? PLATE : isAA ? '#4a5245' : isSniper ? '#5e6a4e' : isMed ? '#d8dede' : TEAM;
   // Legs: separated boots + trousers, tagged for the gait.
   c.group('legL');
   c.box(20, 20, 0, 27, 29, 3, RUBBER);
@@ -122,6 +123,21 @@ function footUnit(c, id, pose) {
     c.box(14, 24, 18, 19, 40, 28, '#dfe6ea');       // aid satchel
     c.box(15, 30, 28, 18, 34, 29, '#d94b38');       // red cross
     c.box(16, 26, 22, 17, 38, 24, '#d94b38');
+  } else if (isRocket) {
+    c.box(13, 22, 18, 19, 42, 30, '#4a5245');       // RPG quiver pack
+    c.box(14, 25, 30, 18, 29, 36, '#5e6a4e');       // spare rocket tube L
+    c.box(14, 35, 30, 18, 39, 36, '#5e6a4e');       // spare rocket tube R
+    c.box(14, 25, 36, 18, 29, 39, '#d94b38');       // spare warhead tip L
+    c.box(14, 35, 36, 18, 39, 39, '#d94b38');       // spare warhead tip R
+  } else if (isAA) {
+    c.box(12, 22, 18, 19, 42, 31, STEEL);           // MANPADS battery & IFF pack
+    c.box(13, 24, 31, 17, 28, 44, GUN);             // vertical whip radar mast
+    c.box(12, 23, 44, 18, 29, 46, '#e8c468');       // sensor tip
+    c.box(13, 34, 31, 18, 40, 35, '#5fc4e8');       // coolant cell
+  } else if (isSniper) {
+    c.box(15, 22, 18, 19, 42, 30, '#4a5245');       // ghillie camo cloak
+    c.box(13, 24, 20, 16, 40, 28, '#5e6a4e');       // camo foliage strips
+    c.box(18, 16, 26, 28, 48, 31, '#4a5245');       // ghillie shoulder cape
   } else {
     c.box(14, 24, 18, 19, 40, 30, isMech ? STEEL : CANVAS_C); // field pack
     c.box(14, 26, 30, 18, 38, 31, DARK);
@@ -131,10 +147,18 @@ function footUnit(c, id, pose) {
   c.box(26, 38, 22, 32, 44, 26, SKIN);              // hands
   c.box(22, 24, 30, 28, 40, 38, SKIN);              // head
   c.box(26, 26, 32, 28, 38, 34, '#e8c468');         // face shade
-  c.box(20, 22, 36, 29, 42, 40, DARK);              // helmet rim
-  c.box(21, 23, 40, 28, 41, 44, TEAM);              // helmet crown
-  c.box(24, 26, 44, 27, 37, 45, LIGHT);
-  if (isMech) c.box(27, 26, 32, 30, 38, 36, GLASS); // tactical visor
+  c.box(20, 22, 36, 29, 42, 40, isSniper ? '#4a5245' : DARK); // helmet rim / boonie brim
+  c.box(21, 23, 40, 28, 41, 44, isSniper ? '#5e6a4e' : TEAM); // helmet crown
+  c.box(24, 26, 44, 27, 37, 45, isSniper ? '#4a5245' : LIGHT);
+  if (isMech || isRocket) c.box(27, 26, 32, 30, 38, 36, GLASS); // blast visor
+  if (isAA) {
+    c.box(27, 25, 32, 31, 39, 36, '#5fc4e8');       // AA targeting HUD visor
+    c.box(22, 41, 32, 27, 44, 37, STEEL);           // earcup comms
+  }
+  if (isSniper) {
+    c.box(18, 20, 36, 31, 44, 38, '#4a5245');       // wide ghillie hood brim
+    c.box(27, 28, 33, 30, 36, 35, DARK);            // camo face veil
+  }
   c.pivot('upper', [24, 16]);
   // Weapon group (also the engineer's tools / medic's litter).
   c.group('weapon');
@@ -143,6 +167,25 @@ function footUnit(c, id, pose) {
     c.cylX(50, 56, 45, 31, 4.2, DARK);
     c.cylX(10, 16, 45, 31, 4.0, METAL);
     c.box(36, 40, 24, 42, 46, 30, GUN);
+  } else if (isRocket) {
+    c.cylX(12, 50, 44, 31, 2.8, '#4a5245');         // RPG launch tube
+    c.cylX(8, 14, 44, 31, 3.8, GUN);                // flared exhaust bell
+    c.cylX(48, 56, 44, 31, 4.2, '#d94b38');         // oversized shaped-charge warhead
+    c.cylX(55, 60, 44, 31, 2.2, '#e8c468');         // piezo fuse probe
+    c.box(34, 41, 24, 40, 46, 30, GUN);             // pistol grip
+  } else if (isAA) {
+    c.box(10, 41, 28, 56, 49, 36, '#4a5245');       // rectangular MANPADS box launcher
+    c.box(52, 40, 27, 58, 50, 37, STEEL);           // front seeker housing
+    c.box(57, 42, 29, 60, 48, 35, '#5fc4e8');       // IR seeker dome
+    c.box(44, 37, 24, 52, 41, 33, METAL);           // side IFF antenna array
+    c.box(34, 41, 22, 42, 47, 28, '#e8c468');       // battery coolant unit
+  } else if (isSniper) {
+    c.box(26, 38, 24, 44, 42, 28, '#4a5245');       // precision rifle chassis
+    c.box(44, 38, 25, 61, 40, 27, GUN);             // long free-floated barrel
+    c.box(59, 37, 24, 63, 41, 28, STEEL);           // heavy muzzle brake
+    c.box(33, 37, 29, 49, 41, 33, GUN);             // high-power telescopic scope
+    c.box(48, 37, 29, 50, 41, 33, '#5fc4e8');       // scope objective lens
+    c.box(50, 36, 18, 53, 42, 25, STEEL);           // deployed folding bipod
   } else if (isEng) {
     c.box(30, 36, 22, 42, 44, 28, '#4a5245');       // demolition charge
     c.box(32, 38, 28, 40, 42, 30, '#e8c468');
