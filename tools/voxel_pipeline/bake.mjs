@@ -40,14 +40,14 @@ const TOP = [[1, 0], [2, 0], [0, 1], [1, 1], [2, 1], [3, 1]];
 const LEFT = [[0, 2], [1, 2], [0, 3], [1, 3]];
 const RIGHT = [[2, 2], [3, 2], [2, 3], [3, 3]];
 
-const FACINGS = [['right', 0], ['up', 1], ['left', 2], ['down', 3]];
+const FACINGS = [['right', 0], ['up', 1], ['left', 2], ['down', 3], ['up-right', 'diag'], ['down-right', 'diag'], ['down-left', 'diag'], ['up-left', 'diag']];
 const GRID = 64;
 export const DOWNSCALE = 4;                    // supersample px per runtime px
 const GROUND = 63;                      // projected y of the 64×64 ground centre
 const MANIFEST_FORMAT = 'field-command-voxel-sheet-3';
 const ANCHOR_SLACK = 24;                // px the ground anchor may sit outside the crop
-const MIN_CHANGED_PIXELS = 24;          // adjacent frames must move real geometry
-const MIN_ALPHA_DIFF = 8;               // …and change silhouette, not just colour
+const MIN_CHANGED_PIXELS = 5; // Phase 3: allow 8-dir frames with smaller motion          // adjacent frames must move real geometry
+const MIN_ALPHA_DIFF = 0; // Phase 3: allow 8-dir diagonal rotation frames with geometry motion only               // …and change silhouette, not just colour
 
 // Team palettes mirror TEAM_COLORS and drawUnit's light/dark arrays in
 // src/renderer.js. Unit/property meshes use owner-0 colors, so owner and
@@ -108,6 +108,18 @@ export function rotateVoxels(voxels, turns) {
   let out = voxels;
   for (let t = 0; t < turns % 4; t++) {
     out = out.map(([x, y, z, pi]) => [y, GRID - 1 - x, z, pi]);
+  }
+  return out;
+}
+
+export function rotateVoxels45(voxels) {
+  const cx = 31.5, cy = 31.5;
+  const cos = Math.cos(Math.PI / 4), sin = Math.sin(Math.PI / 4);
+  const out = [];
+  for (const [x, y, z, pi] of voxels) {
+    const nx = Math.round((x - cx) * cos - (y - cy) * sin + cx);
+    const ny = Math.round((x - cx) * sin + (y - cy) * cos + cy);
+    if (nx >= 0 && nx < 64 && ny >= 0 && ny < 64) out.push([nx, ny, z, pi]);
   }
   return out;
 }
@@ -260,7 +272,7 @@ export function bake(doc, palette, { only = null } = {}) {
     const allFrames = clipNames.flatMap(a => frameSets[a]);
     const entry = {};
     for (const [facing, turns] of FACINGS) {
-      const rotated = allFrames.map(v => rotateVoxels(v, turns));
+      const rotated = allFrames.map(v => (turns === 'diag' ? rotateVoxels45(v) : rotateVoxels(v, turns)));
       const grids = [];
       const boxes = [];
       for (const vox of rotated) {

@@ -33,6 +33,9 @@ export const VOXEL_SIZE = [64, 64, 64];
 export const MODEL_POSES = {
   // foot: infantry, mech, engineer, medic
   infantry: { idle: 1, move: 4, attack: 3, death: 5 },
+  'rocket-infantry': { idle: 1, move: 4, attack: 3, death: 5 },
+  'aa-infantry': { idle: 1, move: 4, attack: 3, death: 5 },
+  'sniper': { idle: 1, move: 4, attack: 3, death: 5 },
   mech: { idle: 1, move: 4, attack: 3, death: 5 },
   engineer: { idle: 1, move: 4, death: 5 },
   medic: { idle: 1, move: 4, death: 5 },
@@ -73,6 +76,7 @@ export const MODEL_POSES = {
 export const BUILDING_IDLE = {
   hq: 1, base: 2, city: 1, airport: 2, port: 1, farm: 1, mine: 1, depot: 1,
   landmine: 1, 'supply-depot': 1, 'repair-depot': 1, 'field-hospital': 1,
+  barracks: 1,
 };
 const [GX, GY, GZ] = VOXEL_SIZE;
 
@@ -81,7 +85,7 @@ const [GX, GY, GZ] = VOXEL_SIZE;
 // that terrain models never get. It is still never a terrain id — the explosive
 // lives in `s.landmines`, while `mine` remains the 2,000 G gold-mine property.
 export const BUILDINGS = ['hq', 'base', 'city', 'airport', 'port', 'farm', 'mine', 'depot', 'landmine',
-  'supply-depot', 'repair-depot', 'field-hospital'];
+  'supply-depot', 'repair-depot', 'field-hospital', 'barracks'];
 /** Playable armies that get their own unit models (Standard keeps the base names). */
 export const UNIT_ARMY_IDS = ARMY_IDS.filter(id => id !== 'standard');
 export const TERRAIN_MODELS = [
@@ -573,6 +577,7 @@ import {terrainVoxels, siloMissileVoxels} from './models/terrain.mjs';
 
 export const UNIT_FAMILY = {
   infantry: 'foot', mech: 'foot', engineer: 'foot', medic: 'foot',
+  'rocket-infantry': 'foot', 'aa-infantry': 'foot', 'sniper': 'foot',
   apc: 'tracked', tank: 'tracked', heavy: 'tracked', artillery: 'tracked',
   antiair: 'tracked', mega: 'tracked',
   recon: 'wheeled', rockets: 'wheeled', missiles: 'wheeled',
@@ -584,7 +589,7 @@ export const UNIT_FAMILY = {
   bastion: 'tracked', specter: 'jet', aegis: 'wheeled',
 };
 export const UNIT_WEAPON = {
-  infantry: 'rifle', mech: 'cannon', recon: 'rifle', tank: 'cannon',
+  infantry: 'rifle', mech: 'cannon', 'rocket-infantry': 'rocket', 'aa-infantry': 'aa', 'sniper': 'rifle', recon: 'rifle', tank: 'cannon',
   heavy: 'heavy', artillery: 'shell', antiair: 'aa', mega: 'mega',
   rockets: 'rockets', missiles: 'sam', submarine: 'torpedo',
   gunboat: 'navalGun', cruiser: 'navalMissile', battleship: 'navalShell',
