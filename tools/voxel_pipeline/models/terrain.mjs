@@ -418,6 +418,63 @@ export function terrainVoxels(c, id, pose) {
     // Small mud mounds near center
     c.box(26, 26, 1, 34, 34, 3, '#6b5a3a');
     c.box(28, 28, 3, 32, 32, 4, '#7a6548');
+  } else if (id === 'plains') {
+    // Grassland: varied green surface with small clumps, subtle flowers, soil hints.
+    c.box(0, 0, 0, 64, 64, 1, '#6e9049');
+    for (let y = 0; y < 64; y++) for (let x = 0; x < 64; x++) {
+      const v = ((x * 7 + y * 13) % 5);
+      c.put(x, y, 1, v === 0 ? '#7ba358' : v === 1 ? '#8fb86a' : v === 2 ? '#5e7d3b' : '#a0c27a');
+    }
+    // Small irregular grass clumps
+    const clumps = [[8,10],[24,8],[40,12],[12,36],[48,30],[28,48],[52,6]];
+    for (const [cx,cy] of clumps) {
+      c.box(cx, cy, 1, cx+6, cy+5, 2, '#7a9e58');
+      c.put(cx+2, cy+2, 2, '#b5d48c');
+    }
+  } else if (id === 'tallgrass') {
+    // Tall grass: denser taller clumps with shade and light tips
+    c.box(0, 0, 0, 64, 64, 1, '#5a7d3a');
+    for (let y = 0; y < 64; y++) for (let x = 0; x < 64; x++) {
+      const v = ((x*3 + y*7) % 6);
+      c.put(x, y, 1, v < 2 ? '#6b8f4e' : v < 4 ? '#8aaf68' : '#5e733a');
+    }
+    // Tall clumps
+    const tall = [[10,14],[34,10],[18,36],[42,34],[6,50],[50,20],[30,48]];
+    for (const [cx,cy] of tall) {
+      c.box(cx, cy, 1, cx+8, cy+6, 4, '#4a6330');
+      c.box(cx+2, cy+1, 4, cx+6, cy+4, 6, '#8fa860');
+    }
+  } else if (id === 'sea') {
+    c.box(0, 0, 0, 64, 64, 1, '#2b6e8a');
+    for (let y = 0; y < 64; y++) for (let x = 0; x < 64; x++) {
+      const v = ((x*11 + y*7) % 7);
+      c.put(x, y, 1, v < 2 ? '#356e8a' : v < 4 ? '#2b6e8a' : '#4688a8');
+    }
+    // Sparse wave highlights
+    for (const [x,y] of [[16,16],[48,48],[28,24],[10,40],[54,12]]) c.put(x, y, 2, '#7ec8e8');
+  } else if (id === 'shoal') {
+    c.box(0, 0, 0, 64, 64, 1, '#c8b086');
+    for (let y = 0; y < 64; y++) for (let x = 0; x < 64; x++) {
+      const d = Math.hypot(x-32, y-32);
+      const v = ((x+y)%9);
+      if (d < 22) c.put(x, y, 1, v < 3 ? '#d6c48e' : v < 6 ? '#c4a87a' : '#b08d6a');
+      else c.put(x, y, 1, '#c8b086');
+    }
+    // Wet sand / shallow water edge near bottom/right
+    for (let y = 48; y < 64; y++) for (let x = 40; x < 64; x++) {
+      if (((x+y)%5)<2) c.put(x, y, 1, '#6e9ba8');
+    }
+  
+  } else if (id === 'wall-standard' || id === 'wall-allies' || id === 'wall-soviets' || id === 'wall-empire' || id === 'wall-legion') {
+    const fac = id === 'wall-allies' ? '#7d8a5a' : id === 'wall-soviets' ? '#7a3b30' : id === 'wall-empire' ? '#cfc9b6' : id === 'wall-legion' ? '#a58a5a' : '#8a7a5a';
+    c.box(0, 0, 0, 64, 64, 2, '#6b6450');
+    c.box(12, 10, 2, 52, 54, 6, fac);
+    c.box(14, 14, 6, 26, 26, 10, '#5a5040');
+    c.box(38, 14, 6, 50, 26, 10, '#5a5040');
+    c.box(28, 28, 4, 36, 36, 8, '#4a4030');
+    // Team-colored accent strip
+    c.box(14, 56, 2, 50, 58, 4, fac);
+  
   } else {
     // Road connector variants: 24-voxel wide thoroughfare centred on the tile.
     const mask = Number.parseInt(id.split('-')[1], 16) & 15;
