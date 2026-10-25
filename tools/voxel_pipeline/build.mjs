@@ -115,6 +115,10 @@ export const TERRAIN_MODELS = [
   'wall-soviets',
   'wall-empire',
   'wall-legion',
+  'wall-end',
+  'wall-corner',
+  'wall-t',
+  'wall-cross',
   // Silo missile: neutral effect model baked for iso silo combat.
   'silo-missile',
   ...Array.from({ length: 16 }, (_, mask) => `road-${mask.toString(16)}`),
