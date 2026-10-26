@@ -146,8 +146,9 @@ enlargement anywhere in the roster; the HQ was remodelled, not scaled.
 ```
 build   500 models, 1,678,654 voxels       (~26 s)
 preview 500 preview PNGs                   (~2 s)
-bake    17,880 strips, 26,708 frame cells  (379 s)
-        82.11 MB PNG payload, 135 MB on disk
+bake    17,880 strips, 26,708 frame cells  (395 s)
+        50.19 MB PNG payload, 98 MB on disk
+        (82.11 MB before the crisp-sampling fix; hard edges compress better)
 ```
 
 Bake gates that ran in **strict** mode (any failure aborts):
@@ -168,6 +169,31 @@ centre. After the fix, symmetric terrain (`elevation-00…32`, `plains`, `road-*
 `bridge-*`) is pixel-identical across all four cardinal facings, and the anchors
 match exactly.
 
+**Sprite crispness (found during review).** The first bake of the 128 scale
+resampled the 4 px/voxel supersample with a 2×2 box average, which mixed
+neighbouring voxel colours at every edge; combined with 5-bit colour masking on
+unit strips and five-level soft alpha, this made units look blurred next to the
+previous sheets. Fixed in three places:
+
+| change | effect |
+| --- | --- |
+| **mode sampling** in `downsampleCell` (most frequent palette index per block) | every opaque pixel is an exact palette shade — a tank's right-facing frame keeps 28 distinct colours instead of 690 blended ones |
+| **hard alpha** (50% coverage threshold) | stair-stepped pixel-art silhouettes instead of antialiased edges; coverage verified not to lose thin features (opaque pixel counts rose, never fell) |
+| **no 5-bit colour masking** on unit strips | banding removed |
+
+The runtime had a matching bug: the editor draws at 1.35× zoom, and the canvas
+default bilinear filter blurred every sprite. `blitSheet()` now disables
+`imageSmoothingEnabled` around each `drawImage` (restoring the caller's state),
+and the editor sets it once at startup. Two new gates lock this down:
+`tests/scale.test.js` 13 (palette-exactness of baked strips) and 14 (no sprite is
+blitted with smoothing enabled). Payload also dropped from 82.11 MB to 50.19 MB
+because hard edges compress far better.
+
+**Honest before/after.** The legacy previews in `docs/review/before/` were rendered
+at 2× runtime scale, while the new previews are 1:1; `before-after.png` now halves
+the legacy images first, so the sheet no longer implies units shrank ~2×. They did
+not: a tank's runtime sprite is 45×32 px before and 46×34 px after.
+
 Manifest: `field-command-voxel-sheet-4`, grid `[128,128,128]`, tile `[64,32]`,
 `tileUnits 32`, `tilesPerAxis 4`, `downscale 2`, `voxelZPx 1`. Metadata lives
 under `entry.meta` (`kind, category, heightClass, footprint, gameplayFootprint,
@@ -175,12 +201,12 @@ visualFootprint, renderScale, bounds, groundAnchor`), so facing keys remain
 exactly `right|up|left|down` (+ 4 diagonals for units). 17,880 strips referenced
 by the manifest; **0 missing, 0 orphaned** files.
 
-Test suite (`npm test`) — **27/27 passing**:
+Test suite (`npm test`) — **29/29 passing**:
 
 | file | tests | coverage |
 | --- | --- | --- |
 | `tests/elevation.test.js` | 15 | elevation semantics, legacy 64-grid compatibility, wall/gate fortifications, all 58 units × 5 armies, all 26 buildings + 6 fortifications × 5 armies, manifest paths and hashes, deterministic re-bake |
-| `tests/scale.test.js` | 12 | 128³/32-unit contract, per-model metadata, bounds, scale hierarchy, resampling determinism and offsets, footprint catalogue, runtime placement, multi-tile rendering, terrain semantics, registry coverage, facing/anchor integrity, review deliverables |
+| `tests/scale.test.js` | 14 | 128³/32-unit contract, per-model metadata, bounds, scale hierarchy, resampling determinism and offsets, footprint catalogue, runtime placement, multi-tile rendering, terrain semantics, registry coverage, facing/anchor integrity, sprite crispness (palette-exact baked pixels), renderer smoothing, review deliverables |
 
 ---
 
@@ -277,8 +303,8 @@ not silent gaps:
 | Major compounds remodelled | 3 types (hq, airport, port) = 15 models |
 | Voxels regenerated | 1,678,654 |
 | Previews regenerated | 500 |
-| Baked strips | 17,880 (26,708 frame cells, 82.11 MB) |
+| Baked strips | 17,880 (26,708 frame cells, 50.19 MB) |
 | Runtime files integrated | 3 modules + editor page + generated scale table |
-| Automated gates | 27 passing (15 elevation + 12 scale) |
+| Automated gates | 29 passing (15 elevation + 14 scale) |
 | Animation motion failures | 0 |
 | Blocker assets | 0 |

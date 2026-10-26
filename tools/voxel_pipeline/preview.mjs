@@ -45,7 +45,7 @@ for (const [id, model] of Object.entries(doc.models)) {
   const w = (Math.ceil((box.maxX + 1) / DS) * DS - x0) / DS;
   const h = (Math.ceil((box.maxY + 1) / DS) * DS - y0) / DS;
   const buf = Buffer.alloc(w * h * 4);
-  downsampleCell(grid, x0, y0, w, h, lut, buf, 0, 0, w, DS, false);
+  downsampleCell(grid, x0, y0, w, h, lut, buf, 0, 0, w, DS);
   fs.writeFileSync(path.join(outDir, `${id}.png`), pngBytes(w, h, buf));
   count++;
 }

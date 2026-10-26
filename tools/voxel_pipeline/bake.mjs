@@ -311,35 +311,56 @@ export function projectAnchor(anchor) {
   };
 }
 
-/** Box-filtered downsample of one grid window into an RGBA strip cell.
- *  x0/y0 are absolute supersample coordinates (as returned by rasterize); the
- *  grid carries the BUF_OX/BUF_OY projection offsets. */
-export function downsampleCell(grid, x0, y0, w, h, lut, out, ox, oy, stride, ds = DOWNSCALE, quantize = true) {
+/**
+ * Downsample one supersampled grid window into an RGBA strip cell.
+ *
+ * Colour is chosen by *mode* (the most common non-empty subpixel in the
+ * ds×ds block), never by averaging: averaging 2×2 subpixels bleeds neighbouring
+ * voxel colours into each other, which is what made the 128-scale sprites look
+ * soft compared with the old 1 px-per-voxel sheets.  Mode sampling keeps every
+ * output pixel exactly on a palette colour (hard voxel edges), while alpha still
+ * records sub-pixel coverage so silhouettes do not turn into jaggies.
+ */
+export function downsampleCell(grid, x0, y0, w, h, lut, out, ox, oy, stride, ds = DOWNSCALE) {
   const n = ds * ds;
+  const ids = new Int32Array(n);
   for (let py = 0; py < h; py++) {
     const by = y0 + py * ds;
     for (let px = 0; px < w; px++) {
-      let r = 0, g = 0, b = 0, a = 0;
       const bx = x0 + px * ds;
+      let a = 0;
+      let used = 0;
       for (let dy = 0; dy < ds; dy++) {
         let row = (by + dy) * BUF_W + bx;
         for (let dx = 0; dx < ds; dx++, row++) {
           const idx = grid[row];
           if (!idx) continue;
-          const c = lut[idx];
-          r += c & 255; g += (c >> 8) & 255; b += (c >> 16) & 255; a += 255;
+          a += 255;
+          ids[used++] = idx;
         }
       }
       const o = ((oy + py) * stride + (ox + px)) * 4;
       if (a === 0) { out[o + 3] = 0; continue; }
-      out[o] = Math.round(r / n);
-      out[o + 1] = Math.round(g / n);
-      out[o + 2] = Math.round(b / n);
-      // Edge coverage quantized to five alpha levels (64/128/192/255): visually
-      // identical at runtime scale, far friendlier to deflate (payload gate).
-      // NOTE: must clamp — round(255/64)*64 = 256 would truncate to 0 in the
-      // Uint8Array and punch holes through fully covered interior pixels.
-      out[o + 3] = quantize ? Math.min(255, Math.round(a / n / 64) * 64) || 64 : Math.round(a / n);
+      // Most frequent palette index in the block (mode); ties keep the first
+      // sampled, and painter order already resolved overlaps in the grid.
+      let pick = ids[0];
+      let best = 0;
+      for (let i = 0; i < used; i++) {
+        const id = ids[i];
+        let c = 0;
+        for (let j = 0; j < used; j++) if (ids[j] === id) c++;
+        if (c > best) { best = c; pick = id; }
+      }
+      const col = lut[pick];
+      out[o] = col & 255;
+      out[o + 1] = (col >> 8) & 255;
+      out[o + 2] = (col >> 16) & 255;
+      // Hard-edged coverage: a pixel is either fully opaque or fully clear.
+      // Intermediate alpha levels antialias every silhouette edge, which read as
+      // blur at runtime; pixel art wants stair-stepped edges. The 50% rule keeps
+      // thin features (antennae, gun barrels) because the supersample buffer is
+      // 2× — a 1-voxel-wide feature still covers half of a runtime pixel.
+      out[o + 3] = a / n >= 0.5 ? 255 : 0;
     }
   }
 }
@@ -575,13 +596,10 @@ export function bake(doc, palette, { only = null } = {}) {
         for (let u = 0; u < uniqueSrc.length; u++) {
           downsampleCell(grids[uniqueSrc[u]], x0, y0, cellW, cellH, lut, strip, u * cellW, 0, cellW * uniqueSrc.length);
         }
-        if (isUnit && !LEGACY_UNIT_IDS.has(baseId)) {
-          for (let i = 0; i < strip.length; i += 4) {
-            strip[i] &= 0xf8;
-            strip[i + 1] &= 0xf8;
-            strip[i + 2] &= 0xf8;
-          }
-        }
+        // NOTE: no colour quantization here. Units used to be masked to 5 bits
+        // per channel (& 0xf8), which crushed 2,452 palette shades into 690
+        // and read as banded/blurred. Mode sampling above already keeps the
+        // sprite on exact palette colours.
         if (!strip.some((v, i) => i % 4 === 3 && v)) {
           throw new Error(`${id}-${facing}-${variant}: completely transparent`);
         }

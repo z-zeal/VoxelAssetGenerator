@@ -25,7 +25,9 @@ import {
   footprintOf, footprintCells, canPlaceFootprint, getBuildingRenderPosition,
   createMap, setTileElevation, getTileElevation,
 } from '../src/iso.js';
-import { renderIso } from '../src/iso-renderer.js';
+import { renderIso, blitSheet } from '../src/iso-renderer.js';
+import { decodePng } from '../tools/voxel_pipeline/png.mjs';
+import { buildVariantLut } from '../tools/voxel_pipeline/bake.mjs';
 import { MapElevationEditor } from '../src/map-editor.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -401,8 +403,95 @@ test('11. Every facing keeps internally consistent anchors and a crop that cover
   }
 });
 
+
+/* ------------------------------------------------------- 13. crisp sprites */
+test('13. Baked sprites stay pixel-crisp: every opaque pixel is an exact palette colour', () => {
+  // Regression gate for the "units look blurry" bug. Cause was threefold:
+  //   1. canvas bilinear filtering at fractional zoom (fixed in the renderer),
+  //   2. the baker box-averaging 2×2 subpixels (colour bleed at every edge),
+  //   3. 5-bit colour masking of unit strips (& 0xf8), which banded the palette.
+  // Mode sampling + no masking means every opaque pixel must be exactly a
+  // palette shade, in the team colour of its variant.
+  const ARMY_VARIANTS = ['0', 'n'];
+  const allowed = new Map(ARMY_VARIANTS.map(v => [v, new Set()]));
+  for (const v of ARMY_VARIANTS) {
+    const lut = buildVariantLut(voxDoc.palette, v);
+    for (let i = 0; i < lut.length; i++) {
+      const c = lut[i];
+      if (!c) continue;
+      allowed.get(v).add((c & 0xff) | (((c >> 8) & 0xff) << 8) | (((c >> 16) & 0xff) << 16));
+    }
+  }
+  assert.ok(allowed.get('0').size > 100, 'palette shades must be loaded');
+
+  const samples = [];
+  for (const kind of ['unit', 'building', 'terrain']) {
+    for (const id of allIds.filter(i => voxDoc.models[i].kind === kind).slice(0, 6)) {
+      samples.push(id);
+    }
+  }
+  for (const id of samples) {
+    const entry = manifest.models[id];
+    for (const variant of ARMY_VARIANTS) {
+      const file = entry.right.variants[variant]?.file;
+      if (!file) continue;
+      const img = decodePng(fs.readFileSync(path.join(ROOT, 'game_assets/voxels/sheets', file)));
+      const set = allowed.get(variant);
+      let bad = 0;
+      const distinct = new Set();
+      for (let i = 0; i < img.pixels.length; i += 4) {
+        if (!img.pixels[i + 3]) continue;
+        const rgb = img.pixels[i] | (img.pixels[i + 1] << 8) | (img.pixels[i + 2] << 16);
+        distinct.add(rgb);
+        if (!set.has(rgb)) bad++;
+      }
+      assert.equal(bad, 0, `${file}: ${bad} pixels are blended colours, not palette shades (sprite is being smoothed)`);
+      // A blurred sprite produces hundreds of unique shades; a crisp one stays
+      // close to the palette actually used by that model.
+      assert.ok(distinct.size < 220, `${file}: ${distinct.size} distinct colours looks like colour bleed`);
+    }
+  }
+});
+
+/* ------------------------------------------------- 14. renderer crispness */
+test('14. The iso renderer disables canvas image smoothing around every sprite blit', () => {
+  // A stub Image stands in for the browser's loader so blitSheet() reaches the
+  // drawImage() call under test.
+  const toggles = [];
+  const ctx = {
+    _smooth: true,
+    get imageSmoothingEnabled() { return this._smooth; },
+    set imageSmoothingEnabled(v) { this._smooth = v; toggles.push(v); },
+    save() {}, restore() {}, beginPath() {}, closePath() {}, moveTo() {}, lineTo() {},
+    fill() {}, stroke() {}, fillRect() {}, strokeRect() {}, ellipse() {}, clearRect() {},
+    setLineDash() {},
+    drawImage() { toggles.push(this._smooth ? 'blurry-draw' : 'crisp-draw'); },
+  };
+  const entry = {
+    right: {
+      cell: { x: 0, y: 0, w: 8, h: 8 },
+      anchorX: 4, anchorY: 8,
+      frames: [{ x: 0, y: 0, w: 8, h: 8, anchorX: 4, anchorY: 8 }],
+      variants: { '0': { file: 'stub-right-0.png' } },
+    },
+  };
+  // blitSheet needs a "loaded" image; provide a minimal Image stand-in.
+  globalThis.Image = class { constructor() { this.complete = true; this.naturalWidth = 8; this.naturalHeight = 8; } };
+  try {
+    const ok = blitSheet(ctx, { models: { stub: entry } }, 'stub', 'right', '0', 0, 100, 100, 1);
+    assert.equal(ok, true, 'stub sheet must blit');
+  } finally {
+    delete globalThis.Image;
+  }
+  assert.deepEqual(toggles.filter(t => t === 'crisp-draw' || t === 'blurry-draw').slice(0, 1), ['crisp-draw'],
+    'sprites must be blitted with image smoothing disabled');
+  assert.ok(!toggles.includes('blurry-draw'), 'no sprite may be blitted with bilinear filtering on');
+  // The previous global state is restored afterwards.
+  assert.equal(ctx.imageSmoothingEnabled, true, "renderer must restore the caller's smoothing state");
+});
+
 /* --------------------------------------------------- 12. review deliverables */
-test('12. The review deliverables exist and document the scale migration', () => {
+test('15. The review deliverables exist and document the scale migration', () => {
   for (const file of ['scale-scene.png', 'scale-lineup.png', 'before-after.png']) {
     const p = path.join(ROOT, 'docs/review', file);
     assert.ok(fs.existsSync(p), `missing ${file}`);

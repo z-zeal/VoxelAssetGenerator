@@ -101,7 +101,13 @@ export function blitSheet(ctx, manifest, modelId, facing = 'right', variant = '0
   const destY = Math.round(anchorY - f.anchorY * zoom);
   const destW = Math.round(f.w * zoom);
   const destH = Math.round(f.h * zoom);
+  // Pixel art must be sampled nearest-neighbour: at fractional zooms (the
+  // editor runs at 1.35×) the default bilinear filter blurs every voxel edge,
+  // which reads as "blurry units" even though the sprite data is sharp.
+  const smoothing = ctx.imageSmoothingEnabled;
+  ctx.imageSmoothingEnabled = false;
   ctx.drawImage(img, f.x, f.y, f.w, f.h, destX, destY, destW, destH);
+  ctx.imageSmoothingEnabled = smoothing;
   return true;
 }
 

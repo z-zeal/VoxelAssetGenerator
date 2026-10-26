@@ -379,30 +379,68 @@ function buildLineup(rows) {
 }
 
 /* --------------------------------------------------------- before/after - */
+/** Nearest-neighbour 1/factor downsample (legacy previews were rendered at 2× runtime). */
+function downscaleNearest(img, factor) {
+  const w = Math.max(1, Math.floor(img.width / factor));
+  const h = Math.max(1, Math.floor(img.height / factor));
+  const out = Buffer.alloc(w * h * 4);
+  for (let y = 0; y < h; y++) {
+    for (let x = 0; x < w; x++) {
+      const si = ((y * factor) * img.width + x * factor) * 4;
+      const di = (y * w + x) * 4;
+      out[di] = img.pixels[si];
+      out[di + 1] = img.pixels[si + 1];
+      out[di + 2] = img.pixels[si + 2];
+      out[di + 3] = img.pixels[si + 3];
+    }
+  }
+  return { width: w, height: h, pixels: out };
+}
+
 function buildBeforeAfter(pairs) {
-  const cols = pairs.length;
-  const colW = 230, rowH = 210, pad = 18, headH = 40;
-  const W = cols * colW + pad * 2;
-  const H = headH + rowH * 2 + pad;
+  // Variable-width columns at one shared integer scale: a 3×3 HQ preview is
+  // ~193 px while an infantryman is ~24 px, so equal-width columns would either
+  // crop the compounds or shrink the units into specks. Both rows use the same
+  // scale, so the comparison stays honest; legacy previews were rendered at 2×
+  // runtime, so they are halved first.
+  const SCALE = 2;
+  const pad = 18, titleH = 26, gapX = 20, rowGap = 14, labelH = 30;
+  const loaded = pairs.map(p => {
+    const before = fs.existsSync(p.before) ? downscaleNearest(decodePng(fs.readFileSync(p.before)), 2) : null;
+    const after = fs.existsSync(p.after) ? decodePng(fs.readFileSync(p.after)) : null;
+    const w = Math.max(before?.width ?? 0, after?.width ?? 0) * SCALE;
+    return { ...p, before, after, w };
+  });
+  const beforeH = Math.max(...loaded.map(c => (c.before?.height ?? 0) * SCALE), 40);
+  const afterH = Math.max(...loaded.map(c => (c.after?.height ?? 0) * SCALE), 40);
+  const W = pad * 2 + loaded.reduce((n, c) => n + Math.max(c.w, 96) + gapX, -gapX);
+  const row1Top = pad + titleH;
+  const row2Title = row1Top + beforeH + rowGap;
+  const row2Top = row2Title + titleH;
+  const H = row2Top + afterH + rowGap + labelH;
   const px = Buffer.alloc(W * H * 4);
   for (let i = 0; i < W * H; i++) { px[i * 4] = 14; px[i * 4 + 1] = 18; px[i * 4 + 2] = 24; px[i * 4 + 3] = 255; }
-  drawText(px, W, H, pad, 10, 'BEFORE — 64 CUBE, ONE 64PX TILE', '#d8a06a', 2);
-  drawText(px, W, H, pad, headH + rowH - 6, 'AFTER — 128 CUBE, 32 UNIT TILES', '#78c08a', 2);
-  pairs.forEach((p, i) => {
-    const cx = pad + i * colW + colW / 2;
-    drawText(px, W, H, pad + i * colW + 6, H - 22, p.id, '#9fb0c4', 1);
-    const draw = (imgPath, cy) => {
-      if (!fs.existsSync(imgPath)) return;
-      const img = decodePng(fs.readFileSync(imgPath));
-      const factor = Math.max(1, Math.floor(170 / Math.max(img.width, img.height)));
-      const scaled = factor > 1 ? scaleNearest(img.pixels, img.width, img.height, factor) : img.pixels;
-      const sw = img.width * factor, sh = img.height * factor;
+  drawText(px, W, H, pad, pad - 4, 'BEFORE — 64 CUBE, ONE 64PX TILE', '#d8a06a', 2);
+  drawText(px, W, H, pad, row2Title, 'AFTER — 128 CUBE, 32 UNIT TILES', '#78c08a', 2);
+  let x = pad;
+  for (const c of loaded) {
+    const colW = Math.max(c.w, 96);
+    const cx = x + colW / 2;
+    const draw = (img, bottomY) => {
+      if (!img) return;
+      const scaled = scaleNearest(img.pixels, img.width, img.height, SCALE);
+      const sw = img.width * SCALE, sh = img.height * SCALE;
       blit(px, W, H, { width: sw, height: sh, pixels: scaled }, 0, 0, sw, sh,
-        Math.round(cx - sw / 2), Math.round(cy - sh / 2));
+        Math.round(cx - sw / 2), Math.round(bottomY - sh));
     };
-    draw(p.before, headH + rowH / 2 + 8);
-    draw(p.after, headH + rowH + rowH / 2 + 2);
-  });
+    // Both rows sit on their band's ground line, so the relative size (and the
+    // unchanged unit scale) is directly readable.
+    draw(c.before, row1Top + beforeH);
+    draw(c.after, row2Top + afterH);
+    drawText(px, W, H, x + 2, H - labelH + 2, c.id.toUpperCase(), '#9fb0c4', 1);
+    if (c.after) drawText(px, W, H, x + 2, H - labelH + 14, `${c.after.width}×${c.after.height} PX`, '#66788c', 1);
+    x += colW + gapX;
+  }
   return { pixels: px, width: W, height: H };
 }
 

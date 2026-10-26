@@ -636,6 +636,9 @@
     // 9. Canvas Pointer & Touch Interactions
     const canvas = document.getElementById('isoCanvas');
     const ctx = canvas.getContext('2d');
+    // Nearest-neighbour sampling keeps the baked voxel sprites crisp at the
+    // editor's fractional zoom (default bilinear filtering blurs them).
+    ctx.imageSmoothingEnabled = false;
     const ORIGIN_X = 480;
     const ORIGIN_Y = 125;
     const ZOOM = 1.35;

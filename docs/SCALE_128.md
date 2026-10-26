@@ -126,6 +126,25 @@ by its own sprite.
 `clippingMargin` declares any extra padding the baker must reserve around the
 geometry (0 for the current roster).
 
+## 6b. Sprite crispness (pixel-art sampling)
+
+The world scale halves the number of voxels per tile, so the bake has to resample
+a 4 px/voxel supersample buffer down to 1 px/voxel. Three rules keep the result
+looking like pixel art rather than a blurred photograph:
+
+| rule | why |
+| --- | --- |
+| **mode sampling**, not box averaging | averaging 2×2 subpixels mixes neighbouring voxel colours, so every edge bleeds and the sprite gains hundreds of off-palette shades (a tank went from 690 to 2,452 distinct colours). Each output pixel now takes the most frequent palette index in its block, so colours stay exactly on-palette. |
+| **hard alpha** (50% coverage → opaque, else clear) | intermediate alpha levels antialias every silhouette edge, which reads as blur once the sprite is blitted at 1×. The 50% rule keeps 1-voxel features (antennae, barrels) because the supersample is 2×. |
+| **no colour quantization** | unit strips used to be masked to 5 bits per channel (2,452 → 690 shades) to shrink the payload; that banding was visible. Removed — the mode sampler already keeps the palette small. |
+
+The renderer must also sample nearest-neighbour: `blitSheet()` disables
+`imageSmoothingEnabled` around every `drawImage`, because the editor runs at a
+fractional zoom (1.35×) where the default bilinear filter blurs all sprite edges.
+`tests/scale.test.js` test 13 asserts that every opaque pixel of a baked strip is
+an exact palette shade, and test 14 asserts that no sprite is ever blitted with
+smoothing enabled.
+
 ## 7. Runtime contract
 
 `src/iso.js` consumes the generated `src/asset-scale.js`:
@@ -183,3 +202,7 @@ npm test               # elevation + scale gates
 The bake is deterministic: manifest hashes, frame dedupe and cell sizes are
 stable across runs, and test 12 of `tests/elevation.test.js` re-bakes
 `elevation-00`/`elevation-32` into a temporary directory to prove it.
+
+Current payload: **17,880 strips, 50.19 MB** (98 MB on disk with the manifest).
+Hard-edged pixel art compresses far better than the previous antialiased
+sprites, which is why this dropped from 82 MB without losing any coverage.
