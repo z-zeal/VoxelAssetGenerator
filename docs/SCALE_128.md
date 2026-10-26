@@ -21,7 +21,7 @@ that enforce it are `tests/scale.test.js` and `tests/elevation.test.js`.
 | pixels per voxel | **4 px horizontal, 2 px vertical** | `VOXEL_Z_PX = 2` |
 | runtime downscale | **1** | supersample buffer → sprite pixels (1:1, no lossy shrink) |
 | elevation levels | 0, 4, 8, …, 32 | step 4, untouched by the rescale |
-| elevation → pixels | **1 px per elevation unit** | a 4-level step lifts a tile by 4 px |
+| elevation → pixels | **2 px per elevation unit** | a 4-level step lifts a tile by 8 px |
 
 `TILE_W / TILE_VOXELS = 4` and `TILE_H / TILE_VOXELS = 2` are asserted by test 1:
 the runtime's tile and the pipeline's tile are the same physical 32 voxels.
@@ -187,6 +187,13 @@ voxels:preview  500 preview PNGs from the model data
 voxels:bake     17,880 iso strips + manifest.json (v4, metadata under entry.meta)
 voxels:review   docs/review/*.png + sizing matrix + review page
 ```
+
+The review page is a **true-scale** preview window, not a thumbnail grid: every
+preview keeps its baked pixel size, so relative size on screen is the relative
+size in game. `scale-lineup.png` draws each unit on a shared baseline with its
+**ground footprint diamond** — the filled diamond is the ground the unit covers
+and the green diamond inside it is exactly one tile — so a 1.75-tile tank and a
+2-tile battleship are directly comparable with a 1-tile rifleman at 1:1.
 
 Manifest entry shape (v4):
 

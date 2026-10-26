@@ -524,3 +524,49 @@ test('15. The review deliverables exist and document the scale migration', () =>
   assert.ok(spec.includes('32'), 'scale specification documents the tile grid');
   assert.ok(/128\s*[×x]\s*128\s*[×x]\s*128/.test(spec), 'scale specification documents the canvas');
 });
+
+/* ------------------------------------- 16. review page shows true sprite scale */
+test('16. The review page shows units at their real pixel size, not a normalised thumbnail', () => {
+  const pagePath = path.join(ROOT, 'docs/review/scale-review.html');
+  assert.ok(fs.existsSync(pagePath), 'missing docs/review/scale-review.html');
+  const page = fs.readFileSync(pagePath, 'utf8');
+  const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'game_assets/voxels/sheets/manifest.json'), 'utf8'));
+
+  // A preview window that fits every sprite into a fixed box destroys the one
+  // thing this page exists to show: relative size. Forbid that.
+  assert.ok(!/object-fit\s*:\s*contain/.test(page), 'previews must not be letterboxed into a fixed box');
+  assert.ok(!/\.card img\{[^}]*height:\s*\d+px/.test(page), 'preview cards must not force a fixed height');
+
+  // Every preview carries the intrinsic size of its baked cell, and that size
+  // must match the PNG on disk (so the browser cannot rescale it silently).
+  const imgs = [...page.matchAll(/<img[^>]*src="\.\.\/\.\.\/game_assets\/voxels\/([^"]+)"[^>]*width="(\d+)"[^>]*height="(\d+)"/g)];
+  assert.ok(imgs.length >= 400, `expected preview images with intrinsic sizes, found ${imgs.length}`);
+  for (const [, id, w, h] of imgs.slice(0, 60)) {
+    const png = fs.readFileSync(path.join(ROOT, 'game_assets/voxels', id));
+    assert.equal(png.readUInt32BE(16), Number(w), `${id}: declared width must match the PNG`);
+    assert.equal(png.readUInt32BE(20), Number(h), `${id}: declared height must match the PNG`);
+  }
+
+  // True scale for the headline units, measured from the baked cells.
+  // Preview PNGs are frame-0 crops of their baked cells (the cell is the union
+  // of every animation frame, so it can be a few pixels larger).
+  assert.match(page, /alt="tank"[^>]*width="153"[^>]*height="108"/, 'tank preview must be 153×108');
+  assert.match(page, /alt="infantry"[^>]*width="47"[^>]*height="60"/, 'infantry preview must be 47×60');
+  assert.match(page, /alt="hq"[^>]*width="385"[^>]*height="239"/, 'hq preview must be 385×239');
+  // The hierarchy that the page is supposed to make visible.
+  const px = id => {
+    const v = page.match(new RegExp(`alt="${id}"[^>]*width="(\\d+)"`));
+    return Number(v[1]);
+  };
+  assert.ok(px('hq') > px('tank') && px('tank') > px('infantry'),
+    'a 3×3 HQ must be wider on the page than a 1.75-tile tank, which must be wider than a 1-tile rifleman');
+
+  // Figures must declare their real size and offer integer zoom without blur.
+  for (const fig of ['scale-lineup.png', 'scale-scene.png', 'before-after.png']) {
+    const png = fs.readFileSync(path.join(ROOT, 'docs/review', fig));
+    const w = png.readUInt32BE(16), h = png.readUInt32BE(20);
+    assert.match(page, new RegExp(`src="${fig}"[^>]*width="${w}"[^>]*height="${h}"`), `${fig} must declare ${w}×${h}`);
+  }
+  assert.ok(page.includes('data-zoom'), 'the review page needs zoom controls to inspect true pixels');
+  assert.match(page, /image-rendering:\s*pixelated/, 'previews must be drawn nearest-neighbour');
+});

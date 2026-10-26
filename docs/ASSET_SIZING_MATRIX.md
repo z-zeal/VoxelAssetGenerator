@@ -647,6 +647,8 @@ Known, documented exceptions:
    preserved by design (`renderMode: "vector"`).
 2. **Projectiles and blast particles** remain renderer-side effects; only the
    `silo-missile` effect is a voxel model.
-3. **Units are not multi-cell.** Rendered length can exceed one tile at the
-   edges (a battleship's hull spans a full tile), but gameplay occupancy stays
-   one cell, exactly as before the rescale.
+3. **Units use fractional footprints without grid occupancy.** A unit declares
+   1 / 1.25 / 1.5 / 1.75 / 2 tiles of ground so its size class is explicit, but
+   `footprintCells()` still returns a single cell: occupancy, pathing and
+   collision stay continuous because the game moves units on floating-point
+   positions.

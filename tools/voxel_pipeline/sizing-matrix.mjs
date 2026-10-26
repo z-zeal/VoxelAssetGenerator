@@ -50,6 +50,8 @@ const rows = ids.map(id => {
     facings,
     variants,
     frames,
+    cell: entry.right.cell,
+    anchor: [entry.right.anchorX, entry.right.anchorY],
     clips: m.clips,
     // Units carry a role-driven footprint class (1 / 1.25 / 1.5 / 1.75 / 2
     // tiles) instead of being forced onto a 1x1 grid cell. Buildings keep the
@@ -214,30 +216,64 @@ Known, documented exceptions:
    preserved by design (\`renderMode: "vector"\`).
 2. **Projectiles and blast particles** remain renderer-side effects; only the
    \`silo-missile\` effect is a voxel model.
-3. **Units are not multi-cell.** Rendered length can exceed one tile at the
-   edges (a battleship's hull spans a full tile), but gameplay occupancy stays
-   one cell, exactly as before the rescale.
+3. **Units use fractional footprints without grid occupancy.** A unit declares
+   1 / 1.25 / 1.5 / 1.75 / 2 tiles of ground so its size class is explicit, but
+   \`footprintCells()\` still returns a single cell: occupancy, pathing and
+   collision stay continuous because the game moves units on floating-point
+   positions.
 `;
 
 fs.writeFileSync(path.join(ROOT, 'docs/ASSET_SIZING_MATRIX.md'), md);
 
 /* ------------------------------------------------------------- HTML page -- */
+const cellPx = r => `${r.cell.w}×${r.cell.h}`;
+
+// Preview PNGs are rendered by preview.mjs and are NOT the same crop as the iso
+// cells, so the <img> intrinsic size has to come from the file itself.
+const previewSizes = new Map();
+function previewSize(id) {
+  if (!previewSizes.has(id)) {
+    const buf = fs.readFileSync(path.join(ROOT, 'game_assets/voxels', `${id}.png`));
+    previewSizes.set(id, { w: buf.readUInt32BE(16), h: buf.readUInt32BE(20) });
+  }
+  return previewSizes.get(id);
+}
+
+/** Intrinsic size of a review figure, so the <img> never lies about its aspect. */
+function pngSize(name) {
+  const buf = fs.readFileSync(path.join(ROOT, 'docs/review', name));
+  return { w: buf.readUInt32BE(16), h: buf.readUInt32BE(20) };
+}
+const lineupImg = pngSize('scale-lineup.png');
+const sceneImg = pngSize('scale-scene.png');
+const beforeAfterImg = pngSize('before-after.png');
 const pageRows = rows.map(r => `<tr>
   <td><code>${r.id}</code></td><td>${CATEGORY_LABELS[r.category] ?? r.category}</td>
-  <td>${r.heightClass}</td><td>${fp(r.footprint)}</td>
+  <td>${r.heightClass}</td><td>${r.sizeClass === null ? '—' : r.sizeClass + '×'}</td>
+  <td>${fp(r.footprint)}</td>
   <td>${sizeStr(r.bounds)}</td><td>${r.renderScale}</td>
-  <td>${r.facings}</td><td>${r.variants}</td><td>${r.frames}</td>
+  <td>${cellPx(r)}</td><td>${r.facings}</td><td>${r.variants}</td><td>${r.frames}</td>
   <td>${status(r)}</td>
 </tr>`).join('\n');
 
 // The page lives in docs/review/, so asset paths are relative to it.
 const previewFor = r => `../../game_assets/voxels/${r.id}.png`;
 
-const rosterSection = (title, list) => list.length ? `
-  <details open>
+// Cards are NOT normalised: each preview keeps its baked pixel size, so a 385 px
+// HQ really is wider on screen than a 73 px rifleman. That is the whole point of
+// the review page, so no object-fit / fixed height anywhere.
+const card = r => {
+  const p = previewSize(r.id);
+  return `<div class="card"><img loading="lazy" src="${previewFor(r)}" alt="${r.id}" `
+    + `width="${p.w}" height="${p.h}"><span><b>${r.id}</b><br>`
+    + `${r.sizeClass === null ? fp(r.footprint) + ' tiles' : r.sizeClass + '× tile'} · ${p.w}×${p.h} px</span></div>`;
+};
+
+const rosterSection = (title, list, open = false) => list.length ? `
+  <details${open ? ' open' : ''}>
     <summary>${title} (${list.length})</summary>
     <div class="gallery">
-${list.map(r => `      <div class="card"><img loading="lazy" src="${previewFor(r)}" alt="${r.id}"><span>${r.id}<br>${fp(r.footprint)}</span></div>`).join('\n')}
+${list.map(r => '      ' + card(r)).join('\n')}
     </div>
   </details>` : '';
 
@@ -247,32 +283,48 @@ const html = `<!doctype html>
 <meta charset="utf-8">
 <title>Scale Migration Review — 128³ canvas / 32-unit tiles</title>
 <style>
-:root{color-scheme:dark;--bg:#0f1319;--panel:#171d26;--line:#2a3442;--muted:#a7b4c4;--text:#eef3f8;--accent:#8fd0a4}
+:root{color-scheme:dark;--bg:#0f1319;--panel:#171d26;--line:#2a3442;--muted:#a7b4c4;--text:#eef3f8;--accent:#8fd0a4;--z:1}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
 header{padding:26px clamp(16px,3vw,40px);border-bottom:1px solid var(--line);background:#131922}
 h1{margin:0 0 6px;font-size:clamp(20px,2.6vw,30px)}h2{margin:34px 0 10px;font-size:20px}
 p{margin:6px 0;color:var(--muted)}a{color:var(--accent)}
 main{padding:8px clamp(14px,2.4vw,34px) 60px}
-.figures{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));margin-top:16px}
 figure{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px}
-figure img{width:100%;height:auto;image-rendering:pixelated;background:#0b0f14;border-radius:6px}
+figure img{display:block;width:auto;height:auto;max-width:none;image-rendering:pixelated;background:#0b0f14;border-radius:6px;zoom:var(--z)}
 figcaption{margin-top:8px;color:var(--muted);font-size:12px}
 table{border-collapse:collapse;width:100%;font-size:12.5px;margin-top:10px}
 th,td{border-bottom:1px solid var(--line);padding:5px 7px;text-align:left}
 th{position:sticky;top:0;background:#131922;z-index:1}
 tr:hover td{background:#1b2430}
 .scroll{max-height:520px;overflow:auto;border:1px solid var(--line);border-radius:8px}
-.gallery{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));margin-top:12px}
+.gallery{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;margin-top:12px}
 details{margin-top:14px;border:1px solid var(--line);border-radius:8px;padding:8px 12px;background:#131922}
 summary{cursor:pointer;font-weight:600;padding:4px 0}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:8px;text-align:center}
-.card img{width:100%;height:74px;object-fit:contain;image-rendering:pixelated}
-.card span{display:block;font-size:11px;color:var(--muted);margin-top:4px;word-break:break-word}
+.card img{display:block;width:auto;height:auto;max-width:100%;image-rendering:pixelated;margin:0 auto;zoom:var(--z)}
+.card span{display:block;font-size:11px;color:var(--muted);margin-top:6px;word-break:break-word}
 .rule{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;padding:10px 12px;margin:10px 0;color:var(--muted)}
 code{background:#0b0f14;padding:1px 5px;border-radius:4px}
+.bar{position:sticky;top:0;z-index:9;display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+  padding:10px clamp(14px,2.4vw,34px);background:#131922ee;backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bar span.lbl{color:var(--muted);font-size:12px}
+.bar button{background:#1d2632;color:var(--text);border:1px solid var(--line);border-radius:6px;
+  padding:5px 11px;font:inherit;font-size:12.5px;cursor:pointer}
+.bar button.active{background:var(--accent);color:#0f1319;border-color:var(--accent);font-weight:600}
+.ruler{display:inline-flex;flex-direction:column;gap:3px;margin-left:6px}
+.ruler i{display:block;height:12px;width:calc(128px * var(--z));
+  background-image:repeating-linear-gradient(90deg,var(--accent) 0 1px,transparent 1px calc(4px * var(--z)))}
+.ruler small{color:var(--muted);font-size:11px}
 </style>
 </head>
 <body>
+<div class="bar">
+  <span class="lbl">Zoom</span>
+  <button data-zoom="1" class="active">1:1</button>
+  <button data-zoom="2">2×</button>
+  <button data-zoom="3">3×</button>
+  <span class="ruler"><i></i><small>1 tile = 128 × 64 px = 32 × 32 voxels; each tick = 1 voxel (4 px wide)</small></span>
+</div>
 <header>
   <h1>Scale migration review — 128×128×128 canvas, 32-unit tile grid</h1>
   <p>${count.total} models · ${count.units} unit models (${units.length} types × 5 armies) ·
@@ -282,62 +334,91 @@ code{background:#0b0f14;padding:1px 5px;border-radius:4px}
      committed baked sheets, not hand-edited images.</p>
 </header>
 <main>
-  <h2>1. Representative scene</h2>
-  <div class="rule">Mixed terrain at three elevations, road and bridge connectors, infantry beside
-    vehicles, aircraft, ships, trees, 1×1 posts, 2×2 facilities and the 3×3 HQ — all blitted with the
-    runtime anchors onto the 64×32 tile diamonds.</div>
+  <h2>How to read this page</h2>
+  <div class="rule">
+    Every image is shown <b>1:1</b> — one image pixel is one screen pixel, at the same
+    <b>4 px per voxel across, 2 px down</b> density the runtime blits (previews are frame-0 crops
+    of their baked cells). Nothing is normalised: a 385 px HQ <em>is</em> several times wider on
+    screen than a 47 px rifleman.
+    One map tile is <b>128 × 64 px</b> covering <b>32 × 32 voxels</b>, so a voxel is <b>4 × 2 px</b>.
+    Use the zoom buttons to inspect at 2×/3×; the art is nearest-neighbour, so it stays crisp.
+  </div>
+
+  <h2>1. Unit scale — true size with ground footprint</h2>
+  <div class="rule">
+    Units are drawn at 1:1 on a shared baseline. The dark diamond under each unit is the ground it
+    actually covers; the <b>green diamond</b> inside it is exactly <b>one tile</b>. That is how a
+    1.75-tile tank differs from a 1-tile rifleman, and how a 2-tile battleship covers four times the
+    ground of an infantry squad.
+  </div>
   <figure>
-    <img src="scale-scene.png" alt="Mixed-scale isometric scene">
-    <figcaption>docs/review/scale-scene.png — 14×12 tile scene at 2× integer zoom.</figcaption>
+    <img src="scale-lineup.png" alt="Category lineups at true scale with ground footprints" width="${lineupImg.w}" height="${lineupImg.h}">
+    <figcaption>docs/review/scale-lineup.png — every sprite 1 image pixel per screen pixel, with the
+      ground footprint it occupies at runtime.</figcaption>
   </figure>
 
-  <h2>2. Category lineups at true relative scale</h2>
-  <div class="rule">Every sprite is drawn at 1 runtime pixel per pixel, anchored on the same baseline
-    within its row, so relative sizes are directly comparable.</div>
+  <h2>2. Representative scene</h2>
+  <div class="rule">Mixed terrain at three elevations, road and bridge connectors, infantry beside
+    vehicles, aircraft, ships, trees, 1×1 posts, 2×2 facilities and the 3×3 HQ — all blitted with the
+    runtime anchors onto 128×64 px tile diamonds.</div>
   <figure>
-    <img src="scale-lineup.png" alt="Category lineups">
-    <figcaption>docs/review/scale-lineup.png</figcaption>
+    <img src="scale-scene.png" alt="Mixed-scale isometric scene" width="${sceneImg.w}" height="${sceneImg.h}">
+    <figcaption>docs/review/scale-scene.png — 14×12 tile scene at 1:1, cropped to content.</figcaption>
   </figure>
 
   <h2>3. Before / after</h2>
-  <div class="figure"><figure>
-    <img src="before-after.png" alt="Before and after previews">
+  <div class="rule">Legacy previews were rendered at 2× runtime scale; they are halved here so the
+    comparison is 1:1 on both sides. Sprites grew, they did not shrink.</div>
+  <figure>
+    <img src="before-after.png" alt="Before and after previews" width="${beforeAfterImg.w}" height="${beforeAfterImg.h}">
     <figcaption>Before: 64³ authoring cube treated as a whole tile. After: 128³ canvas, 32-unit tile,
       role-appropriate footprints.</figcaption>
-  </figure></div>
+  </figure>
 
   <h2>4. Building footprint gallery</h2>
   <div class="rule">Multi-tile compounds are authored across their full footprint: hq 3×3,
-    airport 3×3, port 3×2, all other facilities 2×2, posts and turrets 1×1.</div>
+    airport 3×3, port 3×2, all other facilities 2×2, posts and turrets 1×1. Cards keep their baked
+    pixel size, so relative size is readable.</div>
   <div class="gallery">
     ${buildings.sort((a, b) => (b.footprint[0] * b.footprint[1]) - (a.footprint[0] * a.footprint[1]))
-      .map(r => `<div class="card"><img src="${previewFor(r)}" alt="${r.id}"><span>${r.id}<br>${fp(r.footprint)} · ${sizeStr(r.bounds)}</span></div>`).join('\n    ')}
+      .map(r => card(r)).join('\n    ')}
   </div>
 
   <h2>5. Full roster previews</h2>
   <div class="rule">Every generated preview, grouped by kind. ${count.total} models: ${units.length} unit types,
     ${buildings.length} building types, ${rows.filter(r => r.kind === 'terrain').length} terrain cells and
-    ${count.effects} effect, each with its four faction variants.</div>
-  ${rosterSection('Units', rows.filter(r => r.kind === 'unit'))}
+    ${count.effects} effect, each with its four faction variants. Previews are natural size — compare
+    an infantry card with a battleship card.</div>
+  ${rosterSection('Units — all size classes', rows.filter(r => r.kind === 'unit' && !isVariant(r.id)), true)}
+  ${rosterSection('Unit faction variants', rows.filter(r => r.kind === 'unit' && isVariant(r.id)))}
   ${rosterSection('Buildings and structures', rows.filter(r => r.kind === 'building'))}
   ${rosterSection('Terrain and effects', rows.filter(r => r.kind === 'terrain' || r.kind === 'effect'))}
 
   <h2>6. Full sizing matrix</h2>
   <div class="scroll">
     <table>
-      <thead><tr><th>id</th><th>category</th><th>height class</th><th>footprint</th>
-        <th>model bounds</th><th>render scale</th><th>facings</th><th>variants</th><th>frame cells</th><th>status</th></tr></thead>
+      <thead><tr><th>id</th><th>category</th><th>height class</th><th>size class</th><th>footprint</th>
+        <th>model bounds</th><th>render scale</th><th>sprite px</th><th>facings</th><th>variants</th><th>frame cells</th><th>status</th></tr></thead>
       <tbody>
 ${pageRows}
       </tbody>
     </table>
   </div>
 </main>
+<script>
+  const root = document.documentElement;
+  const buttons = [...document.querySelectorAll('[data-zoom]')];
+  for (const b of buttons) {
+    b.addEventListener('click', () => {
+      root.style.setProperty('--z', b.dataset.zoom);
+      for (const x of buttons) x.classList.toggle('active', x === b);
+    });
+  }
+</script>
 </body>
 </html>
 `;
 
-fs.mkdirSync(path.join(ROOT, 'docs/review'), { recursive: true });
 fs.writeFileSync(path.join(ROOT, 'docs/review/scale-review.html'), html);
 
 console.log(`Wrote docs/ASSET_SIZING_MATRIX.md (${rows.length} rows) and docs/review/scale-review.html`);

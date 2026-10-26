@@ -382,18 +382,70 @@ function cropToContent(img, pad = 28) {
   return { width: cw, height: ch, pixels: out };
 }
 
+
+/** Filled isometric diamond of an arbitrary size (ground footprint guides). */
+function fillDiamondSize(dst, W, H, cx, cy, hw, hh, color) {
+  const [r, g, b] = hex(color);
+  for (let dy = -hh; dy <= hh; dy++) {
+    const half = Math.round(hw * (1 - Math.abs(dy) / hh));
+    const y = Math.round(cy + dy);
+    if (y < 0 || y >= H) continue;
+    for (let dx = -half; dx <= half; dx++) {
+      const x = Math.round(cx + dx);
+      if (x < 0 || x >= W) continue;
+      const i = (y * W + x) * 4;
+      dst[i] = r; dst[i + 1] = g; dst[i + 2] = b; dst[i + 3] = 255;
+    }
+  }
+}
+
+/** 1 px isometric diamond outline (footprint edge). */
+function strokeDiamond(dst, W, H, cx, cy, hw, hh, color) {
+  const [r, g, b] = hex(color);
+  for (let dy = -hh; dy <= hh; dy++) {
+    const half = Math.round(hw * (1 - Math.abs(dy) / hh));
+    const y = Math.round(cy + dy);
+    if (y < 0 || y >= H) continue;
+    for (const dx of (half === 0 ? [0] : [-half, half])) {
+      const x = Math.round(cx + dx);
+      if (x < 0 || x >= W) continue;
+      const i = (y * W + x) * 4;
+      dst[i] = r; dst[i + 1] = g; dst[i + 2] = b; dst[i + 3] = 255;
+    }
+  }
+}
+
+/**
+ * Ground-footprint guide drawn under a sprite: the exact diamond the model
+ * covers at its declared footprint, plus a one-tile reference diamond so a
+ * 1.75-tile tank is directly comparable to a 1-tile rifleman.
+ */
+const FOOTPRINT_FILL = '#1f2b39';
+const FOOTPRINT_EDGE = '#5b7593';
+const TILE_REF_EDGE = '#4fc98a';
+function drawFootprintGuide(dst, W, H, modelId, ax, ay) {
+  const meta = MANIFEST.models[modelId]?.meta;
+  const fp = meta?.footprint ?? [1, 1];
+  const hw = Math.max(1, Math.round((fp[0] ?? 1) * HALF_W));
+  const hh = Math.max(1, Math.round((fp[1] ?? 1) * HALF_H));
+  fillDiamondSize(dst, W, H, ax, ay, hw, hh, FOOTPRINT_FILL);
+  strokeDiamond(dst, W, H, ax, ay, hw, hh, FOOTPRINT_EDGE);
+  const bigger = hw > HALF_W || hh > HALF_H;
+  if (bigger) strokeDiamond(dst, W, H, ax, ay, HALF_W, HALF_H, TILE_REF_EDGE);
+  return { fp, hw, hh, overTile: bigger };
+}
+
 /* ------------------------------------------------------------- lineups -- */
 function buildLineup(rows) {
-  const pad = 20, rowH = 230;
-  const W = 1500;
-  const H = pad + rows.reduce((sum, r) => sum + rowH, 0) + pad;
-  const px = Buffer.alloc(W * H * 4);
-  for (let i = 0; i < W * H; i++) { px[i * 4] = 16; px[i * 4 + 1] = 20; px[i * 4 + 2] = 26; px[i * 4 + 3] = 255; }
-  let y = pad;
+  const pad = 20, titleH = 34, gapX = 14, labelH = 44, legendH = 132;
+  const W = 1600;
+  const BG = [16, 20, 26];
+
+  // Lay every category out on a shared 1:1 pixel grid, wrapping when a slot no
+  // longer fits, so nothing is silently dropped from the sheet.
+  const layout = [];
   for (const row of rows) {
-    drawText(px, W, H, pad, y, row.title, '#8fb2d8', 2);
-    let x = pad;
-    const baseline = y + rowH - 74;
+    const items = [];
     for (const item of row.items) {
       const modelId = typeof item === 'string' ? item : item.id;
       const variant = typeof item === 'string' ? '0' : (item.variant ?? '0');
@@ -401,15 +453,76 @@ function buildLineup(rows) {
       const s2 = sheet(modelId, facing, variant);
       if (!s2) continue;
       const f = s2.face.frames[0];
-      const slot = Math.max(f.w + 30, textWidth(modelId, 1) + 14, 96);
-      if (x + slot > W - pad) break;
-      drawModel(px, W, H, modelId, x + Math.floor(slot / 2), baseline, { facing, variant });
-      drawText(px, W, H, x + 4, baseline + 12, modelId, '#c8d2de', 1);
-      if (item.note) drawText(px, W, H, x + 4, baseline + 22, item.note, '#7f8c9b', 1);
-      x += slot;
+      const meta = MANIFEST.models[modelId]?.meta;
+      const fp = meta?.footprint ?? [1, 1];
+      const guided = meta?.kind === 'unit';
+      const guideW = guided ? Math.round(fp[0] * TILE_W) + 30 : 0;
+      const slot = Math.max(f.w + 34, guideW, textWidth(modelId, 1) + 20, 100);
+      const above = Math.max(f.anchorY, guided ? Math.round(fp[1] * HALF_H) : 0);
+      const below = Math.max(f.h - f.anchorY, guided ? Math.round(fp[1] * HALF_H) : 0);
+      items.push({ modelId, variant, facing, f, fp, meta, guided, slot, above, below, note: item.note });
     }
-    y += rowH;
+    const lines = [];
+    let line = null;
+    for (const it of items) {
+      if (!line || line.x + it.slot > W - pad) {
+        line = { items: [], x: pad, above: 0, below: 0 };
+        lines.push(line);
+      }
+      line.items.push(it);
+      line.x += it.slot;
+      line.above = Math.max(line.above, it.above);
+      line.below = Math.max(line.below, it.below);
+    }
+    layout.push({ row, lines });
   }
+
+  const H = pad + layout.reduce((sum, sec) => sum
+    + titleH + sec.lines.reduce((a, l) => a + l.above + l.below + labelH + 16, 0), 0)
+    + legendH + pad;
+  const px = Buffer.alloc(W * H * 4);
+  for (let i = 0; i < W * H; i++) { px[i * 4] = BG[0]; px[i * 4 + 1] = BG[1]; px[i * 4 + 2] = BG[2]; px[i * 4 + 3] = 255; }
+
+  let y = pad;
+  for (const sec of layout) {
+    drawText(px, W, H, pad, y, sec.row.title, '#8fb2d8', 2);
+    y += titleH;
+    for (const line of sec.lines) {
+      const baseline = y + line.above;
+      let x = pad;
+      for (const it of line.items) {
+        const ax = x + Math.floor(it.slot / 2);
+        if (it.guided) drawFootprintGuide(px, W, H, it.modelId, ax, baseline);
+        drawModel(px, W, H, it.modelId, ax, baseline, { facing: it.facing, variant: it.variant });
+        drawText(px, W, H, x + 2, baseline + line.below + 10, it.modelId, '#c8d2de', 1);
+        const sizeLabel = it.guided ? `${it.fp[0]}X${it.fp[1]} TILE` : `${it.fp[0]}X${it.fp[1]}`;
+        const note = it.note ? `${it.note.toUpperCase()} - ${sizeLabel}` : sizeLabel;
+        drawText(px, W, H, x + 2, baseline + line.below + 22, note, '#7f8c9b', 1);
+        x += it.slot;
+      }
+      y += line.above + line.below + labelH + 16;
+    }
+    y += 8;
+  }
+
+  // Legend: what the two diamonds mean, drawn at the same 1:1 scale.
+  const ly = H - legendH + 18;
+  drawText(px, W, H, pad, ly, 'GROUND GUIDE', '#8fb2d8', 2);
+  const lcy = ly + 58;
+  let lx = pad + 12;
+  fillDiamondSize(px, W, H, lx + 64, lcy, HALF_W, HALF_H, FOOTPRINT_FILL);
+  strokeDiamond(px, W, H, lx + 64, lcy, HALF_W, HALF_H, FOOTPRINT_EDGE);
+  drawText(px, W, H, lx, lcy + 42, '1 TILE = 32 VOXELS = 128X64 PX', '#a7b4c4', 1);
+  lx += 370;
+  const hw = Math.round(1.75 * HALF_W), hh = Math.round(1.75 * HALF_H);
+  fillDiamondSize(px, W, H, lx + 100, lcy, hw, hh, FOOTPRINT_FILL);
+  strokeDiamond(px, W, H, lx + 100, lcy, hw, hh, FOOTPRINT_EDGE);
+  strokeDiamond(px, W, H, lx + 100, lcy, HALF_W, HALF_H, TILE_REF_EDGE);
+  drawText(px, W, H, lx, lcy + 42, '1.75 TILES (TANK) - GREEN DIAMOND = ONE TILE', '#a7b4c4', 1);
+  lx += 520;
+  drawText(px, W, H, lx, lcy - 12, 'EVERY SPRITE IS DRAWN ONE IMAGE PIXEL PER SCREEN PIXEL', '#7f8c9b', 1);
+  drawText(px, W, H, lx, lcy, 'ON A SHARED BASELINE - THE SIZES YOU SEE ARE THE SIZES', '#7f8c9b', 1);
+  drawText(px, W, H, lx, lcy + 12, 'THE RUNTIME BLITS. NOTHING IS NORMALISED OR RESCALED.', '#7f8c9b', 1);
   return { pixels: px, width: W, height: H };
 }
 
