@@ -2,9 +2,10 @@
 /**
  * Bake runtime isometric sprite sheets from the 128×128×128 world models.
  *
- * One map cell is a 32-voxel tile rendered as a 64×32 px isometric diamond:
- * 4 px per voxel in the supersampled buffer, box-filtered down 2:1 to 2 px per
- * voxel horizontally and 1 px vertically (VOXEL_Z_PX = 1). Models are rotated
+ * One map cell is a 32-voxel tile rendered as a 128×64 px isometric diamond:
+ * 4 px per voxel horizontally and 2 px vertically (VOXEL_Z_PX = 2), sampled 1:1
+ * from the supersample buffer (DOWNSCALE = 1) so no resampling softens an edge.
+ * Models are rotated
  * about their own ground anchor (the footprint centre, not the canvas centre),
  * so a 1×1 asset stays inside its tile and a 3×3 compound inside its 96×96
  * block in every facing.
@@ -13,11 +14,10 @@
  *   rotated about the vertical axis (never mirrored — mirroring would flip
  *   the light direction),
  * * the image is cropped to its painted bounds plus an anchor offset so the
- *   renderer can blit one drawImage per entity onto a 64×32 tile diamond,
- * * the supersampled cube stack (4 px faces) is downsampled 4:1 with a box
- *   filter to the runtime iso tile scale (64×32 px diamonds), matching
- *   src/iso.js — one runtime pixel per two voxel steps, exactly the world
- *   scale the 32³ sheets had,
+ *   renderer can blit one drawImage per entity onto a 128×64 tile diamond,
+ * * the cube stack is sampled at the runtime iso tile scale directly
+ *   (128×64 px diamonds, 4 px/voxel x, 2 px/voxel y) with mode sampling and a
+ *   hard alpha threshold, matching src/iso.js and keeping sprites palette-exact,
  * * clip frames are packed left-to-right into a fixed-cell strip per
  *   (model, facing, variant); manifest v4 records cell + frames[] + clips,
  *   and the scale metadata under `entry.meta` so facing keys stay cardinal,
@@ -64,7 +64,7 @@ const FACINGS = [
 ];
 const GRID = 128;                             // world canvas per axis
 const GRID_AXES = [GRID, GRID, GRID];
-export const DOWNSCALE = 2;                    // supersample px per runtime px
+export const DOWNSCALE = 1;                    // runtime px per voxel pair (4 px/voxel x, 2 px/voxel y)
 const MANIFEST_FORMAT = 'field-command-voxel-sheet-4';
 const ANCHOR_SLACK = 24;                // px the ground anchor may sit outside the crop
 const MIN_CHANGED_PIXELS = 5; // Phase 3: allow 8-dir frames with smaller motion          // adjacent frames must move real geometry
@@ -366,13 +366,104 @@ export function downsampleCell(grid, x0, y0, w, h, lut, out, ox, oy, stride, ds 
 }
 
 export function pngBytes(width, height, pixels) {
-  const raw = Buffer.alloc((width * 4 + 1) * height);
-  let o = 0;
-  for (let y = 0; y < height; y++) {
-    raw[o++] = 0;
-    pixels.copy(raw, o, y * width * 4, (y + 1) * width * 4);
-    o += width * 4;
+  // Indexed (palette) PNG when the sprite has ≤256 distinct colours, which is
+  // always the case for palette-driven voxel art. At the doubled runtime
+  // density this keeps the payload near the old RGBA size (1 byte/px instead of
+  // 4) while the sprite carries 4× the pixels.
+  const palette = [];
+  const index = new Map();
+  let transparent = -1;
+  const indexed = Buffer.alloc(width * height);
+  let fits = true;
+  for (let i = 0, p = 0; i < pixels.length; i += 4, p++) {
+    const a = pixels[i + 3];
+    if (a === 0) {
+      if (transparent < 0) { transparent = palette.length; palette.push(0); }
+      indexed[p] = transparent;
+      continue;
+    }
+    const rgb = (pixels[i] << 16) | (pixels[i + 1] << 8) | pixels[i + 2];
+    let idx = index.get(rgb);
+    if (idx === undefined) {
+      if (palette.length >= 256) { fits = false; break; }
+      idx = palette.length;
+      index.set(rgb, idx);
+      palette.push(rgb);
+    }
+    indexed[p] = idx;
   }
+  const toRgba = () => {
+    const raw = Buffer.alloc((width * 4 + 1) * height);
+    let o = 0;
+    for (let y = 0; y < height; y++) {
+      raw[o++] = 0;
+      pixels.copy(raw, o, y * width * 4, (y + 1) * width * 4);
+      o += width * 4;
+    }
+    return raw;
+  };
+  const encode = (raw, ihdrColorType, extra) => {
+    const crcTable = pngBytes.crcTable ??= (() => {
+      const t = new Int32Array(256);
+      for (let n = 0; n < 256; n++) {
+        let c = n;
+        for (let k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1;
+        t[n] = c;
+      }
+      return t;
+    })();
+    const crc = buf => {
+      let c = -1;
+      for (let i = 0; i < buf.length; i++) c = crcTable[(c ^ buf[i]) & 255] ^ (c >>> 8);
+      return (c ^ -1) >>> 0;
+    };
+    const chunk = (type, payload) => {
+      const len = Buffer.alloc(4);
+      len.writeUInt32BE(payload.length);
+      const body = Buffer.concat([Buffer.from(type, 'ascii'), payload]);
+      const crcBuf = Buffer.alloc(4);
+      crcBuf.writeUInt32BE(crc(body));
+      return Buffer.concat([len, body, crcBuf]);
+    };
+    const ihdr = Buffer.alloc(13);
+    ihdr.writeUInt32BE(width, 0);
+    ihdr.writeUInt32BE(height, 4);
+    ihdr[8] = 8; ihdr[9] = ihdrColorType; ihdr[10] = 0; ihdr[11] = 0; ihdr[12] = 0;
+    return Buffer.concat([
+      Buffer.from([0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A]),
+      chunk('IHDR', ihdr),
+      ...extra,
+      chunk('IDAT', zlib.deflateSync(raw, { level: 9 })),
+      chunk('IEND', Buffer.alloc(0)),
+    ]);
+  };
+  if (!fits) return encode(toRgba(), 6, []);
+
+  // Indexed: PNG filter 0 scanlines of one byte per pixel.
+  const raw = Buffer.alloc((width + 1) * height);
+  for (let y = 0; y < height; y++) {
+    raw[y * (width + 1)] = 0;
+    indexed.copy(raw, y * (width + 1) + 1, y * width, (y + 1) * width);
+  }
+  const plte = Buffer.alloc(palette.length * 3);
+  palette.forEach((rgb, i) => {
+    plte[i * 3] = (rgb >> 16) & 255;
+    plte[i * 3 + 1] = (rgb >> 8) & 255;
+    plte[i * 3 + 2] = rgb & 255;
+  });
+  const extra = [pngChunk('PLTE', plte)];
+  if (transparent >= 0) {
+    const trns = Buffer.alloc(transparent + 1);
+    trns.fill(255);
+    trns[transparent] = 0;
+    for (let i = 0; i <= transparent; i++) if (i !== transparent) trns[i] = 255;
+    extra.push(pngChunk('tRNS', trns));
+  }
+  return encode(raw, 3, extra);
+}
+
+/** Minimal PNG chunk helper shared by the encoders. */
+function pngChunk(type, payload) {
   const crcTable = pngBytes.crcTable ??= (() => {
     const t = new Int32Array(256);
     for (let n = 0; n < 256; n++) {
@@ -382,29 +473,14 @@ export function pngBytes(width, height, pixels) {
     }
     return t;
   })();
-  const crc = buf => {
-    let c = -1;
-    for (let i = 0; i < buf.length; i++) c = crcTable[(c ^ buf[i]) & 255] ^ (c >>> 8);
-    return (c ^ -1) >>> 0;
-  };
-  const chunk = (type, payload) => {
-    const len = Buffer.alloc(4);
-    len.writeUInt32BE(payload.length);
-    const body = Buffer.concat([Buffer.from(type, 'ascii'), payload]);
-    const crcBuf = Buffer.alloc(4);
-    crcBuf.writeUInt32BE(crc(body));
-    return Buffer.concat([len, body, crcBuf]);
-  };
-  const ihdr = Buffer.alloc(13);
-  ihdr.writeUInt32BE(width, 0);
-  ihdr.writeUInt32BE(height, 4);
-  ihdr[8] = 8; ihdr[9] = 6; ihdr[10] = 0; ihdr[11] = 0; ihdr[12] = 0;
-  return Buffer.concat([
-    Buffer.from([0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A]),
-    chunk('IHDR', ihdr),
-    chunk('IDAT', zlib.deflateSync(raw, { level: 9 })),
-    chunk('IEND', Buffer.alloc(0)),
-  ]);
+  let c = -1;
+  const body = Buffer.concat([Buffer.from(type, 'ascii'), payload]);
+  for (let i = 0; i < body.length; i++) c = crcTable[(c ^ body[i]) & 255] ^ (c >>> 8);
+  const out = Buffer.alloc(8 + payload.length + 4);
+  out.writeUInt32BE(payload.length, 0);
+  body.copy(out, 4);
+  out.writeUInt32BE((c ^ -1) >>> 0, 8 + payload.length);
+  return out;
 }
 
 function variantsFor(kind) {
@@ -443,11 +519,11 @@ export function bake(doc, palette, { only = null } = {}) {
   const manifest = {
     format: MANIFEST_FORMAT,
     gridSize: [...GRID_AXES],
-    tileSize: [64, 32],
+    tileSize: [128, 64],
     tileUnits: 32,
     tilesPerAxis: GRID_AXES[0] / 32,
     downscale: DOWNSCALE,
-    voxelZPx: 1,
+    voxelZPx: 2,
     facings: FACINGS.map(f => f[0]),
     buildingFacings: ['right', 'up', 'left', 'down'],
     teamVariants: [...TEAM_VARIANTS],

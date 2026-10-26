@@ -1,5 +1,5 @@
 /**
- * Minimal PNG encode/decode (RGBA, no interlace) for the review tooling.
+ * Minimal PNG encode/decode (RGBA + indexed, no interlace) for the review tooling.
  * The baker already owns its own encoder; this module adds decoding so the
  * review tools can compose real baked sprites into comparison sheets exactly
  * as the runtime blits them (anchor-aligned, nearest-neighbour, no filtering).
@@ -54,59 +54,86 @@ export function encodePng(width, height, pixels) {
 
 /** Decodes an 8-bit RGBA, non-interlaced PNG into { width, height, pixels }. */
 export function decodePng(fileBytes) {
-  const buf = Buffer.isBuffer(fileBytes) ? fileBytes : Buffer.from(fileBytes);
-  if (!buf.subarray(0, 8).equals(SIGNATURE)) throw new Error('not a PNG');
-  let pos = 8;
+  let offset = 8;
   let width = 0, height = 0, bitDepth = 8, colorType = 6;
   const idat = [];
-  while (pos < buf.length) {
-    const len = buf.readUInt32BE(pos);
-    const type = buf.toString('ascii', pos + 4, pos + 8);
-    const data = buf.subarray(pos + 8, pos + 8 + len);
+  let plte = null;
+  let trns = null;
+  while (offset < fileBytes.length) {
+    const len = fileBytes.readUInt32BE(offset);
+    const type = fileBytes.toString('ascii', offset + 4, offset + 8);
+    const data = fileBytes.subarray(offset + 8, offset + 8 + len);
     if (type === 'IHDR') {
       width = data.readUInt32BE(0);
       height = data.readUInt32BE(4);
       bitDepth = data[8];
       colorType = data[9];
+    } else if (type === 'PLTE') {
+      plte = data;
+    } else if (type === 'tRNS') {
+      trns = data;
     } else if (type === 'IDAT') {
       idat.push(data);
-    } else if (type === 'IEND') break;
-    pos += 12 + len;
+    } else if (type === 'IEND') {
+      break;
+    }
+    offset += 12 + len;
   }
-  if (bitDepth !== 8 || colorType !== 6) {
+  if (bitDepth !== 8) {
     throw new Error(`unsupported PNG (bitDepth ${bitDepth}, colorType ${colorType})`);
   }
+  const channels = colorType === 6 ? 4 : colorType === 3 ? 1 : colorType === 2 ? 3 : 0;
+  if (!channels) throw new Error(`unsupported PNG (bitDepth ${bitDepth}, colorType ${colorType})`);
   const raw = zlib.inflateSync(Buffer.concat(idat));
-  const bpp = 4;
-  const stride = width * bpp;
-  const pixels = Buffer.alloc(width * height * 4);
-  let prev = Buffer.alloc(stride);
+  const stride = width * channels;
+  const lines = Buffer.alloc(stride * height);
   for (let y = 0; y < height; y++) {
     const filter = raw[y * (stride + 1)];
-    const line = raw.subarray(y * (stride + 1) + 1, (y + 1) * (stride + 1));
-    const out = pixels.subarray(y * stride, (y + 1) * stride);
+    const src = raw.subarray(y * (stride + 1) + 1, (y + 1) * (stride + 1));
+    const out = lines.subarray(y * stride, (y + 1) * stride);
+    const prev = y > 0 ? lines.subarray((y - 1) * stride, y * stride) : null;
     for (let x = 0; x < stride; x++) {
-      const a = x >= bpp ? out[x - bpp] : 0;
-      const b = prev[x];
-      const c = x >= bpp ? prev[x - bpp] : 0;
-      const v = line[x];
-      let val;
+      const a = x >= channels ? out[x - channels] : 0;
+      const b = prev ? prev[x] : 0;
+      const c = prev && x >= channels ? prev[x - channels] : 0;
+      let v = src[x];
       switch (filter) {
-        case 0: val = v; break;
-        case 1: val = v + a; break;
-        case 2: val = v + b; break;
-        case 3: val = v + ((a + b) >> 1); break;
-        case 4: {
+        case 0: break;                                   // none
+        case 1: v += a; break;                           // sub
+        case 2: v += b; break;                           // up
+        case 3: v += (a + b) >> 1; break;                // average
+        case 4: {                                        // paeth
           const p = a + b - c;
           const pa = Math.abs(p - a), pb = Math.abs(p - b), pc = Math.abs(p - c);
-          val = v + (pa <= pb && pa <= pc ? a : pb <= pc ? b : c);
+          v += pa <= pb && pa <= pc ? a : pb <= pc ? b : c;
           break;
         }
         default: throw new Error(`unknown PNG filter ${filter}`);
       }
-      out[x] = val & 0xff;
+      out[x] = v & 255;
     }
-    prev = out;
+  }
+  const pixels = Buffer.alloc(width * height * 4);
+  for (let p = 0; p < width * height; p++) {
+    const o = p * 4;
+    if (colorType === 3) {
+      const idx = lines[p];
+      if (idx * 3 + 2 >= plte.length) continue;
+      pixels[o] = plte[idx * 3];
+      pixels[o + 1] = plte[idx * 3 + 1];
+      pixels[o + 2] = plte[idx * 3 + 2];
+      pixels[o + 3] = trns && idx < trns.length ? trns[idx] : 255;
+    } else if (colorType === 2) {
+      pixels[o] = lines[p * 3];
+      pixels[o + 1] = lines[p * 3 + 1];
+      pixels[o + 2] = lines[p * 3 + 2];
+      pixels[o + 3] = 255;
+    } else {
+      pixels[o] = lines[o];
+      pixels[o + 1] = lines[o + 1];
+      pixels[o + 2] = lines[o + 2];
+      pixels[o + 3] = lines[o + 3];
+    }
   }
   return { width, height, pixels };
 }

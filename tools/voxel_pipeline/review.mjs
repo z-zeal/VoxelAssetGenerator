@@ -27,8 +27,9 @@ const TERRAIN = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/terrain.json'),
 const OUT = path.join(ROOT, 'docs/review');
 fs.mkdirSync(OUT, { recursive: true });
 
-const TILE_W = MANIFEST.tileSize[0];   // 64
-const TILE_H = MANIFEST.tileSize[1];   // 32
+const TILE_W = MANIFEST.tileSize[0];   // 128
+const TILE_H = MANIFEST.tileSize[1];   // 64
+const VOXEL_Z_PX = MANIFEST.voxelZPx ?? 2; // screen px per world voxel of height
 const HALF_W = TILE_W / 2;
 const HALF_H = TILE_H / 2;
 
@@ -99,11 +100,13 @@ function hex(c) {
 }
 
 function gridToIso(x, y, elevation = 0, ox, oy) {
-  return { x: ox + (x - y) * HALF_W, y: oy + (x + y) * HALF_H - elevation };
+  // `elevation` is in world voxels; a voxel is VOXEL_Z_PX screen px tall, so a
+  // level-4 step lifts the tile by 8 px (2 px per voxel at 4 px/voxel x).
+  return { x: ox + (x - y) * HALF_W, y: oy + (x + y) * HALF_H - elevation * VOXEL_Z_PX };
 }
 
 /** Iso scene renderer: terrain diamonds + anchored sprites in painter order. */
-function renderScene({ width, height, originX, originY, tiles, props, units, background = '#12161c', zoom = 2 }) {
+function renderScene({ width, height, originX, originY, tiles, props, units, background = '#12161c', zoom = 1 }) {
   const W = width, H = height;
   const px = Buffer.alloc(W * H * 4);
   const [br, bg, bb] = hex(background);
@@ -125,10 +128,10 @@ function renderScene({ width, height, originX, originY, tiles, props, units, bac
     const dropEast = Math.max(0, t.elevation - eastN);
     const dropSouth = Math.max(0, t.elevation - southN);
     if (dropSouth > 0) {
-      drawCliffFace(px, W, H, iso.x - HALF_W, iso.y, iso.x, iso.y + HALF_H, dropSouth, CLIFF_SOUTH);
+      drawCliffFace(px, W, H, iso.x - HALF_W, iso.y, iso.x, iso.y + HALF_H, dropSouth * VOXEL_Z_PX, CLIFF_SOUTH);
     }
     if (dropEast > 0) {
-      drawCliffFace(px, W, H, iso.x, iso.y + HALF_H, iso.x + HALF_W, iso.y, dropEast, CLIFF_EAST);
+      drawCliffFace(px, W, H, iso.x, iso.y + HALF_H, iso.x + HALF_W, iso.y, dropEast * VOXEL_Z_PX, CLIFF_EAST);
     }
     const pal = TERRAIN.terrains[t.terrain]?.palette ?? TERRAIN.terrains.plains.palette;
     fillDiamond(px, W, H, iso.x, iso.y, pal.top);
@@ -284,8 +287,8 @@ function buildScene() {
   const tiles = [];
   const props = [];
   const units = [];
-  const W = 1260, H = 760;
-  const originX = W / 2, originY = 200;
+  const W = 2420, H = 1340;
+  const originX = W / 2, originY = 330;
   const gridW = 14, gridH = 12;
   for (let y = 0; y < gridH; y++) {
     for (let x = 0; x < gridW; x++) {
@@ -347,10 +350,42 @@ function buildScene() {
   return renderScene({ width: W, height: H, originX, originY, tiles, props, units, background: '#101418' });
 }
 
+/**
+ * Trim a rendered sheet to its painted content plus `pad` px of background, so a
+ * scene sized generously for tall compounds does not ship with empty margins.
+ * The render fills the canvas with an opaque background colour, so "content" is
+ * any pixel that differs from that colour.
+ */
+function cropToContent(img, pad = 28) {
+  const { width: W, height: H, pixels: px } = img;
+  const bg = [px[0], px[1], px[2]];
+  let minX = W, minY = H, maxX = -1, maxY = -1;
+  for (let y = 0; y < H; y++) {
+    for (let x = 0; x < W; x++) {
+      const i = (y * W + x) * 4;
+      if (px[i] !== bg[0] || px[i + 1] !== bg[1] || px[i + 2] !== bg[2]) {
+        if (x < minX) minX = x;
+        if (x > maxX) maxX = x;
+        if (y < minY) minY = y;
+        if (y > maxY) maxY = y;
+      }
+    }
+  }
+  if (maxX < 0) return img;
+  const x0 = Math.max(0, minX - pad), y0 = Math.max(0, minY - pad);
+  const x1 = Math.min(W - 1, maxX + pad), y1 = Math.min(H - 1, maxY + pad);
+  const cw = x1 - x0 + 1, ch = y1 - y0 + 1;
+  const out = Buffer.alloc(cw * ch * 4);
+  for (let y = 0; y < ch; y++) {
+    px.copy(out, y * cw * 4, ((y0 + y) * W + x0) * 4, ((y0 + y) * W + x0 + cw) * 4);
+  }
+  return { width: cw, height: ch, pixels: out };
+}
+
 /* ------------------------------------------------------------- lineups -- */
 function buildLineup(rows) {
-  const pad = 20, rowH = 168;
-  const W = 1320;
+  const pad = 20, rowH = 230;
+  const W = 1500;
   const H = pad + rows.reduce((sum, r) => sum + rowH, 0) + pad;
   const px = Buffer.alloc(W * H * 4);
   for (let i = 0; i < W * H; i++) { px[i * 4] = 16; px[i * 4 + 1] = 20; px[i * 4 + 2] = 26; px[i * 4 + 3] = 255; }
@@ -358,7 +393,7 @@ function buildLineup(rows) {
   for (const row of rows) {
     drawText(px, W, H, pad, y, row.title, '#8fb2d8', 2);
     let x = pad;
-    const baseline = y + rowH - 58;
+    const baseline = y + rowH - 74;
     for (const item of row.items) {
       const modelId = typeof item === 'string' ? item : item.id;
       const variant = typeof item === 'string' ? '0' : (item.variant ?? '0');
@@ -366,7 +401,7 @@ function buildLineup(rows) {
       const s2 = sheet(modelId, facing, variant);
       if (!s2) continue;
       const f = s2.face.frames[0];
-      const slot = Math.max(f.w + 24, textWidth(modelId, 1) + 14, 78);
+      const slot = Math.max(f.w + 30, textWidth(modelId, 1) + 14, 96);
       if (x + slot > W - pad) break;
       drawModel(px, W, H, modelId, x + Math.floor(slot / 2), baseline, { facing, variant });
       drawText(px, W, H, x + 4, baseline + 12, modelId, '#c8d2de', 1);
@@ -398,15 +433,14 @@ function downscaleNearest(img, factor) {
 }
 
 function buildBeforeAfter(pairs) {
-  // Variable-width columns at one shared integer scale: a 3×3 HQ preview is
-  // ~193 px while an infantryman is ~24 px, so equal-width columns would either
-  // crop the compounds or shrink the units into specks. Both rows use the same
-  // scale, so the comparison stays honest; legacy previews were rendered at 2×
-  // runtime, so they are halved first.
-  const SCALE = 2;
+  // Variable-width columns at one shared scale: a 3×3 HQ is ~385 px while an
+  // infantryman is ~45 px, so equal-width columns would either crop the
+  // compounds or shrink the units into specks. Old and new previews are both
+  // 2 px per voxel of their own model, so this is an honest 1:1 comparison.
+  const SCALE = 1;
   const pad = 18, titleH = 26, gapX = 20, rowGap = 14, labelH = 30;
   const loaded = pairs.map(p => {
-    const before = fs.existsSync(p.before) ? downscaleNearest(decodePng(fs.readFileSync(p.before)), 2) : null;
+    const before = fs.existsSync(p.before) ? decodePng(fs.readFileSync(p.before)) : null;
     const after = fs.existsSync(p.after) ? decodePng(fs.readFileSync(p.after)) : null;
     const w = Math.max(before?.width ?? 0, after?.width ?? 0) * SCALE;
     return { ...p, before, after, w };
@@ -445,7 +479,7 @@ function buildBeforeAfter(pairs) {
 }
 
 /* ---------------------------------------------------------------- main -- */
-const scene = buildScene();
+const scene = cropToContent(buildScene(), 28);
 fs.writeFileSync(path.join(OUT, 'scale-scene.png'), encodePng(scene.width, scene.height, scene.pixels));
 
 const lineup = buildLineup([

@@ -404,6 +404,12 @@ test('12. Generated elevation assets exist, manifest paths resolve, previews ren
     assert.equal(f.cell.h - f.anchorY, baseBelowAnchor, `${id} ground contact must stay on the z=0 baseline`);
     assert.equal(f.anchorX, base.anchorX, `${id} anchorX must not depend on height`);
   }
+  // Sprite density: a tile is 32 voxels wide rendered at 128 px, i.e. 4 px per
+  // voxel horizontally (2 horizontally per supersample step) and 2 per voxel
+  // vertically — the doubled-density contract that fixed the "blurry" sprites.
+  assert.equal(TILE_W / TILE_VOXELS, 4);
+  assert.equal(TILE_H / TILE_VOXELS, 2);
+  assert.equal(base.cell.w, TILE_W + 1, `${'elevation-00'} crop must cover one tile diamond plus the edge pixel`);
 
   // Deterministic re-bake check on elevation-00 and elevation-32
   const rebaked = bake(voxDoc, voxDoc.palette, { only: ['elevation-00', 'elevation-32'] });

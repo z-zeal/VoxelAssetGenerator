@@ -26,9 +26,11 @@ passing, 0 animation-motion gate failures in strict bake, 0 blocked assets.
 | renderer placement | one sprite per building cell | **one sprite per footprint, anchored on its centre** |
 | animation motion | design-space ops applied after resample | **`scalePoseMotion` promotes design → world before resample** |
 
-Runtime contract now: `TILE_W 64`, `TILE_H 32`, `TILE_VOXELS 32`,
-`VOXEL_Z_PX 1`, `VOXEL_GRID_SIZE 128`, `DOWNSCALE 2`, tile diamond unchanged at
-2:1 (2 px per voxel horizontally, 1 px vertically). `ISO_Z` (23) is untouched.
+Runtime contract now: `TILE_W 128`, `TILE_H 64`, `TILE_VOXELS 32`,
+`VOXEL_Z_PX 2`, `VOXEL_GRID_SIZE 128`, `DOWNSCALE 1`, tile diamond 2:1 at
+**4 px per voxel horizontally and 2 px vertically**. `ISO_Z` (23) is untouched.
+(An interim bake used a 64×32 px diamond and `DOWNSCALE 2`; §6b records why that
+made small assets soft and how it was fixed.)
 
 Normative specification: **`docs/SCALE_128.md`**.
 
@@ -128,12 +130,12 @@ enlargement anywhere in the roster; the HQ was remodelled, not scaled.
 
 - Elevation blocks are full columns from z=0 to their level, with z unscaled.
   Their sprites are cropped tight to content, so each +4-level block is exactly
-  4 px taller and its ground anchor sits exactly 4 px lower inside the crop; the
-  anchor-to-sprite-bottom distance is constant (18 px) for every level. Drawing a
-  level-h block with its anchor on the z=0 baseline puts its surface exactly
-  h px above that baseline, which is where `gridToIso(..., elevation)` draws
-  entities standing on the tile.
-- `VOXEL_Z_PX = 1`; `data/terrain.json → elevation.runtimePixelsPerVoxelZ = 1`.
+  8 px taller (69, 77, 85, …, 133 px for levels 0…32) and its ground anchor sits
+  exactly 8 px lower inside the crop; the anchor-to-sprite-bottom distance is
+  constant (35 px) for every level. Drawing a level-h block with its anchor on
+  the z=0 baseline puts its surface exactly 2h px above that baseline, which is
+  where `gridToIso(..., elevation)` draws entities standing on the tile.
+- `VOXEL_Z_PX = 2`; `data/terrain.json → elevation.runtimePixelsPerVoxelZ = 2`.
 - Height hierarchy verified in test 4: infantry (≈23 voxels tall) < vehicles
   (≈18–23) < 1×1 posts (17–51 px sprites, guard tower tallest) < 2×2 facilities
   (43–62) < major compounds (70). Tallest model in the roster: **hq, 70 voxels**
@@ -144,11 +146,11 @@ enlargement anywhere in the roster; the HQ was remodelled, not scaled.
 ## 6. Phase F — bake and validation
 
 ```
-build   500 models, 1,678,654 voxels       (~26 s)
-preview 500 preview PNGs                   (~2 s)
-bake    17,880 strips, 26,708 frame cells  (395 s)
-        50.19 MB PNG payload, 98 MB on disk
-        (82.11 MB before the crisp-sampling fix; hard edges compress better)
+build   500 models, 2,371,252 voxels       (~34 s)
+preview 500 preview PNGs                   (~3 s)
+bake    17,880 strips, 26,708 frame cells  (758 s)
+        176.75 MB PNG payload, 228 MB on disk
+        (units alone: 13,920 strips / 169.0 MB)
 ```
 
 Bake gates that ran in **strict** mode (any failure aborts):
@@ -189,13 +191,52 @@ and the editor sets it once at startup. Two new gates lock this down:
 blitted with smoothing enabled). Payload also dropped from 82.11 MB to 50.19 MB
 because hard edges compress far better.
 
-**Honest before/after.** The legacy previews in `docs/review/before/` were rendered
-at 2× runtime scale, while the new previews are 1:1; `before-after.png` now halves
-the legacy images first, so the sheet no longer implies units shrank ~2×. They did
-not: a tank's runtime sprite is 45×32 px before and 46×34 px after.
+**Second crispness pass — sprite density (found in the second review).** The
+rules above fixed *blending*, but the sprites were still half-resolution art:
+a 32-voxel tile drawn into a 64×32 px diamond is 2 px/voxel horizontally and
+1 px/voxel vertically, and every 1×1 asset was additionally baked through a 2×
+box filter (`DOWNSCALE 2`). Fixing that is the difference between "not blurred"
+and "sharp":
 
-Manifest: `field-command-voxel-sheet-4`, grid `[128,128,128]`, tile `[64,32]`,
-`tileUnits 32`, `tilesPerAxis 4`, `downscale 2`, `voxelZPx 1`. Metadata lives
+| change | effect |
+| --- | --- |
+| diamond 64×32 px → **128×64 px**, `DOWNSCALE 2` → **1** | 4 px/voxel horizontally, 2 px vertically, sampled 1:1 — no resampling step left to soften an edge |
+| `VOXEL_Z_PX 1` → **2** | vertical detail doubles; a voxel column is 2 px, not 1 |
+| **indexed PNG output** (colorType 3 + PLTE + tRNS) | palette-exact colour with a 1-byte index plane; sprites above 256 colours fall back to RGBA |
+
+The 1×1 assets were the visible symptom: at the old density a 73×80 px infantry
+cell was 38×39 px, so a 22-voxel-tall soldier was 23 px of art squeezed into one
+pixel per voxel. Measured cells after the pass: infantry **73×80**,
+tank **159×110**, HQ **385×239** (previously 38×39, 45×32 and 65×44 in the
+legacy 64-voxel project).
+
+**Unit size classes (found in the same review).** Every unit had been forced
+onto a 1×1 footprint, which made a battleship the same ground area as a
+rifleman. `UNIT_SIZES` in `scale.mjs` now maps each role to a footprint of
+**1 / 1.25 / 1.5 / 1.75 / 2 tiles**, and the model is resampled by one uniform
+factor (never per axis) to reach it:
+
+| class | tiles | units |
+| --- | --- | --- |
+| 1× | 1×1 | all infantry types, scout, attack-dog |
+| 1.25× | 1.25×1.25 | recon, uav |
+| 1.5× | 1.5×1.5 | apc, ifv, aegis, supply-truck, mobile-repair, command-vehicle, copter, lift-copter |
+| 1.75× | 1.75×1.75 | tank, heavy, tanks/rockets/missiles families, fighters, gunboats, submarines, mine warfare |
+| 2× | 2×2 | artillery, bomber, destroyer, cruiser, battleship, carrier, mpa, specter, transport-plane |
+
+Fractional classes are legal because the game integrates unit positions as
+floating-point world coordinates rather than snapping them to a grid cell;
+`footprintCells()` returns a single cell for a fractional footprint and the
+placement code never rounds units onto the tile grid.
+
+**Honest before/after.** The legacy previews in `docs/review/before/` were rendered
+at 2× runtime scale; `before-after.png` halves the legacy images first, so the
+sheet compares like with like. After the density pass the sprites are genuinely
+larger in pixels (a tank cell went 45×32 → 159×110, the HQ 65×44 → 385×239),
+because the sprite grew with the tile and the units gained size classes.
+
+Manifest: `field-command-voxel-sheet-4`, grid `[128,128,128]`, tile `[128,64]`,
+`tileUnits 32`, `tilesPerAxis 4`, `downscale 1`, `voxelZPx 2`. Metadata lives
 under `entry.meta` (`kind, category, heightClass, footprint, gameplayFootprint,
 visualFootprint, renderScale, bounds, groundAnchor`), so facing keys remain
 exactly `right|up|left|down` (+ 4 diagonals for units). 17,880 strips referenced
@@ -301,9 +342,11 @@ not silent gaps:
 | Faction variants regenerated | 336 (232 unit + 104 building) |
 | Buildings re-authored | 130 models / 26 types, 85 multi-tile ids |
 | Major compounds remodelled | 3 types (hq, airport, port) = 15 models |
-| Voxels regenerated | 1,678,654 |
+| Voxels regenerated | 2,371,252 |
 | Previews regenerated | 500 |
-| Baked strips | 17,880 (26,708 frame cells, 50.19 MB) |
+| Baked strips | 17,880 (26,708 frame cells, 176.75 MB) |
+| Largest cell | `hq` 385×239 px (3×3 tiles) |
+| Unit size classes | 5 (1 / 1.25 / 1.5 / 1.75 / 2 tiles) |
 | Runtime files integrated | 3 modules + editor page + generated scale table |
 | Automated gates | 29 passing (15 elevation + 14 scale) |
 | Animation motion failures | 0 |

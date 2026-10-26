@@ -19,7 +19,7 @@ import {
 import { UNIT_ARMY_IDS } from './build.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
-const DS = Number(process.env.PREVIEW_DS ?? 2);
+const DS = Number(process.env.PREVIEW_DS ?? 1);
 
 const onlyArg = process.argv.indexOf('--only');
 const onlyList = onlyArg >= 0 ? process.argv[onlyArg + 1].split(',').map(s => s.trim()).filter(Boolean) : null;

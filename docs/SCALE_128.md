@@ -17,14 +17,23 @@ that enforce it are `tests/scale.test.js` and `tests/elevation.test.js`.
 | model canvas | **128 × 128 × 128 voxels** | hard maximum for any model |
 | ground tile | **32 × 32 voxels** | one gameplay cell |
 | tiles per canvas axis | **4** | 128 / 32 |
-| iso tile footprint | **64 × 32 px** | unchanged 2:1 isometric diamond |
-| pixels per voxel | **2 px horizontal, 1 px vertical** | `VOXEL_Z_PX = 1` |
-| runtime downscale | **2** | raycast canvas → sprite pixels |
+| iso tile footprint | **128 × 64 px** | 2:1 isometric diamond, scaled up with the sprite density |
+| pixels per voxel | **4 px horizontal, 2 px vertical** | `VOXEL_Z_PX = 2` |
+| runtime downscale | **1** | supersample buffer → sprite pixels (1:1, no lossy shrink) |
 | elevation levels | 0, 4, 8, …, 32 | step 4, untouched by the rescale |
 | elevation → pixels | **1 px per elevation unit** | a 4-level step lifts a tile by 4 px |
 
-`TILE_W / TILE_VOXELS = 2` and `TILE_H / TILE_VOXELS = 1` are asserted by test 1:
+`TILE_W / TILE_VOXELS = 4` and `TILE_H / TILE_VOXELS = 2` are asserted by test 1:
 the runtime's tile and the pipeline's tile are the same physical 32 voxels.
+
+**Why the tile grew instead of the sprites shrinking.** Shrinking the ground
+tile from 64 to 32 voxels would have halved every sprite if the 64×32 px
+diamond had been kept, which is exactly what made 1×1 assets look soft: at
+2 px/voxel horizontally and 1 px/voxel vertically, a voxel column collapsed to
+a single pixel row and every edge was resampled. Holding the diamond at
+**128 × 64 px** restores a 4/2 px per voxel budget for a 32-voxel tile — the
+same sprite area a 1×1 asset had before the migration — so small assets stay
+crisp. The cost is a 4× pixel area per sprite (see §9).
 
 ## 2. The three sizes
 
@@ -86,20 +95,21 @@ and narrow; an airport is wide and flat.
 
 - **Elevation blocks** are the one place where z is gameplay data. Their z is the
   elevation level (0…32) and is *not* rescaled, so a level-32 block is 32 world
-  voxels tall (plus its surface diamond). `VOXEL_Z_PX = 1` and
-  `terrain.json → elevation.runtimePixelsPerVoxelZ = 1` describe the same rule.
+  voxels tall (plus its surface diamond). `VOXEL_Z_PX = 2` and
+  `terrain.json → elevation.runtimePixelsPerVoxelZ = 2` describe the same rule.
   Sprites are cropped tight to their content, so each +4-level block's crop is
-  exactly 4 px taller and its ground anchor sits exactly 4 px lower inside the
-  crop; the distance from the anchor to the bottom of the sprite stays constant
-  (18 px). Draw a level-h block with its anchor on the z = 0 baseline and its
+  exactly 8 px taller (69, 77, 85, …, 133 px for levels 0…32) and its ground
+  anchor sits exactly 8 px lower inside the crop; the distance from the anchor
+  to the bottom of the sprite stays constant (35 px). Draw a level-h block with its anchor on the z = 0 baseline and its
   surface lands h × `VOXEL_Z_PX` px above it — which is exactly where
   `gridToIso(..., elevation)` puts entities standing on that tile. Test 12 of
   `tests/elevation.test.js` asserts all four relationships for every level.
 - **Terrain props** (trees, rocks, hills) use half-scale z like their x/y, which
   keeps their old silhouette proportions on a tile that is now half as wide.
 - **Units** are 16–24 world voxels tall (infantry ≈ 23, tanks ≈ 18), so a
-  human is clearly smaller than a doorway while still readable at 2 px/voxel.
-- **1×1 posts** are 17–51 voxels tall (pillbox 29 px sprite, guard tower 51 px).
+  human is clearly smaller than a doorway while still readable at 4 px/voxel.
+- **1×1 posts** are 17–51 voxels tall (pillbox 56 px sprite, guard tower 101 px at
+  the current 2 px per vertical voxel).
 - **2×2 facilities** are 43–62 voxels tall at the anchor.
 - **3×3 compounds** reach 70 voxels (HQ) — the tallest structures in the
   roster, well inside the 128-voxel ceiling.
@@ -128,9 +138,11 @@ geometry (0 for the current roster).
 
 ## 6b. Sprite crispness (pixel-art sampling)
 
-The world scale halves the number of voxels per tile, so the bake has to resample
-a 4 px/voxel supersample buffer down to 1 px/voxel. Three rules keep the result
-looking like pixel art rather than a blurred photograph:
+The bake rasterises at the runtime resolution directly (`DOWNSCALE = 1`, 4 px per
+voxel horizontally and 2 px vertically), so there is no resampling step left to
+soften edges. The sampler still has to choose *which* palette index lands in
+each pixel, and three rules keep the result looking like pixel art rather than a
+blurred photograph:
 
 | rule | why |
 | --- | --- |
@@ -139,8 +151,9 @@ looking like pixel art rather than a blurred photograph:
 | **no colour quantization** | unit strips used to be masked to 5 bits per channel (2,452 → 690 shades) to shrink the payload; that banding was visible. Removed — the mode sampler already keeps the palette small. |
 
 The renderer must also sample nearest-neighbour: `blitSheet()` disables
-`imageSmoothingEnabled` around every `drawImage`, because the editor runs at a
-fractional zoom (1.35×) where the default bilinear filter blurs all sprite edges.
+`imageSmoothingEnabled` around every `drawImage`, because the editor runs at
+non-integer zoom levels where the default bilinear filter blurs all sprite
+edges.
 `tests/scale.test.js` test 13 asserts that every opaque pixel of a baked strip is
 an exact palette shade, and test 14 asserts that no sprite is ever blitted with
 smoothing enabled.
@@ -150,10 +163,10 @@ smoothing enabled.
 `src/iso.js` consumes the generated `src/asset-scale.js`:
 
 ```js
-TILE_W = 64, TILE_H = 32         // px per tile
-TILE_VOXELS = 32                 // voxels per tile
-VOXEL_Z_PX = 1                   // px per elevation unit
-VOXEL_GRID_SIZE = 128, DOWNSCALE = 2
+TILE_W = 128, TILE_H = 64        // px per tile
+TILE_VOXELS = 32                 // voxels per tile  (4 px/voxel x, 2 y)
+VOXEL_Z_PX = 2                   // px per elevation unit
+VOXEL_GRID_SIZE = 128, DOWNSCALE = 1
 ```
 
 - `footprintOf(type)`, `footprintCells(x, y, fp)`, `footprintOrigin(map, entity)`,
@@ -179,7 +192,7 @@ Manifest entry shape (v4):
 
 ```json
 "hq": {
-  "right": { "cell": {"x":0,"y":0,"w":193,"h":120}, "anchorX": 95, "anchorY": 70,
+  "right": { "cell": {"x":0,"y":0,"w":385,"h":239}, "anchorX": 190, "anchorY": 140,
              "frames": [ … ], "variants": {"0": {"file": "...png", "sha256": "..."}, "n": {}, …} },
   "up": { … }, "left": { … }, "down": { … },
   "meta": { "kind": "building", "category": "command", "heightClass": "major",
@@ -203,6 +216,12 @@ The bake is deterministic: manifest hashes, frame dedupe and cell sizes are
 stable across runs, and test 12 of `tests/elevation.test.js` re-bakes
 `elevation-00`/`elevation-32` into a temporary directory to prove it.
 
-Current payload: **17,880 strips, 50.19 MB** (98 MB on disk with the manifest).
-Hard-edged pixel art compresses far better than the previous antialiased
-sprites, which is why this dropped from 82 MB without losing any coverage.
+Current payload: **17,880 strips, 176.75 MB** (228 MB on disk with the
+manifest). Sprites carry 4× the pixels they did at the old 64×32 px tile —
+**169 MB of that total is unit strips**, because each unit is baked 8 facings ×
+6 team variants. Indexed PNG with filter 0 was measured best for this art
+(filter 0 ≈ 17.2 kB per tank strip vs 35.1 kB for up and 41.3 kB for paeth), so
+the remaining size levers are structural, not encodings: fewer team variants
+(4 instead of 6 → ≈118 MB) or a 3 px/voxel tile (96×48 px → ≈100 MB, visibly
+softer). Both trade quality or faction coverage, so 4/2 px is the shipped
+choice.

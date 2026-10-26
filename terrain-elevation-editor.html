@@ -238,6 +238,10 @@
     canvas {
       cursor: crosshair;
       display: block;
+      /* The buffer is rendered 1:1 at the doubled tile scale; CSS only shrinks
+         it to fit the panel, so the art itself is never resampled. */
+      max-width: 100%;
+      height: auto;
     }
     .status-bar {
       display: flex;
@@ -421,7 +425,7 @@
         <button data-preset="mixed-corners">Mixed-Height Corners</button>
       </div>
       <div class="canvas-wrap">
-        <canvas id="isoCanvas" width="960" height="560"></canvas>
+        <canvas id="isoCanvas" width="1440" height="1000"></canvas>
       </div>
       <div class="status-bar">
         <span id="statusLeft">Ready</span>
@@ -639,9 +643,9 @@
     // Nearest-neighbour sampling keeps the baked voxel sprites crisp at the
     // editor's fractional zoom (default bilinear filtering blurs them).
     ctx.imageSmoothingEnabled = false;
-    const ORIGIN_X = 480;
-    const ORIGIN_Y = 125;
-    const ZOOM = 1.35;
+    const ORIGIN_X = 720;
+    const ORIGIN_Y = 320;
+    const ZOOM = 1;
     let isPointerDown = false;
 
     function canvasCoords(e) {

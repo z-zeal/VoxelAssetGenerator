@@ -7,9 +7,12 @@
  *   canvas         128 × 128 × 128 voxels (hard maximum for every model)
  *   ground tile     32 × 32 voxels  (one map cell)
  *   tile grid       4 × 4 tiles inside the canvas
- *   projection      64 × 32 px isometric diamond per tile (2:1, unchanged)
- *                   ⇒ one voxel is one runtime pixel horizontally and
- *                     one pixel vertically (VOXEL_Z_PX = 1)
+ *   projection      128 × 64 px isometric diamond per tile (2:1)
+ *                   ⇒ 4 px per voxel horizontally, 2 px vertically
+ *                     (VOXEL_Z_PX = 2). The tile grew with the sprite density
+ *                     so a 1×1 asset is drawn with the same pixel budget it had
+ *                     before the tile shrank to 32 voxels — this is what keeps
+ *                     small assets crisp instead of soft.
  *
  * Assets are still sculpted on their original authoring grids so the source art
  * stays readable — "design space" — and are *recalculated* into world voxels by
@@ -26,14 +29,20 @@
 export const MODEL_CANVAS = Object.freeze([128, 128, 128]);
 export const TILE_UNITS = 32;
 export const TILES_PER_AXIS = MODEL_CANVAS[0] / TILE_UNITS; // 4
-export const TILE_SIZE_PX = Object.freeze([64, 32]);
+export const TILE_SIZE_PX = Object.freeze([128, 64]);
 export const VOXELS_PER_TILE = TILE_UNITS;
 
-/** Footprint classes allowed by the scale convention (tile units). */
+/**
+ * Footprint classes allowed by the scale convention (tile units).
+ * Buildings occupy whole cells; units may use quarter-tile steps because they
+ * move on floating-point positions rather than a grid.
+ */
 export const FOOTPRINT_CLASSES = Object.freeze([
   [1, 1], [1, 2], [2, 1], [2, 2], [2, 3], [3, 2], [3, 3], [4, 4],
+  [1.25, 1.25], [1.5, 1.5], [1.75, 1.75], [2, 2],
 ]);
 
+const UNIT_DESIGN = 64;
 const SMALL_DESIGN = [32, 32];
 const MEDIUM_DESIGN = [64, 64];
 const LARGE_DESIGN = [96, 96];
@@ -77,12 +86,49 @@ export const BUILDING_SPECS = {
   port:                   { footprint: [3, 2], design: [96, 64], category: 'logistics', heightClass: 'major' },
 };
 
-/** Unit authoring stays at 64³ design resolution, halved into 32-unit world. */
-export const UNIT_SPEC = Object.freeze({
-  footprint: [1, 1],
-  design: [64, 64, 64],
-  scale: [0.5, 0.5, 0.5],
+/**
+ * Unit authoring stays at 64³ design resolution; the *world* size depends on the
+ * unit's role.  Footprints are given in tiles and may be fractional (the game
+ * moves units on free floating-point positions, not grid cells), so a battleship
+ * really is twice the ground footprint of a rifleman:
+ *
+ *    1.00  infantry, dogs, jeeps            (32 world voxels)
+ *    1.25  light wheeled / recon            (40)
+ *    1.50  APCs, helicopters, transports    (48)
+ *    1.75  tanks, self-propelled guns, jets (56)
+ *    2.00  artillery, capitals, bombers     (64)
+ *
+ * scale = footprint × TILE_UNITS / design, i.e. footprint / 2 for a 64³ design
+ * grid: geometry is recalculated, never stretched (x/y/z share one factor).
+ */
+export const UNIT_SIZES = Object.freeze({
+  /* 2.00 — heaviest ground vehicles, capital ships, strategic aircraft */
+  artillery: 2, carrier: 2, battleship: 2, cruiser: 2, destroyer: 2,
+  bomber: 2, 'transport-plane': 2, specter: 2, mpa: 2,
+
+  /* 1.75 — tanks, SPAAGs, jets, submarines, escorts */
+  tank: 1.75, heavy: 1.75, mega: 1.75, bastion: 1.75, 'flame-tank': 1.75,
+  'amphibious-tank': 1.75, 'tank-destroyer': 1.75, 'mine-clearing': 1.75,
+  'mine-layer': 1.75, antiair: 1.75, rockets: 1.75, missiles: 1.75,
+  submarine: 1.75, gunboat: 1.75, 'missile-boat': 1.75, 'naval-repair': 1.75,
+  'mine-layer-ship': 1.75, lander: 1.75, uhac: 1.75,
+  fighter: 1.75, 'ground-attack-jet': 1.75, 'stealth-fighter': 1.75,
+  'spy-plane': 1.75,
+
+  /* 1.50 — armoured personnel carriers, transports, rotorcraft */
+  apc: 1.5, ifv: 1.5, aegis: 1.5, 'supply-truck': 1.5, 'mobile-repair': 1.5,
+  'command-vehicle': 1.5, copter: 1.5, 'lift-copter': 1.5,
+
+  /* 1.25 — light wheeled vehicles and drones */
+  recon: 1.25, uav: 1.25,
 });
+
+/** Footprint (tiles) for one unit id, defaulting by family. */
+export function unitFootprint(id) {
+  const base = id.includes('--') ? id.split('--')[0] : id;
+  if (UNIT_SIZES[base]) return [UNIT_SIZES[base], UNIT_SIZES[base]];
+  return [1, 1];
+}
 
 /** Terrain cells: 64³ design → 32×32 world ground at half vertical scale, so
  *  props keep their historical proportions on the smaller tile.  The
@@ -119,8 +165,12 @@ const UNIT_HEIGHT_CLASS = {
 /** Footprint rect inside the 128 canvas, aligned to whole 32-unit tiles. */
 export function footprintRect(footprint) {
   const [w, h] = footprint;
-  const ox = Math.floor((TILES_PER_AXIS - w) / 2);
-  const oy = Math.floor((TILES_PER_AXIS - h) / 2);
+  const isInteger = Number.isInteger(w) && Number.isInteger(h);
+  // Buildings keep whole-tile blocks on the tile grid; units (which move on
+  // free float) may have fractional footprints, so their block is simply
+  // centred in the canvas.
+  const ox = isInteger ? Math.floor((TILES_PER_AXIS - w) / 2) : (TILES_PER_AXIS - w) / 2;
+  const oy = isInteger ? Math.floor((TILES_PER_AXIS - h) / 2) : (TILES_PER_AXIS - h) / 2;
   return { tileX: ox, tileY: oy, x: ox * TILE_UNITS, y: oy * TILE_UNITS, w: w * TILE_UNITS, h: h * TILE_UNITS };
 }
 
@@ -131,11 +181,15 @@ export function footprintRect(footprint) {
 export function modelSpec(id, kind, family = null) {
   const base = id.includes('--') ? id.split('--')[0] : id;
   if (kind === 'unit') {
+    const footprint = unitFootprint(base);
+    // One uniform factor for x/y/z: the silhouette keeps its proportions.
+    const factor = (footprint[0] * TILE_UNITS) / UNIT_DESIGN;
     return finishSpec({
-      kind, id, footprint: UNIT_SPEC.footprint, design: UNIT_SPEC.design,
-      scale: UNIT_SPEC.scale, category: family === 'foot' ? 'infantry' : (family ?? 'vehicle'),
+      kind, id, footprint, design: [UNIT_DESIGN, UNIT_DESIGN, UNIT_DESIGN],
+      scale: [factor, factor, factor],
+      category: family === 'foot' ? 'infantry' : (family ?? 'vehicle'),
       heightClass: UNIT_HEIGHT_CLASS[family] ?? 'vehicle',
-      gameplayFootprint: [1, 1], visualFootprint: [1, 1], renderScale: 1,
+      gameplayFootprint: footprint, visualFootprint: footprint, renderScale: 1,
     });
   }
   if (kind === 'building') {

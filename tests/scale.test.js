@@ -44,32 +44,36 @@ test('1. The model canvas is 128×128×128 and the ground tile is 32 units (4×4
   assert.deepEqual([...MODEL_CANVAS], [128, 128, 128]);
   assert.equal(TILE_UNITS, 32);
   assert.equal(TILES_PER_AXIS, 4);
-  assert.deepEqual([...TILE_SIZE_PX], [64, 32]);
+  assert.deepEqual([...TILE_SIZE_PX], [128, 64]);
 
   // The document, the pipeline and the runtime must agree.
   assert.equal(voxDoc.format, 'field-command-voxel-128x128x128');
   assert.deepEqual(voxDoc.scale.canvas, [128, 128, 128]);
   assert.equal(voxDoc.scale.tileUnits, 32);
-  assert.deepEqual(voxDoc.scale.tileSizePx, [64, 32]);
+  assert.deepEqual(voxDoc.scale.tileSizePx, [128, 64]);
   assert.equal(voxDoc.scale.tilesPerAxis, 4);
 
   assert.equal(VOXEL_SIZE.join('x'), '128x128x128');
   assert.equal(DESIGN_SIZE.join('x'), '64x64x64');
   assert.equal(VOXEL_GRID_SIZE, 128);
-  assert.equal(DOWNSCALE, 2);
-  assert.equal(VOXEL_Z_PX, 1);
+  assert.equal(DOWNSCALE, 1, 'no supersample downscale: sprites keep full voxel detail');
   assert.equal(TILE_VOXELS, 32);
 
-  // 32 world voxels project onto the 64 px tile diamond: 1 tile = 32 voxels.
-  assert.equal(TILE_W / TILE_VOXELS, 2, 'two runtime px per voxel horizontally');
-  assert.equal(TILE_H / TILE_VOXELS, 1, 'one runtime px per voxel vertically');
+  // 32 world voxels project onto the 128 px tile diamond: 1 tile = 32 voxels.
+  // Sprite density: 4 px per voxel horizontally, 2 px vertically. The tile grew
+  // with the density (128×64 px) instead of the sprites shrinking, which is what
+  // keeps 1x1 assets sharp.
+  assert.equal(TILE_W / TILE_VOXELS, 4, 'four runtime px per voxel horizontally');
+  assert.equal(TILE_H / TILE_VOXELS, 2, 'two runtime px per voxel vertically');
+  assert.equal(VOXEL_Z_PX, 2, 'two runtime px per elevation unit');
 
   assert.equal(manifest.format, 'field-command-voxel-sheet-4');
   assert.deepEqual(manifest.gridSize, [128, 128, 128]);
   assert.equal(manifest.tileUnits, 32);
   assert.equal(manifest.tilesPerAxis, 4);
-  assert.equal(manifest.downscale, 2);
-  assert.equal(manifest.voxelZPx, 1);
+  assert.equal(manifest.downscale, 1);
+  assert.equal(manifest.voxelZPx, 2);
+  assert.deepEqual(manifest.tileSize, [128, 64]);
 });
 
 /* --------------------------------------------------------------- 2. metadata */
@@ -123,21 +127,28 @@ test('3. No model exceeds the 128³ canvas and every ground footprint lands on 3
 });
 
 /* ------------------------------------------------------- 4. scale hierarchy */
-test('4. Scale hierarchy: infantry < vehicles < 1×1 posts < facilities < HQ', () => {
+test('4. Scale hierarchy: infantry < vehicles < posts < facilities < HQ, and units are role-sized', () => {
   const size = id => voxDoc.models[id].bounds.size;
   const foot = ['infantry', 'engineer', 'medic', 'rocket-infantry', 'sniper'];
   for (const id of foot) {
     const [w, , h] = size(id);
     assert.ok(w <= 32 && h <= 32, `${id}: infantry must stay inside one tile (${w}×${h})`);
     assert.ok(h >= 16, `${id}: infantry must stay readable as a person (${h} voxels tall)`);
+    assert.deepEqual(voxDoc.models[id].footprint, [1, 1], `${id} is a 1×1 unit`);
   }
-  const tanks = ['tank', 'heavy', 'mega', 'bastion'];
-  for (const id of tanks) {
-    const [w, d, h] = size(id);
-    assert.ok(w > size('infantry')[0], `${id}: armoured vehicles must out-size infantry`);
-    assert.ok(w >= 24 && d >= 16, `${id}: ${w}×${d} reads as a vehicle`);
-    assert.ok(h < 32, `${id}: a tank must not be building-tall (${h})`);
-  }
+  // Units grow with their role: 1×1 → 1.25 → 1.5 → 1.75 → 2 tiles. They move on
+  // free floating-point positions, so fractional footprints are legitimate.
+  assert.deepEqual(voxDoc.models.recon.footprint, [1.25, 1.25]);
+  assert.deepEqual(voxDoc.models.apc.footprint, [1.5, 1.5]);
+  assert.deepEqual(voxDoc.models.tank.footprint, [1.75, 1.75]);
+  assert.deepEqual(voxDoc.models.artillery.footprint, [2, 2]);
+  assert.deepEqual(voxDoc.models.battleship.footprint, [2, 2]);
+  const w = id => voxDoc.models[id].bounds.size[0];
+  assert.ok(w('infantry') < w('recon'), 'recon must be wider than infantry');
+  assert.ok(w('recon') < w('apc'), 'APC must be wider than a recon jeep');
+  assert.ok(w('apc') < w('tank'), 'a tank must be wider than an APC');
+  assert.ok(w('tank') < w('artillery'), 'artillery must be wider than a tank');
+  assert.ok(w('tank') < w('battleship') + 8, 'capitals stay in the same size class as tanks');
   for (const id of ['pillbox', 'bunker', 'guard-tower']) {
     assert.deepEqual(voxDoc.models[id].footprint, [1, 1], `${id} is a 1×1 post`);
   }
@@ -146,11 +157,8 @@ test('4. Scale hierarchy: infantry < vehicles < 1×1 posts < facilities < HQ', (
   const post = size('pillbox');
   assert.ok(hq[0] > post[0] * 2 && hq[1] > post[1] * 2, 'the HQ must be visibly larger than a small post');
   assert.ok(hq[2] > post[2], 'the HQ must also be taller than a small post');
-  for (const id of BUILDINGS.filter(b => !b.includes('--'))) {
-    const fp = footprintOf(id);
-    const other = footprintOf(id === 'hq' ? 'pillbox' : 'hq');
-    assert.ok(fp.length === 2 && other.length === 2);
-  }
+  // A tank is never building-tall: it stays below a guard tower.
+  assert.ok(size('tank')[2] < size('guard-tower')[2], 'a tank must stay shorter than a guard tower');
 });
 
 /* --------------------------------------------------------- 5. resample gate */
@@ -159,29 +167,38 @@ test('5. World resampling is deterministic and lands each asset inside its footp
   const a = build('tank', 'unit');
   const b = build('tank', 'unit');
   assert.deepEqual(a.finish(), b.finish(), 'resampling must be deterministic');
-  const spec = a.spec;
-  assert.deepEqual(spec.scale, [0.5, 0.5, 0.5], 'design voxels become half-scale world voxels');
-  // Each model is translated into the block its footprint occupies; nothing is
-  // stretched, so the aspect ratio of the silhouette is preserved.
-  for (const [id, kind, fp] of [['tank', 'unit', [1, 1]], ['hq', 'building', [3, 3]], ['port', 'building', [3, 2]]]) {
-    const spec2 = modelSpec(id, kind, kind === 'unit' ? 'tracked' : id);
+
+  // Geometry is recalculated (uniform factor) into the block its footprint
+  // occupies — never stretched, never cropped.
+  for (const [id, kind, fp] of [
+    ['infantry', 'unit', [1, 1]],
+    ['recon', 'unit', [1.25, 1.25]],
+    ['tank', 'unit', [1.75, 1.75]],
+    ['artillery', 'unit', [2, 2]],
+    ['hq', 'building', [3, 3]],
+    ['port', 'building', [3, 2]],
+  ]) {
+    const spec = modelSpec(id, kind, kind === 'unit' ? 'tracked' : id);
     const rect = footprintRect(fp);
-    assert.deepEqual(spec2.offset, [rect.x, rect.y, 0], `${id}: translated into its footprint block`);
-    assert.deepEqual(spec2.footprint, fp, `${id}: footprint`);
+    assert.deepEqual(spec.offset, [rect.x, rect.y, 0], `${id}: translated into its footprint block`);
+    assert.deepEqual(spec.footprint, fp, `${id}: footprint`);
+    const bounds = boundsOf(build(id, kind).finish());
+    const slack = TILE_UNITS; // declared overhang (barrels, wings) up to one tile
+    assert.ok(bounds.min[0] >= rect.x - slack && bounds.max[0] < rect.x + rect.w + slack,
+      `${id}: x ${bounds.min[0]}..${bounds.max[0]} outside its block ${rect.x}..${rect.x + rect.w}`);
+    assert.ok(bounds.min[1] >= rect.y - slack && bounds.max[1] < rect.y + rect.h + slack,
+      `${id}: y ${bounds.min[1]}..${bounds.max[1]} outside its block ${rect.y}..${rect.y + rect.h}`);
   }
-
-  // A 1×1 asset's geometry must stay inside its 32-unit cell.
-  const bounds = a.spec && boundsOf(a.finish());
-  assert.ok(bounds.min[0] >= 32 && bounds.max[0] < 64, `tank x ${bounds.min[0]}..${bounds.max[0]} outside its tile`);
-  assert.ok(bounds.min[1] >= 32 && bounds.max[1] < 64, `tank y ${bounds.min[1]}..${bounds.max[1]} outside its tile`);
-  assert.ok(bounds.max[2] < 64, 'a tank is not a skyscraper');
-
-  // 3×3 compounds are translated into their 96×96 block, not scaled.
-  const hq = build('hq', 'building');
-  const hqBounds = boundsOf(hq.finish());
-  assert.ok(hqBounds.min[0] >= 0 && hqBounds.max[0] < 96);
-  assert.ok(hqBounds.min[1] >= 0 && hqBounds.max[1] < 96);
-  assert.ok(hqBounds.size[0] >= 64 && hqBounds.size[1] >= 64, 'the HQ must fill most of its 3×3 compound');
+  // The scale factor is uniform on all three axes (aspect ratio preserved).
+  for (const id of ['infantry', 'tank', 'battleship']) {
+    const spec = modelSpec(id, 'unit', 'tracked');
+    assert.equal(spec.scale[0], spec.scale[1], `${id}: x/y scale must match`);
+    assert.equal(spec.scale[1], spec.scale[2], `${id}: y/z scale must match`);
+    assert.equal(spec.scale[0], spec.footprint[0] * TILE_UNITS / 64, `${id}: scale derives from its footprint`);
+  }
+  // A 3×3 compound fills most of its 96×96 block.
+  const hqBounds = boundsOf(build('hq', 'building').finish());
+  assert.ok(hqBounds.size[0] >= 64 && hqBounds.size[1] >= 64, 'the HQ must fill most of its compound');
 
   // Validation catches out-of-canvas and unsupported footprints.
   assert.deepEqual(validateModel({ bounds: { min: [0, 0, 0], max: [127, 127, 127], size: [128, 128, 128] }, footprint: [3, 3], renderScale: 1 }), []);
@@ -295,6 +312,7 @@ test('9. Terrain keeps its ids, movement costs and elevation semantics at the ne
   assert.deepEqual(terrainJson.elevation.levels, [0, 4, 8, 12, 16, 20, 24, 28, 32]);
   assert.equal(terrainJson.elevation.step, 4);
   assert.equal(terrainJson.elevation.runtimePixelsPerVoxelZ, VOXEL_Z_PX);
+  assert.equal(VOXEL_Z_PX, 2, 'one elevation unit is two runtime pixels');
   assert.deepEqual(voxDoc.models['elevation-32'].voxelScale, [0.5, 0.5, 1],
     'elevation blocks keep world z units so their heights stay the elevation system values');
 

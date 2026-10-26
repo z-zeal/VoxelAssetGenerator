@@ -11,6 +11,10 @@ import {
   footprintOf, footprintCells, footprintOrigin, cellKey, isMultiTileBuilding,
 } from './iso.js';
 import { drawShoalIso, drawWaterShimmer } from './coast.js';
+
+/** Pixel offsets below are authored at the original 64 px tile; the tile is now
+ *  TILE_W wide, so every literal offset is multiplied by this factor. */
+const TILE_SCALE = TILE_W / 64;
 import {
   unitSheetKey, buildingSheetKey, fortificationSheetKey, resolveEntityArmy,
 } from './armies.js';
@@ -372,9 +376,11 @@ export function drawTileTopSurface(ctx, map, x, y, faces, cx, topCy, timeMs = 0,
     } else {
       // Subtle isometric turf/surface flecks inside the diamond (no artificial inner-diamond box)
       const seed = (x * 7 + y * 13) & 3;
+      const S = TILE_SCALE;
       const clumps = [
-        [-14, -1, pal.alt], [-6, -6, pal.tuft], [5, -5, pal.alt],
-        [12, 0, pal.tuft], [-8, 4, pal.dark], [3, 5, pal.alt], [0, -1, pal.tuft],
+        [-14 * S, -1 * S, pal.alt], [-6 * S, -6 * S, pal.tuft], [5 * S, -5 * S, pal.alt],
+        [12 * S, 0, pal.tuft], [-8 * S, 4 * S, pal.dark], [3 * S, 5 * S, pal.alt],
+        [0, -1 * S, pal.tuft],
       ];
       for (let i = 0; i < clumps.length; i++) {
         const [tx, ty, col] = clumps[(i + seed) % clumps.length];
@@ -382,8 +388,8 @@ export function drawTileTopSurface(ctx, map, x, y, faces, cx, topCy, timeMs = 0,
         ctx.fillRect(
           Math.round(cx + tx * zoom),
           Math.round(topCy + ty * zoom),
-          Math.max(2, Math.round(3 * zoom)),
-          Math.max(1, Math.round(1.5 * zoom))
+          Math.max(2, Math.round(3 * S * zoom)),
+          Math.max(1, Math.round(1.5 * S * zoom))
         );
       }
     }
@@ -438,7 +444,7 @@ export function drawEntityGroundMarkers(ctx, pos, { selected = false, isUnit = t
   }
   if (isUnit) {
     ctx.beginPath();
-    ctx.ellipse(pos.shadowX, pos.shadowY + 2 * zoom, 12 * zoom, 6 * zoom, 0, 0, Math.PI * 2);
+    ctx.ellipse(pos.shadowX, pos.shadowY + 2 * TILE_SCALE * zoom, 12 * TILE_SCALE * zoom, 6 * TILE_SCALE * zoom, 0, 0, Math.PI * 2);
     ctx.fillStyle = 'rgba(15, 20, 15, 0.35)';
     ctx.fill();
   }
@@ -561,7 +567,7 @@ export function renderIso(ctx, map, {
         ctx.fill();
         ctx.strokeStyle = placementPreview.ok ? '#9fe0a8' : '#e07a6a';
         ctx.lineWidth = Math.max(1.2, 1.6 * zoom);
-        ctx.setLineDash?.([6 * zoom, 4 * zoom]);
+        ctx.setLineDash?.([6 * TILE_SCALE * zoom, 4 * TILE_SCALE * zoom]);
         ctx.stroke();
         ctx.restore();
       }
@@ -610,7 +616,7 @@ export function renderIso(ctx, map, {
           ctx.save();
           const col = TEAM_COLORS[Number(variant) || 0] ?? '#aaa78b';
           const fw = HALF_W * 2 * fp[0] * 0.75 * zoom;
-          const fh = (HALF_H * 2 * fp[1] * 0.75 + 12) * zoom;
+          const fh = (HALF_H * 2 * fp[1] * 0.75 + 12 * TILE_SCALE) * zoom;
           ctx.fillStyle = col;
           ctx.fillRect(pos.anchorX - fw / 2, pos.anchorY - fh, fw, fh);
           ctx.strokeStyle = '#1e2226';
@@ -658,7 +664,7 @@ export function renderIso(ctx, map, {
           ctx.save();
           const col = TEAM_COLORS[Number(variant) || 0] ?? '#df794b';
           ctx.beginPath();
-          ctx.arc(pos.anchorX, pos.anchorY - 8 * zoom, 9 * zoom, 0, Math.PI * 2);
+          ctx.arc(pos.anchorX, pos.anchorY - 8 * TILE_SCALE * zoom, 9 * TILE_SCALE * zoom, 0, Math.PI * 2);
           ctx.fillStyle = col;
           ctx.fill();
           ctx.strokeStyle = '#181c20';

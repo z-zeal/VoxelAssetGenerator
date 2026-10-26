@@ -2,7 +2,7 @@
 
 ## 1. Overview & Height Unit Semantics
 
-The Field Command isometric engine models terrain, buildings, and units on a **128×128×128 world canvas** (`tools/voxel_pipeline/scale.mjs`, `build.mjs`, `bake.mjs`) in which **one map cell is a 32×32-voxel tile** and the canvas holds **4 × 4 tiles**. A tile projects to the unchanged **64×32 runtime isometric diamond** (`TILE_W = 64`, `TILE_H = 32`, `HALF_W = 32`, `HALF_H = 16`), i.e. **2 px per voxel horizontally and 1 px per voxel vertically** (`VOXEL_Z_PX = 1`).
+The Field Command isometric engine models terrain, buildings, and units on a **128×128×128 world canvas** (`tools/voxel_pipeline/scale.mjs`, `build.mjs`, `bake.mjs`) in which **one map cell is a 32×32-voxel tile** and the canvas holds **4 × 4 tiles**. A tile projects to the **128×64 runtime isometric diamond** (`TILE_W = 128`, `TILE_H = 64`, `HALF_W = 64`, `HALF_H = 32`), i.e. **4 px per voxel horizontally and 2 px per voxel vertically** (`VOXEL_Z_PX = 2`). The diamond grew with the tile unit so one 32-voxel tile still gets a full-size, crisp sprite.
 
 The full contract is in [`SCALE_128.md`](SCALE_128.md).
 

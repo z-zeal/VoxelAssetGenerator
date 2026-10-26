@@ -51,6 +51,10 @@ const rows = ids.map(id => {
     variants,
     frames,
     clips: m.clips,
+    // Units carry a role-driven footprint class (1 / 1.25 / 1.5 / 1.75 / 2
+    // tiles) instead of being forced onto a 1x1 grid cell. Buildings keep the
+    // integer tile grid they are placed on.
+    sizeClass: m.kind === 'unit' ? (Math.round(m.gameplayFootprint[0] * 100) / 100) : null,
     army: isVariant(id) ? id.split('--')[1] : 'standard',
     sheet: entry.right.variants[Object.keys(entry.right.variants)[0]].file,
   };
@@ -77,9 +81,9 @@ const validated = rows.filter(r => status(r) === '✅').length;
 
 const section = (title, list) => {
   if (!list.length) return '';
-  const head = '| id | category | height class | footprint (tiles) | model bounds (voxels) | render scale | facings | variants | frame cells | status |\n'
-    + '| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n';
-  const body = list.map(r => `| \`${r.id}\` | ${CATEGORY_LABELS[r.category] ?? r.category} | ${r.heightClass} | ${fp(r.footprint)} (${r.footprint[0] * 32}×${r.footprint[1] * 32}) | ${sizeStr(r.bounds)} | ${r.renderScale} | ${r.facings} | ${r.variants} | ${r.frames} | ${status(r)} |`).join('\n');
+  const head = '| id | category | height class | size class | footprint (tiles) | model bounds (voxels) | render scale | facings | variants | frame cells | status |\n'
+    + '| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n';
+  const body = list.map(r => `| \`${r.id}\` | ${CATEGORY_LABELS[r.category] ?? r.category} | ${r.heightClass} | ${r.sizeClass === null ? '—' : r.sizeClass + '×'} | ${fp(r.footprint)} (${Math.round(r.footprint[0] * 32)}×${Math.round(r.footprint[1] * 32)}) | ${sizeStr(r.bounds)} | ${r.renderScale} | ${r.facings} | ${r.variants} | ${r.frames} | ${status(r)} |`).join('\n');
   return `### ${title}\n\n${head}${body}\n\n`;
 };
 
@@ -100,15 +104,21 @@ and \`game_assets/voxels/sheets/manifest.json\`. Do not edit by hand: re-run
 
 ## Conventions
 
-- One ground tile = **32 × 32 world voxels**, projected as a **64 × 32 px**
-  isometric diamond (2 px per voxel horizontally, 1 px per voxel vertically).
+- One ground tile = **32 × 32 world voxels**, projected as a **128 × 64 px**
+  isometric diamond (**4 px per voxel horizontally, 2 px per voxel
+  vertically**). The tile got bigger when the tile-grid unit got smaller, so a
+  1×1 asset still gets a full-size sprite and stays crisp.
 - Maximum model canvas = **128 × 128 × 128 voxels** = 4 × 4 tiles.
 - \`gameplay footprint\` = cells a structure occupies for placement, collision,
   selection and ownership. \`visual footprint\` = ground area the sprite covers.
   Both are listed; both are equal for the current roster (no decorative overhang
   that would confuse placement).
 - \`model bounds\` = the painted geometry inside the 128³ authoring canvas.
-- Footprints are multiples of 32 voxels: 1×1, 2×2, 3×2, 3×3 are in use.
+- Buildings sit on integer tile footprints that are multiples of 32 voxels:
+  1×1, 2×2, 3×2, 3×3 are in use.
+- Units use **role size classes** — 1, 1.25, 1.5, 1.75 and 2 tiles — because
+  the game moves units on floating-point positions rather than snapping them to
+  a grid cell. A rifleman is 1×1; a battleship is 2×2.
 - Heights are deliberately *not* proportional to footprint: a radar tower is
   tall and narrow, a runway is wide and low.
 
@@ -138,9 +148,27 @@ ${[...new Set(rows.map(r => fp(r.footprint)))].sort().map(c => {
 
 ## Units
 
-Units are authored at 64³ design resolution and recalculated to **half-scale
-world voxels** (1 unit = 16 world voxels of ground), so a soldier occupies a
-fraction of a tile while vehicles fill most of it. Every unit keeps eight
+Units are authored at 64³ design resolution. Each unit's role picks a **size
+class** from \`UNIT_SIZES\` in \`tools/voxel_pipeline/scale.mjs\`, which yields a
+target footprint in tiles. The model is then resampled by **one uniform factor**
+(nothing is stretched per axis) so it fills that footprint plus its role height.
+
+Size classes exist because units are *not* grid-locked: the game integrates
+their positions as floating-point world units, so a 1.25-tile tank destroyer is
+as valid as a 1-tile rifleman. A 2-tile battleship therefore really is twice the
+ground footprint of an infantry squad, while a 1-tile machine-gunner stays
+human-sized.
+
+| size class | tiles | world voxels | units |
+| --- | --- | --- | --- |
+${[1, 1.25, 1.5, 1.75, 2].map(c => {
+  const list = units.filter(r => r.footprint[0] === c).map(r => `\`${r.id}\``);
+  return `| ${c}× | ${c} × ${c} | ${c * 32} × ${c * 32} | ${list.length ? list.join(', ') : '—'} |`;
+}).join('\n')}
+
+Larger classes carry the heavy hardware: a 2×2 battleship or strategic bomber
+has four times the ground area of an infantry squad at the same sprite density,
+which is what makes the hierarchy readable on the map. Every unit keeps eight
 directional facings and six team variants.
 
 ${section('Base unit types', units)}

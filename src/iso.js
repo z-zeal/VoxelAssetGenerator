@@ -5,26 +5,28 @@
  *
  * Coordinate and scale conventions (matching tools/voxel_pipeline/bake.mjs and
  * docs/SCALE_128.md):
- * - Canonical ground tile is 32×32 world voxel units, projected as a 64×32
- *   isometric diamond (HALF_W = 32, HALF_H = 16): 1 tile = 32 voxels.
+ * - Canonical ground tile is 32×32 world voxel units, projected as a 128×64
+ *   isometric diamond (HALF_W = 64, HALF_H = 32): 1 voxel step = 2 px
+ *   horizontally, 1 px vertically.
  * - World voxel canvas is 128×128×128 (4×4 tiles); models are baked at
- *   DOWNSCALE = 2 supersample pixels per runtime pixel.
- * - 1 voxel Z unit equals 1 runtime screen pixel vertically (VOXEL_Z_PX = 1).
+ *   DOWNSCALE = 1 supersample pixel per runtime pixel, so sprites carry the full
+ *   2 px-per-voxel detail instead of the old half-density output.
+ * - 1 voxel Z unit equals 2 runtime screen pixels vertically (VOXEL_Z_PX = 2).
  * - Supported elevation levels are voxel Z units: 0, 4, 8, 12, 16, 20, 24, 28, 32
  *   (the terrain elevation system is unchanged by the asset rescale).
  * - Each 4-voxel step shifts the tile's top surface upward by 4 runtime pixels (-4 px in Y)
  *   with zero lateral (X) displacement.
  */
-import { BUILDING_FOOTPRINTS, TILE_UNITS } from './asset-scale.js';
+import { BUILDING_FOOTPRINTS, TILE_UNITS, UNIT_FOOTPRINTS } from './asset-scale.js';
 
-export const TILE_W = 64;
-export const TILE_H = 32;
-export const HALF_W = TILE_W / 2; // 32
-export const HALF_H = TILE_H / 2; // 16
+export const TILE_W = 128;
+export const TILE_H = 64;
+export const HALF_W = TILE_W / 2; // 64
+export const HALF_H = TILE_H / 2; // 32
 export const ISO_Z = 23;
 export const VOXEL_GRID_SIZE = 128;
-export const DOWNSCALE = 2;
-export const VOXEL_Z_PX = 2 / DOWNSCALE; // 1 runtime px per voxel Z unit
+export const DOWNSCALE = 1;
+export const VOXEL_Z_PX = 2 / DOWNSCALE; // 2 runtime px per voxel Z unit
 export const TILE_VOXELS = TILE_UNITS;   // 32 world voxel units per ground tile
 
 export const ELEVATION_LEVELS = Object.freeze([0, 4, 8, 12, 16, 20, 24, 28, 32]);
@@ -538,6 +540,27 @@ export function footprintOf(type) {
   return Array.isArray(fp) && fp.length === 2 ? fp : DEFAULT_FOOTPRINT;
 }
 
+/**
+ * Ground extent of a unit, in tiles, as a *continuous* size: units move on
+ * floating-point positions rather than grid cells, so 1.25 / 1.5 / 1.75 are
+ * ordinary values (light vehicle → APC → tank → artillery/capital ship).
+ */
+export function unitFootprintOf(type) {
+  const base = typeof type === 'string' && type.includes('--') ? type.split('--')[0] : type;
+  const fp = UNIT_FOOTPRINTS?.[base];
+  return typeof fp === 'number' ? fp : 1;
+}
+
+/** Collision radius (tiles) of a unit on the free-float movement plane. */
+export function unitRadiusOf(type) {
+  return unitFootprintOf(type) / 2;
+}
+
+/** True when a footprint spans more than one cell (buildings only). */
+export function isFractionalFootprint(footprint) {
+  return !Number.isInteger(footprint?.[0]) || !Number.isInteger(footprint?.[1]);
+}
+
 /** True when the property type occupies more than one map cell. */
 export function isMultiTileBuilding(type) {
   const [w, h] = footprintOf(type);
@@ -546,6 +569,7 @@ export function isMultiTileBuilding(type) {
 
 /** Every cell `(x, y)` covered by a footprint anchored at `(x, y)`. */
 export function footprintCells(x, y, footprint = DEFAULT_FOOTPRINT) {
+  if (isFractionalFootprint(footprint)) return [{ x, y }];
   const [w, h] = footprint;
   const cells = [];
   for (let dy = 0; dy < h; dy++) {
