@@ -1,12 +1,11 @@
 #!/usr/bin/env node
 /**
- * Render data/voxels.json (64×64×64 models) into isometric PNG previews for
- * visual inspection, replacing the former Python previewer. Each model becomes
- * one PNG under game_assets/voxels/ showing frame 0 in the canonical `right`
- * facing with all three visible voxel faces (lit top, shaded left, mid-lit
- * right) sorted strictly back-to-front, box-downsampled 2:1 from the 4 px
- * supersample so previews stay near the historical 144 px footprint while
- * carrying the full 64³ detail.
+ * Render data/voxels.json (128×128×128 world models) into isometric PNG
+ * previews for visual inspection. Each model becomes one PNG under
+ * game_assets/voxels/ showing frame 0 in the canonical `right` facing with all
+ * three visible voxel faces (lit top, shaded left, mid-lit right) sorted
+ * strictly back-to-front, box-downsampled 2:1 from the 4 px supersample so a
+ * 3×3 compound preview stays around 200 px wide while carrying full detail.
  *
  * Run: npm run voxels:preview
  */
@@ -20,7 +19,7 @@ import {
 import { UNIT_ARMY_IDS } from './build.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
-const DS = Number(process.env.PREVIEW_DS ?? 2);
+const DS = Number(process.env.PREVIEW_DS ?? 1);
 
 const onlyArg = process.argv.indexOf('--only');
 const onlyList = onlyArg >= 0 ? process.argv[onlyArg + 1].split(',').map(s => s.trim()).filter(Boolean) : null;
@@ -46,7 +45,7 @@ for (const [id, model] of Object.entries(doc.models)) {
   const w = (Math.ceil((box.maxX + 1) / DS) * DS - x0) / DS;
   const h = (Math.ceil((box.maxY + 1) / DS) * DS - y0) / DS;
   const buf = Buffer.alloc(w * h * 4);
-  downsampleCell(grid, x0, y0, w, h, lut, buf, 0, 0, w, DS, false);
+  downsampleCell(grid, x0, y0, w, h, lut, buf, 0, 0, w, DS);
   fs.writeFileSync(path.join(outDir, `${id}.png`), pngBytes(w, h, buf));
   count++;
 }

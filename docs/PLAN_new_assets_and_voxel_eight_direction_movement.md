@@ -1,5 +1,9 @@
 # Plan: New Voxel Assets and Eight-Directional Unit Movement
 
+> **Historical document (pre-scale-migration).** Grid sizes, counts and 0.5 px/voxel
+> offsets below describe the retired 64-voxel single-tile contract. Current contract:
+> [SCALE_128.md](SCALE_128.md); results: [SCALE_MIGRATION_REPORT.md](SCALE_MIGRATION_REPORT.md).
+
 **Branch:** `arena/82c2ca28-voxelassetgenerator` (current working branch)  
 **Status:** PLANNING ONLY — no implementation performed; no source/data/avatar files edited; no rebuild run; no generated PNG/JSON changed by this plan document.  
 **Document path:** `docs/PLAN_new_assets_and_voxel_eight_direction_movement.md`

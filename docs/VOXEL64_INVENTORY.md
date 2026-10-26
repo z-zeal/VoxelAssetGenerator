@@ -1,5 +1,9 @@
 # Isometric Voxel Asset Rework — Inventory & Checklist (64×64×64)
 
+> **Historical document (pre-scale-migration).** Grid sizes, counts and 0.5 px/voxel
+> offsets below describe the retired 64-voxel single-tile contract. Current contract:
+> [SCALE_128.md](SCALE_128.md); results: [SCALE_MIGRATION_REPORT.md](SCALE_MIGRATION_REPORT.md).
+
 **Scope:** every visual asset consumed by the Isometric voxel mode only.
 Classic 2D (`src/renderer.js` procedural art, `assets/` ROM extracts,
 `game_assets/reference/`) is untouched by design — see §7.

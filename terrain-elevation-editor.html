@@ -238,6 +238,10 @@
     canvas {
       cursor: crosshair;
       display: block;
+      /* The buffer is rendered 1:1 at the doubled tile scale; CSS only shrinks
+         it to fit the panel, so the art itself is never resampled. */
+      max-width: 100%;
+      height: auto;
     }
     .status-bar {
       display: flex;
@@ -378,6 +382,8 @@
             <option value="sam-site">sam-site</option>
             <option value="">(Remove Building)</option>
           </select>
+          <span id="footprintHint" title="Gameplay footprint in 32-unit ground tiles"
+                style="font-size:11px;opacity:.8;margin-left:6px"></span>
         </div>
         <div class="field-row">
           <label for="buildingFacingSelect">Bldg Facing (4):</label>
@@ -419,7 +425,7 @@
         <button data-preset="mixed-corners">Mixed-Height Corners</button>
       </div>
       <div class="canvas-wrap">
-        <canvas id="isoCanvas" width="960" height="560"></canvas>
+        <canvas id="isoCanvas" width="1440" height="1000"></canvas>
       </div>
       <div class="status-bar">
         <span id="statusLeft">Ready</span>
@@ -431,6 +437,7 @@
   <script type="module">
     import {
       ELEVATION_LEVELS, elevationModelId, exportMapJson, importMapJson,
+      VOXEL_Z_PX, TILE_VOXELS, footprintOf,
     } from './src/iso.js';
     import { renderIso } from './src/iso-renderer.js';
     import { MapElevationEditor, EDITOR_TERRAINS, createPresetMap } from './src/map-editor.js';
@@ -458,8 +465,8 @@
           </div>
           <div class="lvl-title">Z = ${h} (${id})</div>
           <div class="lvl-meta">
-            Offset: -${h * 0.5}px Y<br/>
-            ${mInfo ? `Sheet: ${mInfo.width}×${mInfo.height} (ay=${mInfo.anchorY})` : '64×32 iso footprint'}
+            Offset: -${h * VOXEL_Z_PX}px Y<br/>
+            ${mInfo ? `Sheet: ${mInfo.width}×${mInfo.height} (ay=${mInfo.anchorY})` : `${TILE_VOXELS}² voxel tile → 64×32 iso`}
           </div>
         `;
         card.addEventListener('click', () => {
@@ -535,9 +542,18 @@
       editor.selectTool('place-unit');
       syncControls();
     });
+    function updateFootprintHint() {
+      const hint = document.getElementById('footprintHint');
+      const type = editor.selectedBuildingType;
+      if (!hint) return;
+      if (!type) { hint.textContent = ''; return; }
+      const [w, h] = footprintOf(type);
+      hint.textContent = `footprint ${w}×${h} tiles (${w * TILE_VOXELS}×${h * TILE_VOXELS} voxels)`;
+    }
     buildingSelect.addEventListener('change', () => {
       editor.selectedBuildingType = buildingSelect.value;
       editor.selectTool('place-building');
+      updateFootprintHint();
       syncControls();
     });
     buildingFacingSelect.addEventListener('change', () => {
@@ -624,9 +640,12 @@
     // 9. Canvas Pointer & Touch Interactions
     const canvas = document.getElementById('isoCanvas');
     const ctx = canvas.getContext('2d');
-    const ORIGIN_X = 480;
-    const ORIGIN_Y = 125;
-    const ZOOM = 1.35;
+    // Nearest-neighbour sampling keeps the baked voxel sprites crisp at the
+    // editor's fractional zoom (default bilinear filtering blurs them).
+    ctx.imageSmoothingEnabled = false;
+    const ORIGIN_X = 720;
+    const ORIGIN_Y = 320;
+    const ZOOM = 1;
     let isPointerDown = false;
 
     function canvasCoords(e) {
@@ -694,7 +713,7 @@
         `<strong>Cliff N:</strong> diff=${info.edges.north.diff} (${info.edges.north.owner ?? 'flat'}) &nbsp; <strong>Cliff E:</strong> diff=${info.edges.east.diff} (${info.edges.east.owner ?? 'flat'})`,
         `<strong>Cliff S:</strong> diff=${info.edges.south.diff} (${info.edges.south.owner ?? 'flat'}) &nbsp; <strong>Cliff W:</strong> diff=${info.edges.west.diff} (${info.edges.west.owner ?? 'flat'})`,
         `<strong>Unit:</strong> ${info.unit ? `${info.unit.type} (${info.unit.facing}, ${info.unit.army})` : 'none'}`,
-        `<strong>Building:</strong> ${info.building ? `${info.building.type} (${info.building.facing})` : 'none'}`,
+        `<strong>Building:</strong> ${info.building ? `${info.building.type} (${info.building.facing}) — ${info.buildingFootprint?.join('×') ?? '1×1'} tiles, anchor (${info.building.x}, ${info.building.y})` : 'none'}`,
       ].join('<br/>');
     }
 
@@ -714,6 +733,12 @@
 
     function loop(now) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // Multi-tile buildings: while the place-building tool is armed, preview
+      // the whole footprint under the cursor (green = placeable).
+      let placementPreview = null;
+      if (editor.selectedTool === 'place-building' && editor.hoveredTile && editor.selectedBuildingType) {
+        placementPreview = editor.buildingPlacementAt(editor.hoveredTile.x, editor.hoveredTile.y);
+      }
       renderIso(ctx, editor.map, {
         manifest,
         originX: ORIGIN_X,
@@ -722,10 +747,12 @@
         timeMs: now,
         selectedTile: editor.selectedTile,
         hoveredTile: editor.hoveredTile,
+        placementPreview,
       });
       requestAnimationFrame(loop);
     }
 
+    updateFootprintHint();
     syncControls();
     requestAnimationFrame(loop);
   </script>

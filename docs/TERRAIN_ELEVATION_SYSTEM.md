@@ -2,24 +2,27 @@
 
 ## 1. Overview & Height Unit Semantics
 
-The Field Command isometric engine models terrain, buildings, and units on a **64×64×64 voxel grid** (`tools/voxel_pipeline/build.mjs`, `tools/voxel_pipeline/bake.mjs`) whose horizontal ground footprint projects to a **64×32 runtime isometric diamond** (`TILE_W = 64`, `TILE_H = 32`, `HALF_W = 32`, `HALF_H = 16`).
+The Field Command isometric engine models terrain, buildings, and units on a **128×128×128 world canvas** (`tools/voxel_pipeline/scale.mjs`, `build.mjs`, `bake.mjs`) in which **one map cell is a 32×32-voxel tile** and the canvas holds **4 × 4 tiles**. A tile projects to the **128×64 runtime isometric diamond** (`TILE_W = 128`, `TILE_H = 64`, `HALF_W = 64`, `HALF_H = 32`), i.e. **4 px per voxel horizontally and 2 px per voxel vertically** (`VOXEL_Z_PX = 2`). The diamond grew with the tile unit so one 32-voxel tile still gets a full-size, crisp sprite.
+
+The full contract is in [`SCALE_128.md`](SCALE_128.md).
 
 Elevation is defined in **voxel Z-axis height units** (not screen pixels or image dimensions):
 
-| Voxel Z Level | Model ID | Voxel Top Layer (`z`) | Runtime Screen Y Offset (`-H * 0.5 px`) | Preview Screen Y Offset (`DS = 2`) | Baked Sheet Size (`w × h`) | Baked Anchor (`anchorX, anchorY`) |
-| :---: | :--- | :---: | :---: | :---: | :---: | :---: |
-| `0` | `elevation-00` | `0..1` | `0 px` | `0 px` | `65 × 34` | `(32, 17)` |
-| `4` | `elevation-04` | `4..5` | `-2 px` | `-4 px` | `65 × 36` | `(32, 19)` |
-| `8` | `elevation-08` | `8..9` | `-4 px` | `-8 px` | `65 × 38` | `(32, 21)` |
-| `12` | `elevation-12` | `12..13` | `-6 px` | `-12 px` | `65 × 40` | `(32, 23)` |
-| `16` | `elevation-16` | `16..17` | `-8 px` | `-16 px` | `65 × 42` | `(32, 25)` |
-| `20` | `elevation-20` | `20..21` | `-10 px` | `-20 px` | `65 × 44` | `(32, 27)` |
-| `24` | `elevation-24` | `24..25` | `-12 px` | `-24 px` | `65 × 46` | `(32, 29)` |
-| `28` | `elevation-28` | `28..29` | `-14 px` | `-28 px` | `65 × 48` | `(32, 31)` |
-| `32` | `elevation-32` | `32..33` | `-16 px` | `-32 px` | `65 × 50` | `(32, 33)` |
+| Voxel Z Level | Model ID | Voxel Top Layer (`z`) | Runtime Screen Y Offset (`-H × 1 px`) | Baked Sheet Size (`w × h`) | Baked Anchor (`anchorX, anchorY`) |
+| :---: | :--- | :---: | :---: | :---: | :---: |
+| `0` | `elevation-00` | `0..1` | `0 px` | `65 × 35` | `(31, 17)` |
+| `4` | `elevation-04` | `4..5` | `-4 px` | `65 × 39` | `(31, 21)` |
+| `8` | `elevation-08` | `8..9` | `-8 px` | `65 × 43` | `(31, 25)` |
+| `12` | `elevation-12` | `12..13` | `-12 px` | `65 × 47` | `(31, 29)` |
+| `16` | `elevation-16` | `16..17` | `-16 px` | `65 × 51` | `(31, 33)` |
+| `20` | `elevation-20` | `20..21` | `-20 px` | `65 × 55` | `(31, 37)` |
+| `24` | `elevation-24` | `24..25` | `-24 px` | `65 × 59` | `(31, 41)` |
+| `28` | `elevation-28` | `28..29` | `-28 px` | `65 × 63` | `(31, 45)` |
+| `32` | `elevation-32` | `32..33` | `-32 px` | `65 × 67` | `(31, 49)` |
 
 - **Complete 4-Unit Progression**: `ELEVATION_LEVELS = [0, 4, 8, 12, 16, 20, 24, 28, 32]`.
-- **Zero Lateral Drift**: `anchorX` remains `32` across all nine levels; raising a tile shifts its top surface strictly along `-Y` (`screenY = baseY - H * 0.5 * zoom`).
+- **Zero Lateral Drift**: `anchorX` remains `31` across all nine levels and every cardinal facing (90° rotation is about the continuous footprint centre, so symmetric blocks are pixel-identical across facings).
+- **Height = data**: blocks are full columns from z=0 to their level with z unscaled, so each +4-level block is exactly 4 px taller and its anchor sits exactly 4 px lower inside the tight crop; the anchor-to-sprite-bottom distance is a constant 18 px. Draw a level-h block with its anchor on the z=0 baseline and its surface appears exactly `h × VOXEL_Z_PX` px above it, matching `gridToIso(..., elevation)`. `tests/elevation.test.js` test 12 asserts all of this. `data/terrain.json → elevation.runtimePixelsPerVoxelZ = 1`.
 
 ---
 
@@ -27,7 +30,7 @@ Elevation is defined in **voxel Z-axis height units** (not screen pixels or imag
 
 - **Editable Voxel Source**: `tools/voxel_pipeline/models/terrain.mjs` (`id.startsWith('elevation-')`) and `tools/voxel_pipeline/build.mjs` (`ELEVATION_LEVELS`, `ELEVATION_MODELS` registered in `TERRAIN_MODELS`).
 - **Visual Design**:
-  - **Top Surface (`z = H .. H + 1`)**: Uses the exact `plains` grassland palette (`#6e9049`, `#7ba358`, `#8fb86a`, `#5e7d3b`, `#a0c27a`, `#7a9e58`, `#b5d48c`) across the full `64×64` footprint so elevated terrain matches baseline ground at `H = 0` and joins seamlessly with adjacent equal-height tiles.
+  - **Top Surface (`z = H .. H + 1`)**: Uses the exact `plains` grassland palette (`#6e9049`, `#7ba358`, `#8fb86a`, `#5e7d3b`, `#a0c27a`, `#7a9e58`, `#b5d48c`) across the full 32×32-voxel tile so elevated terrain matches baseline ground at `H = 0` and joins seamlessly with adjacent equal-height tiles.
   - **Stratified Cliff Faces (`z = 0 .. H - 1`)**: Sculpted in 4-voxel geological strata (`#7a6a5a`, `#8a7a6a`, `#6b5d4f`, `#9e9082`) separated by dark horizontal shale seams (`#5a4a3a` / `#3e2a1d`) at every 4-voxel boundary (`z % 4 === 0`), staggered vertical rock fissure joints (`#52453a`), and a sub-turf loam/root overhang (`#6b5a3a`, `#7a6548`, `#5e7d3b`) directly beneath the grass rim.
   - **Directional Shading**: Rendered through `bake.mjs` (`buildVariantLut`), applying `1.00×` brightness to the top diamond, `0.72×` shade to the South-West (`LEFT` / `south`) cliff face, and `0.86×` mid-lighting to the South-East (`RIGHT` / `east`) cliff face.
 - **Generated Outputs**:
@@ -54,7 +57,7 @@ For each tile `(x, y)` at height `H` and each cardinal neighbour `N` (`north` `(
    - No vertical cliff or internal edge border is drawn between the two tiles; their elevated top diamonds join edge-to-edge as a continuous plateau.
 2. **Higher than Neighbour (`H > N`)**:
    - `exposed = true`, `diff = H - N`, `topZ = H`, `bottomZ = N`, `owner = 'self'`.
-   - Renders a visible side wall strictly for the exposed vertical difference `H - N` (`(H - N) * 0.5 * zoom` runtime pixels tall), stratified in 4-unit rock layers from `z = H` down to `z = N`.
+   - Renders a visible side wall strictly for the exposed vertical difference `H - N` (`(H - N) * VOXEL_Z_PX * zoom` runtime pixels tall), stratified in 4-unit rock layers from `z = H` down to `z = N`.
 3. **Lower than Neighbour (`H < N`)**:
    - `exposed = false`, `diff = 0`, `owner = 'neighbor'`.
    - The higher neighbour owns the shared edge; the lower tile never draws a duplicate wall.
@@ -79,7 +82,8 @@ Implemented in `src/iso.js` (`createMap`, `loadMapData`, `serializeMapData`, `ex
 ## 5. Units, Buildings, Picking & Depth Sorting
 
 - **Elevated Anchoring (`getEntityRenderPosition`)**:
-  - Units (8 directional facings), buildings (4 cardinal facings), unit ground shadows, and selection reticles are positioned at `(baseX, baseY - H * 0.5 * zoom)`.
+  - Units (8 directional facings), buildings (4 cardinal facings), unit ground shadows, and selection reticles are positioned at `(baseX, baseY - H * VOXEL_Z_PX * zoom)`.
+  - Multi-tile buildings use `getBuildingRenderPosition`: one sprite drawn at the front-most footprint cell, anchored on the footprint centre; the whole footprint is outlined when selected.
 - **Depth Sorting (`compareIsoDepth`)**:
   - Scene rendering orders cells back-to-front by `(x + y, y, x, layerOrder)` so cliff faces, elevated top surfaces, terrain props, buildings, shadows, and units occlude one another accurately.
 - **Tile Picking (`isoToGrid`)**:

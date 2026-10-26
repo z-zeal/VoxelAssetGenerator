@@ -1,5 +1,9 @@
 # Field Command — Graphics and Sprite Animation Overhaul Plan
 
+> **Historical document (pre-scale-migration).** Grid sizes, counts and 0.5 px/voxel
+> offsets below describe the retired 64-voxel single-tile contract. Current contract:
+> [SCALE_128.md](SCALE_128.md); results: [SCALE_MIGRATION_REPORT.md](SCALE_MIGRATION_REPORT.md).
+
 **Status:** proposal, not implemented
 **Scope:** animation, poses, effects and the asset pipeline for both visual modes. No gameplay rule, balance, movement-range, turn-order or combat-resolution change.
 **Written against:** `main` at `0d691f1` (the commit that merged PR #39).
