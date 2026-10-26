@@ -268,6 +268,8 @@ const hangarFitImg = pngSize('hangar-fit.png');
 // The hangar section is derived from the shipped models and the manifest, so
 // the "does the biggest aeroplane fit" claim is always the current geometry.
 const HANGAR_MODEL_IDS = ['hangar', 'hangar--allies', 'hangar--soviets', 'hangar--empire', 'hangar--legion'];
+// Transport-plane: x = length, y = wingspan; parked nose-in the wingspan is
+// the width the bay has to swallow twice.
 const hangarJet = doc.models['transport-plane'].bounds.size;
 const hangarBay = [HANGAR_PLAN.bay.x1 - HANGAR_PLAN.bay.x0,
   HANGAR_PLAN.bay.y1 - HANGAR_PLAN.bay.y0, HANGAR_PLAN.bay.z1 - HANGAR_PLAN.bay.z0];
@@ -279,7 +281,7 @@ const hangarRows = HANGAR_MODEL_IDS.map(id => {
   <td><code>${id}</code></td><td>${fp(m.gameplayFootprint)} tiles</td>
   <td>${m.bounds.size[2]} vox</td><td>${cell.w}×${cell.h}</td>
   <td>${hangarBay.join(' × ')}</td><td>${hangarDoor[0]} wide × ${hangarDoor[1]} tall</td>
-  <td>${hangarBay[0] - hangarJet[0]} × ${hangarBay[1] - hangarJet[1]} × ${hangarBay[2] - hangarJet[2]} vox</td></tr>`;
+  <td>${hangarBay[0] - 2 * hangarJet[1]} vox between two parked aircraft</td></tr>`;
 }).join('\n');
 const pageRows = rows.map(r => `<tr>
   <td><code>${r.id}</code></td><td>${CATEGORY_LABELS[r.category] ?? r.category}</td>
@@ -454,9 +456,9 @@ code{background:#0b0f14;padding:1px 5px;border-radius:4px}
     untouched and stays a rotary deck. Read from above the compound draws the digit <b>2</b>: the
     roofed hall is the top bar, the open counter in front of the door is the gap, the east annex is the
     descender, and the front range with its vehicle gate is the bottom bar. The interior is a real
-    volume — <b>72 × 40 × 24 voxels</b> clear behind a <b>54 × 24</b> door — so the largest fixed-wing
-    unit (the 36 × 38 × 20 transport-plane) is swallowed whole, with no wall, door leaf or roof
-    clipping its wings or fin. The five models below are the five designs: gabled steel, a flat deck
+    volume — <b>80 × 40 × 24 voxels</b> clear behind a <b>56 × 24</b> door — laid out as <b>two
+    38 × 36 standing bays</b>, so two aircraft park side by side inside the hall and neither is clipped
+    by a wall, door leaf or roof. The five models below are the five designs: gabled steel, a flat deck
     with a clerestory, a barrel vault between buttresses, a tiered cobalt roof and a stepped shed roof.
   </div>
   <figure>
@@ -473,7 +475,7 @@ code{background:#0b0f14;padding:1px 5px;border-radius:4px}
   <div class="scroll">
     <table>
       <thead><tr><th>model</th><th>size class</th><th>height</th><th>sprite px</th>
-        <th>clear bay</th><th>door</th><th>transport-plane fit (spare w x d x h)</th></tr></thead>
+        <th>clear bay</th><th>door</th><th>two-plane spare width</th></tr></thead>
       <tbody>
 ${hangarRows}
       </tbody>

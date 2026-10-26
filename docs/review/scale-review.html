@@ -101,7 +101,7 @@ code{background:#0b0f14;padding:1px 5px;border-radius:4px}
     compounds in the same sheet.
   </div>
   <figure>
-    <img src="scale-lineup.png?v=4fd1136da2" alt="Category lineups with ground footprints" width="1600" height="2001">
+    <img src="scale-lineup.png?v=7ba2f03b74" alt="Category lineups with ground footprints" width="1600" height="2001">
     <figcaption>docs/review/scale-lineup.png — every sprite 1 image pixel per screen pixel, on a
       shared baseline, with its ground footprint.</figcaption>
   </figure>
@@ -166,52 +166,52 @@ code{background:#0b0f14;padding:1px 5px;border-radius:4px}
     untouched and stays a rotary deck. Read from above the compound draws the digit <b>2</b>: the
     roofed hall is the top bar, the open counter in front of the door is the gap, the east annex is the
     descender, and the front range with its vehicle gate is the bottom bar. The interior is a real
-    volume — <b>72 × 40 × 24 voxels</b> clear behind a <b>54 × 24</b> door — so the largest fixed-wing
-    unit (the 36 × 38 × 20 transport-plane) is swallowed whole, with no wall, door leaf or roof
-    clipping its wings or fin. The five models below are the five designs: gabled steel, a flat deck
+    volume — <b>80 × 40 × 24 voxels</b> clear behind a <b>56 × 24</b> door — laid out as <b>two
+    38 × 36 standing bays</b>, so two aircraft park side by side inside the hall and neither is clipped
+    by a wall, door leaf or roof. The five models below are the five designs: gabled steel, a flat deck
     with a clerestory, a barrel vault between buttresses, a tiered cobalt roof and a stepped shed roof.
   </div>
   <figure>
-    <img src="hangar-plan.png?v=b40fbd435d" alt="Top-down plan of the five hangar designs with the clear bay, door and the largest aircraft ghosted in place" width="1076" height="308">
+    <img src="hangar-plan.png?v=cad3ee66ce" alt="Top-down plan of the five hangar designs with the clear bay, door and the largest aircraft ghosted in place" width="1076" height="308">
     <figcaption>docs/review/hangar-plan.png — plan view of all five designs. Green = clear bay,
       amber = door opening, cyan = transport-plane (36 × 38 × 20) ghosted at the bay floor. The
       pavement is dimmed so the massing, not the apron paint, draws the "2".</figcaption>
   </figure>
   <figure>
-    <img src="hangar-fit.png?v=b5f4694b8e" alt="Cutaway of the five hangar designs with a transport-plane parked inside the bay" width="2033" height="349">
+    <img src="hangar-fit.png?v=d7650ddf98" alt="Cutaway of the five hangar designs with a transport-plane parked inside the bay" width="2033" height="349">
     <figcaption>docs/review/hangar-fit.png — the same voxels sliced at the bay ceiling (z &lt; 27) with
       a transport-plane parked inside. Nothing intrudes into the bay, so the aircraft renders whole.</figcaption>
   </figure>
   <div class="scroll">
     <table>
       <thead><tr><th>model</th><th>size class</th><th>height</th><th>sprite px</th>
-        <th>clear bay</th><th>door</th><th>transport-plane fit (spare w x d x h)</th></tr></thead>
+        <th>clear bay</th><th>door</th><th>two-plane spare width</th></tr></thead>
       <tbody>
 <tr>
   <td><code>hangar</code></td><td>3×3 tiles</td>
   <td>51 vox</td><td>385×257</td>
-  <td>72 × 40 × 24</td><td>54 wide × 24 tall</td>
-  <td>36 × 2 × 4 vox</td></tr>
+  <td>80 × 40 × 24</td><td>56 wide × 24 tall</td>
+  <td>4 vox between two parked aircraft</td></tr>
 <tr>
   <td><code>hangar--allies</code></td><td>3×3 tiles</td>
   <td>59 vox</td><td>385×267</td>
-  <td>72 × 40 × 24</td><td>54 wide × 24 tall</td>
-  <td>36 × 2 × 4 vox</td></tr>
+  <td>80 × 40 × 24</td><td>56 wide × 24 tall</td>
+  <td>4 vox between two parked aircraft</td></tr>
 <tr>
   <td><code>hangar--soviets</code></td><td>3×3 tiles</td>
   <td>54 vox</td><td>385×276</td>
-  <td>72 × 40 × 24</td><td>54 wide × 24 tall</td>
-  <td>36 × 2 × 4 vox</td></tr>
+  <td>80 × 40 × 24</td><td>56 wide × 24 tall</td>
+  <td>4 vox between two parked aircraft</td></tr>
 <tr>
   <td><code>hangar--empire</code></td><td>3×3 tiles</td>
   <td>66 vox</td><td>385×279</td>
-  <td>72 × 40 × 24</td><td>54 wide × 24 tall</td>
-  <td>36 × 2 × 4 vox</td></tr>
+  <td>80 × 40 × 24</td><td>56 wide × 24 tall</td>
+  <td>4 vox between two parked aircraft</td></tr>
 <tr>
   <td><code>hangar--legion</code></td><td>3×3 tiles</td>
   <td>56 vox</td><td>385×249</td>
-  <td>72 × 40 × 24</td><td>54 wide × 24 tall</td>
-  <td>36 × 2 × 4 vox</td></tr>
+  <td>80 × 40 × 24</td><td>56 wide × 24 tall</td>
+  <td>4 vox between two parked aircraft</td></tr>
       </tbody>
     </table>
   </div>

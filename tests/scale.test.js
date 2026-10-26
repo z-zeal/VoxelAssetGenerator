@@ -722,13 +722,26 @@ test('18. The fixed-wing hangar is its own 3×3 facility: a 2-shaped plan, four 
   const bayW = P.bay.x1 - P.bay.x0, bayD = P.bay.y1 - P.bay.y0, bayH = P.bay.z1 - P.bay.z0;
   const fixedWing = ['fighter', 'bomber', 'transport-plane', 'ground-attack-jet', 'stealth-fighter', 'spy-plane', 'uav'];
   const aircraft = fixedWing.map(id => ({ id, size: voxDoc.models[id].bounds.size }));
-  const largest = aircraft.reduce((a, b) => (b.size[0] * b.size[1] > a.size[0] * a.size[1] ? b : a));
-  assert.ok(bayW >= largest.size[0] + 8, `bay width ${bayW} must clear the ${largest.id} (${largest.size[0]})`);
-  assert.ok(bayD >= largest.size[1] + 2, `bay depth ${bayD} must clear the ${largest.id} (${largest.size[1]})`);
-  assert.ok(bayH >= largest.size[2] + 4, `bay height ${bayH} must clear the ${largest.id} (${largest.size[2]})`);
+  // Aircraft park nose-in: the width that matters is the model's y extent, the
+  // depth the x extent.  The hall has to take TWO of the widest of them.
+  const widest = aircraft.reduce((a, b) => (b.size[1] > a.size[1] ? b : a));
+  const deepest = aircraft.reduce((a, b) => (b.size[0] > a.size[0] ? b : a));
+  assert.ok(bayW >= 2 * widest.size[1] + 4,
+    `bay width ${bayW} must park two ${widest.id}s side by side (2 × ${widest.size[1]} + 4)`);
+  assert.ok(bayD >= deepest.size[0] + 2, `bay depth ${bayD} must clear the ${deepest.id} (${deepest.size[0]})`);
+  assert.ok(bayH >= widest.size[2] + 4, `bay height ${bayH} must clear the ${widest.id} (${widest.size[2]})`);
   const doorW = P.door.x1 - P.door.x0, doorH = P.door.z1 - P.door.z0;
-  assert.ok(doorW >= largest.size[0] + 8, `door ${doorW} must pass the ${largest.id} wingspan`);
-  assert.ok(doorH >= largest.size[2] + 4, `door ${doorH} must pass the ${largest.id} fin`);
+  assert.ok(doorW >= widest.size[1] + 8, `door ${doorW} must pass the ${widest.id} wingspan`);
+  assert.ok(doorH >= widest.size[2] + 4, `door ${doorH} must pass the ${widest.id} fin`);
+  // Two painted standing bays, one aeroplane each, both inside the clear volume.
+  assert.equal(P.stalls.length, 2, 'the hall must offer two standing bays');
+  for (const [i, st] of P.stalls.entries()) {
+    assert.ok(st.x0 >= P.bay.x0 && st.x1 <= P.bay.x1 && st.y0 >= P.bay.y0 && st.y1 <= P.bay.y1,
+      `stall ${i + 1} must sit inside the clear bay`);
+    assert.ok(st.x1 - st.x0 >= widest.size[1], `stall ${i + 1} too narrow for the ${widest.id}`);
+    assert.ok(st.y1 - st.y0 >= deepest.size[0], `stall ${i + 1} too short for the ${deepest.id}`);
+  }
+  assert.ok(P.stalls[0].x1 <= P.stalls[1].x0, 'the two stalls must not overlap');
   // …and the bay is bigger than the aircraft, but smaller than the whole tile stack.
   assert.ok(bayW < 96 && bayD < 96, 'the bay stays inside the 3×3 footprint');
 

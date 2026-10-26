@@ -38,9 +38,9 @@ starts at. See the *Unit size classes* table in the sizing matrix.
 
 Buildings start at 2×2; the 3×3 majors are the HQ, the airport and the **fixed-wing
 hangar**. The hangar is its own 3×3 production compound (the 2×2 `helipad` is
-untouched): its plan reads as the digit **2**, its interior is a 72 × 40 × 24 voxel
-clear bay behind a 54 × 24 door that swallows the largest aircraft whole, and each
-faction raises a structurally different building — gabled steel, a flat deck with a
+untouched): its plan reads as the digit **2**, its interior is an 80 × 40 × 24 voxel
+clear bay behind a 56 × 24 door, laid out as two 38 × 36 standing bays so **two**
+aircraft park side by side, and each faction raises a structurally different building — gabled steel, a flat deck with a
 clerestory, a barrel vault, a tiered roof and a stepped shed roof. See
 `docs/review/hangar-plan.png` and `docs/review/hangar-fit.png`.
 

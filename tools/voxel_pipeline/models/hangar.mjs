@@ -2,7 +2,8 @@
  * Fixed-wing aircraft hangar — `hangar`, a 3×3-tile (96×96 world-voxel) major
  * facility.  It is deliberately **not** the `helipad`: the helipad is a 2×2
  * rotary deck with a painted "H"; this is an enclosed maintenance hall for
- * aeroplanes, with a wide door, a deep clear bay, an apron and a guarded gate.
+ * aeroplanes, with a wide two-plane door, two standing bays, an apron and a
+ * guarded gate.
  *
  * ---------------------------------------------------------------------------
  * Top-down plan reads as the digit "2"
@@ -25,11 +26,14 @@
  * ---------------------------------------------------------------------------
  * Aircraft clearances (asserted by tests/scale.test.js, drawn in the review)
  * ---------------------------------------------------------------------------
- *   clear bay     x 12..84 · y 7..47 · z 3..27  = 72 × 40 × 24 voxels
- *   door opening  x 12..66 · z 3..27            = 54 wide × 24 tall
+ *   clear bay     x 8..88 · y 7..47 · z 3..27   = 80 × 40 × 24 voxels
+ *   door opening  x 14..70 · z 3..27            = 56 wide × 24 tall
+ *   standing bays two, 38 × 36 each, side by side inside the clear volume
  *   biggest fixed-wing unit (transport-plane)   = 36 × 38 × 20 voxels
- * so the largest aeroplane fits inside the bay nose-north (36 wide × 38 deep)
- * and nose-east (38 × 36) with room to spare, and clears the door lintel.
+ * so **two** transports park nose-in (38 wide × 36 deep once turned) with two
+ * voxels of clearance at each wall and two between them, and either one clears
+ * the door lintel on the way out.  The painted bays are the same rectangles
+ * tests and review figures use, so the two-plane promise cannot drift.
  */
 
 const TEAM = '#df794b', TEAM_L = '#ffc68b', TEAM_D = '#934b32';
@@ -44,15 +48,29 @@ export const HANGAR_PLAN = Object.freeze({
   /** Top stroke of the 2: the enclosed hangar hall. */
   hall: { x0: 5, x1: 91, y0: 3, y1: 51 },
   /** Structural interior (walls are outside this). */
-  inner: { x0: 11, x1: 85, y0: 6, y1: 47 },
-  /** Clear interior volume every faction must keep free of geometry. */
-  bay: { x0: 12, x1: 84, y0: 7, y1: 47, z0: 3, z1: 27 },
+  inner: { x0: 8, x1: 88, y0: 6, y1: 47 },
+  /**
+   * Clear interior volume every faction must keep free of geometry.  80 wide,
+   * so **two** aircraft park side by side: the widest fixed-wing unit is 38
+   * voxels across, and 2 × 38 + 4 voxels of clearance = 80.
+   */
+  bay: { x0: 8, x1: 88, y0: 7, y1: 47, z0: 3, z1: 27 },
   /** Door opening in the hall's south wall (must stay empty too). */
-  door: { x0: 12, x1: 66, y0: 47, y1: 51, z0: 3, z1: 27 },
+  door: { x0: 14, x1: 70, y0: 47, y1: 51, z0: 3, z1: 27 },
+  /**
+   * Two standing bays painted on the hall floor, nose to the door.  Each is
+   * sized for the widest fixed-wing unit parked nose-in (38 wide × 36 deep),
+   * and both sit inside the clear bay — that is what "holds two aircraft"
+   * means geometrically, and the review figures park one plane in each.
+   */
+  stalls: Object.freeze([
+    Object.freeze({ x0: 10, y0: 9, x1: 48, y1: 45 }),
+    Object.freeze({ x0: 50, y0: 9, x1: 88, y1: 45 }),
+  ]),
   /** Counter of the 2: open apron in front of the door. */
-  court: { x0: 5, x1: 70, y0: 51, y1: 73 },
+  court: { x0: 5, x1: 74, y0: 51, y1: 73 },
   /** Descender of the 2: east annex joining hall and front range. */
-  spine: { x0: 70, x1: 91, y0: 51, y1: 73 },
+  spine: { x0: 74, x1: 91, y0: 51, y1: 73 },
   /** Bottom stroke of the 2: low front range with the vehicle gate. */
   front: { x0: 5, x1: 91, y0: 73, y1: 93 },
   /** Gate opening through the front range — the compound's service exit. */
@@ -165,26 +183,35 @@ function groundPad(c, S) {
   c.put(66, 90, 2, S.warn);
 }
 
-/** Hall floor: one solid slab across the footprint, top surface z = 2. */
+/**
+ * Hall floor: one solid slab across the footprint, top surface z = 2.  The
+ * paint is what tells the player this hall parks **two** aeroplanes: two
+ * outlined standing bays, a centre guide line between them and four tie-down
+ * points per bay.  Everything here is floor paint only (z = 2), so the clear
+ * bay above it stays empty.
+ */
 function hallSlab(c, S) {
-  const { hall } = HANGAR_PLAN;
+  const { hall, bay } = HANGAR_PLAN;
   c.box(hall.x0, hall.y0, 0, hall.x1, hall.y1, 3, S.pad);
   // Dark maintenance-hall floor: reads as an interior through the open door.
-  c.box(11, 6, 2, 85, 47, 3, S.bayFloor);
-  // Painted floor: threshold hazard band, centre taxi line, aircraft parking box.
-  c.box(12, 45, 2, 66, 47, 3, S.hazard);
-  c.box(38, 12, 2, 42, 47, 3, S.mark);
-  for (const [x0, y0, x1, y1] of [[16, 9, 60, 10], [16, 41, 60, 42], [16, 9, 17, 42], [59, 9, 60, 42]]) {
-    c.box(x0, y0, 2, x1, y1, 3, S.mark);
+  c.box(bay.x0, 6, 2, bay.x1, 47, 3, S.bayFloor);
+  // Threshold hazard band across the door.
+  c.box(HANGAR_PLAN.door.x0, 45, 2, HANGAR_PLAN.door.x1, 47, 3, S.hazard);
+  // Two aircraft standing bays, one per stall, nose to the door.
+  for (const { x0, y0, x1, y1 } of HANGAR_PLAN.stalls) {
+    c.box(x0, y0, 2, x1, y0 + 1, 3, S.mark);
+    c.box(x0, y1 - 1, 2, x1, y1, 3, S.mark);
+    c.box(x0, y0, 2, x0 + 1, y1, 3, S.mark);
+    c.box(x1 - 1, y0, 2, x1, y1, 3, S.mark);
+    c.box(x0 + 2, y0 + 1, 2, x0 + 10, y0 + 2, 3, S.hazard);      // chock bar
+    c.box(x1 - 10, y0 + 1, 2, x1 - 2, y0 + 2, 3, S.hazard);
+    c.box((x0 + x1) / 2 - 2, y0 + 3, 2, (x0 + x1) / 2 + 2, y0 + 4, 3, S.mark);
+    for (const [x, y] of [[x0 + 3, y0 + 4], [x1 - 4, y0 + 4], [x0 + 3, y1 - 5], [x1 - 4, y1 - 5]]) {
+      c.put(x, y, 2, S.warn);                                    // tie-down ring
+    }
   }
-  for (const [x, y] of [[18, 11], [58, 11], [18, 40], [58, 40]]) c.put(x, y, 2, S.warn);
   // Service trench and floor drains along the west wall.
-  for (let y = 12; y < 42; y += 8) c.box(13, y, 2, 15, y + 2, 3, S.asphaltD);
-  // East maintenance bay: painted floor box only, so the clear volume stays clear.
-  for (const [x0, y0, x1, y1] of [[68, 12, 82, 13], [68, 39, 82, 40], [68, 12, 69, 40], [81, 12, 82, 40]]) {
-    c.box(x0, y0, 2, x1, y1, 3, S.hazard);
-  }
-  c.box(70, 28, 2, 80, 30, 3, S.mark);
+  for (let y = 12; y < 42; y += 8) c.box(9, y, 2, 10, y + 2, 3, S.asphaltD);
 }
 
 /**
@@ -226,6 +253,7 @@ function hallShell(c, S, { eaveZ, bandZ = null, rearT = 3, wallT = 6 }) {
   c.box(door.x0 - 3, hall.y1 - 1, door.z1 + 3, door.x1 + 3, hall.y1, door.z1 + 5, S.wallL);
   // Dark interior faces: west wall inner skin, rear wall inner skin, ceiling.
   c.box(bay.x0 - 1, 6, 3, bay.x0, bay.y1, bay.z1, S.bayCeil);
+  c.box(bay.x1, 6, 3, bay.x1 + 1, bay.y1, bay.z1, S.bayCeil);
   c.box(bay.x0 - 1, bay.y0 - 1, 3, bay.x1 + 1, bay.y0, bay.z1, S.bayCeil);
   // Owner belt course: guaranteed visible in every cardinal facing.
   const bz = bandZ ?? eaveZ - 4;
