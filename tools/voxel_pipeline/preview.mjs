@@ -1,12 +1,11 @@
 #!/usr/bin/env node
 /**
- * Render data/voxels.json (64×64×64 models) into isometric PNG previews for
- * visual inspection, replacing the former Python previewer. Each model becomes
- * one PNG under game_assets/voxels/ showing frame 0 in the canonical `right`
- * facing with all three visible voxel faces (lit top, shaded left, mid-lit
- * right) sorted strictly back-to-front, box-downsampled 2:1 from the 4 px
- * supersample so previews stay near the historical 144 px footprint while
- * carrying the full 64³ detail.
+ * Render data/voxels.json (128×128×128 world models) into isometric PNG
+ * previews for visual inspection. Each model becomes one PNG under
+ * game_assets/voxels/ showing frame 0 in the canonical `right` facing with all
+ * three visible voxel faces (lit top, shaded left, mid-lit right) sorted
+ * strictly back-to-front, box-downsampled 2:1 from the 4 px supersample so a
+ * 3×3 compound preview stays around 200 px wide while carrying full detail.
  *
  * Run: npm run voxels:preview
  */

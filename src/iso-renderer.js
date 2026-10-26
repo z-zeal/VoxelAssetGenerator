@@ -7,7 +7,8 @@ import {
   TILE_W, TILE_H, HALF_W, HALF_H, VOXEL_Z_PX, ELEVATION_STEP,
   ELEVATION_LEVELS, elevationModelId, gridToIso, tileDiamondPoints,
   getTileElevation, getTileTerrain, computeTileElevationFaces,
-  getEntityRenderPosition, compareIsoDepth,
+  getEntityRenderPosition, getBuildingRenderPosition, compareIsoDepth,
+  footprintOf, footprintCells, footprintOrigin, cellKey, isMultiTileBuilding,
 } from './iso.js';
 import { drawShoalIso, drawWaterShimmer } from './coast.js';
 import {
@@ -451,17 +452,33 @@ export function renderIso(ctx, map, {
   selectedTile = null,
   hoveredTile = null,
   basePath = 'game_assets/voxels/sheets',
+  placementPreview = null,
 } = {}) {
   const renderLog = {
     tiles: [],
     cliffs: [],
     entities: [],
+    placement: placementPreview
+      ? { ok: Boolean(placementPreview.ok), type: placementPreview.type, cells: placementPreview.cells }
+      : null,
   };
 
-  // Index properties/buildings and units by (x, y)
+  // Index properties/buildings across their whole footprint and units by cell.
+  // A multi-tile building is drawn once, at the front-most (largest x+y) cell of
+  // its footprint, so painter order keeps it behind the units beside it and in
+  // front of the terrain behind it.  Every covered cell resolves to the same
+  // property for hit-testing, selection and ownership.
   const propAt = new Map();
+  const drawAt = new Map();
   for (const p of map.properties ?? []) {
-    propAt.set(`${p.x},${p.y}`, p);
+    const o = footprintOrigin(map, p);
+    const cells = footprintCells(o.x, o.y, [o.w, o.h]);
+    let front = cells[0];
+    for (const c of cells) {
+      propAt.set(cellKey(c.x, c.y), p);
+      if (c.x + c.y > front.x + front.y || (c.x + c.y === front.x + front.y && c.y > front.y)) front = c;
+    }
+    drawAt.set(cellKey(front.x, front.y), p);
   }
   const unitAt = new Map();
   for (const u of map.units ?? []) {
@@ -519,27 +536,80 @@ export function renderIso(ctx, map, {
       ctx.restore();
     }
 
-    // 5. Draw building / property on elevated tile (4 cardinal facings, faction-aware model)
-    const prop = propAt.get(`${x},${y}`);
+    // 4b. Multi-tile placement preview: outline every cell the structure will
+    //     occupy and colour them by validity, so a 3×3 HQ reads as 3×3 before
+    //     it is committed.  Preview state is produced by the editor's
+    //     `buildingPlacementAt()` and never mutates the map.
+    if (placementPreview && placementPreview.cells?.length && ctx) {
+      const cell = placementPreview.cells.find(c => c.x === x && c.y === y);
+      if (cell) {
+        const pts = tileDiamondPoints(iso.x, iso.y, zoom);
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(pts[0].x, pts[0].y);
+        ctx.lineTo(pts[1].x, pts[1].y);
+        ctx.lineTo(pts[2].x, pts[2].y);
+        ctx.lineTo(pts[3].x, pts[3].y);
+        ctx.closePath();
+        ctx.fillStyle = placementPreview.ok ? 'rgba(126, 200, 138, 0.28)' : 'rgba(214, 84, 72, 0.30)';
+        ctx.fill();
+        ctx.strokeStyle = placementPreview.ok ? '#9fe0a8' : '#e07a6a';
+        ctx.lineWidth = Math.max(1.2, 1.6 * zoom);
+        ctx.setLineDash?.([6 * zoom, 4 * zoom]);
+        ctx.stroke();
+        ctx.restore();
+      }
+    }
+
+    // 5. Draw building / property once, at the front-most cell of its footprint.
+    //    Multi-tile compounds are anchored on their footprint centre so the
+    //    sprite is centred and grounded across every occupied cell.
+    const prop = drawAt.get(cellKey(x, y));
     if (prop) {
-      const pos = getEntityRenderPosition(map, prop, originX, originY, zoom);
+      const pos = getBuildingRenderPosition(map, prop, originX, originY, zoom);
       const facing = ['right', 'up', 'left', 'down'].includes(prop.facing) ? prop.facing : 'right';
       const variant = prop.owner == null || prop.owner === 'n' ? 'n' : String(prop.owner);
       const army = resolveEntityArmy(map, prop);
       const modelId = buildingSheetKey(prop.type, army);
+      const selectTarget = selectedTile
+        && pos.cells.some(c => c.x === selectedTile.x && c.y === selectedTile.y);
       let blitted = false;
       if (ctx) {
+        if (selectTarget) {
+          // Footprint outline: every occupied cell is highlighted, so a
+          // multi-tile building reads as one object spanning its cells.
+          ctx.save();
+          for (const c of pos.cells) {
+            const ci = gridToIso(c.x, c.y, pos.elevation, originX, originY, zoom);
+            const pts = tileDiamondPoints(ci.x, ci.y, zoom);
+            ctx.beginPath();
+            ctx.moveTo(pts[0].x, pts[0].y);
+            ctx.lineTo(pts[1].x, pts[1].y);
+            ctx.lineTo(pts[2].x, pts[2].y);
+            ctx.lineTo(pts[3].x, pts[3].y);
+            ctx.closePath();
+            ctx.fillStyle = 'rgba(255, 226, 122, 0.18)';
+            ctx.fill();
+            ctx.strokeStyle = '#ffe27a';
+            ctx.lineWidth = Math.max(1.2, 1.8 * zoom);
+            ctx.stroke();
+          }
+          ctx.restore();
+        }
         blitted = blitSheet(ctx, manifest, modelId, facing, variant, 0, pos.anchorX, pos.anchorY, zoom, basePath)
           || blitSheet(ctx, manifest, prop.type, facing, variant, 0, pos.anchorX, pos.anchorY, zoom, basePath);
         if (!blitted) {
-          // Clean procedural building fallback block at elevated anchor
+          // Procedural fallback scaled to the declared footprint.
+          const fp = footprintOf(prop.type);
           ctx.save();
           const col = TEAM_COLORS[Number(variant) || 0] ?? '#aaa78b';
+          const fw = HALF_W * 2 * fp[0] * 0.75 * zoom;
+          const fh = (HALF_H * 2 * fp[1] * 0.75 + 12) * zoom;
           ctx.fillStyle = col;
-          ctx.fillRect(pos.anchorX - 12 * zoom, pos.anchorY - 18 * zoom, 24 * zoom, 18 * zoom);
+          ctx.fillRect(pos.anchorX - fw / 2, pos.anchorY - fh, fw, fh);
           ctx.strokeStyle = '#1e2226';
           ctx.lineWidth = Math.max(1, zoom);
-          ctx.strokeRect(pos.anchorX - 12 * zoom, pos.anchorY - 18 * zoom, 24 * zoom, 18 * zoom);
+          ctx.strokeRect(pos.anchorX - fw / 2, pos.anchorY - fh, fw, fh);
           ctx.restore();
         }
       }
@@ -548,9 +618,12 @@ export function renderIso(ctx, map, {
         type: prop.type,
         army,
         modelId,
-        x,
-        y,
-        elevation: H,
+        x: pos.gridX,
+        y: pos.gridY,
+        footprint: pos.footprint,
+        cells: pos.cells,
+        multiTile: isMultiTileBuilding(prop.type),
+        elevation: pos.elevation,
         facing,
         variant,
         anchorX: pos.anchorX,

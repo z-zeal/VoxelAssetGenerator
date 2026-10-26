@@ -1,5 +1,9 @@
 # Isometric 64×64×64 Voxel Asset Rebuild — Completion Report
 
+> **Historical document (pre-scale-migration).** Grid sizes, counts and 0.5 px/voxel
+> offsets below describe the retired 64-voxel single-tile contract. Current contract:
+> [SCALE_128.md](SCALE_128.md); results: [SCALE_MIGRATION_REPORT.md](SCALE_MIGRATION_REPORT.md).
+
 **Branch:** `arena/6796ddea-advance-wars` · **Date:** 2026-10-24
 **Scope:** every asset consumed by Isometric 3D voxel mode. Classic 2D is
 byte-identical (verified below). No gameplay, rules, map-logic, footprint or

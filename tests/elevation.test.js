@@ -6,13 +6,15 @@ import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 
 import {
-  TILE_W, TILE_H, HALF_W, HALF_H, VOXEL_Z_PX,
+  TILE_W, TILE_H, HALF_W, HALF_H, VOXEL_Z_PX, VOXEL_GRID_SIZE, DOWNSCALE, TILE_VOXELS,
   ELEVATION_LEVELS, ELEVATION_STEP, MIN_ELEVATION, MAX_ELEVATION, ELEVATION_MODEL_IDS,
   isValidElevation, validateElevation, elevationModelId, elevationPixelOffset,
   gridToIso, isoToGrid, createMap, loadMapData, serializeMapData,
   exportMapJson, importMapJson, getTileElevation, setTileElevation,
   getTileTerrain, setTileTerrain, computeTileElevationFaces,
-  computeMapElevationMesh, getEntityRenderPosition,
+  computeMapElevationMesh, getEntityRenderPosition, getBuildingRenderPosition,
+  footprintOf, footprintCells, footprintCenter, footprintOrigin,
+  canPlaceFootprint, isMultiTileBuilding,
 } from '../src/iso.js';
 import {
   shoalLandMask, shoalSiblingMask, shoreSides, sandPolygon, waterShimmerPhase,
@@ -71,7 +73,7 @@ test('1. All nine height levels (0, 4, 8, 12, 16, 20, 24, 28, 32) are accepted a
     const modelId = `elevation-${String(h).padStart(2, '0')}`;
     assert.equal(elevationModelId(h), modelId);
     assert.equal(terrainConfig.elevation.models[String(h)], modelId);
-    assert.equal(elevationPixelOffset(h, 1), h * 0.5);
+    assert.equal(elevationPixelOffset(h, 1), h * VOXEL_Z_PX);
   }
 });
 
@@ -188,9 +190,9 @@ test('6. Higher-to-lower neighbours render the exact exposed wall height differe
   assert.ok(eastCliff);
   assert.ok(southCliff);
   assert.equal(eastCliff.diff, 16);
-  assert.equal(eastCliff.pixelHeight, 8);
+  assert.equal(eastCliff.pixelHeight, 16 * VOXEL_Z_PX);
   assert.equal(southCliff.diff, 24);
-  assert.equal(southCliff.pixelHeight, 12);
+  assert.equal(southCliff.pixelHeight, 24 * VOXEL_Z_PX);
 });
 
 test('7. Shared edges between higher and lower tiles never render duplicate walls', () => {
@@ -251,16 +253,20 @@ test('8. Corners, map boundaries, staircase, and steep 0-to-32 transitions stay 
 });
 
 test('9. Units and buildings on raised terrain use correct elevated anchors and remain selectable', () => {
-  const map = createMap({ width: 6, height: 6 });
-  setTileElevation(map, 2, 2, 24);
+  const map = createMap({ width: 8, height: 8 });
+  // Flat 2×2 pad for the barracks (multi-tile placement requires even ground).
+  for (const [x, y] of [[2, 2], [3, 2], [2, 3], [3, 3]]) setTileElevation(map, x, y, 24);
   setTileElevation(map, 4, 3, 32);
   map.properties.push({ type: 'barracks', x: 2, y: 2, facing: 'right', owner: 0 });
   map.units.push({ type: 'tank', x: 4, y: 3, facing: 'down-right', army: 'allies', owner: 0 });
 
-  const bldgPos = getEntityRenderPosition(map, map.properties[0], 480, 120, 1);
-  const bldgBase = gridToIso(2, 2, 0, 480, 120, 1);
+  const bldgPos = getBuildingRenderPosition(map, map.properties[0], 480, 120, 1);
+  const bldgCenter = footprintCenter(map, map.properties[0]);
+  const bldgBase = gridToIso(bldgCenter.x, bldgCenter.y, 0, 480, 120, 1);
   assert.equal(bldgPos.anchorX, bldgBase.x, 'Building X must not drift laterally when elevated');
-  assert.equal(bldgPos.anchorY, bldgBase.y - 24 * VOXEL_Z_PX, 'Building Y must shift up by H * 0.5 px');
+  assert.equal(bldgPos.anchorY, bldgBase.y - 24 * VOXEL_Z_PX, 'Building Y must shift up by H * VOXEL_Z_PX');
+  assert.deepEqual(bldgPos.footprint, [2, 2]);
+  assert.equal(bldgPos.cells.length, 4);
 
   const unitPos = getEntityRenderPosition(map, map.units[0], 480, 120, 1);
   const unitBase = gridToIso(4, 3, 0, 480, 120, 1);
@@ -269,9 +275,12 @@ test('9. Units and buildings on raised terrain use correct elevated anchors and 
   assert.equal(unitPos.shadowX, unitPos.anchorX);
   assert.equal(unitPos.shadowY, unitPos.anchorY);
 
-  // Hit-testing at the elevated top surface selects the raised tile accurately
+  // Hit-testing a covered cell resolves back to the same multi-tile property.
   const pickedBldgTile = isoToGrid(bldgPos.anchorX, bldgPos.anchorY, map, 480, 120, 1);
-  assert.deepEqual(pickedBldgTile, { x: 2, y: 2, elevation: 24, hitSurface: 'top' });
+  assert.equal(pickedBldgTile.elevation, 24);
+  assert.ok(footprintCells(2, 2, [2, 2])
+    .some(c => c.x === pickedBldgTile.x && c.y === pickedBldgTile.y),
+    'Clicking inside the footprint must hit a cell owned by the building');
 
   const pickedUnitTile = isoToGrid(unitPos.anchorX, unitPos.anchorY, map, 480, 120, 1);
   assert.deepEqual(pickedUnitTile, { x: 4, y: 3, elevation: 32, hitSurface: 'top' });
@@ -354,12 +363,21 @@ test('12. Generated elevation assets exist, manifest paths resolve, previews ren
 
     const mEntry = manifest.models[id];
     assert.ok(mEntry, `Missing ${id} in manifest.json`);
-    assert.deepEqual(Object.keys(mEntry), ['right', 'up', 'left', 'down'], `${id} must have 4 cardinal facings`);
+    assert.ok(mEntry.meta, `${id} must carry scale metadata under entry.meta`);
+    assert.deepEqual(Object.keys(mEntry).filter(k => k !== 'meta'), ['right', 'up', 'left', 'down'],
+      `${id} must have exactly 4 cardinal facings (metadata lives in meta)`);
 
     for (const facing of ['right', 'up', 'left', 'down']) {
       const fEntry = mEntry[facing];
-      assert.equal(fEntry.anchorX, 32, `${id}-${facing} must keep anchorX = 32`);
-      assert.equal(fEntry.anchorY, 17 + h * 0.5, `${id}-${facing} anchorY must step by +2px per 4 voxel units`);
+      // Every facing of a model shares one anchor (its footprint centre), and
+      // each 4-voxel elevation step lifts the sprite by exactly 4 px.
+      const right = mEntry.right;
+      assert.equal(fEntry.anchorX, right.anchorX, `${id}-${facing} anchorX must match every facing`);
+      assert.equal(fEntry.anchorY, right.anchorY, `${id}-${facing} anchorY must match every facing`);
+      assert.ok(fEntry.anchorX > 0 && fEntry.anchorX < fEntry.cell.w,
+        `${id}-${facing} anchor must lie inside its sprite cell`);
+      assert.equal(mEntry.meta.footprint.join('x'), '1x1', `${id} must declare a 1×1 tile footprint`);
+      assert.deepEqual(mEntry.meta.groundAnchor, [48, 48, 0], `${id} must record its ground anchor`);
       const sheetRel = fEntry.variants?.n?.file;
       assert.ok(sheetRel, `Missing neutral variant for ${id}-${facing}`);
       const sheetPath = path.join(ROOT, 'game_assets/voxels/sheets', sheetRel);
@@ -367,6 +385,24 @@ test('12. Generated elevation assets exist, manifest paths resolve, previews ren
       const sha = crypto.createHash('sha256').update(fs.readFileSync(sheetPath)).digest('hex');
       assert.equal(sha, fEntry.variants.n.sha256, `SHA-256 mismatch for ${sheetRel}`);
     }
+  }
+
+  // Elevation blocks are full columns painted from z=0 up to their level, and
+  // sprites are cropped tight to their content, so each +4-level block is 4 px
+  // taller and its ground anchor sits 4 px lower inside the crop.  The stable
+  // quantity is the distance from the anchor to the bottom of the sprite: a
+  // level-h block drawn with its anchor on the z=0 baseline puts its surface
+  // exactly h * VOXEL_Z_PX px above that baseline.
+  const base = manifest.models['elevation-00'].right;
+  const baseBelowAnchor = base.cell.h - base.anchorY;
+  for (let i = 0; i < ELEVATION_LEVELS.length; i++) {
+    const h = ELEVATION_LEVELS[i];
+    const id = elevationModelId(h);
+    const f = manifest.models[id].right;
+    assert.equal(f.anchorY, base.anchorY + h * VOXEL_Z_PX, `${id} anchor must step by VOXEL_Z_PX per elevation unit`);
+    assert.equal(f.cell.h, base.cell.h + h * VOXEL_Z_PX, `${id} sprite must grow by h * VOXEL_Z_PX px`);
+    assert.equal(f.cell.h - f.anchorY, baseBelowAnchor, `${id} ground contact must stay on the z=0 baseline`);
+    assert.equal(f.anchorX, base.anchorX, `${id} anchorX must not depend on height`);
   }
 
   // Deterministic re-bake check on elevation-00 and elevation-32
@@ -404,7 +440,9 @@ test('13. All 58 base units have complete 4-faction unit models (290 total) with
 
       const mEntry = manifest.models[fid];
       assert.ok(mEntry, `Missing faction unit manifest entry ${fid}`);
-      assert.equal(Object.keys(mEntry).length, 8, `${fid} must have 8 directional facings`);
+      assert.ok(mEntry.meta, `${fid} must carry scale metadata under entry.meta`);
+      assert.equal(Object.keys(mEntry).filter(k => k !== 'meta').length, 8,
+        `${fid} must have 8 directional facings (metadata lives in meta)`);
       for (const facing of ['right', 'down-right', 'down', 'down-left', 'left', 'up-left', 'up', 'up-right']) {
         assert.ok(mEntry[facing], `${fid} missing facing ${facing}`);
         assert.equal(Object.keys(mEntry[facing].variants).length, 6, `${fid}-${facing} must have 6 team variants (0..5)`);
@@ -436,7 +474,9 @@ test('14. All 26 buildings/structures (130 total) and all 6 wall/gate fortificat
 
       const mEntry = manifest.models[fid];
       assert.ok(mEntry, `Missing faction building manifest entry ${fid}`);
-      assert.deepEqual(Object.keys(mEntry), ['right', 'up', 'left', 'down'], `${fid} must have 4 cardinal facings`);
+      assert.ok(mEntry.meta, `${fid} must carry scale metadata under entry.meta`);
+      assert.deepEqual(Object.keys(mEntry).filter(k => k !== 'meta'), ['right', 'up', 'left', 'down'],
+        `${fid} must have exactly 4 cardinal facings (metadata lives in meta)`);
       for (const facing of ['right', 'up', 'left', 'down']) {
         assert.equal(Object.keys(mEntry[facing].variants).length, 7, `${fid}-${facing} must have 7 team variants (0..5, n)`);
       }
@@ -471,10 +511,10 @@ test('15. Runtime renderer and army helpers resolve faction models independently
   map.terrain[0][0] = 'wall';
   map.terrain[0][1] = 'wall-gate';
   map.properties.push(
-    { type: 'hq', x: 1, y: 1, owner: 0, facing: 'right' },
-    { type: 'barracks', x: 2, y: 1, owner: 1, facing: 'up' },
-    { type: 'research-lab', x: 3, y: 1, owner: 2, facing: 'left' },
-    { type: 'coastal-battery', x: 4, y: 1, owner: 3, facing: 'down' },
+    { type: 'hq', x: 0, y: 0, owner: 0, facing: 'right' },
+    { type: 'barracks', x: 3, y: 0, owner: 1, facing: 'up' },
+    { type: 'research-lab', x: 3, y: 2, owner: 2, facing: 'left' },
+    { type: 'coastal-battery', x: 5, y: 5, owner: 3, facing: 'down' },
   );
   map.units.push(
     { type: 'commando', x: 1, y: 2, owner: 3, army: 'legion', facing: 'down-right' },
@@ -493,14 +533,22 @@ test('15. Runtime renderer and army helpers resolve faction models independently
   const ctx = createRecordingContext();
   const log = renderIso(ctx, map);
   const bldgs = log.entities.filter(e => e.kind === 'building');
-  assert.equal(bldgs.length, 4);
+  assert.equal(bldgs.length, 4, 'each property is drawn exactly once');
   assert.deepEqual(
-    bldgs.map(b => [b.modelId, b.army, b.variant]),
+    bldgs.map(b => b.modelId).sort(),
+    ['barracks--soviets', 'coastal-battery--legion', 'hq--allies', 'research-lab--empire'],
+  );
+  const byModel = new Map(bldgs.map(b => [b.modelId, b]));
+  assert.equal(byModel.get('hq--allies').footprint.join('x'), '3x3');
+  assert.equal(byModel.get('hq--allies').cells.length, 9);
+  assert.equal(byModel.get('coastal-battery--legion').footprint.join('x'), '1x1');
+  assert.deepEqual(
+    bldgs.map(b => [b.modelId, b.army, b.variant]).sort(),
     [
-      ['hq--allies', 'allies', '0'],
       ['barracks--soviets', 'soviets', '1'],
-      ['research-lab--empire', 'empire', '2'],
       ['coastal-battery--legion', 'legion', '3'],
+      ['hq--allies', 'allies', '0'],
+      ['research-lab--empire', 'empire', '2'],
     ]
   );
 

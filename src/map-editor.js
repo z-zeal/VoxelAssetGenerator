@@ -8,6 +8,7 @@ import {
   validateElevation, elevationModelId, createMap, loadMapData,
   serializeMapData, inMapBounds, getTileElevation, setTileElevation,
   getTileTerrain, setTileTerrain, computeTileElevationFaces, isoToGrid,
+  footprintOf, footprintCells, footprintOrigin, canPlaceFootprint, DEFAULT_FOOTPRINT,
 } from './iso.js';
 
 export const EDITOR_TERRAINS = Object.freeze([
@@ -232,7 +233,35 @@ export class MapElevationEditor {
   }
 
   /**
-   * Places or replaces a building/property on tile `(x, y)`.
+   * Returns the placement preview for a building footprint with its top-left
+   * cell at `(x, y)`: footprint size, covered cells and a validation result
+   * (in-bounds / flat ground / no overlap).  Used by the editor overlay so the
+   * player sees exactly which cells a multi-tile structure will occupy.
+   */
+  buildingPlacementAt(x, y, type = this.selectedBuildingType, { ignore = null } = {}) {
+    const footprint = footprintOf(type);
+    const [w, h] = footprint;
+    // Clamp so a structure dropped near the map edge still fits.
+    const originX = Math.max(0, Math.min(this.map.width - w, x - Math.floor((w - 1) / 2)));
+    const originY = Math.max(0, Math.min(this.map.height - h, y - Math.floor((h - 1) / 2)));
+    const check = canPlaceFootprint(this.map, originX, originY, footprint, { ignore });
+    return {
+      type,
+      footprint,
+      x: originX,
+      y: originY,
+      cells: footprintCells(originX, originY, footprint),
+      ...check,
+    };
+  }
+
+  /**
+   * Places or replaces a building/property anchored at `(x, y)`.
+   *
+   * Multi-tile structures occupy their full footprint: the anchor is stored as
+   * the north-west cell, the footprint is validated (bounds, flat ground,
+   * overlap) and the whole rectangle is cleared of the previously occupying
+   * property, so replacement never leaves orphaned cells behind.
    */
   placeBuilding(x, y, {
     type = this.selectedBuildingType,
@@ -240,15 +269,42 @@ export class MapElevationEditor {
     army = this.selectedBuildingArmy ?? this.selectedUnitArmy ?? 'standard',
     owner = this.selectedOwner,
     recordUndo = true,
+    force = false,
   } = {}) {
     if (!inMapBounds(this.map, x, y)) return false;
-    if (recordUndo && !this._activeStrokeSnapshot) this._pushUndo();
-    this.map.properties = (this.map.properties ?? []).filter(p => !(p.x === x && p.y === y));
-    if (type) {
-      this.map.properties.push({ type, x, y, facing, army, owner });
+    const footprint = type ? footprintOf(type) : DEFAULT_FOOTPRINT;
+    const [w, h] = footprint;
+    const originX = Math.max(0, Math.min(Math.max(0, this.map.width - w),
+      x - Math.floor((w - 1) / 2)));
+    const originY = Math.max(0, Math.min(Math.max(0, this.map.height - h),
+      y - Math.floor((h - 1) / 2)));
+    const check = type ? canPlaceFootprint(this.map, originX, originY, footprint) : { ok: true };
+    if (type && !check.ok && !force) {
+      this.selectedTile = { x, y };
+      this.lastPlacementError = check;
+      return false;
     }
-    this.selectedTile = { x: y != null ? x : 0, y };
+    if (recordUndo && !this._activeStrokeSnapshot) this._pushUndo();
+    const cells = footprintCells(originX, originY, footprint);
+    const onCell = (p) => footprintCells(p.x, p.y, footprintOf(p.type))
+      .some(c => cells.some(t => t.x === c.x && t.y === c.y));
+    this.map.properties = (this.map.properties ?? []).filter(p => !onCell(p));
+    if (type) {
+      this.map.properties.push({ type, x: originX, y: originY, facing, army, owner });
+    }
+    this.lastPlacementError = null;
+    this.selectedTile = { x, y };
     return true;
+  }
+
+  /** All footprint cells of the property (if any) covering `(x, y)`. */
+  footprintAt(x, y) {
+    for (const p of this.map.properties ?? []) {
+      const o = footprintOrigin(this.map, p);
+      const hit = footprintCells(o.x, o.y, [o.w, o.h]).some(c => c.x === x && c.y === y);
+      if (hit) return { property: p, origin: o, footprint: [o.w, o.h] };
+    }
+    return null;
   }
 
   /**
@@ -299,7 +355,11 @@ export class MapElevationEditor {
     const terrain = getTileTerrain(this.map, x, y);
     const faces = computeTileElevationFaces(this.map, x, y);
     const unit = (this.map.units ?? []).find(u => u.x === x && u.y === y) ?? null;
-    const building = (this.map.properties ?? []).find(p => p.x === x && p.y === y) ?? null;
+    // A multi-tile building covers every cell of its footprint, so inspection
+    // from any covered cell resolves the same property.
+    const covered = this.footprintAt(x, y);
+    const building = covered?.property ?? null;
+    const buildingFootprint = covered ? covered.footprint : null;
     const fog = Boolean(this.map.fog?.[y]?.[x]);
     return {
       x,
@@ -312,8 +372,12 @@ export class MapElevationEditor {
       corners: faces.corners,
       unit,
       building,
+      buildingFootprint,
       fog,
-      statusText: `Tile (${x}, ${y}) | Terrain: ${terrain} | Height: ${elevation} vox (${elevationModelId(elevation)}) | Selected Brush: ${this.selectedHeight} vox`,
+      statusText: `Tile (${x}, ${y}) | Terrain: ${terrain} | Height: ${elevation} vox (${elevationModelId(elevation)})`
+        + (buildingFootprint && buildingFootprint.some(v => v > 1)
+          ? ` | Building: ${building.type} ${buildingFootprint.join('×')} tiles` : '')
+        + ` | Selected Brush: ${this.selectedHeight} vox`,
     };
   }
 
@@ -338,16 +402,23 @@ export class MapElevationEditor {
  */
 export function createPresetMap(presetName = 'showcase') {
   if (presetName === 'flat') {
-    const m = createMap({ width: 8, height: 8, name: 'Flat Baseline (Elevation 0)' });
-    for (let y = 0; y < 8; y++) {
+    const m = createMap({ width: 10, height: 10, name: 'Flat Baseline (Elevation 0, multi-tile compounds)' });
+    for (let y = 0; y < 10; y++) {
       m.terrain[y][0] = 'sea';
       m.terrain[y][1] = 'shoal';
-      m.terrain[y][4] = 'road';
     }
-    m.terrain[2][2] = 'tree';
-    m.terrain[5][6] = 'mountain';
-    m.properties.push({ type: 'hq', x: 3, y: 2, facing: 'right', owner: 0 });
-    m.units.push({ type: 'tank', x: 4, y: 4, facing: 'down-right', army: 'allies', owner: 0 });
+    m.terrain[2][5] = 'tree';
+    m.terrain[1][8] = 'mountain';
+    // 3×3 command compound, 2×2 factory and 1×1 defence on flat ground.
+    m.properties.push(
+      { type: 'hq', x: 5, y: 5, facing: 'right', owner: 0 },
+      { type: 'base', x: 2, y: 7, facing: 'right', owner: 0 },
+      { type: 'pillbox', x: 2, y: 4, facing: 'right', owner: 0 },
+    );
+    m.units.push(
+      { type: 'infantry', x: 4, y: 4, facing: 'down-right', army: 'allies', owner: 0 },
+      { type: 'tank', x: 5, y: 4, facing: 'down-right', army: 'allies', owner: 0 },
+    );
     return m;
   }
 
@@ -390,7 +461,9 @@ export function createPresetMap(presetName = 'showcase') {
         });
       }
     }
-    m.properties.push({ type: 'hq', x: 8, y: 1, facing: 'left', owner: 0 });
+    // A 3×3 compound cannot sit on a one-tile-wide staircase, so the high
+    // terrace carries a 1×1 bunker instead (multi-tile footprints need a pad).
+    m.properties.push({ type: 'bunker', x: 8, y: 1, facing: 'left', owner: 0 });
     return m;
   }
 
@@ -435,6 +508,12 @@ export function createPresetMap(presetName = 'showcase') {
         setTileElevation(m, x, y, grid[y][x]);
       }
     }
+    // Multi-tile facility pad: flatten a 2×2 block to the terrain height the
+    // station is anchored on so the footprint stays level.
+    const radarElev = getTileElevation(m, 4, 2);
+    for (const cell of footprintCells(4, 2, footprintOf('radar-station'))) {
+      setTileElevation(m, cell.x, cell.y, radarElev);
+    }
     m.properties.push({ type: 'radar-station', x: 4, y: 2, facing: 'right', owner: 0 });
     m.units.push({ type: 'heavy', x: 3, y: 3, facing: 'down-right', army: 'soviets', owner: 1 });
     m.units.push({ type: 'sniper', x: 2, y: 2, facing: 'down', army: 'allies', owner: 0 });
@@ -476,18 +555,30 @@ export function createPresetMap(presetName = 'showcase') {
   m.terrain[3][8] = 'tree';
   m.terrain[5][8] = 'hill';
 
-  // Buildings & Units on elevated and flat tiles across all 4 playable factions
+  // Buildings sit on level pads sized to their footprints (3×3 HQ, 2×2
+  // facilities), while 1×1 defences keep the stepped terraces.
+  const pad = (type, x, y, elevation = 0) => {
+    for (const cell of footprintCells(x, y, footprintOf(type))) {
+      if (inMapBounds(m, cell.x, cell.y)) setTileElevation(m, cell.x, cell.y, elevation);
+    }
+  };
+  pad('hq', 6, 6, 0);
+  pad('barracks', 1, 6, 8);
+  pad('base', 4, 6, 4);
+  pad('radar-station', 5, 3, 16);
   m.properties.push(
-    { type: 'hq', x: 8, y: 0, facing: 'right', army: 'allies', owner: 0 },
-    { type: 'barracks', x: 2, y: 3, facing: 'right', army: 'soviets', owner: 1 },
-    { type: 'base', x: 3, y: 5, facing: 'down', army: 'empire', owner: 2 },
+    { type: 'hq', x: 6, y: 6, facing: 'right', army: 'allies', owner: 0 },
+    { type: 'barracks', x: 1, y: 6, facing: 'right', army: 'soviets', owner: 1 },
+    { type: 'base', x: 4, y: 6, facing: 'down', army: 'empire', owner: 2 },
     { type: 'radar-station', x: 5, y: 3, facing: 'right', army: 'legion', owner: 3 },
+    { type: 'pillbox', x: 3, y: 2, facing: 'right', army: 'allies', owner: 0 },
   );
   m.units.push(
     { type: 'elite-hero', x: 8, y: 1, facing: 'down-left', army: 'allies', owner: 0 },
     { type: 'tank', x: 3, y: 4, facing: 'down-right', army: 'legion', owner: 3 },
     { type: 'ifv', x: 6, y: 3, facing: 'down', army: 'soviets', owner: 1 },
-    { type: 'rocket-infantry', x: 5, y: 4, facing: 'right', army: 'empire', owner: 2 },
+    { type: 'rocket-infantry', x: 4, y: 4, facing: 'right', army: 'empire', owner: 2 },
+    { type: 'infantry', x: 7, y: 5, facing: 'down', army: 'soviets', owner: 1 },
     { type: 'destroyer', x: 6, y: 8, facing: 'left', army: 'allies', owner: 1 },
   );
   return m;

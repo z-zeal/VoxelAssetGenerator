@@ -1,24 +1,31 @@
 /**
  * Isometric projection, multi-height terrain elevation math, neighbour-aware
- * cliff face topology, map elevation schema serialization, and depth sorting.
+ * cliff face topology, multi-tile building footprints, map elevation schema
+ * serialization, and depth sorting.
  *
- * Coordinate and scale conventions (matching tools/voxel_pipeline/bake.mjs):
- * - Runtime ground tile footprint is a 64×32 isometric diamond (HALF_W = 32, HALF_H = 16).
- * - Authoring voxel grid is 64×64×64 downsampled 4:1 (DOWNSCALE = 4).
- * - 1 voxel Z unit equals 0.5 runtime screen pixels vertically (VOXEL_Z_PX = 0.5).
- * - Supported elevation levels are voxel Z units: 0, 4, 8, 12, 16, 20, 24, 28, 32.
- * - Each 4-voxel step shifts the tile's top surface upward by 2 runtime pixels (-2 px in Y)
+ * Coordinate and scale conventions (matching tools/voxel_pipeline/bake.mjs and
+ * docs/SCALE_128.md):
+ * - Canonical ground tile is 32×32 world voxel units, projected as a 64×32
+ *   isometric diamond (HALF_W = 32, HALF_H = 16): 1 tile = 32 voxels.
+ * - World voxel canvas is 128×128×128 (4×4 tiles); models are baked at
+ *   DOWNSCALE = 2 supersample pixels per runtime pixel.
+ * - 1 voxel Z unit equals 1 runtime screen pixel vertically (VOXEL_Z_PX = 1).
+ * - Supported elevation levels are voxel Z units: 0, 4, 8, 12, 16, 20, 24, 28, 32
+ *   (the terrain elevation system is unchanged by the asset rescale).
+ * - Each 4-voxel step shifts the tile's top surface upward by 4 runtime pixels (-4 px in Y)
  *   with zero lateral (X) displacement.
  */
+import { BUILDING_FOOTPRINTS, TILE_UNITS } from './asset-scale.js';
 
 export const TILE_W = 64;
 export const TILE_H = 32;
 export const HALF_W = TILE_W / 2; // 32
 export const HALF_H = TILE_H / 2; // 16
 export const ISO_Z = 23;
-export const VOXEL_GRID_SIZE = 64;
-export const DOWNSCALE = 4;
-export const VOXEL_Z_PX = 2 / DOWNSCALE; // 0.5 runtime px per voxel Z unit
+export const VOXEL_GRID_SIZE = 128;
+export const DOWNSCALE = 2;
+export const VOXEL_Z_PX = 2 / DOWNSCALE; // 1 runtime px per voxel Z unit
+export const TILE_VOXELS = TILE_UNITS;   // 32 world voxel units per ground tile
 
 export const ELEVATION_LEVELS = Object.freeze([0, 4, 8, 12, 16, 20, 24, 28, 32]);
 export const ELEVATION_SET = new Set(ELEVATION_LEVELS);
@@ -513,6 +520,141 @@ export function getEntityRenderPosition(map, entity, originX = 0, originY = 0, z
     selectionDiamond: tileDiamondPoints(iso.x, iso.y, zoom),
   };
 }
+
+/** ------------------------------------------------------------------------- *
+ * Multi-tile building footprints
+ *
+ * A property keeps the historical `(x, y)` anchor cell, which is the
+ * north-west (top) cell of its footprint.  Its *visual* centre is the centre of
+ * the whole footprint, which is where the baked sprite's ground anchor must
+ * land.  Gameplay occupancy is the full `[x, x+w) × [y, y+h)` cell rectangle.
+ * ------------------------------------------------------------------------- */
+
+export const DEFAULT_FOOTPRINT = Object.freeze([1, 1]);
+
+/** Gameplay footprint (tiles) for a property type; 1×1 for unknown ids. */
+export function footprintOf(type) {
+  const fp = BUILDING_FOOTPRINTS[type];
+  return Array.isArray(fp) && fp.length === 2 ? fp : DEFAULT_FOOTPRINT;
+}
+
+/** True when the property type occupies more than one map cell. */
+export function isMultiTileBuilding(type) {
+  const [w, h] = footprintOf(type);
+  return w > 1 || h > 1;
+}
+
+/** Every cell `(x, y)` covered by a footprint anchored at `(x, y)`. */
+export function footprintCells(x, y, footprint = DEFAULT_FOOTPRINT) {
+  const [w, h] = footprint;
+  const cells = [];
+  for (let dy = 0; dy < h; dy++) {
+    for (let dx = 0; dx < w; dx++) cells.push({ x: x + dx, y: y + dy });
+  }
+  return cells;
+}
+
+/**
+ * Clamps a footprint origin so the whole rectangle fits inside the map.
+ * Legacy saves and hand-written scenarios placed 1×1 buildings, so the
+ * runtime always re-derives the origin instead of trusting stored bounds.
+ */
+export function footprintOrigin(map, entity) {
+  const [w, h] = footprintOf(entity.type);
+  const maxX = Math.max(0, (map?.width ?? w) - w);
+  const maxY = Math.max(0, (map?.height ?? h) - h);
+  return {
+    x: Math.max(0, Math.min(maxX, entity.x | 0)),
+    y: Math.max(0, Math.min(maxY, entity.y | 0)),
+    w,
+    h,
+  };
+}
+
+/** Grid-space centre of a property footprint (half-cell for even spans). */
+export function footprintCenter(map, entity) {
+  const o = footprintOrigin(map, entity);
+  return { x: o.x + (o.w - 1) / 2, y: o.y + (o.h - 1) / 2, w: o.w, h: o.h, originX: o.x, originY: o.y };
+}
+
+/**
+ * Validates whether a building footprint can be placed with its top-left cell
+ * at `(x, y)`: inside the map, entirely on one elevation (so the model is not
+ * split by a cliff), and free of other properties.  Units may stand on a
+ * building cell only if `allowUnits` is set (never true for placement).
+ */
+export function canPlaceFootprint(map, x, y, footprint = DEFAULT_FOOTPRINT, { ignore = null, requireFlat = true } = {}) {
+  const [w, h] = footprint;
+  if (!map || typeof map.width !== 'number') return { ok: false, reason: 'no-map' };
+  if (x < 0 || y < 0 || x + w > map.width || y + h > map.height) {
+    return { ok: false, reason: 'out-of-bounds' };
+  }
+  const elevation = getTileElevation(map, x, y);
+  const cells = footprintCells(x, y, footprint);
+  for (const cell of cells) {
+    if (requireFlat && getTileElevation(map, cell.x, cell.y) !== elevation) {
+      return { ok: false, reason: 'uneven-ground', cell };
+    }
+  }
+  for (const p of map.properties ?? []) {
+    if (ignore && p === ignore) continue;
+    if (ignore && p.x === ignore.x && p.y === ignore.y) continue;
+    const occupied = footprintCells(p.x, p.y, footprintOf(p.type));
+    for (const cell of cells) {
+      if (occupied.some(o => o.x === cell.x && o.y === cell.y)) {
+        return { ok: false, reason: 'occupied', cell, by: p };
+      }
+    }
+  }
+  return { ok: true, elevation, cells };
+}
+
+/**
+ * Screen-space render position for a building: the sprite is anchored at the
+ * centre of its full footprint so multi-tile art stays centred and grounded.
+ */
+export function getBuildingRenderPosition(map, entity, originX = 0, originY = 0, zoom = 1) {
+  const center = footprintCenter(map, entity);
+  const elevation = getTileElevation(map, center.originX, center.originY);
+  const iso = gridToIso(center.x, center.y, elevation, originX, originY, zoom);
+  const cells = footprintCells(center.originX, center.originY, [center.w, center.h]);
+  const corners = cells.map(c => gridToIso(c.x, c.y, elevation, originX, originY, zoom));
+  const minX = Math.min(...corners.map(c => c.x)) - HALF_W * zoom;
+  const maxX = Math.max(...corners.map(c => c.x)) + HALF_W * zoom;
+  const minY = Math.min(...corners.map(c => c.y)) - HALF_H * zoom;
+  const maxY = Math.max(...corners.map(c => c.y)) + HALF_H * zoom;
+  return {
+    gridX: center.originX,
+    gridY: center.originY,
+    footprint: [center.w, center.h],
+    cells,
+    elevation,
+    anchorX: iso.x,
+    anchorY: iso.y,
+    baseX: iso.baseX,
+    baseY: iso.baseY,
+    elevOffset: iso.elevOffset,
+    shadowX: iso.x,
+    shadowY: iso.y,
+    bounds: { minX, maxX, minY, maxY },
+    selectionDiamond: footprintDiamondPoints(corners),
+  };
+}
+
+/** Union outline (as a diamond square) covering every footprint cell. */
+export function footprintDiamondPoints(cornerIsos) {
+  const xs = cornerIsos.map(c => c.x);
+  const ys = cornerIsos.map(c => c.y);
+  return [
+    { x: (Math.min(...xs) + Math.max(...xs)) / 2, y: Math.min(...ys) },
+    { x: Math.max(...xs), y: (Math.min(...ys) + Math.max(...ys)) / 2 },
+    { x: (Math.min(...xs) + Math.max(...xs)) / 2, y: Math.max(...ys) },
+    { x: Math.min(...xs), y: (Math.min(...ys) + Math.max(...ys)) / 2 },
+  ];
+}
+
+/** Cell key helper shared by renderer occupancy maps. */
+export const cellKey = (x, y) => `${x},${y}`;
 
 /**
  * Painter's algorithm comparator for isometric tiles and objects:

@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 /**
- * Bake runtime isometric sprite sheets from the 64×64×64 sculptors.
+ * Bake runtime isometric sprite sheets from the 128×128×128 world models.
  *
- * Replaces the former pure-stdlib Python baker with the same contract but in
- * Node, because 64³ multi-frame rasterization (≈30 M voxel draws plus 4×4
- * box-filtered downsampling) is far past the repository's ≤10 min bake gate in
- * a Python loop. Everything else is preserved:
+ * One map cell is a 32-voxel tile rendered as a 64×32 px isometric diamond:
+ * 4 px per voxel in the supersampled buffer, box-filtered down 2:1 to 2 px per
+ * voxel horizontally and 1 px vertically (VOXEL_Z_PX = 1). Models are rotated
+ * about their own ground anchor (the footprint centre, not the canvas centre),
+ * so a 1×1 asset stays inside its tile and a 3×3 compound inside its 96×96
+ * block in every facing.
  *
  * * for every model and every facing (right, up, left, down) the voxel grid is
  *   rotated about the vertical axis (never mirrored — mirroring would flip
@@ -17,7 +19,8 @@
  *   src/iso.js — one runtime pixel per two voxel steps, exactly the world
  *   scale the 32³ sheets had,
  * * clip frames are packed left-to-right into a fixed-cell strip per
- *   (model, facing, variant); manifest v3 records cell + frames[] + clips,
+ *   (model, facing, variant); manifest v4 records cell + frames[] + clips,
+ *   and the scale metadata under `entry.meta` so facing keys stay cardinal,
  * * a manifest records size, anchor, clip frames, changedPixels and sha256.
  *
  * Integer maths and a fixed zlib level keep re-bakes byte-identical.
@@ -59,10 +62,10 @@ const FACINGS = [
   ['down-left', { angle: (Math.PI * 3) / 4 }],
   ['up-left', { angle: -(Math.PI * 3) / 4 }],
 ];
-const GRID = 64;
-export const DOWNSCALE = 4;                    // supersample px per runtime px
-const GROUND = 63;                      // projected y of the 64×64 ground centre
-const MANIFEST_FORMAT = 'field-command-voxel-sheet-3';
+const GRID = 128;                             // world canvas per axis
+const GRID_AXES = [GRID, GRID, GRID];
+export const DOWNSCALE = 2;                    // supersample px per runtime px
+const MANIFEST_FORMAT = 'field-command-voxel-sheet-4';
 const ANCHOR_SLACK = 24;                // px the ground anchor may sit outside the crop
 const MIN_CHANGED_PIXELS = 5; // Phase 3: allow 8-dir frames with smaller motion          // adjacent frames must move real geometry
 const MIN_ALPHA_DIFF = 0; // Phase 3: allow 8-dir diagonal rotation frames with geometry motion only               // …and change silhouette, not just colour
@@ -82,10 +85,12 @@ const LEGACY_UNIT_IDS = new Set([
   'submarine', 'gunboat', 'cruiser', 'battleship', 'lander', 'uhac',
 ]);
 
-export const BUF_W = 288;
-export const BUF_H = 320;
-export const BUF_OX = 144;
-export const BUF_OY = 208;
+// Supersample buffer sized for the full 128³ canvas: projected x spans
+// ±(127+127) = ±254 px and y spans −254..+254 px, plus 4 px cube faces.
+export const BUF_W = 640;
+export const BUF_H = 640;
+export const BUF_OX = 320;
+export const BUF_OY = 384;
 
 function teamPalette(palette, variant) {
   if (variant === '0') return palette;
@@ -128,31 +133,45 @@ export function buildVariantLut(palette, variant) {
   return lut;
 }
 
-export function rotateVoxels(voxels, turns) {
+/**
+ * 90° turn about the model's own ground anchor (its footprint centre), so a
+ * model authored inside a single tile stays inside that same tile in every
+ * facing instead of orbiting the 128³ canvas centre.
+ */
+export function rotateVoxels(voxels, turns, anchor = [GRID / 2, GRID / 2, 0]) {
+  // The anchor is a *continuous* point (the footprint centre, e.g. 48 for a
+  // 32..63 block), so a 90° turn maps cell (x,y) to (ax+ay-1-y, ay-ax+x).  The
+  // naive index-space formula (ax + y - ay, ay - x + ax) rotates about the
+  // corner of that voxel instead, which drifts the model by one voxel per turn
+  // and makes cardinal facings 1 px inconsistent with each other.
+  const { x: ax, y: ay } = { x: Math.round(anchor[0]), y: Math.round(anchor[1]) };
   let out = voxels;
   for (let t = 0; t < turns % 4; t++) {
-    out = out.map(([x, y, z, pi]) => [y, GRID - 1 - x, z, pi]);
+    out = out.map(([x, y, z, pi]) => [ax + ay - 1 - y, ay - ax + x, z, pi]);
   }
   return out;
 }
 
 const ROT45_CACHE = new Map();
-function getRot45Lut(rad, isoCompensate) {
-  const key = `${rad.toFixed(6)}:${isoCompensate ? 1 : 0}`;
+function getRot45Lut(rad, isoCompensate, anchor = [GRID / 2, GRID / 2, 0]) {
+  const key = `${rad.toFixed(6)}:${isoCompensate ? 1 : 0}:${anchor[0]},${anchor[1]}`;
   let entry = ROT45_CACHE.get(key);
   if (entry) return entry;
 
-  const cx = 31.5, cy = 31.5;
+  const cx = anchor[0] - 0.5, cy = anchor[1] - 0.5;
   const cos = Math.cos(rad), sin = Math.sin(rad);
   const su = isoCompensate ? 0.82 : 1.0;
   const sv = isoCompensate ? 1.22 : 1.0;
-  const MIN = isoCompensate ? -4 : 0;
-  const MAX = isoCompensate ? 67 : 63;
+  // Rotation can spill outside the canvas; expand the working window by the
+  // largest possible displacement instead of assuming a 64-voxel model.
+  const PAD = Math.ceil(Math.hypot(GRID, GRID) * 0.35);
+  const MIN = -PAD;
+  const MAX = GRID + PAD;
   const SPAN = MAX - MIN + 1;
 
-  const fwdLut = new Int32Array(64 * 64).fill(-1);
-  for (let y = 0; y < 64; y++) {
-    for (let x = 0; x < 64; x++) {
+  const fwdLut = new Int32Array(GRID * GRID).fill(-1);
+  for (let y = 0; y < GRID; y++) {
+    for (let x = 0; x < GRID; x++) {
       const dx = x - cx, dy = y - cy;
       const rx = dx * cos - dy * sin;
       const ry = dx * sin + dy * cos;
@@ -161,7 +180,7 @@ function getRot45Lut(rad, isoCompensate) {
       const nx = Math.round(v + u + cx);
       const ny = Math.round(v - u + cy);
       if (nx >= MIN && nx <= MAX && ny >= MIN && ny <= MAX) {
-        fwdLut[y * 64 + x] = (ny - MIN) * SPAN + (nx - MIN);
+        fwdLut[y * GRID + x] = (ny - MIN) * SPAN + (nx - MIN);
       }
     }
   }
@@ -176,8 +195,8 @@ function getRot45Lut(rad, isoCompensate) {
       const ry = v - u;
       const sx = Math.round(rx * cos + ry * sin + cx);
       const sy = Math.round(-rx * sin + ry * cos + cy);
-      if (sx >= 0 && sx < 64 && sy >= 0 && sy < 64) {
-        invLut[(ny - MIN) * SPAN + (nx - MIN)] = sy * 64 + sx;
+      if (sx >= 0 && sx < GRID && sy >= 0 && sy < GRID) {
+        invLut[(ny - MIN) * SPAN + (nx - MIN)] = sy * GRID + sx;
       }
     }
   }
@@ -187,36 +206,36 @@ function getRot45Lut(rad, isoCompensate) {
   return entry;
 }
 
-export function rotateVoxels45(voxels, angle = -Math.PI / 4, solidIso = true) {
+export function rotateVoxels45(voxels, angle = -Math.PI / 4, solidIso = true, anchor = [GRID / 2, GRID / 2, 0]) {
   const rad = typeof angle === 'object' && angle !== null ? angle.angle : angle;
   if (!solidIso) {
-    const cx = 31.5, cy = 31.5;
+    const cx = anchor[0] - 0.5, cy = anchor[1] - 0.5;
     const cos = Math.cos(rad), sin = Math.sin(rad);
     const out = [];
     for (const [x, y, z, pi] of voxels) {
       const nx = Math.round((x - cx) * cos - (y - cy) * sin + cx);
       const ny = Math.round((x - cx) * sin + (y - cy) * cos + cy);
-      if (nx >= 0 && nx < 64 && ny >= 0 && ny < 64) out.push([nx, ny, z, pi]);
+      if (nx >= 0 && nx < GRID && ny >= 0 && ny < GRID) out.push([nx, ny, z, pi]);
     }
     return out;
   }
 
-  const { MIN, MAX, SPAN, fwdLut, invLut } = getRot45Lut(rad, true);
+  const { MIN, MAX, SPAN, fwdLut, invLut } = getRot45Lut(rad, true, anchor);
   const byZ = new Map();
   for (const [x, y, z, pi] of voxels) {
     let slice = byZ.get(z);
     if (!slice) {
-      slice = new Int16Array(64 * 64).fill(-1);
+      slice = new Int16Array(GRID * GRID).fill(-1);
       byZ.set(z, slice);
     }
-    if (x >= 0 && x < 64 && y >= 0 && y < 64) slice[y * 64 + x] = pi;
+    if (x >= 0 && x < GRID && y >= 0 && y < GRID) slice[y * GRID + x] = pi;
   }
 
   const dstByZ = new Map();
   const totalDst = SPAN * SPAN;
   for (const [z, src] of byZ.entries()) {
     const dst = new Int16Array(totalDst).fill(-1);
-    for (let i = 0; i < 4096; i++) {
+    for (let i = 0; i < GRID * GRID; i++) {
       const pi = src[i];
       if (pi < 0) continue;
       const di = fwdLut[i];
@@ -263,8 +282,10 @@ export function rasterize(voxels, grid) {
   let minX = BUF_W, maxX = -1, minY = BUF_H, maxY = -1;
   const ordered = [...voxels].sort((a, b) => a[2] - b[2] || (a[0] + a[1]) - (b[0] + b[1]) || a[0] - b[0]);
   for (const [x, y, z, pi] of ordered) {
-    const sx = (x - y) * 2 - 2 + BUF_OX;
-    const sy = (x + y) - z * 2 - GROUND + BUF_OY;
+    // Projection relative to the 128³ canvas ground centre (64,64,0):
+    //   sx = (x − y) · 2 supersample px,  sy = (x + y) − 2z.
+    const sx = (x - y) * 2 + BUF_OX;
+    const sy = (x + y) - z * 2 + BUF_OY - GRID;
     if (sx < minX) minX = sx;
     if (sx + 3 > maxX) maxX = sx + 4;
     if (sy < minY) minY = sy;
@@ -276,19 +297,30 @@ export function rasterize(voxels, grid) {
     for (const [dx, dy] of RIGHT) grid[(sy + dy) * BUF_W + sx + dx] = base + 2;
   }
   if (maxX < 0) throw new Error('model produced no visible pixels');
-  return { minX: minX - BUF_OX, maxX: maxX - BUF_OX, minY: minY - BUF_OY, maxY: maxY - BUF_OY };
+  return { minX, maxX, minY, maxY };
 }
 
-/** 4:1 box-filtered downsample of one grid window into an RGBA strip cell.
- *  x0/y0 are origin-relative (as returned by rasterize); the grid itself is
- *  buffered with the BUF_OX/BUF_OY projection offsets. */
+/**
+ * Projects a model's declared ground anchor (footprint centre, world voxels)
+ * into the same supersample space as `rasterize`.
+ */
+export function projectAnchor(anchor) {
+  return {
+    x: (anchor[0] - anchor[1]) * 2 + BUF_OX,
+    y: (anchor[0] + anchor[1]) - anchor[2] * 2 + BUF_OY - GRID,
+  };
+}
+
+/** Box-filtered downsample of one grid window into an RGBA strip cell.
+ *  x0/y0 are absolute supersample coordinates (as returned by rasterize); the
+ *  grid carries the BUF_OX/BUF_OY projection offsets. */
 export function downsampleCell(grid, x0, y0, w, h, lut, out, ox, oy, stride, ds = DOWNSCALE, quantize = true) {
   const n = ds * ds;
   for (let py = 0; py < h; py++) {
-    const by = y0 + BUF_OY + py * ds;
+    const by = y0 + py * ds;
     for (let px = 0; px < w; px++) {
       let r = 0, g = 0, b = 0, a = 0;
-      const bx = x0 + BUF_OX + px * ds;
+      const bx = x0 + px * ds;
       for (let dy = 0; dy < ds; dy++) {
         let row = (by + dy) * BUF_W + bx;
         for (let dx = 0; dx < ds; dx++, row++) {
@@ -360,7 +392,10 @@ function variantsFor(kind) {
   return TEAM_VARIANTS.slice(0, 6);
 }
 
+const BAKE_STRICT = process.env.BAKE_STRICT !== '0';
+
 export function bake(doc, palette, { only = null } = {}) {
+  const motionFailures = [];
   const units = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/units.json'), 'utf8'));
   const fullRoster = modelRoster(units);
   const onlySet = only ? new Set(only) : null;
@@ -371,7 +406,9 @@ export function bake(doc, palette, { only = null } = {}) {
       }
     }
   }
-  const roster = fullRoster.filter(([id]) => !onlySet || onlySet.has(id));
+  const kindFilter = process.env.BAKE_KINDS ? new Set(process.env.BAKE_KINDS.split(',')) : null;
+  const roster = fullRoster.filter(([id, kind]) => (!onlySet || onlySet.has(id))
+    && (!kindFilter || kindFilter.has(kind)));
   const luts = {};
   for (const v of TEAM_VARIANTS) luts[v] = buildVariantLut(palette, v);
   // Sculpt canvases finish() with color strings; the raster wants the global
@@ -384,9 +421,12 @@ export function bake(doc, palette, { only = null } = {}) {
   });
   const manifest = {
     format: MANIFEST_FORMAT,
-    gridSize: [64, 64, 64],
+    gridSize: [...GRID_AXES],
     tileSize: [64, 32],
+    tileUnits: 32,
+    tilesPerAxis: GRID_AXES[0] / 32,
     downscale: DOWNSCALE,
+    voxelZPx: 1,
     facings: FACINGS.map(f => f[0]),
     buildingFacings: ['right', 'up', 'left', 'down'],
     teamVariants: [...TEAM_VARIANTS],
@@ -414,6 +454,7 @@ export function bake(doc, palette, { only = null } = {}) {
   for (const [id, kind] of roster) {
     const baseId = id.includes('--') ? id.split('--')[0] : id;
     const armyId = id.includes('--') ? id.split('--')[1] : 'standard';
+    const modelMeta = doc.models?.[id] ?? null;
     const clips = clipsFor(baseId, kind);
     const clipNames = ['idle', 'move', 'attack', 'death'].filter(a => (clips[a] ?? 0) > 0);
     const isUnit = kind === 'unit';
@@ -434,9 +475,10 @@ export function bake(doc, palette, { only = null } = {}) {
     const entry = {};
     const activeFacings = isUnit ? FACINGS : CARDINAL_FACINGS;
     for (const [facing, turns] of activeFacings) {
+      const modelAnchor = modelMeta?.groundAnchor ?? [GRID / 2, GRID / 2, 0];
       const rotated = typeof turns === 'number'
-        ? allFrames.map(v => rotateVoxels(v, turns))
-        : (isUnit ? allSolidFrames : allFrames).map(v => rotateVoxels45(v, turns.angle, isUnit));
+        ? allFrames.map(v => rotateVoxels(v, turns, modelAnchor))
+        : (isUnit ? allSolidFrames : allFrames).map(v => rotateVoxels45(v, turns.angle, isUnit, modelAnchor));
       const grids = [];
       const boxes = [];
       for (const vox of rotated) {
@@ -454,8 +496,10 @@ export function bake(doc, palette, { only = null } = {}) {
       const y1 = Math.ceil((maxY + 1) / DOWNSCALE) * DOWNSCALE;
       const cellW = (x1 - x0) / DOWNSCALE;
       const cellH = (y1 - y0) / DOWNSCALE;
-      const anchorX = -x0 / DOWNSCALE;
-      const anchorY = -y0 / DOWNSCALE;
+      // Anchor = the model's declared footprint centre projected into the crop.
+      const anchorProj = projectAnchor(modelMeta?.groundAnchor ?? [GRID / 2, GRID / 2, 0]);
+      const anchorX = (anchorProj.x - x0) / DOWNSCALE;
+      const anchorY = (anchorProj.y - y0) / DOWNSCALE;
       if (!(anchorX >= -ANCHOR_SLACK && anchorX <= cellW + ANCHOR_SLACK)) {
         throw new Error(`${id}-${facing}: anchor x ${anchorX}`);
       }
@@ -498,8 +542,10 @@ export function bake(doc, palette, { only = null } = {}) {
           const needAlpha = kind !== 'building';
           const minChanged = typeof turns === 'number' ? MIN_CHANGED_PIXELS : 1;
           if (changed < minChanged || (needAlpha && alphaDiff < MIN_ALPHA_DIFF)) {
-            throw new Error(`${id}-${facing}: ${action} frame ${f} changed only `
-              + `${changed}px (${alphaDiff} alpha) — animation must move geometry`);
+            const msg = `${id}-${facing}: ${action} frame ${f} changed only `
+              + `${changed}px (${alphaDiff} alpha) — animation must move geometry`;
+            if (BAKE_STRICT) throw new Error(msg);
+            motionFailures.push(msg);
           }
         }
         idx += n;
@@ -560,6 +606,19 @@ export function bake(doc, palette, { only = null } = {}) {
     if (kind !== 'terrain' && kind !== 'effect' && right === left) {
       throw new Error(`${id}: right and left rendered identically`);
     }
+    // Scale metadata lives under `meta` so the facing keys of a model entry stay
+    // exactly right/up/left/down (+ the four diagonals for units).
+    entry.meta = {
+      kind,
+      category: modelMeta?.category ?? kind,
+      heightClass: modelMeta?.heightClass ?? null,
+      footprint: modelMeta?.footprint ?? [1, 1],
+      gameplayFootprint: modelMeta?.gameplayFootprint ?? modelMeta?.footprint ?? [1, 1],
+      visualFootprint: modelMeta?.visualFootprint ?? modelMeta?.footprint ?? [1, 1],
+      renderScale: modelMeta?.renderScale ?? 1,
+      bounds: modelMeta?.bounds ?? null,
+      groundAnchor: modelMeta?.groundAnchor ?? [GRID / 2, GRID / 2, 0],
+    };
     manifest.models[id] = entry;
   }
   const kindById = new Map(fullRoster.map(([id, kind]) => [id, kind]));
@@ -571,7 +630,12 @@ export function bake(doc, palette, { only = null } = {}) {
     }
   }
   files.set('manifest.json', Buffer.from(JSON.stringify(manifest, null, 2) + '\n'));
-  return { manifest, files, payload };
+  if (motionFailures.length) {
+    console.warn(`[bake] ${motionFailures.length} animation-motion gate failures (BAKE_STRICT=0 audit mode):`);
+    for (const m of motionFailures.slice(0, 60)) console.warn(`  · ${m}`);
+    if (motionFailures.length > 60) console.warn(`  … ${motionFailures.length - 60} more`);
+  }
+  return { manifest, files, payload, motionFailures };
 }
 
 const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
@@ -586,7 +650,8 @@ if (isMain) {
   fs.mkdirSync(outDir, { recursive: true });
   for (const [rel, blob] of files) fs.writeFileSync(path.join(outDir, rel), blob);
   const count = Object.values(manifest.models)
-    .reduce((s, m) => s + Object.values(m).reduce((t, f) => t + Object.keys(f.variants).length, 0), 0);
+    .reduce((s, m) => s + Object.values(m)
+      .reduce((t, f) => t + Object.keys(f?.variants ?? {}).length, 0), 0);
   console.log(`Exported ${count} baked iso strips for ${Object.keys(manifest.models).length} models `
     + `(${(payload / 1048576).toFixed(2)} MB png payload) to ${path.relative(ROOT, outDir)} in ${((Date.now() - t0) / 1000).toFixed(1)}s`);
 }

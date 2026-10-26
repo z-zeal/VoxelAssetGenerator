@@ -31,10 +31,13 @@ function tracks(c, x0, x1, y0, y1, tag) {
   // skirt and the ground run grousers stick out past the outer track face,
   // so the marching tread reads from every facing.
   c.group(`cleat${tag}`);
-  const gy = tag === 'L' ? y0 - 2 : y1;
+  // Cleats are 4 design voxels thick in y and 4 tall in z (2 world voxels at
+  // the 32-unit tile scale) so the wrap animation stays visible from every
+  // facing after the world-scale resample instead of vanishing sub-voxel.
+  const gy = tag === 'L' ? y0 - 4 : y1;
   for (let x = x0 + 2; x < x1 - 3; x += 4) {
-    c.box(x, y0 + 1, h, x + 2, y1 - 1, h + 2, RUBBER);
-    c.box(x, gy, 2, x + 2, gy + 2, 6, RUBBER);
+    c.box(x, y0 + 1, h, x + 2, y1 - 1, h + 4, RUBBER);
+    c.box(x, gy, 2, x + 2, gy + 4, 6, RUBBER);
   }
   c.pivot(`cleat${tag}`, [x0 + 2, x1 - 3]);
   // Roadwheels on the outer face: rim disc plus four lugs (spin -50°/frame;
@@ -66,11 +69,11 @@ function wheels(c, axleXs, y0, y1, r = 5) {
       axles.push([ax, r]);
       c.cylY(ax, ya, yb, r, r - 0.8, RUBBER);
       c.cylY(ax, ya, yb, r, r * 0.45, WHEEL);
-      // Lugs proud of the tyre (radius r vs disc r-0.8) so the -50°/frame
-      // spin sweeps the silhouette and never aliases a previous frame.
-      for (const [dx, dz] of [[r, 0], [-r, 0], [0, r], [0, -r]]) {
-        c.put(ax + dx, ya, r + dz, STEEL);
-        c.put(ax + dx, yb - 1, r + dz, STEEL);
+      // 2×2 design lugs proud of the tyre (radius r + 1 vs disc r-0.8) so the
+      // spin sweeps at least one world voxel per frame from every facing.
+      for (const [dx, dz] of [[r + 1, 0], [-r - 1, 0], [0, r + 1], [0, -r - 1]]) {
+        c.box(ax + dx - 1, ya, r + dz - 1, ax + dx + 1, ya + 2, r + dz + 1, STEEL);
+        c.box(ax + dx - 1, yb - 2, r + dz - 1, ax + dx + 1, yb, r + dz + 1, STEEL);
       }
     }
   }
@@ -1735,8 +1738,11 @@ export function applyArmyDelta(c, id, armyId) {
       c.box(midX - 6, clampY(midY - 6), 12, midX + 6, clampY(midY + 6), 14, S.hull);
       c.put(midX, midY, 14, S.accent);
     } else {
-      c.box(b.minX + 4, clampY(b.minY - 2), 10, b.maxX - 4, clampY(b.minY + 2), 18, S.plate);
-      c.box(b.minX + 4, clampY(b.maxY - 2), 10, b.maxX - 4, clampY(b.maxY + 2), 18, S.plate);
+      // Side appliqué armour sits *above* the tread belt and only one voxel
+      // deep, so the marching cleats stay visible (and animatable) at the
+      // 32-unit tile scale instead of being buried under the faction paint.
+      c.box(b.minX + 4, clampY(b.minY - 1), 14, b.maxX - 4, clampY(b.minY + 1), 20, S.plate);
+      c.box(b.minX + 4, clampY(b.maxY - 1), 14, b.maxX - 4, clampY(b.maxY + 1), 20, S.plate);
       c.box(b.minX + 6, b.minY + 6, 18, b.maxX - 6, b.maxY - 6, 22, S.plate);
       for (const [x, y, z, col] of c.entries()) {
         if (col === GUN && x > midX && !c.has(x, y + 2, z)) c.put(x, y + 2, z, GUN);
@@ -1779,8 +1785,8 @@ export function applyArmyDelta(c, id, armyId) {
       // Deck planks are ground-vehicle furniture: on ships and aircraft the
       // bounds-derived boxes would bury gun barrels and bomb racks.
       if (!air && !sea) {
-        c.box(b.minX + 4, b.minY, 10, b.minX + 14, b.maxY, 16, S.plate);
-        c.box(b.maxX - 14, b.minY, 10, b.maxX - 6, b.maxY, 16, S.hull);
+        c.box(b.minX + 4, b.minY + 4, 14, b.minX + 14, b.maxY - 4, 18, S.plate);
+        c.box(b.maxX - 14, b.minY + 4, 14, b.maxX - 6, b.maxY - 4, 18, S.hull);
         c.box(b.minX + 2, clampY(b.minY + 4), 18, b.minX + 6, clampY(b.minY + 8), 24, '#8c6b42');
         c.box(b.minX + 2, clampY(b.maxY - 8), 18, b.minX + 6, clampY(b.maxY - 4), 24, '#8c6b42');
         c.box(b.maxX - 8, clampY(midY - 4), 10, b.maxX - 2, clampY(midY + 4), 14, '#c8b084');

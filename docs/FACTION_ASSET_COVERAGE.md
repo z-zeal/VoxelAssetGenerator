@@ -1,5 +1,9 @@
 # Complete Faction-Specific Units, Buildings, and Military Structures
 
+> **Historical document (pre-scale-migration).** Grid sizes, counts and 0.5 px/voxel
+> offsets below describe the retired 64-voxel single-tile contract. Current contract:
+> [SCALE_128.md](SCALE_128.md); results: [SCALE_MIGRATION_REPORT.md](SCALE_MIGRATION_REPORT.md).
+
 This document records the complete 4-faction voxel asset matrix across **Allies (`allies`)**, **Soviets (`soviets`)**, **Empire (`empire`)**, and **Legion (`legion`)** (plus `standard` baseline models), their architectural and mechanical design language, naming conventions, runtime integration, and validation results.
 
 ---

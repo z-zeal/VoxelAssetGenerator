@@ -1,13 +1,15 @@
 #!/usr/bin/env node
 /**
- * Deterministic 64×64×64 voxel models for the complete unit, building, and
- * environment roster, plus their mechanical animation pose frames.
+ * Deterministic voxel models for the complete unit, building, and environment
+ * roster, plus their mechanical animation pose frames.
  *
- * Units, buildings, and terrain props are authored directly as 3D voxel
- * geometry on a 64×64 ground footprint with up to 64 elevation layers
- * (z ∈ 0..63), matching the 64×32 isometric diamond and 32×32 2D tile grid at
- * half a runtime pixel per voxel step. Shapes occupy only the cells their
- * natural proportions need — nothing is stretched to fill the cube.
+ * Models are authored in *design space* (64³ for units/terrain, 64² or 32² for
+ * facilities and posts, 96²/96×64 for the multi-tile compounds) and recalculated
+ * into the 128×128×128 world canvas by tools/voxel_pipeline/scale.mjs: one map
+ * cell is a 32-unit tile (64×32 px isometric diamond, 2 px per voxel
+ * horizontally and 1 px vertically). The contract is documented in
+ * docs/SCALE_128.md. Shapes occupy only the cells their natural proportions
+ * need — nothing is stretched to fill its footprint block.
  *
  * Mechanical animation: builders tag moving parts as named groups (turret,
  * barrel, rotorMain, cleats, legs, …) and draw cyclic patterns (tread cleats,
@@ -23,9 +25,16 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {ARMY_IDS} from '../../src/armies.js';
+import {
+  MODEL_CANVAS, TILE_UNITS, TILE_SIZE_PX,
+  modelSpec, resampleVoxels, boundsOf, validateModel, BUILDING_SPECS, footprintRect,
+} from './scale.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
-export const VOXEL_SIZE = [64, 64, 64];
+/** Authoring grid every legacy sculptor draws on (design space, not world size). */
+export const DESIGN_SIZE = [64, 64, 64];
+/** Hard world canvas. Models are recalculated into this by `resampleVoxels`. */
+export const VOXEL_SIZE = [...MODEL_CANVAS];
 
 // Pose frame counts per model, mirrored from data/animation.json families and
 // units.*.weapon (tools/validate-animation.mjs owns the JSON; the mirror is
@@ -196,10 +205,15 @@ export function mulberry32(seed) {
   };
 }
 
-/** Shared 3D sculpting primitives bounded strictly to [0..63, 0..63, 0..63].
- *  Every voxel carries the group active when it was placed; pose transforms
- *  later move whole groups around their recorded pivots. */
-function createCanvas() {
+/** Shared 3D sculpting primitives.
+ *
+ *  The grid is explicit: legacy sculptors draw on the 64³ design grid, the new
+ *  1×1 structures draw on 32³ and the major compounds on 96³.  Every voxel
+ *  carries the group active when it was placed; pose transforms later move
+ *  whole groups around their recorded pivots. */
+function createCanvas(grid = DESIGN_SIZE) {
+  const [GX, GY, GZ] = grid;
+  const center = [GX / 2, GY / 2, 0];
   const voxels = new Map();
   const pivots = {};
   let cur = 'body';
@@ -325,6 +339,7 @@ function createCanvas() {
     has, recolor, paint, regroup, hollow, group, pivot,
     get pivots() { return pivots; },
     get currentGroup() { return cur; },
+    grid, center,
     raw: voxels,
   };
   return api;
@@ -386,6 +401,44 @@ function opWrapX(list, dx, x0, x1) {
 }
 
 const CHARCOAL = ['#241a12', '#3a2014', '#2c231c', '#1e2226'];
+
+/**
+ * Muzzle flash for attack frames.  It is placed at the model's front-most
+ * geometry (the barrel / launcher tip in the model's own +X direction), so the
+ * firing pose stays readable from all eight facings — a rotation-only recoil
+ * can be completely hidden behind the hull from the back three.
+ * Frame 1 is the full burst; frame 2 is a smaller plume that reads as smoke.
+ */
+function addMuzzleFlash(canvas, frame) {
+  const voxels = canvas.entries();
+  if (!voxels.length) return;
+  let maxX = -Infinity;
+  for (const [x] of voxels) if (x > maxX) maxX = x;
+  const tip = voxels.filter(([x]) => x >= maxX - 1);
+  const tipZ = Math.max(...tip.map(([, , z]) => z));
+  const tipY = Math.round(tip.filter(([, , z]) => z === tipZ)
+    .reduce((sum, [, y]) => sum + y, 0) / Math.max(1, tip.filter(([, , z]) => z === tipZ).length));
+  const size = frame <= 1 ? 3 : 2;
+  const colors = frame <= 1
+    ? ['#ffe27a', '#ff8c3a', '#ffffff']
+    : ['#d8dede', '#8e9680', '#ffc68b'];
+  // Models are authored edge-to-edge on their grid, so the flash is painted
+  // onto the barrel tip itself (clipped inside the grid) rather than poking
+  // past the canvas edge where `put` would drop it.
+  const gx = canvas.grid[0];
+  const cx = Math.min(gx - 1, Math.max(size, maxX));
+  const cz = tipZ + size;  // burst sits above the barrel so it clears the hull from every facing
+  for (let dz = -size; dz <= size; dz++) {
+    for (let dy = -size; dy <= size; dy++) {
+      const r = Math.hypot(dy, dz);
+      if (r > size + 0.5) continue;
+      const ci = r < size * 0.45 ? 2 : r < size * 0.8 ? 1 : 0;
+      canvas.put(cx, tipY + dy, cz + dz, colors[ci], 'fx');
+    }
+  }
+  canvas.put(cx - 1, tipY, tipZ, colors[0], 'fx');
+  if (frame <= 1) canvas.put(cx, tipY, cz + size + 1, colors[2], 'fx');
+}
 /** Progressive battle damage: scorch recolour + sagging + debris ring. */
 function opScorch(canvas, level, seed) {
   if (level <= 0) return;
@@ -402,9 +455,9 @@ function opScorch(canvas, level, seed) {
     // Debris chunks flung onto the ground ring around the wreck.
     for (let i = 0; i < 6 + level * 3; i++) {
       const a = rnd() * Math.PI * 2;
-      const r = 20 + rnd() * 10;
-      const x = Math.round(32 + Math.cos(a) * r);
-      const y = Math.round(32 + Math.sin(a) * r);
+      const r = canvas.grid[0] * 0.31 + rnd() * canvas.grid[0] * 0.16;
+      const x = Math.round(canvas.center[0] + Math.cos(a) * r);
+      const y = Math.round(canvas.center[1] + Math.sin(a) * r);
       canvas.put(x, y, 0, pick(['#525b64', '#3b4238', '#4a535c']), 'debris');
       if (rnd() > 0.5) canvas.put(x, y, 1, pick(CHARCOAL), 'debris');
     }
@@ -417,6 +470,7 @@ function opScorch(canvas, level, seed) {
 export function applyPoseOps(canvas, ops) {
   for (const op of ops) {
     if (op.scorch) { opScorch(canvas, op.scorch, op.seed ?? 7); continue; }
+    if (op.flash) { addMuzzleFlash(canvas, op.flash); continue; }
     const list = canvas.entries().filter(v => v[4] === op.g);
     if (!list.length) continue;
     for (const [x, y, z] of list) canvas.del(x, y, z);
@@ -716,10 +770,52 @@ export function modelRoster(unitsJson) {
   return roster;
 }
 
-/** Sculpt one model for one pose; returns the tagged canvas (pre-hollow). */
+/**
+ * Promotes sub-voxel animation motion into whole world voxels.
+ *
+ * Poses are authored in design space, where one voxel is only half a world
+ * voxel.  Horizontal motion and cyclic belt wraps are therefore doubled so
+ * every animated part travels at least one world voxel (= one runtime pixel)
+ * between frames.  Vertical motion is promoted the same way for small bobs,
+ * but large authored drops (death clips: −9 … −16 design voxels) keep their
+ * magnitude so wrecks settle onto the ground instead of sinking through it.
+ * Rotations are untouched: a yaw/pitch of a part with any radius already
+ * sweeps several voxels.
+ */
+function scalePoseMotion(ops, scale = [1, 1, 1]) {
+  const inv = [1 / (scale[0] || 1), 1 / (scale[1] || 1), 1 / (scale[2] || 1)];
+  if (inv.every(v => Math.abs(v - 1) < 1e-9)) return ops;
+  return ops.map(op => {
+    const next = { ...op };
+    if (op.move) {
+      const dz = op.move[2];
+      next.move = [
+        Math.round(op.move[0] * inv[0]),
+        Math.round(op.move[1] * inv[1]),
+        Math.abs(dz * inv[2]) <= 4 ? Math.round(dz * inv[2]) : dz,
+      ];
+    }
+    // One full tread-cleat period per frame: 4 design = 2 world voxels, which
+    // survives the 2:1 world resample from every facing (sub-voxel wraps do not).
+    if (op.wrap != null) next.wrap = op.wrap * 4;
+    return next;
+  });
+}
+
+/** Sculpt one model for one pose.
+ *
+ *  Sculptors draw in *design space* on their catalogued grid (64³ units and
+ *  vehicles, 32³ compact structures, 96³ major compounds).  Poses and army
+ *  deltas also run in design space — their pivots, gait steps and paint
+ *  predicates are authored there.  The finished voxels are then recalculated
+ *  into the 128³ world canvas by `resampleVoxels`, which applies the asset's
+ *  declared voxel scale and footprint placement.  The returned canvas is
+ *  therefore always in world coordinates and carries `spec`.
+ */
 export function sculptModel(id, kind, armyId, pose) {
-  const canvas = createCanvas();
   const baseId = id.includes('--') ? id.split('--')[0] : id;
+  const spec = modelSpec(id, kind, kind === 'unit' ? UNIT_FAMILY[baseId] : baseId);
+  const canvas = createCanvas(spec.design);
   if (kind === 'building') {
     buildingVoxels(canvas, baseId, pose);
     if (armyId && armyId !== 'standard') applyBuildingArmyDelta(canvas, baseId, armyId);
@@ -733,10 +829,24 @@ export function sculptModel(id, kind, armyId, pose) {
     if (armyId && armyId !== 'standard') applyArmyDelta(canvas, baseId, armyId);
     const {action, frame} = pose ?? { action: 'idle', frame: 0 };
     if (frame > 0 || action !== 'idle') {
-      applyPoseOps(canvas, poseOpsFor(baseId, UNIT_FAMILY[baseId], UNIT_WEAPON[baseId] ?? null, action, frame));
+      const ops = poseOpsFor(baseId, UNIT_FAMILY[baseId], UNIT_WEAPON[baseId] ?? null, action, frame);
+      if (action === 'attack' && frame > 0 && UNIT_WEAPON[baseId]) ops.push({ flash: frame });
+      applyPoseOps(canvas, scalePoseMotion(ops, spec.scale));
     }
   }
-  return canvas;
+  if (spec.scale[0] === 1 && spec.scale[1] === 1 && spec.scale[2] === 1) {
+    // Native-scale designs are only translated into their footprint.
+    const world = createCanvas([...MODEL_CANVAS]);
+    for (const [x, y, z, color] of canvas.finish()) {
+      world.put(x + spec.offset[0], y + spec.offset[1], z + spec.offset[2], color);
+    }
+    world.spec = spec;
+    return world;
+  }
+  const world = createCanvas([...MODEL_CANVAS]);
+  for (const [x, y, z, color] of resampleVoxels(canvas.finish(), spec)) world.put(x, y, z, color);
+  world.spec = spec;
+  return world;
 }
 
 /** Every clip frame of one model, as sorted voxel lists (frame 0 = canonical). */
@@ -789,12 +899,27 @@ export function buildVoxels(unitsJson) {
       }
     }
     const raw = canvas.finish();
+    const spec = canvas.spec;
+    const bounds = boundsOf(raw);
     models[id] = {
       kind,
       size: [...VOXEL_SIZE],
+      footprint: [...spec.footprintTiles],
+      gameplayFootprint: [...spec.gameplayFootprint],
+      visualFootprint: [...spec.visualFootprint],
+      renderScale: spec.renderScale,
+      design: [...spec.design],
+      voxelScale: [...spec.scale],
+      groundAnchor: [...spec.groundAnchor],
+      heightClass: spec.heightClass,
+      category: spec.category,
+      clippingMargin: spec.heightClass === 'aircraft' ? TILE_UNITS : 0,
+      bounds,
       clips: clipsFor(id, kind),
       voxels: raw.map(([x, y, z, c]) => [x, y, z, pix(c)]),
     };
+    const errors = validateModel(models[id]);
+    if (errors.length) throw new Error(`${id}: ${errors.join('; ')}`);
   };
   for (const type of Object.keys(unitsJson)) add(type, 'unit');
   // Army variants: `tank--allies`, `fighter--empire`, … (Standard keeps `tank`).
@@ -807,7 +932,13 @@ export function buildVoxels(unitsJson) {
   }
   for (const t of TERRAIN_MODELS) add(t, t === 'silo-missile' ? 'effect' : 'terrain');
   return {
-    format: 'field-command-voxel-64x64x64',
+    format: 'field-command-voxel-128x128x128',
+    scale: {
+      canvas: MODEL_CANVAS,
+      tileUnits: TILE_UNITS,
+      tileSizePx: TILE_SIZE_PX,
+      tilesPerAxis: MODEL_CANVAS[0] / TILE_UNITS,
+    },
     generatedBy: 'tools/voxel_pipeline/build.mjs',
     palette,
     models,
@@ -820,6 +951,38 @@ if (isMain) {
   const out = buildVoxels(units);
   const dest = path.join(ROOT, 'data/voxels.json');
   fs.writeFileSync(dest, JSON.stringify(out) + '\n');
+  node_write_runtime_scale(out);
   const count = Object.values(out.models).reduce((s, m) => s + m.voxels.length, 0);
   console.log(`Wrote ${Object.keys(out.models).length} voxel models (${count} voxels, ${out.palette.length} colours) to data/voxels.json`);
+}
+
+/** Emits the runtime-facing scale table consumed by src/iso*.js.
+ *  Generated from the same catalogue as the voxel data so the renderer can
+ *  never drift from the baked assets. */
+function node_write_runtime_scale(doc) {
+  const footprints = {};
+  for (const [id, model] of Object.entries(doc.models)) {
+    if (model.kind !== 'building') continue;
+    const base = id.includes('--') ? id.split('--')[0] : id;
+    footprints[base] = model.gameplayFootprint;
+  }
+  const body = `// GENERATED by tools/voxel_pipeline/build.mjs — do not edit by hand.
+// 128×128×128 voxel canvas, 32-unit ground tile, multi-tile building footprints.
+export const MODEL_CANVAS = ${JSON.stringify(doc.scale.canvas)};
+export const TILE_UNITS = ${doc.scale.tileUnits};
+export const TILE_SIZE_PX = ${JSON.stringify(doc.scale.tileSizePx)};
+export const TILES_PER_AXIS = ${doc.scale.tilesPerAxis};
+/** Gameplay footprint in tiles for every building/property model id. */
+export const BUILDING_FOOTPRINTS = ${JSON.stringify(footprints, null, 2)};
+/** Buildings whose art is authored across their full multi-tile footprint. */
+export const MULTI_TILE_BUILDINGS = new Set(
+  Object.entries(BUILDING_FOOTPRINTS)
+    .filter(([, fp]) => fp[0] > 1 || fp[1] > 1)
+    .map(([id]) => id),
+);
+export function buildingFootprint(id) {
+  return BUILDING_FOOTPRINTS[id] ?? [1, 1];
+}
+`;
+  fs.writeFileSync(path.join(ROOT, 'src/asset-scale.js'), body);
 }

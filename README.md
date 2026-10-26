@@ -5,11 +5,11 @@ This bundle contains the voxel pipeline and existing sprite output extracted fro
 ## What is included
 
 - `tools/voxel_pipeline/`: source model builders, preview renderer, and sprite-sheet baker.
-- `data/voxels.json`: the current 64×64×64 voxel model database.
+- `data/voxels.json`: the current **128×128×128** voxel model database (one 32-unit tile per map cell, 4×4 tiles per canvas).
 - `data/animation.json`, `data/units.json`, and `data/armies.json`: supporting source data.
 - `src/armies.js`: source dependency imported by the model builder.
 - `game_assets/voxels/`: existing rendered previews, baked sheets, and the sheet manifest.
-- `docs/`: original voxel inventory, completion report, and graphics/animation plan.
+- `docs/`: scale specification (`SCALE_128.md`), generated asset sizing matrix, visual review sheets, and the earlier inventory/reports.
 - `voxel-sprite-review.html`: offline browser gallery. Open it directly in a browser after extraction.
 - `PROMPT_build_voxel_asset_generation_system.md`: the agent prompt for implementing the requested natural-language-to-voxel-asset workflow.
 
@@ -21,6 +21,12 @@ Requires Node.js with ES module support. From this folder:
 - `npm run voxels:preview` — render static model previews into `game_assets/voxels/`.
 - `npm run voxels:bake` — regenerate baked facing/variant/frame sprite strips and their manifest.
 - `npm run voxels:all` — run all three steps in sequence.
+- `npm run voxels:review` — regenerate the review sheets (`docs/review/*.png`), the sizing matrix and the review pages.
+- `npm test` — elevation, scale, manifest, animation and runtime integration gates.
+
+The 2026 scale migration (128³ canvas, 32-unit tiles, multi-tile footprints) is
+specified in `docs/SCALE_128.md`; per-asset sizes are listed in
+`docs/ASSET_SIZING_MATRIX.md` and reviewed in `docs/review/scale-review.html`.
 
 The ZIP includes a minimal `package.json` for these commands. Re-baking can take time; preserve a backup of the original assets if you intend to compare outputs.
 
@@ -30,7 +36,7 @@ This is a **source-and-assets starter bundle**, not the fully implemented natura
 
 ## Folder conventions
 
-- Preserve original filenames and manifest fields.
+- Preserve original filenames, asset ids and manifest fields (scale metadata lives under each model entry's `meta`).
 - Treat `data/voxels.json` and `tools/voxel_pipeline/models/` as the core model source/output path used by this project.
 - Newly generated custom assets should be separated from built-in model sources and should not overwrite the current roster unless explicitly requested.
 - Do not commit `node_modules`, caches, temporary render output, or unrelated game files to a derived package.

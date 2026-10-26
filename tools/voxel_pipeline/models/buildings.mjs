@@ -6,6 +6,10 @@
  * tagged: `dish` (airport radar, yaws on idle frame 1) and `puff` (factory
  * exhaust, present only on idle frame 1).
  */
+import { smallBuildingVoxels, SMALL_BUILDING_IDS } from './buildings-small.mjs';
+import { largeBuildingVoxels, LARGE_BUILDING_IDS } from './buildings-large.mjs';
+import { applySmallBuildingArmyDelta, applyLargeBuildingArmyDelta } from './building-army.mjs';
+
 const ROOF = '#df794b', ROOF_L = '#ffc68b', ROOF_D = '#934b32';
 const TEAM = '#df794b';
 const STONE = '#e0d9b2', STONE_L = '#ece7bc', WALL = '#8a8c70', SHADOW = '#5a6448';
@@ -14,6 +18,12 @@ const SMOKE_PUFF = '#d8dede';
 
 export function buildingVoxels(c, id, pose) {
   const frame = pose?.frame ?? 0;
+
+  // Compact 1×1 structures and major multi-tile compounds are authored by the
+  // re-scaled sculptors; the historical 64³ branches below keep serving the
+  // 2×2 standard facilities.
+  if (SMALL_BUILDING_IDS.has(id)) return smallBuildingVoxels(c, id);
+  if (LARGE_BUILDING_IDS.has(id)) return largeBuildingVoxels(c, id, pose);
 
   if (id === 'airport') {
     // Grass perimeter apron around a flush z=0 asphalt runway slab.
@@ -935,6 +945,8 @@ export function applyBuildingArmyDelta(c, id, armyId) {
   const S = BUILDING_ARMY_STYLES[armyId];
   if (!S) return;
   c.group('body');
+  if (SMALL_BUILDING_IDS.has(id)) return applySmallBuildingArmyDelta(c, id, armyId, S);
+  if (LARGE_BUILDING_IDS.has(id)) return applyLargeBuildingArmyDelta(c, id, armyId, S);
 
   // 1. Recolor base structural masonry, concrete, pads, and turf while preserving TEAM accents
   if (id === 'landmine') {
