@@ -19,6 +19,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { decodePng, encodePng, blit, scaleNearest } from './png.mjs';
+import { rasterize, downsampleCell, rotateVoxels, BUF_W, BUF_H } from './bake.mjs';
+import { HANGAR_PLAN } from './models/hangar.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const MANIFEST = JSON.parse(fs.readFileSync(path.join(ROOT, 'game_assets/voxels/sheets/manifest.json'), 'utf8'));
@@ -823,6 +825,226 @@ function buildBeforeAfter(pairs) {
   return { pixels: px, width: W, height: H };
 }
 
+/* --------------------------------------------------------- hangar figures -- */
+/**
+ * The hangar is the only asset whose functional layout has to be legible from
+ * two very different viewpoints: the *plan* has to read as the digit "2", and
+ * the *interior* has to swallow a fixed-wing unit without clipping it.  Both
+ * figures below are generated from the same voxels the baker rasterises, so
+ * they cannot drift from the shipped sprite:
+ *
+ *   docs/review/hangar-plan.png  top-down plan of all five designs with the
+ *                               clear bay, the door opening and the largest
+ *                               fixed-wing unit ghosted in place
+ *   docs/review/hangar-fit.png   the five designs sliced at the bay ceiling
+ *                               (z < 27) with a transport-plane standing in
+ *                               the bay — proof it fits and nothing clips it
+ */
+const HANGAR_FACTIONS = [
+  ['hangar', 'STANDARD'],
+  ['hangar--allies', 'ALLIES'],
+  ['hangar--soviets', 'SOVIETS'],
+  ['hangar--empire', 'EMPIRE'],
+  ['hangar--legion', 'LEGION'],
+];
+const HANGAR_GRID = HANGAR_PLAN.size;              // 96 world voxels
+const TRANSPORT_ID = 'transport-plane';            // largest fixed-wing unit
+
+const BAY_W = HANGAR_PLAN.bay.x1 - HANGAR_PLAN.bay.x0;
+const BAY_D = HANGAR_PLAN.bay.y1 - HANGAR_PLAN.bay.y0;
+const BAY_H = HANGAR_PLAN.bay.z1 - HANGAR_PLAN.bay.z0;
+const DOOR_W = HANGAR_PLAN.door.x1 - HANGAR_PLAN.door.x0;
+const DOOR_H = HANGAR_PLAN.door.z1 - HANGAR_PLAN.door.z0;
+
+/**
+ * The biggest fixed-wing unit, turned nose-to-the-door and centred in each of
+ * the two standing bays.  Returns the parked voxels, their plan columns and the
+ * per-stall translation, so the plan figure and the cutaway draw exactly the
+ * same aeroplanes in exactly the same places.
+ */
+function parkedAircraft() {
+  const model = VOXELS.models[TRANSPORT_ID];
+  const parked = rotateVoxels(model.voxels, 1, model.groundAnchor);   // nose south
+  let minX = Infinity, minY = Infinity, minZ = Infinity, maxX = -Infinity, maxY = -Infinity;
+  for (const [x, y, z] of parked) {
+    if (x < minX) minX = x;
+    if (x > maxX) maxX = x;
+    if (y < minY) minY = y;
+    if (y > maxY) maxY = y;
+    if (z < minZ) minZ = z;
+  }
+  const sizeX = maxX - minX + 1, sizeY = maxY - minY + 1;
+  const placements = HANGAR_PLAN.stalls.map(st => ({
+    x: Math.round((st.x0 + st.x1) / 2 - (minX + sizeX / 2)),
+    y: Math.round((st.y0 + st.y1) / 2 - (minY + sizeY / 2)),
+    z: HANGAR_PLAN.bay.z0 - minZ,
+  }));
+  return {
+    parked, size: [sizeX, sizeY], placements,
+    min: [minX, minY, minZ],
+    planeCols: new Set(parked.map(v => `${v[0]},${v[1]}`)),
+  };
+}
+
+/** Palette LUT in the baker's packed-ABGR layout: three shade steps/colour. */
+function shadeLut(palette) {
+  const lut = new Uint32Array((palette.length + 1) * 3);
+  palette.forEach((c, i) => {
+    [1.0, 0.72, 0.86].forEach((f, s) => {
+      const [r, g, b] = hex(shadeHex(c, f));
+      lut[(i + 1) * 3 + s] = (255 << 24) | (b << 16) | (g << 8) | r;
+    });
+  });
+  return lut;
+}
+
+/** Isometric render of raw [x,y,z,paletteIndex] voxels, cropped to content. */
+function isoOfVoxels(voxels, lut, ds = 1) {
+  const grid = new Uint16Array(BUF_W * BUF_H);
+  const box = rasterize(voxels, grid);
+  const x0 = Math.floor(box.minX / ds) * ds;
+  const y0 = Math.floor(box.minY / ds) * ds;
+  const w = (Math.ceil((box.maxX + 1) / ds) * ds - x0) / ds;
+  const h = (Math.ceil((box.maxY + 1) / ds) * ds - y0) / ds;
+  const pixels = Buffer.alloc(w * h * 4);
+  downsampleCell(grid, x0, y0, w, h, lut, pixels, 0, 0, w, ds);
+  return { width: w, height: h, pixels };
+}
+
+/** Translucent fill, used for the parked-aircraft ghost. */
+function blendRect(dst, W, H, x, y, w, h, color, alpha) {
+  const [r, g, b] = hex(color);
+  for (let dy = 0; dy < h; dy++) {
+    const ty = Math.round(y + dy);
+    if (ty < 0 || ty >= H) continue;
+    for (let dx = 0; dx < w; dx++) {
+      const tx = Math.round(x + dx);
+      if (tx < 0 || tx >= W) continue;
+      const i = (ty * W + tx) * 4;
+      dst[i] = Math.round(r * alpha + dst[i] * (1 - alpha));
+      dst[i + 1] = Math.round(g * alpha + dst[i + 1] * (1 - alpha));
+      dst[i + 2] = Math.round(b * alpha + dst[i + 2] * (1 - alpha));
+    }
+  }
+}
+
+/** A boxed rectangle outline of `t` pixels, aligned to the voxel grid. */
+function frameRect(dst, W, H, x0, y0, x1, y1, color, t = 2) {
+  fillRect(dst, W, H, x0, y0, x1 - x0, t, color);
+  fillRect(dst, W, H, x0, y1 - t, x1 - x0, t, color);
+  fillRect(dst, W, H, x0, y0, t, y1 - y0, color);
+  fillRect(dst, W, H, x1 - t, y0, t, y1 - y0, color);
+}
+
+/**
+ * Top-down plan of the five hangars: the "2" massing, the clear bay, the door
+ * and the largest aircraft ghosted where it would sit.
+ */
+function buildHangarPlan() {
+  const px = 2;
+  const panel = HANGAR_GRID * px;
+  const pad = 26, gap = 16, titleH = 58, labelH = 32;
+  const W = pad * 2 + panel * 5 + gap * 4;
+  const H = titleH + panel + labelH + pad;
+  const dst = Buffer.alloc(W * H * 4);
+  for (let i = 0; i < W * H; i++) {
+    dst[i * 4] = 14; dst[i * 4 + 1] = 18; dst[i * 4 + 2] = 24; dst[i * 4 + 3] = 255;
+  }
+  drawText(dst, W, H, pad, 10, 'FIXED-WING HANGAR — TWO AIRCRAFT BAYS ON A 2-SHAPED PLAN', '#dbe3ec', 2);
+  drawText(dst, W, H, pad, 28,
+    'TOP BAR = ROOFED HALL · GAP = OPEN COUNTER · EAST ANNEX = DESCENDER · FRONT RANGE = BOTTOM BAR',
+    '#93a6bb', 1);
+  drawText(dst, W, H, pad, 42,
+    `GREEN = CLEAR BAY ${BAY_W}x${BAY_D}x${BAY_H} · AMBER = DOOR ${DOOR_W}x${DOOR_H} · PALEST GREEN = TWO 38x36 STALLS · CYAN = TWO TRANSPORT-PLANES`,
+    '#5fc4e8', 1);
+
+  const { planeCols, placements } = parkedAircraft();
+  const bay = HANGAR_PLAN.bay, door = HANGAR_PLAN.door;
+
+  HANGAR_FACTIONS.forEach(([id, label], i) => {
+    const model = VOXELS.models[id];
+    const ox = pad + i * (panel + gap), oy = titleH;
+    fillRect(dst, W, H, ox, oy, panel, panel, '#080b10');
+    // Top-most voxel per plan cell, tinted by the height it sits at so roofs,
+    // walls and the apron read apart in a flat top-down image.
+    const top = new Map();
+    for (const [x, y, z, ci] of model.voxels) {
+      const key = `${x},${y}`;
+      const prev = top.get(key);
+      if (!prev || z > prev[0]) top.set(key, [z, VOXELS.palette[ci]]);
+    }
+    for (const [key, [z, color]] of top) {
+      const [x, y] = key.split(',').map(Number);
+      // Two tones only: structure is drawn at full colour, ground paint is
+      // crushed to near-black.  The silhouette — the massing, not the apron
+      // paint — is what draws the "2".
+      fillRect(dst, W, H, ox + x * px, oy + y * px, px, px,
+        shadeHex(color, z <= 4 ? 0.16 : 0.98));
+    }
+    // Aircraft ghosts drawn as outlines, not fills: the annotation must not hide
+    // the roof that carries the "2" read.  One aeroplane per standing bay.
+    for (const place of placements) {
+      for (const key of planeCols) {
+        const [x, y] = key.split(',').map(Number);
+        const edge = [[1, 0], [-1, 0], [0, 1], [0, -1]]
+          .some(([dx, dy]) => !planeCols.has(`${x + dx},${y + dy}`));
+        if (!edge) continue;
+        blendRect(dst, W, H, ox + (place.x + x) * px, oy + (place.y + y) * px, px, px, '#5fc4e8', 0.9);
+      }
+    }
+    frameRect(dst, W, H, ox + bay.x0 * px, oy + bay.y0 * px, ox + bay.x1 * px, oy + bay.y1 * px, '#3fa34d', 2);
+    for (const st of HANGAR_PLAN.stalls) {
+      frameRect(dst, W, H, ox + st.x0 * px, oy + st.y0 * px, ox + st.x1 * px, oy + st.y1 * px, '#9be0b0', 1);
+    }
+    frameRect(dst, W, H, ox + door.x0 * px, oy + door.y0 * px, ox + door.x1 * px, oy + door.y1 * px, '#e5b93c', 2);
+    drawText(dst, W, H, ox, oy + panel + 6, label, '#dbe3ec', 1);
+    drawText(dst, W, H, ox, oy + panel + 16, `${model.bounds.size[0]}x${model.bounds.size[1]}x${model.bounds.size[2]} VOX`,
+      '#66788c', 1);
+  });
+  return { pixels: dst, width: W, height: H };
+}
+
+/**
+ * The same five designs sliced at the bay ceiling with a transport-plane parked
+ * inside, so "the aircraft fits and nothing clips it" is something you can see
+ * rather than something you have to believe.
+ */
+function buildHangarFit() {
+  const lut = shadeLut(VOXELS.palette);
+  const bay = HANGAR_PLAN.bay;
+  const { parked, placements } = parkedAircraft();
+  const twoAircraft = placements.flatMap(place =>
+    parked.map(([x, y, z, c]) => [x + place.x, y + place.y, z + place.z, c]));
+
+  const rendered = HANGAR_FACTIONS.map(([id]) => isoOfVoxels(
+    [...VOXELS.models[id].voxels.filter(v => v[2] < bay.z1), ...twoAircraft], lut, 1));
+
+  const pad = 26, gap = 14, titleH = 50, labelH = 34;
+  const panelW = Math.max(...rendered.map(r => r.width));
+  const panelH = Math.max(...rendered.map(r => r.height));
+  const W = pad * 2 + panelW * 5 + gap * 4;
+  const H = titleH + panelH + labelH + pad;
+  const dst = Buffer.alloc(W * H * 4);
+  for (let i = 0; i < W * H; i++) {
+    dst[i * 4] = 14; dst[i * 4 + 1] = 18; dst[i * 4 + 2] = 24; dst[i * 4 + 3] = 255;
+  }
+  drawText(dst, W, H, pad, 10, 'ROOF CUT AT Z=27 — TWO TRANSPORT-PLANES PARKED IN THE TWO BAYS', '#dbe3ec', 2);
+  drawText(dst, W, H, pad, 28,
+    `SAME VOXELS AS THE SPRITE, ROOF REMOVED ABOVE THE BAY CEILING · 2 x (36 x 38 x 20) IN A ${BAY_W} x ${BAY_D} x ${BAY_H} BAY · ONE PLANE PER 38 x 36 STALL`,
+    '#93a6bb', 1);
+
+  rendered.forEach((img, i) => {
+    const ox = pad + i * (panelW + gap);
+    fillRect(dst, W, H, ox, titleH, panelW, panelH, '#080b10');
+    blit(dst, W, H, img, 0, 0, img.width, img.height,
+      ox + Math.round((panelW - img.width) / 2), titleH + Math.round((panelH - img.height) / 2));
+    drawText(dst, W, H, ox, titleH + panelH + 6, HANGAR_FACTIONS[i][1], '#dbe3ec', 1);
+    drawText(dst, W, H, ox, titleH + panelH + 18,
+      `${VOXELS.models[HANGAR_FACTIONS[i][0]].bounds.size[2]} VOX TALL`, '#66788c', 1);
+  });
+  return { pixels: dst, width: W, height: H };
+}
+
 /* ---------------------------------------------------------------- main -- */
 const scene = cropToContent(buildScene(), 28);
 fs.writeFileSync(path.join(OUT, 'scale-scene.png'), encodePng(scene.width, scene.height, scene.pixels));
@@ -842,6 +1064,14 @@ const unitSize = buildUnitLadder(
 );
 fs.writeFileSync(path.join(OUT, 'unit-size.png'), encodePng(unitSize.width, unitSize.height, unitSize.pixels));
 console.log(`Wrote docs/review/unit-size.png (${unitSize.width}×${unitSize.height})`);
+
+const hangarPlan = buildHangarPlan();
+fs.writeFileSync(path.join(OUT, 'hangar-plan.png'), encodePng(hangarPlan.width, hangarPlan.height, hangarPlan.pixels));
+console.log(`Wrote docs/review/hangar-plan.png (${hangarPlan.width}×${hangarPlan.height})`);
+
+const hangarFit = buildHangarFit();
+fs.writeFileSync(path.join(OUT, 'hangar-fit.png'), encodePng(hangarFit.width, hangarFit.height, hangarFit.pixels));
+console.log(`Wrote docs/review/hangar-fit.png (${hangarFit.width}×${hangarFit.height})`);
 
 const lineup = buildLineup([
   {
@@ -885,7 +1115,7 @@ const lineup = buildLineup([
       { id: 'barracks', note: '2x2' }, { id: 'base', note: '2x2' },
       { id: 'power-plant', note: '2x2' }, { id: 'city', note: '2x2' },
       { id: 'hq', note: '3x3' }, { id: 'airport', note: '3x3' },
-      { id: 'port', note: '3x2' },
+      { id: 'hangar', note: '3x3' }, { id: 'port', note: '3x2' },
     ],
   },
   {

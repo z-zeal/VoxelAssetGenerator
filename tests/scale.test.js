@@ -29,6 +29,7 @@ import { renderIso, blitSheet } from '../src/iso-renderer.js';
 import { decodePng } from '../tools/voxel_pipeline/png.mjs';
 import { buildVariantLut } from '../tools/voxel_pipeline/bake.mjs';
 import { MapElevationEditor } from '../src/map-editor.js';
+import { HANGAR_PLAN, HANGAR_FACTIONS } from '../tools/voxel_pipeline/models/hangar.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const voxDoc = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/voxels.json'), 'utf8'));
@@ -78,7 +79,7 @@ test('1. The model canvas is 128×128×128 and the ground tile is 32 units (4×4
 
 /* --------------------------------------------------------------- 2. metadata */
 test('2. Every generated model declares footprint, design grid, voxel scale, anchor and bounds metadata', () => {
-  assert.equal(allIds.length, 500, 'the full roster must be regenerated');
+  assert.equal(allIds.length, 505, 'the full roster must be regenerated');
   for (const id of allIds) {
     const m = voxDoc.models[id];
     assert.deepEqual(m.size, [128, 128, 128], `${id}: size field must be the 128³ canvas`);
@@ -345,7 +346,7 @@ test('9. Terrain keeps its ids, movement costs and elevation semantics at the ne
 test('10. Registry coverage: every roster asset has a model, manifest entry, preview and baked sheets', () => {
   const units = Object.keys(JSON.parse(fs.readFileSync(path.join(ROOT, 'data/units.json'), 'utf8')));
   assert.equal(units.length, 58);
-  assert.equal(BUILDINGS.length, 26);
+  assert.equal(BUILDINGS.length, 27);
   for (const type of units) {
     for (const id of [type, ...UNIT_ARMY_IDS.map(a => `${type}--${a}`)]) {
       assert.ok(voxDoc.models[id], `missing model ${id}`);
@@ -631,4 +632,144 @@ test('17. The review scene shows real elevation steps, not a line drawn on the g
   let holes = 0;
   for (let p = 0; p < W * H; p++) if (!seen[p] && isBg(p * 4)) holes++;
   assert.equal(holes, 0, `scene must not contain enclosed transparent holes (found ${holes} px)`);
+});
+
+/* ------------------------------------------------------------- 18. hangar */
+test('18. The fixed-wing hangar is its own 3×3 facility: a 2-shaped plan, four faction designs and a clear aircraft bay', () => {
+  const P = HANGAR_PLAN;
+  const hangarIds = HANGAR_FACTIONS.map(f => (f === 'standard' ? 'hangar' : `hangar--${f}`));
+  const model = id => voxDoc.models[id];
+
+  // --- separate stable building id, separate footprint class from the helipad
+  assert.ok(BUILDINGS.includes('hangar'), 'hangar is registered as a building');
+  assert.ok(!BUILDINGS.includes('helipad-hangar'));
+  assert.deepEqual(BUILDING_SPECS.hangar.footprint, [3, 3], 'the hangar is a 3×3 compound');
+  assert.deepEqual(BUILDING_SPECS.helipad.footprint, [2, 2], 'the helipad stays a 2×2 rotary deck');
+  assert.notEqual(BUILDING_SPECS.hangar.category, BUILDING_SPECS.helipad.category);
+  assert.deepEqual(BUILDING_FOOTPRINTS.hangar, [3, 3], 'runtime footprint table agrees');
+  assert.ok(MULTI_TILE_BUILDINGS.has('hangar'));
+  for (const id of hangarIds) {
+    assert.ok(model(id), `missing hangar model ${id}`);
+    assert.deepEqual(model(id).footprint, [3, 3], `${id} footprint`);
+    assert.deepEqual(model(id).bounds.size, [96, 96, model(id).bounds.size[2]], `${id} fills its 96×96 block`);
+    assert.equal(animationJson.buildings.hangar.idle, 1, 'the hangar has one idle frame');
+  }
+  // The hangar and the helipad are different art: no shared silhouette.
+  const footprintOf = id => new Set(model(id).voxels.map(v => `${v[0]},${v[1]}`));
+  const hangarPlan = footprintOf('hangar');
+  const helipadPlan = footprintOf('helipad');
+  const shared = [...hangarPlan].filter(k => helipadPlan.has(k)).length;
+  assert.ok(shared / hangarPlan.size < 0.6, `hangar reuses ${shared} helipad columns — must be its own building`);
+  assert.notEqual(model('hangar').bounds.size[2], model('helipad').bounds.size[2]);
+
+  const solidsOf = id => {
+    const set = new Set();
+    for (const [x, y, z] of model(id).voxels) set.add(`${x},${y},${z}`);
+    return set;
+  };
+  const countIn = (set, x0, x1, y0, y1, z0, z1) => {
+    let n = 0;
+    for (const key of set) {
+      const [x, y, z] = key.split(',').map(Number);
+      if (x >= x0 && x < x1 && y >= y0 && y < y1 && z >= z0 && z < z1) n++;
+    }
+    return n;
+  };
+
+  // --- "2" plan: top stroke, open counter, right descender, bottom stroke
+  for (const id of hangarIds) {
+    const solids = solidsOf(id);
+    let roofed = 0;
+    for (let x = 20; x < 80; x++) {
+      for (let y = 14; y < 38; y++) {
+        if ([...Array(20).keys()].some(dz => solids.has(`${x},${y},${30 + dz}`))) roofed++;
+      }
+    }
+    assert.ok(roofed / (60 * 24) > 0.95, `${id}: the hall must roof the top stroke (${roofed}/1440 columns)`);
+    // Counter: open apron between the hall and the front range.  Painted cones
+    // and drain covers sit on the ground, so the sample starts above them.
+    assert.equal(countIn(solids, 20, 60, 56, 68, 5, 40), 0, `${id}: the counter must stay open`);
+    // Counter opens to the west (nothing between the apron and the tile edge).
+    assert.equal(countIn(solids, 6, 18, 56, 68, 5, 40), 0, `${id}: the counter opens west`);
+    // Descender: the east annex bridges hall and front range.
+    let bridged = 0;
+    for (let x = 74; x < 88; x++) {
+      for (let y = 56; y < 68; y++) {
+        if ([...Array(42).keys()].some(dz => solids.has(`${x},${y},${18 + dz}`))) bridged++;
+      }
+    }
+    assert.ok(bridged / (14 * 12) > 0.9, `${id}: the descender must join the strokes (${bridged}/168 columns)`);
+    // Bottom stroke: the front range runs across the footprint.
+    let front = 0;
+    for (let x = 54; x < 86; x++) {
+      for (let y = 78; y < 88; y++) {
+        if ([...Array(10).keys()].some(dz => solids.has(`${x},${y},${8 + dz}`))) front++;
+      }
+    }
+    assert.ok(front / (32 * 10) > 0.9, `${id}: the front range must form the bottom stroke (${front}/320 columns)`);
+    // Vehicle gate stays open at ground level.
+    assert.equal(countIn(solids, 28, 44, 76, 84, 3, 12), 0, `${id}: the gate passage must stay open`);
+  }
+
+  // --- aircraft clearances: the bay and the door are empty in every design
+  const all = hangarIds.map(id => ({ id, solids: solidsOf(id) }));
+  for (const { id, solids } of all) {
+    const bay = countIn(solids, P.bay.x0, P.bay.x1, P.bay.y0, P.bay.y1, P.bay.z0, P.bay.z1);
+    assert.equal(bay, 0, `${id}: ${bay} voxels intrude into the clear bay`);
+    const door = countIn(solids, P.door.x0, P.door.x1, P.door.y0, P.door.y1, P.door.z0, P.door.z1);
+    assert.equal(door, 0, `${id}: ${door} voxels block the door opening`);
+  }
+  const bayW = P.bay.x1 - P.bay.x0, bayD = P.bay.y1 - P.bay.y0, bayH = P.bay.z1 - P.bay.z0;
+  const fixedWing = ['fighter', 'bomber', 'transport-plane', 'ground-attack-jet', 'stealth-fighter', 'spy-plane', 'uav'];
+  const aircraft = fixedWing.map(id => ({ id, size: voxDoc.models[id].bounds.size }));
+  // Aircraft park nose-in: the width that matters is the model's y extent, the
+  // depth the x extent.  The hall has to take TWO of the widest of them.
+  const widest = aircraft.reduce((a, b) => (b.size[1] > a.size[1] ? b : a));
+  const deepest = aircraft.reduce((a, b) => (b.size[0] > a.size[0] ? b : a));
+  assert.ok(bayW >= 2 * widest.size[1] + 4,
+    `bay width ${bayW} must park two ${widest.id}s side by side (2 × ${widest.size[1]} + 4)`);
+  assert.ok(bayD >= deepest.size[0] + 2, `bay depth ${bayD} must clear the ${deepest.id} (${deepest.size[0]})`);
+  assert.ok(bayH >= widest.size[2] + 4, `bay height ${bayH} must clear the ${widest.id} (${widest.size[2]})`);
+  const doorW = P.door.x1 - P.door.x0, doorH = P.door.z1 - P.door.z0;
+  assert.ok(doorW >= widest.size[1] + 8, `door ${doorW} must pass the ${widest.id} wingspan`);
+  assert.ok(doorH >= widest.size[2] + 4, `door ${doorH} must pass the ${widest.id} fin`);
+  // Two painted standing bays, one aeroplane each, both inside the clear volume.
+  assert.equal(P.stalls.length, 2, 'the hall must offer two standing bays');
+  for (const [i, st] of P.stalls.entries()) {
+    assert.ok(st.x0 >= P.bay.x0 && st.x1 <= P.bay.x1 && st.y0 >= P.bay.y0 && st.y1 <= P.bay.y1,
+      `stall ${i + 1} must sit inside the clear bay`);
+    assert.ok(st.x1 - st.x0 >= widest.size[1], `stall ${i + 1} too narrow for the ${widest.id}`);
+    assert.ok(st.y1 - st.y0 >= deepest.size[0], `stall ${i + 1} too short for the ${deepest.id}`);
+  }
+  assert.ok(P.stalls[0].x1 <= P.stalls[1].x0, 'the two stalls must not overlap');
+  // …and the bay is bigger than the aircraft, but smaller than the whole tile stack.
+  assert.ok(bayW < 96 && bayD < 96, 'the bay stays inside the 3×3 footprint');
+
+  // --- four genuinely different designs, not recolours: compare solid voxels
+  const abovePavement = id => new Set(model(id).voxels.filter(v => v[2] >= 4).map(v => `${v[0]},${v[1]},${v[2]}`));
+  const sets = Object.fromEntries(hangarIds.map(id => [id, abovePavement(id)]));
+  for (let i = 0; i < hangarIds.length; i++) {
+    for (let j = i + 1; j < hangarIds.length; j++) {
+      const a = sets[hangarIds[i]], b = sets[hangarIds[j]];
+      let common = 0;
+      for (const key of a) if (b.has(key)) common++;
+      const union = a.size + b.size - common;
+      const differ = (union - common) / union;
+      assert.ok(differ > 0.2, `${hangarIds[i]} vs ${hangarIds[j]}: only ${(differ * 100).toFixed(1)}% of the structure differs — that reads as a recolour`);
+    }
+  }
+  const heights = hangarIds.map(id => model(id).bounds.size[2]);
+  assert.equal(new Set(heights).size, heights.length, `each faction must have its own silhouette height (${heights.join(', ')})`);
+
+  // --- ownership accents survive for the seven baked team variants
+  for (const id of hangarIds) {
+    const team = model(id).voxels.filter(v => ['#df794b', '#ffc68b', '#934b32'].includes(voxDoc.palette[v[3]]));
+    assert.ok(team.length > 500, `${id}: only ${team.length} owner-coloured voxels`);
+    // …and it is spread over the footprint, not one badge: every quadrant of the
+    // 96×96 block carries the owner colour, and it appears at several heights.
+    const quadrants = new Set(team.map(v => `${v[0] < 48 ? 'w' : 'e'}${v[1] < 48 ? 'n' : 's'}`));
+    assert.equal(quadrants.size, 4, `${id}: owner colour only reaches ${[...quadrants].join(',')}`);
+    const cols = new Set(team.map(v => `${v[0]},${v[1]}`));
+    assert.ok(cols.size > 200, `${id}: owner colour concentrated in ${cols.size} columns`);
+  }
 });

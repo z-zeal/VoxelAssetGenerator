@@ -23,7 +23,7 @@ Requires Node.js with ES module support. From this folder:
 - `npm run voxels:all` — run all three steps in sequence.
 - `npm run voxels:serve` — serve the review pages on http://localhost:8000 so the sprite sheets resolve.
 - `npm run voxels:review` — regenerate the review sheets (`docs/review/*.png`), the sizing matrix and the review pages.
-- `npm test` — elevation, scale, manifest, animation, sprite-crispness and runtime integration gates (31 tests).
+- `npm test` — elevation, scale, manifest, animation, sprite-crispness and runtime integration gates (32 tests).
 
 The 2026 scale migration (128³ canvas, 32-unit tiles, multi-tile footprints) is
 specified in `docs/SCALE_128.md`; per-asset sizes are listed in
@@ -35,6 +35,14 @@ budget so 1×1 assets stay crisp instead of being squeezed into 2×1 px per voxe
 Units are sized by role on **0.5 / 0.75 / 1 / 1.25 tiles** — half a tile for infantry
 up to a tile and a quarter for capital ships, always under the 2×2 area a building
 starts at. See the *Unit size classes* table in the sizing matrix.
+
+Buildings start at 2×2; the 3×3 majors are the HQ, the airport and the **fixed-wing
+hangar**. The hangar is its own 3×3 production compound (the 2×2 `helipad` is
+untouched): its plan reads as the digit **2**, its interior is an 80 × 40 × 24 voxel
+clear bay behind a 56 × 24 door, laid out as two 38 × 36 standing bays so **two**
+aircraft park side by side, and each faction raises a structurally different building — gabled steel, a flat deck with a
+clerestory, a barrel vault, a tiered roof and a stepped shed roof. See
+`docs/review/hangar-plan.png` and `docs/review/hangar-fit.png`.
 
 The ZIP includes a minimal `package.json` for these commands. Re-baking can take time; preserve a backup of the original assets if you intend to compare outputs.
 

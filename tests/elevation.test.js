@@ -462,11 +462,11 @@ test('13. All 58 base units have complete 4-faction unit models (290 total) with
   }
 });
 
-test('14. All 26 buildings/structures (130 total) and all 6 wall/gate fortifications (30 total) have 4-faction models with distinct geometry', () => {
+test('14. All 27 buildings/structures (135 total) and all 6 wall/gate fortifications (30 total) have 4-faction models with distinct geometry', () => {
   const voxDoc = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/voxels.json'), 'utf8'));
   const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'game_assets/voxels/sheets/manifest.json'), 'utf8'));
 
-  assert.equal(BUILDINGS.length, 26, 'Must have 26 base buildings/military structures');
+  assert.equal(BUILDINGS.length, 27, 'Must have 27 base buildings/military structures');
   for (const b of BUILDINGS) {
     assert.ok(voxDoc.models[b], `Missing standard building model ${b}`);
     assert.ok(manifest.models[b], `Missing standard building manifest entry ${b}`);

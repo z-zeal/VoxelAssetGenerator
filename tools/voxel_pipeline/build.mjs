@@ -117,6 +117,7 @@ export const BUILDING_IDLE = {
   barracks: 1, helipad: 1, 'power-plant': 1, refinery: 1, 'radar-station': 2,
   'research-lab': 1, pillbox: 1, bunker: 1, 'at-turret': 1, 'sam-site': 1,
   'flak-cannon': 1, 'coastal-battery': 1, 'artillery-emplacement': 1, 'guard-tower': 1,
+  hangar: 1,
 };
 const [GX, GY, GZ] = VOXEL_SIZE;
 
@@ -128,7 +129,8 @@ export const BUILDINGS = ['hq', 'base', 'city', 'airport', 'port', 'farm', 'mine
   'supply-depot', 'repair-depot', 'field-hospital', 'barracks',
   'helipad', 'power-plant', 'refinery', 'radar-station', 'research-lab',
   'pillbox', 'bunker', 'at-turret', 'sam-site', 'flak-cannon',
-  'coastal-battery', 'artillery-emplacement', 'guard-tower'];
+  'coastal-battery', 'artillery-emplacement', 'guard-tower',
+  'hangar'];
 /** Playable armies that get their own unit models (Standard keeps the base names). */
 export const UNIT_ARMY_IDS = ARMY_IDS.filter(id => id !== 'standard');
 export const ELEVATION_LEVELS = [0, 4, 8, 12, 16, 20, 24, 28, 32];
@@ -819,7 +821,9 @@ export function sculptModel(id, kind, armyId, pose) {
   const spec = modelSpec(id, kind, kind === 'unit' ? UNIT_FAMILY[baseId] : baseId);
   const canvas = createCanvas(spec.design);
   if (kind === 'building') {
-    buildingVoxels(canvas, baseId, pose);
+    // The faction id travels in the pose so per-faction sculptors (the hangar)
+    // can build a complete design instead of a delta over the standard model.
+    buildingVoxels(canvas, baseId, { ...pose, armyId });
     if (armyId && armyId !== 'standard') applyBuildingArmyDelta(canvas, baseId, armyId);
     if (pose && pose.frame > 0) applyPoseOps(canvas, buildingPoseOps(baseId, pose.frame));
   } else if (kind === 'terrain') {

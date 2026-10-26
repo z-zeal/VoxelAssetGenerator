@@ -1,6 +1,8 @@
 # Asset scale migration — final report
 
 **Branch:** `arena/0e53910e-voxelassetgenerator`
+**Status:** historical — the roster has since grown to **505 models / 18,020 baked
+strips** with the fixed-wing hangar (see `docs/SCALE_128.md`).
 **Scope:** coordinated world-scale migration of the voxel roster from a single
 64×64×64 cube per map tile to a 128×128×128 model canvas on a 32-unit tile grid.
 This was a *scale* migration, not a resolution bump: every asset now has an

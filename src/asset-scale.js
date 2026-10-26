@@ -110,6 +110,10 @@ export const BUILDING_FOOTPRINTS = {
   "guard-tower": [
     1,
     1
+  ],
+  "hangar": [
+    3,
+    3
   ]
 };
 /** Buildings whose art is authored across their full multi-tile footprint. */
