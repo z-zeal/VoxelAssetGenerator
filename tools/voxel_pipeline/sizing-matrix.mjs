@@ -10,6 +10,7 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { HANGAR_PLAN } from './models/hangar.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const doc = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/voxels.json'), 'utf8'));
@@ -261,6 +262,25 @@ const sceneImg = pngSize('scale-scene.png');
 const beforeAfterImg = pngSize('before-after.png');
 const unitSizeImg = pngSize('unit-size.png');
 const sizeWallImg = pngSize('unit-size-wall.png');
+const hangarPlanImg = pngSize('hangar-plan.png');
+const hangarFitImg = pngSize('hangar-fit.png');
+
+// The hangar section is derived from the shipped models and the manifest, so
+// the "does the biggest aeroplane fit" claim is always the current geometry.
+const HANGAR_MODEL_IDS = ['hangar', 'hangar--allies', 'hangar--soviets', 'hangar--empire', 'hangar--legion'];
+const hangarJet = doc.models['transport-plane'].bounds.size;
+const hangarBay = [HANGAR_PLAN.bay.x1 - HANGAR_PLAN.bay.x0,
+  HANGAR_PLAN.bay.y1 - HANGAR_PLAN.bay.y0, HANGAR_PLAN.bay.z1 - HANGAR_PLAN.bay.z0];
+const hangarDoor = [HANGAR_PLAN.door.x1 - HANGAR_PLAN.door.x0, HANGAR_PLAN.door.z1 - HANGAR_PLAN.door.z0];
+const hangarRows = HANGAR_MODEL_IDS.map(id => {
+  const m = doc.models[id];
+  const cell = manifest.models[id].right.cell;
+  return `<tr>
+  <td><code>${id}</code></td><td>${fp(m.gameplayFootprint)} tiles</td>
+  <td>${m.bounds.size[2]} vox</td><td>${cell.w}×${cell.h}</td>
+  <td>${hangarBay.join(' × ')}</td><td>${hangarDoor[0]} wide × ${hangarDoor[1]} tall</td>
+  <td>${hangarBay[0] - hangarJet[0]} × ${hangarBay[1] - hangarJet[1]} × ${hangarBay[2] - hangarJet[2]} vox</td></tr>`;
+}).join('\n');
 const pageRows = rows.map(r => `<tr>
   <td><code>${r.id}</code></td><td>${CATEGORY_LABELS[r.category] ?? r.category}</td>
   <td>${r.heightClass}</td><td>${r.sizeClass === null ? '—' : r.sizeClass + '×'}</td>
@@ -428,7 +448,39 @@ code{background:#0b0f14;padding:1px 5px;border-radius:4px}
       .map(r => card(r)).join('\n    ')}
   </div>
 
-  <h2>7. Full roster previews</h2>
+  <h2>7. Fixed-wing hangar — a 2-shaped plan with a clear aircraft bay</h2>
+  <div class="rule">
+    The <code>hangar</code> is its own <b>3×3</b> production facility — the 2×2 <code>helipad</code> is
+    untouched and stays a rotary deck. Read from above the compound draws the digit <b>2</b>: the
+    roofed hall is the top bar, the open counter in front of the door is the gap, the east annex is the
+    descender, and the front range with its vehicle gate is the bottom bar. The interior is a real
+    volume — <b>72 × 40 × 24 voxels</b> clear behind a <b>54 × 24</b> door — so the largest fixed-wing
+    unit (the 36 × 38 × 20 transport-plane) is swallowed whole, with no wall, door leaf or roof
+    clipping its wings or fin. The five models below are the five designs: gabled steel, a flat deck
+    with a clerestory, a barrel vault between buttresses, a tiered cobalt roof and a stepped shed roof.
+  </div>
+  <figure>
+    <img src="${figureUrl('hangar-plan.png')}" alt="Top-down plan of the five hangar designs with the clear bay, door and the largest aircraft ghosted in place" width="${hangarPlanImg.w}" height="${hangarPlanImg.h}">
+    <figcaption>docs/review/hangar-plan.png — plan view of all five designs. Green = clear bay,
+      amber = door opening, cyan = transport-plane (36 × 38 × 20) ghosted at the bay floor. The
+      pavement is dimmed so the massing, not the apron paint, draws the "2".</figcaption>
+  </figure>
+  <figure>
+    <img src="${figureUrl('hangar-fit.png')}" alt="Cutaway of the five hangar designs with a transport-plane parked inside the bay" width="${hangarFitImg.w}" height="${hangarFitImg.h}">
+    <figcaption>docs/review/hangar-fit.png — the same voxels sliced at the bay ceiling (z &lt; 27) with
+      a transport-plane parked inside. Nothing intrudes into the bay, so the aircraft renders whole.</figcaption>
+  </figure>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>model</th><th>size class</th><th>height</th><th>sprite px</th>
+        <th>clear bay</th><th>door</th><th>transport-plane fit (spare w x d x h)</th></tr></thead>
+      <tbody>
+${hangarRows}
+      </tbody>
+    </table>
+  </div>
+
+  <h2>8. Full roster previews</h2>
   <div class="rule">Every generated preview, grouped by kind. ${count.total} models: ${units.length} unit types,
     ${buildings.length} building types, ${rows.filter(r => r.kind === 'terrain').length} terrain cells and
     ${count.effects} effect, each with its four faction variants. Previews are natural size — compare
@@ -438,7 +490,7 @@ code{background:#0b0f14;padding:1px 5px;border-radius:4px}
   ${rosterSection('Buildings and structures', rows.filter(r => r.kind === 'building'))}
   ${rosterSection('Terrain and effects', rows.filter(r => r.kind === 'terrain' || r.kind === 'effect'))}
 
-  <h2>8. Full sizing matrix</h2>
+  <h2>9. Full sizing matrix</h2>
   <div class="scroll">
     <table>
       <thead><tr><th>id</th><th>category</th><th>height class</th><th>size class</th><th>footprint</th>

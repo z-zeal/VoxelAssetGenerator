@@ -28,15 +28,15 @@ and `game_assets/voxels/sheets/manifest.json`. Do not edit by hand: re-run
 
 | metric | count |
 | --- | --- |
-| Models in `data/voxels.json` | 500 |
+| Models in `data/voxels.json` | 505 |
 | Base units | 58 |
 | Unit faction variants | 232 |
-| Base buildings / structures | 26 |
-| Building faction variants | 104 |
+| Base buildings / structures | 27 |
+| Building faction variants | 108 |
 | Terrain models | 79 |
 | Effects | 1 |
-| Multi-tile (2×2 and larger) ids | 130 |
-| Validated (bake + manifest + bounds) | 500 / 500 |
+| Multi-tile (2×2 and larger) ids | 135 |
+| Validated (bake + manifest + bounds) | 505 / 505 |
 
 ## Footprint classes in use
 
@@ -48,7 +48,7 @@ and `game_assets/voxels/sheets/manifest.json`. Do not edit by hand: re-run
 | 1×1 | 32×32 | tank, heavy, antiair, rockets, missiles, mega, submarine, fighter, gunboat, lander, uhac, bastion, mine-layer, tank-destroyer, flame-tank, amphibious-tank, mine-clearing, ground-attack-jet, stealth-fighter, spy-plane, missile-boat, naval-repair, mine-layer-ship, landmine, pillbox, bunker, at-turret, sam-site, flak-cannon, coastal-battery, artillery-emplacement, guard-tower, tree, mountain, hill, silo, silo-spent, reef, volcano, secret-lab, pipe-ew, pipe-ns, pipe-seam-ew, pipe-seam-ns, snow-tile, cracked-dry-ground, marsh, plains, tallgrass, sea, shoal, rubble, elevation-00, elevation-04, elevation-08, elevation-12, elevation-16, elevation-20, elevation-24, elevation-28, elevation-32, wall-standard, wall-allies, wall-soviets, wall-empire, wall-legion, wall-end, wall-end-allies, wall-end-soviets, wall-end-empire, wall-end-legion, wall-corner, wall-corner-allies, wall-corner-soviets, wall-corner-empire, wall-corner-legion, wall-t, wall-t-allies, wall-t-soviets, wall-t-empire, wall-t-legion, wall-cross, wall-cross-allies, wall-cross-soviets, wall-cross-empire, wall-cross-legion, wall-gate, wall-gate-allies, wall-gate-soviets, wall-gate-empire, wall-gate-legion, silo-missile, road-0, road-1, road-2, road-3, road-4, road-5, road-6, road-7, road-8, road-9, road-a, road-b, road-c, road-d, road-e, road-f, bridge-ew, bridge-ns, bridge-broken-ew, bridge-broken-ns |
 | 2×2 | 64×64 | base, city, farm, mine, depot, supply-depot, repair-depot, field-hospital, barracks, helipad, power-plant, refinery, radar-station, research-lab |
 | 3×2 | 96×64 | port |
-| 3×3 | 96×96 | hq, airport |
+| 3×3 | 96×96 | hq, airport, hangar |
 
 ## Units
 
@@ -184,6 +184,7 @@ barracks, and `docs/review/unit-size-wall.png` shows all 58 types on one grid.
 | `hq` | Command compound | major | — | 3×3 (96×96) | 96×96×70 | 1 | 4 | 7 | 1 | ✅ |
 | `airport` | Production | major | — | 3×3 (96×96) | 96×96×60 | 1 | 4 | 7 | 2 | ✅ |
 | `port` | Logistics | major | — | 3×2 (96×64) | 96×64×38 | 1 | 4 | 7 | 1 | ✅ |
+| `hangar` | Production | major | — | 3×3 (96×96) | 96×96×51 | 1 | 4 | 7 | 1 | ✅ |
 
 
 
@@ -549,6 +550,7 @@ heights remain the elevation system levels (0, 4, …, 32 → 0, 4, …, 32 px).
 | `coastal-battery--allies` | Defence (1×1) | low | — | 1×1 (32×32) | 29×24×21 | 1 | 4 | 7 | 1 | ✅ |
 | `artillery-emplacement--allies` | Defence (1×1) | low | — | 1×1 (32×32) | 28×28×14 | 1 | 4 | 7 | 1 | ✅ |
 | `guard-tower--allies` | Defence (1×1) | tall | — | 1×1 (32×32) | 25×20×40 | 1 | 4 | 7 | 1 | ✅ |
+| `hangar--allies` | Production | major | — | 3×3 (96×96) | 96×96×59 | 1 | 4 | 7 | 1 | ✅ |
 | `hq--soviets` | Command compound | major | — | 3×3 (96×96) | 96×96×70 | 1 | 4 | 7 | 1 | ✅ |
 | `base--soviets` | Production | medium | — | 2×2 (64×64) | 64×64×38 | 1 | 4 | 7 | 2 | ✅ |
 | `city--soviets` | Economy | medium | — | 2×2 (64×64) | 64×64×58 | 1 | 4 | 7 | 1 | ✅ |
@@ -575,6 +577,7 @@ heights remain the elevation system levels (0, 4, …, 32 → 0, 4, …, 32 px).
 | `coastal-battery--soviets` | Defence (1×1) | low | — | 1×1 (32×32) | 29×25×25 | 1 | 4 | 7 | 1 | ✅ |
 | `artillery-emplacement--soviets` | Defence (1×1) | low | — | 1×1 (32×32) | 28×28×18 | 1 | 4 | 7 | 1 | ✅ |
 | `guard-tower--soviets` | Defence (1×1) | tall | — | 1×1 (32×32) | 25×25×42 | 1 | 4 | 7 | 1 | ✅ |
+| `hangar--soviets` | Production | major | — | 3×3 (96×96) | 96×96×54 | 1 | 4 | 7 | 1 | ✅ |
 | `hq--empire` | Command compound | major | — | 3×3 (96×96) | 96×96×70 | 1 | 4 | 7 | 1 | ✅ |
 | `base--empire` | Production | medium | — | 2×2 (64×64) | 64×64×38 | 1 | 4 | 7 | 2 | ✅ |
 | `city--empire` | Economy | medium | — | 2×2 (64×64) | 64×64×40 | 1 | 4 | 7 | 1 | ✅ |
@@ -601,6 +604,7 @@ heights remain the elevation system levels (0, 4, …, 32 → 0, 4, …, 32 px).
 | `coastal-battery--empire` | Defence (1×1) | low | — | 1×1 (32×32) | 29×22×23 | 1 | 4 | 7 | 1 | ✅ |
 | `artillery-emplacement--empire` | Defence (1×1) | low | — | 1×1 (32×32) | 28×28×16 | 1 | 4 | 7 | 1 | ✅ |
 | `guard-tower--empire` | Defence (1×1) | tall | — | 1×1 (32×32) | 25×18×40 | 1 | 4 | 7 | 1 | ✅ |
+| `hangar--empire` | Production | major | — | 3×3 (96×96) | 96×96×66 | 1 | 4 | 7 | 1 | ✅ |
 | `hq--legion` | Command compound | major | — | 3×3 (96×96) | 96×96×70 | 1 | 4 | 7 | 1 | ✅ |
 | `base--legion` | Production | medium | — | 2×2 (64×64) | 64×64×38 | 1 | 4 | 7 | 2 | ✅ |
 | `city--legion` | Economy | medium | — | 2×2 (64×64) | 64×64×50 | 1 | 4 | 7 | 1 | ✅ |
@@ -627,6 +631,7 @@ heights remain the elevation system levels (0, 4, …, 32 → 0, 4, …, 32 px).
 | `coastal-battery--legion` | Defence (1×1) | low | — | 1×1 (32×32) | 29×25×21 | 1 | 4 | 7 | 1 | ✅ |
 | `artillery-emplacement--legion` | Defence (1×1) | low | — | 1×1 (32×32) | 28×28×14 | 1 | 4 | 7 | 1 | ✅ |
 | `guard-tower--legion` | Defence (1×1) | tall | — | 1×1 (32×32) | 25×25×40 | 1 | 4 | 7 | 1 | ✅ |
+| `hangar--legion` | Production | major | — | 3×3 (96×96) | 96×96×56 | 1 | 4 | 7 | 1 | ✅ |
 
 
 

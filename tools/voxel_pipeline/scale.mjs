@@ -84,6 +84,9 @@ export const BUILDING_SPECS = {
 
   /* major — command complexes and large facilities */
   hq:                     { footprint: [3, 3], design: LARGE_DESIGN, category: 'command', heightClass: 'major' },
+  // Fixed-wing hangar: an enclosed hall per faction, separate from the 2×2
+  // rotary `helipad`. 3×3 so a 1.25-tile aircraft can sit inside the bay.
+  hangar:                 { footprint: [3, 3], design: LARGE_DESIGN, category: 'production', heightClass: 'major' },
   airport:                { footprint: [3, 3], design: LARGE_DESIGN, category: 'production', heightClass: 'major' },
   port:                   { footprint: [3, 2], design: [96, 64], category: 'logistics', heightClass: 'major' },
 };

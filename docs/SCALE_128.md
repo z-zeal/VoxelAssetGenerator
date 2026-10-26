@@ -60,7 +60,7 @@ Footprints are multiples of 32 voxels: 1×1, 1×2, 2×1, 2×2, 2×3, 3×2, 3×3,
 | 1×1 | infantry, tanks, aircraft, ships, pillbox, bunker, guard tower, SAM site, all terrain | 1 |
 | 2×2 | base, barracks, power plant, radar station, refinery, depot, research lab, city, farm, mine, helipad | 4 |
 | 3×2 | port | 6 |
-| 3×3 | HQ, airport | 9 |
+| 3×3 | HQ, airport, fixed-wing hangar | 9 |
 
 A model is *translated* into the block its footprint occupies inside the 128³
 canvas (`footprintRect`); geometry is never stretched to fill it. A 3×3 model is
@@ -183,8 +183,8 @@ VOXEL_GRID_SIZE = 128, DOWNSCALE = 1
 
 ```
 voxels:build    registry → sculpt → resample → data/voxels.json (+ asset-scale.js)
-voxels:preview  500 preview PNGs from the model data
-voxels:bake     17,880 iso strips + manifest.json (v4, metadata under entry.meta)
+voxels:preview  505 preview PNGs from the model data
+voxels:bake     18,020 iso strips + manifest.json (v4, metadata under entry.meta)
 voxels:review   docs/review/*.png + sizing matrix + review page
 ```
 
@@ -233,12 +233,13 @@ The bake is deterministic: manifest hashes, frame dedupe and cell sizes are
 stable across runs, and test 12 of `tests/elevation.test.js` re-bakes
 `elevation-00`/`elevation-32` into a temporary directory to prove it.
 
-Current payload: **17,880 strips, 79.15 MB** (130 MB on disk with the
+Current payload: **18,020 strips, 79.76 MB** (128 MB on disk with the
 manifest). **Units are 71.4 MB of that** (13,920 strips, 8 facings × 6 team
-variants each); buildings are 7.4 MB, terrain 0.3 MB and effects under 0.1 MB.
+variants each); buildings are 8.0 MB (3,780 strips, including 140 for the five
+hangars), terrain 0.3 MB and effects under 0.1 MB.
 
 The 0.5–1.25 tile roster is what made this affordable: the earlier 1–2 tile
-sizing was 176.75 MB for the same 17,880 strips, because sprite area grows with
+sizing was 176.75 MB for the same sprite strips, because sprite area grows with
 the square of the footprint. Halving the range cut the payload by 55% with no
 loss of coverage — every facing, team variant and frame is still baked.
 
