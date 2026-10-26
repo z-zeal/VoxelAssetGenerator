@@ -35,18 +35,18 @@ and `game_assets/voxels/sheets/manifest.json`. Do not edit by hand: re-run
 | Building faction variants | 104 |
 | Terrain models | 79 |
 | Effects | 1 |
-| Multi-tile (2×2 and larger) ids | 295 |
+| Multi-tile (2×2 and larger) ids | 130 |
 | Validated (bake + manifest + bounds) | 500 / 500 |
 
 ## Footprint classes in use
 
 | class | voxels | assets |
 | --- | --- | --- |
-| 1.25×1.25 | 40×40 | recon, uav |
-| 1.5×1.5 | 48×48 | apc, copter, lift-copter, aegis, ifv, supply-truck, mobile-repair, command-vehicle |
-| 1.75×1.75 | 56×56 | tank, heavy, antiair, rockets, missiles, mega, submarine, fighter, gunboat, lander, uhac, bastion, mine-layer, tank-destroyer, flame-tank, amphibious-tank, mine-clearing, ground-attack-jet, stealth-fighter, spy-plane, missile-boat, naval-repair, mine-layer-ship |
-| 1×1 | 32×32 | infantry, mech, engineer, medic, rocket-infantry, aa-infantry, sniper, grenadier, flamethrower, demolitionist, commando, officer, spy, elite-hero, attack-dog, scout, landmine, pillbox, bunker, at-turret, sam-site, flak-cannon, coastal-battery, artillery-emplacement, guard-tower, tree, mountain, hill, silo, silo-spent, reef, volcano, secret-lab, pipe-ew, pipe-ns, pipe-seam-ew, pipe-seam-ns, snow-tile, cracked-dry-ground, marsh, plains, tallgrass, sea, shoal, rubble, elevation-00, elevation-04, elevation-08, elevation-12, elevation-16, elevation-20, elevation-24, elevation-28, elevation-32, wall-standard, wall-allies, wall-soviets, wall-empire, wall-legion, wall-end, wall-end-allies, wall-end-soviets, wall-end-empire, wall-end-legion, wall-corner, wall-corner-allies, wall-corner-soviets, wall-corner-empire, wall-corner-legion, wall-t, wall-t-allies, wall-t-soviets, wall-t-empire, wall-t-legion, wall-cross, wall-cross-allies, wall-cross-soviets, wall-cross-empire, wall-cross-legion, wall-gate, wall-gate-allies, wall-gate-soviets, wall-gate-empire, wall-gate-legion, silo-missile, road-0, road-1, road-2, road-3, road-4, road-5, road-6, road-7, road-8, road-9, road-a, road-b, road-c, road-d, road-e, road-f, bridge-ew, bridge-ns, bridge-broken-ew, bridge-broken-ns |
-| 2×2 | 64×64 | artillery, bomber, cruiser, battleship, mpa, specter, transport-plane, destroyer, carrier, base, city, farm, mine, depot, supply-depot, repair-depot, field-hospital, barracks, helipad, power-plant, refinery, radar-station, research-lab |
+| 0.5×0.5 | 16×16 | infantry, mech, engineer, medic, rocket-infantry, aa-infantry, sniper, grenadier, flamethrower, demolitionist, commando, officer, spy, elite-hero, attack-dog, scout |
+| 0.75×0.75 | 24×24 | apc, recon, copter, lift-copter, uav, aegis, ifv, supply-truck, mobile-repair, command-vehicle |
+| 1.25×1.25 | 40×40 | artillery, bomber, cruiser, battleship, mpa, specter, transport-plane, destroyer, carrier |
+| 1×1 | 32×32 | tank, heavy, antiair, rockets, missiles, mega, submarine, fighter, gunboat, lander, uhac, bastion, mine-layer, tank-destroyer, flame-tank, amphibious-tank, mine-clearing, ground-attack-jet, stealth-fighter, spy-plane, missile-boat, naval-repair, mine-layer-ship, landmine, pillbox, bunker, at-turret, sam-site, flak-cannon, coastal-battery, artillery-emplacement, guard-tower, tree, mountain, hill, silo, silo-spent, reef, volcano, secret-lab, pipe-ew, pipe-ns, pipe-seam-ew, pipe-seam-ns, snow-tile, cracked-dry-ground, marsh, plains, tallgrass, sea, shoal, rubble, elevation-00, elevation-04, elevation-08, elevation-12, elevation-16, elevation-20, elevation-24, elevation-28, elevation-32, wall-standard, wall-allies, wall-soviets, wall-empire, wall-legion, wall-end, wall-end-allies, wall-end-soviets, wall-end-empire, wall-end-legion, wall-corner, wall-corner-allies, wall-corner-soviets, wall-corner-empire, wall-corner-legion, wall-t, wall-t-allies, wall-t-soviets, wall-t-empire, wall-t-legion, wall-cross, wall-cross-allies, wall-cross-soviets, wall-cross-empire, wall-cross-legion, wall-gate, wall-gate-allies, wall-gate-soviets, wall-gate-empire, wall-gate-legion, silo-missile, road-0, road-1, road-2, road-3, road-4, road-5, road-6, road-7, road-8, road-9, road-a, road-b, road-c, road-d, road-e, road-f, bridge-ew, bridge-ns, bridge-broken-ew, bridge-broken-ns |
+| 2×2 | 64×64 | base, city, farm, mine, depot, supply-depot, repair-depot, field-hospital, barracks, helipad, power-plant, refinery, radar-station, research-lab |
 | 3×2 | 96×64 | port |
 | 3×3 | 96×96 | hq, airport |
 
@@ -58,86 +58,85 @@ target footprint in tiles. The model is then resampled by **one uniform factor**
 (nothing is stretched per axis) so it fills that footprint plus its role height.
 
 Size classes exist because units are *not* grid-locked: the game integrates
-their positions as floating-point world units, so a 1.25-tile tank destroyer is
-as valid as a 1-tile rifleman. A 2-tile battleship therefore really is twice the
-ground footprint of an infantry squad, while a 1-tile machine-gunner stays
-human-sized.
+their positions as floating-point world units, so a 0.75-tile APC is as valid as a
+half-tile rifleman. The roster is deliberately bounded: **nothing is smaller than
+half a tile and nothing is bigger than 1.25 tiles**, so units never compete with
+the 2×2 buildings they stand next to.
 
 | size class | tiles | world voxels | units |
 | --- | --- | --- | --- |
-| 1× | 1 × 1 | 32 × 32 | `infantry`, `mech`, `engineer`, `medic`, `rocket-infantry`, `aa-infantry`, `sniper`, `grenadier`, `flamethrower`, `demolitionist`, `commando`, `officer`, `spy`, `elite-hero`, `attack-dog`, `scout` |
-| 1.25× | 1.25 × 1.25 | 40 × 40 | `recon`, `uav` |
-| 1.5× | 1.5 × 1.5 | 48 × 48 | `apc`, `copter`, `lift-copter`, `aegis`, `ifv`, `supply-truck`, `mobile-repair`, `command-vehicle` |
-| 1.75× | 1.75 × 1.75 | 56 × 56 | `tank`, `heavy`, `antiair`, `rockets`, `missiles`, `mega`, `submarine`, `fighter`, `gunboat`, `lander`, `uhac`, `bastion`, `mine-layer`, `tank-destroyer`, `flame-tank`, `amphibious-tank`, `mine-clearing`, `ground-attack-jet`, `stealth-fighter`, `spy-plane`, `missile-boat`, `naval-repair`, `mine-layer-ship` |
-| 2× | 2 × 2 | 64 × 64 | `artillery`, `bomber`, `cruiser`, `battleship`, `mpa`, `specter`, `transport-plane`, `destroyer`, `carrier` |
+| 0.5× | 0.5 × 0.5 | 16 × 16 | `infantry`, `mech`, `engineer`, `medic`, `rocket-infantry`, `aa-infantry`, `sniper`, `grenadier`, `flamethrower`, `demolitionist`, `commando`, `officer`, `spy`, `elite-hero`, `attack-dog`, `scout` |
+| 0.75× | 0.75 × 0.75 | 24 × 24 | `apc`, `recon`, `copter`, `lift-copter`, `uav`, `aegis`, `ifv`, `supply-truck`, `mobile-repair`, `command-vehicle` |
+| 1× | 1 × 1 | 32 × 32 | `tank`, `heavy`, `antiair`, `rockets`, `missiles`, `mega`, `submarine`, `fighter`, `gunboat`, `lander`, `uhac`, `bastion`, `mine-layer`, `tank-destroyer`, `flame-tank`, `amphibious-tank`, `mine-clearing`, `ground-attack-jet`, `stealth-fighter`, `spy-plane`, `missile-boat`, `naval-repair`, `mine-layer-ship` |
+| 1.25× | 1.25 × 1.25 | 40 × 40 | `artillery`, `bomber`, `cruiser`, `battleship`, `mpa`, `specter`, `transport-plane`, `destroyer`, `carrier` |
 
-Larger classes carry the heavy hardware: a 2×2 battleship or strategic bomber
-has four times the ground area of an infantry squad at the same sprite density,
-which is what makes the hierarchy readable on the map. Every unit keeps eight
-directional facings and six team variants.
+A battleship covers **6.25×** the ground of a rifleman while still fitting inside
+a tile and a quarter, and every unit keeps eight directional facings and six team
+variants. `docs/review/unit-size.png` draws the ladder at 1:1 next to a 2×2
+barracks, and `docs/review/unit-size-wall.png` shows all 58 types on one grid.
 
 ### Base unit types
 
 | id | category | height class | size class | footprint (tiles) | model bounds (voxels) | render scale | facings | variants | frame cells | status |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `infantry` | Infantry | human | 1× | 1×1 (32×32) | 22×16×23 | 1 | 8 | 6 | 13 | ✅ |
-| `mech` | Infantry | human | 1× | 1×1 (32×32) | 23×17×23 | 1 | 8 | 6 | 13 | ✅ |
-| `engineer` | Infantry | human | 1× | 1×1 (32×32) | 25×16×23 | 1 | 8 | 6 | 10 | ✅ |
-| `medic` | Infantry | human | 1× | 1×1 (32×32) | 17×16×23 | 1 | 8 | 6 | 10 | ✅ |
-| `apc` | tracked | vehicle | 1.5× | 1.5×1.5 (48×48) | 36×33×27 | 1 | 8 | 6 | 9 | ✅ |
-| `recon` | wheeled | vehicle | 1.25× | 1.25×1.25 (40×40) | 31×23×28 | 1 | 8 | 6 | 12 | ✅ |
-| `tank` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 47×39×30 | 1 | 8 | 6 | 12 | ✅ |
-| `heavy` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 52×45×32 | 1 | 8 | 6 | 12 | ✅ |
-| `artillery` | tracked | vehicle | 2× | 2×2 (64×64) | 54×44×41 | 1 | 8 | 6 | 12 | ✅ |
-| `antiair` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 43×39×36 | 1 | 8 | 6 | 12 | ✅ |
-| `rockets` | wheeled | vehicle | 1.75× | 1.75×1.75 (56×56) | 42×31×40 | 1 | 8 | 6 | 12 | ✅ |
-| `missiles` | wheeled | vehicle | 1.75× | 1.75×1.75 (56×56) | 42×31×37 | 1 | 8 | 6 | 12 | ✅ |
-| `mega` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 52×45×34 | 1 | 8 | 6 | 12 | ✅ |
-| `submarine` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 53×25×33 | 1 | 8 | 6 | 11 | ✅ |
-| `copter` | rotor | aircraft | 1.5× | 1.5×1.5 (48×48) | 42×42×27 | 1 | 8 | 6 | 12 | ✅ |
-| `fighter` | jet | aircraft | 1.75× | 1.75×1.75 (56×56) | 51×49×18 | 1 | 8 | 6 | 10 | ✅ |
-| `bomber` | jet | aircraft | 2× | 2×2 (64×64) | 52×56×31 | 1 | 8 | 6 | 10 | ✅ |
-| `gunboat` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 49×25×35 | 1 | 8 | 6 | 11 | ✅ |
-| `cruiser` | naval | ship | 2× | 2×2 (64×64) | 64×28×40 | 1 | 8 | 6 | 11 | ✅ |
-| `battleship` | naval | ship | 2× | 2×2 (64×64) | 64×28×40 | 1 | 8 | 6 | 11 | ✅ |
-| `lander` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 55×28×28 | 1 | 8 | 6 | 9 | ✅ |
-| `lift-copter` | rotor | aircraft | 1.5× | 1.5×1.5 (48×48) | 45×33×25 | 1 | 8 | 6 | 10 | ✅ |
-| `uhac` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 56×42×35 | 1 | 8 | 6 | 9 | ✅ |
-| `uav` | rotor | aircraft | 1.25× | 1.25×1.25 (40×40) | 34×34×15 | 1 | 8 | 6 | 10 | ✅ |
-| `mpa` | jet | aircraft | 2× | 2×2 (64×64) | 61×48×32 | 1 | 8 | 6 | 10 | ✅ |
-| `bastion` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 52×45×39 | 1 | 8 | 6 | 12 | ✅ |
-| `specter` | jet | aircraft | 2× | 2×2 (64×64) | 44×52×22 | 1 | 8 | 6 | 10 | ✅ |
-| `aegis` | wheeled | vehicle | 1.5× | 1.5×1.5 (48×48) | 36×27×30 | 1 | 8 | 6 | 12 | ✅ |
-| `rocket-infantry` | Infantry | human | 1× | 1×1 (32×32) | 26×17×23 | 1 | 8 | 6 | 13 | ✅ |
-| `aa-infantry` | Infantry | human | 1× | 1×1 (32×32) | 25×17×23 | 1 | 8 | 6 | 13 | ✅ |
-| `sniper` | Infantry | human | 1× | 1×1 (32×32) | 26×16×23 | 1 | 8 | 6 | 13 | ✅ |
-| `grenadier` | Infantry | human | 1× | 1×1 (32×32) | 23×18×23 | 1 | 8 | 6 | 13 | ✅ |
-| `flamethrower` | Infantry | human | 1× | 1×1 (32×32) | 27×17×23 | 1 | 8 | 6 | 13 | ✅ |
-| `demolitionist` | Infantry | human | 1× | 1×1 (32×32) | 22×18×23 | 1 | 8 | 6 | 13 | ✅ |
-| `commando` | Infantry | human | 1× | 1×1 (32×32) | 25×16×23 | 1 | 8 | 6 | 13 | ✅ |
-| `officer` | Infantry | human | 1× | 1×1 (32×32) | 21×18×23 | 1 | 8 | 6 | 13 | ✅ |
-| `spy` | Infantry | human | 1× | 1×1 (32×32) | 20×19×23 | 1 | 8 | 6 | 13 | ✅ |
-| `elite-hero` | Infantry | human | 1× | 1×1 (32×32) | 25×22×25 | 1 | 8 | 6 | 13 | ✅ |
-| `attack-dog` | Infantry | human | 1× | 1×1 (32×32) | 27×10×20 | 1 | 8 | 6 | 13 | ✅ |
-| `scout` | Infantry | human | 1× | 1×1 (32×32) | 19×16×26 | 1 | 8 | 6 | 13 | ✅ |
-| `ifv` | tracked | vehicle | 1.5× | 1.5×1.5 (48×48) | 40×33×30 | 1 | 8 | 6 | 12 | ✅ |
-| `supply-truck` | wheeled | vehicle | 1.5× | 1.5×1.5 (48×48) | 37×27×25 | 1 | 8 | 6 | 9 | ✅ |
-| `mobile-repair` | tracked | vehicle | 1.5× | 1.5×1.5 (48×48) | 38×33×31 | 1 | 8 | 6 | 9 | ✅ |
-| `command-vehicle` | wheeled | vehicle | 1.5× | 1.5×1.5 (48×48) | 36×27×38 | 1 | 8 | 6 | 9 | ✅ |
-| `mine-layer` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 46×39×31 | 1 | 8 | 6 | 9 | ✅ |
-| `tank-destroyer` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 52×45×29 | 1 | 8 | 6 | 12 | ✅ |
-| `flame-tank` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 48×39×29 | 1 | 8 | 6 | 12 | ✅ |
-| `amphibious-tank` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 42×39×29 | 1 | 8 | 6 | 12 | ✅ |
-| `mine-clearing` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 48×39×36 | 1 | 8 | 6 | 9 | ✅ |
-| `ground-attack-jet` | jet | aircraft | 1.75× | 1.75×1.75 (56×56) | 50×53×19 | 1 | 8 | 6 | 10 | ✅ |
-| `transport-plane` | jet | aircraft | 2× | 2×2 (64×64) | 57×60×32 | 1 | 8 | 6 | 8 | ✅ |
-| `stealth-fighter` | jet | aircraft | 1.75× | 1.75×1.75 (56×56) | 51×45×19 | 1 | 8 | 6 | 10 | ✅ |
-| `spy-plane` | jet | aircraft | 1.75× | 1.75×1.75 (56×56) | 55×56×17 | 1 | 8 | 6 | 8 | ✅ |
-| `destroyer` | naval | ship | 2× | 2×2 (64×64) | 64×28×40 | 1 | 8 | 6 | 11 | ✅ |
-| `missile-boat` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 45×25×35 | 1 | 8 | 6 | 11 | ✅ |
-| `carrier` | naval | ship | 2× | 2×2 (64×64) | 64×44×39 | 1 | 8 | 6 | 11 | ✅ |
-| `naval-repair` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 53×27×31 | 1 | 8 | 6 | 9 | ✅ |
-| `mine-layer-ship` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 53×27×31 | 1 | 8 | 6 | 9 | ✅ |
+| `infantry` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 12×8×12 | 1 | 8 | 6 | 13 | ✅ |
+| `mech` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 12×9×12 | 1 | 8 | 6 | 13 | ✅ |
+| `engineer` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 13×8×12 | 1 | 8 | 6 | 10 | ✅ |
+| `medic` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 9×8×12 | 1 | 8 | 6 | 10 | ✅ |
+| `apc` | tracked | vehicle | 0.75× | 0.75×0.75 (24×24) | 18×17×14 | 1 | 8 | 6 | 9 | ✅ |
+| `recon` | wheeled | vehicle | 0.75× | 0.75×0.75 (24×24) | 19×14×17 | 1 | 8 | 6 | 12 | ✅ |
+| `tank` | tracked | vehicle | 1× | 1×1 (32×32) | 27×22×18 | 1 | 8 | 6 | 12 | ✅ |
+| `heavy` | tracked | vehicle | 1× | 1×1 (32×32) | 30×26×19 | 1 | 8 | 6 | 12 | ✅ |
+| `artillery` | tracked | vehicle | 1.25× | 1.25×1.25 (40×40) | 34×28×26 | 1 | 8 | 6 | 12 | ✅ |
+| `antiair` | tracked | vehicle | 1× | 1×1 (32×32) | 25×22×21 | 1 | 8 | 6 | 12 | ✅ |
+| `rockets` | wheeled | vehicle | 1× | 1×1 (32×32) | 24×18×23 | 1 | 8 | 6 | 12 | ✅ |
+| `missiles` | wheeled | vehicle | 1× | 1×1 (32×32) | 24×18×22 | 1 | 8 | 6 | 12 | ✅ |
+| `mega` | tracked | vehicle | 1× | 1×1 (32×32) | 30×26×20 | 1 | 8 | 6 | 12 | ✅ |
+| `submarine` | naval | ship | 1× | 1×1 (32×32) | 30×14×19 | 1 | 8 | 6 | 11 | ✅ |
+| `copter` | rotor | aircraft | 0.75× | 0.75×0.75 (24×24) | 22×22×14 | 1 | 8 | 6 | 12 | ✅ |
+| `fighter` | jet | aircraft | 1× | 1×1 (32×32) | 30×28×11 | 1 | 8 | 6 | 10 | ✅ |
+| `bomber` | jet | aircraft | 1.25× | 1.25×1.25 (40×40) | 33×35×20 | 1 | 8 | 6 | 10 | ✅ |
+| `gunboat` | naval | ship | 1× | 1×1 (32×32) | 28×14×20 | 1 | 8 | 6 | 11 | ✅ |
+| `cruiser` | naval | ship | 1.25× | 1.25×1.25 (40×40) | 40×18×25 | 1 | 8 | 6 | 11 | ✅ |
+| `battleship` | naval | ship | 1.25× | 1.25×1.25 (40×40) | 40×18×25 | 1 | 8 | 6 | 11 | ✅ |
+| `lander` | naval | ship | 1× | 1×1 (32×32) | 31×16×16 | 1 | 8 | 6 | 9 | ✅ |
+| `lift-copter` | rotor | aircraft | 0.75× | 0.75×0.75 (24×24) | 23×17×13 | 1 | 8 | 6 | 10 | ✅ |
+| `uhac` | naval | ship | 1× | 1×1 (32×32) | 32×24×20 | 1 | 8 | 6 | 9 | ✅ |
+| `uav` | rotor | aircraft | 0.75× | 0.75×0.75 (24×24) | 21×21×9 | 1 | 8 | 6 | 10 | ✅ |
+| `mpa` | jet | aircraft | 1.25× | 1.25×1.25 (40×40) | 38×30×20 | 1 | 8 | 6 | 10 | ✅ |
+| `bastion` | tracked | vehicle | 1× | 1×1 (32×32) | 30×26×23 | 1 | 8 | 6 | 12 | ✅ |
+| `specter` | jet | aircraft | 1.25× | 1.25×1.25 (40×40) | 28×33×14 | 1 | 8 | 6 | 10 | ✅ |
+| `aegis` | wheeled | vehicle | 0.75× | 0.75×0.75 (24×24) | 18×14×15 | 1 | 8 | 6 | 12 | ✅ |
+| `rocket-infantry` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 13×9×12 | 1 | 8 | 6 | 13 | ✅ |
+| `aa-infantry` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 13×9×12 | 1 | 8 | 6 | 13 | ✅ |
+| `sniper` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 13×8×12 | 1 | 8 | 6 | 13 | ✅ |
+| `grenadier` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 12×10×12 | 1 | 8 | 6 | 13 | ✅ |
+| `flamethrower` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 14×9×12 | 1 | 8 | 6 | 13 | ✅ |
+| `demolitionist` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 11×9×12 | 1 | 8 | 6 | 13 | ✅ |
+| `commando` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 13×8×12 | 1 | 8 | 6 | 13 | ✅ |
+| `officer` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 11×10×12 | 1 | 8 | 6 | 13 | ✅ |
+| `spy` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 10×10×12 | 1 | 8 | 6 | 13 | ✅ |
+| `elite-hero` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 13×12×13 | 1 | 8 | 6 | 13 | ✅ |
+| `attack-dog` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 14×6×10 | 1 | 8 | 6 | 13 | ✅ |
+| `scout` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 10×8×13 | 1 | 8 | 6 | 13 | ✅ |
+| `ifv` | tracked | vehicle | 0.75× | 0.75×0.75 (24×24) | 20×17×15 | 1 | 8 | 6 | 12 | ✅ |
+| `supply-truck` | wheeled | vehicle | 0.75× | 0.75×0.75 (24×24) | 19×14×13 | 1 | 8 | 6 | 9 | ✅ |
+| `mobile-repair` | tracked | vehicle | 0.75× | 0.75×0.75 (24×24) | 19×17×16 | 1 | 8 | 6 | 9 | ✅ |
+| `command-vehicle` | wheeled | vehicle | 0.75× | 0.75×0.75 (24×24) | 18×14×19 | 1 | 8 | 6 | 9 | ✅ |
+| `mine-layer` | tracked | vehicle | 1× | 1×1 (32×32) | 26×22×18 | 1 | 8 | 6 | 9 | ✅ |
+| `tank-destroyer` | tracked | vehicle | 1× | 1×1 (32×32) | 30×26×17 | 1 | 8 | 6 | 12 | ✅ |
+| `flame-tank` | tracked | vehicle | 1× | 1×1 (32×32) | 28×22×17 | 1 | 8 | 6 | 12 | ✅ |
+| `amphibious-tank` | tracked | vehicle | 1× | 1×1 (32×32) | 24×22×17 | 1 | 8 | 6 | 12 | ✅ |
+| `mine-clearing` | tracked | vehicle | 1× | 1×1 (32×32) | 28×22×21 | 1 | 8 | 6 | 9 | ✅ |
+| `ground-attack-jet` | jet | aircraft | 1× | 1×1 (32×32) | 29×30×11 | 1 | 8 | 6 | 10 | ✅ |
+| `transport-plane` | jet | aircraft | 1.25× | 1.25×1.25 (40×40) | 36×38×20 | 1 | 8 | 6 | 8 | ✅ |
+| `stealth-fighter` | jet | aircraft | 1× | 1×1 (32×32) | 30×26×12 | 1 | 8 | 6 | 10 | ✅ |
+| `spy-plane` | jet | aircraft | 1× | 1×1 (32×32) | 32×32×10 | 1 | 8 | 6 | 8 | ✅ |
+| `destroyer` | naval | ship | 1.25× | 1.25×1.25 (40×40) | 40×18×25 | 1 | 8 | 6 | 11 | ✅ |
+| `missile-boat` | naval | ship | 1× | 1×1 (32×32) | 26×14×20 | 1 | 8 | 6 | 11 | ✅ |
+| `carrier` | naval | ship | 1.25× | 1.25×1.25 (40×40) | 40×28×24 | 1 | 8 | 6 | 11 | ✅ |
+| `naval-repair` | naval | ship | 1× | 1×1 (32×32) | 30×16×18 | 1 | 8 | 6 | 9 | ✅ |
+| `mine-layer-ship` | naval | ship | 1× | 1×1 (32×32) | 30×16×18 | 1 | 8 | 6 | 9 | ✅ |
 
 
 
@@ -286,238 +285,238 @@ heights remain the elevation system levels (0, 4, …, 32 → 0, 4, …, 32 px).
 
 | id | category | height class | size class | footprint (tiles) | model bounds (voxels) | render scale | facings | variants | frame cells | status |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `infantry--allies` | Infantry | human | 1× | 1×1 (32×32) | 22×16×23 | 1 | 8 | 6 | 13 | ✅ |
-| `mech--allies` | Infantry | human | 1× | 1×1 (32×32) | 23×17×23 | 1 | 8 | 6 | 13 | ✅ |
-| `engineer--allies` | Infantry | human | 1× | 1×1 (32×32) | 25×16×23 | 1 | 8 | 6 | 10 | ✅ |
-| `medic--allies` | Infantry | human | 1× | 1×1 (32×32) | 17×16×23 | 1 | 8 | 6 | 10 | ✅ |
-| `apc--allies` | tracked | vehicle | 1.5× | 1.5×1.5 (48×48) | 40×33×27 | 1 | 8 | 6 | 9 | ✅ |
-| `recon--allies` | wheeled | vehicle | 1.25× | 1.25×1.25 (40×40) | 34×23×28 | 1 | 8 | 6 | 12 | ✅ |
-| `tank--allies` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 48×39×30 | 1 | 8 | 6 | 12 | ✅ |
-| `heavy--allies` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 52×45×32 | 1 | 8 | 6 | 12 | ✅ |
-| `artillery--allies` | tracked | vehicle | 2× | 2×2 (64×64) | 57×44×41 | 1 | 8 | 6 | 12 | ✅ |
-| `antiair--allies` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 48×39×36 | 1 | 8 | 6 | 12 | ✅ |
-| `rockets--allies` | wheeled | vehicle | 1.75× | 1.75×1.75 (56×56) | 46×31×40 | 1 | 8 | 6 | 12 | ✅ |
-| `missiles--allies` | wheeled | vehicle | 1.75× | 1.75×1.75 (56×56) | 46×31×37 | 1 | 8 | 6 | 12 | ✅ |
-| `mega--allies` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 52×45×34 | 1 | 8 | 6 | 12 | ✅ |
-| `submarine--allies` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 54×25×33 | 1 | 8 | 6 | 11 | ✅ |
-| `copter--allies` | rotor | aircraft | 1.5× | 1.5×1.5 (48×48) | 44×42×27 | 1 | 8 | 6 | 12 | ✅ |
-| `fighter--allies` | jet | aircraft | 1.75× | 1.75×1.75 (56×56) | 53×49×21 | 1 | 8 | 6 | 10 | ✅ |
-| `bomber--allies` | jet | aircraft | 2× | 2×2 (64×64) | 57×56×31 | 1 | 8 | 6 | 10 | ✅ |
-| `gunboat--allies` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 50×25×35 | 1 | 8 | 6 | 11 | ✅ |
-| `cruiser--allies` | naval | ship | 2× | 2×2 (64×64) | 64×28×40 | 1 | 8 | 6 | 11 | ✅ |
-| `battleship--allies` | naval | ship | 2× | 2×2 (64×64) | 64×28×40 | 1 | 8 | 6 | 11 | ✅ |
-| `lander--allies` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 55×28×28 | 1 | 8 | 6 | 9 | ✅ |
-| `lift-copter--allies` | rotor | aircraft | 1.5× | 1.5×1.5 (48×48) | 46×33×25 | 1 | 8 | 6 | 10 | ✅ |
-| `uhac--allies` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 56×42×35 | 1 | 8 | 6 | 9 | ✅ |
-| `uav--allies` | rotor | aircraft | 1.25× | 1.25×1.25 (40×40) | 37×34×16 | 1 | 8 | 6 | 10 | ✅ |
-| `mpa--allies` | jet | aircraft | 2× | 2×2 (64×64) | 61×48×32 | 1 | 8 | 6 | 10 | ✅ |
-| `bastion--allies` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 52×45×39 | 1 | 8 | 6 | 12 | ✅ |
-| `specter--allies` | jet | aircraft | 2× | 2×2 (64×64) | 49×52×24 | 1 | 8 | 6 | 10 | ✅ |
-| `aegis--allies` | wheeled | vehicle | 1.5× | 1.5×1.5 (48×48) | 40×27×30 | 1 | 8 | 6 | 12 | ✅ |
-| `rocket-infantry--allies` | Infantry | human | 1× | 1×1 (32×32) | 26×17×23 | 1 | 8 | 6 | 13 | ✅ |
-| `aa-infantry--allies` | Infantry | human | 1× | 1×1 (32×32) | 25×17×23 | 1 | 8 | 6 | 13 | ✅ |
-| `sniper--allies` | Infantry | human | 1× | 1×1 (32×32) | 26×16×23 | 1 | 8 | 6 | 13 | ✅ |
-| `grenadier--allies` | Infantry | human | 1× | 1×1 (32×32) | 23×18×23 | 1 | 8 | 6 | 13 | ✅ |
-| `flamethrower--allies` | Infantry | human | 1× | 1×1 (32×32) | 27×17×23 | 1 | 8 | 6 | 13 | ✅ |
-| `demolitionist--allies` | Infantry | human | 1× | 1×1 (32×32) | 22×18×23 | 1 | 8 | 6 | 13 | ✅ |
-| `commando--allies` | Infantry | human | 1× | 1×1 (32×32) | 25×16×23 | 1 | 8 | 6 | 13 | ✅ |
-| `officer--allies` | Infantry | human | 1× | 1×1 (32×32) | 21×18×23 | 1 | 8 | 6 | 13 | ✅ |
-| `spy--allies` | Infantry | human | 1× | 1×1 (32×32) | 21×19×23 | 1 | 8 | 6 | 13 | ✅ |
-| `elite-hero--allies` | Infantry | human | 1× | 1×1 (32×32) | 25×22×25 | 1 | 8 | 6 | 13 | ✅ |
-| `attack-dog--allies` | Infantry | human | 1× | 1×1 (32×32) | 27×14×20 | 1 | 8 | 6 | 13 | ✅ |
-| `scout--allies` | Infantry | human | 1× | 1×1 (32×32) | 19×16×26 | 1 | 8 | 6 | 13 | ✅ |
-| `ifv--allies` | tracked | vehicle | 1.5× | 1.5×1.5 (48×48) | 41×33×30 | 1 | 8 | 6 | 12 | ✅ |
-| `supply-truck--allies` | wheeled | vehicle | 1.5× | 1.5×1.5 (48×48) | 40×27×25 | 1 | 8 | 6 | 9 | ✅ |
-| `mobile-repair--allies` | tracked | vehicle | 1.5× | 1.5×1.5 (48×48) | 42×33×31 | 1 | 8 | 6 | 9 | ✅ |
-| `command-vehicle--allies` | wheeled | vehicle | 1.5× | 1.5×1.5 (48×48) | 40×27×38 | 1 | 8 | 6 | 9 | ✅ |
-| `mine-layer--allies` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 50×39×31 | 1 | 8 | 6 | 9 | ✅ |
-| `tank-destroyer--allies` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 52×45×29 | 1 | 8 | 6 | 12 | ✅ |
-| `flame-tank--allies` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 48×39×29 | 1 | 8 | 6 | 12 | ✅ |
-| `amphibious-tank--allies` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 46×39×29 | 1 | 8 | 6 | 12 | ✅ |
-| `mine-clearing--allies` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 48×39×36 | 1 | 8 | 6 | 9 | ✅ |
-| `ground-attack-jet--allies` | jet | aircraft | 1.75× | 1.75×1.75 (56×56) | 50×53×21 | 1 | 8 | 6 | 10 | ✅ |
-| `transport-plane--allies` | jet | aircraft | 2× | 2×2 (64×64) | 59×60×34 | 1 | 8 | 6 | 8 | ✅ |
-| `stealth-fighter--allies` | jet | aircraft | 1.75× | 1.75×1.75 (56×56) | 53×45×22 | 1 | 8 | 6 | 10 | ✅ |
-| `spy-plane--allies` | jet | aircraft | 1.75× | 1.75×1.75 (56×56) | 55×56×21 | 1 | 8 | 6 | 8 | ✅ |
-| `destroyer--allies` | naval | ship | 2× | 2×2 (64×64) | 64×28×40 | 1 | 8 | 6 | 11 | ✅ |
-| `missile-boat--allies` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 50×25×35 | 1 | 8 | 6 | 11 | ✅ |
-| `carrier--allies` | naval | ship | 2× | 2×2 (64×64) | 64×44×39 | 1 | 8 | 6 | 11 | ✅ |
-| `naval-repair--allies` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 54×27×31 | 1 | 8 | 6 | 9 | ✅ |
-| `mine-layer-ship--allies` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 54×27×31 | 1 | 8 | 6 | 9 | ✅ |
-| `infantry--soviets` | Infantry | human | 1× | 1×1 (32×32) | 22×16×23 | 1 | 8 | 6 | 13 | ✅ |
-| `mech--soviets` | Infantry | human | 1× | 1×1 (32×32) | 23×17×23 | 1 | 8 | 6 | 13 | ✅ |
-| `engineer--soviets` | Infantry | human | 1× | 1×1 (32×32) | 25×16×23 | 1 | 8 | 6 | 10 | ✅ |
-| `medic--soviets` | Infantry | human | 1× | 1×1 (32×32) | 17×16×23 | 1 | 8 | 6 | 10 | ✅ |
-| `apc--soviets` | tracked | vehicle | 1.5× | 1.5×1.5 (48×48) | 36×34×27 | 1 | 8 | 6 | 9 | ✅ |
-| `recon--soviets` | wheeled | vehicle | 1.25× | 1.25×1.25 (40×40) | 31×23×28 | 1 | 8 | 6 | 12 | ✅ |
-| `tank--soviets` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 47×40×30 | 1 | 8 | 6 | 12 | ✅ |
-| `heavy--soviets` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 52×46×32 | 1 | 8 | 6 | 12 | ✅ |
-| `artillery--soviets` | tracked | vehicle | 2× | 2×2 (64×64) | 54×45×41 | 1 | 8 | 6 | 12 | ✅ |
-| `antiair--soviets` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 43×40×36 | 1 | 8 | 6 | 12 | ✅ |
-| `rockets--soviets` | wheeled | vehicle | 1.75× | 1.75×1.75 (56×56) | 42×32×40 | 1 | 8 | 6 | 12 | ✅ |
-| `missiles--soviets` | wheeled | vehicle | 1.75× | 1.75×1.75 (56×56) | 42×32×37 | 1 | 8 | 6 | 12 | ✅ |
-| `mega--soviets` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 52×46×34 | 1 | 8 | 6 | 12 | ✅ |
-| `submarine--soviets` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 53×25×33 | 1 | 8 | 6 | 11 | ✅ |
-| `copter--soviets` | rotor | aircraft | 1.5× | 1.5×1.5 (48×48) | 42×45×27 | 1 | 8 | 6 | 12 | ✅ |
-| `fighter--soviets` | jet | aircraft | 1.75× | 1.75×1.75 (56×56) | 51×52×21 | 1 | 8 | 6 | 10 | ✅ |
-| `bomber--soviets` | jet | aircraft | 2× | 2×2 (64×64) | 52×59×31 | 1 | 8 | 6 | 10 | ✅ |
-| `gunboat--soviets` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 49×25×35 | 1 | 8 | 6 | 11 | ✅ |
-| `cruiser--soviets` | naval | ship | 2× | 2×2 (64×64) | 64×28×40 | 1 | 8 | 6 | 11 | ✅ |
-| `battleship--soviets` | naval | ship | 2× | 2×2 (64×64) | 64×28×40 | 1 | 8 | 6 | 11 | ✅ |
-| `lander--soviets` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 55×28×28 | 1 | 8 | 6 | 9 | ✅ |
-| `lift-copter--soviets` | rotor | aircraft | 1.5× | 1.5×1.5 (48×48) | 45×35×25 | 1 | 8 | 6 | 10 | ✅ |
-| `uhac--soviets` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 56×42×35 | 1 | 8 | 6 | 9 | ✅ |
-| `uav--soviets` | rotor | aircraft | 1.25× | 1.25×1.25 (40×40) | 34×36×16 | 1 | 8 | 6 | 10 | ✅ |
-| `mpa--soviets` | jet | aircraft | 2× | 2×2 (64×64) | 61×51×32 | 1 | 8 | 6 | 10 | ✅ |
-| `bastion--soviets` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 52×46×39 | 1 | 8 | 6 | 12 | ✅ |
-| `specter--soviets` | jet | aircraft | 2× | 2×2 (64×64) | 44×55×24 | 1 | 8 | 6 | 10 | ✅ |
-| `aegis--soviets` | wheeled | vehicle | 1.5× | 1.5×1.5 (48×48) | 36×28×30 | 1 | 8 | 6 | 12 | ✅ |
-| `rocket-infantry--soviets` | Infantry | human | 1× | 1×1 (32×32) | 26×17×23 | 1 | 8 | 6 | 13 | ✅ |
-| `aa-infantry--soviets` | Infantry | human | 1× | 1×1 (32×32) | 25×17×23 | 1 | 8 | 6 | 13 | ✅ |
-| `sniper--soviets` | Infantry | human | 1× | 1×1 (32×32) | 26×16×23 | 1 | 8 | 6 | 13 | ✅ |
-| `grenadier--soviets` | Infantry | human | 1× | 1×1 (32×32) | 23×18×23 | 1 | 8 | 6 | 13 | ✅ |
-| `flamethrower--soviets` | Infantry | human | 1× | 1×1 (32×32) | 27×17×23 | 1 | 8 | 6 | 13 | ✅ |
-| `demolitionist--soviets` | Infantry | human | 1× | 1×1 (32×32) | 22×18×23 | 1 | 8 | 6 | 13 | ✅ |
-| `commando--soviets` | Infantry | human | 1× | 1×1 (32×32) | 25×18×23 | 1 | 8 | 6 | 13 | ✅ |
-| `officer--soviets` | Infantry | human | 1× | 1×1 (32×32) | 22×18×23 | 1 | 8 | 6 | 13 | ✅ |
-| `spy--soviets` | Infantry | human | 1× | 1×1 (32×32) | 22×20×23 | 1 | 8 | 6 | 13 | ✅ |
-| `elite-hero--soviets` | Infantry | human | 1× | 1×1 (32×32) | 25×22×25 | 1 | 8 | 6 | 13 | ✅ |
-| `attack-dog--soviets` | Infantry | human | 1× | 1×1 (32×32) | 27×14×20 | 1 | 8 | 6 | 13 | ✅ |
-| `scout--soviets` | Infantry | human | 1× | 1×1 (32×32) | 19×18×26 | 1 | 8 | 6 | 13 | ✅ |
-| `ifv--soviets` | tracked | vehicle | 1.5× | 1.5×1.5 (48×48) | 40×34×30 | 1 | 8 | 6 | 12 | ✅ |
-| `supply-truck--soviets` | wheeled | vehicle | 1.5× | 1.5×1.5 (48×48) | 37×28×25 | 1 | 8 | 6 | 9 | ✅ |
-| `mobile-repair--soviets` | tracked | vehicle | 1.5× | 1.5×1.5 (48×48) | 38×34×31 | 1 | 8 | 6 | 9 | ✅ |
-| `command-vehicle--soviets` | wheeled | vehicle | 1.5× | 1.5×1.5 (48×48) | 36×28×38 | 1 | 8 | 6 | 9 | ✅ |
-| `mine-layer--soviets` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 46×40×31 | 1 | 8 | 6 | 9 | ✅ |
-| `tank-destroyer--soviets` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 52×46×29 | 1 | 8 | 6 | 12 | ✅ |
-| `flame-tank--soviets` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 48×40×29 | 1 | 8 | 6 | 12 | ✅ |
-| `amphibious-tank--soviets` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 42×40×29 | 1 | 8 | 6 | 12 | ✅ |
-| `mine-clearing--soviets` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 48×40×36 | 1 | 8 | 6 | 9 | ✅ |
-| `ground-attack-jet--soviets` | jet | aircraft | 1.75× | 1.75×1.75 (56×56) | 50×55×21 | 1 | 8 | 6 | 10 | ✅ |
-| `transport-plane--soviets` | jet | aircraft | 2× | 2×2 (64×64) | 57×63×34 | 1 | 8 | 6 | 8 | ✅ |
-| `stealth-fighter--soviets` | jet | aircraft | 1.75× | 1.75×1.75 (56×56) | 51×48×22 | 1 | 8 | 6 | 10 | ✅ |
-| `spy-plane--soviets` | jet | aircraft | 1.75× | 1.75×1.75 (56×56) | 55×56×21 | 1 | 8 | 6 | 8 | ✅ |
-| `destroyer--soviets` | naval | ship | 2× | 2×2 (64×64) | 64×28×40 | 1 | 8 | 6 | 11 | ✅ |
-| `missile-boat--soviets` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 45×25×35 | 1 | 8 | 6 | 11 | ✅ |
-| `carrier--soviets` | naval | ship | 2× | 2×2 (64×64) | 64×44×39 | 1 | 8 | 6 | 11 | ✅ |
-| `naval-repair--soviets` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 53×27×31 | 1 | 8 | 6 | 9 | ✅ |
-| `mine-layer-ship--soviets` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 53×27×31 | 1 | 8 | 6 | 9 | ✅ |
-| `infantry--empire` | Infantry | human | 1× | 1×1 (32×32) | 22×16×23 | 1 | 8 | 6 | 13 | ✅ |
-| `mech--empire` | Infantry | human | 1× | 1×1 (32×32) | 23×17×23 | 1 | 8 | 6 | 13 | ✅ |
-| `engineer--empire` | Infantry | human | 1× | 1×1 (32×32) | 25×16×23 | 1 | 8 | 6 | 10 | ✅ |
-| `medic--empire` | Infantry | human | 1× | 1×1 (32×32) | 17×16×23 | 1 | 8 | 6 | 10 | ✅ |
-| `apc--empire` | tracked | vehicle | 1.5× | 1.5×1.5 (48×48) | 36×33×27 | 1 | 8 | 6 | 9 | ✅ |
-| `recon--empire` | wheeled | vehicle | 1.25× | 1.25×1.25 (40×40) | 31×23×28 | 1 | 8 | 6 | 12 | ✅ |
-| `tank--empire` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 47×39×30 | 1 | 8 | 6 | 12 | ✅ |
-| `heavy--empire` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 52×45×32 | 1 | 8 | 6 | 12 | ✅ |
-| `artillery--empire` | tracked | vehicle | 2× | 2×2 (64×64) | 54×44×41 | 1 | 8 | 6 | 12 | ✅ |
-| `antiair--empire` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 43×39×36 | 1 | 8 | 6 | 12 | ✅ |
-| `rockets--empire` | wheeled | vehicle | 1.75× | 1.75×1.75 (56×56) | 42×31×40 | 1 | 8 | 6 | 12 | ✅ |
-| `missiles--empire` | wheeled | vehicle | 1.75× | 1.75×1.75 (56×56) | 42×31×37 | 1 | 8 | 6 | 12 | ✅ |
-| `mega--empire` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 52×45×34 | 1 | 8 | 6 | 12 | ✅ |
-| `submarine--empire` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 53×25×33 | 1 | 8 | 6 | 11 | ✅ |
-| `copter--empire` | rotor | aircraft | 1.5× | 1.5×1.5 (48×48) | 42×42×29 | 1 | 8 | 6 | 12 | ✅ |
-| `fighter--empire` | jet | aircraft | 1.75× | 1.75×1.75 (56×56) | 51×49×21 | 1 | 8 | 6 | 10 | ✅ |
-| `bomber--empire` | jet | aircraft | 2× | 2×2 (64×64) | 52×56×34 | 1 | 8 | 6 | 10 | ✅ |
-| `gunboat--empire` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 49×25×35 | 1 | 8 | 6 | 11 | ✅ |
-| `cruiser--empire` | naval | ship | 2× | 2×2 (64×64) | 64×28×40 | 1 | 8 | 6 | 11 | ✅ |
-| `battleship--empire` | naval | ship | 2× | 2×2 (64×64) | 64×28×40 | 1 | 8 | 6 | 11 | ✅ |
-| `lander--empire` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 55×28×29 | 1 | 8 | 6 | 9 | ✅ |
-| `lift-copter--empire` | rotor | aircraft | 1.5× | 1.5×1.5 (48×48) | 45×33×28 | 1 | 8 | 6 | 10 | ✅ |
-| `uhac--empire` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 56×42×35 | 1 | 8 | 6 | 9 | ✅ |
-| `uav--empire` | rotor | aircraft | 1.25× | 1.25×1.25 (40×40) | 34×34×17 | 1 | 8 | 6 | 10 | ✅ |
-| `mpa--empire` | jet | aircraft | 2× | 2×2 (64×64) | 61×48×35 | 1 | 8 | 6 | 10 | ✅ |
-| `bastion--empire` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 52×45×39 | 1 | 8 | 6 | 12 | ✅ |
-| `specter--empire` | jet | aircraft | 2× | 2×2 (64×64) | 44×52×25 | 1 | 8 | 6 | 10 | ✅ |
-| `aegis--empire` | wheeled | vehicle | 1.5× | 1.5×1.5 (48×48) | 36×27×30 | 1 | 8 | 6 | 12 | ✅ |
-| `rocket-infantry--empire` | Infantry | human | 1× | 1×1 (32×32) | 26×17×23 | 1 | 8 | 6 | 13 | ✅ |
-| `aa-infantry--empire` | Infantry | human | 1× | 1×1 (32×32) | 25×17×23 | 1 | 8 | 6 | 13 | ✅ |
-| `sniper--empire` | Infantry | human | 1× | 1×1 (32×32) | 26×16×23 | 1 | 8 | 6 | 13 | ✅ |
-| `grenadier--empire` | Infantry | human | 1× | 1×1 (32×32) | 23×18×23 | 1 | 8 | 6 | 13 | ✅ |
-| `flamethrower--empire` | Infantry | human | 1× | 1×1 (32×32) | 27×17×23 | 1 | 8 | 6 | 13 | ✅ |
-| `demolitionist--empire` | Infantry | human | 1× | 1×1 (32×32) | 22×18×23 | 1 | 8 | 6 | 13 | ✅ |
-| `commando--empire` | Infantry | human | 1× | 1×1 (32×32) | 26×20×24 | 1 | 8 | 6 | 13 | ✅ |
-| `officer--empire` | Infantry | human | 1× | 1×1 (32×32) | 23×20×24 | 1 | 8 | 6 | 13 | ✅ |
-| `spy--empire` | Infantry | human | 1× | 1×1 (32×32) | 23×21×24 | 1 | 8 | 6 | 13 | ✅ |
-| `elite-hero--empire` | Infantry | human | 1× | 1×1 (32×32) | 26×22×25 | 1 | 8 | 6 | 13 | ✅ |
-| `attack-dog--empire` | Infantry | human | 1× | 1×1 (32×32) | 27×14×20 | 1 | 8 | 6 | 13 | ✅ |
-| `scout--empire` | Infantry | human | 1× | 1×1 (32×32) | 20×20×26 | 1 | 8 | 6 | 13 | ✅ |
-| `ifv--empire` | tracked | vehicle | 1.5× | 1.5×1.5 (48×48) | 40×33×30 | 1 | 8 | 6 | 12 | ✅ |
-| `supply-truck--empire` | wheeled | vehicle | 1.5× | 1.5×1.5 (48×48) | 37×27×25 | 1 | 8 | 6 | 9 | ✅ |
-| `mobile-repair--empire` | tracked | vehicle | 1.5× | 1.5×1.5 (48×48) | 38×33×31 | 1 | 8 | 6 | 9 | ✅ |
-| `command-vehicle--empire` | wheeled | vehicle | 1.5× | 1.5×1.5 (48×48) | 36×27×38 | 1 | 8 | 6 | 9 | ✅ |
-| `mine-layer--empire` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 46×39×31 | 1 | 8 | 6 | 9 | ✅ |
-| `tank-destroyer--empire` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 52×45×29 | 1 | 8 | 6 | 12 | ✅ |
-| `flame-tank--empire` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 48×39×29 | 1 | 8 | 6 | 12 | ✅ |
-| `amphibious-tank--empire` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 42×39×29 | 1 | 8 | 6 | 12 | ✅ |
-| `mine-clearing--empire` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 48×39×36 | 1 | 8 | 6 | 9 | ✅ |
-| `ground-attack-jet--empire` | jet | aircraft | 1.75× | 1.75×1.75 (56×56) | 50×53×21 | 1 | 8 | 6 | 10 | ✅ |
-| `transport-plane--empire` | jet | aircraft | 2× | 2×2 (64×64) | 57×60×35 | 1 | 8 | 6 | 8 | ✅ |
-| `stealth-fighter--empire` | jet | aircraft | 1.75× | 1.75×1.75 (56×56) | 51×45×22 | 1 | 8 | 6 | 10 | ✅ |
-| `spy-plane--empire` | jet | aircraft | 1.75× | 1.75×1.75 (56×56) | 55×56×19 | 1 | 8 | 6 | 8 | ✅ |
-| `destroyer--empire` | naval | ship | 2× | 2×2 (64×64) | 64×28×40 | 1 | 8 | 6 | 11 | ✅ |
-| `missile-boat--empire` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 48×25×35 | 1 | 8 | 6 | 11 | ✅ |
-| `carrier--empire` | naval | ship | 2× | 2×2 (64×64) | 64×44×39 | 1 | 8 | 6 | 11 | ✅ |
-| `naval-repair--empire` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 53×27×31 | 1 | 8 | 6 | 9 | ✅ |
-| `mine-layer-ship--empire` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 53×27×31 | 1 | 8 | 6 | 9 | ✅ |
-| `infantry--legion` | Infantry | human | 1× | 1×1 (32×32) | 22×16×23 | 1 | 8 | 6 | 13 | ✅ |
-| `mech--legion` | Infantry | human | 1× | 1×1 (32×32) | 23×17×23 | 1 | 8 | 6 | 13 | ✅ |
-| `engineer--legion` | Infantry | human | 1× | 1×1 (32×32) | 25×16×23 | 1 | 8 | 6 | 10 | ✅ |
-| `medic--legion` | Infantry | human | 1× | 1×1 (32×32) | 17×16×23 | 1 | 8 | 6 | 10 | ✅ |
-| `apc--legion` | tracked | vehicle | 1.5× | 1.5×1.5 (48×48) | 36×33×27 | 1 | 8 | 6 | 9 | ✅ |
-| `recon--legion` | wheeled | vehicle | 1.25× | 1.25×1.25 (40×40) | 31×23×28 | 1 | 8 | 6 | 12 | ✅ |
-| `tank--legion` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 47×39×30 | 1 | 8 | 6 | 12 | ✅ |
-| `heavy--legion` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 52×45×32 | 1 | 8 | 6 | 12 | ✅ |
-| `artillery--legion` | tracked | vehicle | 2× | 2×2 (64×64) | 54×44×41 | 1 | 8 | 6 | 12 | ✅ |
-| `antiair--legion` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 43×39×36 | 1 | 8 | 6 | 12 | ✅ |
-| `rockets--legion` | wheeled | vehicle | 1.75× | 1.75×1.75 (56×56) | 42×31×40 | 1 | 8 | 6 | 12 | ✅ |
-| `missiles--legion` | wheeled | vehicle | 1.75× | 1.75×1.75 (56×56) | 42×31×37 | 1 | 8 | 6 | 12 | ✅ |
-| `mega--legion` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 52×45×34 | 1 | 8 | 6 | 12 | ✅ |
-| `submarine--legion` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 53×25×33 | 1 | 8 | 6 | 11 | ✅ |
-| `copter--legion` | rotor | aircraft | 1.5× | 1.5×1.5 (48×48) | 42×42×27 | 1 | 8 | 6 | 12 | ✅ |
-| `fighter--legion` | jet | aircraft | 1.75× | 1.75×1.75 (56×56) | 51×49×18 | 1 | 8 | 6 | 10 | ✅ |
-| `bomber--legion` | jet | aircraft | 2× | 2×2 (64×64) | 52×56×31 | 1 | 8 | 6 | 10 | ✅ |
-| `gunboat--legion` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 49×25×35 | 1 | 8 | 6 | 11 | ✅ |
-| `cruiser--legion` | naval | ship | 2× | 2×2 (64×64) | 64×28×40 | 1 | 8 | 6 | 11 | ✅ |
-| `battleship--legion` | naval | ship | 2× | 2×2 (64×64) | 64×28×40 | 1 | 8 | 6 | 11 | ✅ |
-| `lander--legion` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 55×28×28 | 1 | 8 | 6 | 9 | ✅ |
-| `lift-copter--legion` | rotor | aircraft | 1.5× | 1.5×1.5 (48×48) | 45×33×25 | 1 | 8 | 6 | 10 | ✅ |
-| `uhac--legion` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 56×42×35 | 1 | 8 | 6 | 9 | ✅ |
-| `uav--legion` | rotor | aircraft | 1.25× | 1.25×1.25 (40×40) | 34×34×15 | 1 | 8 | 6 | 10 | ✅ |
-| `mpa--legion` | jet | aircraft | 2× | 2×2 (64×64) | 61×48×32 | 1 | 8 | 6 | 10 | ✅ |
-| `bastion--legion` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 52×45×39 | 1 | 8 | 6 | 12 | ✅ |
-| `specter--legion` | jet | aircraft | 2× | 2×2 (64×64) | 44×52×22 | 1 | 8 | 6 | 10 | ✅ |
-| `aegis--legion` | wheeled | vehicle | 1.5× | 1.5×1.5 (48×48) | 36×27×30 | 1 | 8 | 6 | 12 | ✅ |
-| `rocket-infantry--legion` | Infantry | human | 1× | 1×1 (32×32) | 26×17×23 | 1 | 8 | 6 | 13 | ✅ |
-| `aa-infantry--legion` | Infantry | human | 1× | 1×1 (32×32) | 25×17×23 | 1 | 8 | 6 | 13 | ✅ |
-| `sniper--legion` | Infantry | human | 1× | 1×1 (32×32) | 26×16×23 | 1 | 8 | 6 | 13 | ✅ |
-| `grenadier--legion` | Infantry | human | 1× | 1×1 (32×32) | 23×18×23 | 1 | 8 | 6 | 13 | ✅ |
-| `flamethrower--legion` | Infantry | human | 1× | 1×1 (32×32) | 27×17×23 | 1 | 8 | 6 | 13 | ✅ |
-| `demolitionist--legion` | Infantry | human | 1× | 1×1 (32×32) | 22×18×23 | 1 | 8 | 6 | 13 | ✅ |
-| `commando--legion` | Infantry | human | 1× | 1×1 (32×32) | 25×18×23 | 1 | 8 | 6 | 13 | ✅ |
-| `officer--legion` | Infantry | human | 1× | 1×1 (32×32) | 22×19×23 | 1 | 8 | 6 | 13 | ✅ |
-| `spy--legion` | Infantry | human | 1× | 1×1 (32×32) | 22×19×23 | 1 | 8 | 6 | 13 | ✅ |
-| `elite-hero--legion` | Infantry | human | 1× | 1×1 (32×32) | 25×22×25 | 1 | 8 | 6 | 13 | ✅ |
-| `attack-dog--legion` | Infantry | human | 1× | 1×1 (32×32) | 27×14×20 | 1 | 8 | 6 | 13 | ✅ |
-| `scout--legion` | Infantry | human | 1× | 1×1 (32×32) | 19×18×26 | 1 | 8 | 6 | 13 | ✅ |
-| `ifv--legion` | tracked | vehicle | 1.5× | 1.5×1.5 (48×48) | 40×33×30 | 1 | 8 | 6 | 12 | ✅ |
-| `supply-truck--legion` | wheeled | vehicle | 1.5× | 1.5×1.5 (48×48) | 37×27×25 | 1 | 8 | 6 | 9 | ✅ |
-| `mobile-repair--legion` | tracked | vehicle | 1.5× | 1.5×1.5 (48×48) | 38×33×31 | 1 | 8 | 6 | 9 | ✅ |
-| `command-vehicle--legion` | wheeled | vehicle | 1.5× | 1.5×1.5 (48×48) | 36×27×38 | 1 | 8 | 6 | 9 | ✅ |
-| `mine-layer--legion` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 46×39×31 | 1 | 8 | 6 | 9 | ✅ |
-| `tank-destroyer--legion` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 52×45×29 | 1 | 8 | 6 | 12 | ✅ |
-| `flame-tank--legion` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 48×39×29 | 1 | 8 | 6 | 12 | ✅ |
-| `amphibious-tank--legion` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 42×39×29 | 1 | 8 | 6 | 12 | ✅ |
-| `mine-clearing--legion` | tracked | vehicle | 1.75× | 1.75×1.75 (56×56) | 48×39×36 | 1 | 8 | 6 | 9 | ✅ |
-| `ground-attack-jet--legion` | jet | aircraft | 1.75× | 1.75×1.75 (56×56) | 50×53×19 | 1 | 8 | 6 | 10 | ✅ |
-| `transport-plane--legion` | jet | aircraft | 2× | 2×2 (64×64) | 57×60×32 | 1 | 8 | 6 | 8 | ✅ |
-| `stealth-fighter--legion` | jet | aircraft | 1.75× | 1.75×1.75 (56×56) | 51×45×19 | 1 | 8 | 6 | 10 | ✅ |
-| `spy-plane--legion` | jet | aircraft | 1.75× | 1.75×1.75 (56×56) | 55×56×17 | 1 | 8 | 6 | 8 | ✅ |
-| `destroyer--legion` | naval | ship | 2× | 2×2 (64×64) | 64×28×40 | 1 | 8 | 6 | 11 | ✅ |
-| `missile-boat--legion` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 45×25×35 | 1 | 8 | 6 | 11 | ✅ |
-| `carrier--legion` | naval | ship | 2× | 2×2 (64×64) | 64×44×39 | 1 | 8 | 6 | 11 | ✅ |
-| `naval-repair--legion` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 53×27×31 | 1 | 8 | 6 | 9 | ✅ |
-| `mine-layer-ship--legion` | naval | ship | 1.75× | 1.75×1.75 (56×56) | 53×27×31 | 1 | 8 | 6 | 9 | ✅ |
+| `infantry--allies` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 12×8×12 | 1 | 8 | 6 | 13 | ✅ |
+| `mech--allies` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 12×9×12 | 1 | 8 | 6 | 13 | ✅ |
+| `engineer--allies` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 13×8×12 | 1 | 8 | 6 | 10 | ✅ |
+| `medic--allies` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 9×8×12 | 1 | 8 | 6 | 10 | ✅ |
+| `apc--allies` | tracked | vehicle | 0.75× | 0.75×0.75 (24×24) | 20×17×14 | 1 | 8 | 6 | 9 | ✅ |
+| `recon--allies` | wheeled | vehicle | 0.75× | 0.75×0.75 (24×24) | 21×14×17 | 1 | 8 | 6 | 12 | ✅ |
+| `tank--allies` | tracked | vehicle | 1× | 1×1 (32×32) | 28×22×18 | 1 | 8 | 6 | 12 | ✅ |
+| `heavy--allies` | tracked | vehicle | 1× | 1×1 (32×32) | 30×26×19 | 1 | 8 | 6 | 12 | ✅ |
+| `artillery--allies` | tracked | vehicle | 1.25× | 1.25×1.25 (40×40) | 36×28×26 | 1 | 8 | 6 | 12 | ✅ |
+| `antiair--allies` | tracked | vehicle | 1× | 1×1 (32×32) | 28×22×21 | 1 | 8 | 6 | 12 | ✅ |
+| `rockets--allies` | wheeled | vehicle | 1× | 1×1 (32×32) | 27×18×23 | 1 | 8 | 6 | 12 | ✅ |
+| `missiles--allies` | wheeled | vehicle | 1× | 1×1 (32×32) | 27×18×22 | 1 | 8 | 6 | 12 | ✅ |
+| `mega--allies` | tracked | vehicle | 1× | 1×1 (32×32) | 30×26×20 | 1 | 8 | 6 | 12 | ✅ |
+| `submarine--allies` | naval | ship | 1× | 1×1 (32×32) | 31×14×19 | 1 | 8 | 6 | 11 | ✅ |
+| `copter--allies` | rotor | aircraft | 0.75× | 0.75×0.75 (24×24) | 23×22×14 | 1 | 8 | 6 | 12 | ✅ |
+| `fighter--allies` | jet | aircraft | 1× | 1×1 (32×32) | 31×28×12 | 1 | 8 | 6 | 10 | ✅ |
+| `bomber--allies` | jet | aircraft | 1.25× | 1.25×1.25 (40×40) | 36×35×20 | 1 | 8 | 6 | 10 | ✅ |
+| `gunboat--allies` | naval | ship | 1× | 1×1 (32×32) | 29×14×20 | 1 | 8 | 6 | 11 | ✅ |
+| `cruiser--allies` | naval | ship | 1.25× | 1.25×1.25 (40×40) | 40×18×25 | 1 | 8 | 6 | 11 | ✅ |
+| `battleship--allies` | naval | ship | 1.25× | 1.25×1.25 (40×40) | 40×18×25 | 1 | 8 | 6 | 11 | ✅ |
+| `lander--allies` | naval | ship | 1× | 1×1 (32×32) | 31×16×16 | 1 | 8 | 6 | 9 | ✅ |
+| `lift-copter--allies` | rotor | aircraft | 0.75× | 0.75×0.75 (24×24) | 24×17×13 | 1 | 8 | 6 | 10 | ✅ |
+| `uhac--allies` | naval | ship | 1× | 1×1 (32×32) | 32×24×20 | 1 | 8 | 6 | 9 | ✅ |
+| `uav--allies` | rotor | aircraft | 0.75× | 0.75×0.75 (24×24) | 23×21×10 | 1 | 8 | 6 | 10 | ✅ |
+| `mpa--allies` | jet | aircraft | 1.25× | 1.25×1.25 (40×40) | 38×30×20 | 1 | 8 | 6 | 10 | ✅ |
+| `bastion--allies` | tracked | vehicle | 1× | 1×1 (32×32) | 30×26×23 | 1 | 8 | 6 | 12 | ✅ |
+| `specter--allies` | jet | aircraft | 1.25× | 1.25×1.25 (40×40) | 31×33×15 | 1 | 8 | 6 | 10 | ✅ |
+| `aegis--allies` | wheeled | vehicle | 0.75× | 0.75×0.75 (24×24) | 20×14×15 | 1 | 8 | 6 | 12 | ✅ |
+| `rocket-infantry--allies` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 13×9×12 | 1 | 8 | 6 | 13 | ✅ |
+| `aa-infantry--allies` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 13×9×12 | 1 | 8 | 6 | 13 | ✅ |
+| `sniper--allies` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 13×8×12 | 1 | 8 | 6 | 13 | ✅ |
+| `grenadier--allies` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 12×10×12 | 1 | 8 | 6 | 13 | ✅ |
+| `flamethrower--allies` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 14×9×12 | 1 | 8 | 6 | 13 | ✅ |
+| `demolitionist--allies` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 11×9×12 | 1 | 8 | 6 | 13 | ✅ |
+| `commando--allies` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 13×8×12 | 1 | 8 | 6 | 13 | ✅ |
+| `officer--allies` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 11×10×12 | 1 | 8 | 6 | 13 | ✅ |
+| `spy--allies` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 11×10×12 | 1 | 8 | 6 | 13 | ✅ |
+| `elite-hero--allies` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 13×12×13 | 1 | 8 | 6 | 13 | ✅ |
+| `attack-dog--allies` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 14×8×10 | 1 | 8 | 6 | 13 | ✅ |
+| `scout--allies` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 10×8×13 | 1 | 8 | 6 | 13 | ✅ |
+| `ifv--allies` | tracked | vehicle | 0.75× | 0.75×0.75 (24×24) | 21×17×15 | 1 | 8 | 6 | 12 | ✅ |
+| `supply-truck--allies` | wheeled | vehicle | 0.75× | 0.75×0.75 (24×24) | 20×14×13 | 1 | 8 | 6 | 9 | ✅ |
+| `mobile-repair--allies` | tracked | vehicle | 0.75× | 0.75×0.75 (24×24) | 21×17×16 | 1 | 8 | 6 | 9 | ✅ |
+| `command-vehicle--allies` | wheeled | vehicle | 0.75× | 0.75×0.75 (24×24) | 20×14×19 | 1 | 8 | 6 | 9 | ✅ |
+| `mine-layer--allies` | tracked | vehicle | 1× | 1×1 (32×32) | 29×22×18 | 1 | 8 | 6 | 9 | ✅ |
+| `tank-destroyer--allies` | tracked | vehicle | 1× | 1×1 (32×32) | 30×26×17 | 1 | 8 | 6 | 12 | ✅ |
+| `flame-tank--allies` | tracked | vehicle | 1× | 1×1 (32×32) | 28×22×17 | 1 | 8 | 6 | 12 | ✅ |
+| `amphibious-tank--allies` | tracked | vehicle | 1× | 1×1 (32×32) | 27×22×17 | 1 | 8 | 6 | 12 | ✅ |
+| `mine-clearing--allies` | tracked | vehicle | 1× | 1×1 (32×32) | 28×22×21 | 1 | 8 | 6 | 9 | ✅ |
+| `ground-attack-jet--allies` | jet | aircraft | 1× | 1×1 (32×32) | 29×30×12 | 1 | 8 | 6 | 10 | ✅ |
+| `transport-plane--allies` | jet | aircraft | 1.25× | 1.25×1.25 (40×40) | 37×38×21 | 1 | 8 | 6 | 8 | ✅ |
+| `stealth-fighter--allies` | jet | aircraft | 1× | 1×1 (32×32) | 31×26×13 | 1 | 8 | 6 | 10 | ✅ |
+| `spy-plane--allies` | jet | aircraft | 1× | 1×1 (32×32) | 32×32×12 | 1 | 8 | 6 | 8 | ✅ |
+| `destroyer--allies` | naval | ship | 1.25× | 1.25×1.25 (40×40) | 40×18×25 | 1 | 8 | 6 | 11 | ✅ |
+| `missile-boat--allies` | naval | ship | 1× | 1×1 (32×32) | 29×14×20 | 1 | 8 | 6 | 11 | ✅ |
+| `carrier--allies` | naval | ship | 1.25× | 1.25×1.25 (40×40) | 40×28×24 | 1 | 8 | 6 | 11 | ✅ |
+| `naval-repair--allies` | naval | ship | 1× | 1×1 (32×32) | 31×16×18 | 1 | 8 | 6 | 9 | ✅ |
+| `mine-layer-ship--allies` | naval | ship | 1× | 1×1 (32×32) | 31×16×18 | 1 | 8 | 6 | 9 | ✅ |
+| `infantry--soviets` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 12×8×12 | 1 | 8 | 6 | 13 | ✅ |
+| `mech--soviets` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 12×9×12 | 1 | 8 | 6 | 13 | ✅ |
+| `engineer--soviets` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 13×8×12 | 1 | 8 | 6 | 10 | ✅ |
+| `medic--soviets` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 9×8×12 | 1 | 8 | 6 | 10 | ✅ |
+| `apc--soviets` | tracked | vehicle | 0.75× | 0.75×0.75 (24×24) | 18×17×14 | 1 | 8 | 6 | 9 | ✅ |
+| `recon--soviets` | wheeled | vehicle | 0.75× | 0.75×0.75 (24×24) | 19×15×17 | 1 | 8 | 6 | 12 | ✅ |
+| `tank--soviets` | tracked | vehicle | 1× | 1×1 (32×32) | 27×23×18 | 1 | 8 | 6 | 12 | ✅ |
+| `heavy--soviets` | tracked | vehicle | 1× | 1×1 (32×32) | 30×27×19 | 1 | 8 | 6 | 12 | ✅ |
+| `artillery--soviets` | tracked | vehicle | 1.25× | 1.25×1.25 (40×40) | 34×29×26 | 1 | 8 | 6 | 12 | ✅ |
+| `antiair--soviets` | tracked | vehicle | 1× | 1×1 (32×32) | 25×23×21 | 1 | 8 | 6 | 12 | ✅ |
+| `rockets--soviets` | wheeled | vehicle | 1× | 1×1 (32×32) | 24×19×23 | 1 | 8 | 6 | 12 | ✅ |
+| `missiles--soviets` | wheeled | vehicle | 1× | 1×1 (32×32) | 24×19×22 | 1 | 8 | 6 | 12 | ✅ |
+| `mega--soviets` | tracked | vehicle | 1× | 1×1 (32×32) | 30×27×20 | 1 | 8 | 6 | 12 | ✅ |
+| `submarine--soviets` | naval | ship | 1× | 1×1 (32×32) | 30×14×19 | 1 | 8 | 6 | 11 | ✅ |
+| `copter--soviets` | rotor | aircraft | 0.75× | 0.75×0.75 (24×24) | 22×23×14 | 1 | 8 | 6 | 12 | ✅ |
+| `fighter--soviets` | jet | aircraft | 1× | 1×1 (32×32) | 30×30×12 | 1 | 8 | 6 | 10 | ✅ |
+| `bomber--soviets` | jet | aircraft | 1.25× | 1.25×1.25 (40×40) | 33×37×20 | 1 | 8 | 6 | 10 | ✅ |
+| `gunboat--soviets` | naval | ship | 1× | 1×1 (32×32) | 28×14×20 | 1 | 8 | 6 | 11 | ✅ |
+| `cruiser--soviets` | naval | ship | 1.25× | 1.25×1.25 (40×40) | 40×18×25 | 1 | 8 | 6 | 11 | ✅ |
+| `battleship--soviets` | naval | ship | 1.25× | 1.25×1.25 (40×40) | 40×18×25 | 1 | 8 | 6 | 11 | ✅ |
+| `lander--soviets` | naval | ship | 1× | 1×1 (32×32) | 31×16×16 | 1 | 8 | 6 | 9 | ✅ |
+| `lift-copter--soviets` | rotor | aircraft | 0.75× | 0.75×0.75 (24×24) | 23×18×13 | 1 | 8 | 6 | 10 | ✅ |
+| `uhac--soviets` | naval | ship | 1× | 1×1 (32×32) | 32×24×20 | 1 | 8 | 6 | 9 | ✅ |
+| `uav--soviets` | rotor | aircraft | 0.75× | 0.75×0.75 (24×24) | 21×22×10 | 1 | 8 | 6 | 10 | ✅ |
+| `mpa--soviets` | jet | aircraft | 1.25× | 1.25×1.25 (40×40) | 38×33×20 | 1 | 8 | 6 | 10 | ✅ |
+| `bastion--soviets` | tracked | vehicle | 1× | 1×1 (32×32) | 30×27×23 | 1 | 8 | 6 | 12 | ✅ |
+| `specter--soviets` | jet | aircraft | 1.25× | 1.25×1.25 (40×40) | 28×35×15 | 1 | 8 | 6 | 10 | ✅ |
+| `aegis--soviets` | wheeled | vehicle | 0.75× | 0.75×0.75 (24×24) | 18×15×15 | 1 | 8 | 6 | 12 | ✅ |
+| `rocket-infantry--soviets` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 13×9×12 | 1 | 8 | 6 | 13 | ✅ |
+| `aa-infantry--soviets` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 13×9×12 | 1 | 8 | 6 | 13 | ✅ |
+| `sniper--soviets` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 13×8×12 | 1 | 8 | 6 | 13 | ✅ |
+| `grenadier--soviets` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 12×10×12 | 1 | 8 | 6 | 13 | ✅ |
+| `flamethrower--soviets` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 14×9×12 | 1 | 8 | 6 | 13 | ✅ |
+| `demolitionist--soviets` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 11×9×12 | 1 | 8 | 6 | 13 | ✅ |
+| `commando--soviets` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 13×10×12 | 1 | 8 | 6 | 13 | ✅ |
+| `officer--soviets` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 11×10×12 | 1 | 8 | 6 | 13 | ✅ |
+| `spy--soviets` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 11×11×12 | 1 | 8 | 6 | 13 | ✅ |
+| `elite-hero--soviets` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 13×12×13 | 1 | 8 | 6 | 13 | ✅ |
+| `attack-dog--soviets` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 14×8×10 | 1 | 8 | 6 | 13 | ✅ |
+| `scout--soviets` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 10×10×13 | 1 | 8 | 6 | 13 | ✅ |
+| `ifv--soviets` | tracked | vehicle | 0.75× | 0.75×0.75 (24×24) | 20×17×15 | 1 | 8 | 6 | 12 | ✅ |
+| `supply-truck--soviets` | wheeled | vehicle | 0.75× | 0.75×0.75 (24×24) | 19×15×13 | 1 | 8 | 6 | 9 | ✅ |
+| `mobile-repair--soviets` | tracked | vehicle | 0.75× | 0.75×0.75 (24×24) | 19×17×16 | 1 | 8 | 6 | 9 | ✅ |
+| `command-vehicle--soviets` | wheeled | vehicle | 0.75× | 0.75×0.75 (24×24) | 18×15×19 | 1 | 8 | 6 | 9 | ✅ |
+| `mine-layer--soviets` | tracked | vehicle | 1× | 1×1 (32×32) | 26×23×18 | 1 | 8 | 6 | 9 | ✅ |
+| `tank-destroyer--soviets` | tracked | vehicle | 1× | 1×1 (32×32) | 30×27×17 | 1 | 8 | 6 | 12 | ✅ |
+| `flame-tank--soviets` | tracked | vehicle | 1× | 1×1 (32×32) | 28×23×17 | 1 | 8 | 6 | 12 | ✅ |
+| `amphibious-tank--soviets` | tracked | vehicle | 1× | 1×1 (32×32) | 24×23×17 | 1 | 8 | 6 | 12 | ✅ |
+| `mine-clearing--soviets` | tracked | vehicle | 1× | 1×1 (32×32) | 28×23×21 | 1 | 8 | 6 | 9 | ✅ |
+| `ground-attack-jet--soviets` | jet | aircraft | 1× | 1×1 (32×32) | 29×32×12 | 1 | 8 | 6 | 10 | ✅ |
+| `transport-plane--soviets` | jet | aircraft | 1.25× | 1.25×1.25 (40×40) | 36×39×21 | 1 | 8 | 6 | 8 | ✅ |
+| `stealth-fighter--soviets` | jet | aircraft | 1× | 1×1 (32×32) | 30×28×13 | 1 | 8 | 6 | 10 | ✅ |
+| `spy-plane--soviets` | jet | aircraft | 1× | 1×1 (32×32) | 32×32×12 | 1 | 8 | 6 | 8 | ✅ |
+| `destroyer--soviets` | naval | ship | 1.25× | 1.25×1.25 (40×40) | 40×18×25 | 1 | 8 | 6 | 11 | ✅ |
+| `missile-boat--soviets` | naval | ship | 1× | 1×1 (32×32) | 26×14×20 | 1 | 8 | 6 | 11 | ✅ |
+| `carrier--soviets` | naval | ship | 1.25× | 1.25×1.25 (40×40) | 40×28×24 | 1 | 8 | 6 | 11 | ✅ |
+| `naval-repair--soviets` | naval | ship | 1× | 1×1 (32×32) | 30×16×18 | 1 | 8 | 6 | 9 | ✅ |
+| `mine-layer-ship--soviets` | naval | ship | 1× | 1×1 (32×32) | 30×16×18 | 1 | 8 | 6 | 9 | ✅ |
+| `infantry--empire` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 12×8×12 | 1 | 8 | 6 | 13 | ✅ |
+| `mech--empire` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 12×9×12 | 1 | 8 | 6 | 13 | ✅ |
+| `engineer--empire` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 13×8×12 | 1 | 8 | 6 | 10 | ✅ |
+| `medic--empire` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 9×8×12 | 1 | 8 | 6 | 10 | ✅ |
+| `apc--empire` | tracked | vehicle | 0.75× | 0.75×0.75 (24×24) | 18×17×14 | 1 | 8 | 6 | 9 | ✅ |
+| `recon--empire` | wheeled | vehicle | 0.75× | 0.75×0.75 (24×24) | 19×14×17 | 1 | 8 | 6 | 12 | ✅ |
+| `tank--empire` | tracked | vehicle | 1× | 1×1 (32×32) | 27×22×18 | 1 | 8 | 6 | 12 | ✅ |
+| `heavy--empire` | tracked | vehicle | 1× | 1×1 (32×32) | 30×26×19 | 1 | 8 | 6 | 12 | ✅ |
+| `artillery--empire` | tracked | vehicle | 1.25× | 1.25×1.25 (40×40) | 34×28×26 | 1 | 8 | 6 | 12 | ✅ |
+| `antiair--empire` | tracked | vehicle | 1× | 1×1 (32×32) | 25×22×21 | 1 | 8 | 6 | 12 | ✅ |
+| `rockets--empire` | wheeled | vehicle | 1× | 1×1 (32×32) | 24×18×23 | 1 | 8 | 6 | 12 | ✅ |
+| `missiles--empire` | wheeled | vehicle | 1× | 1×1 (32×32) | 24×18×22 | 1 | 8 | 6 | 12 | ✅ |
+| `mega--empire` | tracked | vehicle | 1× | 1×1 (32×32) | 30×26×20 | 1 | 8 | 6 | 12 | ✅ |
+| `submarine--empire` | naval | ship | 1× | 1×1 (32×32) | 30×14×19 | 1 | 8 | 6 | 11 | ✅ |
+| `copter--empire` | rotor | aircraft | 0.75× | 0.75×0.75 (24×24) | 22×22×15 | 1 | 8 | 6 | 12 | ✅ |
+| `fighter--empire` | jet | aircraft | 1× | 1×1 (32×32) | 30×28×13 | 1 | 8 | 6 | 10 | ✅ |
+| `bomber--empire` | jet | aircraft | 1.25× | 1.25×1.25 (40×40) | 33×35×22 | 1 | 8 | 6 | 10 | ✅ |
+| `gunboat--empire` | naval | ship | 1× | 1×1 (32×32) | 28×14×20 | 1 | 8 | 6 | 11 | ✅ |
+| `cruiser--empire` | naval | ship | 1.25× | 1.25×1.25 (40×40) | 40×18×25 | 1 | 8 | 6 | 11 | ✅ |
+| `battleship--empire` | naval | ship | 1.25× | 1.25×1.25 (40×40) | 40×18×25 | 1 | 8 | 6 | 11 | ✅ |
+| `lander--empire` | naval | ship | 1× | 1×1 (32×32) | 31×16×17 | 1 | 8 | 6 | 9 | ✅ |
+| `lift-copter--empire` | rotor | aircraft | 0.75× | 0.75×0.75 (24×24) | 23×17×15 | 1 | 8 | 6 | 10 | ✅ |
+| `uhac--empire` | naval | ship | 1× | 1×1 (32×32) | 32×24×20 | 1 | 8 | 6 | 9 | ✅ |
+| `uav--empire` | rotor | aircraft | 0.75× | 0.75×0.75 (24×24) | 21×21×10 | 1 | 8 | 6 | 10 | ✅ |
+| `mpa--empire` | jet | aircraft | 1.25× | 1.25×1.25 (40×40) | 38×30×22 | 1 | 8 | 6 | 10 | ✅ |
+| `bastion--empire` | tracked | vehicle | 1× | 1×1 (32×32) | 30×26×23 | 1 | 8 | 6 | 12 | ✅ |
+| `specter--empire` | jet | aircraft | 1.25× | 1.25×1.25 (40×40) | 28×33×16 | 1 | 8 | 6 | 10 | ✅ |
+| `aegis--empire` | wheeled | vehicle | 0.75× | 0.75×0.75 (24×24) | 18×14×15 | 1 | 8 | 6 | 12 | ✅ |
+| `rocket-infantry--empire` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 13×9×12 | 1 | 8 | 6 | 13 | ✅ |
+| `aa-infantry--empire` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 13×9×12 | 1 | 8 | 6 | 13 | ✅ |
+| `sniper--empire` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 13×8×12 | 1 | 8 | 6 | 13 | ✅ |
+| `grenadier--empire` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 12×10×12 | 1 | 8 | 6 | 13 | ✅ |
+| `flamethrower--empire` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 14×9×12 | 1 | 8 | 6 | 13 | ✅ |
+| `demolitionist--empire` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 11×9×12 | 1 | 8 | 6 | 13 | ✅ |
+| `commando--empire` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 14×10×12 | 1 | 8 | 6 | 13 | ✅ |
+| `officer--empire` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 12×10×12 | 1 | 8 | 6 | 13 | ✅ |
+| `spy--empire` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 12×11×12 | 1 | 8 | 6 | 13 | ✅ |
+| `elite-hero--empire` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 14×12×13 | 1 | 8 | 6 | 13 | ✅ |
+| `attack-dog--empire` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 14×8×10 | 1 | 8 | 6 | 13 | ✅ |
+| `scout--empire` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 11×10×13 | 1 | 8 | 6 | 13 | ✅ |
+| `ifv--empire` | tracked | vehicle | 0.75× | 0.75×0.75 (24×24) | 20×17×15 | 1 | 8 | 6 | 12 | ✅ |
+| `supply-truck--empire` | wheeled | vehicle | 0.75× | 0.75×0.75 (24×24) | 19×14×13 | 1 | 8 | 6 | 9 | ✅ |
+| `mobile-repair--empire` | tracked | vehicle | 0.75× | 0.75×0.75 (24×24) | 19×17×16 | 1 | 8 | 6 | 9 | ✅ |
+| `command-vehicle--empire` | wheeled | vehicle | 0.75× | 0.75×0.75 (24×24) | 18×14×19 | 1 | 8 | 6 | 9 | ✅ |
+| `mine-layer--empire` | tracked | vehicle | 1× | 1×1 (32×32) | 26×22×18 | 1 | 8 | 6 | 9 | ✅ |
+| `tank-destroyer--empire` | tracked | vehicle | 1× | 1×1 (32×32) | 30×26×17 | 1 | 8 | 6 | 12 | ✅ |
+| `flame-tank--empire` | tracked | vehicle | 1× | 1×1 (32×32) | 28×22×17 | 1 | 8 | 6 | 12 | ✅ |
+| `amphibious-tank--empire` | tracked | vehicle | 1× | 1×1 (32×32) | 24×22×17 | 1 | 8 | 6 | 12 | ✅ |
+| `mine-clearing--empire` | tracked | vehicle | 1× | 1×1 (32×32) | 28×22×21 | 1 | 8 | 6 | 9 | ✅ |
+| `ground-attack-jet--empire` | jet | aircraft | 1× | 1×1 (32×32) | 29×30×12 | 1 | 8 | 6 | 10 | ✅ |
+| `transport-plane--empire` | jet | aircraft | 1.25× | 1.25×1.25 (40×40) | 36×38×22 | 1 | 8 | 6 | 8 | ✅ |
+| `stealth-fighter--empire` | jet | aircraft | 1× | 1×1 (32×32) | 30×26×13 | 1 | 8 | 6 | 10 | ✅ |
+| `spy-plane--empire` | jet | aircraft | 1× | 1×1 (32×32) | 32×32×11 | 1 | 8 | 6 | 8 | ✅ |
+| `destroyer--empire` | naval | ship | 1.25× | 1.25×1.25 (40×40) | 40×18×25 | 1 | 8 | 6 | 11 | ✅ |
+| `missile-boat--empire` | naval | ship | 1× | 1×1 (32×32) | 28×14×20 | 1 | 8 | 6 | 11 | ✅ |
+| `carrier--empire` | naval | ship | 1.25× | 1.25×1.25 (40×40) | 40×28×24 | 1 | 8 | 6 | 11 | ✅ |
+| `naval-repair--empire` | naval | ship | 1× | 1×1 (32×32) | 30×16×18 | 1 | 8 | 6 | 9 | ✅ |
+| `mine-layer-ship--empire` | naval | ship | 1× | 1×1 (32×32) | 30×16×18 | 1 | 8 | 6 | 9 | ✅ |
+| `infantry--legion` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 12×8×12 | 1 | 8 | 6 | 13 | ✅ |
+| `mech--legion` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 12×9×12 | 1 | 8 | 6 | 13 | ✅ |
+| `engineer--legion` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 13×8×12 | 1 | 8 | 6 | 10 | ✅ |
+| `medic--legion` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 9×8×12 | 1 | 8 | 6 | 10 | ✅ |
+| `apc--legion` | tracked | vehicle | 0.75× | 0.75×0.75 (24×24) | 18×17×14 | 1 | 8 | 6 | 9 | ✅ |
+| `recon--legion` | wheeled | vehicle | 0.75× | 0.75×0.75 (24×24) | 19×14×17 | 1 | 8 | 6 | 12 | ✅ |
+| `tank--legion` | tracked | vehicle | 1× | 1×1 (32×32) | 27×22×18 | 1 | 8 | 6 | 12 | ✅ |
+| `heavy--legion` | tracked | vehicle | 1× | 1×1 (32×32) | 30×26×19 | 1 | 8 | 6 | 12 | ✅ |
+| `artillery--legion` | tracked | vehicle | 1.25× | 1.25×1.25 (40×40) | 34×28×26 | 1 | 8 | 6 | 12 | ✅ |
+| `antiair--legion` | tracked | vehicle | 1× | 1×1 (32×32) | 25×22×21 | 1 | 8 | 6 | 12 | ✅ |
+| `rockets--legion` | wheeled | vehicle | 1× | 1×1 (32×32) | 24×18×23 | 1 | 8 | 6 | 12 | ✅ |
+| `missiles--legion` | wheeled | vehicle | 1× | 1×1 (32×32) | 24×18×22 | 1 | 8 | 6 | 12 | ✅ |
+| `mega--legion` | tracked | vehicle | 1× | 1×1 (32×32) | 30×26×20 | 1 | 8 | 6 | 12 | ✅ |
+| `submarine--legion` | naval | ship | 1× | 1×1 (32×32) | 30×14×19 | 1 | 8 | 6 | 11 | ✅ |
+| `copter--legion` | rotor | aircraft | 0.75× | 0.75×0.75 (24×24) | 22×22×14 | 1 | 8 | 6 | 12 | ✅ |
+| `fighter--legion` | jet | aircraft | 1× | 1×1 (32×32) | 30×28×11 | 1 | 8 | 6 | 10 | ✅ |
+| `bomber--legion` | jet | aircraft | 1.25× | 1.25×1.25 (40×40) | 33×35×20 | 1 | 8 | 6 | 10 | ✅ |
+| `gunboat--legion` | naval | ship | 1× | 1×1 (32×32) | 28×14×20 | 1 | 8 | 6 | 11 | ✅ |
+| `cruiser--legion` | naval | ship | 1.25× | 1.25×1.25 (40×40) | 40×18×25 | 1 | 8 | 6 | 11 | ✅ |
+| `battleship--legion` | naval | ship | 1.25× | 1.25×1.25 (40×40) | 40×18×25 | 1 | 8 | 6 | 11 | ✅ |
+| `lander--legion` | naval | ship | 1× | 1×1 (32×32) | 31×16×16 | 1 | 8 | 6 | 9 | ✅ |
+| `lift-copter--legion` | rotor | aircraft | 0.75× | 0.75×0.75 (24×24) | 23×17×13 | 1 | 8 | 6 | 10 | ✅ |
+| `uhac--legion` | naval | ship | 1× | 1×1 (32×32) | 32×24×20 | 1 | 8 | 6 | 9 | ✅ |
+| `uav--legion` | rotor | aircraft | 0.75× | 0.75×0.75 (24×24) | 21×21×9 | 1 | 8 | 6 | 10 | ✅ |
+| `mpa--legion` | jet | aircraft | 1.25× | 1.25×1.25 (40×40) | 38×30×20 | 1 | 8 | 6 | 10 | ✅ |
+| `bastion--legion` | tracked | vehicle | 1× | 1×1 (32×32) | 30×26×23 | 1 | 8 | 6 | 12 | ✅ |
+| `specter--legion` | jet | aircraft | 1.25× | 1.25×1.25 (40×40) | 28×33×14 | 1 | 8 | 6 | 10 | ✅ |
+| `aegis--legion` | wheeled | vehicle | 0.75× | 0.75×0.75 (24×24) | 18×14×15 | 1 | 8 | 6 | 12 | ✅ |
+| `rocket-infantry--legion` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 13×9×12 | 1 | 8 | 6 | 13 | ✅ |
+| `aa-infantry--legion` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 13×9×12 | 1 | 8 | 6 | 13 | ✅ |
+| `sniper--legion` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 13×8×12 | 1 | 8 | 6 | 13 | ✅ |
+| `grenadier--legion` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 12×10×12 | 1 | 8 | 6 | 13 | ✅ |
+| `flamethrower--legion` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 14×9×12 | 1 | 8 | 6 | 13 | ✅ |
+| `demolitionist--legion` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 11×9×12 | 1 | 8 | 6 | 13 | ✅ |
+| `commando--legion` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 13×9×12 | 1 | 8 | 6 | 13 | ✅ |
+| `officer--legion` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 11×10×12 | 1 | 8 | 6 | 13 | ✅ |
+| `spy--legion` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 11×10×12 | 1 | 8 | 6 | 13 | ✅ |
+| `elite-hero--legion` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 13×12×13 | 1 | 8 | 6 | 13 | ✅ |
+| `attack-dog--legion` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 14×8×10 | 1 | 8 | 6 | 13 | ✅ |
+| `scout--legion` | Infantry | human | 0.5× | 0.5×0.5 (16×16) | 10×9×13 | 1 | 8 | 6 | 13 | ✅ |
+| `ifv--legion` | tracked | vehicle | 0.75× | 0.75×0.75 (24×24) | 20×17×15 | 1 | 8 | 6 | 12 | ✅ |
+| `supply-truck--legion` | wheeled | vehicle | 0.75× | 0.75×0.75 (24×24) | 19×14×13 | 1 | 8 | 6 | 9 | ✅ |
+| `mobile-repair--legion` | tracked | vehicle | 0.75× | 0.75×0.75 (24×24) | 19×17×16 | 1 | 8 | 6 | 9 | ✅ |
+| `command-vehicle--legion` | wheeled | vehicle | 0.75× | 0.75×0.75 (24×24) | 18×14×19 | 1 | 8 | 6 | 9 | ✅ |
+| `mine-layer--legion` | tracked | vehicle | 1× | 1×1 (32×32) | 26×22×18 | 1 | 8 | 6 | 9 | ✅ |
+| `tank-destroyer--legion` | tracked | vehicle | 1× | 1×1 (32×32) | 30×26×17 | 1 | 8 | 6 | 12 | ✅ |
+| `flame-tank--legion` | tracked | vehicle | 1× | 1×1 (32×32) | 28×22×17 | 1 | 8 | 6 | 12 | ✅ |
+| `amphibious-tank--legion` | tracked | vehicle | 1× | 1×1 (32×32) | 24×22×17 | 1 | 8 | 6 | 12 | ✅ |
+| `mine-clearing--legion` | tracked | vehicle | 1× | 1×1 (32×32) | 28×22×21 | 1 | 8 | 6 | 9 | ✅ |
+| `ground-attack-jet--legion` | jet | aircraft | 1× | 1×1 (32×32) | 29×30×11 | 1 | 8 | 6 | 10 | ✅ |
+| `transport-plane--legion` | jet | aircraft | 1.25× | 1.25×1.25 (40×40) | 36×38×20 | 1 | 8 | 6 | 8 | ✅ |
+| `stealth-fighter--legion` | jet | aircraft | 1× | 1×1 (32×32) | 30×26×12 | 1 | 8 | 6 | 10 | ✅ |
+| `spy-plane--legion` | jet | aircraft | 1× | 1×1 (32×32) | 32×32×10 | 1 | 8 | 6 | 8 | ✅ |
+| `destroyer--legion` | naval | ship | 1.25× | 1.25×1.25 (40×40) | 40×18×25 | 1 | 8 | 6 | 11 | ✅ |
+| `missile-boat--legion` | naval | ship | 1× | 1×1 (32×32) | 26×14×20 | 1 | 8 | 6 | 11 | ✅ |
+| `carrier--legion` | naval | ship | 1.25× | 1.25×1.25 (40×40) | 40×28×24 | 1 | 8 | 6 | 11 | ✅ |
+| `naval-repair--legion` | naval | ship | 1× | 1×1 (32×32) | 30×16×18 | 1 | 8 | 6 | 9 | ✅ |
+| `mine-layer-ship--legion` | naval | ship | 1× | 1×1 (32×32) | 30×16×18 | 1 | 8 | 6 | 9 | ✅ |
 
 
 ### Building variants

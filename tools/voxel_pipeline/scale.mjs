@@ -38,8 +38,10 @@ export const VOXELS_PER_TILE = TILE_UNITS;
  * move on floating-point positions rather than a grid.
  */
 export const FOOTPRINT_CLASSES = Object.freeze([
+  // buildings: whole tiles
   [1, 1], [1, 2], [2, 1], [2, 2], [2, 3], [3, 2], [3, 3], [4, 4],
-  [1.25, 1.25], [1.5, 1.5], [1.75, 1.75], [2, 2],
+  // units: fractional, 0.5 … 1.25 tiles (free-floating movement, no grid lock)
+  [0.5, 0.5], [0.75, 0.75], [1.25, 1.25],
 ]);
 
 const UNIT_DESIGN = 64;
@@ -88,46 +90,57 @@ export const BUILDING_SPECS = {
 
 /**
  * Unit authoring stays at 64³ design resolution; the *world* size depends on the
- * unit's role.  Footprints are given in tiles and may be fractional (the game
- * moves units on free floating-point positions, not grid cells), so a battleship
- * really is twice the ground footprint of a rifleman:
+ * unit's role. Footprints are given in tiles and are fractional because the game
+ * moves units on free floating-point positions, not grid cells. The whole roster
+ * lives inside **half a tile to one and a quarter tiles**:
  *
- *    1.00  infantry, dogs, jeeps            (32 world voxels)
- *    1.25  light wheeled / recon            (40)
- *    1.50  APCs, helicopters, transports    (48)
- *    1.75  tanks, self-propelled guns, jets (56)
- *    2.00  artillery, capitals, bombers     (64)
+ *    0.50  infantry, dogs, dismounted squads        (16 world voxels)
+ *    0.75  light vehicles, helicopters, transports   (24)
+ *    1.00  tanks, jets, submarines, escorts          (32)
+ *    1.25  artillery, capitals, strategic aircraft   (40)
+ *
+ * A rifleman is therefore half a tile wide while a battleship covers 1.25 tiles
+ * — 6.25× the ground area — and no unit ever reaches a full 2×2 block, which is
+ * reserved for buildings (2×2 facilities start at 64 world voxels).
  *
  * scale = footprint × TILE_UNITS / design, i.e. footprint / 2 for a 64³ design
  * grid: geometry is recalculated, never stretched (x/y/z share one factor).
  */
 export const UNIT_SIZES = Object.freeze({
-  /* 2.00 — heaviest ground vehicles, capital ships, strategic aircraft */
-  artillery: 2, carrier: 2, battleship: 2, cruiser: 2, destroyer: 2,
-  bomber: 2, 'transport-plane': 2, specter: 2, mpa: 2,
+  /* 1.25 — the largest things on the map that are not buildings */
+  artillery: 1.25, carrier: 1.25, battleship: 1.25, cruiser: 1.25,
+  destroyer: 1.25, bomber: 1.25, 'transport-plane': 1.25, specter: 1.25,
+  mpa: 1.25,
 
-  /* 1.75 — tanks, SPAAGs, jets, submarines, escorts */
-  tank: 1.75, heavy: 1.75, mega: 1.75, bastion: 1.75, 'flame-tank': 1.75,
-  'amphibious-tank': 1.75, 'tank-destroyer': 1.75, 'mine-clearing': 1.75,
-  'mine-layer': 1.75, antiair: 1.75, rockets: 1.75, missiles: 1.75,
-  submarine: 1.75, gunboat: 1.75, 'missile-boat': 1.75, 'naval-repair': 1.75,
-  'mine-layer-ship': 1.75, lander: 1.75, uhac: 1.75,
-  fighter: 1.75, 'ground-attack-jet': 1.75, 'stealth-fighter': 1.75,
-  'spy-plane': 1.75,
+  /* 1.00 — tanks, SPAAGs, jets, submarines, escorts */
+  tank: 1, heavy: 1, mega: 1, bastion: 1, 'flame-tank': 1,
+  'amphibious-tank': 1, 'tank-destroyer': 1, 'mine-clearing': 1,
+  'mine-layer': 1, antiair: 1, rockets: 1, missiles: 1,
+  submarine: 1, gunboat: 1, 'missile-boat': 1, 'naval-repair': 1,
+  'mine-layer-ship': 1, lander: 1, uhac: 1,
+  fighter: 1, 'ground-attack-jet': 1, 'stealth-fighter': 1, 'spy-plane': 1,
 
-  /* 1.50 — armoured personnel carriers, transports, rotorcraft */
-  apc: 1.5, ifv: 1.5, aegis: 1.5, 'supply-truck': 1.5, 'mobile-repair': 1.5,
-  'command-vehicle': 1.5, copter: 1.5, 'lift-copter': 1.5,
+  /* 0.75 — light vehicles, rotorcraft, transports */
+  apc: 0.75, ifv: 0.75, aegis: 0.75, 'supply-truck': 0.75,
+  'mobile-repair': 0.75, 'command-vehicle': 0.75, copter: 0.75,
+  'lift-copter': 0.75, recon: 0.75, uav: 0.75,
 
-  /* 1.25 — light wheeled vehicles and drones */
-  recon: 1.25, uav: 1.25,
+  /* 0.50 — everything that walks */
+  infantry: 0.5, mech: 0.5, engineer: 0.5, medic: 0.5,
+  'rocket-infantry': 0.5, 'aa-infantry': 0.5, sniper: 0.5, grenadier: 0.5,
+  flamethrower: 0.5, demolitionist: 0.5, commando: 0.5, officer: 0.5,
+  spy: 0.5, 'elite-hero': 0.5, 'attack-dog': 0.5, scout: 0.5,
 });
+
+/** Smallest and largest footprint a unit may declare, in tiles. */
+export const UNIT_MIN_FOOTPRINT = 0.5;
+export const UNIT_MAX_FOOTPRINT = 1.25;
 
 /** Footprint (tiles) for one unit id, defaulting by family. */
 export function unitFootprint(id) {
   const base = id.includes('--') ? id.split('--')[0] : id;
-  if (UNIT_SIZES[base]) return [UNIT_SIZES[base], UNIT_SIZES[base]];
-  return [1, 1];
+  if (UNIT_SIZES[base] !== undefined) return [UNIT_SIZES[base], UNIT_SIZES[base]];
+  return [0.5, 0.5];
 }
 
 /** Terrain cells: 64³ design → 32×32 world ground at half vertical scale, so

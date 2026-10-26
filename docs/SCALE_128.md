@@ -192,8 +192,10 @@ The review page is a **true-scale** preview window, not a thumbnail grid: every
 preview keeps its baked pixel size, so relative size on screen is the relative
 size in game. `scale-lineup.png` draws each unit on a shared baseline with its
 **ground footprint diamond** — the filled diamond is the ground the unit covers
-and the green diamond inside it is exactly one tile — so a 1.75-tile tank and a
-2-tile battleship are directly comparable with a 1-tile rifleman at 1:1.
+and the green diamond inside it is exactly one tile — so a 1.25-tile battleship is
+directly comparable with a half-tile rifleman at 1:1. `unit-size-wall.png` shows all
+58 types that way, and `unit-size.png` is the 0.5 → 1.25 ladder next to a 2×2
+building at the same 1:1 zoom.
 `unit-size-wall.png` is the whole roster at 1:1 on one continuous tile grid,
 grouped by size class; `unit-size.png` puts the change itself side by side: the same sprite resampled
 into a single 1×1 tile (what the previous pipeline did to every unit) next to
@@ -231,12 +233,15 @@ The bake is deterministic: manifest hashes, frame dedupe and cell sizes are
 stable across runs, and test 12 of `tests/elevation.test.js` re-bakes
 `elevation-00`/`elevation-32` into a temporary directory to prove it.
 
-Current payload: **17,880 strips, 176.75 MB** (228 MB on disk with the
-manifest). Sprites carry 4× the pixels they did at the old 64×32 px tile —
-**169 MB of that total is unit strips**, because each unit is baked 8 facings ×
-6 team variants. Indexed PNG with filter 0 was measured best for this art
-(filter 0 ≈ 17.2 kB per tank strip vs 35.1 kB for up and 41.3 kB for paeth), so
-the remaining size levers are structural, not encodings: fewer team variants
-(4 instead of 6 → ≈118 MB) or a 3 px/voxel tile (96×48 px → ≈100 MB, visibly
-softer). Both trade quality or faction coverage, so 4/2 px is the shipped
-choice.
+Current payload: **17,880 strips, 79.15 MB** (130 MB on disk with the
+manifest). **Units are 71.4 MB of that** (13,920 strips, 8 facings × 6 team
+variants each); buildings are 7.4 MB, terrain 0.3 MB and effects under 0.1 MB.
+
+The 0.5–1.25 tile roster is what made this affordable: the earlier 1–2 tile
+sizing was 176.75 MB for the same 17,880 strips, because sprite area grows with
+the square of the footprint. Halving the range cut the payload by 55% with no
+loss of coverage — every facing, team variant and frame is still baked.
+
+Indexed PNG with filter 0 measured best for this art (a 1-tile tank strip is
+17.2 kB at filter 0 vs 35.1 kB for `up` and 41.3 kB for `paeth`), so encoding
+tuning is not the lever; footprint is.

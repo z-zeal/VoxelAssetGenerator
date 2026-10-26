@@ -146,11 +146,12 @@ enlargement anywhere in the roster; the HQ was remodelled, not scaled.
 ## 6. Phase F — bake and validation
 
 ```
-build   500 models, 2,371,252 voxels       (~34 s)
+build   500 models, 1,623,336 voxels       (~31 s)
 preview 500 preview PNGs                   (~3 s)
-bake    17,880 strips, 26,708 frame cells  (758 s)
-        176.75 MB PNG payload, 228 MB on disk
-        (units alone: 13,920 strips / 169.0 MB)
+bake    17,880 strips, 26,708 frame cells  (417 s)
+        79.15 MB PNG payload, 130 MB on disk
+        (units alone: 13,920 strips / 71.4 MB — the 0.5–1.25 tile roster is
+         a third of the 176.75 MB the 1–2 tile roster needed)
 ```
 
 Bake gates that ran in **strict** mode (any failure aborts):
@@ -213,19 +214,22 @@ legacy 64-voxel project).
 **Unit size classes (found in the same review).** Every unit had been forced
 onto a 1×1 footprint, which made a battleship the same ground area as a
 rifleman. `UNIT_SIZES` in `scale.mjs` now maps each role to a footprint of
-**1 / 1.25 / 1.5 / 1.75 / 2 tiles**, and the model is resampled by one uniform
+**0.5 / 0.75 / 1 / 1.25 tiles**, and the model is resampled by one uniform
 factor (never per axis) to reach it:
 
 | class | tiles | units |
 | --- | --- | --- |
-| 1× | 1×1 | all infantry types, scout, attack-dog |
-| 1.25× | 1.25×1.25 | recon, uav |
-| 1.5× | 1.5×1.5 | apc, ifv, aegis, supply-truck, mobile-repair, command-vehicle, copter, lift-copter |
-| 1.75× | 1.75×1.75 | tank, heavy, tanks/rockets/missiles families, fighters, gunboats, submarines, mine warfare |
-| 2× | 2×2 | artillery, bomber, destroyer, cruiser, battleship, carrier, mpa, specter, transport-plane |
+| 0.5× | 0.5×0.5 | all 16 walking types (infantry, engineer, medic, commando, sniper, spy, attack-dog, …) |
+| 0.75× | 0.75×0.75 | recon, uav, apc, ifv, aegis, copter, lift-copter, supply-truck, mobile-repair, command-vehicle |
+| 1× | 1×1 | tank, heavy, mega, bastion, antiair, rockets, missiles, fighters, gunboats, submarines, mine warfare |
+| 1.25× | 1.25×1.25 | artillery, destroyer, cruiser, battleship, carrier, bomber, mpa, specter, transport-plane |
 
-Fractional classes are legal because the game integrates unit positions as
-floating-point world coordinates rather than snapping them to a grid cell;
+Unchanged from the first pass except for the range: the roster was rebounded to
+**0.5 … 1.25 tiles** so units never compete with the 2×2 buildings they stand
+next to (a barrage tank is 6.25× the ground of a rifleman, a barracks is 4× the
+ground of a barrage tank). Fractional classes are legal because the game
+integrates unit positions as floating-point world coordinates rather than
+snapping them to a grid cell;
 `footprintCells()` returns a single cell for a fractional footprint and the
 placement code never rounds units onto the tile grid.
 
@@ -344,11 +348,11 @@ not silent gaps:
 | Faction variants regenerated | 336 (232 unit + 104 building) |
 | Buildings re-authored | 130 models / 26 types, 85 multi-tile ids |
 | Major compounds remodelled | 3 types (hq, airport, port) = 15 models |
-| Voxels regenerated | 2,371,252 |
+| Voxels regenerated | 1,623,336 |
 | Previews regenerated | 500 |
-| Baked strips | 17,880 (26,708 frame cells, 176.75 MB) |
-| Largest cell | `hq` 385×239 px (3×3 tiles) |
-| Unit size classes | 5 (1 / 1.25 / 1.5 / 1.75 / 2 tiles) |
+| Baked strips | 17,880 (26,708 frame cells, 79.15 MB) |
+| Largest cell | `hq` 385×239 px (3×3 tiles); largest unit `carrier` 131×91 px (1.25 tiles) |
+| Unit size classes | 4 (0.5 / 0.75 / 1 / 1.25 tiles) |
 | Runtime files integrated | 3 modules + editor page + generated scale table |
 | Automated gates | 31 passing (15 elevation + 16 scale) |
 | Animation motion failures | 0 |

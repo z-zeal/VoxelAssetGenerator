@@ -504,7 +504,10 @@ function buildLineup(rows) {
       const fp = meta?.footprint ?? [1, 1];
       const guided = meta?.kind === 'unit';
       const guideW = guided ? Math.round(fp[0] * TILE_W) + 30 : 0;
-      const slot = Math.max(f.w + 34, guideW, textWidth(modelId, 1) + 20, 100);
+      // The caption is two lines: the id, then "<note> - <size class> tile".
+      const caption = `${(item.note ?? '').toUpperCase()}${item.note ? ' - ' : ''}${fp[0]}X${fp[1]} TILE`;
+      const slot = Math.max(f.w + 34, guideW,
+        textWidth(modelId, 1) + 26, textWidth(caption, 1) + 46, 100);
       const above = Math.max(f.anchorY, guided ? Math.round(fp[1] * HALF_H) : 0);
       const below = Math.max(f.h - f.anchorY, guided ? Math.round(fp[1] * HALF_H) : 0);
       items.push({ modelId, variant, facing, f, fp, meta, guided, slot, above, below, note: item.note });
@@ -561,11 +564,11 @@ function buildLineup(rows) {
   strokeDiamond(px, W, H, lx + 64, lcy, HALF_W, HALF_H, FOOTPRINT_EDGE);
   drawText(px, W, H, lx, lcy + 42, '1 TILE = 32 VOXELS = 128X64 PX', '#a7b4c4', 1);
   lx += 370;
-  const hw = Math.round(1.75 * HALF_W), hh = Math.round(1.75 * HALF_H);
+  const hw = Math.round(1.25 * HALF_W), hh = Math.round(1.25 * HALF_H);
   fillDiamondSize(px, W, H, lx + 100, lcy, hw, hh, FOOTPRINT_FILL);
   strokeDiamond(px, W, H, lx + 100, lcy, hw, hh, FOOTPRINT_EDGE);
   strokeDiamond(px, W, H, lx + 100, lcy, HALF_W, HALF_H, TILE_REF_EDGE);
-  drawText(px, W, H, lx, lcy + 42, '1.75 TILES (TANK) - GREEN DIAMOND = ONE TILE', '#a7b4c4', 1);
+  drawText(px, W, H, lx, lcy + 42, '1.25 TILES (BATTLESHIP) - GREEN DIAMOND = ONE TILE', '#a7b4c4', 1);
   lx += 520;
   drawText(px, W, H, lx, lcy - 12, 'EVERY SPRITE IS DRAWN ONE IMAGE PIXEL PER SCREEN PIXEL', '#7f8c9b', 1);
   drawText(px, W, H, lx, lcy, 'ON A SHARED BASELINE - THE SIZES YOU SEE ARE THE SIZES', '#7f8c9b', 1);
@@ -582,13 +585,13 @@ function buildLineup(rows) {
  */
 function buildSizeWall() {
   const pad = 22;
-  const CLASSES = [1, 1.25, 1.5, 1.75, 2];
+  const CLASSES = [0.5, 0.75, 1, 1.25];
   const ids = Object.keys(MANIFEST.models)
     .filter(id => MANIFEST.models[id].meta?.kind === 'unit' && !id.includes('--'));
   const byClass = new Map(CLASSES.map(c => [c, []]));
   for (const id of ids) {
     const fp = MANIFEST.models[id].meta?.footprint?.[0] ?? 1;
-    const key = CLASSES.find(c => Math.abs(c - fp) < 0.001) ?? 1;
+    const key = CLASSES.find(c => Math.abs(c - fp) < 0.001) ?? 0.5;
     byClass.get(key).push(id);
   }
 
@@ -631,7 +634,7 @@ function buildSizeWall() {
   for (let i = 0; i < W * H; i++) { px[i * 4] = 16; px[i * 4 + 1] = 20; px[i * 4 + 2] = 26; px[i * 4 + 3] = 255; }
 
   drawText(px, W, H, pad, 14, 'UNIT SIZE WALL - EVERY UNIT TYPE AT 1:1 ON THE SAME TILE GRID', '#8fb2d8', 2);
-  drawText(px, W, H, pad, 38, 'EACH SPRITE SITS ON ITS OWN TILE DIAMOND - GREEN DIAMOND = ONE TILE - GROUPED BY SIZE CLASS', '#7f8c9b', 1);
+  drawText(px, W, H, pad, 38, 'EACH SPRITE SITS ON ITS OWN TILE DIAMOND - GREEN DIAMOND = ONE TILE - UNITS RUN 0.5 TO 1.25 TILES', '#7f8c9b', 1);
 
   let y = HEAD;
   for (const sec of sections) {
@@ -657,98 +660,100 @@ function buildSizeWall() {
 }
 
 /* ------------------------------------------------------------ unit size -- */
-/** Nearest-neighbour resize by an arbitrary factor (>1 shrinks). */
-function resampleNearest(img, factor) {
-  const w = Math.max(1, Math.round(img.width / factor));
-  const h = Math.max(1, Math.round(img.height / factor));
-  const out = Buffer.alloc(w * h * 4);
-  for (let y = 0; y < h; y++) {
-    const sy = Math.min(img.height - 1, Math.round(y * factor));
-    for (let x = 0; x < w; x++) {
-      const sx = Math.min(img.width - 1, Math.round(x * factor));
-      const si = (sy * img.width + sx) * 4, di = (y * w + x) * 4;
-      out[di] = img.pixels[si]; out[di + 1] = img.pixels[si + 1];
-      out[di + 2] = img.pixels[si + 2]; out[di + 3] = img.pixels[si + 3];
-    }
-  }
-  return { width: w, height: h, pixels: out };
-}
-
-/** Crop one frame out of a baked strip. */
-function cropFrame(image, frame) {
-  const out = Buffer.alloc(frame.w * frame.h * 4);
-  for (let y = 0; y < frame.h; y++) {
-    image.pixels.copy(out, y * frame.w * 4,
-      ((frame.y + y) * image.width + frame.x) * 4,
-      ((frame.y + y) * image.width + frame.x + frame.w) * 4);
-  }
-  return { width: frame.w, height: frame.h, pixels: out };
-}
-
 /**
- * "Unit size: before vs now" sheet. The left column reproduces what the previous
- * pipeline produced — every unit squeezed into a single 1×1 tile — by resampling
- * the current sprite by 1/footprint. The right column is the shipped sprite at
- * 1:1 on the same 128×64 tile diamond, so the growth is literal, not described.
+ * Unit size ladder: one representative per size class drawn 1:1 on a shared
+ * baseline, each standing on its own tile diamond, with a 2×2 building below at
+ * the same scale. Nothing is normalised, so a 0.5-tile rifleman really is half
+ * the width of a 1-tile tank here, and the building is visibly four times the
+ * ground of the biggest unit.
  */
-function buildUnitSize(ids) {
-  const pad = 24, rowH = 224, headH = 118;
-  const W = 1600;
-  const H = headH + ids.length * rowH + pad;
+function buildUnitLadder(samples, building) {
+  const pad = 24;
+  const W = 1240;
+
+  const sheets = samples.map(s => {
+    const sh = sheet(s.id, 'right', '0');
+    return sh ? { ...s, sh, f: sh.face.frames[0] } : null;
+  }).filter(Boolean);
+  const bSheet = sheet(building, 'right', '0');
+  const bFrame = bSheet?.face.frames[0];
+
+  const headH = 84;
+  const unitSpan = 150;            // space above the baseline for tall units
+  const unitsBaseline = headH + unitSpan;
+  // How far each sprite hangs below its anchor: the label must clear the
+  // lowest of the footprint diamond and the sprite body.
+  const unitBelow = Math.max(
+    ...sheets.map(s => Math.max(s.f.h - s.f.anchorY, Math.round(s.fp * HALF_H))),
+    0,
+  );
+  const unitLabelH = 74;
+  const buildingGap = 26;
+
+  const bSheetH = bFrame ? bFrame.h : 0;
+  const buildingBelow = Math.max(bSheetH - (bFrame?.anchorY ?? 0), Math.round(2 * HALF_H));
+  const buildingBaseline = unitsBaseline + unitBelow + unitLabelH + buildingGap + bSheetH;
+  const H = buildingBaseline + buildingBelow + 54 + pad;
+
   const px = Buffer.alloc(W * H * 4);
   for (let i = 0; i < W * H; i++) { px[i * 4] = 16; px[i * 4 + 1] = 20; px[i * 4 + 2] = 26; px[i * 4 + 3] = 255; }
 
-  drawText(px, W, H, pad, 18, 'UNIT SIZE - BEFORE AND AFTER THE ROLE SIZE CLASSES', '#8fb2d8', 2);
-  drawText(px, W, H, pad, 44, 'LEFT: THE OLD PIPELINE, EVERY UNIT FORCED INTO ONE 1X1 TILE', '#a7b4c4', 1);
-  drawText(px, W, H, pad, 56, 'RIGHT: THE SHIPPED SPRITE ON THE SAME 128X64 TILE, AT ITS ROLE SIZE', '#a7b4c4', 1);
-  // Column headers, aligned over the two sprite columns.
-  const beforeX = 470, afterX = 1010;
-  drawText(px, W, H, beforeX - 78, headH - 26, 'WAS 1X1 TILE', '#c8d2de', 1);
-  drawText(px, W, H, afterX - 78, headH - 26, 'NOW ROLE SIZE', '#4fc98a', 1);
-  fillRect(px, W, H, 760, headH - 20, 1, H - headH - pad + 12, '#232d3b');
+  drawText(px, W, H, pad, 14, 'UNIT SIZE LADDER - 0.5 / 0.75 / 1 / 1.25 TILES AT 1:1', '#8fb2d8', 2);
+  drawText(px, W, H, pad, 38, 'EACH UNIT STANDS ON ITS OWN TILE DIAMOND (GREEN = ONE TILE). SAME ZOOM, SAME BASELINE, NOTHING SCALED.',
+    '#7f8c9b', 1);
+  // Length of one tile in words, so the ruler below is unambiguous.
+  drawText(px, W, H, pad, 54, 'ONE TILE = 32 VOXELS = 128 X 64 PX AT THIS ZOOM.', '#66788c', 1);
 
-  let y = headH;
-  for (const id of ids) {
-    const s = sheet(id, 'right', '0');
-    if (!s) continue;
-    const f = s.face.frames[0];
-    const meta = MANIFEST.models[id]?.meta;
-    const fp = meta?.footprint ?? [1, 1];
-    const factor = Math.max(fp[0] ?? 1, fp[1] ?? 1);
-    const baseline = y + 130;
+  // Slots: wide enough for the widest sprite plus its caption, laid out evenly.
+  const SLOT = 290;
+  const xs = sheets.map((s, i) => pad + 70 + i * SLOT);
 
-    drawText(px, W, H, pad, y + 12, id, '#eef3f8', 1);
-    drawText(px, W, H, pad, y + 26, `${fp[0]}X${fp[1]} TILE`, '#8fb2d8', 1);
-    drawText(px, W, H, pad, y + 40, `${meta?.bounds.size.join('X') ?? ''} VOX`, '#66788c', 1);
+  for (let i = 0; i < sheets.length; i++) {
+    const s = sheets[i], cx = xs[i];
+    drawFootprintGuide(px, W, H, s.id, cx, unitsBaseline);
+    blit(px, W, H, s.sh.image, s.f.x, s.f.y, s.f.w, s.f.h,
+      Math.round(cx - s.f.anchorX), Math.round(unitsBaseline - s.f.anchorY));
+  }
+  // Captions, centred under each sprite and clear of its silhouette.
+  const capY = unitsBaseline + unitBelow + 10;
+  for (let i = 0; i < sheets.length; i++) {
+    const s = sheets[i], cx = xs[i];
+    const l1 = s.id.toUpperCase();
+    const l2 = `${s.fp} TILE = ${Math.round(s.fp * 32)} X ${Math.round(s.fp * 32)} VOX`;
+    const l3 = `SPRITE ${s.f.w} X ${s.f.h} PX`;
+    drawText(px, W, H, cx - Math.round(textWidth(l1, 1) / 2), capY, l1, '#eef3f8', 1);
+    drawText(px, W, H, cx - Math.round(textWidth(l2, 1) / 2), capY + 14, l2, '#8fb2d8', 1);
+    drawText(px, W, H, cx - Math.round(textWidth(l3, 1) / 2), capY + 26, l3, '#66788c', 1);
+    // Footprint bar: exactly the unit's footprint in tiles, drawn 1:1.
+    const barW = Math.round(s.fp * TILE_W);
+    const barX = cx - Math.round(barW / 2);
+    fillRect(px, W, H, barX, capY + 36, barW, 6, '#2f7d5a');
+    strokeRect(px, W, H, barX, capY + 36, barW, 6, '#40526a');
+  }
 
-    // BEFORE — same art resampled into a single tile, exactly what the old
-    // uniform-1x1 pipeline produced.
-    const before = resampleNearest(cropFrame(s.image, f), factor);
-    drawFootprintGuide(px, W, H, id, beforeX, baseline);
-    blit(px, W, H, before, 0, 0, before.width, before.height,
-      Math.round(beforeX - f.anchorX / factor), Math.round(baseline - f.anchorY / factor));
-    drawText(px, W, H, beforeX - 96, baseline + 74, `${before.width}X${before.height} PX`, '#66788c', 1);
-
-    // NOW — the shipped sprite at 1:1 on the same diamond.
-    drawFootprintGuide(px, W, H, id, afterX, baseline);
-    blit(px, W, H, s.image, f.x, f.y, f.w, f.h,
-      Math.round(afterX - f.anchorX), Math.round(baseline - f.anchorY));
-    drawText(px, W, H, afterX - 96, baseline + 74, `${f.w}X${f.h} PX`, '#4fc98a', 1);
-
-    // Tile ruler: a bar exactly `footprint` tiles long, with a tick per tile, so
-    // the footprint can be read off the picture instead of the caption.
-    const rulerX = 1210;
-    const barW = Math.round(factor * TILE_W);
-    fillRect(px, W, H, rulerX, y + 92, barW, 14, '#2f7d5a');
-    for (let i = 1; i < factor; i++) {
-      fillRect(px, W, H, rulerX + Math.round(i * TILE_W), y + 92, 1, 14, '#101418');
+  // 2×2 building, same model space, to show the upper end of the hierarchy.
+  if (bFrame) {
+    const bfp = MANIFEST.models[building]?.meta?.footprint ?? [2, 2];
+    const bcx = pad + Math.round((bfp[0] * TILE_W) / 2) + 30;
+    for (let i = 0; i < Math.ceil(bfp[0]); i++) {
+      for (let j = 0; j < Math.ceil(bfp[1]); j++) {
+        strokeDiamond(px, W, H, bcx + (i - j) * HALF_W, buildingBaseline + (i + j) * HALF_H, HALF_W, HALF_H, '#3a4c60');
+      }
     }
-    strokeRect(px, W, H, rulerX, y + 92, barW, 14, '#40526a');
-    drawText(px, W, H, rulerX, y + 112,
-      `${fp[0]} X ${fp[1]} TILE = ${Math.round(fp[0] * 32)} X ${Math.round(fp[1] * 32)} VOX`, '#a7b4c4', 1);
-    drawText(px, W, H, rulerX, y + 124, `SPRITE ${f.w} X ${f.h} PX, 1 TILE = ${TILE_W} PX`, '#66788c', 1);
-    if (factor <= 1.001) drawText(px, W, H, rulerX, y + 136, 'UNCHANGED - ALREADY 1X1', '#4fc98a', 1);
-    y += rowH;
+    blit(px, W, H, bSheet.image, bFrame.x, bFrame.y, bFrame.w, bFrame.h,
+      Math.round(bcx - bFrame.anchorX), Math.round(buildingBaseline - bFrame.anchorY));
+    const l1 = building.toUpperCase();
+    const l2 = `${bfp[0]} X ${bfp[1]} TILES = ${bfp[0] * 32} X ${bfp[1] * 32} VOX`;
+    const l3 = `SPRITE ${bFrame.w} X ${bFrame.h} PX`;
+    const bCapY = buildingBaseline + buildingBelow + 14;
+    drawText(px, W, H, bcx - Math.round(textWidth(l1, 1) / 2), bCapY, l1, '#eef3f8', 1);
+    drawText(px, W, H, bcx - Math.round(textWidth(l2, 1) / 2), bCapY + 14, l2, '#8fb2d8', 1);
+    drawText(px, W, H, bcx - Math.round(textWidth(l3, 1) / 2), bCapY + 26, l3, '#66788c', 1);
+    const noteX = bcx + Math.round(bfp[0] * HALF_W) + 34;
+    drawText(px, W, H, noteX, buildingBaseline - 56, 'BUILDINGS START AT 2X2 = 64 X 64 VOX', '#a7b4c4', 1);
+    drawText(px, W, H, noteX, buildingBaseline - 44, '4X THE GROUND OF THE BIGGEST UNIT (1.25 TILES)', '#a7b4c4', 1);
+    drawText(px, W, H, noteX, buildingBaseline - 26, 'THAT IS THE CEILING UNITS DELIBERATELY STOP BELOW', '#7f8c9b', 1);
+    drawText(px, W, H, noteX, buildingBaseline - 14, 'SO INFANTRY NEVER READS AS LARGER THAN A BASE', '#7f8c9b', 1);
   }
   return { pixels: px, width: W, height: H };
 }
@@ -826,13 +831,21 @@ const sizeWall = buildSizeWall();
 fs.writeFileSync(path.join(OUT, 'unit-size-wall.png'), encodePng(sizeWall.width, sizeWall.height, sizeWall.pixels));
 console.log(`Wrote docs/review/unit-size-wall.png (${sizeWall.width}×${sizeWall.height})`);
 
-const unitSize = buildUnitSize(['infantry', 'recon', 'apc', 'tank', 'artillery', 'battleship', 'bomber']);
+const unitSize = buildUnitLadder(
+  [
+    { id: 'infantry', fp: 0.5 },
+    { id: 'apc', fp: 0.75 },
+    { id: 'tank', fp: 1 },
+    { id: 'battleship', fp: 1.25 },
+  ],
+  'barracks',
+);
 fs.writeFileSync(path.join(OUT, 'unit-size.png'), encodePng(unitSize.width, unitSize.height, unitSize.pixels));
 console.log(`Wrote docs/review/unit-size.png (${unitSize.width}×${unitSize.height})`);
 
 const lineup = buildLineup([
   {
-    title: 'INFANTRY — ONE 32 UNIT TILE, HUMAN SIZED',
+    title: 'INFANTRY — HALF A TILE, HUMAN SIZED',
     items: [
       { id: 'infantry', note: 'rifleman' }, { id: 'engineer', note: 'engineer' },
       { id: 'medic', note: 'medic' }, { id: 'commando', note: 'commando' },

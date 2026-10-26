@@ -132,23 +132,30 @@ test('4. Scale hierarchy: infantry < vehicles < posts < facilities < HQ, and uni
   const foot = ['infantry', 'engineer', 'medic', 'rocket-infantry', 'sniper'];
   for (const id of foot) {
     const [w, , h] = size(id);
-    assert.ok(w <= 32 && h <= 32, `${id}: infantry must stay inside one tile (${w}×${h})`);
-    assert.ok(h >= 16, `${id}: infantry must stay readable as a person (${h} voxels tall)`);
-    assert.deepEqual(voxDoc.models[id].footprint, [1, 1], `${id} is a 1×1 unit`);
+    assert.ok(w <= 16 && h <= 16, `${id}: infantry must stay inside half a tile (${w}×${h})`);
+    assert.ok(h >= 8, `${id}: infantry must stay readable as a person (${h} voxels tall)`);
+    assert.deepEqual(voxDoc.models[id].footprint, [0.5, 0.5], `${id} is a half-tile unit`);
   }
-  // Units grow with their role: 1×1 → 1.25 → 1.5 → 1.75 → 2 tiles. They move on
-  // free floating-point positions, so fractional footprints are legitimate.
-  assert.deepEqual(voxDoc.models.recon.footprint, [1.25, 1.25]);
-  assert.deepEqual(voxDoc.models.apc.footprint, [1.5, 1.5]);
-  assert.deepEqual(voxDoc.models.tank.footprint, [1.75, 1.75]);
-  assert.deepEqual(voxDoc.models.artillery.footprint, [2, 2]);
-  assert.deepEqual(voxDoc.models.battleship.footprint, [2, 2]);
+  // The roster is bounded: nothing is smaller than half a tile and nothing is
+  // bigger than 1.25 tiles. Buildings own everything above that.
+  const unitIds = Object.keys(voxDoc.models).filter(id => voxDoc.models[id].kind === 'unit');
+  for (const id of unitIds) {
+    const fp = voxDoc.models[id].footprint[0];
+    assert.ok(fp >= 0.5 - 1e-9, `${id}: footprint ${fp} below the 0.5 tile floor`);
+    assert.ok(fp <= 1.25 + 1e-9, `${id}: footprint ${fp} above the 1.25 tile ceiling`);
+    assert.equal(fp % 0.25, 0, `${id}: footprint ${fp} must be a quarter-tile step`);
+  }
+  // Role ladder: 0.5 → 0.75 → 1.0 → 1.25 tiles.
+  assert.deepEqual(voxDoc.models.recon.footprint, [0.75, 0.75]);
+  assert.deepEqual(voxDoc.models.apc.footprint, [0.75, 0.75]);
+  assert.deepEqual(voxDoc.models.tank.footprint, [1, 1]);
+  assert.deepEqual(voxDoc.models.artillery.footprint, [1.25, 1.25]);
+  assert.deepEqual(voxDoc.models.battleship.footprint, [1.25, 1.25]);
   const w = id => voxDoc.models[id].bounds.size[0];
   assert.ok(w('infantry') < w('recon'), 'recon must be wider than infantry');
-  assert.ok(w('recon') < w('apc'), 'APC must be wider than a recon jeep');
-  assert.ok(w('apc') < w('tank'), 'a tank must be wider than an APC');
-  assert.ok(w('tank') < w('artillery'), 'artillery must be wider than a tank');
-  assert.ok(w('tank') < w('battleship') + 8, 'capitals stay in the same size class as tanks');
+  assert.ok(w('recon') < w('tank'), 'a tank must be wider than a recon jeep');
+  assert.ok(w('tank') < w('battleship'), 'a capital ship must be wider than a tank');
+  assert.ok(w('battleship') < w('barracks'), 'even the biggest unit stays smaller than a 2×2 facility');
   for (const id of ['pillbox', 'bunker', 'guard-tower']) {
     assert.deepEqual(voxDoc.models[id].footprint, [1, 1], `${id} is a 1×1 post`);
   }
@@ -171,10 +178,10 @@ test('5. World resampling is deterministic and lands each asset inside its footp
   // Geometry is recalculated (uniform factor) into the block its footprint
   // occupies — never stretched, never cropped.
   for (const [id, kind, fp] of [
-    ['infantry', 'unit', [1, 1]],
-    ['recon', 'unit', [1.25, 1.25]],
-    ['tank', 'unit', [1.75, 1.75]],
-    ['artillery', 'unit', [2, 2]],
+    ['infantry', 'unit', [0.5, 0.5]],
+    ['recon', 'unit', [0.75, 0.75]],
+    ['tank', 'unit', [1, 1]],
+    ['artillery', 'unit', [1.25, 1.25]],
     ['hq', 'building', [3, 3]],
     ['port', 'building', [3, 2]],
   ]) {
@@ -550,8 +557,8 @@ test('16. The review page shows units at their real pixel size, not a normalised
   // True scale for the headline units, measured from the baked cells.
   // Preview PNGs are frame-0 crops of their baked cells (the cell is the union
   // of every animation frame, so it can be a few pixels larger).
-  assert.match(page, /alt="tank"[^>]*width="153"[^>]*height="108"/, 'tank preview must be 153×108');
-  assert.match(page, /alt="infantry"[^>]*width="47"[^>]*height="60"/, 'infantry preview must be 47×60');
+  assert.match(page, /alt="tank"[^>]*width="87"[^>]*height="64"/, 'tank preview must be 87×64');
+  assert.match(page, /alt="infantry"[^>]*width="27"[^>]*height="31"/, 'infantry preview must be 27×31');
   assert.match(page, /alt="hq"[^>]*width="385"[^>]*height="239"/, 'hq preview must be 385×239');
   // The hierarchy that the page is supposed to make visible.
   const px = id => {
@@ -559,7 +566,7 @@ test('16. The review page shows units at their real pixel size, not a normalised
     return Number(v[1]);
   };
   assert.ok(px('hq') > px('tank') && px('tank') > px('infantry'),
-    'a 3×3 HQ must be wider on the page than a 1.75-tile tank, which must be wider than a 1-tile rifleman');
+    'a 3×3 HQ must be wider on the page than a 1-tile tank, which must be wider than a half-tile rifleman');
 
   // Figures must declare their real size and offer integer zoom without blur.
   for (const fig of ['scale-lineup.png', 'scale-scene.png', 'before-after.png', 'unit-size.png', 'unit-size-wall.png']) {

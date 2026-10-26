@@ -32,8 +32,9 @@ specified in `docs/SCALE_128.md`; per-asset sizes are listed in
 One map tile is a **128 × 64 px** isometric diamond over 32 voxels, i.e. **4 px
 per voxel horizontally and 2 px vertically** — the diamond grew with the voxel
 budget so 1×1 assets stay crisp instead of being squeezed into 2×1 px per voxel.
-Units are sized by role (1 / 1.25 / 1.5 / 1.75 / 2 tiles) rather than all being
-1×1; see the *Unit size classes* table in the sizing matrix.
+Units are sized by role on **0.5 / 0.75 / 1 / 1.25 tiles** — half a tile for infantry
+up to a tile and a quarter for capital ships, always under the 2×2 area a building
+starts at. See the *Unit size classes* table in the sizing matrix.
 
 The ZIP includes a minimal `package.json` for these commands. Re-baking can take time; preserve a backup of the original assets if you intend to compare outputs.
 

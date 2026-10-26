@@ -157,22 +157,22 @@ target footprint in tiles. The model is then resampled by **one uniform factor**
 (nothing is stretched per axis) so it fills that footprint plus its role height.
 
 Size classes exist because units are *not* grid-locked: the game integrates
-their positions as floating-point world units, so a 1.25-tile tank destroyer is
-as valid as a 1-tile rifleman. A 2-tile battleship therefore really is twice the
-ground footprint of an infantry squad, while a 1-tile machine-gunner stays
-human-sized.
+their positions as floating-point world units, so a 0.75-tile APC is as valid as a
+half-tile rifleman. The roster is deliberately bounded: **nothing is smaller than
+half a tile and nothing is bigger than 1.25 tiles**, so units never compete with
+the 2×2 buildings they stand next to.
 
 | size class | tiles | world voxels | units |
 | --- | --- | --- | --- |
-${[1, 1.25, 1.5, 1.75, 2].map(c => {
+${[0.5, 0.75, 1, 1.25].map(c => {
   const list = units.filter(r => r.footprint[0] === c).map(r => `\`${r.id}\``);
   return `| ${c}× | ${c} × ${c} | ${c * 32} × ${c * 32} | ${list.length ? list.join(', ') : '—'} |`;
 }).join('\n')}
 
-Larger classes carry the heavy hardware: a 2×2 battleship or strategic bomber
-has four times the ground area of an infantry squad at the same sprite density,
-which is what makes the hierarchy readable on the map. Every unit keeps eight
-directional facings and six team variants.
+A battleship covers **6.25×** the ground of a rifleman while still fitting inside
+a tile and a quarter, and every unit keeps eight directional facings and six team
+variants. \`docs/review/unit-size.png\` draws the ladder at 1:1 next to a 2×2
+barracks, and \`docs/review/unit-size-wall.png\` shows all 58 types on one grid.
 
 ${section('Base unit types', units)}
 
@@ -353,51 +353,50 @@ code{background:#0b0f14;padding:1px 5px;border-radius:4px}
   <div class="rule">
     Every image is shown <b>1:1</b> — one image pixel is one screen pixel, at the same
     <b>4 px per voxel across, 2 px down</b> density the runtime blits (previews are frame-0 crops
-    of their baked cells). Nothing is normalised: a 385 px HQ <em>is</em> several times wider on
-    screen than a 47 px rifleman.
+    of their baked cells). Nothing is normalised: a 385 px HQ <em>is</em> many times wider on
+    screen than a 27 px rifleman.
+    Units run from <b>0.5 to 1.25 tiles</b>; buildings start at <b>2×2</b>.
     One map tile is <b>128 × 64 px</b> covering <b>32 × 32 voxels</b>, so a voxel is <b>4 × 2 px</b>.
     Use the zoom buttons to inspect at 2×/3×; the art is nearest-neighbour, so it stays crisp.
   </div>
 
-  <h2>1. Unit scale — true size with ground footprint</h2>
+  <h2>1. Unit size ladder — 0.5 → 1.25 tiles at 1:1</h2>
   <div class="rule">
-    Units are drawn at 1:1 on a shared baseline. The dark diamond under each unit is the ground it
-    actually covers; the <b>green diamond</b> inside it is exactly <b>one tile</b>. That is how a
-    1.75-tile tank differs from a 1-tile rifleman, and how a 2-tile battleship covers four times the
-    ground of an infantry squad.
+    One representative per size class, <b>0.5 / 0.75 / 1 / 1.25 tiles</b>, drawn one image pixel per
+    screen pixel on a shared baseline, each standing on its own tile diamond (green diamond = exactly
+    one tile). A <b>2×2 barracks</b> sits underneath at the same zoom: that is the invariant — units
+    run from half a tile to a tile and a quarter, and buildings start at 2×2, four times the ground of
+    the largest unit. Measured sprite widths: infantry <b>49 px</b>, APC <b>73</b>, tank <b>91</b>,
+    battleship <b>113</b>, barracks <b>257</b>.
   </div>
   <figure>
-    <img src="${figureUrl('scale-lineup.png')}" alt="Category lineups at true scale with ground footprints" width="${lineupImg.w}" height="${lineupImg.h}">
-    <figcaption>docs/review/scale-lineup.png — every sprite 1 image pixel per screen pixel, with the
-      ground footprint it occupies at runtime.</figcaption>
+    <img src="${figureUrl('unit-size.png')}" alt="Unit size ladder: 0.5, 0.75, 1 and 1.25 tiles at 1:1" width="${unitSizeImg.w}" height="${unitSizeImg.h}">
+    <figcaption>docs/review/unit-size.png — nothing normalised, nothing scaled for display.</figcaption>
   </figure>
 
   <h2>2. Every unit type at true size</h2>
   <div class="rule">
-    All 58 unit types, drawn <b>1:1</b> on the same continuous tile grid and grouped by size class.
-    Each sprite sits on its own tile diamond and the <b>green diamond is exactly one tile</b>, so the
-    hierarchy is readable without any caption: the rifleman rows occupy one tile, the tank/cruiser rows
-    occupy nearly two, and the artillery/battleship rows fill two. The bar at the right of each class
-    heading is that footprint, drawn to the same scale.
+    All 58 unit types, drawn 1:1 on the same continuous tile grid and grouped by size class. Each
+    sprite sits on its own tile diamond; the bar beside each class heading is that footprint drawn to
+    the same scale.
   </div>
   <figure>
     <img src="${figureUrl('unit-size-wall.png')}" alt="Every unit type at true size, grouped by size class" width="${sizeWallImg.w}" height="${sizeWallImg.h}">
-    <figcaption>docs/review/unit-size-wall.png — 58 types · 1 / 1.25 / 1.5 / 1.75 / 2 tiles · 1 image
+    <figcaption>docs/review/unit-size-wall.png — 58 types · 0.5 / 0.75 / 1 / 1.25 tiles · 1 image
       pixel per screen pixel.</figcaption>
   </figure>
 
-  <h2>3. Unit size — before vs now</h2>
+  <h2>3. Category lineups with ground footprints</h2>
   <div class="rule">
-    The left column reproduces what the previous pipeline produced: the same art resampled into a
-    <b>single 1×1 tile</b>. The right column is the shipped sprite at 1:1 on the same 128×64 tile.
-    Nothing is scaled for display, so the growth is the real change: the tank occupies 56×56 voxels
-    (1.75 tiles) instead of 32×32, the battleship 64×64 (2 tiles) instead of 32×32. The bar under
-    each unit is its footprint measured in tiles.
+    Units, buildings and terrain in category rows, each sprite on its ground-footprint diamond with
+    its size class printed underneath — so a 0.5-tile rifleman, a 0.75-tile APC, a 1-tile tank and a
+    1.25-tile battleship can be read against each other and against the 2×2 facilities and 3×3
+    compounds in the same sheet.
   </div>
   <figure>
-    <img src="${figureUrl('unit-size.png')}" alt="Unit size before and after the role size classes" width="${unitSizeImg.w}" height="${unitSizeImg.h}">
-    <figcaption>docs/review/unit-size.png — same model, same 128×64 tile: forced 1×1 (left) vs role
-      size (right). Infantry is the unchanged 1×1 reference.</figcaption>
+    <img src="${figureUrl('scale-lineup.png')}" alt="Category lineups with ground footprints" width="${lineupImg.w}" height="${lineupImg.h}">
+    <figcaption>docs/review/scale-lineup.png — every sprite 1 image pixel per screen pixel, on a
+      shared baseline, with its ground footprint.</figcaption>
   </figure>
 
   <h2>4. Representative scene</h2>
