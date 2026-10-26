@@ -6,6 +6,7 @@
  *
  * Run: npm run voxels:matrix   (or as part of `npm run voxels:review`)
  */
+import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -244,9 +245,22 @@ function pngSize(name) {
   const buf = fs.readFileSync(path.join(ROOT, 'docs/review', name));
   return { w: buf.readUInt32BE(16), h: buf.readUInt32BE(20) };
 }
+
+/**
+ * Content-hashed URL for a generated figure. The file names are stable across
+ * rebuilds, so without a version query a browser (or a proxy) can keep showing
+ * a scene from an earlier bake — which looks exactly like a broken asset.
+ */
+function figureUrl(name, size) {
+  const buf = fs.readFileSync(path.join(ROOT, 'docs/review', name));
+  const hash = crypto.createHash('sha1').update(buf).digest('hex').slice(0, 10);
+  return `${name}?v=${hash}`;
+}
 const lineupImg = pngSize('scale-lineup.png');
 const sceneImg = pngSize('scale-scene.png');
 const beforeAfterImg = pngSize('before-after.png');
+const unitSizeImg = pngSize('unit-size.png');
+const sizeWallImg = pngSize('unit-size-wall.png');
 const pageRows = rows.map(r => `<tr>
   <td><code>${r.id}</code></td><td>${CATEGORY_LABELS[r.category] ?? r.category}</td>
   <td>${r.heightClass}</td><td>${r.sizeClass === null ? '—' : r.sizeClass + '×'}</td>
@@ -352,30 +366,60 @@ code{background:#0b0f14;padding:1px 5px;border-radius:4px}
     ground of an infantry squad.
   </div>
   <figure>
-    <img src="scale-lineup.png" alt="Category lineups at true scale with ground footprints" width="${lineupImg.w}" height="${lineupImg.h}">
+    <img src="${figureUrl('scale-lineup.png')}" alt="Category lineups at true scale with ground footprints" width="${lineupImg.w}" height="${lineupImg.h}">
     <figcaption>docs/review/scale-lineup.png — every sprite 1 image pixel per screen pixel, with the
       ground footprint it occupies at runtime.</figcaption>
   </figure>
 
-  <h2>2. Representative scene</h2>
-  <div class="rule">Mixed terrain at three elevations, road and bridge connectors, infantry beside
-    vehicles, aircraft, ships, trees, 1×1 posts, 2×2 facilities and the 3×3 HQ — all blitted with the
-    runtime anchors onto 128×64 px tile diamonds.</div>
+  <h2>2. Every unit type at true size</h2>
+  <div class="rule">
+    All 58 unit types, drawn <b>1:1</b> on the same continuous tile grid and grouped by size class.
+    Each sprite sits on its own tile diamond and the <b>green diamond is exactly one tile</b>, so the
+    hierarchy is readable without any caption: the rifleman rows occupy one tile, the tank/cruiser rows
+    occupy nearly two, and the artillery/battleship rows fill two. The bar at the right of each class
+    heading is that footprint, drawn to the same scale.
+  </div>
   <figure>
-    <img src="scale-scene.png" alt="Mixed-scale isometric scene" width="${sceneImg.w}" height="${sceneImg.h}">
+    <img src="${figureUrl('unit-size-wall.png')}" alt="Every unit type at true size, grouped by size class" width="${sizeWallImg.w}" height="${sizeWallImg.h}">
+    <figcaption>docs/review/unit-size-wall.png — 58 types · 1 / 1.25 / 1.5 / 1.75 / 2 tiles · 1 image
+      pixel per screen pixel.</figcaption>
+  </figure>
+
+  <h2>3. Unit size — before vs now</h2>
+  <div class="rule">
+    The left column reproduces what the previous pipeline produced: the same art resampled into a
+    <b>single 1×1 tile</b>. The right column is the shipped sprite at 1:1 on the same 128×64 tile.
+    Nothing is scaled for display, so the growth is the real change: the tank occupies 56×56 voxels
+    (1.75 tiles) instead of 32×32, the battleship 64×64 (2 tiles) instead of 32×32. The bar under
+    each unit is its footprint measured in tiles.
+  </div>
+  <figure>
+    <img src="${figureUrl('unit-size.png')}" alt="Unit size before and after the role size classes" width="${unitSizeImg.w}" height="${unitSizeImg.h}">
+    <figcaption>docs/review/unit-size.png — same model, same 128×64 tile: forced 1×1 (left) vs role
+      size (right). Infantry is the unchanged 1×1 reference.</figcaption>
+  </figure>
+
+  <h2>4. Representative scene</h2>
+  <div class="rule">Mixed terrain with a two-step hill (level 24 on a level-8 apron, so the cliffs are
+    32 px and 16 px tall), road and bridge connectors, infantry beside vehicles, aircraft, ships, trees, 1×1
+    posts, 2×2 facilities and the 3×3 HQ — all blitted with the runtime anchors onto 128×64 px tile
+    diamonds. Terrain tops are tinted by height and cliffs are drawn after the ground, so a raised
+    terrace reads as a step instead of a line across the grass.</div>
+  <figure>
+    <img src="${figureUrl('scale-scene.png')}" alt="Mixed-scale isometric scene" width="${sceneImg.w}" height="${sceneImg.h}">
     <figcaption>docs/review/scale-scene.png — 14×12 tile scene at 1:1, cropped to content.</figcaption>
   </figure>
 
-  <h2>3. Before / after</h2>
+  <h2>5. Before / after (whole roster)</h2>
   <div class="rule">Legacy previews were rendered at 2× runtime scale; they are halved here so the
     comparison is 1:1 on both sides. Sprites grew, they did not shrink.</div>
   <figure>
-    <img src="before-after.png" alt="Before and after previews" width="${beforeAfterImg.w}" height="${beforeAfterImg.h}">
+    <img src="${figureUrl('before-after.png')}" alt="Before and after previews" width="${beforeAfterImg.w}" height="${beforeAfterImg.h}">
     <figcaption>Before: 64³ authoring cube treated as a whole tile. After: 128³ canvas, 32-unit tile,
       role-appropriate footprints.</figcaption>
   </figure>
 
-  <h2>4. Building footprint gallery</h2>
+  <h2>6. Building footprint gallery</h2>
   <div class="rule">Multi-tile compounds are authored across their full footprint: hq 3×3,
     airport 3×3, port 3×2, all other facilities 2×2, posts and turrets 1×1. Cards keep their baked
     pixel size, so relative size is readable.</div>
@@ -384,7 +428,7 @@ code{background:#0b0f14;padding:1px 5px;border-radius:4px}
       .map(r => card(r)).join('\n    ')}
   </div>
 
-  <h2>5. Full roster previews</h2>
+  <h2>7. Full roster previews</h2>
   <div class="rule">Every generated preview, grouped by kind. ${count.total} models: ${units.length} unit types,
     ${buildings.length} building types, ${rows.filter(r => r.kind === 'terrain').length} terrain cells and
     ${count.effects} effect, each with its four faction variants. Previews are natural size — compare
@@ -394,7 +438,7 @@ code{background:#0b0f14;padding:1px 5px;border-radius:4px}
   ${rosterSection('Buildings and structures', rows.filter(r => r.kind === 'building'))}
   ${rosterSection('Terrain and effects', rows.filter(r => r.kind === 'terrain' || r.kind === 'effect'))}
 
-  <h2>6. Full sizing matrix</h2>
+  <h2>8. Full sizing matrix</h2>
   <div class="scroll">
     <table>
       <thead><tr><th>id</th><th>category</th><th>height class</th><th>size class</th><th>footprint</th>

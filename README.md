@@ -21,8 +21,9 @@ Requires Node.js with ES module support. From this folder:
 - `npm run voxels:preview` — render static model previews into `game_assets/voxels/`.
 - `npm run voxels:bake` — regenerate baked facing/variant/frame sprite strips and their manifest.
 - `npm run voxels:all` — run all three steps in sequence.
+- `npm run voxels:serve` — serve the review pages on http://localhost:8000 so the sprite sheets resolve.
 - `npm run voxels:review` — regenerate the review sheets (`docs/review/*.png`), the sizing matrix and the review pages.
-- `npm test` — elevation, scale, manifest, animation, sprite-crispness and runtime integration gates (30 tests).
+- `npm test` — elevation, scale, manifest, animation, sprite-crispness and runtime integration gates (31 tests).
 
 The 2026 scale migration (128³ canvas, 32-unit tiles, multi-tile footprints) is
 specified in `docs/SCALE_128.md`; per-asset sizes are listed in

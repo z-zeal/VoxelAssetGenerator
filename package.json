@@ -11,6 +11,7 @@
     "voxels:all": "npm run voxels:build && npm run voxels:preview && npm run voxels:bake",
     "voxels:review": "node tools/voxel_pipeline/review.mjs && node tools/voxel_pipeline/sizing-matrix.mjs && node tools/voxel_pipeline/sprite-index.mjs",
     "voxels:matrix": "node tools/voxel_pipeline/sizing-matrix.mjs",
-    "voxels:sprite-index": "node tools/voxel_pipeline/sprite-index.mjs"
+    "voxels:sprite-index": "node tools/voxel_pipeline/sprite-index.mjs",
+    "voxels:serve": "node tools/voxel_pipeline/serve-review.mjs"
   }
 }

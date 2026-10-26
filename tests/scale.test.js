@@ -510,7 +510,7 @@ test('14. The iso renderer disables canvas image smoothing around every sprite b
 
 /* --------------------------------------------------- 12. review deliverables */
 test('15. The review deliverables exist and document the scale migration', () => {
-  for (const file of ['scale-scene.png', 'scale-lineup.png', 'before-after.png']) {
+  for (const file of ['scale-scene.png', 'scale-lineup.png', 'before-after.png', 'unit-size.png', 'unit-size-wall.png']) {
     const p = path.join(ROOT, 'docs/review', file);
     assert.ok(fs.existsSync(p), `missing ${file}`);
     assert.ok(fs.statSync(p).size > 5000, `${file} looks empty`);
@@ -562,11 +562,66 @@ test('16. The review page shows units at their real pixel size, not a normalised
     'a 3×3 HQ must be wider on the page than a 1.75-tile tank, which must be wider than a 1-tile rifleman');
 
   // Figures must declare their real size and offer integer zoom without blur.
-  for (const fig of ['scale-lineup.png', 'scale-scene.png', 'before-after.png']) {
+  for (const fig of ['scale-lineup.png', 'scale-scene.png', 'before-after.png', 'unit-size.png', 'unit-size-wall.png']) {
     const png = fs.readFileSync(path.join(ROOT, 'docs/review', fig));
     const w = png.readUInt32BE(16), h = png.readUInt32BE(20);
-    assert.match(page, new RegExp(`src="${fig}"[^>]*width="${w}"[^>]*height="${h}"`), `${fig} must declare ${w}×${h}`);
+    // The URL may carry a content hash (`?v=...`) so a re-bake can never be
+    // masked by a cached image; the declared size must still be the real one.
+    assert.match(page, new RegExp(`src="${fig}(\\?v=[0-9a-f]+)?"[^>]*width="${w}"[^>]*height="${h}"`),
+      `${fig} must declare ${w}×${h}`);
   }
   assert.ok(page.includes('data-zoom'), 'the review page needs zoom controls to inspect true pixels');
   assert.match(page, /image-rendering:\s*pixelated/, 'previews must be drawn nearest-neighbour');
+});
+
+
+/* ------------------------------------------ 17. scene elevation is really 3D */
+test('17. The review scene shows real elevation steps, not a line drawn on the grass', () => {
+  const scenePath = path.join(ROOT, 'docs/review/scale-scene.png');
+  const png = decodePng(fs.readFileSync(scenePath));
+
+  // Cliff faces are the only place these rock colours appear. Count how tall the
+  // runs get: a level-24 plateau on a level-8 apron must produce 32 px and 16 px
+  // walls (VOXEL_Z_PX = 2 per voxel, 4-level steps are 8 px).
+  const isRock = i => {
+    const r = png.pixels[i], g = png.pixels[i + 1], b = png.pixels[i + 2];
+    const near = (c, t) => Math.abs(c - t) < 16;
+    return (near(r, 0x5b) && near(g, 0x4a) && near(b, 0x33))
+      || (near(r, 0x6d) && near(g, 0x5b) && near(b, 0x3f))
+      || (near(r, 0x3f) && near(g, 0x34) && near(b, 0x23));
+  };
+  const runs = new Map();
+  for (let x = 0; x < png.width; x++) {
+    let run = 0;
+    for (let y = 0; y < png.height; y++) {
+      if (isRock((y * png.width + x) * 4)) {
+        run++;
+      } else {
+        if (run) runs.set(run, (runs.get(run) || 0) + 1);
+        run = 0;
+      }
+    }
+  }
+  assert.ok((runs.get(32) || 0) > 100, `expected long 32 px cliff runs (level 24 -> 8); got ${runs.get(32) || 0}`);
+  assert.ok((runs.get(16) || 0) > 50, `expected 16 px cliff runs (level 8 -> 0); got ${runs.get(16) || 0}`);
+
+  // And no hole may be punched through the map: every background-coloured pixel
+  // must be reachable from the border.
+  const W = png.width, H = png.height;
+  const isBg = i => png.pixels[i] === 16 && png.pixels[i + 1] === 20 && png.pixels[i + 2] === 26;
+  const seen = new Uint8Array(W * H);
+  const stack = [];
+  for (let x = 0; x < W; x++) { stack.push(x, 0, x, H - 1); }
+  for (let y = 0; y < H; y++) { stack.push(0, y, W - 1, y); }
+  while (stack.length) {
+    const y = stack.pop(), x = stack.pop();
+    if (x < 0 || y < 0 || x >= W || y >= H) continue;
+    const p = y * W + x;
+    if (seen[p] || !isBg(p * 4)) continue;
+    seen[p] = 1;
+    stack.push(x + 1, y, x - 1, y, x, y + 1, x, y - 1);
+  }
+  let holes = 0;
+  for (let p = 0; p < W * H; p++) if (!seen[p] && isBg(p * 4)) holes++;
+  assert.equal(holes, 0, `scene must not contain enclosed transparent holes (found ${holes} px)`);
 });

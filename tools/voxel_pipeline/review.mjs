@@ -99,6 +99,14 @@ function hex(c) {
   return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)];
 }
 
+
+/** Lighten/darken a #rrggbb colour by a factor (elevation tinting). */
+function shadeHex(color, factor) {
+  const [r, g, b] = hex(color);
+  const c = v => Math.max(0, Math.min(255, Math.round(v * factor)));
+  return `#${[c(r), c(g), c(b)].map(v => v.toString(16).padStart(2, '0')).join('')}`;
+}
+
 function gridToIso(x, y, elevation = 0, ox, oy) {
   // `elevation` is in world voxels; a voxel is VOXEL_Z_PX screen px tall, so a
   // level-4 step lifts the tile by 8 px (2 px per voxel at 4 px/voxel x).
@@ -117,23 +125,25 @@ function renderScene({ width, height, originX, originY, tiles, props, units, bac
   const cells = [...tileBy.keys()].map(k => k.split(',').map(Number))
     .sort((a, b) => (a[0] + a[1]) - (b[0] + b[1]) || a[1] - b[1] || a[0] - b[0]);
 
-  // 1. Ground layer: exposed cliff faces first, then the terrain diamond.
-  //    Only faces whose neighbour is lower are drawn (and only for that drop),
-  //    exactly like the runtime's drawTileExposedCliffs.
+  // 1a. Ground tops, painted far to near. Every tile is one 128×64 diamond
+  //     lifted by its elevation, so the raised terraces leave gaps on their
+  //     south/east edges — those are filled by the wall pass below.
+  const terrainPal = new Map();
   for (const [x, y] of cells) {
     const t = tileBy.get(`${x},${y}`);
     const iso = gridToIso(x, y, t.elevation, originX, originY);
-    const eastN = tileBy.get(`${x + 1},${y}`)?.elevation ?? 0;
-    const southN = tileBy.get(`${x},${y + 1}`)?.elevation ?? 0;
-    const dropEast = Math.max(0, t.elevation - eastN);
-    const dropSouth = Math.max(0, t.elevation - southN);
-    if (dropSouth > 0) {
-      drawCliffFace(px, W, H, iso.x - HALF_W, iso.y, iso.x, iso.y + HALF_H, dropSouth * VOXEL_Z_PX, CLIFF_SOUTH);
-    }
-    if (dropEast > 0) {
-      drawCliffFace(px, W, H, iso.x, iso.y + HALF_H, iso.x + HALF_W, iso.y, dropEast * VOXEL_Z_PX, CLIFF_EAST);
-    }
-    const pal = TERRAIN.terrains[t.terrain]?.palette ?? TERRAIN.terrains.plains.palette;
+    // Higher ground is lit slightly brighter, the way a shaded heightfield
+    // reads. Without it a raised terrace is the same green as the plain and the
+    // cliff edge looks like a crack in the grass instead of a step.
+    const raw = TERRAIN.terrains[t.terrain]?.palette ?? TERRAIN.terrains.plains.palette;
+    const tint = 1 + (t.elevation / 32) * 0.16;
+    const pal = {
+      top: shadeHex(raw.top, tint),
+      topAlt: raw.topAlt ? shadeHex(raw.topAlt, tint) : undefined,
+      highlight: raw.highlight ? shadeHex(raw.highlight, tint) : undefined,
+      topDark: raw.topDark ? shadeHex(raw.topDark, tint) : undefined,
+    };
+    terrainPal.set(`${x},${y}`, pal);
     fillDiamond(px, W, H, iso.x, iso.y, pal.top);
     const seed = (x * 7 + y * 13) & 3;
     const alt = pal.topAlt ?? pal.top;
@@ -144,6 +154,31 @@ function renderScene({ width, height, originX, originY, tiles, props, units, bac
       const [dx, dy, col] = flecks[(i + seed) % flecks.length];
       fillRect(px, W, H, iso.x + dx, iso.y + dy, 3, 2, col);
     }
+  }
+
+  // 1b. Exposed cliff walls, still far to near, drawn ON TOP of the ground.
+  //     A wall only exists where the neighbour is lower, and it hangs exactly
+  //     `drop * VOXEL_Z_PX` px below the shared edge — 8 px per 4-level step.
+  //     Drawing them after the tops is what stops nearer tiles from eating the
+  //     lower half of every cliff.
+  for (const [x, y] of cells) {
+    const t = tileBy.get(`${x},${y}`);
+    if (!t.elevation) continue;
+    const iso = gridToIso(x, y, t.elevation, originX, originY);
+    const eastN = tileBy.get(`${x + 1},${y}`)?.elevation ?? 0;
+    const southN = tileBy.get(`${x},${y + 1}`)?.elevation ?? 0;
+    const dropSouth = Math.max(0, t.elevation - southN) * VOXEL_Z_PX;
+    const dropEast = Math.max(0, t.elevation - eastN) * VOXEL_Z_PX;
+    if (dropSouth > 0) {
+      drawCliffFace(px, W, H, iso.x - HALF_W, iso.y, iso.x, iso.y + HALF_H, dropSouth, CLIFF_SOUTH);
+    }
+    if (dropEast > 0) {
+      drawCliffFace(px, W, H, iso.x, iso.y + HALF_H, iso.x + HALF_W, iso.y, dropEast, CLIFF_EAST);
+    }
+    // The two faces meet at the bottom vertex; fill that column so the corner
+    // never shows a 1 px slit of background.
+    const corner = Math.max(dropSouth, dropEast);
+    if (corner > 0) fillRect(px, W, H, iso.x, iso.y + HALF_H, 1, corner, CLIFF_SOUTH.base);
   }
 
   // 2. Object layer in painter order. Buildings and units are drawn per occupied
@@ -187,6 +222,13 @@ function fillDiamondColor(dst, W, H, cx, cy, rgb) {
       dst[i] = rgb[0]; dst[i + 1] = rgb[1]; dst[i + 2] = rgb[2]; dst[i + 3] = 255;
     }
   }
+}
+
+function strokeRect(dst, W, H, x, y, w, h, color) {
+  fillRect(dst, W, H, x, y, w, 1, color);
+  fillRect(dst, W, H, x, y + h - 1, w, 1, color);
+  fillRect(dst, W, H, x, y, 1, h, color);
+  fillRect(dst, W, H, x + w - 1, y, 1, h, color);
 }
 
 function fillRect(dst, W, H, x, y, w, h, color) {
@@ -294,8 +336,13 @@ function buildScene() {
     for (let x = 0; x < gridW; x++) {
       let terrain = 'plains';
       let elevation = 0;
-      if (x <= 2 && y <= 1) elevation = 8;
-      else if (x <= 2 && y <= 2) elevation = 4;
+      // A two-step hill in the interior: a level-24 plateau (48 px above the
+      // plain) on a level-8 apron, so the cliffs are 32 px and 16 px tall and
+      // the elevation scale is visible at 1:1. Keeping it away from the map
+      // corner matters — a plateau against the border reads as a floating slab
+      // because its back edges run off the map instead of meeting ground.
+      if (x >= 2 && x <= 4 && y >= 2 && y <= 3) elevation = 24;
+      else if (x >= 1 && x <= 5 && y >= 1 && y <= 4) elevation = 8;
       if (x === 10 && y < 9) terrain = 'river';
       if (x === 10 && y === 5) terrain = 'bridge';
       if (x >= 12 || (x === 11 && y >= 8)) terrain = 'sea';
@@ -526,6 +573,186 @@ function buildLineup(rows) {
   return { pixels: px, width: W, height: H };
 }
 
+/* ------------------------------------------------------- unit size wall -- */
+/**
+ * Every unit type at 1:1 on one continuous tile grid, grouped by size class.
+ * Each sprite is anchored on its own tile diamond and the diamonds tile the
+ * row, so the hierarchy reads the way it does on the map: no per-card slots, no
+ * padding, nothing normalised.
+ */
+function buildSizeWall() {
+  const pad = 22;
+  const CLASSES = [1, 1.25, 1.5, 1.75, 2];
+  const ids = Object.keys(MANIFEST.models)
+    .filter(id => MANIFEST.models[id].meta?.kind === 'unit' && !id.includes('--'));
+  const byClass = new Map(CLASSES.map(c => [c, []]));
+  for (const id of ids) {
+    const fp = MANIFEST.models[id].meta?.footprint?.[0] ?? 1;
+    const key = CLASSES.find(c => Math.abs(c - fp) < 0.001) ?? 1;
+    byClass.get(key).push(id);
+  }
+
+  const W = 1720;
+  const GAP_X = 16;
+  const LABEL_H = 30;
+  const HEAD = 62;
+  const CLASS_HEAD = 30;
+
+  // Lay out first (rows of items), then allocate the canvas exactly.
+  const sections = [];
+  for (const cls of CLASSES) {
+    const list = byClass.get(cls).sort();
+    if (!list.length) continue;
+    const rows = [];
+    let row = { items: [], x: pad + Math.round(HALF_W), above: 0, below: 0 };
+    for (const id of list) {
+      const s = sheet(id, 'right', '0');
+      if (!s) continue;
+      const f = s.face.frames[0];
+      const slot = Math.max(f.w, Math.round(cls * TILE_W)) + GAP_X;
+      if (row.items.length && row.x + slot + HALF_W > W - pad) {
+        rows.push(row);
+        row = { items: [], x: pad + Math.round(HALF_W), above: 0, below: 0 };
+      }
+      const above = Math.max(f.anchorY, Math.round(cls * HALF_H));
+      const below = Math.max(f.h - f.anchorY, Math.round(cls * HALF_H));
+      row.items.push({ id, f, ax: row.x + Math.round(slot / 2) - GAP_X / 2 });
+      row.x += slot;
+      row.above = Math.max(row.above, above);
+      row.below = Math.max(row.below, below);
+    }
+    if (row.items.length) rows.push(row);
+    sections.push({ cls, rows });
+  }
+
+  const H = HEAD + sections.reduce((sum, sec) => sum + CLASS_HEAD
+    + sec.rows.reduce((a, r) => a + r.above + r.below + LABEL_H + 18, 0), 0) + pad;
+  const px = Buffer.alloc(W * H * 4);
+  for (let i = 0; i < W * H; i++) { px[i * 4] = 16; px[i * 4 + 1] = 20; px[i * 4 + 2] = 26; px[i * 4 + 3] = 255; }
+
+  drawText(px, W, H, pad, 14, 'UNIT SIZE WALL - EVERY UNIT TYPE AT 1:1 ON THE SAME TILE GRID', '#8fb2d8', 2);
+  drawText(px, W, H, pad, 38, 'EACH SPRITE SITS ON ITS OWN TILE DIAMOND - GREEN DIAMOND = ONE TILE - GROUPED BY SIZE CLASS', '#7f8c9b', 1);
+
+  let y = HEAD;
+  for (const sec of sections) {
+    const label = `${sec.cls}X TILE - ${Math.round(sec.cls * 32)} X ${Math.round(sec.cls * 32)} VOX - ${sec.rows.reduce((n, r) => n + r.items.length, 0)} TYPES`;
+    drawText(px, W, H, pad, y + 8, label, '#4fc98a', 1);
+    // Footprint bar for this class, drawn at the same 1:1 scale as the sprites.
+    const barW = Math.round(sec.cls * TILE_W);
+    fillRect(px, W, H, W - pad - barW, y + 6, barW, 10, '#2f7d5a');
+    strokeRect(px, W, H, W - pad - barW, y + 6, barW, 10, '#40526a');
+    y += CLASS_HEAD;
+    for (const row of sec.rows) {
+      const baseline = y + row.above;
+      for (const item of row.items) {
+        drawFootprintGuide(px, W, H, item.id, item.ax, baseline);
+        drawModel(px, W, H, item.id, item.ax, baseline, { facing: 'right', variant: '0' });
+        drawText(px, W, H, item.ax - Math.round(textWidth(item.id, 1) / 2), baseline + row.below + 10,
+          item.id, '#8b97a6', 1);
+      }
+      y += row.above + row.below + LABEL_H + 18;
+    }
+  }
+  return { pixels: px, width: W, height: H };
+}
+
+/* ------------------------------------------------------------ unit size -- */
+/** Nearest-neighbour resize by an arbitrary factor (>1 shrinks). */
+function resampleNearest(img, factor) {
+  const w = Math.max(1, Math.round(img.width / factor));
+  const h = Math.max(1, Math.round(img.height / factor));
+  const out = Buffer.alloc(w * h * 4);
+  for (let y = 0; y < h; y++) {
+    const sy = Math.min(img.height - 1, Math.round(y * factor));
+    for (let x = 0; x < w; x++) {
+      const sx = Math.min(img.width - 1, Math.round(x * factor));
+      const si = (sy * img.width + sx) * 4, di = (y * w + x) * 4;
+      out[di] = img.pixels[si]; out[di + 1] = img.pixels[si + 1];
+      out[di + 2] = img.pixels[si + 2]; out[di + 3] = img.pixels[si + 3];
+    }
+  }
+  return { width: w, height: h, pixels: out };
+}
+
+/** Crop one frame out of a baked strip. */
+function cropFrame(image, frame) {
+  const out = Buffer.alloc(frame.w * frame.h * 4);
+  for (let y = 0; y < frame.h; y++) {
+    image.pixels.copy(out, y * frame.w * 4,
+      ((frame.y + y) * image.width + frame.x) * 4,
+      ((frame.y + y) * image.width + frame.x + frame.w) * 4);
+  }
+  return { width: frame.w, height: frame.h, pixels: out };
+}
+
+/**
+ * "Unit size: before vs now" sheet. The left column reproduces what the previous
+ * pipeline produced — every unit squeezed into a single 1×1 tile — by resampling
+ * the current sprite by 1/footprint. The right column is the shipped sprite at
+ * 1:1 on the same 128×64 tile diamond, so the growth is literal, not described.
+ */
+function buildUnitSize(ids) {
+  const pad = 24, rowH = 224, headH = 118;
+  const W = 1600;
+  const H = headH + ids.length * rowH + pad;
+  const px = Buffer.alloc(W * H * 4);
+  for (let i = 0; i < W * H; i++) { px[i * 4] = 16; px[i * 4 + 1] = 20; px[i * 4 + 2] = 26; px[i * 4 + 3] = 255; }
+
+  drawText(px, W, H, pad, 18, 'UNIT SIZE - BEFORE AND AFTER THE ROLE SIZE CLASSES', '#8fb2d8', 2);
+  drawText(px, W, H, pad, 44, 'LEFT: THE OLD PIPELINE, EVERY UNIT FORCED INTO ONE 1X1 TILE', '#a7b4c4', 1);
+  drawText(px, W, H, pad, 56, 'RIGHT: THE SHIPPED SPRITE ON THE SAME 128X64 TILE, AT ITS ROLE SIZE', '#a7b4c4', 1);
+  // Column headers, aligned over the two sprite columns.
+  const beforeX = 470, afterX = 1010;
+  drawText(px, W, H, beforeX - 78, headH - 26, 'WAS 1X1 TILE', '#c8d2de', 1);
+  drawText(px, W, H, afterX - 78, headH - 26, 'NOW ROLE SIZE', '#4fc98a', 1);
+  fillRect(px, W, H, 760, headH - 20, 1, H - headH - pad + 12, '#232d3b');
+
+  let y = headH;
+  for (const id of ids) {
+    const s = sheet(id, 'right', '0');
+    if (!s) continue;
+    const f = s.face.frames[0];
+    const meta = MANIFEST.models[id]?.meta;
+    const fp = meta?.footprint ?? [1, 1];
+    const factor = Math.max(fp[0] ?? 1, fp[1] ?? 1);
+    const baseline = y + 130;
+
+    drawText(px, W, H, pad, y + 12, id, '#eef3f8', 1);
+    drawText(px, W, H, pad, y + 26, `${fp[0]}X${fp[1]} TILE`, '#8fb2d8', 1);
+    drawText(px, W, H, pad, y + 40, `${meta?.bounds.size.join('X') ?? ''} VOX`, '#66788c', 1);
+
+    // BEFORE — same art resampled into a single tile, exactly what the old
+    // uniform-1x1 pipeline produced.
+    const before = resampleNearest(cropFrame(s.image, f), factor);
+    drawFootprintGuide(px, W, H, id, beforeX, baseline);
+    blit(px, W, H, before, 0, 0, before.width, before.height,
+      Math.round(beforeX - f.anchorX / factor), Math.round(baseline - f.anchorY / factor));
+    drawText(px, W, H, beforeX - 96, baseline + 74, `${before.width}X${before.height} PX`, '#66788c', 1);
+
+    // NOW — the shipped sprite at 1:1 on the same diamond.
+    drawFootprintGuide(px, W, H, id, afterX, baseline);
+    blit(px, W, H, s.image, f.x, f.y, f.w, f.h,
+      Math.round(afterX - f.anchorX), Math.round(baseline - f.anchorY));
+    drawText(px, W, H, afterX - 96, baseline + 74, `${f.w}X${f.h} PX`, '#4fc98a', 1);
+
+    // Tile ruler: a bar exactly `footprint` tiles long, with a tick per tile, so
+    // the footprint can be read off the picture instead of the caption.
+    const rulerX = 1210;
+    const barW = Math.round(factor * TILE_W);
+    fillRect(px, W, H, rulerX, y + 92, barW, 14, '#2f7d5a');
+    for (let i = 1; i < factor; i++) {
+      fillRect(px, W, H, rulerX + Math.round(i * TILE_W), y + 92, 1, 14, '#101418');
+    }
+    strokeRect(px, W, H, rulerX, y + 92, barW, 14, '#40526a');
+    drawText(px, W, H, rulerX, y + 112,
+      `${fp[0]} X ${fp[1]} TILE = ${Math.round(fp[0] * 32)} X ${Math.round(fp[1] * 32)} VOX`, '#a7b4c4', 1);
+    drawText(px, W, H, rulerX, y + 124, `SPRITE ${f.w} X ${f.h} PX, 1 TILE = ${TILE_W} PX`, '#66788c', 1);
+    if (factor <= 1.001) drawText(px, W, H, rulerX, y + 136, 'UNCHANGED - ALREADY 1X1', '#4fc98a', 1);
+    y += rowH;
+  }
+  return { pixels: px, width: W, height: H };
+}
+
 /* --------------------------------------------------------- before/after - */
 /** Nearest-neighbour 1/factor downsample (legacy previews were rendered at 2× runtime). */
 function downscaleNearest(img, factor) {
@@ -594,6 +821,14 @@ function buildBeforeAfter(pairs) {
 /* ---------------------------------------------------------------- main -- */
 const scene = cropToContent(buildScene(), 28);
 fs.writeFileSync(path.join(OUT, 'scale-scene.png'), encodePng(scene.width, scene.height, scene.pixels));
+
+const sizeWall = buildSizeWall();
+fs.writeFileSync(path.join(OUT, 'unit-size-wall.png'), encodePng(sizeWall.width, sizeWall.height, sizeWall.pixels));
+console.log(`Wrote docs/review/unit-size-wall.png (${sizeWall.width}×${sizeWall.height})`);
+
+const unitSize = buildUnitSize(['infantry', 'recon', 'apc', 'tank', 'artillery', 'battleship', 'bomber']);
+fs.writeFileSync(path.join(OUT, 'unit-size.png'), encodePng(unitSize.width, unitSize.height, unitSize.pixels));
+console.log(`Wrote docs/review/unit-size.png (${unitSize.width}×${unitSize.height})`);
 
 const lineup = buildLineup([
   {

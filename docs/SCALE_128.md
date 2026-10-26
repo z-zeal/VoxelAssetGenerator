@@ -194,6 +194,14 @@ size in game. `scale-lineup.png` draws each unit on a shared baseline with its
 **ground footprint diamond** — the filled diamond is the ground the unit covers
 and the green diamond inside it is exactly one tile — so a 1.75-tile tank and a
 2-tile battleship are directly comparable with a 1-tile rifleman at 1:1.
+`unit-size-wall.png` is the whole roster at 1:1 on one continuous tile grid,
+grouped by size class; `unit-size.png` puts the change itself side by side: the same sprite resampled
+into a single 1×1 tile (what the previous pipeline did to every unit) next to
+the shipped sprite on the same 128×64 diamond, with a footprint ruler in tiles.
+
+The scene sheet tints terrain tops by elevation and paints cliff walls after the
+ground, so a raised terrace reads as a step (level 16 → 32 px of cliff, level 8 →
+16 px) rather than a line drawn across the grass.
 
 Manifest entry shape (v4):
 

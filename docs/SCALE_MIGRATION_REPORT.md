@@ -242,12 +242,12 @@ visualFootprint, renderScale, bounds, groundAnchor`), so facing keys remain
 exactly `right|up|left|down` (+ 4 diagonals for units). 17,880 strips referenced
 by the manifest; **0 missing, 0 orphaned** files.
 
-Test suite (`npm test`) — **30/30 passing**:
+Test suite (`npm test`) — **31/31 passing**:
 
 | file | tests | coverage |
 | --- | --- | --- |
 | `tests/elevation.test.js` | 15 | elevation semantics, legacy 64-grid compatibility, wall/gate fortifications, all 58 units × 5 armies, all 26 buildings + 6 fortifications × 5 armies, manifest paths and hashes, deterministic re-bake |
-| `tests/scale.test.js` | 15 | 128³/32-unit contract, per-model metadata, bounds, scale hierarchy, resampling determinism and offsets, footprint catalogue, runtime placement, multi-tile rendering, terrain semantics, registry coverage, facing/anchor integrity, sprite crispness (palette-exact baked pixels), renderer smoothing, review deliverables, true-scale review page (no letterboxed previews, declared sizes match the PNGs) |
+| `tests/scale.test.js` | 16 | 128³/32-unit contract, per-model metadata, bounds, scale hierarchy, resampling determinism and offsets, footprint catalogue, runtime placement, multi-tile rendering, terrain semantics, registry coverage, facing/anchor integrity, sprite crispness (palette-exact baked pixels), renderer smoothing, review deliverables, true-scale review page (no letterboxed previews, declared sizes match the PNGs), scene elevation (32 px and 16 px cliff runs, no enclosed holes) |
 
 ---
 
@@ -282,8 +282,10 @@ Test suite (`npm test`) — **30/30 passing**:
 | Scale specification | `docs/SCALE_128.md` |
 | Asset sizing matrix (500 rows) | `docs/ASSET_SIZING_MATRIX.md` |
 | Review page (true-scale previews with 1:1/2×/3× zoom, scene, lineups, before/after, full matrix) | `docs/review/scale-review.html` |
-| Mixed-scale scene (14×12 tiles, 2× zoom) | `docs/review/scale-scene.png` |
+| Mixed-scale scene (14×12 tiles, two-step hill at levels 16/8, 1:1) | `docs/review/scale-scene.png` |
 | Category lineups at true relative scale, with per-unit ground-footprint diamonds | `docs/review/scale-lineup.png` |
+| Unit size before/after: same art forced into 1×1 (left) vs role size (right) | `docs/review/unit-size.png` |
+| Every unit type at 1:1 on one tile grid, grouped by size class | `docs/review/unit-size-wall.png` |
 | Before/after comparison | `docs/review/before-after.png` |
 | Regenerated model database | `data/voxels.json` (128 format) |
 | Generated runtime scale table | `src/asset-scale.js` |
@@ -348,6 +350,6 @@ not silent gaps:
 | Largest cell | `hq` 385×239 px (3×3 tiles) |
 | Unit size classes | 5 (1 / 1.25 / 1.5 / 1.75 / 2 tiles) |
 | Runtime files integrated | 3 modules + editor page + generated scale table |
-| Automated gates | 30 passing (15 elevation + 15 scale) |
+| Automated gates | 31 passing (15 elevation + 16 scale) |
 | Animation motion failures | 0 |
 | Blocker assets | 0 |
