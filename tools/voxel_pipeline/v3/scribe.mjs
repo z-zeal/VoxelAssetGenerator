@@ -82,7 +82,8 @@ export function createScribe({ materialIds, canvas = CANVAS } = {}) {
     if (id === undefined) {
       id = partList.length + 1;
       partIndex.set(name, id);
-      partList.push({ name, order: id - 1, pivot: [N / 2, N / 2, 0], dynamic: false, parent: null });
+      partList.push({ name, order: id - 1, pivot: [N / 2, N / 2, 0], dynamic: false,
+        parent: null, traverse: false });
     }
     return id;
   };
@@ -134,6 +135,18 @@ export function createScribe({ materialIds, canvas = CANVAS } = {}) {
      * its turret's ring: when the turret traverses, the barrel's trunnion orbits
      * that ring, so the runtime has to move it, not just re-point it.
      */
+    /**
+     * Declare that `name` TRAVERSES: it swings about its own vertical axis and
+     * therefore has to be baked on the 16-camera unit ring even when the rest of
+     * the model only has 4 scene facings. A part mounted on a traversing part
+     * (its `parent` chain) inherits this. Different from `dynamic`, which only
+     * means "moves at all" — a door opens, it does not traverse.
+     */
+    traverse(name, on = true) {
+      const p = partList[partId(name) - 1];
+      if (p) p.traverse = on;
+      return api;
+    },
     parent(name, parentName) {
       const child = partList[partId(name) - 1];
       partId(parentName);
@@ -174,9 +187,15 @@ export function createScribe({ materialIds, canvas = CANVAS } = {}) {
 
     /* ------------------------------------------------- volumes (solid) --- */
     box(x0, y0, z0, x1, y1, z1, mat) {
-      const ax = Math.round(Math.min(x0, x1)), bx = Math.round(Math.max(x0, x1));
-      const ay = Math.round(Math.min(y0, y1)), by = Math.round(Math.max(y0, y1));
-      const az = Math.round(Math.min(z0, z1)), bz = Math.round(Math.max(z0, z1));
+      const raw = [Math.round(Math.min(x0, x1)), Math.round(Math.max(x0, x1)),
+        Math.round(Math.min(y0, y1)), Math.round(Math.max(y0, y1)),
+        Math.round(Math.min(z0, z1)), Math.round(Math.max(z0, z1))];
+      // Clamp to the lattice. The bulk path below sets bits row-wise and cannot
+      // bounds-check per cell, so an out-of-canvas box would otherwise wrap into
+      // a neighbouring row and silently corrupt unrelated geometry.
+      const ax = Math.max(0, raw[0]), bx = Math.min(N, raw[1]);
+      const ay = Math.max(0, raw[2]), by = Math.min(N, raw[3]);
+      const az = Math.max(0, raw[4]), bz = Math.min(N, raw[5]);
       if (bx <= ax || by <= ay || bz <= az) return api;
       const mid = api.matId(mat);
       const packed = (mid << 6) | current;
@@ -387,12 +406,19 @@ export function createScribe({ materialIds, canvas = CANVAS } = {}) {
     paint(pred, mat) { surfacePasses.push({ kind: 'paint', pred, packed: (api.matId(mat) << 6) | current }); return api; },
     /** Move matching surface voxels into another part. */
     regroup(pred, name) { surfacePasses.push({ kind: 'regroup', pred, part: partId(name) }); return api; },
-    mottle(seed, mats, density) {
-      surfacePasses.push({ kind: 'mottle', seed, ids: mats.map(m => api.matId(m)), density });
+    /**
+     * Weathering patch. `only` restricts the pass to surfaces whose *current*
+     * material is in that list — without it, a mottle meant for the concrete
+     * speckles the roof tiles and the windows as well.
+     */
+    mottle(seed, mats, density, { only = null } = {}) {
+      surfacePasses.push({ kind: 'mottle', seed, ids: mats.map(m => api.matId(m)), density,
+        only: only ? only.map(m => api.matId(m)) : null });
       return api;
     },
-    wear(seed, mat, { rate = 0.18 } = {}) {
-      surfacePasses.push({ kind: 'wear', seed, id: api.matId(mat), rate });
+    wear(seed, mat, { rate = 0.18, only = null } = {}) {
+      surfacePasses.push({ kind: 'wear', seed, id: api.matId(mat), rate,
+        only: only ? only.map(m => api.matId(m)) : null });
       return api;
     },
     mirrorY(partName, centreY = N / 2) {
@@ -469,6 +495,7 @@ export function createScribe({ materialIds, canvas = CANVAS } = {}) {
         } else if (pass.kind === 'mottle') {
           const r = rng(pass.seed);
           for (const c of live) {
+            if (pass.only && !pass.only.includes(c[3])) continue;
             const [x, y, z] = c;
             const n = Math.sin(x * 0.11 + pass.seed) * Math.cos(y * 0.13 - pass.seed * 0.7) + Math.sin(z * 0.09);
             if (n * 0.5 + r() * 0.5 > 1 - pass.density) {
@@ -479,6 +506,7 @@ export function createScribe({ materialIds, canvas = CANVAS } = {}) {
           const r = rng(pass.seed);
           const occupied = new Set(live.map(c => idxOf(c[0], c[1], c[2])));
           for (const c of live) {
+            if (pass.only && !pass.only.includes(c[3])) continue;
             const [x, y, z] = c;
             const i = idxOf(x, y, z);
             let n = 0;
@@ -507,7 +535,8 @@ export function createScribe({ materialIds, canvas = CANVAS } = {}) {
         const voxels = byPart.get(id) ?? [];
         if (!voxels.length) continue;
         parts.push({ name: p.name, order: parts.length, voxels, pivot: p.pivot,
-          dynamic: p.dynamic, parent: p.parent, bounds: boundsOf(voxels) });
+          dynamic: p.dynamic, parent: p.parent, traverse: p.traverse,
+          bounds: boundsOf(voxels) });
       }
       parts.sort((a, b) => (a.name === 'body' ? -1 : b.name === 'body' ? 1 : a.order - b.order));
       parts.forEach((p, i) => { p.order = i; });

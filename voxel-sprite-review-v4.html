@@ -220,12 +220,22 @@ function blitPart(dst, dstW, dstH, src, ox, oy) {
   }
 }
 
-/** Facing id shifted `steps` positions around the 16-direction ring. */
-function shiftFacing(facing, steps) {
-  const list = state.manifest.facings;
-  const i = list.indexOf(facing);
-  if (i < 0) return facing;
-  return list[(((i + steps) % list.length) + list.length) % list.length];
+/**
+ * The baked facing a dynamic part must be drawn from at `steps` of traverse.
+ *
+ * Units bake every part on the 16-camera ring, so the scene facing's own index
+ * is the base. A building's body only has 4 cameras, but its turret is baked on
+ * the unit ring, so the base comes from `facingMeta[].unitIndex`.
+ */
+function shiftFacing(partMeta, sceneFacing, steps) {
+  const order = partMeta.facingOrder ?? state.manifest.facings;
+  if (!order.length) return sceneFacing;
+  const meta = state.manifest.facingMeta.find(f => f.id === sceneFacing);
+  const n = order.length;
+  const base = meta && meta.unitIndex !== undefined
+    ? meta.unitIndex % n
+    : Math.max(0, order.indexOf(sceneFacing));
+  return order[(((base + steps) % n) + n) % n];
 }
 
 /** Rotate a design-space point about a pivot by deg (yaw, +Z up). */
@@ -249,13 +259,16 @@ function partTransform(name, sceneFacing, steps) {
   const meta = m.facingMeta.find(f => f.id === sceneFacing);
   const pmeta = m.parts[name];
   const dynamic = !!pmeta.dynamic;
+  // Only a traversing part follows the slider: a door on the same building is
+  // dynamic (it opens) but it does not swing about a vertical axis.
+  const traverses = !!pmeta.traverse;
 
   let pivot = pmeta.pivotDesign.slice();
   let facing = sceneFacing;
   let depthOffset = 0;
 
-  if (dynamic) {
-    facing = shiftFacing(sceneFacing, steps);
+  if (dynamic && traverses) {
+    facing = shiftFacing(pmeta, sceneFacing, steps);
     // Walk the parent chain: each dynamic ancestor contributes its own yaw.
     let cursor = pmeta;
     const guard = new Set();
@@ -281,7 +294,7 @@ function partTransform(name, sceneFacing, steps) {
       (bounds.minY + bounds.maxY) / 2,
       (bounds.minZ + bounds.maxZ) / 2,
     ];
-    if (dynamic) {
+    if (dynamic && traverses) {
       let cursor = pmeta;
       const guard = new Set();
       while (cursor && cursor.parent && !guard.has(cursor.name)) {

@@ -208,6 +208,7 @@ export function buildTank(c) {
   antenna(c, { x: 240, y: 190, z: 196, height: 72, part: 'turret' });
   c.pivot('turret', [320, 256, DECK_Z]);
   c.dynamic('turret');
+  c.traverse('turret');
 
   /* ----------------------------------------------------------------- barrel */
   // The mantlet closes the turret front and the tube runs clear of the hull

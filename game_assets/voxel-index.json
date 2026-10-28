@@ -35,5 +35,40 @@
       ]
     }
   },
-  "buildings": {}
+  "buildings": {
+    "barracks": {
+      "folder": "game_assets/buildings/barracks",
+      "manifest": "game_assets/buildings/barracks/manifest.json",
+      "preview": "game_assets/buildings/barracks/preview.png",
+      "group": "infrastructure.military",
+      "parts": [
+        "body",
+        "door",
+        "flag"
+      ],
+      "facings": [
+        "right",
+        "up",
+        "left",
+        "down"
+      ]
+    },
+    "at-turret": {
+      "folder": "game_assets/buildings/at-turret",
+      "manifest": "game_assets/buildings/at-turret/manifest.json",
+      "preview": "game_assets/buildings/at-turret/preview.png",
+      "group": "defences.anti-tank",
+      "parts": [
+        "body",
+        "turret",
+        "barrel"
+      ],
+      "facings": [
+        "right",
+        "up",
+        "left",
+        "down"
+      ]
+    }
+  }
 }
