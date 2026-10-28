@@ -1,0 +1,4352 @@
+{
+  "format": "field-command-voxel-sheet-4",
+  "asset": "bastion",
+  "kind": "unit",
+  "group": "vehicles.tracked",
+  "canvas": 512,
+  "designVoxelsPerTileUnit": 8,
+  "renderScale": 1,
+  "previewScale": 8,
+  "superSample": 4,
+  "pxPerVoxel": 0.125,
+  "tileDiamond": [
+    64,
+    32
+  ],
+  "facings": [
+    "d00",
+    "d01",
+    "d02",
+    "d03",
+    "d04",
+    "d05",
+    "d06",
+    "d07",
+    "d08",
+    "d09",
+    "d10",
+    "d11",
+    "d12",
+    "d13",
+    "d14",
+    "d15"
+  ],
+  "facingMeta": [
+    {
+      "id": "d00",
+      "angle": 0,
+      "screenAngle": 45,
+      "label": "SE",
+      "unitIndex": 0,
+      "viewDir": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.0625,
+        -0.0625,
+        0,
+        0.03125,
+        0.03125,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d01",
+      "angle": 22.5,
+      "screenAngle": 67.5,
+      "label": "SSE",
+      "unitIndex": 1,
+      "viewDir": [
+        0.7543444794845715,
+        0.3124597141037824,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        0.03382475625913983,
+        -0.08166018530477004,
+        0,
+        0.040830092652386796,
+        0.01691237812956814,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d02",
+      "angle": 45,
+      "screenAngle": 90,
+      "label": "S",
+      "unitIndex": 2,
+      "viewDir": [
+        0.8164965809277261,
+        6.409875621278547e-17,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0,
+        -0.08838834764831915,
+        0,
+        0.04419417382415958,
+        0,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d03",
+      "angle": 67.5,
+      "screenAngle": 112.5,
+      "label": "SSW",
+      "unitIndex": 3,
+      "viewDir": [
+        0.7543444794845715,
+        -0.3124597141037824,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.03382475625913628,
+        -0.08166018530477004,
+        0,
+        0.04083009265238502,
+        -0.016912378129569028,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d04",
+      "angle": 90,
+      "screenAngle": 135,
+      "label": "SW",
+      "unitIndex": 4,
+      "viewDir": [
+        0.5773502691896258,
+        -0.5773502691896257,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        -0.0625,
+        -0.0625,
+        0,
+        0.03125,
+        -0.03125000000000089,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d05",
+      "angle": 112.5,
+      "screenAngle": 157.5,
+      "label": "WSW",
+      "unitIndex": 5,
+      "viewDir": [
+        0.3124597141037825,
+        -0.7543444794845715,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.08166018530477359,
+        -0.03382475625913628,
+        0,
+        0.016912378129569028,
+        -0.04083009265238591,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d06",
+      "angle": 135,
+      "screenAngle": 180,
+      "label": "W",
+      "unitIndex": 6,
+      "viewDir": [
+        6.409875621278547e-17,
+        -0.8164965809277261,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        -0.08838834764831915,
+        0,
+        0,
+        0,
+        -0.04419417382415958,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d07",
+      "angle": 157.5,
+      "screenAngle": 202.5,
+      "label": "WNW",
+      "unitIndex": 7,
+      "viewDir": [
+        -0.3124597141037824,
+        -0.7543444794845715,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.08166018530477537,
+        0.03382475625913628,
+        0,
+        -0.01691237812956814,
+        -0.04083009265238502,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d08",
+      "angle": 180,
+      "screenAngle": 225,
+      "label": "NW",
+      "unitIndex": 8,
+      "viewDir": [
+        -0.5773502691896256,
+        -0.5773502691896258,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.0625,
+        0.062499999999998224,
+        0,
+        -0.03125,
+        -0.03125,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d09",
+      "angle": 202.5,
+      "screenAngle": 247.5,
+      "label": "NNW",
+      "unitIndex": 9,
+      "viewDir": [
+        -0.7543444794845713,
+        -0.3124597141037829,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.03382475625913628,
+        0.08166018530477537,
+        0,
+        -0.04083009265238502,
+        -0.01691237812956814,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d10",
+      "angle": 225,
+      "screenAngle": 270,
+      "label": "N",
+      "unitIndex": 10,
+      "viewDir": [
+        -0.8164965809277261,
+        -1.2819751242557095e-16,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0,
+        0.08838834764831915,
+        0,
+        -0.04419417382415958,
+        0,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d11",
+      "angle": 247.5,
+      "screenAngle": 292.5,
+      "label": "NNE",
+      "unitIndex": 11,
+      "viewDir": [
+        -0.7543444794845715,
+        0.3124597141037827,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.03382475625913983,
+        0.08166018530477359,
+        0,
+        -0.040830092652386796,
+        0.016912378129569028,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d12",
+      "angle": 270,
+      "screenAngle": 315,
+      "label": "NE",
+      "unitIndex": 12,
+      "viewDir": [
+        -0.5773502691896258,
+        0.5773502691896256,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        0.0625,
+        0.0625,
+        0,
+        -0.03125,
+        0.03125,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d13",
+      "angle": 292.5,
+      "screenAngle": 337.5,
+      "label": "ENE",
+      "unitIndex": 13,
+      "viewDir": [
+        -0.3124597141037823,
+        0.7543444794845715,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        0.08166018530477004,
+        0.03382475625913983,
+        0,
+        -0.01691237812956814,
+        0.040830092652387684,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d14",
+      "angle": 315,
+      "screenAngle": 0,
+      "label": "E",
+      "unitIndex": 14,
+      "viewDir": [
+        -1.9229626863835643e-16,
+        0.8164965809277261,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.08838834764831915,
+        0,
+        0,
+        0,
+        0.04419417382415958,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d15",
+      "angle": 337.5,
+      "screenAngle": 22.5,
+      "label": "ESE",
+      "unitIndex": 15,
+      "viewDir": [
+        0.3124597141037827,
+        0.7543444794845715,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.08166018530477537,
+        -0.03382475625913273,
+        0,
+        0.016912378129569916,
+        0.040830092652386796,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    }
+  ],
+  "teamTint": {
+    "note": "Albedo is baked in the standard livery. Recolour pixels whose material map red channel matches these ids to apply an army livery.",
+    "materialIds": [
+      {
+        "name": "team.hull",
+        "id": 0,
+        "role": "hull"
+      },
+      {
+        "name": "team.light",
+        "id": 1,
+        "role": "light"
+      },
+      {
+        "name": "team.dark",
+        "id": 2,
+        "role": "dark"
+      },
+      {
+        "name": "team.accent",
+        "id": 3,
+        "role": "accent"
+      },
+      {
+        "name": "roof",
+        "id": 37,
+        "role": "hull"
+      },
+      {
+        "name": "roof.light",
+        "id": 38,
+        "role": "light"
+      },
+      {
+        "name": "roof.dark",
+        "id": 39,
+        "role": "dark"
+      }
+    ],
+    "liveries": {
+      "_note": "Army liveries for runtime tinting of team materials. Mirrors src/renderer.js TEAM_COLORS and tools/voxel_pipeline/v3/materials.mjs ARMY_LIVERY.",
+      "standard": {
+        "hull": "#df794b",
+        "light": "#ffc68b",
+        "dark": "#934b32",
+        "accent": "#ece7bc"
+      },
+      "allies": {
+        "hull": "#639bc3",
+        "light": "#a9d0e1",
+        "dark": "#345f78",
+        "accent": "#e8f1f4"
+      },
+      "soviets": {
+        "hull": "#7eb06a",
+        "light": "#b8e0a8",
+        "dark": "#2d4a2d",
+        "accent": "#dfe8c8"
+      },
+      "empire": {
+        "hull": "#d9b44e",
+        "light": "#ffe79a",
+        "dark": "#8a6a1a",
+        "accent": "#f6eecd"
+      },
+      "legion": {
+        "hull": "#c65a54",
+        "light": "#ffb0a8",
+        "dark": "#7a2a2a",
+        "accent": "#f3d9d4"
+      },
+      "neutral": {
+        "hull": "#aaa78b",
+        "light": "#cfcdb6",
+        "dark": "#6c6a55",
+        "accent": "#e2e0cf"
+      }
+    }
+  },
+  "normalMap": {
+    "space": "view",
+    "channelOrder": "rgb",
+    "range": "0..255 maps -1..1",
+    "up": "+g means screen up"
+  },
+  "materialMap": {
+    "channelOrder": "rgba",
+    "meaning": [
+      "materialId",
+      "metalness",
+      "roughness",
+      "emissive"
+    ],
+    "table": [
+      {
+        "id": 0,
+        "name": "team.hull",
+        "metalness": 0.35,
+        "roughness": 0.62,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "hull"
+      },
+      {
+        "id": 1,
+        "name": "team.light",
+        "metalness": 0.35,
+        "roughness": 0.58,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "light"
+      },
+      {
+        "id": 2,
+        "name": "team.dark",
+        "metalness": 0.4,
+        "roughness": 0.66,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "dark"
+      },
+      {
+        "id": 3,
+        "name": "team.accent",
+        "metalness": 0.2,
+        "roughness": 0.7,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "accent"
+      },
+      {
+        "id": 4,
+        "name": "steel",
+        "metalness": 0.85,
+        "roughness": 0.42,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 5,
+        "name": "steel.dark",
+        "metalness": 0.85,
+        "roughness": 0.5,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 6,
+        "name": "steel.bright",
+        "metalness": 0.95,
+        "roughness": 0.24,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 7,
+        "name": "gunmetal",
+        "metalness": 0.9,
+        "roughness": 0.38,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 8,
+        "name": "gunmetal.lit",
+        "metalness": 0.9,
+        "roughness": 0.32,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 9,
+        "name": "iron",
+        "metalness": 0.8,
+        "roughness": 0.62,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 10,
+        "name": "brass",
+        "metalness": 0.95,
+        "roughness": 0.3,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 11,
+        "name": "copper",
+        "metalness": 0.95,
+        "roughness": 0.34,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 12,
+        "name": "chrome",
+        "metalness": 1,
+        "roughness": 0.12,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 13,
+        "name": "rubber",
+        "metalness": 0.05,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 14,
+        "name": "track",
+        "metalness": 0.7,
+        "roughness": 0.68,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 15,
+        "name": "track.worn",
+        "metalness": 0.85,
+        "roughness": 0.44,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 16,
+        "name": "tyre",
+        "metalness": 0.03,
+        "roughness": 0.95,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 17,
+        "name": "plate",
+        "metalness": 0.55,
+        "roughness": 0.66,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 18,
+        "name": "plate.lit",
+        "metalness": 0.55,
+        "roughness": 0.6,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 19,
+        "name": "plate.dark",
+        "metalness": 0.55,
+        "roughness": 0.72,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 20,
+        "name": "glass",
+        "metalness": 0.3,
+        "roughness": 0.08,
+        "emissive": 0,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 21,
+        "name": "glass.dark",
+        "metalness": 0.4,
+        "roughness": 0.12,
+        "emissive": 0,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 22,
+        "name": "optic",
+        "metalness": 0.6,
+        "roughness": 0.05,
+        "emissive": 0.55,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 23,
+        "name": "lamp.warm",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.85,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 24,
+        "name": "lamp.red",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.8,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 25,
+        "name": "lamp.cyan",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.8,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 26,
+        "name": "skin",
+        "metalness": 0,
+        "roughness": 0.78,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 27,
+        "name": "skin.dark",
+        "metalness": 0,
+        "roughness": 0.8,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 28,
+        "name": "cloth",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 29,
+        "name": "cloth.dark",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 30,
+        "name": "webbing",
+        "metalness": 0.05,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 31,
+        "name": "boot",
+        "metalness": 0.1,
+        "roughness": 0.85,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 32,
+        "name": "hair",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 33,
+        "name": "concrete",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 34,
+        "name": "concrete.lit",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 35,
+        "name": "concrete.dark",
+        "metalness": 0,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 36,
+        "name": "brick",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 37,
+        "name": "roof",
+        "metalness": 0.1,
+        "roughness": 0.82,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "hull"
+      },
+      {
+        "id": 38,
+        "name": "roof.light",
+        "metalness": 0.1,
+        "roughness": 0.8,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "light"
+      },
+      {
+        "id": 39,
+        "name": "roof.dark",
+        "metalness": 0.1,
+        "roughness": 0.84,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "dark"
+      },
+      {
+        "id": 40,
+        "name": "asphalt",
+        "metalness": 0,
+        "roughness": 0.96,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 41,
+        "name": "paint.line",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 42,
+        "name": "wood",
+        "metalness": 0,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 43,
+        "name": "wood.dark",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 44,
+        "name": "canvas",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 45,
+        "name": "sandbag",
+        "metalness": 0,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 46,
+        "name": "solar",
+        "metalness": 0.6,
+        "roughness": 0.22,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 47,
+        "name": "rust",
+        "metalness": 0.3,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 48,
+        "name": "scorch",
+        "metalness": 0.2,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 49,
+        "name": "smoke",
+        "metalness": 0,
+        "roughness": 1,
+        "emissive": 0.1,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 50,
+        "name": "water",
+        "metalness": 0.2,
+        "roughness": 0.15,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 51,
+        "name": "foam",
+        "metalness": 0,
+        "roughness": 0.6,
+        "emissive": 0.1,
+        "blend": "opaque",
+        "team": null
+      }
+    ]
+  },
+  "parts": {
+    "body": {
+      "name": "body",
+      "dynamic": false,
+      "parent": null,
+      "pivotDesign": [
+        256,
+        256,
+        0
+      ],
+      "traverse": false,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            33,
+            28
+          ],
+          "pivot": [
+            33,
+            28
+          ],
+          "depth": 46.19,
+          "w": 65,
+          "h": 44,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__body__d00__albedo.png",
+              "w": 65,
+              "h": 44,
+              "sha256": "a41cf92181496ec5a0f874abbc1c91c7722566d5686602916d1ec36b1e11aabb"
+            },
+            "normal": {
+              "file": "sheets/bastion__body__d00__normal.png",
+              "w": 65,
+              "h": 44,
+              "sha256": "b7f86fae7943bf3dfb920e3f02e04cc9e5a05d87d346d628623de787ba123346"
+            },
+            "material": {
+              "file": "sheets/bastion__body__d00__material.png",
+              "w": 65,
+              "h": 44,
+              "sha256": "57bc9697924cd7a6f170aae6346c14cf01bbe7221bceb6be170d8f5b0eb32e46"
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            31.75,
+            26.78
+          ],
+          "pivot": [
+            31.75,
+            26.78
+          ],
+          "depth": 43.02,
+          "w": 61,
+          "h": 42,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__body__d01__albedo.png",
+              "w": 61,
+              "h": 42,
+              "sha256": "58b22a973ca87e8c7afb0403fb5d020204a40ca6079f05bff2413714bf250dc6"
+            },
+            "normal": {
+              "file": "sheets/bastion__body__d01__normal.png",
+              "w": 61,
+              "h": 42,
+              "sha256": "d350a53958eedca2c3e42656972cb22337fcb2ffd585d72b7d9f1d10e6011964"
+            },
+            "material": {
+              "file": "sheets/bastion__body__d01__material.png",
+              "w": 61,
+              "h": 42,
+              "sha256": "d2dd7134e59dbeb23b10453b539b78c8f4bb152c00d539ab20aa3452cb6386a5"
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            25.37,
+            26.31
+          ],
+          "pivot": [
+            25.37,
+            26.31
+          ],
+          "depth": 34.87,
+          "w": 51,
+          "h": 39,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__body__d02__albedo.png",
+              "w": 51,
+              "h": 39,
+              "sha256": "a2c1ec16eab42eae867215560186a727379b31f140ca4e53355bdb280ea4564b"
+            },
+            "normal": {
+              "file": "sheets/bastion__body__d02__normal.png",
+              "w": 51,
+              "h": 39,
+              "sha256": "ae173519abf3ea20e87f78a22c3ce9444d255b316b7e75556c34319e79e6e338"
+            },
+            "material": {
+              "file": "sheets/bastion__body__d02__material.png",
+              "w": 51,
+              "h": 39,
+              "sha256": "d90f3f68c073b1a5b2b707e24fefcba1eeaed8aadca7aceea479236657fa5a91"
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            29.44,
+            27.12
+          ],
+          "pivot": [
+            29.44,
+            27.12
+          ],
+          "depth": 22.98,
+          "w": 61,
+          "h": 42,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__body__d03__albedo.png",
+              "w": 61,
+              "h": 42,
+              "sha256": "b26f1fcf5972c5c56d6cc006a6c648dc65b1d482e7d6fcf4131213e6156fb01b"
+            },
+            "normal": {
+              "file": "sheets/bastion__body__d03__normal.png",
+              "w": 61,
+              "h": 42,
+              "sha256": "299d9ca9487b0cb10faa8414ac293bb95480d38ca42d3a71a0b29ba3a3a476ef"
+            },
+            "material": {
+              "file": "sheets/bastion__body__d03__material.png",
+              "w": 61,
+              "h": 42,
+              "sha256": "10ee80631c8bbba3f360e9f763346f748339df8367704a4dbb7e37357b338608"
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            32,
+            28
+          ],
+          "pivot": [
+            32,
+            28
+          ],
+          "depth": 9.17,
+          "w": 66,
+          "h": 44,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__body__d04__albedo.png",
+              "w": 66,
+              "h": 44,
+              "sha256": "96d57b58f8711b455be9d3e96d2bf26e84b072352f8c77132e847acd130cf407"
+            },
+            "normal": {
+              "file": "sheets/bastion__body__d04__normal.png",
+              "w": 66,
+              "h": 44,
+              "sha256": "edb7160a590e4ef644aef2af86568384163fd2b51699f6fbfc164c4791ba70fc"
+            },
+            "material": {
+              "file": "sheets/bastion__body__d04__material.png",
+              "w": 66,
+              "h": 44,
+              "sha256": "4dfd6a4577a3ac722fbaa7915b6b3ea40cdf7bb32cf8f5bc50b1bb41f1bbf48b"
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            30.44,
+            26.88
+          ],
+          "pivot": [
+            30.44,
+            26.88
+          ],
+          "depth": -4.47,
+          "w": 63,
+          "h": 42,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__body__d05__albedo.png",
+              "w": 63,
+              "h": 42,
+              "sha256": "20540948800dad752c0e8771ea975c1cc785c42b6b002b71465976153e5e955b"
+            },
+            "normal": {
+              "file": "sheets/bastion__body__d05__normal.png",
+              "w": 63,
+              "h": 42,
+              "sha256": "1e15585808ecc6ef7f8e3c96fbe4ab3bde3f9a940202e043321baad38cb7e3e1"
+            },
+            "material": {
+              "file": "sheets/bastion__body__d05__material.png",
+              "w": 63,
+              "h": 42,
+              "sha256": "b23550b32b05eb2a8bec0c93e58f2a34dda7cff36c6e3cc55befe0a854c59150"
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            24.37,
+            24.69
+          ],
+          "pivot": [
+            24.37,
+            24.69
+          ],
+          "depth": -15.86,
+          "w": 51,
+          "h": 38,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__body__d06__albedo.png",
+              "w": 51,
+              "h": 38,
+              "sha256": "c642ec08a48bc87ff0c8bea5fd63780439d9825a20be68f32aa743ae304f896e"
+            },
+            "normal": {
+              "file": "sheets/bastion__body__d06__normal.png",
+              "w": 51,
+              "h": 38,
+              "sha256": "7bdf3a27bcbbfc4ec73f340fed794a459a1623e01c14fbb09e62ff041c8b6f06"
+            },
+            "material": {
+              "file": "sheets/bastion__body__d06__material.png",
+              "w": 51,
+              "h": 38,
+              "sha256": "25027176f74cf6d29b7408b00378a891e162b6081aa50ac5f03c4b9599a2740a"
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            29.75,
+            26.22
+          ],
+          "pivot": [
+            29.75,
+            26.22
+          ],
+          "depth": -23.26,
+          "w": 61,
+          "h": 42,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__body__d07__albedo.png",
+              "w": 61,
+              "h": 42,
+              "sha256": "9b3eed52cfd0c29bdf13163a79827ae6ace0b2758253c7caf555d156be4f8ee7"
+            },
+            "normal": {
+              "file": "sheets/bastion__body__d07__normal.png",
+              "w": 61,
+              "h": 42,
+              "sha256": "36ee2017ba331989e273b7d907b796d5e48e405690380382319de17caed8e42d"
+            },
+            "material": {
+              "file": "sheets/bastion__body__d07__material.png",
+              "w": 61,
+              "h": 42,
+              "sha256": "e19d6942c3092ae4409ecc1d66a7b0dc4225b20b3f4e47d827d504f13a4979b1"
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            32,
+            27
+          ],
+          "pivot": [
+            32,
+            27
+          ],
+          "depth": -25.55,
+          "w": 65,
+          "h": 44,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__body__d08__albedo.png",
+              "w": 65,
+              "h": 44,
+              "sha256": "33c1e5046d06f410e06f2b5ae8dacbd7936dcf6ba1034e52ae7ee08bf77c67ff"
+            },
+            "normal": {
+              "file": "sheets/bastion__body__d08__normal.png",
+              "w": 65,
+              "h": 44,
+              "sha256": "68d85992e508414d15bbf53ce527c240fb1b445aa9bade4babee85ccf16d3032"
+            },
+            "material": {
+              "file": "sheets/bastion__body__d08__material.png",
+              "w": 65,
+              "h": 44,
+              "sha256": "6b045e12b1e052c7cea6d1cbc4c3313d1b76da14dc5b20f002677fbc0eb1f540"
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            29.25,
+            27.22
+          ],
+          "pivot": [
+            29.25,
+            27.22
+          ],
+          "depth": -22.38,
+          "w": 61,
+          "h": 43,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__body__d09__albedo.png",
+              "w": 61,
+              "h": 43,
+              "sha256": "fded4918ec475ce6c71371ebb270e6b1daa3e49538f12d50c1562216af44c9cd"
+            },
+            "normal": {
+              "file": "sheets/bastion__body__d09__normal.png",
+              "w": 61,
+              "h": 43,
+              "sha256": "e776d708fb5a5273d7a3c7d61400b14e0303516b7a438f05ac120f7d00282524"
+            },
+            "material": {
+              "file": "sheets/bastion__body__d09__material.png",
+              "w": 61,
+              "h": 43,
+              "sha256": "3b22457fd4c84c3cf70ca453b1e34df5f0313f40adf0dad7af38566e99e24471"
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            25.63,
+            26.69
+          ],
+          "pivot": [
+            25.63,
+            26.69
+          ],
+          "depth": -14.23,
+          "w": 51,
+          "h": 40,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__body__d10__albedo.png",
+              "w": 51,
+              "h": 40,
+              "sha256": "d89bf66c2ec925aa9b3f161f7dd3023ec4d4267ef576d7446fb1b5e929b46a74"
+            },
+            "normal": {
+              "file": "sheets/bastion__body__d10__normal.png",
+              "w": 51,
+              "h": 40,
+              "sha256": "e8eb54cbad548b2fd2280e05f85477f7343f7bc2b212775583717a0e6f0585dd"
+            },
+            "material": {
+              "file": "sheets/bastion__body__d10__material.png",
+              "w": 51,
+              "h": 40,
+              "sha256": "893b3fdf2232eff290b9041537859fdb44e4e3e4e63a8f956f0c8748c346f379"
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            31.56,
+            26.88
+          ],
+          "pivot": [
+            31.56,
+            26.88
+          ],
+          "depth": -2.34,
+          "w": 61,
+          "h": 41,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__body__d11__albedo.png",
+              "w": 61,
+              "h": 41,
+              "sha256": "7838dd0e5e9e60691a5a4dfb579a5193d0ff4eb9d4bc817ed65dfc943d36d7b2"
+            },
+            "normal": {
+              "file": "sheets/bastion__body__d11__normal.png",
+              "w": 61,
+              "h": 41,
+              "sha256": "4b3b06b723387987c10cb8b222ce966add39ec69976fb13fb4d37466d6862202"
+            },
+            "material": {
+              "file": "sheets/bastion__body__d11__material.png",
+              "w": 61,
+              "h": 41,
+              "sha256": "83d9cd5d2bb980ec4e3d0ad2c03e01e5f8fa72a732bf2120f952573cefc1e77d"
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            34,
+            27
+          ],
+          "pivot": [
+            34,
+            27
+          ],
+          "depth": 11.47,
+          "w": 66,
+          "h": 42,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__body__d12__albedo.png",
+              "w": 66,
+              "h": 42,
+              "sha256": "315ce15aec1376091f37cb6fc378cb4f4408c03d9fb7546def6cc0177ebafc56"
+            },
+            "normal": {
+              "file": "sheets/bastion__body__d12__normal.png",
+              "w": 66,
+              "h": 42,
+              "sha256": "23b10384a4edc7998a69dca6c37c427f156f4850601f5cdbb9be70a2d9997d39"
+            },
+            "material": {
+              "file": "sheets/bastion__body__d12__material.png",
+              "w": 66,
+              "h": 42,
+              "sha256": "c0bc64b9cf8c28b1d062962a72d524d09a52422f2d36f983dcba1052824aa550"
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            32.56,
+            26.12
+          ],
+          "pivot": [
+            32.56,
+            26.12
+          ],
+          "depth": 25.11,
+          "w": 63,
+          "h": 40,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__body__d13__albedo.png",
+              "w": 63,
+              "h": 40,
+              "sha256": "3e65d27197463a31c38eee0dbe442d8b029cd0d2fd35539e0a26a2d22dd31b63"
+            },
+            "normal": {
+              "file": "sheets/bastion__body__d13__normal.png",
+              "w": 63,
+              "h": 40,
+              "sha256": "df11b96e16dc21ea2f43d16ecc45180febaf5553f7b48f75e3d42c9a8264ffae"
+            },
+            "material": {
+              "file": "sheets/bastion__body__d13__material.png",
+              "w": 63,
+              "h": 40,
+              "sha256": "70fa78320450e79a21dcc134073d9948c330866ebd37609807cf7019eded430f"
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            26.63,
+            23.31
+          ],
+          "pivot": [
+            26.63,
+            23.31
+          ],
+          "depth": 36.5,
+          "w": 51,
+          "h": 37,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__body__d14__albedo.png",
+              "w": 51,
+              "h": 37,
+              "sha256": "09a2434dd7057239e5fcec21e7f1c8cc3355bc92e3491fafc0e074da737b1e3c"
+            },
+            "normal": {
+              "file": "sheets/bastion__body__d14__normal.png",
+              "w": 51,
+              "h": 37,
+              "sha256": "cad1a5d40e03f6dd1b0bc88b68117f5f96aa288a843624f53b2dc70b735c763a"
+            },
+            "material": {
+              "file": "sheets/bastion__body__d14__material.png",
+              "w": 51,
+              "h": 37,
+              "sha256": "1ded228987d0308036ccc3fa0c839495f0989a54bbd1991b295022ff533b7357"
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            31.25,
+            26.78
+          ],
+          "pivot": [
+            31.25,
+            26.78
+          ],
+          "depth": 43.9,
+          "w": 61,
+          "h": 42,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__body__d15__albedo.png",
+              "w": 61,
+              "h": 42,
+              "sha256": "8da173d86498a1c373100e1808f3c25a044764937254354456bab770e98ff249"
+            },
+            "normal": {
+              "file": "sheets/bastion__body__d15__normal.png",
+              "w": 61,
+              "h": 42,
+              "sha256": "61c0a6f893145f87d5f499f95c98c4bbf581442927660c1aff02b26e982afbba"
+            },
+            "material": {
+              "file": "sheets/bastion__body__d15__material.png",
+              "w": 61,
+              "h": 42,
+              "sha256": "92995ba376758210363afcecb821a43478c2f9c350193d12f5081f16acc48250"
+            }
+          }
+        }
+      }
+    },
+    "running.L": {
+      "name": "running.L",
+      "dynamic": false,
+      "parent": null,
+      "pivotDesign": [
+        256,
+        256,
+        0
+      ],
+      "traverse": false,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            12,
+            26
+          ],
+          "pivot": [
+            12,
+            26
+          ],
+          "depth": 27.82,
+          "w": 42,
+          "h": 31,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.L__d00__albedo.png",
+              "w": 42,
+              "h": 31,
+              "sha256": "7ab391b210753637544252336bdda86cf5035dce19d52a5a5be6d7d50a5ca7f6"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.L__d00__normal.png",
+              "w": 42,
+              "h": 31,
+              "sha256": "0fce5d2b50c738877d70799da6b157f1b09112691f2887ac46102fc62ee6741e"
+            },
+            "material": {
+              "file": "sheets/bastion__running.L__d00__material.png",
+              "w": 42,
+              "h": 31,
+              "sha256": "8d9a03a9d4400e530cc0797824de6fbe33fe48ce5d055bb38a5ba277a8eeae43"
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            2.75,
+            24.78
+          ],
+          "pivot": [
+            2.75,
+            24.78
+          ],
+          "depth": 30.23,
+          "w": 32,
+          "h": 33,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.L__d01__albedo.png",
+              "w": 32,
+              "h": 33,
+              "sha256": "38c2959fdf50c13012b8ac66bced3acf95a21d41fef98593b6e65a1e13cf2117"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.L__d01__normal.png",
+              "w": 32,
+              "h": 33,
+              "sha256": "5546a3db5b653c3b54bb400357b98b15c2caea19c8acc4feca952bb03b9017de"
+            },
+            "material": {
+              "file": "sheets/bastion__running.L__d01__material.png",
+              "w": 32,
+              "h": 33,
+              "sha256": "ed9d23c16c6430d756a2eea2bdc67062241d5dd4cbb62ef7b6b3762432838a55"
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            -5.63,
+            21.31
+          ],
+          "pivot": [
+            -5.63,
+            21.31
+          ],
+          "depth": 28.79,
+          "w": 19,
+          "h": 33,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.L__d02__albedo.png",
+              "w": 19,
+              "h": 33,
+              "sha256": "cd5f238f8a94cb474788a4d76b201f0008189b86ed104b2fea9eb62c047b7cb7"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.L__d02__normal.png",
+              "w": 19,
+              "h": 33,
+              "sha256": "10625b239344bb14ed313dd562daed902de154d5b07b1bedee79c48a7e55bef4"
+            },
+            "material": {
+              "file": "sheets/bastion__running.L__d02__material.png",
+              "w": 19,
+              "h": 33,
+              "sha256": "8cc1d0de998c0e9c348aba44e57b2ff9f5a67f7d43bee3fd585f9c09490ebb78"
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            1.44,
+            19.12
+          ],
+          "pivot": [
+            1.44,
+            19.12
+          ],
+          "depth": 23.71,
+          "w": 32,
+          "h": 34,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.L__d03__albedo.png",
+              "w": 32,
+              "h": 34,
+              "sha256": "ae4fdad226b48d6adcec7d4d83d89fcfcada44fd07ca1536847bf7eb3c209f42"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.L__d03__normal.png",
+              "w": 32,
+              "h": 34,
+              "sha256": "9e559d04b65b605f17b8b7f2caea44e3c4ad9f0c7b16e0b62a4a58dfe649183d"
+            },
+            "material": {
+              "file": "sheets/bastion__running.L__d03__material.png",
+              "w": 32,
+              "h": 34,
+              "sha256": "09a7cb76d3ed38cfa8aa9a5ed15e80a940013fce56c035949ff8b6621715ea03"
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            9,
+            15
+          ],
+          "pivot": [
+            9,
+            15
+          ],
+          "depth": 15.77,
+          "w": 42,
+          "h": 31,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.L__d04__albedo.png",
+              "w": 42,
+              "h": 31,
+              "sha256": "931d9701ad867c9e71ba172db15beadfd1c07380c08f68e17111bbc0ec527278"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.L__d04__normal.png",
+              "w": 42,
+              "h": 31,
+              "sha256": "b2d66beaaa43389d0e6857155bd312dd36a48c854b45d63434be42b5beda0d46"
+            },
+            "material": {
+              "file": "sheets/bastion__running.L__d04__material.png",
+              "w": 42,
+              "h": 31,
+              "sha256": "f46009999a97790060435f2329cedcc19b530816205e0692a89a14a4388afb39"
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            16.44,
+            10.88
+          ],
+          "pivot": [
+            16.44,
+            10.88
+          ],
+          "depth": 6.17,
+          "w": 48,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.L__d05__albedo.png",
+              "w": 48,
+              "h": 27,
+              "sha256": "db2ecfc95a5f56fd9fe45f9dcdd774ad0d5127216c9aa485c5b8ff495add87c0"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.L__d05__normal.png",
+              "w": 48,
+              "h": 27,
+              "sha256": "6888e966f217704fc7f3a09f401fdeaf7f869aaaf9f713f59ac6f4a55df41866"
+            },
+            "material": {
+              "file": "sheets/bastion__running.L__d05__material.png",
+              "w": 48,
+              "h": 27,
+              "sha256": "420e30e8f22cda267a9da100ebe3a6add3c29decaf1035ac8d2842ac3cc44cd7"
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            21.37,
+            6.69
+          ],
+          "pivot": [
+            21.37,
+            6.69
+          ],
+          "depth": -3.61,
+          "w": 47,
+          "h": 21,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.L__d06__albedo.png",
+              "w": 47,
+              "h": 21,
+              "sha256": "a77fa20526829711a01bec50a1e10017bc489f0d51734ce3c812b5a4df59fc73"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.L__d06__normal.png",
+              "w": 47,
+              "h": 21,
+              "sha256": "dfdfcf5f00d0010251131570775c261c2d9371bc750f4a04b4ef78c463d3ec29"
+            },
+            "material": {
+              "file": "sheets/bastion__running.L__d06__material.png",
+              "w": 47,
+              "h": 21,
+              "sha256": "81f63dd1ca1f93a0b4502fc7ef6b67be21e9b89ce532f7d4b62147ab6a4ca27f"
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            27.75,
+            8.22
+          ],
+          "pivot": [
+            27.75,
+            8.22
+          ],
+          "depth": -12.11,
+          "w": 48,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.L__d07__albedo.png",
+              "w": 48,
+              "h": 25,
+              "sha256": "f5052d704f0f85e64bf4306fbbd7ce55c099914db448445d2df2646b7497a5a1"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.L__d07__normal.png",
+              "w": 48,
+              "h": 25,
+              "sha256": "41768ee4a3f725d483bf0a4d8c7a35cc60034d84b3cb7e587cd75d4ad54f100f"
+            },
+            "material": {
+              "file": "sheets/bastion__running.L__d07__material.png",
+              "w": 48,
+              "h": 25,
+              "sha256": "49ff0a1b99faec27b5410e92ee75d855f64ea24b277ef439d368b2c7297e5704"
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            30,
+            12
+          ],
+          "pivot": [
+            30,
+            12
+          ],
+          "depth": -18.01,
+          "w": 42,
+          "h": 29,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.L__d08__albedo.png",
+              "w": 42,
+              "h": 29,
+              "sha256": "d1f5fcf3bb141819b79bdc4f3d506f9fd988c2faa9e1ec7261db7f4495b295f5"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.L__d08__normal.png",
+              "w": 42,
+              "h": 29,
+              "sha256": "732d04083600279f9b7172ffd57d798c07a1255aa5b7188738afdcf56d6164f7"
+            },
+            "material": {
+              "file": "sheets/bastion__running.L__d08__material.png",
+              "w": 42,
+              "h": 29,
+              "sha256": "e91302aed29f469aafe67914195af8f7ccb7ee4f26fa41b2356cdae9eddd7886"
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            29.25,
+            16.22
+          ],
+          "pivot": [
+            29.25,
+            16.22
+          ],
+          "depth": -20.42,
+          "w": 32,
+          "h": 32,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.L__d09__albedo.png",
+              "w": 32,
+              "h": 32,
+              "sha256": "ae1779459f046541fa8464c1fabf2326736a6bc3693a8341a9129ca412d880ee"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.L__d09__normal.png",
+              "w": 32,
+              "h": 32,
+              "sha256": "9a521cf2142a07ec8af7ea713ce812828fe1137b8232a5f6757ee47a614cb653"
+            },
+            "material": {
+              "file": "sheets/bastion__running.L__d09__material.png",
+              "w": 32,
+              "h": 32,
+              "sha256": "6c7f1ffbeaaac3ecfb713abd302e9c0aebd5e0c7d3b2b2925f1cc702e178d545"
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            24.63,
+            19.69
+          ],
+          "pivot": [
+            24.63,
+            19.69
+          ],
+          "depth": -18.98,
+          "w": 19,
+          "h": 33,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.L__d10__albedo.png",
+              "w": 19,
+              "h": 33,
+              "sha256": "7565c0b5731d7324404dce4fbd3da9830335be35f72112d67c1470fbdfa80ab1"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.L__d10__normal.png",
+              "w": 19,
+              "h": 33,
+              "sha256": "c4c5fe863001883ed20af9a476311849dc5ead9b80b63d996bc222f5ab992f98"
+            },
+            "material": {
+              "file": "sheets/bastion__running.L__d10__material.png",
+              "w": 19,
+              "h": 33,
+              "sha256": "1c8946d3241f7f7b1de78eec93cb4a6b5845e763b5a57cf74e627f4f1687c76f"
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            30.56,
+            22.88
+          ],
+          "pivot": [
+            30.56,
+            22.88
+          ],
+          "depth": -13.9,
+          "w": 32,
+          "h": 33,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.L__d11__albedo.png",
+              "w": 32,
+              "h": 33,
+              "sha256": "c341bef55a9a6047e83afdfd040611b96b79dd1ed792d317d436bcd3d4e1f572"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.L__d11__normal.png",
+              "w": 32,
+              "h": 33,
+              "sha256": "4782a973e28b65c6b92bfb124e8308fd559177007982467631800044bbd9c25c"
+            },
+            "material": {
+              "file": "sheets/bastion__running.L__d11__material.png",
+              "w": 32,
+              "h": 33,
+              "sha256": "903e1df9001465522892405ec8e520f8147c61995d0282c581ba3b5e3045e373"
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            33,
+            24
+          ],
+          "pivot": [
+            33,
+            24
+          ],
+          "depth": -5.95,
+          "w": 42,
+          "h": 31,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.L__d12__albedo.png",
+              "w": 42,
+              "h": 31,
+              "sha256": "63fc5b6a376692a275066bc4c04bf1040192972c27ac3ef0a4eabf2ecb0b7c41"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.L__d12__normal.png",
+              "w": 42,
+              "h": 31,
+              "sha256": "699f953dcbde2b1a38d1261678a0438689392932ebbcbff8c37787dcefe213f1"
+            },
+            "material": {
+              "file": "sheets/bastion__running.L__d12__material.png",
+              "w": 42,
+              "h": 31,
+              "sha256": "2ad11415b4ffafdaa4434b5baf2f6006f87c3694200292204ac6a064831fc2af"
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            31.56,
+            24.12
+          ],
+          "pivot": [
+            31.56,
+            24.12
+          ],
+          "depth": 3.64,
+          "w": 48,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.L__d13__albedo.png",
+              "w": 48,
+              "h": 27,
+              "sha256": "f52e1212c25daacbc37304a9409ef5ec4af8c390f0beb044a6b1c914916c7df3"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.L__d13__normal.png",
+              "w": 48,
+              "h": 27,
+              "sha256": "3d251a64b0c78f4a04ff207cf1235c6226e49aff02e394dde2aff681e672054d"
+            },
+            "material": {
+              "file": "sheets/bastion__running.L__d13__material.png",
+              "w": 48,
+              "h": 27,
+              "sha256": "dbc4cd30112427bc07e25f7a6c5af2f7f8a4cd97127fd10332846cc490d95944"
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            25.63,
+            22.31
+          ],
+          "pivot": [
+            25.63,
+            22.31
+          ],
+          "depth": 13.43,
+          "w": 47,
+          "h": 22,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.L__d14__albedo.png",
+              "w": 47,
+              "h": 22,
+              "sha256": "242104df7add6a765935ab49df9ec41c65051158f0a0fc81c3f8440b3a4458f7"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.L__d14__normal.png",
+              "w": 47,
+              "h": 22,
+              "sha256": "dab46392b5a0af373e5d51b2f10947aed695a676f8ea20d5bc2665185405658e"
+            },
+            "material": {
+              "file": "sheets/bastion__running.L__d14__material.png",
+              "w": 47,
+              "h": 22,
+              "sha256": "477f16d95d5a91e5d3c9eff5073b73f7db74c43ba3dc7ceacd9e923dcbd138f1"
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            20.25,
+            24.78
+          ],
+          "pivot": [
+            20.25,
+            24.78
+          ],
+          "depth": 21.92,
+          "w": 48,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.L__d15__albedo.png",
+              "w": 48,
+              "h": 27,
+              "sha256": "6a842a74278f8d4313f44c82599d7d0022af1c0ff118b62cb4a8d5bdf7b69237"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.L__d15__normal.png",
+              "w": 48,
+              "h": 27,
+              "sha256": "a458a5da02a30fdc0fd00f499235a9847e98f90b30db6615857f75e40555826f"
+            },
+            "material": {
+              "file": "sheets/bastion__running.L__d15__material.png",
+              "w": 48,
+              "h": 27,
+              "sha256": "1ab44a98666049f021186e17fb5f1ae92e89da5e68aecd1684f62486471b1d42"
+            }
+          }
+        }
+      }
+    },
+    "running.R": {
+      "name": "running.R",
+      "dynamic": false,
+      "parent": null,
+      "pivotDesign": [
+        256,
+        256,
+        0
+      ],
+      "traverse": false,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            33,
+            15
+          ],
+          "pivot": [
+            33,
+            15
+          ],
+          "depth": 52.86,
+          "w": 42,
+          "h": 31,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.R__d00__albedo.png",
+              "w": 42,
+              "h": 31,
+              "sha256": "f41fbd4ef85a0a3ea543f597146b6cc12fcadd6f570ec377dfe7d667bf45ebe9"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.R__d00__normal.png",
+              "w": 42,
+              "h": 31,
+              "sha256": "96578b2020ed85c9a76a34be7c9266ca06a44ca1abd0ddd380a4ab325a4a1af0"
+            },
+            "material": {
+              "file": "sheets/bastion__running.R__d00__material.png",
+              "w": 42,
+              "h": 31,
+              "sha256": "dd653248a06c0abc6a6d5fe8e724a3938db70bc4722aa4684e90d6e448d347ac"
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            30.75,
+            18.78
+          ],
+          "pivot": [
+            30.75,
+            18.78
+          ],
+          "depth": 43.79,
+          "w": 32,
+          "h": 33,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.R__d01__albedo.png",
+              "w": 32,
+              "h": 33,
+              "sha256": "6f32a0afa2275c4ead059f879a15bc98bf5488d459fec98f4e7dfd6c3b2ac4a0"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.R__d01__normal.png",
+              "w": 32,
+              "h": 33,
+              "sha256": "8d55d0e9a31cbab4c94d0f1b4deca7f73cda5d9b0a480df80cf8a0b35ff145ae"
+            },
+            "material": {
+              "file": "sheets/bastion__running.R__d01__material.png",
+              "w": 32,
+              "h": 33,
+              "sha256": "0d888187ea70131f1ef26fd22ff0b549cf76a92966ddb590747f0540136f3b08"
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            25.37,
+            21.31
+          ],
+          "pivot": [
+            25.37,
+            21.31
+          ],
+          "depth": 28.79,
+          "w": 20,
+          "h": 33,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.R__d02__albedo.png",
+              "w": 20,
+              "h": 33,
+              "sha256": "399c19d6fb682b392b91c9a6838db899d55cb966edc757ed76de7b9a74d263db"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.R__d02__normal.png",
+              "w": 20,
+              "h": 33,
+              "sha256": "fb7fb1dc70a95a0019c64b05f257a22c6879bddb641d3ec4f7dc010b1e03fa5a"
+            },
+            "material": {
+              "file": "sheets/bastion__running.R__d02__material.png",
+              "w": 20,
+              "h": 33,
+              "sha256": "5e168d40df6ef8364062da7c1a7ca15566277c98f625a7ad82a9759b8265f849"
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            29.44,
+            24.12
+          ],
+          "pivot": [
+            29.44,
+            24.12
+          ],
+          "depth": 10.16,
+          "w": 32,
+          "h": 33,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.R__d03__albedo.png",
+              "w": 32,
+              "h": 33,
+              "sha256": "4037c88e84bfbe6d6da6199a4f08b2f7ac60e37811f2975b0b1bc4cd549b779f"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.R__d03__normal.png",
+              "w": 32,
+              "h": 33,
+              "sha256": "13d54c6f0a54b1645249bdfd3b44fd1c6eb26173d8a587e3535b152cddc0faae"
+            },
+            "material": {
+              "file": "sheets/bastion__running.R__d03__material.png",
+              "w": 32,
+              "h": 33,
+              "sha256": "11a64d761a625d20b7104a83f9ca283a5851bd40eeb694197ddbf5a330f61393"
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            30,
+            26
+          ],
+          "pivot": [
+            30,
+            26
+          ],
+          "depth": -9.27,
+          "w": 42,
+          "h": 31,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.R__d04__albedo.png",
+              "w": 42,
+              "h": 31,
+              "sha256": "f4a208b77556a7b92ee8768f8c5257afa475154593a73a7837bd25da56b91111"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.R__d04__normal.png",
+              "w": 42,
+              "h": 31,
+              "sha256": "2190e4a7e6cf5d0ebd5fe63b755c54232bbd7267aee1175eee79fb789fae97f6"
+            },
+            "material": {
+              "file": "sheets/bastion__running.R__d04__material.png",
+              "w": 42,
+              "h": 31,
+              "sha256": "feb8a72913d397a4ee52766cb26ab2b5f1d3d177818f22a5d9e72f61cd98d097"
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            27.44,
+            24.88
+          ],
+          "pivot": [
+            27.44,
+            24.88
+          ],
+          "depth": -26.55,
+          "w": 47,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.R__d05__albedo.png",
+              "w": 47,
+              "h": 27,
+              "sha256": "a3fe80c92031e929b9d1bb0f34cddc306c0da3785ddb277851c1667fb472e857"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.R__d05__normal.png",
+              "w": 47,
+              "h": 27,
+              "sha256": "cd9a76ecdfe1ac32967156853d1be6f26efa299d5d6ce83c5bc67452f87ee68e"
+            },
+            "material": {
+              "file": "sheets/bastion__running.R__d05__material.png",
+              "w": 47,
+              "h": 27,
+              "sha256": "d06f2447087e6bdd74f68330a4e77c8aa8eb770f757d941178659641866a5788"
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            21.37,
+            22.69
+          ],
+          "pivot": [
+            21.37,
+            22.69
+          ],
+          "depth": -39.03,
+          "w": 47,
+          "h": 22,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.R__d06__albedo.png",
+              "w": 47,
+              "h": 22,
+              "sha256": "29217b27fea3c28d90cd8979d079567ea30b6425494bed068cd13c41545566a9"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.R__d06__normal.png",
+              "w": 47,
+              "h": 22,
+              "sha256": "f06179375b3f1dcce5a69c08726be81feb8204eb93a35ddfaa546aee59156d42"
+            },
+            "material": {
+              "file": "sheets/bastion__running.R__d06__material.png",
+              "w": 47,
+              "h": 22,
+              "sha256": "12bb9de1c415430223cce3ecda1602b60a1b4c56d4bda2b8abac0ab70806e31b"
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            16.75,
+            24.22
+          ],
+          "pivot": [
+            16.75,
+            24.22
+          ],
+          "depth": -44.83,
+          "w": 48,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.R__d07__albedo.png",
+              "w": 48,
+              "h": 27,
+              "sha256": "783a914154ec128d1ff38953f5e76e6dcbc47fdc56f6297baef5f6a2356aefef"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.R__d07__normal.png",
+              "w": 48,
+              "h": 27,
+              "sha256": "f7fe553679dbc455e1581dd1aebf769790108c0038822a49e6a8c68d54b65888"
+            },
+            "material": {
+              "file": "sheets/bastion__running.R__d07__material.png",
+              "w": 48,
+              "h": 27,
+              "sha256": "06f0bc26b9f5b2c7a435ebe7d5de99a7be6b2780bf799a7b9c351dc4cb054748"
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            9,
+            24
+          ],
+          "pivot": [
+            9,
+            24
+          ],
+          "depth": -43.05,
+          "w": 42,
+          "h": 31,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.R__d08__albedo.png",
+              "w": 42,
+              "h": 31,
+              "sha256": "7fb96a6ad5b6b05f29b6ddc95a0fd4a9da692df75d3e97a6558badb7984ca45a"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.R__d08__normal.png",
+              "w": 42,
+              "h": 31,
+              "sha256": "38722b1ba081d8dfcef18cf41bf1e8a4caf94a376506e182f231d40f2e1805f8"
+            },
+            "material": {
+              "file": "sheets/bastion__running.R__d08__material.png",
+              "w": 42,
+              "h": 31,
+              "sha256": "f88e03bc0ef93157fedac19208f7ea492b5f43f963e54ef0cf8b17844e15938e"
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            1.25,
+            22.22
+          ],
+          "pivot": [
+            1.25,
+            22.22
+          ],
+          "depth": -33.97,
+          "w": 32,
+          "h": 33,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.R__d09__albedo.png",
+              "w": 32,
+              "h": 33,
+              "sha256": "48f06fea65542b53c95035918cf540cbc24aa31a78509f888d2a0c046508c9d5"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.R__d09__normal.png",
+              "w": 32,
+              "h": 33,
+              "sha256": "2268afaf7ab6ccf9ba77b1c5a7e2255db6b153fdacd2e3d550febd4a17ba7131"
+            },
+            "material": {
+              "file": "sheets/bastion__running.R__d09__material.png",
+              "w": 32,
+              "h": 33,
+              "sha256": "4aea304e3e71e95fa46478ebf16f6e0b70138d7bd096762649a88d0b23faa32f"
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            -5.37,
+            19.69
+          ],
+          "pivot": [
+            -5.37,
+            19.69
+          ],
+          "depth": -18.98,
+          "w": 20,
+          "h": 33,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.R__d10__albedo.png",
+              "w": 20,
+              "h": 33,
+              "sha256": "c11c86baeb7669a8132c869bd6c69f423697202dd453ddaf1906f5df7855879e"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.R__d10__normal.png",
+              "w": 20,
+              "h": 33,
+              "sha256": "d43d80685a16471151b26b98d2ec796305686b7cf744ff6450bbd95783bcaf28"
+            },
+            "material": {
+              "file": "sheets/bastion__running.R__d10__material.png",
+              "w": 20,
+              "h": 33,
+              "sha256": "34f81a83550537114da28fdb89c8b5bde058e180a02b648b621e590aa693e1d5"
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            2.56,
+            15.88
+          ],
+          "pivot": [
+            2.56,
+            15.88
+          ],
+          "depth": -0.34,
+          "w": 32,
+          "h": 32,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.R__d11__albedo.png",
+              "w": 32,
+              "h": 32,
+              "sha256": "ba0fd10d09ebb84fc733fe6db91631d4903eac647a062611f8a744d99f5fe00c"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.R__d11__normal.png",
+              "w": 32,
+              "h": 32,
+              "sha256": "b99427601e453fd8fb9d4ba92bdeb2a444b5db4c2dd49a62328b68b910ea8d4b"
+            },
+            "material": {
+              "file": "sheets/bastion__running.R__d11__material.png",
+              "w": 32,
+              "h": 32,
+              "sha256": "90cab385c748c2650da0a11e6a1e9cf1ec93a96a2c7cae20956bf92330957c10"
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            12,
+            12
+          ],
+          "pivot": [
+            12,
+            12
+          ],
+          "depth": 19.09,
+          "w": 42,
+          "h": 29,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.R__d12__albedo.png",
+              "w": 42,
+              "h": 29,
+              "sha256": "f0a7d2007ca9645325a8d7b330623e4a281139d28a96ab131efb3d39183819f3"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.R__d12__normal.png",
+              "w": 42,
+              "h": 29,
+              "sha256": "d69510a504a516b993a6c8c8452f2d3b04fffd183c0d2eddb8562bc0656fc470"
+            },
+            "material": {
+              "file": "sheets/bastion__running.R__d12__material.png",
+              "w": 42,
+              "h": 29,
+              "sha256": "44cf1d79419b41297d90b299e95f4d3315bfad5c9f30161027b26e7e4ca6bc2d"
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            19.56,
+            8.12
+          ],
+          "pivot": [
+            19.56,
+            8.12
+          ],
+          "depth": 36.36,
+          "w": 47,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.R__d13__albedo.png",
+              "w": 47,
+              "h": 25,
+              "sha256": "2c35e6df794fb493c147d270fe643ccb71d630d5e8f3cf91aa4a8ab450cee7aa"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.R__d13__normal.png",
+              "w": 47,
+              "h": 25,
+              "sha256": "197df4b5c8fb1d61c3c5c8d9b75e48af00413788e6a1a95b11f8d4441a6a8f8d"
+            },
+            "material": {
+              "file": "sheets/bastion__running.R__d13__material.png",
+              "w": 47,
+              "h": 25,
+              "sha256": "b381a1934ccf8280702d8cfa619833e1150d3b1e37aba9e94a22b22e03be4338"
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            25.63,
+            7.31
+          ],
+          "pivot": [
+            25.63,
+            7.31
+          ],
+          "depth": 48.85,
+          "w": 47,
+          "h": 21,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.R__d14__albedo.png",
+              "w": 47,
+              "h": 21,
+              "sha256": "c15c6626be29373af331aff5ba6e8542d6c4aa98a2d88daf00c7a669dc7b7e7b"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.R__d14__normal.png",
+              "w": 47,
+              "h": 21,
+              "sha256": "3a3e0c52872bde89a49ca8818439532feb5ef4424f3a68675016fe6ec9cefff7"
+            },
+            "material": {
+              "file": "sheets/bastion__running.R__d14__material.png",
+              "w": 47,
+              "h": 21,
+              "sha256": "916f529da14e299f9107521097fdd7c878d9cec62796aa38863652641c735411"
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            31.25,
+            10.78
+          ],
+          "pivot": [
+            31.25,
+            10.78
+          ],
+          "depth": 54.64,
+          "w": 48,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__running.R__d15__albedo.png",
+              "w": 48,
+              "h": 27,
+              "sha256": "7d8be5a0c86beecd14d14d9e72fec49fe6d5be7baa380cfc3acbce0cf55e5077"
+            },
+            "normal": {
+              "file": "sheets/bastion__running.R__d15__normal.png",
+              "w": 48,
+              "h": 27,
+              "sha256": "6c98fe5084a3e9337b1014114cc2a86cf9737836505ed3479a17f2138cff0650"
+            },
+            "material": {
+              "file": "sheets/bastion__running.R__d15__material.png",
+              "w": 48,
+              "h": 27,
+              "sha256": "c72fee4fab0eb05c7f08b7008f95751bb85fa11f6716592d89ab4bd3f3aa0479"
+            }
+          }
+        }
+      }
+    },
+    "turret": {
+      "name": "turret",
+      "dynamic": true,
+      "parent": null,
+      "pivotDesign": [
+        300,
+        256,
+        146
+      ],
+      "traverse": true,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            12,
+            29
+          ],
+          "pivot": [
+            14.75,
+            21.25
+          ],
+          "depth": 58.78,
+          "w": 28,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__turret__d00__albedo.png",
+              "w": 28,
+              "h": 27,
+              "sha256": "a54464d76022b59b820518ead7df23b445dd1b12ea0ce72a3afe602757f2195b"
+            },
+            "normal": {
+              "file": "sheets/bastion__turret__d00__normal.png",
+              "w": 28,
+              "h": 27,
+              "sha256": "cfb9aab2e30c4edaf916bf1fddcdc594e4986a3c78d78e94f4d6b7f4dc2db16f"
+            },
+            "material": {
+              "file": "sheets/bastion__turret__d00__material.png",
+              "w": 28,
+              "h": 27,
+              "sha256": "154596b10c5d1f4aa503d9ce2bf795c8fec09c51c4fa2d1394304eacc3a401ce"
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            11.75,
+            27.78
+          ],
+          "pivot": [
+            13.24,
+            20.45
+          ],
+          "depth": 56.48,
+          "w": 26,
+          "h": 26,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__turret__d01__albedo.png",
+              "w": 26,
+              "h": 26,
+              "sha256": "7ebbaae3054d4130212db087139da849fe52a84eb73d7799a7dec567e4aae47c"
+            },
+            "normal": {
+              "file": "sheets/bastion__turret__d01__normal.png",
+              "w": 26,
+              "h": 26,
+              "sha256": "3ae2c380f59f69ba4f4e8b09e9397afddd2ffe3342f3b70043f943cb41724592"
+            },
+            "material": {
+              "file": "sheets/bastion__turret__d01__material.png",
+              "w": 26,
+              "h": 26,
+              "sha256": "edee5cc3a620a6cb4531d0adff66d719611fc2203deb21121cb6c3dd9b66f5fc"
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            12.37,
+            27.31
+          ],
+          "pivot": [
+            12.37,
+            20.13
+          ],
+          "depth": 48.65,
+          "w": 24,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__turret__d02__albedo.png",
+              "w": 24,
+              "h": 25,
+              "sha256": "7b34e3c3fb361deed22cd71e47a13cce08165faff51413722c26ac049a759729"
+            },
+            "normal": {
+              "file": "sheets/bastion__turret__d02__normal.png",
+              "w": 24,
+              "h": 25,
+              "sha256": "c4f7e63df6160d2deb562cb18f9a8884b068ffd70c9d10d630d5a3fa5c9c486e"
+            },
+            "material": {
+              "file": "sheets/bastion__turret__d02__material.png",
+              "w": 24,
+              "h": 25,
+              "sha256": "db33c49d0ffebe8adf1b5890abbba692648d33e2d26a14f06d5eb707778999c5"
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            14.44,
+            26.12
+          ],
+          "pivot": [
+            12.95,
+            18.79
+          ],
+          "depth": 36.48,
+          "w": 26,
+          "h": 24,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__turret__d03__albedo.png",
+              "w": 26,
+              "h": 24,
+              "sha256": "6b114f0c335438f430d5fa0cfef2303bd1700668677fdd69f41ba1cc7c65ec73"
+            },
+            "normal": {
+              "file": "sheets/bastion__turret__d03__normal.png",
+              "w": 26,
+              "h": 24,
+              "sha256": "64df4e5753d86685a3ab33f172e13d69c5a31b92333229d2f86bd62c531fe97a"
+            },
+            "material": {
+              "file": "sheets/bastion__turret__d03__material.png",
+              "w": 26,
+              "h": 24,
+              "sha256": "38c2c10782d944eddca4303f846faf6008c827e6b6c7e7710e4995ceb8380f65"
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            16,
+            27
+          ],
+          "pivot": [
+            13.25,
+            19.25
+          ],
+          "depth": 21.83,
+          "w": 28,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__turret__d04__albedo.png",
+              "w": 28,
+              "h": 25,
+              "sha256": "54760b8392bc6adcf79b04e436743ff37db4976f3ba5876b47f405905af531b2"
+            },
+            "normal": {
+              "file": "sheets/bastion__turret__d04__normal.png",
+              "w": 28,
+              "h": 25,
+              "sha256": "17e9c09c568d1b84ad960af403108627a18fb2fde7fb76343019639d350e1c75"
+            },
+            "material": {
+              "file": "sheets/bastion__turret__d04__material.png",
+              "w": 28,
+              "h": 25,
+              "sha256": "3a609d458afb9473491e8841ea3aefc28df18537eae32d33f7b91271834f7ede"
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            16.44,
+            27.88
+          ],
+          "pivot": [
+            12.84,
+            19.5
+          ],
+          "depth": 6.93,
+          "w": 29,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__turret__d05__albedo.png",
+              "w": 29,
+              "h": 25,
+              "sha256": "7a965baf76b42ad7f1986f3727622e7b621409d6b0537b7f76becb6aa02e1d31"
+            },
+            "normal": {
+              "file": "sheets/bastion__turret__d05__normal.png",
+              "w": 29,
+              "h": 25,
+              "sha256": "780f42f4c2e62fd2c76954c0f2d9f46acbeb2aa4a7c5087fbe75c88cd2f0d98d"
+            },
+            "material": {
+              "file": "sheets/bastion__turret__d05__material.png",
+              "w": 29,
+              "h": 25,
+              "sha256": "598d184827f3799a80535f30a3372d26973276687933c58c181ab56ba318021c"
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            15.37,
+            27.69
+          ],
+          "pivot": [
+            11.48,
+            18.56
+          ],
+          "depth": -5.96,
+          "w": 26,
+          "h": 23,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__turret__d06__albedo.png",
+              "w": 26,
+              "h": 23,
+              "sha256": "cae5d4bb917e3d3a4f63d24ba145e7b8b7a860f46e2b7457c7ccae2fd8cb2c69"
+            },
+            "normal": {
+              "file": "sheets/bastion__turret__d06__normal.png",
+              "w": 26,
+              "h": 23,
+              "sha256": "1a676969ddf8686cada732e47988f8d06b2f18f88dfa41b0b5d817d2f8a41af7"
+            },
+            "material": {
+              "file": "sheets/bastion__turret__d06__material.png",
+              "w": 26,
+              "h": 23,
+              "sha256": "0f64f9c068b68dc7de6b469e5576d5b532d823dbfb5f73f9fc1870a52421872b"
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            16.75,
+            28.22
+          ],
+          "pivot": [
+            13.16,
+            18.35
+          ],
+          "depth": -14.86,
+          "w": 29,
+          "h": 24,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__turret__d07__albedo.png",
+              "w": 29,
+              "h": 24,
+              "sha256": "20ce832866de3ff80391032c2f71d3902b88482339d0f60323a28be7f3ccf3e9"
+            },
+            "normal": {
+              "file": "sheets/bastion__turret__d07__normal.png",
+              "w": 29,
+              "h": 24,
+              "sha256": "d017e790ec9fa4db7eb549496473a550ddf5e7fbdf35d3a0e56f20022d93a5f3"
+            },
+            "material": {
+              "file": "sheets/bastion__turret__d07__material.png",
+              "w": 29,
+              "h": 24,
+              "sha256": "7200b5572c6becb16be715326ffe641b59b4011b8cb4dd050c2f1b2eaec532c4"
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            16,
+            27
+          ],
+          "pivot": [
+            13.25,
+            16.5
+          ],
+          "depth": -18.44,
+          "w": 28,
+          "h": 23,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__turret__d08__albedo.png",
+              "w": 28,
+              "h": 23,
+              "sha256": "efee9db0066fdba5e95c29b5008eb4e54e6dc31cdc6ab3427bfd042c847a7e2c"
+            },
+            "normal": {
+              "file": "sheets/bastion__turret__d08__normal.png",
+              "w": 28,
+              "h": 23,
+              "sha256": "2930c745a8016460ccd4b18a334a5eddfeca1d967017c81e45a8679100ca7c34"
+            },
+            "material": {
+              "file": "sheets/bastion__turret__d08__material.png",
+              "w": 28,
+              "h": 23,
+              "sha256": "38d495c3eb04cb020fdca64838b4277c9dc4e84510894c247ab5f3ebdb644c87"
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            14.25,
+            26.22
+          ],
+          "pivot": [
+            12.76,
+            15.3
+          ],
+          "depth": -16.14,
+          "w": 26,
+          "h": 22,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__turret__d09__albedo.png",
+              "w": 26,
+              "h": 22,
+              "sha256": "9c010ed0a085ea2d7d3d5565defb99a9f6274245c3074e563d3a45270fd75507"
+            },
+            "normal": {
+              "file": "sheets/bastion__turret__d09__normal.png",
+              "w": 26,
+              "h": 22,
+              "sha256": "1ad36f9e6dca8ada5285d3a26d8d4628731c71665cac9adf43cffe82ff510fd2"
+            },
+            "material": {
+              "file": "sheets/bastion__turret__d09__material.png",
+              "w": 26,
+              "h": 22,
+              "sha256": "52528f54bd3368703fe514da59eaafeea862dcd02100b363d3f1c15868ca1ed0"
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            11.63,
+            26.69
+          ],
+          "pivot": [
+            11.63,
+            15.62
+          ],
+          "depth": -8.3,
+          "w": 24,
+          "h": 22,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__turret__d10__albedo.png",
+              "w": 24,
+              "h": 22,
+              "sha256": "14c0230f4f4025c84bc8c9157f0f22547771b30409341409d342992759fe6e54"
+            },
+            "normal": {
+              "file": "sheets/bastion__turret__d10__normal.png",
+              "w": 24,
+              "h": 22,
+              "sha256": "2fb336ced21526e5b5c09cb3457466df407b18f6b6896341cb517495ae6dc23c"
+            },
+            "material": {
+              "file": "sheets/bastion__turret__d10__material.png",
+              "w": 24,
+              "h": 22,
+              "sha256": "a24be4cd711d277dd5d5c0b5ffbabcda7ff6fda71dcdd1f613745b944af5d56c"
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            11.56,
+            27.88
+          ],
+          "pivot": [
+            13.05,
+            16.96
+          ],
+          "depth": 3.86,
+          "w": 26,
+          "h": 24,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__turret__d11__albedo.png",
+              "w": 26,
+              "h": 24,
+              "sha256": "20c8ba8d95c014927090f46676da3b4512abdcfdccb7af399770ad8703694d6a"
+            },
+            "normal": {
+              "file": "sheets/bastion__turret__d11__normal.png",
+              "w": 26,
+              "h": 24,
+              "sha256": "cfdfb078335922839406a4105d4bc55f3acf5f2b4227d165cc7989da45512610"
+            },
+            "material": {
+              "file": "sheets/bastion__turret__d11__material.png",
+              "w": 26,
+              "h": 24,
+              "sha256": "377485cb44882bcbbdbe374d844764918ba99126a8c3f005efe0482f8a163e53"
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            12,
+            29
+          ],
+          "pivot": [
+            14.75,
+            18.5
+          ],
+          "depth": 18.51,
+          "w": 28,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__turret__d12__albedo.png",
+              "w": 28,
+              "h": 25,
+              "sha256": "3e6c7a9c9b12aa0da3fcf2e44471758bde48587623ce14a9129352750eb19e4d"
+            },
+            "normal": {
+              "file": "sheets/bastion__turret__d12__normal.png",
+              "w": 28,
+              "h": 25,
+              "sha256": "fc263a144e035f75faaea536a75686b0b6ff35cc90ce63188a918f3becf28400"
+            },
+            "material": {
+              "file": "sheets/bastion__turret__d12__material.png",
+              "w": 28,
+              "h": 25,
+              "sha256": "f00a7fd5abe82e2803cd623fd263437b7278d0d4616f40d660533336cca353bf"
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            12.56,
+            29.12
+          ],
+          "pivot": [
+            16.16,
+            19.25
+          ],
+          "depth": 33.41,
+          "w": 29,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__turret__d13__albedo.png",
+              "w": 29,
+              "h": 25,
+              "sha256": "defc888a62b77eabed45466e3d1f421434814cb42288d262a92c779f86dde295"
+            },
+            "normal": {
+              "file": "sheets/bastion__turret__d13__normal.png",
+              "w": 29,
+              "h": 25,
+              "sha256": "c61901852157f7a7d867305b787d2622797f69a24737a76111d2623386c0d8df"
+            },
+            "material": {
+              "file": "sheets/bastion__turret__d13__material.png",
+              "w": 29,
+              "h": 25,
+              "sha256": "068eda662d44c7776c85972de8c0968ff19ed911970837ebf5682d41cd8ea184"
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            10.63,
+            29.31
+          ],
+          "pivot": [
+            14.52,
+            20.19
+          ],
+          "depth": 46.3,
+          "w": 26,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__turret__d14__albedo.png",
+              "w": 26,
+              "h": 25,
+              "sha256": "23d1fdf1a8269b9865b38be618acc8084d2c3d80211b01320039244fff3cbb1c"
+            },
+            "normal": {
+              "file": "sheets/bastion__turret__d14__normal.png",
+              "w": 26,
+              "h": 25,
+              "sha256": "5099b624004e76d63c20f579f71422a1c787ff985f2716b64544901769ba8e20"
+            },
+            "material": {
+              "file": "sheets/bastion__turret__d14__material.png",
+              "w": 26,
+              "h": 25,
+              "sha256": "06f8af2e9faed8e9555eac8392666f641d6b87bb0e6a1281c9c34e247eff3e03"
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            12.25,
+            29.78
+          ],
+          "pivot": [
+            15.84,
+            21.4
+          ],
+          "depth": 55.21,
+          "w": 29,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__turret__d15__albedo.png",
+              "w": 29,
+              "h": 27,
+              "sha256": "1afc11703bf695227a98042fb15177603aeaa23375a58cef463cb1656b9817f7"
+            },
+            "normal": {
+              "file": "sheets/bastion__turret__d15__normal.png",
+              "w": 29,
+              "h": 27,
+              "sha256": "528b9f120412b4a06e9167637ddfacea9a2a7931b729955698e51bf99271fe3a"
+            },
+            "material": {
+              "file": "sheets/bastion__turret__d15__material.png",
+              "w": 29,
+              "h": 27,
+              "sha256": "927b498233b87eb4765049aef1340e2ed7c5e0b8173de670b95817b7a5392cf9"
+            }
+          }
+        }
+      }
+    },
+    "barrel": {
+      "name": "barrel",
+      "dynamic": true,
+      "parent": "turret",
+      "pivotDesign": [
+        396,
+        256,
+        198
+      ],
+      "traverse": true,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            -3,
+            15
+          ],
+          "pivot": [
+            5.75,
+            7
+          ],
+          "depth": 65.82,
+          "w": 19,
+          "h": 17,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__barrel__d00__albedo.png",
+              "w": 19,
+              "h": 17,
+              "sha256": "2d18fbf72533571d323b127e33f737a2c6a4f2cbd60ef0f030bf0060e378b31a"
+            },
+            "normal": {
+              "file": "sheets/bastion__barrel__d00__normal.png",
+              "w": 19,
+              "h": 17,
+              "sha256": "4a7969191715d5d25e68b90f7aef19fa81cb0d2a12b05deb485794d4be16de61"
+            },
+            "material": {
+              "file": "sheets/bastion__barrel__d00__material.png",
+              "w": 19,
+              "h": 17,
+              "sha256": "8b527f6e0741ed197ed89ca04d55f5c831aace26947637836717c1201774886a"
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            2.75,
+            12.78
+          ],
+          "pivot": [
+            7.49,
+            6.12
+          ],
+          "depth": 67.45,
+          "w": 18,
+          "h": 17,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__barrel__d01__albedo.png",
+              "w": 18,
+              "h": 17,
+              "sha256": "d9104c2105f7f34d1905da0ecf0b70a7d060e1dc1a696574b0de0460172d1cb6"
+            },
+            "normal": {
+              "file": "sheets/bastion__barrel__d01__normal.png",
+              "w": 18,
+              "h": 17,
+              "sha256": "feec9261ac145e315fe37d4bd0ed74d0a7a38ee6ad8169986fa75d8570501f5b"
+            },
+            "material": {
+              "file": "sheets/bastion__barrel__d01__material.png",
+              "w": 18,
+              "h": 17,
+              "sha256": "09828da627baa1df543279450fc8840ac4caddfabc8bccf630ba66379d7d0315"
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            7.37,
+            12.31
+          ],
+          "pivot": [
+            7.37,
+            6.13
+          ],
+          "depth": 61,
+          "w": 15,
+          "h": 17,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__barrel__d02__albedo.png",
+              "w": 15,
+              "h": 17,
+              "sha256": "de018e05ba4d4e4de61a8a2034c64364237c72618f66fc0a8dc99fc1c47cfda8"
+            },
+            "normal": {
+              "file": "sheets/bastion__barrel__d02__normal.png",
+              "w": 15,
+              "h": 17,
+              "sha256": "f6a81d1c2faa34db6379e918abe34ea1b20c5580cbcd8b97c59621411a69f5f0"
+            },
+            "material": {
+              "file": "sheets/bastion__barrel__d02__material.png",
+              "w": 15,
+              "h": 17,
+              "sha256": "cad5921949b842c271f70ba4193baa0a25c32f04c34fde3590361f79516130f0"
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            15.44,
+            13.12
+          ],
+          "pivot": [
+            10.7,
+            6.46
+          ],
+          "depth": 47.45,
+          "w": 18,
+          "h": 17,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__barrel__d03__albedo.png",
+              "w": 18,
+              "h": 17,
+              "sha256": "e341a10dfc3861f4d7500432ff5126f918f70fd0c558a3f5a5697a230b10fb81"
+            },
+            "normal": {
+              "file": "sheets/bastion__barrel__d03__normal.png",
+              "w": 18,
+              "h": 17,
+              "sha256": "1450d21650c5dfeb837eacc2d59953651da00f615abaabc14553eaf5a10e84e4"
+            },
+            "material": {
+              "file": "sheets/bastion__barrel__d03__material.png",
+              "w": 18,
+              "h": 17,
+              "sha256": "f54809f4e41b3dfe742446723becef3035057fd2e2541c6352c1f01202c6c538"
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            22,
+            15
+          ],
+          "pivot": [
+            13.25,
+            7
+          ],
+          "depth": 28.87,
+          "w": 19,
+          "h": 17,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__barrel__d04__albedo.png",
+              "w": 19,
+              "h": 17,
+              "sha256": "ac8ab5ee8c457a9b6513d3ab608dbd2be5172771ebf5656154da44b310d8a86c"
+            },
+            "normal": {
+              "file": "sheets/bastion__barrel__d04__normal.png",
+              "w": 19,
+              "h": 17,
+              "sha256": "4844b1afc66514ba785d3648f876963a4da3623eacc9ca0d799ebd48e943e37a"
+            },
+            "material": {
+              "file": "sheets/bastion__barrel__d04__material.png",
+              "w": 19,
+              "h": 17,
+              "sha256": "f076da5acbbb2e67ad5bbe1c48be59a63146df9f5cd89111a7c3beb75979042f"
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            26.44,
+            16.88
+          ],
+          "pivot": [
+            15,
+            6.87
+          ],
+          "depth": 8.07,
+          "w": 20,
+          "h": 15,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__barrel__d05__albedo.png",
+              "w": 20,
+              "h": 15,
+              "sha256": "218d0fcd2dcebcffd77a895a60444c9e625768e6843cddf36ac92d559361b0c4"
+            },
+            "normal": {
+              "file": "sheets/bastion__barrel__d05__normal.png",
+              "w": 20,
+              "h": 15,
+              "sha256": "f79eb1922c92d4ae778780049e500febc5031cd69e782587765d9c40ecaf20c7"
+            },
+            "material": {
+              "file": "sheets/bastion__barrel__d05__material.png",
+              "w": 20,
+              "h": 15,
+              "sha256": "2c234caaeaab6e2255650dee8a66ff6618e58cf7f7675ba0914e7fbef9d7f583"
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            27.37,
+            19.69
+          ],
+          "pivot": [
+            15,
+            7.31
+          ],
+          "depth": -11.77,
+          "w": 19,
+          "h": 14,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__barrel__d06__albedo.png",
+              "w": 19,
+              "h": 14,
+              "sha256": "c766f8276f1a136255687f07b228fff479f44b531970aa1e918d5f6cf1027f38"
+            },
+            "normal": {
+              "file": "sheets/bastion__barrel__d06__normal.png",
+              "w": 19,
+              "h": 14,
+              "sha256": "4b8f78e260f36b59c0a0ba10c606989979444b35be3e9d7beee07af64e67a5dc"
+            },
+            "material": {
+              "file": "sheets/bastion__barrel__d06__material.png",
+              "w": 19,
+              "h": 14,
+              "sha256": "65ef48bd9061d160f15a2e97882ec295716a8ca0d49f497b619f4b1a9a270af3"
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            25.75,
+            23.22
+          ],
+          "pivot": [
+            14.32,
+            8.48
+          ],
+          "depth": -27.63,
+          "w": 19,
+          "h": 14,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__barrel__d07__albedo.png",
+              "w": 19,
+              "h": 14,
+              "sha256": "6cb4a5f1b069a999b9ccc3aaec2a2fa612e0da13e7374ad49ea6392c7e642ebc"
+            },
+            "normal": {
+              "file": "sheets/bastion__barrel__d07__normal.png",
+              "w": 19,
+              "h": 14,
+              "sha256": "67402134d4dcc4a95b64c1956645b386d2e48adc89e7a2079c5973faf646a67b"
+            },
+            "material": {
+              "file": "sheets/bastion__barrel__d07__material.png",
+              "w": 19,
+              "h": 14,
+              "sha256": "330dcc74bac903faf4ffa34400f7636149185355016cfb3ae4ca41789b457be4"
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            22,
+            27
+          ],
+          "pivot": [
+            13.25,
+            10.25
+          ],
+          "depth": -37.09,
+          "w": 19,
+          "h": 16,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__barrel__d08__albedo.png",
+              "w": 19,
+              "h": 16,
+              "sha256": "40d34aa722982910d861d46647f3a7fba46127203509d84642d04359af0b6907"
+            },
+            "normal": {
+              "file": "sheets/bastion__barrel__d08__normal.png",
+              "w": 19,
+              "h": 16,
+              "sha256": "f4dd242d1011d29c945cdc179b443f0c486acc655d4eec3e1a88a5a6436b5f9f"
+            },
+            "material": {
+              "file": "sheets/bastion__barrel__d08__material.png",
+              "w": 19,
+              "h": 16,
+              "sha256": "3418d7bbe30d2d47e9b381bbb443a22077be6a3725d69a98eb874fa036feab12"
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            15.25,
+            29.22
+          ],
+          "pivot": [
+            10.51,
+            11.13
+          ],
+          "depth": -38.73,
+          "w": 18,
+          "h": 16,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__barrel__d09__albedo.png",
+              "w": 18,
+              "h": 16,
+              "sha256": "e523898dd01a40918d76f063e6d589930147d7f6bcd39aa1e211007a03ec66f5"
+            },
+            "normal": {
+              "file": "sheets/bastion__barrel__d09__normal.png",
+              "w": 18,
+              "h": 16,
+              "sha256": "fb6b323f5e53967979d68f8d8f6fa9d4da8fbf01bc615e80e8b14eecbb1206c5"
+            },
+            "material": {
+              "file": "sheets/bastion__barrel__d09__material.png",
+              "w": 18,
+              "h": 16,
+              "sha256": "f07a8fb3777e6ba844763e01814b13daf0ffac4e837e0571f058c6ed3437cdac"
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            7.63,
+            29.69
+          ],
+          "pivot": [
+            7.63,
+            11.12
+          ],
+          "depth": -32.28,
+          "w": 15,
+          "h": 16,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__barrel__d10__albedo.png",
+              "w": 15,
+              "h": 16,
+              "sha256": "f80de7cbcf7943d365ef78978036b6ac1c3790e941f417bfc51d6745826a293f"
+            },
+            "normal": {
+              "file": "sheets/bastion__barrel__d10__normal.png",
+              "w": 15,
+              "h": 16,
+              "sha256": "550eb60febbca24f4bf7aadbee16d276953778faf5994b01878b061667703c5f"
+            },
+            "material": {
+              "file": "sheets/bastion__barrel__d10__material.png",
+              "w": 15,
+              "h": 16,
+              "sha256": "b0359d0020bbde0b8d53f608cd66e6cd4332cfe1dbd27cdc2a1de5db29873bb4"
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            2.56,
+            28.88
+          ],
+          "pivot": [
+            7.3,
+            10.79
+          ],
+          "depth": -18.73,
+          "w": 18,
+          "h": 16,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__barrel__d11__albedo.png",
+              "w": 18,
+              "h": 16,
+              "sha256": "674b49048a27eed9d5bdd57356d9fa1cd7cae069bffee16557c2fdc5e5d3c16b"
+            },
+            "normal": {
+              "file": "sheets/bastion__barrel__d11__normal.png",
+              "w": 18,
+              "h": 16,
+              "sha256": "3478435d4cff643ee0045fb3023b0be5bd25235c6e24d72889ec2fcd0c732bc0"
+            },
+            "material": {
+              "file": "sheets/bastion__barrel__d11__material.png",
+              "w": 18,
+              "h": 16,
+              "sha256": "50ef143ad8b8e4b2cedc09686a7d4c036f514a0ee6b33932f173156ab91f55b9"
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            -3,
+            27
+          ],
+          "pivot": [
+            5.75,
+            10.25
+          ],
+          "depth": -0.14,
+          "w": 19,
+          "h": 16,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__barrel__d12__albedo.png",
+              "w": 19,
+              "h": 16,
+              "sha256": "358e955ccd3c3b5f906cdc88e812a90ba05f707104ed8e455f158c863527803a"
+            },
+            "normal": {
+              "file": "sheets/bastion__barrel__d12__normal.png",
+              "w": 19,
+              "h": 16,
+              "sha256": "057db468333e20ed8c1b95111b682ea1a21ddcf629a4e8632abdd6af3ad30a80"
+            },
+            "material": {
+              "file": "sheets/bastion__barrel__d12__material.png",
+              "w": 19,
+              "h": 16,
+              "sha256": "5aed626ec1905e8fa9ecf8b0ec5d598a782a14bd896e8c93147f7c2cd61b4ea8"
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            -6.44,
+            23.12
+          ],
+          "pivot": [
+            5,
+            8.38
+          ],
+          "depth": 20.65,
+          "w": 20,
+          "h": 14,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__barrel__d13__albedo.png",
+              "w": 20,
+              "h": 14,
+              "sha256": "74eedea92edcedf58416762cd3f9087163130cc6b9fa73bd2879d6987eb7eb20"
+            },
+            "normal": {
+              "file": "sheets/bastion__barrel__d13__normal.png",
+              "w": 20,
+              "h": 14,
+              "sha256": "3ace24c6b15b7fef4d952f8359a2749ca6b2e6984bf63f68d7eac593fcf9523f"
+            },
+            "material": {
+              "file": "sheets/bastion__barrel__d13__material.png",
+              "w": 20,
+              "h": 14,
+              "sha256": "f803d5beed55a84177cf883b6473036539b92f097639ce732d1c8b92bdfdaf25"
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            -8.37,
+            19.31
+          ],
+          "pivot": [
+            4,
+            6.94
+          ],
+          "depth": 40.49,
+          "w": 19,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__barrel__d14__albedo.png",
+              "w": 19,
+              "h": 13,
+              "sha256": "54da1cf0f3372d1c7a3e1648d6374e48366d3524646ebf04b7a66e868029db63"
+            },
+            "normal": {
+              "file": "sheets/bastion__barrel__d14__normal.png",
+              "w": 19,
+              "h": 13,
+              "sha256": "4eea310791bd9077e1541b80cb0367bdadc893e0b3a98c7c7ff8a0e87ada1bd8"
+            },
+            "material": {
+              "file": "sheets/bastion__barrel__d14__material.png",
+              "w": 19,
+              "h": 13,
+              "sha256": "19b4a0dc29274a00e14fbbb3c60c1b6bfd91ceb9583e057ff5b5f2370ef6d699"
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            -6.75,
+            16.78
+          ],
+          "pivot": [
+            4.68,
+            6.77
+          ],
+          "depth": 56.35,
+          "w": 19,
+          "h": 15,
+          "files": {
+            "albedo": {
+              "file": "sheets/bastion__barrel__d15__albedo.png",
+              "w": 19,
+              "h": 15,
+              "sha256": "985bf3ba43bb3f44796c04aac36bb2e739571fe4879d04ee37fedca8c0441013"
+            },
+            "normal": {
+              "file": "sheets/bastion__barrel__d15__normal.png",
+              "w": 19,
+              "h": 15,
+              "sha256": "17dd467e6cc177134b889827c269fb06f126ce526e7b5de431f806848d2ea388"
+            },
+            "material": {
+              "file": "sheets/bastion__barrel__d15__material.png",
+              "w": 19,
+              "h": 15,
+              "sha256": "8195969fecaf362d354489f2a6b1e051604d53c33275b809563163f7f86bdc6a"
+            }
+          }
+        }
+      }
+    }
+  },
+  "clips": {
+    "idle": 1
+  },
+  "sourceGeometry": {
+    "parts": [
+      {
+        "name": "body",
+        "dynamic": false,
+        "traverse": false,
+        "parent": null,
+        "voxels": 734425,
+        "pivotDesign": [
+          256,
+          256,
+          0
+        ],
+        "bounds": {
+          "minX": 0,
+          "minY": 18,
+          "minZ": 13,
+          "maxX": 481,
+          "maxY": 495,
+          "maxZ": 273
+        }
+      },
+      {
+        "name": "running.L",
+        "dynamic": false,
+        "traverse": false,
+        "parent": null,
+        "voxels": 243563,
+        "pivotDesign": [
+          256,
+          256,
+          0
+        ],
+        "bounds": {
+          "minX": 18,
+          "minY": 28,
+          "minZ": 0,
+          "maxX": 450,
+          "maxY": 139,
+          "maxZ": 136
+        }
+      },
+      {
+        "name": "running.R",
+        "dynamic": false,
+        "traverse": false,
+        "parent": null,
+        "voxels": 198311,
+        "pivotDesign": [
+          256,
+          256,
+          0
+        ],
+        "bounds": {
+          "minX": 18,
+          "minY": 372,
+          "minZ": 0,
+          "maxX": 450,
+          "maxY": 489,
+          "maxZ": 136
+        }
+      },
+      {
+        "name": "turret",
+        "dynamic": true,
+        "traverse": true,
+        "parent": null,
+        "voxels": 72359,
+        "pivotDesign": [
+          300,
+          256,
+          146
+        ],
+        "bounds": {
+          "minX": 182,
+          "minY": 172,
+          "minZ": 198,
+          "maxX": 376,
+          "maxY": 340,
+          "maxZ": 361
+        }
+      },
+      {
+        "name": "barrel",
+        "dynamic": true,
+        "traverse": true,
+        "parent": "turret",
+        "voxels": 21766,
+        "pivotDesign": [
+          396,
+          256,
+          198
+        ],
+        "bounds": {
+          "minX": 404,
+          "minY": 220,
+          "minZ": 171,
+          "maxX": 510,
+          "maxY": 292,
+          "maxZ": 227
+        }
+      }
+    ],
+    "totalVoxels": 1270424
+  },
+  "composite": {
+    "note": "every part of one facing pre-composited through the shared ground anchor",
+    "facings": {
+      "d00": {
+        "w": 69,
+        "h": 49,
+        "files": {
+          "albedo": {
+            "file": "sheets/bastion__composite__d00__albedo.png",
+            "sha256": "fc4da170955a2c0f46ec2f388366d3911696a28452b60ee307c5a7858d17ae8e"
+          },
+          "normal": {
+            "file": "sheets/bastion__composite__d00__normal.png",
+            "sha256": "8fe37283ac58320baec76ccd652649b59ef6970786021ed63ff5912554ecbc27"
+          },
+          "material": {
+            "file": "sheets/bastion__composite__d00__material.png",
+            "sha256": "c9fb284280785fe155eb087f8e02fc4faaf956e7a9100438893bb4f2fe3fb3de"
+          }
+        }
+      },
+      "d01": {
+        "w": 65,
+        "h": 47,
+        "files": {
+          "albedo": {
+            "file": "sheets/bastion__composite__d01__albedo.png",
+            "sha256": "bc5de06d417b866d54f37ff2e575a0b53158f209ea69330bc786e7478fdbceee"
+          },
+          "normal": {
+            "file": "sheets/bastion__composite__d01__normal.png",
+            "sha256": "785d4ded4c680c1199af683d8c34b4376b742e6538dff5678bc7bbf772c77a4c"
+          },
+          "material": {
+            "file": "sheets/bastion__composite__d01__material.png",
+            "sha256": "2301c9ca71f10bffec69d365a80ec297e29b7687a8d883b42f0f1bf9169c3c5e"
+          }
+        }
+      },
+      "d02": {
+        "w": 55,
+        "h": 44,
+        "files": {
+          "albedo": {
+            "file": "sheets/bastion__composite__d02__albedo.png",
+            "sha256": "a3bbf1783015d916125b77913c60314a2cac32026e7949bcf4d5b9c5707e9669"
+          },
+          "normal": {
+            "file": "sheets/bastion__composite__d02__normal.png",
+            "sha256": "7b1a25fb0765bbca9483e0259d9368ba0c77cab4b3831ae5cc288e03574c0d12"
+          },
+          "material": {
+            "file": "sheets/bastion__composite__d02__material.png",
+            "sha256": "91029d3fbfa17c1f197500203342573069ec7ae1978838da3b556597117f83e3"
+          }
+        }
+      },
+      "d03": {
+        "w": 65,
+        "h": 46,
+        "files": {
+          "albedo": {
+            "file": "sheets/bastion__composite__d03__albedo.png",
+            "sha256": "147d3d3ddb8d9df6a8f51770f030ec836916f0dae9ea104c618c281af4cda23e"
+          },
+          "normal": {
+            "file": "sheets/bastion__composite__d03__normal.png",
+            "sha256": "4d4902f95d7a30359534c294042fba79aef566cf7e64c54882a23acea8d3571b"
+          },
+          "material": {
+            "file": "sheets/bastion__composite__d03__material.png",
+            "sha256": "c0de30b454c0b09ad9f653bb57a5442e2080c264e63994c361efe097801f204b"
+          }
+        }
+      },
+      "d04": {
+        "w": 70,
+        "h": 48,
+        "files": {
+          "albedo": {
+            "file": "sheets/bastion__composite__d04__albedo.png",
+            "sha256": "fa44ada82e42b3c5aea9187e0caa1df42ce96d861b55e9866eac4af137e6fa9f"
+          },
+          "normal": {
+            "file": "sheets/bastion__composite__d04__normal.png",
+            "sha256": "6fe1c3f4e3aafa67045e1d95c267e90c13c3642dbb13735fcab642f155073b57"
+          },
+          "material": {
+            "file": "sheets/bastion__composite__d04__material.png",
+            "sha256": "2a76d328ad1088d800c0cfbfe0510bd6a2795ea3bcb1c35f16e7f048eb29e4b4"
+          }
+        }
+      },
+      "d05": {
+        "w": 67,
+        "h": 48,
+        "files": {
+          "albedo": {
+            "file": "sheets/bastion__composite__d05__albedo.png",
+            "sha256": "568c7dc74f6d9e1702d4af8c440c8c293f71a47d4cd04e6e54e05cc830645ea6"
+          },
+          "normal": {
+            "file": "sheets/bastion__composite__d05__normal.png",
+            "sha256": "20c7689f147b561d492cb6a748f0f92a6af5599a44e8a5dc55294bfa29ca47ef"
+          },
+          "material": {
+            "file": "sheets/bastion__composite__d05__material.png",
+            "sha256": "336a846b1f2058f7ca2961c9cede2ef4a5eafa8f8b26d4d6fdf7d18947acada5"
+          }
+        }
+      },
+      "d06": {
+        "w": 58,
+        "h": 46,
+        "files": {
+          "albedo": {
+            "file": "sheets/bastion__composite__d06__albedo.png",
+            "sha256": "5f2c93ed36aa60a928502b3fa92a05cabe72064e2f112e7915e974ca844a396f"
+          },
+          "normal": {
+            "file": "sheets/bastion__composite__d06__normal.png",
+            "sha256": "3d68a722e734c5e281370fd040a6be60be008ac9695f285f22c7209865af7172"
+          },
+          "material": {
+            "file": "sheets/bastion__composite__d06__material.png",
+            "sha256": "a807d175522943e36351f145f2bd6fbc420f5a7a416f7bc27de8819905b4488f"
+          }
+        }
+      },
+      "d07": {
+        "w": 65,
+        "h": 49,
+        "files": {
+          "albedo": {
+            "file": "sheets/bastion__composite__d07__albedo.png",
+            "sha256": "fcb6436ad181acd646b34bd6becf1140d5d3b238f5577f65169f460503534484"
+          },
+          "normal": {
+            "file": "sheets/bastion__composite__d07__normal.png",
+            "sha256": "e5daffd9a17f65ab4ccdf272a9504832e78037dc9f351816df18a729b028f5d5"
+          },
+          "material": {
+            "file": "sheets/bastion__composite__d07__material.png",
+            "sha256": "f7ddad0b15538f3143a9c7be4dc860dcb31c20e471159fd9428b3ad0de303223"
+          }
+        }
+      },
+      "d08": {
+        "w": 69,
+        "h": 48,
+        "files": {
+          "albedo": {
+            "file": "sheets/bastion__composite__d08__albedo.png",
+            "sha256": "76865d60b593b194522ff011353bb76bd87762252e2828c0ba26c8ae468a9095"
+          },
+          "normal": {
+            "file": "sheets/bastion__composite__d08__normal.png",
+            "sha256": "1e790ecbb771210e320fc3b3ae634bf71a124e61b9f10bbc2a758fb01cabd246"
+          },
+          "material": {
+            "file": "sheets/bastion__composite__d08__material.png",
+            "sha256": "a58ed7fdfe655c8b69dec964a2805481b74a820bf9fa5eea253a14470e55118a"
+          }
+        }
+      },
+      "d09": {
+        "w": 65,
+        "h": 49,
+        "files": {
+          "albedo": {
+            "file": "sheets/bastion__composite__d09__albedo.png",
+            "sha256": "271ca769807d8cede903bdda0bf95afde3583f0a2d471d4250aa2a613658cc80"
+          },
+          "normal": {
+            "file": "sheets/bastion__composite__d09__normal.png",
+            "sha256": "b97b48d3bd546ad05a265885b95a6a6fc3201ed2f6bdcae5cf8e1663f48f54b3"
+          },
+          "material": {
+            "file": "sheets/bastion__composite__d09__material.png",
+            "sha256": "c4004ee7b565566c4b99c772444e7951972c8e72e7d273b60f1ed210e9d93ad6"
+          }
+        }
+      },
+      "d10": {
+        "w": 55,
+        "h": 47,
+        "files": {
+          "albedo": {
+            "file": "sheets/bastion__composite__d10__albedo.png",
+            "sha256": "62371dab784062549a6011abdbeb6b16d6fc1e9de26040b760a94a8970f478a3"
+          },
+          "normal": {
+            "file": "sheets/bastion__composite__d10__normal.png",
+            "sha256": "98f524cb1684e708dd59472d1efd643cad675f040c2a77849441509e607e2f6b"
+          },
+          "material": {
+            "file": "sheets/bastion__composite__d10__material.png",
+            "sha256": "87bd1c0cd5d5f4c594834297389f95018358db850c95f06a82d3d3ca34869f59"
+          }
+        }
+      },
+      "d11": {
+        "w": 65,
+        "h": 49,
+        "files": {
+          "albedo": {
+            "file": "sheets/bastion__composite__d11__albedo.png",
+            "sha256": "a6ebeef590ebf21b1776d00e985a611fb63ea3f14a7875bfb32992ffda1f703e"
+          },
+          "normal": {
+            "file": "sheets/bastion__composite__d11__normal.png",
+            "sha256": "9b49b9040c695fcac2ce8f3627ca5862b0a8f30376e3421347eec942cde3147e"
+          },
+          "material": {
+            "file": "sheets/bastion__composite__d11__material.png",
+            "sha256": "4e49a9d1564555aadf3742eaadf44784d4bebcb1704879d2518d41a3e55efca8"
+          }
+        }
+      },
+      "d12": {
+        "w": 70,
+        "h": 50,
+        "files": {
+          "albedo": {
+            "file": "sheets/bastion__composite__d12__albedo.png",
+            "sha256": "5b9270659c05e06df7aa1cd82a46739deabe92d8e337d99e6098e35095c5547c"
+          },
+          "normal": {
+            "file": "sheets/bastion__composite__d12__normal.png",
+            "sha256": "bc55d63e7ddc12f581414c88e77de02119e39525d35bf65c8066432c371de6e8"
+          },
+          "material": {
+            "file": "sheets/bastion__composite__d12__material.png",
+            "sha256": "3d2a4fcd3e954df20009acd425e4462348df0c182c6392372936c6a5e63bb1e4"
+          }
+        }
+      },
+      "d13": {
+        "w": 67,
+        "h": 50,
+        "files": {
+          "albedo": {
+            "file": "sheets/bastion__composite__d13__albedo.png",
+            "sha256": "86ef56c2a10f363c2f26ea793991c8e666a2e86cce7165afcfc3821f5e470ed4"
+          },
+          "normal": {
+            "file": "sheets/bastion__composite__d13__normal.png",
+            "sha256": "d9d72a1f101dad72ed8633b9d69ca5c1ed6551ae6fcf8abd55a4a6c8dc1e2be2"
+          },
+          "material": {
+            "file": "sheets/bastion__composite__d13__material.png",
+            "sha256": "1cbd376abb9401c1ffbe543fdeaced17b2fb4c6436a25e99fc18855104fe77d5"
+          }
+        }
+      },
+      "d14": {
+        "w": 58,
+        "h": 47,
+        "files": {
+          "albedo": {
+            "file": "sheets/bastion__composite__d14__albedo.png",
+            "sha256": "fee4573038277d418741f17043f945caa73ad247d520874f235bf502ea3920a5"
+          },
+          "normal": {
+            "file": "sheets/bastion__composite__d14__normal.png",
+            "sha256": "470ed49c992d4dbb68ef97cfd62aa1ffaa289070a89026b3fc44803c42b11379"
+          },
+          "material": {
+            "file": "sheets/bastion__composite__d14__material.png",
+            "sha256": "7d1c350914d324a380da712182672394217e7c509560b1738d3fd4b6b8978007"
+          }
+        }
+      },
+      "d15": {
+        "w": 65,
+        "h": 50,
+        "files": {
+          "albedo": {
+            "file": "sheets/bastion__composite__d15__albedo.png",
+            "sha256": "588b9ee400b1d4d9a823a0c1d5bbc176003799e21d70ac59e22518ef656e8b5a"
+          },
+          "normal": {
+            "file": "sheets/bastion__composite__d15__normal.png",
+            "sha256": "ab9c64de4d46776951f1a829398c02a2dc8ac4559775ee6d537c25808692808a"
+          },
+          "material": {
+            "file": "sheets/bastion__composite__d15__material.png",
+            "sha256": "7e41ac65ce5f298f0302b726e497cdb5e2a5a423bad3a135d6e3d87a7ab802e4"
+          }
+        }
+      }
+    }
+  },
+  "lit": {
+    "note": "the composite re-shaded through a virtual three-point rig using the normal and material maps (key/fill/rim). If normals or PBR channels are wrong, this is where it shows.",
+    "rig": "three-point",
+    "facings": {
+      "d00": {
+        "file": "sheets/bastion__lit__d00__albedo.png",
+        "w": 69,
+        "h": 49,
+        "sha256": "620d02165020bba57fa4a29739a4120001e4362d057d32d447cc133740b7fba5"
+      },
+      "d01": {
+        "file": "sheets/bastion__lit__d01__albedo.png",
+        "w": 65,
+        "h": 47,
+        "sha256": "d41b0fc1afc41b1abfd09e1cda4f5e8c5fee0d7297fa1bf6b452c80e92653006"
+      },
+      "d02": {
+        "file": "sheets/bastion__lit__d02__albedo.png",
+        "w": 55,
+        "h": 44,
+        "sha256": "55f7069200dcb278c08728904503da72f926923c656fc63d2b9a5d8deef1094c"
+      },
+      "d03": {
+        "file": "sheets/bastion__lit__d03__albedo.png",
+        "w": 65,
+        "h": 46,
+        "sha256": "2d1134f8a83e3914e3806ebc691bdafffb743ad9affb3e955c9af14f2a3ce650"
+      },
+      "d04": {
+        "file": "sheets/bastion__lit__d04__albedo.png",
+        "w": 70,
+        "h": 48,
+        "sha256": "e022deb03dba39caae48d6699da4887b947eb2110e42141da894dfacb2b25dc9"
+      },
+      "d05": {
+        "file": "sheets/bastion__lit__d05__albedo.png",
+        "w": 67,
+        "h": 48,
+        "sha256": "1c54f7770d557f8d0236b2f860dc788e60bcf8b8e2f5387402f5f5432adfe057"
+      },
+      "d06": {
+        "file": "sheets/bastion__lit__d06__albedo.png",
+        "w": 58,
+        "h": 46,
+        "sha256": "51dd9f2c1f430a5248d6fc7ceb5bdc7a5f29abc26523ded3b1b3e10b3ef6f0ca"
+      },
+      "d07": {
+        "file": "sheets/bastion__lit__d07__albedo.png",
+        "w": 65,
+        "h": 49,
+        "sha256": "45622026932b19b87018a134dc3b1ec53a4de504e967aeb5bc1165bfacef17ab"
+      },
+      "d08": {
+        "file": "sheets/bastion__lit__d08__albedo.png",
+        "w": 69,
+        "h": 48,
+        "sha256": "ce4f4e2cbcfe08bab352e4194766fee1d0a1afaab338f5a8557be047202e7a13"
+      },
+      "d09": {
+        "file": "sheets/bastion__lit__d09__albedo.png",
+        "w": 65,
+        "h": 49,
+        "sha256": "0fc698b92d0f89f54198eb3003a5a24574cb96744b79f1cae5178b5811055b02"
+      },
+      "d10": {
+        "file": "sheets/bastion__lit__d10__albedo.png",
+        "w": 55,
+        "h": 47,
+        "sha256": "074c461f961c700d94b5abdfd5bd428effbf2025b0ef279dbe91cd69f7653418"
+      },
+      "d11": {
+        "file": "sheets/bastion__lit__d11__albedo.png",
+        "w": 65,
+        "h": 49,
+        "sha256": "2dbc3cbd3732bf412f9bc46a3c8fab881ad6a266654a07428f6e1d7678013557"
+      },
+      "d12": {
+        "file": "sheets/bastion__lit__d12__albedo.png",
+        "w": 70,
+        "h": 50,
+        "sha256": "6ef12734f57b9aaccd69a4e34357535940c0772ca653dc316cac5eec1e93b18b"
+      },
+      "d13": {
+        "file": "sheets/bastion__lit__d13__albedo.png",
+        "w": 67,
+        "h": 50,
+        "sha256": "5622aab37d04c45a53cc4ca5bd31cbfcb708abb8fe38afc7d62bee1abafc2dc2"
+      },
+      "d14": {
+        "file": "sheets/bastion__lit__d14__albedo.png",
+        "w": 58,
+        "h": 47,
+        "sha256": "ddc3d4735d5c9cc31edc1972b95d738ee286f0010d431b46dd1d3c7bf8b51dc1"
+      },
+      "d15": {
+        "file": "sheets/bastion__lit__d15__albedo.png",
+        "w": 65,
+        "h": 50,
+        "sha256": "b1587acd7b70b6c68a9aca2cec29715837f60373ef1902aed4634227123375f9"
+      }
+    }
+  },
+  "previewLit": {
+    "file": "preview-lit.png",
+    "facing": "d00",
+    "rig": "three-point",
+    "note": "relit from the normal + material maps"
+  },
+  "previewLights": {
+    "file": "preview-lights.png",
+    "facing": "d00",
+    "order": [
+      "azimuth 0deg / elevation 40deg",
+      "azimuth 45deg / elevation 40deg",
+      "azimuth 90deg / elevation 40deg",
+      "azimuth 135deg / elevation 40deg",
+      "azimuth 180deg / elevation 40deg",
+      "azimuth 225deg / elevation 40deg",
+      "azimuth 270deg / elevation 40deg",
+      "azimuth 315deg / elevation 40deg"
+    ],
+    "note": "one virtual light per panel, proving the normal map is directionally correct"
+  },
+  "previewMaps": {
+    "file": "preview-maps.png",
+    "facing": "d00",
+    "panels": [
+      "albedo",
+      "normal",
+      "material-id",
+      "metalness",
+      "roughness",
+      "emissive"
+    ]
+  },
+  "preview": {
+    "file": "preview.png",
+    "facing": "d00",
+    "w": 515,
+    "h": 354,
+    "mode": "single-pass"
+  },
+  "previewParts": {
+    "file": "preview-parts.png",
+    "facing": "d00",
+    "w": 519,
+    "h": 358,
+    "mode": "composited-from-part-sheets"
+  }
+}

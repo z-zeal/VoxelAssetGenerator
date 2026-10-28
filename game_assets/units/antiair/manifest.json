@@ -1,0 +1,4932 @@
+{
+  "format": "field-command-voxel-sheet-4",
+  "asset": "antiair",
+  "kind": "unit",
+  "group": "vehicles.tracked",
+  "canvas": 512,
+  "designVoxelsPerTileUnit": 8,
+  "renderScale": 1,
+  "previewScale": 8,
+  "superSample": 4,
+  "pxPerVoxel": 0.125,
+  "tileDiamond": [
+    64,
+    32
+  ],
+  "facings": [
+    "d00",
+    "d01",
+    "d02",
+    "d03",
+    "d04",
+    "d05",
+    "d06",
+    "d07",
+    "d08",
+    "d09",
+    "d10",
+    "d11",
+    "d12",
+    "d13",
+    "d14",
+    "d15"
+  ],
+  "facingMeta": [
+    {
+      "id": "d00",
+      "angle": 0,
+      "screenAngle": 45,
+      "label": "SE",
+      "unitIndex": 0,
+      "viewDir": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.0625,
+        -0.0625,
+        0,
+        0.03125,
+        0.03125,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d01",
+      "angle": 22.5,
+      "screenAngle": 67.5,
+      "label": "SSE",
+      "unitIndex": 1,
+      "viewDir": [
+        0.7543444794845715,
+        0.3124597141037824,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        0.03382475625913983,
+        -0.08166018530477004,
+        0,
+        0.040830092652386796,
+        0.01691237812956814,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d02",
+      "angle": 45,
+      "screenAngle": 90,
+      "label": "S",
+      "unitIndex": 2,
+      "viewDir": [
+        0.8164965809277261,
+        6.409875621278547e-17,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0,
+        -0.08838834764831915,
+        0,
+        0.04419417382415958,
+        0,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d03",
+      "angle": 67.5,
+      "screenAngle": 112.5,
+      "label": "SSW",
+      "unitIndex": 3,
+      "viewDir": [
+        0.7543444794845715,
+        -0.3124597141037824,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.03382475625913628,
+        -0.08166018530477004,
+        0,
+        0.04083009265238502,
+        -0.016912378129569028,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d04",
+      "angle": 90,
+      "screenAngle": 135,
+      "label": "SW",
+      "unitIndex": 4,
+      "viewDir": [
+        0.5773502691896258,
+        -0.5773502691896257,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        -0.0625,
+        -0.0625,
+        0,
+        0.03125,
+        -0.03125000000000089,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d05",
+      "angle": 112.5,
+      "screenAngle": 157.5,
+      "label": "WSW",
+      "unitIndex": 5,
+      "viewDir": [
+        0.3124597141037825,
+        -0.7543444794845715,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.08166018530477359,
+        -0.03382475625913628,
+        0,
+        0.016912378129569028,
+        -0.04083009265238591,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d06",
+      "angle": 135,
+      "screenAngle": 180,
+      "label": "W",
+      "unitIndex": 6,
+      "viewDir": [
+        6.409875621278547e-17,
+        -0.8164965809277261,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        -0.08838834764831915,
+        0,
+        0,
+        0,
+        -0.04419417382415958,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d07",
+      "angle": 157.5,
+      "screenAngle": 202.5,
+      "label": "WNW",
+      "unitIndex": 7,
+      "viewDir": [
+        -0.3124597141037824,
+        -0.7543444794845715,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.08166018530477537,
+        0.03382475625913628,
+        0,
+        -0.01691237812956814,
+        -0.04083009265238502,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d08",
+      "angle": 180,
+      "screenAngle": 225,
+      "label": "NW",
+      "unitIndex": 8,
+      "viewDir": [
+        -0.5773502691896256,
+        -0.5773502691896258,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.0625,
+        0.062499999999998224,
+        0,
+        -0.03125,
+        -0.03125,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d09",
+      "angle": 202.5,
+      "screenAngle": 247.5,
+      "label": "NNW",
+      "unitIndex": 9,
+      "viewDir": [
+        -0.7543444794845713,
+        -0.3124597141037829,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.03382475625913628,
+        0.08166018530477537,
+        0,
+        -0.04083009265238502,
+        -0.01691237812956814,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d10",
+      "angle": 225,
+      "screenAngle": 270,
+      "label": "N",
+      "unitIndex": 10,
+      "viewDir": [
+        -0.8164965809277261,
+        -1.2819751242557095e-16,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0,
+        0.08838834764831915,
+        0,
+        -0.04419417382415958,
+        0,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d11",
+      "angle": 247.5,
+      "screenAngle": 292.5,
+      "label": "NNE",
+      "unitIndex": 11,
+      "viewDir": [
+        -0.7543444794845715,
+        0.3124597141037827,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.03382475625913983,
+        0.08166018530477359,
+        0,
+        -0.040830092652386796,
+        0.016912378129569028,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d12",
+      "angle": 270,
+      "screenAngle": 315,
+      "label": "NE",
+      "unitIndex": 12,
+      "viewDir": [
+        -0.5773502691896258,
+        0.5773502691896256,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        0.0625,
+        0.0625,
+        0,
+        -0.03125,
+        0.03125,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d13",
+      "angle": 292.5,
+      "screenAngle": 337.5,
+      "label": "ENE",
+      "unitIndex": 13,
+      "viewDir": [
+        -0.3124597141037823,
+        0.7543444794845715,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        0.08166018530477004,
+        0.03382475625913983,
+        0,
+        -0.01691237812956814,
+        0.040830092652387684,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d14",
+      "angle": 315,
+      "screenAngle": 0,
+      "label": "E",
+      "unitIndex": 14,
+      "viewDir": [
+        -1.9229626863835643e-16,
+        0.8164965809277261,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.08838834764831915,
+        0,
+        0,
+        0,
+        0.04419417382415958,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d15",
+      "angle": 337.5,
+      "screenAngle": 22.5,
+      "label": "ESE",
+      "unitIndex": 15,
+      "viewDir": [
+        0.3124597141037827,
+        0.7543444794845715,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.08166018530477537,
+        -0.03382475625913273,
+        0,
+        0.016912378129569916,
+        0.040830092652386796,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    }
+  ],
+  "teamTint": {
+    "note": "Albedo is baked in the standard livery. Recolour pixels whose material map red channel matches these ids to apply an army livery.",
+    "materialIds": [
+      {
+        "name": "team.hull",
+        "id": 0,
+        "role": "hull"
+      },
+      {
+        "name": "team.light",
+        "id": 1,
+        "role": "light"
+      },
+      {
+        "name": "team.dark",
+        "id": 2,
+        "role": "dark"
+      },
+      {
+        "name": "team.accent",
+        "id": 3,
+        "role": "accent"
+      },
+      {
+        "name": "roof",
+        "id": 37,
+        "role": "hull"
+      },
+      {
+        "name": "roof.light",
+        "id": 38,
+        "role": "light"
+      },
+      {
+        "name": "roof.dark",
+        "id": 39,
+        "role": "dark"
+      }
+    ],
+    "liveries": {
+      "_note": "Army liveries for runtime tinting of team materials. Mirrors src/renderer.js TEAM_COLORS and tools/voxel_pipeline/v3/materials.mjs ARMY_LIVERY.",
+      "standard": {
+        "hull": "#df794b",
+        "light": "#ffc68b",
+        "dark": "#934b32",
+        "accent": "#ece7bc"
+      },
+      "allies": {
+        "hull": "#639bc3",
+        "light": "#a9d0e1",
+        "dark": "#345f78",
+        "accent": "#e8f1f4"
+      },
+      "soviets": {
+        "hull": "#7eb06a",
+        "light": "#b8e0a8",
+        "dark": "#2d4a2d",
+        "accent": "#dfe8c8"
+      },
+      "empire": {
+        "hull": "#d9b44e",
+        "light": "#ffe79a",
+        "dark": "#8a6a1a",
+        "accent": "#f6eecd"
+      },
+      "legion": {
+        "hull": "#c65a54",
+        "light": "#ffb0a8",
+        "dark": "#7a2a2a",
+        "accent": "#f3d9d4"
+      },
+      "neutral": {
+        "hull": "#aaa78b",
+        "light": "#cfcdb6",
+        "dark": "#6c6a55",
+        "accent": "#e2e0cf"
+      }
+    }
+  },
+  "normalMap": {
+    "space": "view",
+    "channelOrder": "rgb",
+    "range": "0..255 maps -1..1",
+    "up": "+g means screen up"
+  },
+  "materialMap": {
+    "channelOrder": "rgba",
+    "meaning": [
+      "materialId",
+      "metalness",
+      "roughness",
+      "emissive"
+    ],
+    "table": [
+      {
+        "id": 0,
+        "name": "team.hull",
+        "metalness": 0.35,
+        "roughness": 0.62,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "hull"
+      },
+      {
+        "id": 1,
+        "name": "team.light",
+        "metalness": 0.35,
+        "roughness": 0.58,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "light"
+      },
+      {
+        "id": 2,
+        "name": "team.dark",
+        "metalness": 0.4,
+        "roughness": 0.66,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "dark"
+      },
+      {
+        "id": 3,
+        "name": "team.accent",
+        "metalness": 0.2,
+        "roughness": 0.7,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "accent"
+      },
+      {
+        "id": 4,
+        "name": "steel",
+        "metalness": 0.85,
+        "roughness": 0.42,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 5,
+        "name": "steel.dark",
+        "metalness": 0.85,
+        "roughness": 0.5,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 6,
+        "name": "steel.bright",
+        "metalness": 0.95,
+        "roughness": 0.24,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 7,
+        "name": "gunmetal",
+        "metalness": 0.9,
+        "roughness": 0.38,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 8,
+        "name": "gunmetal.lit",
+        "metalness": 0.9,
+        "roughness": 0.32,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 9,
+        "name": "iron",
+        "metalness": 0.8,
+        "roughness": 0.62,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 10,
+        "name": "brass",
+        "metalness": 0.95,
+        "roughness": 0.3,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 11,
+        "name": "copper",
+        "metalness": 0.95,
+        "roughness": 0.34,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 12,
+        "name": "chrome",
+        "metalness": 1,
+        "roughness": 0.12,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 13,
+        "name": "rubber",
+        "metalness": 0.05,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 14,
+        "name": "track",
+        "metalness": 0.7,
+        "roughness": 0.68,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 15,
+        "name": "track.worn",
+        "metalness": 0.85,
+        "roughness": 0.44,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 16,
+        "name": "tyre",
+        "metalness": 0.03,
+        "roughness": 0.95,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 17,
+        "name": "plate",
+        "metalness": 0.55,
+        "roughness": 0.66,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 18,
+        "name": "plate.lit",
+        "metalness": 0.55,
+        "roughness": 0.6,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 19,
+        "name": "plate.dark",
+        "metalness": 0.55,
+        "roughness": 0.72,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 20,
+        "name": "glass",
+        "metalness": 0.3,
+        "roughness": 0.08,
+        "emissive": 0,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 21,
+        "name": "glass.dark",
+        "metalness": 0.4,
+        "roughness": 0.12,
+        "emissive": 0,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 22,
+        "name": "optic",
+        "metalness": 0.6,
+        "roughness": 0.05,
+        "emissive": 0.55,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 23,
+        "name": "lamp.warm",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.85,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 24,
+        "name": "lamp.red",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.8,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 25,
+        "name": "lamp.cyan",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.8,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 26,
+        "name": "skin",
+        "metalness": 0,
+        "roughness": 0.78,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 27,
+        "name": "skin.dark",
+        "metalness": 0,
+        "roughness": 0.8,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 28,
+        "name": "cloth",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 29,
+        "name": "cloth.dark",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 30,
+        "name": "webbing",
+        "metalness": 0.05,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 31,
+        "name": "boot",
+        "metalness": 0.1,
+        "roughness": 0.85,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 32,
+        "name": "hair",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 33,
+        "name": "concrete",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 34,
+        "name": "concrete.lit",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 35,
+        "name": "concrete.dark",
+        "metalness": 0,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 36,
+        "name": "brick",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 37,
+        "name": "roof",
+        "metalness": 0.1,
+        "roughness": 0.82,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "hull"
+      },
+      {
+        "id": 38,
+        "name": "roof.light",
+        "metalness": 0.1,
+        "roughness": 0.8,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "light"
+      },
+      {
+        "id": 39,
+        "name": "roof.dark",
+        "metalness": 0.1,
+        "roughness": 0.84,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "dark"
+      },
+      {
+        "id": 40,
+        "name": "asphalt",
+        "metalness": 0,
+        "roughness": 0.96,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 41,
+        "name": "paint.line",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 42,
+        "name": "wood",
+        "metalness": 0,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 43,
+        "name": "wood.dark",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 44,
+        "name": "canvas",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 45,
+        "name": "sandbag",
+        "metalness": 0,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 46,
+        "name": "solar",
+        "metalness": 0.6,
+        "roughness": 0.22,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 47,
+        "name": "rust",
+        "metalness": 0.3,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 48,
+        "name": "scorch",
+        "metalness": 0.2,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 49,
+        "name": "smoke",
+        "metalness": 0,
+        "roughness": 1,
+        "emissive": 0.1,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 50,
+        "name": "water",
+        "metalness": 0.2,
+        "roughness": 0.15,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 51,
+        "name": "foam",
+        "metalness": 0,
+        "roughness": 0.6,
+        "emissive": 0.1,
+        "blend": "opaque",
+        "team": null
+      }
+    ]
+  },
+  "parts": {
+    "body": {
+      "name": "body",
+      "dynamic": false,
+      "parent": null,
+      "pivotDesign": [
+        256,
+        256,
+        0
+      ],
+      "traverse": false,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            26,
+            27
+          ],
+          "pivot": [
+            26,
+            27
+          ],
+          "depth": 47.49,
+          "w": 53,
+          "h": 41,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__body__d00__albedo.png",
+              "w": 53,
+              "h": 41,
+              "sha256": "7843d780bee796330be51653676c2a1112a72bb812095930b9400a1c5c4ac425"
+            },
+            "normal": {
+              "file": "sheets/antiair__body__d00__normal.png",
+              "w": 53,
+              "h": 41,
+              "sha256": "7abaac4b7bd0a79e76d360ab451c37995db949d564f7fed7ee70179249fab3c3"
+            },
+            "material": {
+              "file": "sheets/antiair__body__d00__material.png",
+              "w": 53,
+              "h": 41,
+              "sha256": "d36f4353140ba586526a14a0ac8ce076ba1a4094e91cf9710f28ccfbf49f898b"
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            24.75,
+            27.78
+          ],
+          "pivot": [
+            24.75,
+            27.78
+          ],
+          "depth": 44.71,
+          "w": 49,
+          "h": 41,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__body__d01__albedo.png",
+              "w": 49,
+              "h": 41,
+              "sha256": "3480a847e99cb784f041cfaa48362e1332bbca950007827d51bc0671564d5a42"
+            },
+            "normal": {
+              "file": "sheets/antiair__body__d01__normal.png",
+              "w": 49,
+              "h": 41,
+              "sha256": "4ed1f7e1beedc453712a96248549e01028f2f731d1c943e766cf206e4d52c40d"
+            },
+            "material": {
+              "file": "sheets/antiair__body__d01__material.png",
+              "w": 49,
+              "h": 41,
+              "sha256": "b66ab1eb099c5dc32ebc33798786123c2c9ff148bffeb65a8a9aacd1f55ba990"
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            20.37,
+            27.31
+          ],
+          "pivot": [
+            20.37,
+            27.31
+          ],
+          "depth": 36.7,
+          "w": 40,
+          "h": 38,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__body__d02__albedo.png",
+              "w": 40,
+              "h": 38,
+              "sha256": "5b7d0cc52f4c8cf22170428527cdc76a43ed09773fd9d77eebf77e5b972b486b"
+            },
+            "normal": {
+              "file": "sheets/antiair__body__d02__normal.png",
+              "w": 40,
+              "h": 38,
+              "sha256": "143f75190134c3277cb039293136f102c89db9e5bc9c25e00e77811c41e08209"
+            },
+            "material": {
+              "file": "sheets/antiair__body__d02__material.png",
+              "w": 40,
+              "h": 38,
+              "sha256": "7417bd356e45c96c8eaa25499c8d36c5a201ede051ee5cd07605afa64799a8aa"
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            23.44,
+            26.12
+          ],
+          "pivot": [
+            23.44,
+            26.12
+          ],
+          "depth": 24.68,
+          "w": 48,
+          "h": 39,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__body__d03__albedo.png",
+              "w": 48,
+              "h": 39,
+              "sha256": "5372a4b242b4345255c34d7127550e153a63ea51290ba2fba12076cfdf7902d1"
+            },
+            "normal": {
+              "file": "sheets/antiair__body__d03__normal.png",
+              "w": 48,
+              "h": 39,
+              "sha256": "46e3bca0f1835bf8e45a344f108402a046de4aced9f46cb957547383b07a3afa"
+            },
+            "material": {
+              "file": "sheets/antiair__body__d03__material.png",
+              "w": 48,
+              "h": 39,
+              "sha256": "de6f63257c88f6733bd118633bd7e7332f9db7970cd271e4a956a86491218309"
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            27,
+            24
+          ],
+          "pivot": [
+            27,
+            24
+          ],
+          "depth": 10.46,
+          "w": 54,
+          "h": 38,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__body__d04__albedo.png",
+              "w": 54,
+              "h": 38,
+              "sha256": "d28f0dac0a213b4c5f0308a1698deb541fec69cead48ca9a9f655ec9f0ab24cb"
+            },
+            "normal": {
+              "file": "sheets/antiair__body__d04__normal.png",
+              "w": 54,
+              "h": 38,
+              "sha256": "e44ad73e79217d4d096330647c84f18703ea2b2493e053ad3d1a0a609487188c"
+            },
+            "material": {
+              "file": "sheets/antiair__body__d04__material.png",
+              "w": 54,
+              "h": 38,
+              "sha256": "ae6eff8f3c32db2c0f02aa95c48f00379c30f1a08e125c083bd7d0fee6169e5c"
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            26.44,
+            22.88
+          ],
+          "pivot": [
+            26.44,
+            22.88
+          ],
+          "depth": -3.77,
+          "w": 53,
+          "h": 36,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__body__d05__albedo.png",
+              "w": 53,
+              "h": 36,
+              "sha256": "4cdf34a8cf989a9bcc4b0a16f4ecae810ba32823e820adc14f8ea3d5fdcec0e2"
+            },
+            "normal": {
+              "file": "sheets/antiair__body__d05__normal.png",
+              "w": 53,
+              "h": 36,
+              "sha256": "3f5fbaf3b8389f4fafa6ba4d289d010e29c77400b33047f20b3c05e18e0ebc49"
+            },
+            "material": {
+              "file": "sheets/antiair__body__d05__material.png",
+              "w": 53,
+              "h": 36,
+              "sha256": "3b59b46fb6e4f710da35e9baf4477192491b1338f92cb15275eb295a02082f0c"
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            23.37,
+            21.69
+          ],
+          "pivot": [
+            23.37,
+            21.69
+          ],
+          "depth": -15.86,
+          "w": 46,
+          "h": 32,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__body__d06__albedo.png",
+              "w": 46,
+              "h": 32,
+              "sha256": "66b5153d3290e3255b434cdb2029443deeaf08776606a68a6c590d3405f7ea3b"
+            },
+            "normal": {
+              "file": "sheets/antiair__body__d06__normal.png",
+              "w": 46,
+              "h": 32,
+              "sha256": "ece81bce760a771b04e91fef610878836f0fd98d9f95f6ea1bff53dbba4b0d07"
+            },
+            "material": {
+              "file": "sheets/antiair__body__d06__material.png",
+              "w": 46,
+              "h": 32,
+              "sha256": "05891a7b14825c697317b3108b19d060d50bcb6b6a9d18ab3aaf10771fe2631c"
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            26.75,
+            22.22
+          ],
+          "pivot": [
+            26.75,
+            22.22
+          ],
+          "depth": -23.96,
+          "w": 52,
+          "h": 35,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__body__d07__albedo.png",
+              "w": 52,
+              "h": 35,
+              "sha256": "298e48b349a5113098619d14dad2d164771a8b9401fe7b2b8ed7660c879823b5"
+            },
+            "normal": {
+              "file": "sheets/antiair__body__d07__normal.png",
+              "w": 52,
+              "h": 35,
+              "sha256": "1fabca5c8062a27fc27bcb8b021c3017c87e41c9992fbdba0f0b427499ac3c8e"
+            },
+            "material": {
+              "file": "sheets/antiair__body__d07__material.png",
+              "w": 52,
+              "h": 35,
+              "sha256": "6d0238f1bad41da8953d01f3579e1eb6e4a1f454b6f638c772ca1def966d8931"
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            27,
+            23
+          ],
+          "pivot": [
+            27,
+            23
+          ],
+          "depth": -26.85,
+          "w": 53,
+          "h": 37,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__body__d08__albedo.png",
+              "w": 53,
+              "h": 37,
+              "sha256": "ddc79c68ee2c6dca027f9aeecb36b19fdd9e9ebe4b51b45404e0f2e4d449a9a6"
+            },
+            "normal": {
+              "file": "sheets/antiair__body__d08__normal.png",
+              "w": 53,
+              "h": 37,
+              "sha256": "be4141cfc54d1ce26316fcc31b1094ba20f5d43e64937fe0234c667967710e4c"
+            },
+            "material": {
+              "file": "sheets/antiair__body__d08__material.png",
+              "w": 53,
+              "h": 37,
+              "sha256": "6529cc0d8ac28bfc332869430d56f769c3005974ac5512c64dc2da407cd1c35c"
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            24.25,
+            23.22
+          ],
+          "pivot": [
+            24.25,
+            23.22
+          ],
+          "depth": -24.07,
+          "w": 49,
+          "h": 36,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__body__d09__albedo.png",
+              "w": 49,
+              "h": 36,
+              "sha256": "5169e00cf753f60b395c6e9ae20c6d8e247dfb82ef117ecdfa5ee1a6f888ed44"
+            },
+            "normal": {
+              "file": "sheets/antiair__body__d09__normal.png",
+              "w": 49,
+              "h": 36,
+              "sha256": "cffd1bd80375c1940afce725d4cc75945a4ce5d6b0dd4570a725eee6b2bb5613"
+            },
+            "material": {
+              "file": "sheets/antiair__body__d09__material.png",
+              "w": 49,
+              "h": 36,
+              "sha256": "c26d3552f8641a28ff9d8c1cef720695be7bd0f49fef99ed15de906ed672d422"
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            19.63,
+            21.69
+          ],
+          "pivot": [
+            19.63,
+            21.69
+          ],
+          "depth": -16.06,
+          "w": 40,
+          "h": 33,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__body__d10__albedo.png",
+              "w": 40,
+              "h": 33,
+              "sha256": "e68481374ade5677950864dd6f63a12e22ab3421aba7ad4696c2f4080e5b8951"
+            },
+            "normal": {
+              "file": "sheets/antiair__body__d10__normal.png",
+              "w": 40,
+              "h": 33,
+              "sha256": "c39db4c425da62c0552bbcf6a45d9f78317783c5ac9145e5ee035a238f80c56a"
+            },
+            "material": {
+              "file": "sheets/antiair__body__d10__material.png",
+              "w": 40,
+              "h": 33,
+              "sha256": "eb1269951e26b42bf62be336c598ad9107c09cb5a39c736c620584bfcf3f9a2d"
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            24.56,
+            22.88
+          ],
+          "pivot": [
+            24.56,
+            22.88
+          ],
+          "depth": -4.04,
+          "w": 48,
+          "h": 34,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__body__d11__albedo.png",
+              "w": 48,
+              "h": 34,
+              "sha256": "6ff4233c17088e837c16dbd746111a64a352c5e004c5ca31a1f5c9cba476fb84"
+            },
+            "normal": {
+              "file": "sheets/antiair__body__d11__normal.png",
+              "w": 48,
+              "h": 34,
+              "sha256": "71f62f4277766ece061e4f21343925571de93759ba889f2006e74c765396bd35"
+            },
+            "material": {
+              "file": "sheets/antiair__body__d11__material.png",
+              "w": 48,
+              "h": 34,
+              "sha256": "150dedfae39591a73c384ea08faa55a02f4211b8bdeead59db70c78ccadf0771"
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            27,
+            23
+          ],
+          "pivot": [
+            27,
+            23
+          ],
+          "depth": 10.18,
+          "w": 54,
+          "h": 35,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__body__d12__albedo.png",
+              "w": 54,
+              "h": 35,
+              "sha256": "05f21063910ed135fcb46c711e4bfc283502204d5ad2e3eef1364d713000656f"
+            },
+            "normal": {
+              "file": "sheets/antiair__body__d12__normal.png",
+              "w": 54,
+              "h": 35,
+              "sha256": "b2ca8de826ad55223771c149466404d3f8c8f18f6fb7a0f3a288826162afbd9e"
+            },
+            "material": {
+              "file": "sheets/antiair__body__d12__material.png",
+              "w": 54,
+              "h": 35,
+              "sha256": "925f7a4dc3e96bae41e6b2f79b3bba876221254bfcbfd29c33ca943f0f9bf34c"
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            26.56,
+            22.12
+          ],
+          "pivot": [
+            26.56,
+            22.12
+          ],
+          "depth": 24.41,
+          "w": 53,
+          "h": 33,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__body__d13__albedo.png",
+              "w": 53,
+              "h": 33,
+              "sha256": "bdd251cee3914221da85e36bce31aa067eafec413894dd7c5f155dec630fc26f"
+            },
+            "normal": {
+              "file": "sheets/antiair__body__d13__normal.png",
+              "w": 53,
+              "h": 33,
+              "sha256": "762013ef215b2d1fe8dc3325f85423932fdf2dafe585e5f54bb32a2d215307dc"
+            },
+            "material": {
+              "file": "sheets/antiair__body__d13__material.png",
+              "w": 53,
+              "h": 33,
+              "sha256": "2a56c3e0c30cbf9f034d07c51bd7212bbe88924f8ee9995a21c145fd398bcbfc"
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            22.63,
+            24.31
+          ],
+          "pivot": [
+            22.63,
+            24.31
+          ],
+          "depth": 36.5,
+          "w": 46,
+          "h": 35,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__body__d14__albedo.png",
+              "w": 46,
+              "h": 35,
+              "sha256": "e79af07343a31afeabc4dc7f9e3d166b3d79b5ace4f0777dd2b2ff820dd09783"
+            },
+            "normal": {
+              "file": "sheets/antiair__body__d14__normal.png",
+              "w": 46,
+              "h": 35,
+              "sha256": "b95a0fcba61a2f2676994f7703d1a3efe62213f91285d100faf0e56e74d0e0ba"
+            },
+            "material": {
+              "file": "sheets/antiair__body__d14__material.png",
+              "w": 46,
+              "h": 35,
+              "sha256": "201a84e87962906da0a14f8ae5f22539f4b959559b60a6f65cf3ad9187cff1e5"
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            25.25,
+            25.78
+          ],
+          "pivot": [
+            25.25,
+            25.78
+          ],
+          "depth": 44.6,
+          "w": 52,
+          "h": 38,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__body__d15__albedo.png",
+              "w": 52,
+              "h": 38,
+              "sha256": "2d3261b00f0d519a7e61a3b7e549eba429d3500fdcfb871d9af3adfa6b6d8b4c"
+            },
+            "normal": {
+              "file": "sheets/antiair__body__d15__normal.png",
+              "w": 52,
+              "h": 38,
+              "sha256": "bb81408f132e69d36a6eecfaca97e47a49c01394f6144aa246c5ffd4109e7b52"
+            },
+            "material": {
+              "file": "sheets/antiair__body__d15__material.png",
+              "w": 52,
+              "h": 38,
+              "sha256": "b9b57313d588bbdebd78a9f9a7de85e15a3cb54794e0a88c698ba503d64de128"
+            }
+          }
+        }
+      }
+    },
+    "running.L": {
+      "name": "running.L",
+      "dynamic": false,
+      "parent": null,
+      "pivotDesign": [
+        256,
+        256,
+        0
+      ],
+      "traverse": false,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            10,
+            21
+          ],
+          "pivot": [
+            10,
+            21
+          ],
+          "depth": 31.72,
+          "w": 35,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.L__d00__albedo.png",
+              "w": 35,
+              "h": 27,
+              "sha256": "2b7a16deeb68927c01ea5ecaa847b6f6a25a2a214499ba690538fbee79704b7b"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.L__d00__normal.png",
+              "w": 35,
+              "h": 27,
+              "sha256": "3db6bee64f4caf2b86db82fe194769c0b96bcb2db7a69f39dbda810a4e4527ad"
+            },
+            "material": {
+              "file": "sheets/antiair__running.L__d00__material.png",
+              "w": 35,
+              "h": 27,
+              "sha256": "4bdc624495a5eda3ce9132ea2b57f241a07fe3a67a4e41c20f33771a4f616c2b"
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            2.75,
+            20.78
+          ],
+          "pivot": [
+            2.75,
+            20.78
+          ],
+          "depth": 33.02,
+          "w": 26,
+          "h": 29,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.L__d01__albedo.png",
+              "w": 26,
+              "h": 29,
+              "sha256": "2abbacdf9d68d5dc210d65cdcb3e366859141242ec124cdd95d29ba807b9cb74"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.L__d01__normal.png",
+              "w": 26,
+              "h": 29,
+              "sha256": "da88a09652c4a5337ea8d4fc7e330afcda9f6ad62cf411d4549d71d914e733d9"
+            },
+            "material": {
+              "file": "sheets/antiair__running.L__d01__material.png",
+              "w": 26,
+              "h": 29,
+              "sha256": "2743e6b7f85866fd96e7aef30e6961055a047737093125fd62a0ca71698f3813"
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            -3.63,
+            18.31
+          ],
+          "pivot": [
+            -3.63,
+            18.31
+          ],
+          "depth": 29.97,
+          "w": 15,
+          "h": 29,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.L__d02__albedo.png",
+              "w": 15,
+              "h": 29,
+              "sha256": "653eba7d675c90dbe0246b3b9b14bfca6fbcfeb9192d1be53225082926334c20"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.L__d02__normal.png",
+              "w": 15,
+              "h": 29,
+              "sha256": "d99ac53a81bf55ec8e7c26bc23096949323e26c873481a1918af5e5192bc2f60"
+            },
+            "material": {
+              "file": "sheets/antiair__running.L__d02__material.png",
+              "w": 15,
+              "h": 29,
+              "sha256": "1be0e4ac1bde2fd2b7efcffcd9ee24b2a3a8d2739e3353d114de3c7028a25276"
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            2.44,
+            16.12
+          ],
+          "pivot": [
+            2.44,
+            16.12
+          ],
+          "depth": 23.02,
+          "w": 26,
+          "h": 29,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.L__d03__albedo.png",
+              "w": 26,
+              "h": 29,
+              "sha256": "637e16518b73db04ceb08f0470a19f1f1a3b6d6b6460789a41df74169c937f22"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.L__d03__normal.png",
+              "w": 26,
+              "h": 29,
+              "sha256": "cbdb8ae4fa33420c5902cc3de38ec587cc62962b7c8df4a6c8a98d8d5ea38280"
+            },
+            "material": {
+              "file": "sheets/antiair__running.L__d03__material.png",
+              "w": 26,
+              "h": 29,
+              "sha256": "a1b500bba1d70b0623cbd23d993950e5d66829753f69fb8793f03b3dd532a393"
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            10,
+            14
+          ],
+          "pivot": [
+            10,
+            14
+          ],
+          "depth": 13.24,
+          "w": 36,
+          "h": 28,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.L__d04__albedo.png",
+              "w": 36,
+              "h": 28,
+              "sha256": "d0f5865b9db9775821b4f6e8cae0ea31e518a1470e7dd7a255d1dfaae1e7a2e9"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.L__d04__normal.png",
+              "w": 36,
+              "h": 28,
+              "sha256": "90178c0d35c7d783a07f15128a2ee32661dc1db41d852c53f36cfc2a9ab7732a"
+            },
+            "material": {
+              "file": "sheets/antiair__running.L__d04__material.png",
+              "w": 36,
+              "h": 28,
+              "sha256": "2e601d1474387b239165a670afac9b6040e06ecd06e53369956d85b88669257e"
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            15.44,
+            10.88
+          ],
+          "pivot": [
+            15.44,
+            10.88
+          ],
+          "depth": 2.12,
+          "w": 40,
+          "h": 24,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.L__d05__albedo.png",
+              "w": 40,
+              "h": 24,
+              "sha256": "1923410bf709972f78b59bdd70dd3c53058afcd9d8138adf697b8193cab51deb"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.L__d05__normal.png",
+              "w": 40,
+              "h": 24,
+              "sha256": "85bc4c3bb9c9c47a2155b6a6f6e0463df94ad9f05e47c077d8ac0646c217745d"
+            },
+            "material": {
+              "file": "sheets/antiair__running.L__d05__material.png",
+              "w": 40,
+              "h": 24,
+              "sha256": "5a1799a856d0e4147c24e431bf87e63fe5c2240f5b036f7ac9c1f7331c6f2658"
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            19.37,
+            7.69
+          ],
+          "pivot": [
+            19.37,
+            7.69
+          ],
+          "depth": -8.66,
+          "w": 40,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.L__d06__albedo.png",
+              "w": 40,
+              "h": 19,
+              "sha256": "fe2635a019aabbb88503c1404b29a0f55c69c775ed1119aebb47775bdcba62ee"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.L__d06__normal.png",
+              "w": 40,
+              "h": 19,
+              "sha256": "83d9547b0b2e66f0045056efe196e262bbd9cf4f48d1987d1693f6c3ad8dbe38"
+            },
+            "material": {
+              "file": "sheets/antiair__running.L__d06__material.png",
+              "w": 40,
+              "h": 19,
+              "sha256": "4ea187fa5c659707c1e321fc503cb35a5fb19166b58759fab2638e84c90b0817"
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            23.75,
+            9.22
+          ],
+          "pivot": [
+            23.75,
+            9.22
+          ],
+          "depth": -17.45,
+          "w": 40,
+          "h": 23,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.L__d07__albedo.png",
+              "w": 40,
+              "h": 23,
+              "sha256": "27c9b02d4211f41969b5cad7b950a21487f86e85fa78e787c0702b77b7872008"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.L__d07__normal.png",
+              "w": 40,
+              "h": 23,
+              "sha256": "4f8bfea3f5d0345e0da1a71b9cc594d60998317f4696b300a5a6d446b476ce8c"
+            },
+            "material": {
+              "file": "sheets/antiair__running.L__d07__material.png",
+              "w": 40,
+              "h": 23,
+              "sha256": "86554af58a478e5348b27e01eb4a79491f7b76dcd27311a431cdd9679235089d"
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            25,
+            12
+          ],
+          "pivot": [
+            25,
+            12
+          ],
+          "depth": -22.91,
+          "w": 35,
+          "h": 26,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.L__d08__albedo.png",
+              "w": 35,
+              "h": 26,
+              "sha256": "e2167b183cac34d51d9e2b61b31e31b04512c7488d0c7aa37cd0813616802ce6"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.L__d08__normal.png",
+              "w": 35,
+              "h": 26,
+              "sha256": "d570f873c1cc5b30ace2d1397d2ac5cbbf3c89e424a40ab1a5e85b6cbf30bb11"
+            },
+            "material": {
+              "file": "sheets/antiair__running.L__d08__material.png",
+              "w": 35,
+              "h": 26,
+              "sha256": "cdf4e194ea1bb824b99462ccc915dae104127042729a8abdf9818bdc87952b11"
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            23.25,
+            15.22
+          ],
+          "pivot": [
+            23.25,
+            15.22
+          ],
+          "depth": -24.22,
+          "w": 26,
+          "h": 28,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.L__d09__albedo.png",
+              "w": 26,
+              "h": 28,
+              "sha256": "72f598f7cd2e215c6eb810d583ce74d31ec07f13449ddfa40b03a196a446c4ab"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.L__d09__normal.png",
+              "w": 26,
+              "h": 28,
+              "sha256": "6bf46b1b487022830af7b14a4224e43cddf14816436b73717d4992dc89a56f95"
+            },
+            "material": {
+              "file": "sheets/antiair__running.L__d09__material.png",
+              "w": 26,
+              "h": 28,
+              "sha256": "0366cf5b1802925b195e1d7564bc5648be3d04df10d80fbd86181d834b4785d8"
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            18.63,
+            17.69
+          ],
+          "pivot": [
+            18.63,
+            17.69
+          ],
+          "depth": -21.16,
+          "w": 15,
+          "h": 29,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.L__d10__albedo.png",
+              "w": 15,
+              "h": 29,
+              "sha256": "18feb26f53d6af32900d5b220728796b40b81d7d343dce6a65ddf3fe10454b3c"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.L__d10__normal.png",
+              "w": 15,
+              "h": 29,
+              "sha256": "1cf1ae9d1c9e139e8a0bfe93f5206830b41afde17b99db6995dfd0e22f4fbe22"
+            },
+            "material": {
+              "file": "sheets/antiair__running.L__d10__material.png",
+              "w": 15,
+              "h": 29,
+              "sha256": "9474b87b794243d2e8202086c795b30e9ce1630b1eb653e4da3e4c8ccfee9fb3"
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            23.56,
+            19.88
+          ],
+          "pivot": [
+            23.56,
+            19.88
+          ],
+          "depth": -14.22,
+          "w": 26,
+          "h": 29,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.L__d11__albedo.png",
+              "w": 26,
+              "h": 29,
+              "sha256": "ab4e5281723196bd9842d9ef6a0bb0bfe1548909b2d2eba72147364ac71c1c8a"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.L__d11__normal.png",
+              "w": 26,
+              "h": 29,
+              "sha256": "73b52c1e2b1fff91fe177a2c257b06ba3bd04d1ebff0b447740736c1c4a2502a"
+            },
+            "material": {
+              "file": "sheets/antiair__running.L__d11__material.png",
+              "w": 26,
+              "h": 29,
+              "sha256": "475094614d602c450f22ebca162f3734db515494d321c0ed97ce7005562554fb"
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            26,
+            21
+          ],
+          "pivot": [
+            26,
+            21
+          ],
+          "depth": -4.44,
+          "w": 36,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.L__d12__albedo.png",
+              "w": 36,
+              "h": 27,
+              "sha256": "72742439d90097fa0b3eb39463a57a201f17abedbb6b23f1c3c57c648f470f49"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.L__d12__normal.png",
+              "w": 36,
+              "h": 27,
+              "sha256": "b5fd8db65db0f65c0df0670ddf790e2dc0c4fbaa657eaa08ca3126f762375e47"
+            },
+            "material": {
+              "file": "sheets/antiair__running.L__d12__material.png",
+              "w": 36,
+              "h": 27,
+              "sha256": "f53c65d55ee08732bad076aab87acfdeeabf85f1bd09cf59cf3debc4e7c5799c"
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            24.56,
+            21.12
+          ],
+          "pivot": [
+            24.56,
+            21.12
+          ],
+          "depth": 6.69,
+          "w": 40,
+          "h": 24,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.L__d13__albedo.png",
+              "w": 40,
+              "h": 24,
+              "sha256": "3db734b0335a5021d53388216265c0a618a84e1e4b809d94698377c70bf727b3"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.L__d13__normal.png",
+              "w": 40,
+              "h": 24,
+              "sha256": "5d8c8840c12bf369aa3d869c8a1d6133e73a1facc1a74bbab6c97874e033119b"
+            },
+            "material": {
+              "file": "sheets/antiair__running.L__d13__material.png",
+              "w": 40,
+              "h": 24,
+              "sha256": "da3b57cdfb4b7dde7b3a2c9c9c2aa36087b4a20b1db143ab63b2d93c5f74cecd"
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            20.63,
+            19.31
+          ],
+          "pivot": [
+            20.63,
+            19.31
+          ],
+          "depth": 17.47,
+          "w": 40,
+          "h": 20,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.L__d14__albedo.png",
+              "w": 40,
+              "h": 20,
+              "sha256": "af42b8d346cae3cdf5d86b096c213182e3093c0a41f33deceb6e45f3b2e9151c"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.L__d14__normal.png",
+              "w": 40,
+              "h": 20,
+              "sha256": "fbbd5ea737f4ba32eb0023d83ad40da9561a68407f8cca061b71b48b24ace4c4"
+            },
+            "material": {
+              "file": "sheets/antiair__running.L__d14__material.png",
+              "w": 40,
+              "h": 20,
+              "sha256": "4fcd23d68d4c71ce881a57532822bfab495ff94b185e84079abc0a1b2d2e61bd"
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            16.25,
+            20.78
+          ],
+          "pivot": [
+            16.25,
+            20.78
+          ],
+          "depth": 26.26,
+          "w": 40,
+          "h": 24,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.L__d15__albedo.png",
+              "w": 40,
+              "h": 24,
+              "sha256": "d7871d005b1a9ca9a2320636f7157a6b60299b3f7cb86bc0bfe3297d290c5b79"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.L__d15__normal.png",
+              "w": 40,
+              "h": 24,
+              "sha256": "79d687a2605c42f752db9192f762d88c7e00feec71a247a55f463d0d8a81d9ab"
+            },
+            "material": {
+              "file": "sheets/antiair__running.L__d15__material.png",
+              "w": 40,
+              "h": 24,
+              "sha256": "6f43bf4455966c02ce7a9410a468ed514e10656d28f7b442afe1b694519e88be"
+            }
+          }
+        }
+      }
+    },
+    "running.R": {
+      "name": "running.R",
+      "dynamic": false,
+      "parent": null,
+      "pivotDesign": [
+        256,
+        256,
+        0
+      ],
+      "traverse": false,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            26,
+            14
+          ],
+          "pivot": [
+            26,
+            14
+          ],
+          "depth": 50.34,
+          "w": 36,
+          "h": 28,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.R__d00__albedo.png",
+              "w": 36,
+              "h": 28,
+              "sha256": "ceb38cfc3be2eb496d457516b342f5092c118e90a90e5c9506fc304850c91b65"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.R__d00__normal.png",
+              "w": 36,
+              "h": 28,
+              "sha256": "8f0fe30534bdbddcc5227a0d26091e06f284448e0209305efb83e9daf8d7f86e"
+            },
+            "material": {
+              "file": "sheets/antiair__running.R__d00__material.png",
+              "w": 36,
+              "h": 28,
+              "sha256": "dd18338efe3b09669678d5680043195554ca0ee5ddf8eb0ce09c13077c17c7bf"
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            23.75,
+            16.78
+          ],
+          "pivot": [
+            23.75,
+            16.78
+          ],
+          "depth": 43.1,
+          "w": 27,
+          "h": 29,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.R__d01__albedo.png",
+              "w": 27,
+              "h": 29,
+              "sha256": "a852408b6f00439f81b7159bc48ca027ffb613bfd4efbdcacdd1db9ff1f1a557"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.R__d01__normal.png",
+              "w": 27,
+              "h": 29,
+              "sha256": "0cb3c98a3f7d7a1befcd40103be8034d6abf774d6655f63208cf589676ac2b68"
+            },
+            "material": {
+              "file": "sheets/antiair__running.R__d01__material.png",
+              "w": 27,
+              "h": 29,
+              "sha256": "d40198b7b1fc751e9439c6b3b94ab823099811abcc9e9d860e01f1366ac32030"
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            19.37,
+            18.31
+          ],
+          "pivot": [
+            19.37,
+            18.31
+          ],
+          "depth": 29.97,
+          "w": 16,
+          "h": 29,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.R__d02__albedo.png",
+              "w": 16,
+              "h": 29,
+              "sha256": "132aa3d873856650a9c1666f6b71a78c65545025fa054f5d86923b6c58b03a99"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.R__d02__normal.png",
+              "w": 16,
+              "h": 29,
+              "sha256": "1e039f5e42b0c7fbc200a47b1f638cb7837b4062009f2109b0ea605c7efb0437"
+            },
+            "material": {
+              "file": "sheets/antiair__running.R__d02__material.png",
+              "w": 16,
+              "h": 29,
+              "sha256": "bfb1356c2ad162f9599af3cf27f3a64ceabef211109eab2ff639f9f7d23e26fd"
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            23.44,
+            20.12
+          ],
+          "pivot": [
+            23.44,
+            20.12
+          ],
+          "depth": 12.95,
+          "w": 27,
+          "h": 29,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.R__d03__albedo.png",
+              "w": 27,
+              "h": 29,
+              "sha256": "018fd6d9ba1ffc43dbc752c0a23ca12f021d58092ef9b5e4379a39aed1c2f413"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.R__d03__normal.png",
+              "w": 27,
+              "h": 29,
+              "sha256": "f3159d122849d592a3fe44e725ab3643239cc0ff1d727f3935a0a667a8c37e24"
+            },
+            "material": {
+              "file": "sheets/antiair__running.R__d03__material.png",
+              "w": 27,
+              "h": 29,
+              "sha256": "b17149922fc18a4c0c1062c9db209cadc99556bc89cc8a76b55b9f15892a2a99"
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            25,
+            21
+          ],
+          "pivot": [
+            25,
+            21
+          ],
+          "depth": -5.38,
+          "w": 35,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.R__d04__albedo.png",
+              "w": 35,
+              "h": 27,
+              "sha256": "f13664e7aa37c03a8b9a89ab3f4d63f2ad2f2e8ac573c712cd75f444238a853c"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.R__d04__normal.png",
+              "w": 35,
+              "h": 27,
+              "sha256": "7b8fb2e7c12fedbde7572b5c2569b1d1fe6c8d48808d10ea72416847f41ef4c6"
+            },
+            "material": {
+              "file": "sheets/antiair__running.R__d04__material.png",
+              "w": 35,
+              "h": 27,
+              "sha256": "980e5c9c24a235f9a2f9d1bc24f3626276179627139d0ca01b49dc8e142ee876"
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            23.44,
+            20.88
+          ],
+          "pivot": [
+            23.44,
+            20.88
+          ],
+          "depth": -22.21,
+          "w": 40,
+          "h": 24,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.R__d05__albedo.png",
+              "w": 40,
+              "h": 24,
+              "sha256": "f6678e187f5accb43908e32a510f44b62bb5ba2ddc911f106cb7cae656202252"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.R__d05__normal.png",
+              "w": 40,
+              "h": 24,
+              "sha256": "c4fdfd1fadf2b84d5ea3107d635129bd842c3c54a668448b41730b6ba5ae8f5e"
+            },
+            "material": {
+              "file": "sheets/antiair__running.R__d05__material.png",
+              "w": 40,
+              "h": 24,
+              "sha256": "fcf18b0788df8f445571f860f4b599fdaeffe1a79ed84f9b88eb3e22ce5a316e"
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            19.37,
+            18.69
+          ],
+          "pivot": [
+            19.37,
+            18.69
+          ],
+          "depth": -34.99,
+          "w": 40,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.R__d06__albedo.png",
+              "w": 40,
+              "h": 19,
+              "sha256": "308db30d6c16423c8bb4ea42f4a6e6beb0985b0a66d50883b723e309891d699c"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.R__d06__normal.png",
+              "w": 40,
+              "h": 19,
+              "sha256": "e94f8799d2a1f207cd172e30a178e541aa6f29d2348b6bb66e79c56eefff9fdb"
+            },
+            "material": {
+              "file": "sheets/antiair__running.R__d06__material.png",
+              "w": 40,
+              "h": 19,
+              "sha256": "342d08f780e075d0a9d2991fdc8f2277fc3cbf6d6f2ec14a63590da74e28a876"
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            15.75,
+            20.22
+          ],
+          "pivot": [
+            15.75,
+            20.22
+          ],
+          "depth": -41.78,
+          "w": 40,
+          "h": 23,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.R__d07__albedo.png",
+              "w": 40,
+              "h": 23,
+              "sha256": "12d6edd6bf7649e128d6cd2003bb48b3f30d7ed61ff6f9ad8e03bcd6d5bd350e"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.R__d07__normal.png",
+              "w": 40,
+              "h": 23,
+              "sha256": "af12ea9a51403c596a8a971a1abeb96dc933cd0da07cfe20b9f099977bda5ca4"
+            },
+            "material": {
+              "file": "sheets/antiair__running.R__d07__material.png",
+              "w": 40,
+              "h": 23,
+              "sha256": "783bbcc91d3a996022eeff9cc7892cde4226fabdda4c505e6b4ae23dd7b01266"
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            10,
+            21
+          ],
+          "pivot": [
+            10,
+            21
+          ],
+          "depth": -41.53,
+          "w": 36,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.R__d08__albedo.png",
+              "w": 36,
+              "h": 27,
+              "sha256": "4f814d7c758bfe117fa986c74ea5a7afa0630f42521caa9ca9d5879032f3f8e6"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.R__d08__normal.png",
+              "w": 36,
+              "h": 27,
+              "sha256": "31d075c411dcba0fb348400dcdad7d8799f03afd3a9c35ff7e2e438564f31040"
+            },
+            "material": {
+              "file": "sheets/antiair__running.R__d08__material.png",
+              "w": 36,
+              "h": 27,
+              "sha256": "63f5ff3ef297946acdf3fd63e96b5122603c77129ca23c32f561f4403f241e30"
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            3.25,
+            20.22
+          ],
+          "pivot": [
+            3.25,
+            20.22
+          ],
+          "depth": -34.29,
+          "w": 27,
+          "h": 29,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.R__d09__albedo.png",
+              "w": 27,
+              "h": 29,
+              "sha256": "a93af3f1d9b90cb82a55abdac4c0565c6a25bab8b3ada78aa7bd7f38e3fbb7ad"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.R__d09__normal.png",
+              "w": 27,
+              "h": 29,
+              "sha256": "5343864912e30c4ea2ccb0984eb0978d847f13c3e9ec25a2c5232fc89be14b1b"
+            },
+            "material": {
+              "file": "sheets/antiair__running.R__d09__material.png",
+              "w": 27,
+              "h": 29,
+              "sha256": "8de8e9e612622006d609b5c90adcf7cb44d2787ecae76f6840fbd374d8a2a551"
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            -3.37,
+            17.69
+          ],
+          "pivot": [
+            -3.37,
+            17.69
+          ],
+          "depth": -21.16,
+          "w": 16,
+          "h": 29,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.R__d10__albedo.png",
+              "w": 16,
+              "h": 29,
+              "sha256": "4c9a8e69817e14e510323c0aca96c06ed4163c041a6e63afa9346df3accfe9a6"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.R__d10__normal.png",
+              "w": 16,
+              "h": 29,
+              "sha256": "8b3ee53b87eab3a2fcf9c71667a2ea09c6e7e5e8db91147304219b9c5ce7070d"
+            },
+            "material": {
+              "file": "sheets/antiair__running.R__d10__material.png",
+              "w": 16,
+              "h": 29,
+              "sha256": "8ffa9a28988b7f497fcc7e2539632d4f41d7d2f033e1c4aa8682a4b021fbd87c"
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            3.56,
+            15.88
+          ],
+          "pivot": [
+            3.56,
+            15.88
+          ],
+          "depth": -4.14,
+          "w": 27,
+          "h": 29,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.R__d11__albedo.png",
+              "w": 27,
+              "h": 29,
+              "sha256": "50dce129044f38969828c7167488518fbcb3a7f26184195e774871186cb01af2"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.R__d11__normal.png",
+              "w": 27,
+              "h": 29,
+              "sha256": "b93fb9e5487a55bedcc7f1efe416956204fc135effe0a6a504d6b09ff4488865"
+            },
+            "material": {
+              "file": "sheets/antiair__running.R__d11__material.png",
+              "w": 27,
+              "h": 29,
+              "sha256": "e93635266b75965a781d3b7411760b299126bfc7f19d95b2964960a39c0f0a1c"
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            10,
+            12
+          ],
+          "pivot": [
+            10,
+            12
+          ],
+          "depth": 14.18,
+          "w": 35,
+          "h": 26,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.R__d12__albedo.png",
+              "w": 35,
+              "h": 26,
+              "sha256": "b7547056b228b07a87613eb8a07f860dd87517234f645cd9e240a6882e827c0d"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.R__d12__normal.png",
+              "w": 35,
+              "h": 26,
+              "sha256": "612e785bfc22199be62e1f4142acbc61fe778aeb09b31633114df2820468adc9"
+            },
+            "material": {
+              "file": "sheets/antiair__running.R__d12__material.png",
+              "w": 35,
+              "h": 26,
+              "sha256": "71f86c889db4efd49067aabbc42c8c7eee3152880f95cb1845fa6fa4e00847d9"
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            16.56,
+            9.12
+          ],
+          "pivot": [
+            16.56,
+            9.12
+          ],
+          "depth": 31.02,
+          "w": 40,
+          "h": 22,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.R__d13__albedo.png",
+              "w": 40,
+              "h": 22,
+              "sha256": "8c0dbddee5e66fbb53ec93a40185bdafeca011872ce1869ddb39324884f5e88f"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.R__d13__normal.png",
+              "w": 40,
+              "h": 22,
+              "sha256": "8a114dbf475845bd09cb634a5b1dad2d779121b4435d8b1d6e07d431be283d7b"
+            },
+            "material": {
+              "file": "sheets/antiair__running.R__d13__material.png",
+              "w": 40,
+              "h": 22,
+              "sha256": "0d46f4980aacbcd86174419974da60648f4b4ebf4ddd5bf21867cccf4e2b1fb1"
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            20.63,
+            7.31
+          ],
+          "pivot": [
+            20.63,
+            7.31
+          ],
+          "depth": 43.8,
+          "w": 40,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.R__d14__albedo.png",
+              "w": 40,
+              "h": 19,
+              "sha256": "29b07137ec9a02833973698113ea43448067cf2e642f3b726281fd0272b8dea2"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.R__d14__normal.png",
+              "w": 40,
+              "h": 19,
+              "sha256": "7557b0f0606b6d6fa6e3bb4d46b2d2448d6d965fc5f40aa10e7f0a5c03b962e9"
+            },
+            "material": {
+              "file": "sheets/antiair__running.R__d14__material.png",
+              "w": 40,
+              "h": 19,
+              "sha256": "a866bfdcbd6b5c15594d97f887a1c861447d79986f25e7e32005516ad23f2b4a"
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            24.25,
+            10.78
+          ],
+          "pivot": [
+            24.25,
+            10.78
+          ],
+          "depth": 50.58,
+          "w": 40,
+          "h": 24,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__running.R__d15__albedo.png",
+              "w": 40,
+              "h": 24,
+              "sha256": "3bc63b56c4e9a91a8deeffe743835447831da2b9b6bea2854415f8afd6991db6"
+            },
+            "normal": {
+              "file": "sheets/antiair__running.R__d15__normal.png",
+              "w": 40,
+              "h": 24,
+              "sha256": "4bd04213d710b868e225f4803d337ca4593e496bb4e03aee4643951e5fbc3af4"
+            },
+            "material": {
+              "file": "sheets/antiair__running.R__d15__material.png",
+              "w": 40,
+              "h": 24,
+              "sha256": "bd27f2ec3931d421003ad71e0ec6aeecc1f007e74093d50dc2c4215ae9401040"
+            }
+          }
+        }
+      }
+    },
+    "turret": {
+      "name": "turret",
+      "dynamic": true,
+      "parent": null,
+      "pivotDesign": [
+        300,
+        256,
+        138
+      ],
+      "traverse": true,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            15,
+            23
+          ],
+          "pivot": [
+            17.75,
+            15.75
+          ],
+          "depth": 53.84,
+          "w": 35,
+          "h": 26,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__turret__d00__albedo.png",
+              "w": 35,
+              "h": 26,
+              "sha256": "5634d08d49355a4d8580cadf4470340db549b8728851de46266e7ad31e41867c"
+            },
+            "normal": {
+              "file": "sheets/antiair__turret__d00__normal.png",
+              "w": 35,
+              "h": 26,
+              "sha256": "df67f1e45e0b338498cdfdbbfb5654a21c274b037bedb8c4369a4f019040e12c"
+            },
+            "material": {
+              "file": "sheets/antiair__turret__d00__material.png",
+              "w": 35,
+              "h": 26,
+              "sha256": "13995dbd63c779b50ffcee9b66ef3de9a7bf0f2abaa87aa6de54514c27fc91cd"
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            14.75,
+            22.78
+          ],
+          "pivot": [
+            16.24,
+            15.95
+          ],
+          "depth": 52.02,
+          "w": 33,
+          "h": 26,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__turret__d01__albedo.png",
+              "w": 33,
+              "h": 26,
+              "sha256": "368f2f4657ccab1268a1a0d6e5dc6996efe7497420f7ffe8a4d68b5f9087fb5c"
+            },
+            "normal": {
+              "file": "sheets/antiair__turret__d01__normal.png",
+              "w": 33,
+              "h": 26,
+              "sha256": "8aac43811190c407afe1c6e4214fc8818275359e8323043bebac3764fbf213b4"
+            },
+            "material": {
+              "file": "sheets/antiair__turret__d01__material.png",
+              "w": 33,
+              "h": 26,
+              "sha256": "64230dd26080e46f99e544b75960cb1f067ffbd89de729f2eb9e366ef34735fd"
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            13.37,
+            21.31
+          ],
+          "pivot": [
+            13.37,
+            14.63
+          ],
+          "depth": 44.37,
+          "w": 27,
+          "h": 24,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__turret__d02__albedo.png",
+              "w": 27,
+              "h": 24,
+              "sha256": "8887c5ecee691df51fc0a082ecf79c81d450bf2a25326e48ee0de99b2823e56b"
+            },
+            "normal": {
+              "file": "sheets/antiair__turret__d02__normal.png",
+              "w": 27,
+              "h": 24,
+              "sha256": "def25eb275862b9c8577fa1249a244e13c7a96bd64d51e74cee28ac93cfc2562"
+            },
+            "material": {
+              "file": "sheets/antiair__turret__d02__material.png",
+              "w": 27,
+              "h": 24,
+              "sha256": "4c0edef2059dc6f9ad2016d53c3ae460c212850117a4b2d8b6d97a2c58e838d4"
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            17.44,
+            22.12
+          ],
+          "pivot": [
+            15.95,
+            15.29
+          ],
+          "depth": 32.06,
+          "w": 32,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__turret__d03__albedo.png",
+              "w": 32,
+              "h": 25,
+              "sha256": "4e5b91524647623eefdfff02bcc1a94a5ea6c4c9234ed53d4a89bb0923f7129f"
+            },
+            "normal": {
+              "file": "sheets/antiair__turret__d03__normal.png",
+              "w": 32,
+              "h": 25,
+              "sha256": "beadb04125884a650331e0704367ad3e4b75670f521f697cf6e6fd51e7c1ec5a"
+            },
+            "material": {
+              "file": "sheets/antiair__turret__d03__material.png",
+              "w": 32,
+              "h": 25,
+              "sha256": "b4886c425eddbd3d2c6450727a0e9439fb6a1c1baf7345317a1be90c266515a4"
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            20,
+            23
+          ],
+          "pivot": [
+            17.25,
+            15.75
+          ],
+          "depth": 16.96,
+          "w": 35,
+          "h": 26,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__turret__d04__albedo.png",
+              "w": 35,
+              "h": 26,
+              "sha256": "fb3140dcbc82e8656c2b07d07b4a3823fddee987c190679db025f3d310f37f21"
+            },
+            "normal": {
+              "file": "sheets/antiair__turret__d04__normal.png",
+              "w": 35,
+              "h": 26,
+              "sha256": "91660813fb11a4af027d8d7160d78c1af57b79fcbbdc417b0f169d1f50f68858"
+            },
+            "material": {
+              "file": "sheets/antiair__turret__d04__material.png",
+              "w": 35,
+              "h": 26,
+              "sha256": "fd0b3089d1f428aac0a6b43efd12f3c739392eabd4af0bbfa5f4c1b76bb9d96b"
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            19.44,
+            23.88
+          ],
+          "pivot": [
+            15.84,
+            16
+          ],
+          "depth": 1.37,
+          "w": 32,
+          "h": 26,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__turret__d05__albedo.png",
+              "w": 32,
+              "h": 26,
+              "sha256": "c66477199af56d99d851c58ee4e33bd498adfabb85b1faad1600953d22ba589d"
+            },
+            "normal": {
+              "file": "sheets/antiair__turret__d05__normal.png",
+              "w": 32,
+              "h": 26,
+              "sha256": "1f60e55c0408ada80ff3a9ea68b87138059b9bfc59ddea321eda2368079803f0"
+            },
+            "material": {
+              "file": "sheets/antiair__turret__d05__material.png",
+              "w": 32,
+              "h": 26,
+              "sha256": "29c8d17a3dac75cfefbf19766de0dde4e7cce96164b836f963bf13cf0663021d"
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            17.37,
+            22.69
+          ],
+          "pivot": [
+            13.48,
+            14.06
+          ],
+          "depth": -12.33,
+          "w": 27,
+          "h": 23,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__turret__d06__albedo.png",
+              "w": 27,
+              "h": 23,
+              "sha256": "0e3dcc271bfc862fe38ddfd52579577196d82204412a7ff5469cc9669103adba"
+            },
+            "normal": {
+              "file": "sheets/antiair__turret__d06__normal.png",
+              "w": 27,
+              "h": 23,
+              "sha256": "431d88fe09447d420ff6d78b89f3383ff91db9f12639a64a828c6c1849e3a476"
+            },
+            "material": {
+              "file": "sheets/antiair__turret__d06__material.png",
+              "w": 27,
+              "h": 23,
+              "sha256": "b8cf621875cb9b602a505cfc8c4e7f7485dbbb16f5263aa9d94858cdb8c79b58"
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            19.75,
+            25.22
+          ],
+          "pivot": [
+            16.16,
+            15.85
+          ],
+          "depth": -22.06,
+          "w": 32,
+          "h": 26,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__turret__d07__albedo.png",
+              "w": 32,
+              "h": 26,
+              "sha256": "633c26c4da0a93cfa6ade367d0e90f1e171da9d72055d11c8352290f4672de08"
+            },
+            "normal": {
+              "file": "sheets/antiair__turret__d07__normal.png",
+              "w": 32,
+              "h": 26,
+              "sha256": "b6c0e7013cc5a3a65f73a2cb4ce89b9427cf62128ee6c9e4829296ebcdbea832"
+            },
+            "material": {
+              "file": "sheets/antiair__turret__d07__material.png",
+              "w": 32,
+              "h": 26,
+              "sha256": "527230086a6c3d052a9176b7ddeb20e586d1dd015b77fd793b83ce39eefe8491"
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            20,
+            26
+          ],
+          "pivot": [
+            17.25,
+            16
+          ],
+          "depth": -26.34,
+          "w": 35,
+          "h": 26,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__turret__d08__albedo.png",
+              "w": 35,
+              "h": 26,
+              "sha256": "12a552842395db71404ee5dfb1999c2e4f8af5ae7f48f84d7ec84e671a08e40a"
+            },
+            "normal": {
+              "file": "sheets/antiair__turret__d08__normal.png",
+              "w": 35,
+              "h": 26,
+              "sha256": "856d433ecad9fc49462ae8747dcaf3d85b64c1994b2cf2797831010c69a94bb4"
+            },
+            "material": {
+              "file": "sheets/antiair__turret__d08__material.png",
+              "w": 35,
+              "h": 26,
+              "sha256": "39ea7801bb4165b282285df320c2fc549b1a6c0af951d26cd73c3818b15ae031"
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            18.25,
+            26.22
+          ],
+          "pivot": [
+            16.76,
+            15.8
+          ],
+          "depth": -24.52,
+          "w": 33,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__turret__d09__albedo.png",
+              "w": 33,
+              "h": 25,
+              "sha256": "7312af6f57c07502daabd69ae6545d379e36e652a32f4998a6e7917fa1bf80a0"
+            },
+            "normal": {
+              "file": "sheets/antiair__turret__d09__normal.png",
+              "w": 33,
+              "h": 25,
+              "sha256": "0f70f94434f7b6f59cc72e1ec1fb490d6e8cb4fb7d3e6b33719d1588b01ab61e"
+            },
+            "material": {
+              "file": "sheets/antiair__turret__d09__material.png",
+              "w": 33,
+              "h": 25,
+              "sha256": "fa3ff1984e4580c94902beae9931bf7fd865c189ae47d244dd0fc34d2d78ede0"
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            13.63,
+            25.69
+          ],
+          "pivot": [
+            13.63,
+            15.12
+          ],
+          "depth": -16.87,
+          "w": 27,
+          "h": 24,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__turret__d10__albedo.png",
+              "w": 27,
+              "h": 24,
+              "sha256": "cc325690a0d423a84bf523d9e2c43282adf49d4afb6c840e08a56386b4645dc1"
+            },
+            "normal": {
+              "file": "sheets/antiair__turret__d10__normal.png",
+              "w": 27,
+              "h": 24,
+              "sha256": "6cacfc7d35a9e996c73908ae49a583ea108ce11f9cf2c6a6c2bfaf5267aa0919"
+            },
+            "material": {
+              "file": "sheets/antiair__turret__d10__material.png",
+              "w": 27,
+              "h": 24,
+              "sha256": "489c200247016ab8f57360935867eb769f22702b7a79bd320ec8298f0ec1e47c"
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            14.56,
+            25.88
+          ],
+          "pivot": [
+            16.05,
+            15.46
+          ],
+          "depth": -4.56,
+          "w": 32,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__turret__d11__albedo.png",
+              "w": 32,
+              "h": 25,
+              "sha256": "82f9b263649facaed7718f192c8bd78b1813ce1cc15e7d3c4b5b05cb38d0d283"
+            },
+            "normal": {
+              "file": "sheets/antiair__turret__d11__normal.png",
+              "w": 32,
+              "h": 25,
+              "sha256": "2dfc5d8931aa88baef6a515b9f69eea4dfe85140ff89ed9c708968e6c8ad7786"
+            },
+            "material": {
+              "file": "sheets/antiair__turret__d11__material.png",
+              "w": 32,
+              "h": 25,
+              "sha256": "f390f005a4f0dbc752e52931ee5f88a164af97c4a7c028321f955ea9c0747c95"
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            15,
+            26
+          ],
+          "pivot": [
+            17.75,
+            16
+          ],
+          "depth": 10.54,
+          "w": 35,
+          "h": 26,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__turret__d12__albedo.png",
+              "w": 35,
+              "h": 26,
+              "sha256": "0d2cb021a9dd37528d8253b1583894b77f2f2c956a585063acf70a93d2487172"
+            },
+            "normal": {
+              "file": "sheets/antiair__turret__d12__normal.png",
+              "w": 35,
+              "h": 26,
+              "sha256": "dd270dda1924ff288cdba43b8c62530f484b02f29551a7fc0a5320485c5c6bb9"
+            },
+            "material": {
+              "file": "sheets/antiair__turret__d12__material.png",
+              "w": 35,
+              "h": 26,
+              "sha256": "11f78fd2dc10f3d967c4a7fd7136afeceb8701158419292344395d6115ce63b1"
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            12.56,
+            25.12
+          ],
+          "pivot": [
+            16.16,
+            15.75
+          ],
+          "depth": 26.12,
+          "w": 32,
+          "h": 26,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__turret__d13__albedo.png",
+              "w": 32,
+              "h": 26,
+              "sha256": "fcec446738b7fa015b9960cd429aac876bc0b09d72df8b6a6ff912ac26867141"
+            },
+            "normal": {
+              "file": "sheets/antiair__turret__d13__normal.png",
+              "w": 32,
+              "h": 26,
+              "sha256": "09ab7e081d1d18f81232bfc8ae5e3bb1a59bd3bdda6e298c8903ed6ecb21db7a"
+            },
+            "material": {
+              "file": "sheets/antiair__turret__d13__material.png",
+              "w": 32,
+              "h": 26,
+              "sha256": "173de0bb6dd1b36efa455524ea1be4dfd9767bb2479a328d7974927ed0ae4c7d"
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            9.63,
+            23.31
+          ],
+          "pivot": [
+            13.52,
+            14.69
+          ],
+          "depth": 39.83,
+          "w": 27,
+          "h": 24,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__turret__d14__albedo.png",
+              "w": 27,
+              "h": 24,
+              "sha256": "822e20046f5371d3ab7f16b17e63dd6e1b87b486ade6f216a488993c2cb91bce"
+            },
+            "normal": {
+              "file": "sheets/antiair__turret__d14__normal.png",
+              "w": 27,
+              "h": 24,
+              "sha256": "12b5a9798f9b5ac90067fd49df2ca9e9682779e8d4d289c8375a532fc958cf25"
+            },
+            "material": {
+              "file": "sheets/antiair__turret__d14__material.png",
+              "w": 27,
+              "h": 24,
+              "sha256": "63250be41123593f7129d34f5000026e4808e0640039c189d34607a52cf52914"
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            12.25,
+            23.78
+          ],
+          "pivot": [
+            15.84,
+            15.9
+          ],
+          "depth": 49.56,
+          "w": 32,
+          "h": 26,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__turret__d15__albedo.png",
+              "w": 32,
+              "h": 26,
+              "sha256": "1f7273c51c72923c5a545705d102ae572184781272773c64fcfaf8141ff47cbf"
+            },
+            "normal": {
+              "file": "sheets/antiair__turret__d15__normal.png",
+              "w": 32,
+              "h": 26,
+              "sha256": "fb9a80b33f32fc0ff4cfc27a44aa6d4854106148ffaeb6790638d725bcd9bbdf"
+            },
+            "material": {
+              "file": "sheets/antiair__turret__d15__material.png",
+              "w": 32,
+              "h": 26,
+              "sha256": "89ddcf670efd35a3dfac56d9b35df8f454cf17209cb8ebfe2d14e3508cb86a64"
+            }
+          }
+        }
+      }
+    },
+    "barrel": {
+      "name": "barrel",
+      "dynamic": true,
+      "parent": "turret",
+      "pivotDesign": [
+        392,
+        256,
+        182
+      ],
+      "traverse": true,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            0,
+            20
+          ],
+          "pivot": [
+            8.5,
+            12.88
+          ],
+          "depth": 67.23,
+          "w": 20,
+          "h": 20,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__barrel__d00__albedo.png",
+              "w": 20,
+              "h": 20,
+              "sha256": "365bb2f2bdefed4196b275db7cd83a1bffa524bdaf37de7217b2f3bc93997720"
+            },
+            "normal": {
+              "file": "sheets/antiair__barrel__d00__normal.png",
+              "w": 20,
+              "h": 20,
+              "sha256": "0fbb55176bf5bc28cee5607c46e0a497e5805818db2e8259d786a69afeb0a5e9"
+            },
+            "material": {
+              "file": "sheets/antiair__barrel__d00__material.png",
+              "w": 20,
+              "h": 20,
+              "sha256": "2eb6e3411092eb92e9f233437ec873fc904e08903e7c773c4624c9882d6e537e"
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            3.75,
+            17.78
+          ],
+          "pivot": [
+            8.35,
+            11.96
+          ],
+          "depth": 68.13,
+          "w": 18,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__barrel__d01__albedo.png",
+              "w": 18,
+              "h": 19,
+              "sha256": "65333807e26bb9b5aa7f658c8c5d54ff10f8b2128e556ac1ed8f5c4dcf0e3e26"
+            },
+            "normal": {
+              "file": "sheets/antiair__barrel__d01__normal.png",
+              "w": 18,
+              "h": 19,
+              "sha256": "ab734a5f54f572ee20b3a52e8580de2bfd0349b6550f61c3cc4f17b15fd46ddc"
+            },
+            "material": {
+              "file": "sheets/antiair__barrel__d01__material.png",
+              "w": 18,
+              "h": 19,
+              "sha256": "fe1ce889a68d6bf75d36ea72117e064f0746324387e2eccf320e9a5b5e9944d3"
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            8.37,
+            16.31
+          ],
+          "pivot": [
+            8.37,
+            10.95
+          ],
+          "depth": 61.45,
+          "w": 16,
+          "h": 17,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__barrel__d02__albedo.png",
+              "w": 16,
+              "h": 17,
+              "sha256": "ade11500804883991b10355a4278e498252a6455437f8d0c63c425b942ec0f35"
+            },
+            "normal": {
+              "file": "sheets/antiair__barrel__d02__normal.png",
+              "w": 16,
+              "h": 17,
+              "sha256": "267ce2147c56131e621e269b7bbcdcbcd640a046ca20b88e020a9589a46af67f"
+            },
+            "material": {
+              "file": "sheets/antiair__barrel__d02__material.png",
+              "w": 16,
+              "h": 17,
+              "sha256": "a3aa674d06c3a28cc873946a428b4afced570150f9f280aa1058701b52d61cc8"
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            14.44,
+            17.12
+          ],
+          "pivot": [
+            9.84,
+            11.3
+          ],
+          "depth": 48.18,
+          "w": 18,
+          "h": 18,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__barrel__d03__albedo.png",
+              "w": 18,
+              "h": 18,
+              "sha256": "1a9e6b47639da5d6c4b51e845833b948943c539690d3fa1d6ba777e6400140d6"
+            },
+            "normal": {
+              "file": "sheets/antiair__barrel__d03__normal.png",
+              "w": 18,
+              "h": 18,
+              "sha256": "69f315f6cd280d750a0079d1c2228faac300dc62e45b55cec9c0e433417b4424"
+            },
+            "material": {
+              "file": "sheets/antiair__barrel__d03__material.png",
+              "w": 18,
+              "h": 18,
+              "sha256": "21a93471a9f849b3c60b0d3db96077940c3be4837c9a1eac7be52af23d69e90b"
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            20,
+            20
+          ],
+          "pivot": [
+            11.5,
+            12.88
+          ],
+          "depth": 30.35,
+          "w": 20,
+          "h": 20,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__barrel__d04__albedo.png",
+              "w": 20,
+              "h": 20,
+              "sha256": "f04b3f452be9db04b35fa0fcd9d142e1905c47d8810e6447820cb5c5cb19d833"
+            },
+            "normal": {
+              "file": "sheets/antiair__barrel__d04__normal.png",
+              "w": 20,
+              "h": 20,
+              "sha256": "88bf4433a79a656bce532be957e6e960b3a5c6ce327a9077e5f4da70eeb4ff14"
+            },
+            "material": {
+              "file": "sheets/antiair__barrel__d04__material.png",
+              "w": 20,
+              "h": 20,
+              "sha256": "4ac1c20bbae9e8dcedc53eabab95dbe08c3bf186d33358b0f19ae4c201c95b78"
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            23.44,
+            22.88
+          ],
+          "pivot": [
+            12.33,
+            13.8
+          ],
+          "depth": 10.67,
+          "w": 20,
+          "h": 21,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__barrel__d05__albedo.png",
+              "w": 20,
+              "h": 21,
+              "sha256": "36b04baffd1d2e6e3d820abc904edc2dba1453b7bf64d281adbd0b1336efd7e4"
+            },
+            "normal": {
+              "file": "sheets/antiair__barrel__d05__normal.png",
+              "w": 20,
+              "h": 21,
+              "sha256": "cc866007dae0e98cc115632dc820c8a6ed0b88ed4a0ef659f62cf2f11a47bc1a"
+            },
+            "material": {
+              "file": "sheets/antiair__barrel__d05__material.png",
+              "w": 20,
+              "h": 21,
+              "sha256": "3130fca4652171dfabc85c3e978e02c0944ed1b4c01e3953a191d50258052512"
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            24.37,
+            26.69
+          ],
+          "pivot": [
+            12.35,
+            15.31
+          ],
+          "depth": -7.85,
+          "w": 19,
+          "h": 23,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__barrel__d06__albedo.png",
+              "w": 19,
+              "h": 23,
+              "sha256": "e15b16a89e84c7d22cd583da05df25b0eb2fe25844f1d3168a400f8848692abd"
+            },
+            "normal": {
+              "file": "sheets/antiair__barrel__d06__normal.png",
+              "w": 19,
+              "h": 23,
+              "sha256": "52fb23a1cd51fa7b0813433ecd88d03ac85cf14ff1208837427a55e1b54804f7"
+            },
+            "material": {
+              "file": "sheets/antiair__barrel__d06__material.png",
+              "w": 19,
+              "h": 23,
+              "sha256": "af42c156abadae67e376d916c1dbc52e391c13ab60a13e6ed312372b8fe167e6"
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            23.75,
+            30.22
+          ],
+          "pivot": [
+            12.65,
+            16.54
+          ],
+          "depth": -22.41,
+          "w": 20,
+          "h": 24,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__barrel__d07__albedo.png",
+              "w": 20,
+              "h": 24,
+              "sha256": "a0f31204867e902196a762624a76f578c2e8c730af7ae7ac33551d053b7688bd"
+            },
+            "normal": {
+              "file": "sheets/antiair__barrel__d07__normal.png",
+              "w": 20,
+              "h": 24,
+              "sha256": "4a5f52eebf7d7b7ceefa4548bc6ae5a43ab3050d91e3b6c926f7880f9d9cdd51"
+            },
+            "material": {
+              "file": "sheets/antiair__barrel__d07__material.png",
+              "w": 20,
+              "h": 24,
+              "sha256": "7235b25ca42f773850493513fb6a89b08ae492f09170d154a2b02284db711a86"
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            20,
+            34
+          ],
+          "pivot": [
+            11.5,
+            18.38
+          ],
+          "depth": -30.78,
+          "w": 20,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__barrel__d08__albedo.png",
+              "w": 20,
+              "h": 25,
+              "sha256": "0860be54df8856c8a0bc6bd6aad6f3e7597173ac87d9347fc6f3ea3e47ac8e2c"
+            },
+            "normal": {
+              "file": "sheets/antiair__barrel__d08__normal.png",
+              "w": 20,
+              "h": 25,
+              "sha256": "ac83493fb80934bb793ae748498336547fd4b8008ea6859e482fed6ec2d1aa75"
+            },
+            "material": {
+              "file": "sheets/antiair__barrel__d08__material.png",
+              "w": 20,
+              "h": 25,
+              "sha256": "a6cbbb527c22ef6ae6cd0c682fc24812754fdbbe0af0a62bb5f871a998b49e37"
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            14.25,
+            35.22
+          ],
+          "pivot": [
+            9.65,
+            18.29
+          ],
+          "depth": -31.69,
+          "w": 18,
+          "h": 24,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__barrel__d09__albedo.png",
+              "w": 18,
+              "h": 24,
+              "sha256": "1ee5ec92c406ff9c9a1694517e129528e7e78dbe9e0be55e41c37f8994c68bd1"
+            },
+            "normal": {
+              "file": "sheets/antiair__barrel__d09__normal.png",
+              "w": 18,
+              "h": 24,
+              "sha256": "8d2b564cd467bfbf6f64f5942431c259a589ebb1a7b01f073b6dbecb3973beae"
+            },
+            "material": {
+              "file": "sheets/antiair__barrel__d09__material.png",
+              "w": 18,
+              "h": 24,
+              "sha256": "16b37af7c9b101dd06d3668bf677a4ba003d01970060d975055d4e9ee189de57"
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            7.63,
+            35.69
+          ],
+          "pivot": [
+            7.63,
+            18.3
+          ],
+          "depth": -25,
+          "w": 16,
+          "h": 24,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__barrel__d10__albedo.png",
+              "w": 16,
+              "h": 24,
+              "sha256": "61958c08e7751893a26d1b3cad691ecdeec220dcf970ac33df2218695b4a09a7"
+            },
+            "normal": {
+              "file": "sheets/antiair__barrel__d10__normal.png",
+              "w": 16,
+              "h": 24,
+              "sha256": "8201972997fec2838a15f9419063adbced1b1840c00ccd66ec0fd6fd10e44487"
+            },
+            "material": {
+              "file": "sheets/antiair__barrel__d10__material.png",
+              "w": 16,
+              "h": 24,
+              "sha256": "4f5032732f4a8b56f4f1b7be96805ef547f316f2098cafe3d76b5878b9d6c510"
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            3.56,
+            34.88
+          ],
+          "pivot": [
+            8.16,
+            17.95
+          ],
+          "depth": -11.73,
+          "w": 18,
+          "h": 24,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__barrel__d11__albedo.png",
+              "w": 18,
+              "h": 24,
+              "sha256": "4ddda55c12656f49579b70a3da0871416a10ef32a5134ab0993773ee9b9aa825"
+            },
+            "normal": {
+              "file": "sheets/antiair__barrel__d11__normal.png",
+              "w": 18,
+              "h": 24,
+              "sha256": "a92234d2f9f285cd3ad5c2920065b255924d86b913978dee6e8df8090bcea1d4"
+            },
+            "material": {
+              "file": "sheets/antiair__barrel__d11__material.png",
+              "w": 18,
+              "h": 24,
+              "sha256": "a3683f026fa6b6a2138b547badf906bcd0d15086e8fc94a8ca1e8d9a9bc86ced"
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            0,
+            33
+          ],
+          "pivot": [
+            8.5,
+            17.37
+          ],
+          "depth": 6.1,
+          "w": 20,
+          "h": 24,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__barrel__d12__albedo.png",
+              "w": 20,
+              "h": 24,
+              "sha256": "6d6a5d05714e28fe611b4487810265c36e3291fab977bda7e30b4b26708769ac"
+            },
+            "normal": {
+              "file": "sheets/antiair__barrel__d12__normal.png",
+              "w": 20,
+              "h": 24,
+              "sha256": "19da824804014fa40796cadf5c8fd686873da5bdbbafca33ec407aa6d4999e0b"
+            },
+            "material": {
+              "file": "sheets/antiair__barrel__d12__material.png",
+              "w": 20,
+              "h": 24,
+              "sha256": "900f2a0087f773cb54ad7b7748a9967248461917169c7fccee321ff348cdb167"
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            -3.44,
+            30.12
+          ],
+          "pivot": [
+            7.67,
+            16.45
+          ],
+          "depth": 25.77,
+          "w": 20,
+          "h": 24,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__barrel__d13__albedo.png",
+              "w": 20,
+              "h": 24,
+              "sha256": "847f183b8cde7a25fe75edc655bbefd4c54fd7ab0ea14c66a1038811b69132d4"
+            },
+            "normal": {
+              "file": "sheets/antiair__barrel__d13__normal.png",
+              "w": 20,
+              "h": 24,
+              "sha256": "a16170b93be1e83cda8f5ef9920c671c567a0be6d4bebecb829df5a8d4fa3adb"
+            },
+            "material": {
+              "file": "sheets/antiair__barrel__d13__material.png",
+              "w": 20,
+              "h": 24,
+              "sha256": "5262f84d93f413d5dc39902bacd7b25d59e19939f4cbaf0782ca860d108a70b4"
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            -5.37,
+            27.31
+          ],
+          "pivot": [
+            6.65,
+            15.94
+          ],
+          "depth": 44.3,
+          "w": 19,
+          "h": 23,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__barrel__d14__albedo.png",
+              "w": 19,
+              "h": 23,
+              "sha256": "403643b3f19cc35f63677388f8c8394bffe3b1492a5910bd7c32bf25189778f4"
+            },
+            "normal": {
+              "file": "sheets/antiair__barrel__d14__normal.png",
+              "w": 19,
+              "h": 23,
+              "sha256": "66d33ec986bd0bcbbeb267ce500c16f026f0d9fba8ddb3acacdea5dff01a5a60"
+            },
+            "material": {
+              "file": "sheets/antiair__barrel__d14__material.png",
+              "w": 19,
+              "h": 23,
+              "sha256": "d274c7d6e0306bc1892b6e6e256df64120d853b8f496395be0adf199db0abcc3"
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            -3.75,
+            23.78
+          ],
+          "pivot": [
+            7.35,
+            14.71
+          ],
+          "depth": 58.86,
+          "w": 20,
+          "h": 22,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__barrel__d15__albedo.png",
+              "w": 20,
+              "h": 22,
+              "sha256": "bea228eb452eb8fe69c5284b1fa8e80e7bc56c302a0e020a4b212a7eaae91a7a"
+            },
+            "normal": {
+              "file": "sheets/antiair__barrel__d15__normal.png",
+              "w": 20,
+              "h": 22,
+              "sha256": "af7b166d28bd76da401125ca152056bc98f885ad8f3f4466ca43d04c239e461e"
+            },
+            "material": {
+              "file": "sheets/antiair__barrel__d15__material.png",
+              "w": 20,
+              "h": 22,
+              "sha256": "fd8907ff932e76f92bc026d9d89c63b0a4dcffd76caba4abe7e50be81025a579"
+            }
+          }
+        }
+      }
+    },
+    "radar": {
+      "name": "radar",
+      "dynamic": true,
+      "parent": null,
+      "pivotDesign": [
+        252,
+        256,
+        224
+      ],
+      "traverse": false,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            8,
+            28
+          ],
+          "pivot": [
+            7.75,
+            13.88
+          ],
+          "depth": 57.88,
+          "w": 14,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__radar__d00__albedo.png",
+              "w": 14,
+              "h": 19,
+              "sha256": "ba8b726425c36c6f88fb29c7e8ac870813dbe97256fe0e3f5e1c42d8e84f656a"
+            },
+            "normal": {
+              "file": "sheets/antiair__radar__d00__normal.png",
+              "w": 14,
+              "h": 19,
+              "sha256": "437f91446b067a2ce3489d7783479e818c21a79fa5673448cae92d2a0e2e2716"
+            },
+            "material": {
+              "file": "sheets/antiair__radar__d00__material.png",
+              "w": 14,
+              "h": 19,
+              "sha256": "8ca46ea8574851c1adc9384dea9d5d7dde426309fabc377675cb572820bcd447"
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            8.75,
+            27.78
+          ],
+          "pivot": [
+            8.62,
+            13.62
+          ],
+          "depth": 54.98,
+          "w": 16,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__radar__d01__albedo.png",
+              "w": 16,
+              "h": 19,
+              "sha256": "af7fe3b6d7aeb35d19813d25bfc76e9360b914328ea24d486d4f914763a4ae9d"
+            },
+            "normal": {
+              "file": "sheets/antiair__radar__d01__normal.png",
+              "w": 16,
+              "h": 19,
+              "sha256": "4909009fcfadd81f3262d6e649bea037ca21f59ade87bcc672df8af37f7c76dd"
+            },
+            "material": {
+              "file": "sheets/antiair__radar__d01__material.png",
+              "w": 16,
+              "h": 19,
+              "sha256": "96f95e882d430f872bcf158b1492502c28ef816cafa5d66881cb56ef249e8170"
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            8.37,
+            28.31
+          ],
+          "pivot": [
+            8.37,
+            14.14
+          ],
+          "depth": 46.94,
+          "w": 16,
+          "h": 20,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__radar__d02__albedo.png",
+              "w": 16,
+              "h": 20,
+              "sha256": "46023abe188214691179a985d100dd7f42cdb2bbf5220f80f2d814959585906d"
+            },
+            "normal": {
+              "file": "sheets/antiair__radar__d02__normal.png",
+              "w": 16,
+              "h": 20,
+              "sha256": "1851ea2f0c2049101d72f02667c56ddd865d9e9732f4ef3109835aad5fe6c651"
+            },
+            "material": {
+              "file": "sheets/antiair__radar__d02__material.png",
+              "w": 16,
+              "h": 20,
+              "sha256": "e731ba40648b3ee501d12c60f79752f75969e6b586ea5701b662de3c013d8db6"
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            7.44,
+            28.12
+          ],
+          "pivot": [
+            7.57,
+            13.96
+          ],
+          "depth": 34.98,
+          "w": 16,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__radar__d03__albedo.png",
+              "w": 16,
+              "h": 19,
+              "sha256": "ddd6c55c579b099049756131671215c9745b1e0c1bf9f1f03f767e95c770ff28"
+            },
+            "normal": {
+              "file": "sheets/antiair__radar__d03__normal.png",
+              "w": 16,
+              "h": 19,
+              "sha256": "5544e0538b1f9368ccd34d64e1956a6a5d2d107fb86467e99cedbd505c5a7ffb"
+            },
+            "material": {
+              "file": "sheets/antiair__radar__d03__material.png",
+              "w": 16,
+              "h": 19,
+              "sha256": "5cdc0e3c5094ba682a6e098196ab1eea66f826e4eb68df334a7e480a59d6f81e"
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            6,
+            28
+          ],
+          "pivot": [
+            6.25,
+            13.88
+          ],
+          "depth": 20.93,
+          "w": 14,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__radar__d04__albedo.png",
+              "w": 14,
+              "h": 19,
+              "sha256": "709a1f6372a04f3f8aa967fa16185e46d536338c1b1464dda534d911403552de"
+            },
+            "normal": {
+              "file": "sheets/antiair__radar__d04__normal.png",
+              "w": 14,
+              "h": 19,
+              "sha256": "9954ab646601b1a1d183f022726db891b046e3d927f1063c6defc7b73f6ca2b8"
+            },
+            "material": {
+              "file": "sheets/antiair__radar__d04__material.png",
+              "w": 14,
+              "h": 19,
+              "sha256": "7c5817dfe09210da6ead511e2cf5692dad35d8d91164cd203ef46e391c9e048a"
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            6.44,
+            27.88
+          ],
+          "pivot": [
+            6.76,
+            13.81
+          ],
+          "depth": 6.92,
+          "w": 14,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__radar__d05__albedo.png",
+              "w": 14,
+              "h": 19,
+              "sha256": "68f281b9f02dbac82b2524b6bded16623482de7632f5d262745f9704b522c5da"
+            },
+            "normal": {
+              "file": "sheets/antiair__radar__d05__normal.png",
+              "w": 14,
+              "h": 19,
+              "sha256": "87f376554bb4b0b29897b021fb06b8c8560930d71266ed0839af37ffa72f7673"
+            },
+            "material": {
+              "file": "sheets/antiair__radar__d05__material.png",
+              "w": 14,
+              "h": 19,
+              "sha256": "c5c74eecff00388abdfb7522e73ec71a6261bbfff3d3c68fbbede1c9275a4339"
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            6.37,
+            27.69
+          ],
+          "pivot": [
+            6.73,
+            13.69
+          ],
+          "depth": -4.91,
+          "w": 13,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__radar__d06__albedo.png",
+              "w": 13,
+              "h": 19,
+              "sha256": "4f8f16652b4d261408bba2672668845e54fed83156c6a38c3a1b548947ffcf00"
+            },
+            "normal": {
+              "file": "sheets/antiair__radar__d06__normal.png",
+              "w": 13,
+              "h": 19,
+              "sha256": "6f8fbfce274097f80b7f067afdfdae49df4177b0fc651c6676f15550b127a832"
+            },
+            "material": {
+              "file": "sheets/antiair__radar__d06__material.png",
+              "w": 13,
+              "h": 19,
+              "sha256": "8c9d8b0e8789609c359aa0385f92065ef3c1a381030e1522399c146610deddfb"
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            5.75,
+            27.22
+          ],
+          "pivot": [
+            6.08,
+            13.29
+          ],
+          "depth": -12.76,
+          "w": 13,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__radar__d07__albedo.png",
+              "w": 13,
+              "h": 19,
+              "sha256": "22ffed1b149ac5b8cd57d5e44f55b25ae266acb30ebaed1e06c6e9797fd45cbd"
+            },
+            "normal": {
+              "file": "sheets/antiair__radar__d07__normal.png",
+              "w": 13,
+              "h": 19,
+              "sha256": "b746903f17b41b81fdc970df15671cfc378112ab1e4e5310c320da7578f42f94"
+            },
+            "material": {
+              "file": "sheets/antiair__radar__d07__material.png",
+              "w": 13,
+              "h": 19,
+              "sha256": "a0832d1fe639b8af16399454ee25a9468ec8a1a052b2841398af2c4dde35c66f"
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            6,
+            27
+          ],
+          "pivot": [
+            6.25,
+            13.13
+          ],
+          "depth": -15.44,
+          "w": 14,
+          "h": 18,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__radar__d08__albedo.png",
+              "w": 14,
+              "h": 18,
+              "sha256": "bad45d69c7f13e4e3bdfd88b52a33d61546c4fe6d560e8dd3f0fbe72c5b6cfcd"
+            },
+            "normal": {
+              "file": "sheets/antiair__radar__d08__normal.png",
+              "w": 14,
+              "h": 18,
+              "sha256": "79368221906d1aa20342144bcbbe2cf33b7ca66c93a38eccbd6ad3aa98895c16"
+            },
+            "material": {
+              "file": "sheets/antiair__radar__d08__material.png",
+              "w": 14,
+              "h": 18,
+              "sha256": "48ed881e3d1c4d7217c67490606661c09fa7b670059cd877af2c22f2b2d2015e"
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            7.25,
+            27.22
+          ],
+          "pivot": [
+            7.38,
+            13.38
+          ],
+          "depth": -12.54,
+          "w": 16,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__radar__d09__albedo.png",
+              "w": 16,
+              "h": 19,
+              "sha256": "d08eb0360e4ee64546cdae8568162cfd2f0a9c07cb7a01e193bf7d3c4f82074a"
+            },
+            "normal": {
+              "file": "sheets/antiair__radar__d09__normal.png",
+              "w": 16,
+              "h": 19,
+              "sha256": "c2ceac96a3e730f606e0b9632eee34be934eb7a05fac7a1b7bdfb0af346f58cc"
+            },
+            "material": {
+              "file": "sheets/antiair__radar__d09__material.png",
+              "w": 16,
+              "h": 19,
+              "sha256": "387551089f19dde31cf6e0448962fdced3d7e13486e6f6bb0dd116e47ddba315"
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            7.63,
+            26.69
+          ],
+          "pivot": [
+            7.63,
+            12.86
+          ],
+          "depth": -4.5,
+          "w": 16,
+          "h": 18,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__radar__d10__albedo.png",
+              "w": 16,
+              "h": 18,
+              "sha256": "fad83a0ff5b0de8835d1da73a3f90d84756ccecb8dcb2be51b09fabf261cbcd1"
+            },
+            "normal": {
+              "file": "sheets/antiair__radar__d10__normal.png",
+              "w": 16,
+              "h": 18,
+              "sha256": "e2d1caa9034d58e89ef55a30abc83805cf4ba40dec5493819bcad92d1001455d"
+            },
+            "material": {
+              "file": "sheets/antiair__radar__d10__material.png",
+              "w": 16,
+              "h": 18,
+              "sha256": "f62d373fa30ec4c0adedf435b69cee95a32c20cab025fddb9fa74fecedced278"
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            8.56,
+            26.88
+          ],
+          "pivot": [
+            8.43,
+            13.04
+          ],
+          "depth": 7.45,
+          "w": 16,
+          "h": 18,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__radar__d11__albedo.png",
+              "w": 16,
+              "h": 18,
+              "sha256": "297bf4b057d73ef58358b78bfa4e84027a746b115b17848c3e07ae2816a9eddd"
+            },
+            "normal": {
+              "file": "sheets/antiair__radar__d11__normal.png",
+              "w": 16,
+              "h": 18,
+              "sha256": "649205374d7a0a77f3798e30c83fd4ca200503794a435728ee9a0b99d1aba237"
+            },
+            "material": {
+              "file": "sheets/antiair__radar__d11__material.png",
+              "w": 16,
+              "h": 18,
+              "sha256": "b58ca5d6e27bf120c74d47919849a90a0a8fcf7c47df319946dddd48fbcd6cb1"
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            8,
+            27
+          ],
+          "pivot": [
+            7.75,
+            13.12
+          ],
+          "depth": 21.51,
+          "w": 14,
+          "h": 18,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__radar__d12__albedo.png",
+              "w": 14,
+              "h": 18,
+              "sha256": "ceda671e19263f29f87d3bd752a3bcffe0b30eddd25e899cab4a81854f8083b6"
+            },
+            "normal": {
+              "file": "sheets/antiair__radar__d12__normal.png",
+              "w": 14,
+              "h": 18,
+              "sha256": "cf931e2f365892388a299ad6e76f0cb45e57b2d44f2bdccc99127a6643e950fa"
+            },
+            "material": {
+              "file": "sheets/antiair__radar__d12__material.png",
+              "w": 14,
+              "h": 18,
+              "sha256": "6ac07e145a391cd2c3f950abb900c23202a7666de1f436d760dcb5ddf25f8ffa"
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            7.56,
+            27.12
+          ],
+          "pivot": [
+            7.24,
+            13.19
+          ],
+          "depth": 35.51,
+          "w": 14,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__radar__d13__albedo.png",
+              "w": 14,
+              "h": 19,
+              "sha256": "c6e10183710be945f4b8b2fabe70b18d7dcd36280390735e57bf39452e805779"
+            },
+            "normal": {
+              "file": "sheets/antiair__radar__d13__normal.png",
+              "w": 14,
+              "h": 19,
+              "sha256": "19f85a6ee9d1480279a4dd980e75c7cfd777fc37d4a0efb231d64cb26ab0676c"
+            },
+            "material": {
+              "file": "sheets/antiair__radar__d13__material.png",
+              "w": 14,
+              "h": 19,
+              "sha256": "2eec45b059088f7064f9fd18a695b34600491e3f532bc0dd936b17188bd33be7"
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            6.63,
+            28.31
+          ],
+          "pivot": [
+            6.27,
+            14.31
+          ],
+          "depth": 47.35,
+          "w": 13,
+          "h": 20,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__radar__d14__albedo.png",
+              "w": 13,
+              "h": 20,
+              "sha256": "b6da6daef5b0159b3a38c5eed0f3ea893a23941e8978c8beade1edf1401649e6"
+            },
+            "normal": {
+              "file": "sheets/antiair__radar__d14__normal.png",
+              "w": 13,
+              "h": 20,
+              "sha256": "83e59372560e1b966bf5a29489007d74a2b78bdc651601e26a4aafb7fff68bcd"
+            },
+            "material": {
+              "file": "sheets/antiair__radar__d14__material.png",
+              "w": 13,
+              "h": 20,
+              "sha256": "09ee44078f471ddc617db0498ac709e24fa7cd931e7dd98163b3113f92fddf2a"
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            7.25,
+            27.78
+          ],
+          "pivot": [
+            6.92,
+            13.71
+          ],
+          "depth": 55.2,
+          "w": 13,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/antiair__radar__d15__albedo.png",
+              "w": 13,
+              "h": 19,
+              "sha256": "1a6c3b348259fc3535c5258ef846f371a9908a3ab3c361090ecbf3f4d7178e2e"
+            },
+            "normal": {
+              "file": "sheets/antiair__radar__d15__normal.png",
+              "w": 13,
+              "h": 19,
+              "sha256": "4871e788c8efd7322a1906c9d99fb1dd964ec496b258d40cb9e67a3173be8d0e"
+            },
+            "material": {
+              "file": "sheets/antiair__radar__d15__material.png",
+              "w": 13,
+              "h": 19,
+              "sha256": "3df830834040a596c232689565b4a17edb05a6eb18f860f4840ea6e00746b505"
+            }
+          }
+        }
+      }
+    }
+  },
+  "clips": {
+    "idle": 1
+  },
+  "sourceGeometry": {
+    "parts": [
+      {
+        "name": "body",
+        "dynamic": false,
+        "traverse": false,
+        "parent": null,
+        "voxels": 564561,
+        "pivotDesign": [
+          256,
+          256,
+          0
+        ],
+        "bounds": {
+          "minX": 52,
+          "minY": 81,
+          "minZ": 13,
+          "maxX": 465,
+          "maxY": 432,
+          "maxZ": 273
+        }
+      },
+      {
+        "name": "running.L",
+        "dynamic": false,
+        "traverse": false,
+        "parent": null,
+        "voxels": 150056,
+        "pivotDesign": [
+          256,
+          256,
+          0
+        ],
+        "bounds": {
+          "minX": 74,
+          "minY": 91,
+          "minZ": 0,
+          "maxX": 427,
+          "maxY": 165,
+          "maxZ": 122
+        }
+      },
+      {
+        "name": "running.R",
+        "dynamic": false,
+        "traverse": false,
+        "parent": null,
+        "voxels": 121042,
+        "pivotDesign": [
+          256,
+          256,
+          0
+        ],
+        "bounds": {
+          "minX": 74,
+          "minY": 346,
+          "minZ": 0,
+          "maxX": 427,
+          "maxY": 426,
+          "maxZ": 122
+        }
+      },
+      {
+        "name": "turret",
+        "dynamic": true,
+        "traverse": true,
+        "parent": null,
+        "voxels": 203681,
+        "pivotDesign": [
+          300,
+          256,
+          138
+        ],
+        "bounds": {
+          "minX": 196,
+          "minY": 150,
+          "minZ": 138,
+          "maxX": 404,
+          "maxY": 361,
+          "maxZ": 243
+        }
+      },
+      {
+        "name": "barrel",
+        "dynamic": true,
+        "traverse": true,
+        "parent": "turret",
+        "voxels": 14650,
+        "pivotDesign": [
+          392,
+          256,
+          182
+        ],
+        "bounds": {
+          "minX": 368,
+          "minY": 216,
+          "minZ": 164,
+          "maxX": 479,
+          "maxY": 295,
+          "maxZ": 341
+        }
+      },
+      {
+        "name": "radar",
+        "dynamic": true,
+        "traverse": false,
+        "parent": null,
+        "voxels": 20630,
+        "pivotDesign": [
+          252,
+          256,
+          224
+        ],
+        "bounds": {
+          "minX": 230,
+          "minY": 216,
+          "minZ": 224,
+          "maxX": 274,
+          "maxY": 296,
+          "maxZ": 364
+        }
+      }
+    ],
+    "totalVoxels": 1074620
+  },
+  "composite": {
+    "note": "every part of one facing pre-composited through the shared ground anchor",
+    "facings": {
+      "d00": {
+        "w": 57,
+        "h": 46,
+        "files": {
+          "albedo": {
+            "file": "sheets/antiair__composite__d00__albedo.png",
+            "sha256": "df210fd264e134b1852b78bc9cc26d0b33d546806a28b55475744e22c3ec4d6c"
+          },
+          "normal": {
+            "file": "sheets/antiair__composite__d00__normal.png",
+            "sha256": "5e59ffa08da6bf7bc4a0b3360b62f75ce3c9c2be9cc2dbdb7b5136648007c35c"
+          },
+          "material": {
+            "file": "sheets/antiair__composite__d00__material.png",
+            "sha256": "cb1044760788edcdbe02e6505d3249e8e7dbe0d9310bc6c7ef4368181ae596fe"
+          }
+        }
+      },
+      "d01": {
+        "w": 53,
+        "h": 45,
+        "files": {
+          "albedo": {
+            "file": "sheets/antiair__composite__d01__albedo.png",
+            "sha256": "2fbe9c625f25cbb51cdfc380f6e99381805339de070ca19b55ddae955129446a"
+          },
+          "normal": {
+            "file": "sheets/antiair__composite__d01__normal.png",
+            "sha256": "d544f08ef1e03857714adf6815eab1b970d4e16efb54e66be089eaf56c4918c0"
+          },
+          "material": {
+            "file": "sheets/antiair__composite__d01__material.png",
+            "sha256": "d0ba2c412e4909999fdcb20e2bcbdff041f09166d1c92e072f8730d10ddeedd4"
+          }
+        }
+      },
+      "d02": {
+        "w": 44,
+        "h": 43,
+        "files": {
+          "albedo": {
+            "file": "sheets/antiair__composite__d02__albedo.png",
+            "sha256": "c7a2905f926cbbfb654dedb09f33870394e1bdc4b650922f4312e9693075635a"
+          },
+          "normal": {
+            "file": "sheets/antiair__composite__d02__normal.png",
+            "sha256": "04dfc5ec47f0b31b8cbe6322e8eb6161456eb760f2bba92676d834c6ef4befcc"
+          },
+          "material": {
+            "file": "sheets/antiair__composite__d02__material.png",
+            "sha256": "1a60bc05359112d7a6e7227d4d5836f891adf5bcec4fc3e6457e0e8c39a8a492"
+          }
+        }
+      },
+      "d03": {
+        "w": 52,
+        "h": 45,
+        "files": {
+          "albedo": {
+            "file": "sheets/antiair__composite__d03__albedo.png",
+            "sha256": "9ffdd4b5ea5f9eb4aef8f1a09dae40c488fe703c4d5a6d24b0412c53953e47cc"
+          },
+          "normal": {
+            "file": "sheets/antiair__composite__d03__normal.png",
+            "sha256": "b60d23c2e633a4d474226e49d1275ed1c6dc4f870d845eab0fb9645cd52abe8c"
+          },
+          "material": {
+            "file": "sheets/antiair__composite__d03__material.png",
+            "sha256": "e82af507788c1f86e02c51e1c0f67c06dc51d0d8795940ef066233b74b003e8c"
+          }
+        }
+      },
+      "d04": {
+        "w": 58,
+        "h": 46,
+        "files": {
+          "albedo": {
+            "file": "sheets/antiair__composite__d04__albedo.png",
+            "sha256": "0275faceb54250f1b475cd95a860546df78ee84e3a65c7c4118f3f987f48604f"
+          },
+          "normal": {
+            "file": "sheets/antiair__composite__d04__normal.png",
+            "sha256": "408c0769e67729890bbed99d06b7c451edb48dbb82e6b759e59d37bfd3cb76c3"
+          },
+          "material": {
+            "file": "sheets/antiair__composite__d04__material.png",
+            "sha256": "312f48d383286ed641328dff80350baf9f9abd297bdbc78a56f0a9ebfb3212d6"
+          }
+        }
+      },
+      "d05": {
+        "w": 57,
+        "h": 45,
+        "files": {
+          "albedo": {
+            "file": "sheets/antiair__composite__d05__albedo.png",
+            "sha256": "35f6f1b39d4db30e2918ecd44fa54a3afe502f08e847785b86a3c3c45212c2ea"
+          },
+          "normal": {
+            "file": "sheets/antiair__composite__d05__normal.png",
+            "sha256": "9d9bf3976197ade872c897a9f8e2e728365304b3f1597a3d41a362a6649af847"
+          },
+          "material": {
+            "file": "sheets/antiair__composite__d05__material.png",
+            "sha256": "77fea668bb03806fdaf43c3c99d4c8a40906ae8ca4b1b0143a55814abe9de24a"
+          }
+        }
+      },
+      "d06": {
+        "w": 51,
+        "h": 43,
+        "files": {
+          "albedo": {
+            "file": "sheets/antiair__composite__d06__albedo.png",
+            "sha256": "3810558b0f8b7d78343fe29e4a510ba10ffc585442398fd886d77ba39725b188"
+          },
+          "normal": {
+            "file": "sheets/antiair__composite__d06__normal.png",
+            "sha256": "b4eff0d7e2b2a2798552d144e78c11571ff85b93c7986917d67cca597eb0d765"
+          },
+          "material": {
+            "file": "sheets/antiair__composite__d06__material.png",
+            "sha256": "6948e09765c8bab5a9caf26fdfbee00c666f6b97b211a924dde34b7c5ab15ed8"
+          }
+        }
+      },
+      "d07": {
+        "w": 56,
+        "h": 48,
+        "files": {
+          "albedo": {
+            "file": "sheets/antiair__composite__d07__albedo.png",
+            "sha256": "54398ede52b730164f08079a0e7928805183ebd55039373854ed8852e51f34a4"
+          },
+          "normal": {
+            "file": "sheets/antiair__composite__d07__normal.png",
+            "sha256": "95adde9e22e8df9042ce6290cdac38ed34d5649e9bb02eacf4d8ada4399d82e8"
+          },
+          "material": {
+            "file": "sheets/antiair__composite__d07__material.png",
+            "sha256": "623f8ff3faaf5be369d81bbc6e7c01c36db4b0dc7a30a6081efa11b67b63e8cc"
+          }
+        }
+      },
+      "d08": {
+        "w": 57,
+        "h": 52,
+        "files": {
+          "albedo": {
+            "file": "sheets/antiair__composite__d08__albedo.png",
+            "sha256": "c0b07afafebf0086fe7196f35bbb71c67ddc7528bc8b4595a2a4aff36e376413"
+          },
+          "normal": {
+            "file": "sheets/antiair__composite__d08__normal.png",
+            "sha256": "47372612eeeade20de6f803365a216cc3ec1996d1cee79d11a007d7be523ae0b"
+          },
+          "material": {
+            "file": "sheets/antiair__composite__d08__material.png",
+            "sha256": "b2fe6af490cc0fb66d3fea4416f07e848479620c75472db58c417cec493801ff"
+          }
+        }
+      },
+      "d09": {
+        "w": 53,
+        "h": 52,
+        "files": {
+          "albedo": {
+            "file": "sheets/antiair__composite__d09__albedo.png",
+            "sha256": "12a88a1cd195f063f6f27a94afa3f632ff1345c7a40f6883e82a1f4a05e68fe3"
+          },
+          "normal": {
+            "file": "sheets/antiair__composite__d09__normal.png",
+            "sha256": "91412cb983d3ba82c30f6633efda033e5c3f7b147195a2d5d252369fbe93b9ff"
+          },
+          "material": {
+            "file": "sheets/antiair__composite__d09__material.png",
+            "sha256": "7f7208dc5f5e044b114156bdebdbee2eaea178b3986fccbf9aee8cb899201140"
+          }
+        }
+      },
+      "d10": {
+        "w": 44,
+        "h": 51,
+        "files": {
+          "albedo": {
+            "file": "sheets/antiair__composite__d10__albedo.png",
+            "sha256": "b0a732d1d6f88d7a831dba930c7c2886be32ef3fe56eab70df9e862007bbe77f"
+          },
+          "normal": {
+            "file": "sheets/antiair__composite__d10__normal.png",
+            "sha256": "b6a3af2118e12e86b9a29c2c56d5b4a8cee07c507dfd9c09e9e73a4edf8651aa"
+          },
+          "material": {
+            "file": "sheets/antiair__composite__d10__material.png",
+            "sha256": "b454d319a9b31ff9a3dbda87e401d2f6cdf84a581061c27510f5f4c65ad0c4f3"
+          }
+        }
+      },
+      "d11": {
+        "w": 52,
+        "h": 52,
+        "files": {
+          "albedo": {
+            "file": "sheets/antiair__composite__d11__albedo.png",
+            "sha256": "c5cb24969b7317d0aedd10c0f38ad800b1d6788518ca7918ef61bef1b37078e3"
+          },
+          "normal": {
+            "file": "sheets/antiair__composite__d11__normal.png",
+            "sha256": "987b0bfaf0f6e54f45d5c8236430a5c2cc3f8a8dd7bbcce54bae06c8f7649038"
+          },
+          "material": {
+            "file": "sheets/antiair__composite__d11__material.png",
+            "sha256": "dc498292ac7702af569516189582bbdf72e794c9d62414c8ebde94e208e90511"
+          }
+        }
+      },
+      "d12": {
+        "w": 58,
+        "h": 51,
+        "files": {
+          "albedo": {
+            "file": "sheets/antiair__composite__d12__albedo.png",
+            "sha256": "16ae4c07aaaf7986c17ca46b45439c2f7de66923e038eaf3077e68fc931edcb8"
+          },
+          "normal": {
+            "file": "sheets/antiair__composite__d12__normal.png",
+            "sha256": "592b745b47d133f967d3c65b2d6c732603a70abd64e85b13c4048bd2f6e3d76b"
+          },
+          "material": {
+            "file": "sheets/antiair__composite__d12__material.png",
+            "sha256": "1ee5e1f6c8261ff754fd943f51828221dad80f700390c471923914a917652ef8"
+          }
+        }
+      },
+      "d13": {
+        "w": 57,
+        "h": 47,
+        "files": {
+          "albedo": {
+            "file": "sheets/antiair__composite__d13__albedo.png",
+            "sha256": "e09a050e19e0f56d73213718d7ceee68ecf39f07d70d77f006acd1f016e41da5"
+          },
+          "normal": {
+            "file": "sheets/antiair__composite__d13__normal.png",
+            "sha256": "84ea2804abfacb86b0c741f7773efb80f2e59b75b44522e1b394bf787e1ac033"
+          },
+          "material": {
+            "file": "sheets/antiair__composite__d13__material.png",
+            "sha256": "2cbd71da2f4dc787c1db8d05587098245ffcd4d2ace920deaea2c8b730e9cfcb"
+          }
+        }
+      },
+      "d14": {
+        "w": 51,
+        "h": 44,
+        "files": {
+          "albedo": {
+            "file": "sheets/antiair__composite__d14__albedo.png",
+            "sha256": "8882265dad1aea11fefa713e1be2315c7fdfc531c54fe4218deaaffa5cc0e8c9"
+          },
+          "normal": {
+            "file": "sheets/antiair__composite__d14__normal.png",
+            "sha256": "c90607ce743792e774666048eddbfa32657d399aec51dcc5bd75aaebfbaacf69"
+          },
+          "material": {
+            "file": "sheets/antiair__composite__d14__material.png",
+            "sha256": "d006fae738ff7a6f95722853a65655e48bee3e8cca69fae0c238acd4730d82fa"
+          }
+        }
+      },
+      "d15": {
+        "w": 56,
+        "h": 45,
+        "files": {
+          "albedo": {
+            "file": "sheets/antiair__composite__d15__albedo.png",
+            "sha256": "76e26699431d29a2a85fa7bea6087f2172db86d4ec11cd51e34950c46782b239"
+          },
+          "normal": {
+            "file": "sheets/antiair__composite__d15__normal.png",
+            "sha256": "8f12d19371ffd4d33c6d16e8fe4d2d956d3a2329c42c920171a969bd9fc812ba"
+          },
+          "material": {
+            "file": "sheets/antiair__composite__d15__material.png",
+            "sha256": "bd246e1b59ac721b0ac1a7732d898234486c5393bd97f5d3d308a946476cee21"
+          }
+        }
+      }
+    }
+  },
+  "lit": {
+    "note": "the composite re-shaded through a virtual three-point rig using the normal and material maps (key/fill/rim). If normals or PBR channels are wrong, this is where it shows.",
+    "rig": "three-point",
+    "facings": {
+      "d00": {
+        "file": "sheets/antiair__lit__d00__albedo.png",
+        "w": 57,
+        "h": 46,
+        "sha256": "b0d400b6906abf12a0bc6537fa41005248d34fbeeb1e6e9dcb996543f4f70fda"
+      },
+      "d01": {
+        "file": "sheets/antiair__lit__d01__albedo.png",
+        "w": 53,
+        "h": 45,
+        "sha256": "16e0eec87adbd46ece4204e068e5697ad55fdaacca2ad20f679002306c0d083a"
+      },
+      "d02": {
+        "file": "sheets/antiair__lit__d02__albedo.png",
+        "w": 44,
+        "h": 43,
+        "sha256": "777e724be8a77f7b7e1d760d06c34bf3ec600d8c87e4a6116178a489954ecc3b"
+      },
+      "d03": {
+        "file": "sheets/antiair__lit__d03__albedo.png",
+        "w": 52,
+        "h": 45,
+        "sha256": "c767b1a35aede0cf8663228cea73bc777ba3e363ce6b59886a4d753e2b06736c"
+      },
+      "d04": {
+        "file": "sheets/antiair__lit__d04__albedo.png",
+        "w": 58,
+        "h": 46,
+        "sha256": "90674f69bca1ee336801ba612f22b7af9711a088ea1a4cb4c4547133c247e3dc"
+      },
+      "d05": {
+        "file": "sheets/antiair__lit__d05__albedo.png",
+        "w": 57,
+        "h": 45,
+        "sha256": "4fde562d4e768adcbbdd8c44b9b636c52da75ae1b9da5640d80d4cf8bacb3fd5"
+      },
+      "d06": {
+        "file": "sheets/antiair__lit__d06__albedo.png",
+        "w": 51,
+        "h": 43,
+        "sha256": "bc2bd176b44a5292a9ffe5b55cd09461a83f57a75dc8a715adb866183eca87d6"
+      },
+      "d07": {
+        "file": "sheets/antiair__lit__d07__albedo.png",
+        "w": 56,
+        "h": 48,
+        "sha256": "b4558e8dc4c1ea4c6f965ee46dbb8d33dde363795129ef43a3b5cfb2fc9e7c95"
+      },
+      "d08": {
+        "file": "sheets/antiair__lit__d08__albedo.png",
+        "w": 57,
+        "h": 52,
+        "sha256": "3ab72df618b9a338d4733b9be34ea317c1cf7be87fb2c71d332cc8c45916b198"
+      },
+      "d09": {
+        "file": "sheets/antiair__lit__d09__albedo.png",
+        "w": 53,
+        "h": 52,
+        "sha256": "ac87c345e8f112063a9bbed73bf38d799169828c5af37b4740b9a4b069f39b37"
+      },
+      "d10": {
+        "file": "sheets/antiair__lit__d10__albedo.png",
+        "w": 44,
+        "h": 51,
+        "sha256": "042c2052fbe5fb46d59889b6f1e169c2bb9ba2f8f78475fd1bd6ca5b1eabe0e9"
+      },
+      "d11": {
+        "file": "sheets/antiair__lit__d11__albedo.png",
+        "w": 52,
+        "h": 52,
+        "sha256": "50de0a0394c5b0580b8e69591859be00dec5bed9bafbc14ad58ac109e295751a"
+      },
+      "d12": {
+        "file": "sheets/antiair__lit__d12__albedo.png",
+        "w": 58,
+        "h": 51,
+        "sha256": "1703131d7b91b5f80ec8f34ee7fee7befe94e8ba90e691a55b3bf716c1ef13e6"
+      },
+      "d13": {
+        "file": "sheets/antiair__lit__d13__albedo.png",
+        "w": 57,
+        "h": 47,
+        "sha256": "42fef37937ad6a0c589a951c33b0e8eb3a465d2740ef0a1a7f2eea0ae25c3606"
+      },
+      "d14": {
+        "file": "sheets/antiair__lit__d14__albedo.png",
+        "w": 51,
+        "h": 44,
+        "sha256": "6dba8a56b08ee0b800054ce2e7b4679304c7a0fd87707a6e34cddf16024ad2d9"
+      },
+      "d15": {
+        "file": "sheets/antiair__lit__d15__albedo.png",
+        "w": 56,
+        "h": 45,
+        "sha256": "761a9e3bd0aa183d14b50d40688bced59fb77617acf32768461d28ada3994dd6"
+      }
+    }
+  },
+  "previewLit": {
+    "file": "preview-lit.png",
+    "facing": "d00",
+    "rig": "three-point",
+    "note": "relit from the normal + material maps"
+  },
+  "previewLights": {
+    "file": "preview-lights.png",
+    "facing": "d00",
+    "order": [
+      "azimuth 0deg / elevation 40deg",
+      "azimuth 45deg / elevation 40deg",
+      "azimuth 90deg / elevation 40deg",
+      "azimuth 135deg / elevation 40deg",
+      "azimuth 180deg / elevation 40deg",
+      "azimuth 225deg / elevation 40deg",
+      "azimuth 270deg / elevation 40deg",
+      "azimuth 315deg / elevation 40deg"
+    ],
+    "note": "one virtual light per panel, proving the normal map is directionally correct"
+  },
+  "previewMaps": {
+    "file": "preview-maps.png",
+    "facing": "d00",
+    "panels": [
+      "albedo",
+      "normal",
+      "material-id",
+      "metalness",
+      "roughness",
+      "emissive"
+    ]
+  },
+  "preview": {
+    "file": "preview.png",
+    "facing": "d00",
+    "w": 415,
+    "h": 327,
+    "mode": "single-pass"
+  },
+  "previewParts": {
+    "file": "preview-parts.png",
+    "facing": "d00",
+    "w": 419,
+    "h": 331,
+    "mode": "composited-from-part-sheets"
+  }
+}

@@ -110,7 +110,7 @@ export function gableRoof(c, { x0, x1, y0, y1, z, rise = 90, mat = 'roof', part 
     const d = Math.abs(y - mid) / half;
     const top = Math.round(z + (1 - d) * rise);
     c.box(x0 - 8, y, z, x1 + 8, y + 1, top, mat);
-    // Eaves板 and a ridge highlight.
+    // Eaves lip and a ridge highlight.
     if (y < y0 + 6 || y > y1 - 7) c.box(x0 - 14, y, z - 6, x1 + 14, y + 1, z + 4, 'roof.dark');
   }
   c.box(x0 - 10, Math.round(mid) - 4, z + rise - 6, x1 + 10, Math.round(mid) + 4, z + rise, 'roof.light');

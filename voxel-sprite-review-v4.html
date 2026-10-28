@@ -39,7 +39,7 @@
   .stage{background:radial-gradient(circle at 50% 35%,#151a24,#0a0c11 75%);border:1px solid var(--line);
          border-radius:14px;padding:12px;display:flex;align-items:center;justify-content:center;min-height:420px;
          position:relative;overflow:hidden}
-  #view{image-rendering:pixelated;max-width:100%;max-height:64vh;cursor:grab;touch-action:none}
+  #view{image-rendering:pixelated;display:block;max-width:100%;max-height:64vh;cursor:grab;touch-action:none}
   .hud{position:absolute;left:12px;bottom:10px;font-size:11px;color:var(--muted);
        background:rgba(8,10,14,.72);padding:4px 9px;border-radius:6px;line-height:1.5}
   .hud b{color:var(--text);font-weight:600}
@@ -111,6 +111,20 @@
       <button data-mode="emissive">Emissive</button>
     </div>
 
+    <h3>Zoom <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0" id="zoomNow">auto</span></h3>
+    <div class="seg" id="zoomSwitch">
+      <button data-zoom="0" class="active">Auto</button>
+      <button data-zoom="2">2×</button>
+      <button data-zoom="4">4×</button>
+      <button data-zoom="8">8×</button>
+      <button data-zoom="12">12×</button>
+      <button data-zoom="16">16×</button>
+    </div>
+    <div style="font-size:10px;color:var(--muted);margin:6px 0 0">
+      Sheets are baked at runtime scale — one pixel is one runtime pixel — so an integer zoom is the
+      honest view. Mouse-wheel over the stage also zooms.
+    </div>
+
     <h3>Virtual light</h3>
     <div class="row"><label>Azimuth</label><input type="range" id="az" min="0" max="360" value="125"><span class="val" id="azVal">125°</span></div>
     <div class="row"><label>Elevation</label><input type="range" id="el" min="-10" max="88" value="45"><span class="val" id="elVal">45°</span></div>
@@ -152,6 +166,7 @@ const state = {
   dir: '',
   facing: null,
   viewMode: 'lit',
+  zoom: 0,               // 0 = fit the stage; otherwise an integer pixel scale
   light: { az: 125, el: 45, intensity: 1.05, ambient: 0.30, exposure: 1.0 },
   rig: true,
   specular: true,
@@ -494,7 +509,37 @@ function render() {
     px[o + 3] = C.cov[i];
   }
   ctx2d.putImageData(out, 0, 0);
+  applyZoom();
   updateHud();
+}
+
+/**
+ * Integer pixel zoom.
+ *
+ * The composite is drawn at runtime scale, so a 512³ tank is a 60×43 image — at
+ * 1:1 CSS pixels it is a postage stamp in a 420 px stage. `image-rendering:
+ * pixelated` plus a whole-number scale keeps every runtime pixel a crisp square
+ * instead of resampling it into mush; fractional scales would blur exactly the
+ * thing the reviewer is looking at.
+ */
+function fitZoom(C) {
+  const stage = canvas.parentElement;
+  const availW = Math.max(160, stage.clientWidth - 48);
+  const availH = Math.max(160, stage.clientHeight - 48);
+  return Math.max(1, Math.min(16, Math.floor(Math.min(availW / C.W, availH / C.H))));
+}
+
+function applyZoom() {
+  const C = state.composite;
+  if (!C) return;
+  const z = state.zoom > 0 ? state.zoom : fitZoom(C);
+  state.effectiveZoom = z;
+  canvas.style.width = `${C.W * z}px`;
+  canvas.style.height = `${C.H * z}px`;
+  const label = $('#zoomNow');
+  if (label) label.textContent = z + '×' + (state.zoom > 0 ? '' : ' (auto)');
+  const badge = $('#zoomBadge');
+  if (badge) badge.textContent = z + '×';
 }
 
 function updateHud() {
@@ -503,6 +548,7 @@ function updateHud() {
   const vis = [...state.parts.values()].filter(p => p.visible).length;
   $('#hud').innerHTML =
     `<b>${state.asset}</b> · facing <b>${state.facing}</b> · ${C.W}×${C.H}px`
+    + ` · <span id="zoomBadge">${state.effectiveZoom ?? 1}×</span>`
     + ` · ${vis}/${state.parts.size} parts · ${state.manifest.pxPerVoxel} px/voxel`;
 }
 
@@ -609,7 +655,11 @@ function renderMeta() {
     + `facings <b>${m.facings.length}</b> · parts <b>${Object.keys(m.parts).length}</b><br>`
     + `voxels <b>${vox}</b><br>`
     + `sheets <b>${files}</b> PNG · ${m.pxPerVoxel} px/voxel<br>`
-    + `<span class="ok">✓ normal map</span> <span class="ok">✓ material map</span>`;
+    + `review render <b>${m.previewScale}×</b> scale<br>`
+    + `<span class="ok">✓ normal map</span> <span class="ok">✓ material map</span><br>`
+    + `<a href="${state.dir}/preview.png" target="_blank" rel="noopener">open preview.png ↗</a>`
+    + ` · <a href="${state.dir}/preview-parts.png" target="_blank" rel="noopener">parts ↗</a>`
+    + ` · <a href="${state.dir}/preview-maps.png" target="_blank" rel="noopener">maps ↗</a>`;
 }
 
 async function rebuild() {
@@ -636,6 +686,28 @@ document.querySelectorAll('#viewMode button').forEach(b => {
     render();
   };
 });
+
+// Zoom: Auto fits the stage, the presets are integer pixel scales.
+document.querySelectorAll('#zoomSwitch button').forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll('#zoomSwitch button').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    state.zoom = Number(b.dataset.zoom);
+    applyZoom();
+  };
+});
+// Wheel zooms in whole steps and pins the result (no half-pixel blur).
+canvas.addEventListener('wheel', e => {
+  e.preventDefault();
+  const base = state.zoom > 0 ? state.zoom : (state.effectiveZoom || 1);
+  const next = Math.max(1, Math.min(16, base + (e.deltaY < 0 ? 1 : -1)));
+  state.zoom = next;
+  const btn = document.querySelector(`#zoomSwitch button[data-zoom="${next}"]`);
+  document.querySelectorAll('#zoomSwitch button').forEach(x => x.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  applyZoom();
+}, { passive: false });
+window.addEventListener('resize', () => { if (state.zoom === 0) applyZoom(); });
 
 const bind = (id, valId, apply, fmt) => {
   const el = $(id);

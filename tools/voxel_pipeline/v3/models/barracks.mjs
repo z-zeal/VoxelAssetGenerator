@@ -13,11 +13,12 @@ import {
   ventStack, sandbags, crate, antenna,
 } from '../kit-init.mjs';
 
-const X0 = 54, X1 = 430;          // main block
+const X0 = 54, X1 = 356;          // main block; the rest of the tile is yard
 const Y0 = 96, Y1 = 430;
 const FLOOR = 20;
 const EAVE = 176;                 // top of the walls
-const DOOR_X = 452;               // front face of the entrance porch
+const DOOR_X = X1 + 34;           // front face of the entrance porch
+const YARD_X = X1 + 8;            // where the parade ground starts
 
 export function buildBarracks(c) {
   /* ------------------------------------------------------------- ground --- */
@@ -25,14 +26,14 @@ export function buildBarracks(c) {
 
   // Parade ground / training yard in front of the building.
   c.part('body');
-  c.box(DOOR_X - 10, 60, 16, 498, 470, 22, 'concrete.dark');
-  c.box(DOOR_X, 90, 22, 470, 440, 24, 'asphalt');
+  c.box(YARD_X, 56, 16, 500, 472, 22, 'concrete.dark');
+  c.box(YARD_X + 10, 92, 22, 494, 440, 24, 'asphalt');
   // Yard markings: painted lane lines and an obstacle course lane.
   for (let y = 120; y < 420; y += 60) {
-    c.box(DOOR_X + 8, y, 24, 466, y + 8, 25, 'paint.line');
+    c.box(YARD_X + 14, y, 24, 492, y + 8, 25, 'paint.line');
   }
-  c.box(DOOR_X + 6, 96, 24, DOOR_X + 12, 436, 25, 'paint.line');
-  c.box(DOOR_X + 6, 96, 24, 466, 102, 25, 'paint.line');
+  c.box(YARD_X + 12, 92, 24, YARD_X + 18, 440, 25, 'paint.line');
+  c.box(YARD_X + 12, 96, 24, 492, 102, 25, 'paint.line');
 
   /* -------------------------------------------------------------- walls --- */
   walls(c, { x0: X0, x1: X1, y0: Y0, y1: Y1, z0: FLOOR, z1: EAVE, thick: 12 });
@@ -63,15 +64,17 @@ export function buildBarracks(c) {
   window_(c, { x: X0, y: Y0 + 120, z: 74, w: 30, h: 30, side: '-x' });
 
   /* ------------------------------------------------------- entrance porch */
-  // Canopy over the door, on four posts.
-  c.box(DOOR_X - 6, 150, 120, DOOR_X + 44, 372, 132, 'roof');
-  c.box(DOOR_X - 6, 150, 132, DOOR_X + 44, 372, 136, 'roof.light');
-  for (const y of [160, 350]) {
-    c.box(DOOR_X + 30, y - 8, 22, DOOR_X + 40, y + 8, 120, 'concrete.lit');
-    c.box(DOOR_X + 26, y - 12, 14, DOOR_X + 44, y + 12, 24, 'concrete.dark');
+  // Portico: a canopy on two posts, tied back into the wall so it cannot read
+  // as a floating slab, plus a pediment over the door.
+  c.box(X1 - 2, 152, 122, DOOR_X + 12, 370, 134, 'roof');
+  c.box(X1 + 2, 160, 134, DOOR_X + 6, 362, 140, 'roof.light');
+  c.box(X1, 168, 140, X1 + 30, 354, 158, 'roof.dark');
+  for (const y of [166, 350]) {
+    c.box(DOOR_X - 2, y - 9, 22, DOOR_X + 10, y + 9, 122, 'concrete.lit');
+    c.box(DOOR_X - 6, y - 13, 14, DOOR_X + 14, y + 13, 26, 'concrete.dark');
   }
   // Threshold, steps and the door itself on its own part.
-  c.box(X1, 196, FLOOR, DOOR_X + 8, 330, FLOOR + 10, 'concrete.lit');
+  c.box(X1, 196, FLOOR, DOOR_X + 10, 330, FLOOR + 10, 'concrete.lit');
   steps(c, { x: X1, y: 196, z: FLOOR, w: 134, depth: 44, rise: 6, count: 4, side: '+x' });
   doorway(c, { x: X1, y: 214, z: FLOOR + 10, w: 98, h: 96, side: '+x', part: 'door' });
   c.part('door');
@@ -109,9 +112,9 @@ export function buildBarracks(c) {
   crate(c, { x0: 462, y0: 400, z0: 24, x1: 494, y1: 434, z1: 50, mat: 'canvas' });
   // Training obstacles: vault bars running up the yard (never past the canvas).
   for (let y = 150; y < 380; y += 100) {
-    c.box(462, y, 24, 470, y + 10, 62, 'wood.dark');
-    c.box(462, y + 84, 24, 470, y + 94, 62, 'wood.dark');
-    c.box(462, y, 56, 470, y + 94, 62, 'wood');
+    c.box(486, y, 24, 494, y + 10, 62, 'wood.dark');
+    c.box(486, y + 84, 24, 494, y + 94, 62, 'wood.dark');
+    c.box(486, y, 56, 494, y + 94, 62, 'wood');
   }
   // Barrack sign over the door.
   c.box(X1 + 14, 236, FLOOR + 104, X1 + 20, 300, FLOOR + 128, 'team.hull');

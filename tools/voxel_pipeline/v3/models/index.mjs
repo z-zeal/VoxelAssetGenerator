@@ -12,6 +12,14 @@
 import { buildTank } from './tank.mjs';
 import { buildApc } from './apc.mjs';
 import { buildHeavy } from './heavy.mjs';
+import { buildArtillery } from './artillery.mjs';
+import { buildAntiair } from './antiair.mjs';
+import { buildTankDestroyer } from './tank-destroyer.mjs';
+import { buildIfv } from './ifv.mjs';
+import { buildMega } from './mega.mjs';
+import { buildBastion } from './bastion.mjs';
+import { buildFlameTank } from './flame-tank.mjs';
+import { buildAmphibiousTank } from './amphibious-tank.mjs';
 import { buildBarracks } from './barracks.mjs';
 import { buildAtTurret } from './at-turret.mjs';
 
@@ -39,6 +47,40 @@ export const MODELS = {
     label: 'Heavy Tank',
     build: buildHeavy,
     requiredParts: ['body', 'turret', 'barrel'],
+  },
+  artillery: {
+    kind: 'unit', folder: 'units', group: 'vehicles.tracked', label: 'Self-Propelled Artillery',
+    build: buildArtillery, requiredParts: ['body', 'turret', 'barrel'],
+  },
+  antiair: {
+    kind: 'unit', folder: 'units', group: 'vehicles.tracked', label: 'Anti-Aircraft Vehicle',
+    build: buildAntiair, requiredParts: ['body', 'turret', 'barrel', 'radar'],
+  },
+  'tank-destroyer': {
+    kind: 'unit', folder: 'units', group: 'vehicles.tracked', label: 'Tank Destroyer',
+    build: buildTankDestroyer, requiredParts: ['body', 'turret', 'barrel'],
+  },
+  ifv: {
+    kind: 'unit', folder: 'units', group: 'vehicles.tracked', label: 'Infantry Fighting Vehicle',
+    build: buildIfv, requiredParts: ['body', 'turret', 'barrel', 'atgm'],
+  },
+  mega: {
+    kind: 'unit', folder: 'units', group: 'vehicles.tracked', label: 'Mega Tank',
+    build: buildMega, requiredParts: ['body', 'turret', 'barrel'],
+    voxelBudget: 1600000,
+  },
+  bastion: {
+    kind: 'unit', folder: 'units', group: 'vehicles.tracked', label: 'Bastion',
+    build: buildBastion, requiredParts: ['body', 'turret', 'barrel'],
+    voxelBudget: 1600000,
+  },
+  'flame-tank': {
+    kind: 'unit', folder: 'units', group: 'vehicles.tracked', label: 'Flame Tank',
+    build: buildFlameTank, requiredParts: ['body', 'turret', 'barrel'],
+  },
+  'amphibious-tank': {
+    kind: 'unit', folder: 'units', group: 'vehicles.tracked', label: 'Amphibious Tank',
+    build: buildAmphibiousTank, requiredParts: ['body', 'turret', 'barrel'],
   },
   barracks: {
     kind: 'building',
