@@ -4,8 +4,9 @@ Companion to `docs/PLAN_512_native_16dir_segmented_pipeline.md`. Work proceeds *
 a batch closes only when its gate passes. Legend: `[x]` done · `[~]` written but not green · `[ ]` todo ·
 `[!]` blocked.
 
-Status as of this commit — **B0 done, B1 done, B2 in progress**. One asset (`tank`) bakes end-to-end at
-512³; its proportions still need a modelling pass (B2). No existing asset was modified or deleted.
+Status as of this commit — **B0 done, B1 done, B2 pipeline green (modelling open), B3 done**.
+Three assets bake end-to-end at 512³: `tank` (16 facings, 240 PNG), `barracks` (4 facings, 36 PNG) and
+`at-turret` (4 scene facings + a 16-camera turret, 124 PNG). No existing asset was modified or deleted.
 
 ---
 
@@ -82,6 +83,7 @@ Status as of this commit — **B0 done, B1 done, B2 in progress**. One asset (`t
 - [x] Barrel reworked for silhouette: mantlet narrowed (87 → 60 voxels wide), tube slimmed to 22 voxels, gun
       lengthened to overhang the hull nose by 40 voxels so the traverse is legible at game scale.
 - [x] Turret ring registration checked across all 16 facings via the composite strips.
+- [x] **Re-baked at true runtime scale** (see B3) — 240 PNG, 0.12 MB, tank body 52×35.
 - [ ] **Modelling pass (open):** the hull still reads slab-sided and the ground wheels could sit tighter in
       the track band. Proportions need another iteration — geometry work, not a pipeline change.
 - [x] **Virtual light rig for normal/material testing** — `light.mjs` relights the composite through a
@@ -99,14 +101,42 @@ Status as of this commit — **B0 done, B1 done, B2 in progress**. One asset (`t
 
 ---
 
-## B3 · Pilot building: `barracks` (4 dirs) + `at-turret` (segmented)
+## B3 · Pilot building: `barracks` (4 dirs) + `at-turret` (segmented) — **DONE**
 
-- [ ] `barracks`: `body`, `door`, `flag` parts; 4 legacy facings.
-- [ ] `at-turret`: `body`, `turret`, `barrel`; proves building segmentation.
-- [ ] Confirm the 4 legacy poses are visually the same directions the current sheets show.
-- [ ] Manifest uses legacy facing ids (`right`/`up`/`left`/`down`).
+- [x] **Runtime scale bug fixed.** `k` defaulted to 4, so every sheet was rendered four times the legacy
+      tile and no building could ever sit in its own tile. `RUNTIME_K = 1` / `PREVIEW_K = 4` are now
+      separate: sheets at runtime scale, review images 4×.
+- [x] **Vertical scale bug fixed.** `project()` used `((X+Y)·0.5 − w)·K` — a 1:1 diamond, so every sprite
+      came out **twice as tall** as its tile (tank body 52×66 instead of 52×35) and disagreed with the
+      baked view normals, which already assumed the 1:2 ground/height ratio. Now
+      `((X+Y)·0.5 − w)·0.5K`: a full 512 footprint is exactly the legacy 64×32 diamond, and the tank
+      composite is 56×39 (legacy cell 45×32).
+- [x] `tools/voxel_pipeline/v3/kit-buildings.mjs` — architectural kit: foundation, `walls()` (solid mass by
+      default: the occupancy cull keeps only the outer skin, so filling is *cheaper* than shelling),
+      windows, doorway, gable/flat roof, flagpole, sandbags, steps, wall lamp, vent stack.
+- [x] `tools/voxel_pipeline/v3/kit-init.mjs` — one import surface for both kits.
+- [x] `barracks`: `body`, `door`, `flag`; yard, buttresses, two window rows, portico with canopy, gable
+      roof, vents, roof hatch, antenna, flag pole. 835,171 surface voxels, **36 PNG**, 4 facings.
+- [x] `at-turret`: `body`, `turret`, `barrel`; hollow ring wall with a firing slit, drum, octagonal
+      cupola, sagger ring, rear blast door, sandbag ring, ready ammunition. 950,866 voxels, **124 PNG**.
+- [x] **Per-part camera sets.** A unit rotates as a whole, so one camera set covers every part (a sprite
+      from another azimuth *is* the same part yawed). A building does not rotate, so its body keeps 4
+      scene facings while anything that **traverses** is baked on the 16-camera unit ring — otherwise a
+      building turret could only ever snap to 90°.
+- [x] `c.traverse('turret')` + inherited through the `parent` chain → `parts[].traverse`,
+      `parts[].facingSet` (`scene` | `unit`), `parts[].facingOrder`, `facingMeta[].unitIndex`.
+- [x] Gallery: `shiftFacing(partMeta, sceneFacing, steps)` picks from the part's own `facingOrder` using
+      `unitIndex`, and only traversing parts follow the slider (a door is dynamic but does not traverse).
+- [x] `scribe.box()` clamps to the lattice — the bulk bit-setting path could otherwise wrap an
+      out-of-canvas box into the next row and corrupt unrelated geometry (found by the barracks yard).
+- [x] Weathering is material-scoped (`wear(..., {only})`, `mottle(..., {only})`): the concrete pass used to
+      speckle roof tiles and glass as well.
+- [x] `barracks` + `at-turret` in the registry with `kind: 'building'` → the baker selects the 4 legacy
+      facing ids (`right`/`up`/`left`/`down`) automatically; legacy poses confirmed by inspection.
+- [x] `npm run voxels3:buildings`.
 
-**Gate:** 4 facings match legacy convention; building turret rotates independently.
+**Gate:** 4 facings match the legacy convention; the building turret rotates independently at 16 steps
+while the structure stays put. ✅ (Gate met; art detail iterates with the rest of the roster.)
 
 ---
 

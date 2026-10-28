@@ -1,0 +1,1360 @@
+{
+  "format": "field-command-voxel-sheet-4",
+  "asset": "barracks",
+  "kind": "building",
+  "group": "infrastructure.military",
+  "canvas": 512,
+  "designVoxelsPerTileUnit": 8,
+  "renderScale": 1,
+  "previewScale": 4,
+  "superSample": 2,
+  "pxPerVoxel": 0.125,
+  "tileDiamond": [
+    64,
+    32
+  ],
+  "facings": [
+    "right",
+    "up",
+    "left",
+    "down"
+  ],
+  "facingMeta": [
+    {
+      "id": "right",
+      "angle": 0,
+      "unitIndex": 0,
+      "viewDir": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.0625,
+        -0.0625,
+        0,
+        0.03125,
+        0.03125,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "up",
+      "angle": 90,
+      "unitIndex": 4,
+      "viewDir": [
+        0.5773502691896258,
+        -0.5773502691896257,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        -0.0625,
+        -0.0625,
+        0,
+        0.03125,
+        -0.03125000000000089,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "left",
+      "angle": 180,
+      "unitIndex": 8,
+      "viewDir": [
+        -0.5773502691896256,
+        -0.5773502691896258,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.0625,
+        0.062499999999998224,
+        0,
+        -0.03125,
+        -0.03125,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "down",
+      "angle": 270,
+      "unitIndex": 12,
+      "viewDir": [
+        -0.5773502691896258,
+        0.5773502691896256,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        0.0625,
+        0.0625,
+        0,
+        -0.03125,
+        0.03125,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    }
+  ],
+  "teamTint": {
+    "note": "Albedo is baked in the standard livery. Recolour pixels whose material map red channel matches these ids to apply an army livery.",
+    "materialIds": [
+      {
+        "name": "team.hull",
+        "id": 0,
+        "role": "hull"
+      },
+      {
+        "name": "team.light",
+        "id": 1,
+        "role": "light"
+      },
+      {
+        "name": "team.dark",
+        "id": 2,
+        "role": "dark"
+      },
+      {
+        "name": "team.accent",
+        "id": 3,
+        "role": "accent"
+      },
+      {
+        "name": "roof",
+        "id": 37,
+        "role": "hull"
+      },
+      {
+        "name": "roof.light",
+        "id": 38,
+        "role": "light"
+      },
+      {
+        "name": "roof.dark",
+        "id": 39,
+        "role": "dark"
+      }
+    ],
+    "liveries": {
+      "_note": "Army liveries for runtime tinting of team materials. Mirrors src/renderer.js TEAM_COLORS and tools/voxel_pipeline/v3/materials.mjs ARMY_LIVERY.",
+      "standard": {
+        "hull": "#df794b",
+        "light": "#ffc68b",
+        "dark": "#934b32",
+        "accent": "#ece7bc"
+      },
+      "allies": {
+        "hull": "#639bc3",
+        "light": "#a9d0e1",
+        "dark": "#345f78",
+        "accent": "#e8f1f4"
+      },
+      "soviets": {
+        "hull": "#7eb06a",
+        "light": "#b8e0a8",
+        "dark": "#2d4a2d",
+        "accent": "#dfe8c8"
+      },
+      "empire": {
+        "hull": "#d9b44e",
+        "light": "#ffe79a",
+        "dark": "#8a6a1a",
+        "accent": "#f6eecd"
+      },
+      "legion": {
+        "hull": "#c65a54",
+        "light": "#ffb0a8",
+        "dark": "#7a2a2a",
+        "accent": "#f3d9d4"
+      },
+      "neutral": {
+        "hull": "#aaa78b",
+        "light": "#cfcdb6",
+        "dark": "#6c6a55",
+        "accent": "#e2e0cf"
+      }
+    }
+  },
+  "normalMap": {
+    "space": "view",
+    "channelOrder": "rgb",
+    "range": "0..255 maps -1..1",
+    "up": "+g means screen up"
+  },
+  "materialMap": {
+    "channelOrder": "rgba",
+    "meaning": [
+      "materialId",
+      "metalness",
+      "roughness",
+      "emissive"
+    ],
+    "table": [
+      {
+        "id": 0,
+        "name": "team.hull",
+        "metalness": 0.35,
+        "roughness": 0.62,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "hull"
+      },
+      {
+        "id": 1,
+        "name": "team.light",
+        "metalness": 0.35,
+        "roughness": 0.58,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "light"
+      },
+      {
+        "id": 2,
+        "name": "team.dark",
+        "metalness": 0.4,
+        "roughness": 0.66,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "dark"
+      },
+      {
+        "id": 3,
+        "name": "team.accent",
+        "metalness": 0.2,
+        "roughness": 0.7,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "accent"
+      },
+      {
+        "id": 4,
+        "name": "steel",
+        "metalness": 0.85,
+        "roughness": 0.42,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 5,
+        "name": "steel.dark",
+        "metalness": 0.85,
+        "roughness": 0.5,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 6,
+        "name": "steel.bright",
+        "metalness": 0.95,
+        "roughness": 0.24,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 7,
+        "name": "gunmetal",
+        "metalness": 0.9,
+        "roughness": 0.38,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 8,
+        "name": "gunmetal.lit",
+        "metalness": 0.9,
+        "roughness": 0.32,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 9,
+        "name": "iron",
+        "metalness": 0.8,
+        "roughness": 0.62,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 10,
+        "name": "brass",
+        "metalness": 0.95,
+        "roughness": 0.3,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 11,
+        "name": "copper",
+        "metalness": 0.95,
+        "roughness": 0.34,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 12,
+        "name": "chrome",
+        "metalness": 1,
+        "roughness": 0.12,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 13,
+        "name": "rubber",
+        "metalness": 0.05,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 14,
+        "name": "track",
+        "metalness": 0.7,
+        "roughness": 0.68,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 15,
+        "name": "track.worn",
+        "metalness": 0.85,
+        "roughness": 0.44,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 16,
+        "name": "tyre",
+        "metalness": 0.03,
+        "roughness": 0.95,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 17,
+        "name": "plate",
+        "metalness": 0.55,
+        "roughness": 0.66,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 18,
+        "name": "plate.lit",
+        "metalness": 0.55,
+        "roughness": 0.6,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 19,
+        "name": "plate.dark",
+        "metalness": 0.55,
+        "roughness": 0.72,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 20,
+        "name": "glass",
+        "metalness": 0.3,
+        "roughness": 0.08,
+        "emissive": 0,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 21,
+        "name": "glass.dark",
+        "metalness": 0.4,
+        "roughness": 0.12,
+        "emissive": 0,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 22,
+        "name": "optic",
+        "metalness": 0.6,
+        "roughness": 0.05,
+        "emissive": 0.55,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 23,
+        "name": "lamp.warm",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.85,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 24,
+        "name": "lamp.red",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.8,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 25,
+        "name": "lamp.cyan",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.8,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 26,
+        "name": "skin",
+        "metalness": 0,
+        "roughness": 0.78,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 27,
+        "name": "skin.dark",
+        "metalness": 0,
+        "roughness": 0.8,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 28,
+        "name": "cloth",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 29,
+        "name": "cloth.dark",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 30,
+        "name": "webbing",
+        "metalness": 0.05,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 31,
+        "name": "boot",
+        "metalness": 0.1,
+        "roughness": 0.85,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 32,
+        "name": "hair",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 33,
+        "name": "concrete",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 34,
+        "name": "concrete.lit",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 35,
+        "name": "concrete.dark",
+        "metalness": 0,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 36,
+        "name": "brick",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 37,
+        "name": "roof",
+        "metalness": 0.1,
+        "roughness": 0.82,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "hull"
+      },
+      {
+        "id": 38,
+        "name": "roof.light",
+        "metalness": 0.1,
+        "roughness": 0.8,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "light"
+      },
+      {
+        "id": 39,
+        "name": "roof.dark",
+        "metalness": 0.1,
+        "roughness": 0.84,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "dark"
+      },
+      {
+        "id": 40,
+        "name": "asphalt",
+        "metalness": 0,
+        "roughness": 0.96,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 41,
+        "name": "paint.line",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 42,
+        "name": "wood",
+        "metalness": 0,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 43,
+        "name": "wood.dark",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 44,
+        "name": "canvas",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 45,
+        "name": "sandbag",
+        "metalness": 0,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 46,
+        "name": "solar",
+        "metalness": 0.6,
+        "roughness": 0.22,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 47,
+        "name": "rust",
+        "metalness": 0.3,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 48,
+        "name": "scorch",
+        "metalness": 0.2,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 49,
+        "name": "smoke",
+        "metalness": 0,
+        "roughness": 1,
+        "emissive": 0.1,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 50,
+        "name": "water",
+        "metalness": 0.2,
+        "roughness": 0.15,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 51,
+        "name": "foam",
+        "metalness": 0,
+        "roughness": 0.6,
+        "emissive": 0.1,
+        "blend": "opaque",
+        "team": null
+      }
+    ]
+  },
+  "parts": {
+    "body": {
+      "name": "body",
+      "dynamic": false,
+      "parent": null,
+      "pivotDesign": [
+        256,
+        256,
+        0
+      ],
+      "traverse": false,
+      "facingSet": "scene",
+      "facingOrder": [
+        "right",
+        "up",
+        "left",
+        "down"
+      ],
+      "facings": {
+        "right": {
+          "anchor": [
+            27,
+            26
+          ],
+          "pivot": [
+            27,
+            26
+          ],
+          "depth": 50.99,
+          "w": 57,
+          "h": 42,
+          "files": {
+            "albedo": {
+              "file": "sheets/barracks__body__right__albedo.png",
+              "w": 57,
+              "h": 42,
+              "sha256": "ec01820d5836d78eda755c92dc887294d016cd3459fbcca201cf80cf3e6564eb"
+            },
+            "normal": {
+              "file": "sheets/barracks__body__right__normal.png",
+              "w": 57,
+              "h": 42,
+              "sha256": "afa06e8e7598977375cb1e0c0984f069f7377b5080665d59da807fdbfb2f6ab0"
+            },
+            "material": {
+              "file": "sheets/barracks__body__right__material.png",
+              "w": 57,
+              "h": 42,
+              "sha256": "f4e7260e9a5a23fa423cb48991f4baccbbb082611b576ba4398e9e72db2e0a5a"
+            }
+          }
+        },
+        "up": {
+          "anchor": [
+            31,
+            26
+          ],
+          "pivot": [
+            31,
+            26
+          ],
+          "depth": 12.81,
+          "w": 57,
+          "h": 41,
+          "files": {
+            "albedo": {
+              "file": "sheets/barracks__body__up__albedo.png",
+              "w": 57,
+              "h": 41,
+              "sha256": "463d651abd182c4e2cf03654f1abeaae3b455104f573029eb38032d84a66f895"
+            },
+            "normal": {
+              "file": "sheets/barracks__body__up__normal.png",
+              "w": 57,
+              "h": 41,
+              "sha256": "765ce0739275153069d1f619a1c04682db712fd4ab5fbb726ed738571c4eeaab"
+            },
+            "material": {
+              "file": "sheets/barracks__body__up__material.png",
+              "w": 57,
+              "h": 41,
+              "sha256": "bcbc97d4377e95459f8e7cec835795ccd6b199c2611bf2cac9c1cbbeeb1be35b"
+            }
+          }
+        },
+        "left": {
+          "anchor": [
+            30,
+            28
+          ],
+          "pivot": [
+            30,
+            28
+          ],
+          "depth": -26.09,
+          "w": 57,
+          "h": 42,
+          "files": {
+            "albedo": {
+              "file": "sheets/barracks__body__left__albedo.png",
+              "w": 57,
+              "h": 42,
+              "sha256": "be91200c4e6763618dc66a49eda75764ebf5fe1e895730ef6064224bea76deb1"
+            },
+            "normal": {
+              "file": "sheets/barracks__body__left__normal.png",
+              "w": 57,
+              "h": 42,
+              "sha256": "f4fb4f3a4cdabfe858ac694b8175d862b8f999cf09e80fd1b5e1392a3ab734a2"
+            },
+            "material": {
+              "file": "sheets/barracks__body__left__material.png",
+              "w": 57,
+              "h": 42,
+              "sha256": "abb1c4c77ecbec133555949911e598db1b250cf0f394addfc019ea1301fefaa4"
+            }
+          }
+        },
+        "down": {
+          "anchor": [
+            26,
+            27
+          ],
+          "pivot": [
+            26,
+            27
+          ],
+          "depth": 12.09,
+          "w": 57,
+          "h": 42,
+          "files": {
+            "albedo": {
+              "file": "sheets/barracks__body__down__albedo.png",
+              "w": 57,
+              "h": 42,
+              "sha256": "bb9393ea32effc58fa9bf322033fbcb8c431d6ca32e3c39bb12501b9c76417f8"
+            },
+            "normal": {
+              "file": "sheets/barracks__body__down__normal.png",
+              "w": 57,
+              "h": 42,
+              "sha256": "2075e6aec7986256a11f1483affe9a4c1cf66af353aee4382d3d1d533f4460fd"
+            },
+            "material": {
+              "file": "sheets/barracks__body__down__material.png",
+              "w": 57,
+              "h": 42,
+              "sha256": "41398fe044d9dab832dbd5bfde0ff217ab279a232d9fc8364765aff956704df8"
+            }
+          }
+        }
+      }
+    },
+    "door": {
+      "name": "door",
+      "dynamic": true,
+      "parent": null,
+      "pivotDesign": [
+        436,
+        220,
+        30
+      ],
+      "traverse": false,
+      "facingSet": "scene",
+      "facingOrder": [
+        "right",
+        "up",
+        "left",
+        "down"
+      ],
+      "facings": {
+        "right": {
+          "anchor": [
+            -5,
+            7
+          ],
+          "pivot": [
+            8.5,
+            9.63
+          ],
+          "depth": 56.51,
+          "w": 12,
+          "h": 15,
+          "files": {
+            "albedo": {
+              "file": "sheets/barracks__door__right__albedo.png",
+              "w": 12,
+              "h": 15,
+              "sha256": "d84319c1606063e54b17b92d070cbe40da415f5ed52140339088b89a81634ea8"
+            },
+            "normal": {
+              "file": "sheets/barracks__door__right__normal.png",
+              "w": 12,
+              "h": 15,
+              "sha256": "8f9b07ce849a864bcd39515cde41bd59e3a256d3dc59aec4a7b369c1ac3c9828"
+            },
+            "material": {
+              "file": "sheets/barracks__door__right__material.png",
+              "w": 12,
+              "h": 15,
+              "sha256": "b500044a1501e1333626d096f92ddc3ad839ea973499388d8f968522df8d8326"
+            }
+          }
+        },
+        "up": {
+          "anchor": [
+            18,
+            7
+          ],
+          "pivot": [
+            9,
+            11.88
+          ],
+          "depth": 18.62,
+          "w": 12,
+          "h": 15,
+          "files": {
+            "albedo": {
+              "file": "sheets/barracks__door__up__albedo.png",
+              "w": 12,
+              "h": 15,
+              "sha256": "63c75f4ad77547b41021f1c33f07d54f2de0f3d1ab083e60e2e4aedb128a8575"
+            },
+            "normal": {
+              "file": "sheets/barracks__door__up__normal.png",
+              "w": 12,
+              "h": 15,
+              "sha256": "2271b84016fb71981f5ed1964541ae3294ede149dbf2307ffe78ecace80c3b49"
+            },
+            "material": {
+              "file": "sheets/barracks__door__up__material.png",
+              "w": 12,
+              "h": 15,
+              "sha256": "7982aefe4eba9cd69c0f4865eed90ca6648c9bb737bd8e0ec82312b4a2cacad3"
+            }
+          }
+        },
+        "left": {
+          "anchor": [
+            17,
+            19
+          ],
+          "pivot": [
+            3.5,
+            12.63
+          ],
+          "depth": -44.6,
+          "w": 12,
+          "h": 16,
+          "files": {
+            "albedo": {
+              "file": "sheets/barracks__door__left__albedo.png",
+              "w": 12,
+              "h": 16,
+              "sha256": "c4cebc123f171f61a460ada66e892dd68abed2993b29f0f0ae24593f0fdfad58"
+            },
+            "normal": {
+              "file": "sheets/barracks__door__left__normal.png",
+              "w": 12,
+              "h": 16,
+              "sha256": "902158fad80d09273e962cc5c1abfa2f8b668755a38e9aae398bcc8c0d4db599"
+            },
+            "material": {
+              "file": "sheets/barracks__door__left__material.png",
+              "w": 12,
+              "h": 16,
+              "sha256": "a758f9d674199d0e72ec068409596636e0164e6f0845b64e432905068f2b42c6"
+            }
+          }
+        },
+        "down": {
+          "anchor": [
+            -6,
+            18
+          ],
+          "pivot": [
+            3,
+            9.37
+          ],
+          "depth": -6.71,
+          "w": 12,
+          "h": 15,
+          "files": {
+            "albedo": {
+              "file": "sheets/barracks__door__down__albedo.png",
+              "w": 12,
+              "h": 15,
+              "sha256": "d5429d5678369d1c854437659619865306345fb5fea47a4b00ff7cd11a1c727b"
+            },
+            "normal": {
+              "file": "sheets/barracks__door__down__normal.png",
+              "w": 12,
+              "h": 15,
+              "sha256": "70fbc5320dd1133b165860ab819c6b680c4440c2b673f60f7d122f18942772cb"
+            },
+            "material": {
+              "file": "sheets/barracks__door__down__material.png",
+              "w": 12,
+              "h": 15,
+              "sha256": "5b81514f9b58366a9f3bcdf71dd039b3fb67b089e9b466c5fcac88745a0ee57c"
+            }
+          }
+        }
+      }
+    },
+    "flag": {
+      "name": "flag",
+      "dynamic": true,
+      "parent": null,
+      "pivotDesign": [
+        400,
+        54,
+        16
+      ],
+      "traverse": false,
+      "facingSet": "scene",
+      "facingOrder": [
+        "right",
+        "up",
+        "left",
+        "down"
+      ],
+      "facings": {
+        "right": {
+          "anchor": [
+            -18,
+            24
+          ],
+          "pivot": [
+            3.63,
+            21.19
+          ],
+          "depth": 46.12,
+          "w": 9,
+          "h": 24,
+          "files": {
+            "albedo": {
+              "file": "sheets/barracks__flag__right__albedo.png",
+              "w": 9,
+              "h": 24,
+              "sha256": "afe91f50f649af1ef605cdf4c35500f9fca8a7aa00659e89b7b2588100e484c0"
+            },
+            "normal": {
+              "file": "sheets/barracks__flag__right__normal.png",
+              "w": 9,
+              "h": 24,
+              "sha256": "cf22c35dd4416ceae24317a9121f3938b496b5144df1ee2016aee5b31fa21481"
+            },
+            "material": {
+              "file": "sheets/barracks__flag__right__material.png",
+              "w": 9,
+              "h": 24,
+              "sha256": "1699506596a18fbb58d55226d091977b89ba3322f22259209c4ca2dbed201a4a"
+            }
+          }
+        },
+        "up": {
+          "anchor": [
+            2,
+            12
+          ],
+          "pivot": [
+            5.63,
+            21.81
+          ],
+          "depth": 38.32,
+          "w": 9,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/barracks__flag__up__albedo.png",
+              "w": 9,
+              "h": 25,
+              "sha256": "3b64b1ad133dcbf558c833216e006089ef81a3d059b5c5c8054045eb81f070a0"
+            },
+            "normal": {
+              "file": "sheets/barracks__flag__up__normal.png",
+              "w": 9,
+              "h": 25,
+              "sha256": "420898cea7af7d67616933b727569a13332041b09692787477f3f32255eab091"
+            },
+            "material": {
+              "file": "sheets/barracks__flag__up__material.png",
+              "w": 9,
+              "h": 25,
+              "sha256": "8ef9044aa78f077cd09d64b3cacdbd85f78c7f432e9fa73f3c8fab1a11e461aa"
+            }
+          }
+        },
+        "left": {
+          "anchor": [
+            27,
+            21
+          ],
+          "pivot": [
+            5.37,
+            21.81
+          ],
+          "depth": -21.94,
+          "w": 9,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/barracks__flag__left__albedo.png",
+              "w": 9,
+              "h": 25,
+              "sha256": "2843562c780b61bab4407f39d55f804a23a5b7189cc21b733b6a69e8dfa7ea38"
+            },
+            "normal": {
+              "file": "sheets/barracks__flag__left__normal.png",
+              "w": 9,
+              "h": 25,
+              "sha256": "9c9ad1a345d13afbdf6e7c057fe9ddbd487d5abce7b8bbc0969047b1e0dec911"
+            },
+            "material": {
+              "file": "sheets/barracks__flag__left__material.png",
+              "w": 9,
+              "h": 25,
+              "sha256": "f51d4fbd694f60c633e93001bdd9e69d6d5c7a68303441e29f5014d7d8995716"
+            }
+          }
+        },
+        "down": {
+          "anchor": [
+            7,
+            33
+          ],
+          "pivot": [
+            3.37,
+            21.19
+          ],
+          "depth": -14.15,
+          "w": 9,
+          "h": 24,
+          "files": {
+            "albedo": {
+              "file": "sheets/barracks__flag__down__albedo.png",
+              "w": 9,
+              "h": 24,
+              "sha256": "f5e34774fe88aa3d6efffb2e6d7e7717c2549916e7b7e03f9b6f3fbe47c24d6f"
+            },
+            "normal": {
+              "file": "sheets/barracks__flag__down__normal.png",
+              "w": 9,
+              "h": 24,
+              "sha256": "bf4e6cdd0f95be96bc062c84f8c81e65ae15de348087658308bc3317f1b11897"
+            },
+            "material": {
+              "file": "sheets/barracks__flag__down__material.png",
+              "w": 9,
+              "h": 24,
+              "sha256": "c9af93f01b8b5d70e7fbb3a80d89bec0a0684c4d8d3ffcb5a48a94af5daf9863"
+            }
+          }
+        }
+      }
+    }
+  },
+  "clips": {
+    "idle": 1
+  },
+  "sourceGeometry": {
+    "parts": [
+      {
+        "name": "body",
+        "dynamic": false,
+        "traverse": false,
+        "parent": null,
+        "voxels": 797721,
+        "pivotDesign": [
+          256,
+          256,
+          0
+        ],
+        "bounds": {
+          "minX": 40,
+          "minY": 60,
+          "minZ": 0,
+          "maxX": 499,
+          "maxY": 469,
+          "maxZ": 345
+        }
+      },
+      {
+        "name": "door",
+        "dynamic": true,
+        "traverse": false,
+        "parent": null,
+        "voxels": 27548,
+        "pivotDesign": [
+          436,
+          220,
+          30
+        ],
+        "bounds": {
+          "minX": 432,
+          "minY": 208,
+          "minZ": 30,
+          "maxX": 444,
+          "maxY": 317,
+          "maxZ": 135
+        }
+      },
+      {
+        "name": "flag",
+        "dynamic": true,
+        "traverse": false,
+        "parent": null,
+        "voxels": 9902,
+        "pivotDesign": [
+          400,
+          54,
+          16
+        ],
+        "bounds": {
+          "minX": 388,
+          "minY": 42,
+          "minZ": 16,
+          "maxX": 447,
+          "maxY": 66,
+          "maxZ": 319
+        }
+      }
+    ],
+    "totalVoxels": 835171
+  },
+  "composite": {
+    "note": "every part of one facing pre-composited through the shared ground anchor",
+    "facings": {
+      "right": {
+        "w": 61,
+        "h": 46,
+        "files": {
+          "albedo": {
+            "file": "sheets/barracks__composite__right__albedo.png",
+            "sha256": "82380facb024c69e1c3fffbc43d87c07d6a4cf470d663a81b08679e6d79be70b"
+          },
+          "normal": {
+            "file": "sheets/barracks__composite__right__normal.png",
+            "sha256": "1396cad36cbdfd0a7916cc53d03b4580e8f452d8ddefde35378c92186825c85d"
+          },
+          "material": {
+            "file": "sheets/barracks__composite__right__material.png",
+            "sha256": "98f7e2e5330c2712b7c3ee5a2916c9251f9556325e81ee74f3b712c3c297a5ca"
+          }
+        }
+      },
+      "up": {
+        "w": 61,
+        "h": 45,
+        "files": {
+          "albedo": {
+            "file": "sheets/barracks__composite__up__albedo.png",
+            "sha256": "ba563ddc1710e8d73cb176ea5048faeae1c7395d4949fbe3b655009692c20fe7"
+          },
+          "normal": {
+            "file": "sheets/barracks__composite__up__normal.png",
+            "sha256": "6df15c1607a34d3c14334d1d87ef114c475db8c11cdb32df53a5fda910ccc09a"
+          },
+          "material": {
+            "file": "sheets/barracks__composite__up__material.png",
+            "sha256": "c6f7a14d9d6a8cebde3668b343fc0954d254c6e8598aaf53e27c0dcbb9a8002e"
+          }
+        }
+      },
+      "left": {
+        "w": 61,
+        "h": 46,
+        "files": {
+          "albedo": {
+            "file": "sheets/barracks__composite__left__albedo.png",
+            "sha256": "4e5eada32268a0ed74517544583435cd233212161a6ed834666986b0c1067676"
+          },
+          "normal": {
+            "file": "sheets/barracks__composite__left__normal.png",
+            "sha256": "8be61ed47c8c0ea78f28459a8d5013150dd8ec0718a59c1f67b438f39a6369f8"
+          },
+          "material": {
+            "file": "sheets/barracks__composite__left__material.png",
+            "sha256": "5f39dabc0d53c0715d163701ba5845efadf666b2a77bdf2e0ac26f04f66eefaf"
+          }
+        }
+      },
+      "down": {
+        "w": 61,
+        "h": 52,
+        "files": {
+          "albedo": {
+            "file": "sheets/barracks__composite__down__albedo.png",
+            "sha256": "ee83c8b2fb259c68f989c11b59d0773aa67d4b6bfe144da81bc3d358729828a7"
+          },
+          "normal": {
+            "file": "sheets/barracks__composite__down__normal.png",
+            "sha256": "433967da6812384960900042a52c3442ab0b2445c5c4c6026a3478449dbc0d68"
+          },
+          "material": {
+            "file": "sheets/barracks__composite__down__material.png",
+            "sha256": "e6211ae58f0b435ad80c638fa237baf75ce5ff4bb9dabf7a149d4c712d99ad4e"
+          }
+        }
+      }
+    }
+  },
+  "lit": {
+    "note": "the composite re-shaded through a virtual three-point rig using the normal and material maps (key/fill/rim). If normals or PBR channels are wrong, this is where it shows.",
+    "rig": "three-point",
+    "facings": {
+      "right": {
+        "file": "sheets/barracks__lit__right__albedo.png",
+        "w": 61,
+        "h": 46,
+        "sha256": "e6a76cf5533caa238bf0a9113c9d8cb938170eabc170bb1201084cf06711e245"
+      },
+      "up": {
+        "file": "sheets/barracks__lit__up__albedo.png",
+        "w": 61,
+        "h": 45,
+        "sha256": "2b9ebd6c7b4a29e3e3068a296685099a51f2f5e9bb41dd8a8c37b4f360cb7256"
+      },
+      "left": {
+        "file": "sheets/barracks__lit__left__albedo.png",
+        "w": 61,
+        "h": 46,
+        "sha256": "58d4aad1bcda42a9dff3241c6ff1703856e4adeca8c3353ba51c223f1533cf91"
+      },
+      "down": {
+        "file": "sheets/barracks__lit__down__albedo.png",
+        "w": 61,
+        "h": 52,
+        "sha256": "ca414c67bd998e843c22f7c5df932ee89fcb1dff276bd22db37c59eab1fd4476"
+      }
+    }
+  },
+  "previewLit": {
+    "file": "preview-lit.png",
+    "facing": "right",
+    "rig": "three-point",
+    "note": "relit from the normal + material maps"
+  },
+  "previewLights": {
+    "file": "preview-lights.png",
+    "facing": "right",
+    "order": [
+      "azimuth 0deg / elevation 40deg",
+      "azimuth 45deg / elevation 40deg",
+      "azimuth 90deg / elevation 40deg",
+      "azimuth 135deg / elevation 40deg",
+      "azimuth 180deg / elevation 40deg",
+      "azimuth 225deg / elevation 40deg",
+      "azimuth 270deg / elevation 40deg",
+      "azimuth 315deg / elevation 40deg"
+    ],
+    "note": "one virtual light per panel, proving the normal map is directionally correct"
+  },
+  "previewMaps": {
+    "file": "preview-maps.png",
+    "facing": "right",
+    "panels": [
+      "albedo",
+      "normal",
+      "material-id",
+      "metalness",
+      "roughness",
+      "emissive"
+    ]
+  },
+  "preview": {
+    "file": "preview.png",
+    "facing": "right",
+    "w": 225,
+    "h": 163,
+    "mode": "single-pass"
+  },
+  "previewParts": {
+    "file": "preview-parts.png",
+    "facing": "right",
+    "w": 229,
+    "h": 167,
+    "mode": "composited-from-part-sheets"
+  }
+}

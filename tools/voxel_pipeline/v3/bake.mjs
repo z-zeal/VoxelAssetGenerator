@@ -55,7 +55,18 @@ export const BUILDING_FACINGS = [
   { id: 'down', angle: 270 },
 ];
 
-const DEFAULTS = { k: 4, ss: 2 };
+/**
+ * Runtime render scale.
+ *
+ * The 512 lattice maps onto one legacy 64×32 tile (8 design voxels per tile
+ * unit), so k = 1 renders a full-tile footprint as exactly a 64 px diamond —
+ * the same world scale the old 64³ sheets had. Baking at k = 4 produced sheets
+ * four times too large, which for a building means it could never sit in its
+ * tile. Review images are rendered separately at PREVIEW_K for eyeballing.
+ */
+export const RUNTIME_K = 1;
+export const PREVIEW_K = 4;
+const DEFAULTS = { k: RUNTIME_K, ss: 2 };
 
 function sha256(buf) {
   return crypto.createHash('sha256').update(buf).digest('hex');
@@ -150,6 +161,19 @@ export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, outRoot =
   if (problems.length) {
     throw new Error(`${id}: geometry validation failed\n  - ${problems.join('\n  - ')}`);
   }
+  // A part traverses if it says so, or if an ancestor in its mount chain does —
+  // a gun on a turret ring swings with the ring.
+  const traversing = new Set();
+  for (const part of geom.parts) {
+    let cursor = part;
+    const guard = new Set();
+    while (cursor && !guard.has(cursor.name)) {
+      guard.add(cursor.name);
+      if (cursor.traverse) { traversing.add(part.name); break; }
+      cursor = cursor.parent ? geom.parts.find(q => q.name === cursor.parent) : null;
+    }
+  }
+
   const palette = buildPalette(MATERIAL_NAMES, name => colorFor(name, 'standard'), MATERIALS);
   const occluders = new Set();
   for (const part of geom.parts) for (const [x, y, z] of part.voxels) occluders.add(`${x},${y},${z}`);
@@ -168,8 +192,11 @@ export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, outRoot =
     canvas: CANVAS,
     designVoxelsPerTileUnit: CANVAS / 64,
     renderScale: k,
+    previewScale: PREVIEW_K,
     superSample: ss,
     pxPerVoxel: k / (CANVAS / 64),
+    // A full-tile footprint must land on exactly the legacy 64x32 diamond.
+    tileDiamond: [64 * (k / RUNTIME_K), 32 * (k / RUNTIME_K)],
     facings: facings.map(f => f.id),
     facingMeta: facings.map(f => {
       const basis = cameraBasis(f.angle, k);
@@ -185,6 +212,11 @@ export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, outRoot =
       const c0 = col(1, 0, 0), c1 = col(0, 1, 0), c2 = col(0, 0, 1);
       return {
         ...f,
+        // Index into the 16-unit-camera ring for this scene facing. A turreted
+        // building is baked at 4 scene facings but its turret at 16 cameras, so
+        // the runtime needs to know which unit index a scene facing corresponds
+        // to before it can add a traverse step.
+        unitIndex: Math.round((((f.angle % 360) + 360) % 360) / 22.5) % 16,
         viewDir: basis.dHat,
         screenMatrix: [c0[0], c1[0], c2[0], c0[1], c1[1], c2[1]],
         groundCentre: G,
@@ -203,6 +235,7 @@ export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, outRoot =
       parts: geom.parts.map(p => ({
         name: p.name,
         dynamic: p.dynamic,
+        traverse: traversing.has(p.name),
         parent: p.parent ?? null,
         voxels: p.voxels.length,
         pivotDesign: p.pivot,
@@ -214,8 +247,22 @@ export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, outRoot =
 
   // Pass 1: render every part at every facing, write the per-part sheets.
   // Renders are kept in memory only for the composite pass below (few MB).
+  //
+  // Camera sets differ per part:
+  //
+  //   * a **unit** turns as a whole, so every part shares the 16 unit cameras —
+  //     the sprite photographed from another azimuth *is* the same part yawed,
+  //     which is what makes runtime traverse possible without re-rendering;
+  //   * a **building** body only ever has its 4 cardinal cameras, but a turret
+  //     on that building still has to swing through 16 steps, so the turret and
+  //     everything mounted on it are baked at the 16 unit cameras instead.
+  const unitFacingAt = angle => UNIT_FACINGS[
+    Math.round((((angle % 360) + 360) % 360) / 22.5) % 16];
+
   const byFacing = facings.map(() => []);
   for (const part of geom.parts) {
+    const partFacings = (def.kind === 'unit' || !traversing.has(part.name))
+      ? facings : UNIT_FACINGS;
     const entry = {
       name: part.name,
       dynamic: part.dynamic,
@@ -223,6 +270,10 @@ export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, outRoot =
       // parent's pivot when the parent traverses.
       parent: part.parent ?? null,
       pivotDesign: part.pivot,
+      traverse: traversing.has(part.name),
+      // Which camera ring this part was baked on, and the order of its facings.
+      facingSet: partFacings === UNIT_FACINGS ? 'unit' : 'scene',
+      facingOrder: partFacings.map(f => f.id),
       facings: {},
     };
     const centroid = [
@@ -230,7 +281,8 @@ export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, outRoot =
       (part.bounds.minY + part.bounds.maxY) / 2,
       (part.bounds.minZ + part.bounds.maxZ) / 2,
     ];
-    facings.forEach((facing, fi) => {
+    const cache = new Map();
+    partFacings.forEach(facing => {
       const basis = cameraBasis(facing.angle, k);
       const rendered = renderPart(part.voxels, { basis, palette, superSample: ss, occluders });
       if (!rendered) throw new Error(`${id}/${part.name}/${facing.id}: empty render`);
@@ -245,18 +297,19 @@ export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, outRoot =
         fs.writeFileSync(path.join(sheetDir, name), blob);
         files[map] = { file: `sheets/${name}`, w: rendered.w, h: rendered.h, sha256: sha256(blob) };
       }
+      const depth = basis.depth(centroid[0], centroid[1], centroid[2]);
       entry.facings[facing.id] = {
         anchor: [round2(anchor[0]), round2(anchor[1])],
         pivot: [round2(pivotPx[0]), round2(pivotPx[1])],
         // Painter order for segmented composition: parts with a smaller
         // view-space depth draw first. Runtimes should sort on this rather than
         // guessing from the part name.
-        depth: round2(basis.depth(centroid[0], centroid[1], centroid[2])),
+        depth: round2(depth),
         w: rendered.w,
         h: rendered.h,
         files,
       };
-      byFacing[fi].push({
+      cache.set(facing.id, {
         name: part.name,
         albedo: rendered.albedo,
         normal: rendered.normal,
@@ -264,8 +317,16 @@ export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, outRoot =
         w: rendered.w,
         h: rendered.h,
         anchor,
-        depth: basis.depth(centroid[0], centroid[1], centroid[2]),
+        depth,
       });
+    });
+    // The composite for a scene facing uses each part exactly as that camera
+    // saw it: the scene facing itself for a scene-baked part, the unit facing at
+    // the same angle for a part baked on the unit ring.
+    facings.forEach((facing, fi) => {
+      const rec = cache.get(facing.id) ?? cache.get(unitFacingAt(facing.angle).id);
+      if (!rec) throw new Error(`${id}/${part.name}: no render for scene facing ${facing.id}`);
+      byFacing[fi].push(rec);
     });
     manifest.parts[part.name] = entry;
   }
@@ -311,15 +372,34 @@ export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, outRoot =
     facings: facingLit,
   };
 
-  // Authoritative preview: one depth buffer for the whole model.
+  // ---- review pass -------------------------------------------------------
+  // The sheets above are runtime scale. For human inspection the preview facing
+  // is rendered again at PREVIEW_K: geometry detail is only judgeable at a scale
+  // where one voxel is a visible fraction of a pixel.
   const previewFixture = facings.findIndex(f => f.id === PREVIEW_FACING);
-  const previewBasis = cameraBasis(facings[previewFixture].angle, k);
+  const previewAngled = facings[previewFixture];
+  const previewBasis = cameraBasis(previewAngled.angle, PREVIEW_K);
   const whole = renderWhole(geom.parts, { basis: previewBasis, palette, superSample: ss, occluders });
   fs.writeFileSync(path.join(assetDir, 'preview.png'),
     pngBytes(whole.w, whole.h, Buffer.from(whole.albedo.buffer)));
 
-  // Lighting tests on the preview facing.
-  const pv = byFacing[previewFixture];
+  const pv = geom.parts.map(part => {
+    const basis = cameraBasis(previewAngled.angle, PREVIEW_K);
+    const rendered = renderPart(part.voxels, { basis, palette, superSample: ss, occluders });
+    const ax = basis.project(CANVAS / 2, CANVAS / 2, 0);
+    const c = part.bounds;
+    return {
+      name: part.name,
+      albedo: rendered.albedo,
+      normal: rendered.normal,
+      material: rendered.material,
+      w: rendered.w,
+      h: rendered.h,
+      anchor: [ax[0] - rendered.origin[0], ax[1] - rendered.origin[1]],
+      depth: basis.depth((c.minX + c.maxX) / 2, (c.minY + c.maxY) / 2, (c.minZ + c.maxZ) / 2),
+    };
+  });
+
   const pvAlbedo = compositePreview(pv, 2, 'albedo');
   const pvNormal = compositePreview(pv, 2, 'normal');
   const pvMaterial = compositePreview(pv, 2, 'material');
@@ -363,7 +443,7 @@ export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, outRoot =
   manifest.previewMaps = { file: 'preview-maps.png', facing: PREVIEW_FACING,
     panels: ['albedo', 'normal', 'material-id', 'metalness', 'roughness', 'emissive'] };
 
-  const composite = compositePreview(byFacing[previewFixture]);
+  const composite = compositePreview(pv, 2, 'albedo');
   fs.writeFileSync(path.join(assetDir, 'preview-parts.png'),
     pngBytes(composite.w, composite.h, composite.buf));
 

@@ -53,7 +53,7 @@ what §3/D4 does.
 | ID | Decision | Why |
 | --- | --- | --- |
 | **D1** | 512 is the **lattice**, not a multiplier. Every builder writes integer voxels in `0..511`; a rivet is 1 voxel, a track link is 7–9 voxels. | Satisfies R3/R5. A scale-up would put 8×8×8 identical cubes where detail should be. |
-| **D2** | **8 design voxels = 1 legacy tile unit.** 512/64 = 8, so the canvas maps exactly onto the existing `64×32` iso diamond and the runtime's world scale is unchanged. | Sprites stay game-compatible; no renderer world-scale rewrite. |
+| **D2** | **8 design voxels = 1 legacy tile unit.** 512/64 = 8, so the canvas maps exactly onto the existing `64×32` iso diamond and the runtime's world scale is unchanged. Baked at `k = 1`; `sx = (X−Y)·0.5`, `sy = ((X+Y)·0.5 − w)·0.5` — the second 0.5 is the 2:1 isometric, and without it sprites are twice the height of the tile (measured: tank body 52×66 → 52×35). | Sprites stay game-compatible; no renderer world-scale rewrite. |
 | **D3** | The canvas is **fixed** at 512³. Builders that leave it fail validation; models that under-fill it fail a minimum-span gate. | Prevents both clipping and accidental 64³ authors. |
 | **D4** | Azimuth lives in the **projection**, not in a rotated voxel model. Camera-space rasterizer, exact at any angle. | The only way to get 22.5° exactly; also removes the 45°-only hack and the iso stretch. |
 | **D5** | 16 facings, ids `d00…d15`, 22.5° apart, `d00` == the pose legacy called `right`. Screen labels recorded alongside. | Stable ids for the manifest; explicit bridge to the old four names. |
@@ -66,7 +66,8 @@ what §3/D4 does.
 | **D12** | Animation stays **out of scope for the first rebuild**, but every part records its pivot and `dynamic` flag so clips can be added per part later without re-sculpting. | R9 lists remodels first; pivots are the cheap forward-compatible bit. |
 | **D13** | Occupancy is a bitset; appearance is a deferred surface pass. Materials resolve once, at `finish()`. | Measured: 16.6 M → 1.06 M voxels, 28.2 s → 0.17 s sculpt (§7.1). |
 | **D15** | **Canvas stays 512³.** No 448/384 fallback, no machine-specific variants. | A full 512³ unit bakes in 39.5 s / 1.12 MB on an ordinary sandbox CPU (§7.3). |
-| **D14** | Bakes are **deterministic and per-asset runnable** (`--only tank`), so batches can be verified in isolation. | Batch execution, per §8. |
+| **D14** | Bakes are **deterministic and per-asset runnable** (`--only tank`, `--only barracks,at-turret`), so batches can be verified in isolation. | Batch execution, per §8. |
+| **D16** | **Per-part camera rings.** A part that traverses is baked on the 16-camera unit ring even when the asset only has 4 scene facings; everything else stays on the scene set. Declared with `c.traverse(name)` and inherited down the `parent` chain. | A building's turret must swing at 22.5° while its body keeps 4 facings. Baking every building part 16× would quadruple the sheets; baking none would lock building turrets to 90°. |
 
 ---
 
@@ -87,12 +88,13 @@ game_assets/
         tank__barrel__d00__albedo.png
         …
   buildings/
-    barracks/
+    at-turret/
       manifest.json
       preview.png
       sheets/
-        barracks__body__right__albedo.png
-        barracks__turret__right__albedo.png
+        at-turret__body__right__albedo.png    # 4 scene facings
+        at-turret__turret__d00__albedo.png    # 16 cameras: the part traverses
+        at-turret__barrel__d00__albedo.png
         …
   _legacy/voxels-64/                   # archived current pipeline output
 ```
@@ -152,6 +154,21 @@ selecting a different baked facing for the dynamic part and registering it by it
 
 `screenMatrix` (a 2×3 design-voxel→pixel projection, per facing) is in the manifest for exactly this, so a
 runtime never has to concatenate crop offsets. Granularity is the facing grid: 22.5° for units.
+
+**Per-part camera rings (D16).** The identity the step-2 trick relies on is *"a part yawed by +t seen from
+camera c = the same part seen from camera c − t"* — which only holds if the whole scene turns. A unit turns
+as a whole, so all its parts share one 16-camera set. **A building does not turn**: its body stays on the 4
+legacy scene facings, while anything that traverses is baked separately on the 16-camera unit ring. Hence
+
+* `parts[].facingSet` — `scene` (4) or `unit` (16);
+* `parts[].facingOrder` — the part's own facing ids, in rotation order;
+* `parts[].traverse` — true for a turret **and, through the `parent` chain, for its gun**;
+* `facingMeta[].unitIndex` — which unit-ring index a scene facing corresponds to
+  (`right` = 0, `up` = 4, `left` = 8, `down` = 12).
+
+Runtime: `facing = facingOrder[(unitIndex(sceneFacing) + traverseSteps) mod 16]`. Only `traverse` parts
+follow the slider — a door is `dynamic` (it opens) but it does not swing about a vertical axis, and baking it
+on the unit ring would be 4× the sheets for nothing.
 
 Painter order: static structure first, then dynamic parts far-to-near. A per-part centroid depth alone is
 insufficient — once a turret swings to a facing where its centroid is deeper than the hull's, the hull paints
@@ -284,7 +301,7 @@ Retrofit the tank to the budgets, bake all 16 facings × 5 parts × 3 maps, comp
 **Gate:** 16 visibly distinct facings; turret rotates cleanly against the hull at every facing; payload
 estimate for 58 units is on budget; a human eyeball pass on the preview.
 
-### B3 — Pilot: barracks (building) end-to-end with a turret
+### B3 — Pilot: barracks + at-turret (buildings) end-to-end — *done*
 Same pipeline at 4 facings, with a *defensive* building (`at-turret`) to prove building segmentation.
 **Gate:** 4 facings match the legacy pose convention; turret part rotates; door/flag parts animate-ready.
 

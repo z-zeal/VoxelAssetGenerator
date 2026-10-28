@@ -8,10 +8,15 @@
  *
  *   u = x / 8, v = y / 8, w = z / 8          (512 design voxels -> tile units)
  *   X = u·cosφ − v·sinφ,  Y = u·sinφ + v·cosφ   (camera azimuth φ)
- *   sx = (X − Y) · 0.5K,  sy = ((X + Y) · 0.5 − w) · K
+ *   sx = (X − Y) · 0.5K,  sy = ((X + Y) · 0.5 − w) · 0.5K
  *
- * which is exactly the legacy 64×32 diamond at K = 1 and an arbitrarily large
- * render at K > 1. Because the model is never resampled, every azimuth (22.5°,
+ * i.e. a true 2:1 isometric: the ground plane compresses to half the vertical
+ * of the horizontal, and one design voxel of height costs the same on screen as
+ * two design voxels of ground. At K = 1 a full 512 footprint is exactly the
+ * legacy 64×32 diamond; K > 1 only grows the render for inspection. The 0.5 on
+ * the vertical term is not cosmetic — without it sprites come out twice as tall
+ * as the tiles they sit in, and the baked view normals (which use the 1:2
+ * ground/height ratio) no longer agree with the projection. Because the model is never resampled, every azimuth (22.5°,
  * 11.25°, anything) is exact, and the same pass emits albedo, view-space
  * normals and a material id map with a real depth buffer.
  *
@@ -70,7 +75,7 @@ export function cameraBasis(azimuthDeg, k = 4) {
       const w = z / VOXELS_PER_TILE_UNIT;
       const X = u * cos - v * sin;
       const Y = u * sin + v * cos;
-      return [(X - Y) * 0.5 * k, ((X + Y) * 0.5 - w) * k];
+      return [(X - Y) * 0.5 * k, ((X + Y) * 0.5 - w) * 0.5 * k];
     },
     /** Larger == closer to the viewer. */
     depth(x, y, z) {
