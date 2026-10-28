@@ -209,19 +209,37 @@ export function castTurret(c, {
   levels = 3,
   taper = 6,
   chamfer = 30,
+  sub = 4,                // vertical sub-step, in voxels
   part = 'turret',
   mat = 'team.hull',
 }) {
   c.part(part);
   const h = z1 - z0;
+  // Each declared level is cut into `sub`-voxel slabs whose footprint is taken
+  // from the *bottom* of the slab, so consecutive slabs differ by one taper
+  // voxel and the exposed annulus is one voxel wide.
+  //
+  // This matters more than it sounds. `taper` spread over three or four tall
+  // levels leaves 5–10 voxel treads on the shell, and a tread that wide catches
+  // the key light on its own top face: the turret reads as a ziggurat. Sub-
+  // stepping turns the same slope into a ramp. It is free at runtime — 4 voxels
+  // is a quarter of a pixel in the 64 px sprite — but it is the difference
+  // between "cast turret" and "wedding cake" in the review sheets.
   for (let i = 0; i < levels; i++) {
     const za = z0 + Math.round((i * h) / levels);
     const zb = z0 + Math.round(((i + 1) * h) / levels);
-    const hx = halfX - taper * i;
-    const hy = halfY - taper * i;
+    const n = Math.max(1, Math.round((zb - za) / sub));
     const ch = Math.max(8, chamfer - i * 2);
-    c.box(cx - hx, cy - (hy - ch), za, cx + hx, cy + (hy - ch), zb, mat);
-    c.box(cx - (hx - ch), cy - hy, za, cx + (hx - ch), cy + hy, zb, mat);
+    for (let s = 0; s < n; s++) {
+      const sa = za + Math.round(((zb - za) * s) / n);
+      const sb = za + Math.round(((zb - za) * (s + 1)) / n);
+      const inset = taper * (i + s / n);
+      const hx = halfX - inset;
+      const hy = halfY - inset;
+      const chs = Math.max(8, ch - s);
+      c.box(cx - hx, cy - (hy - chs), sa, cx + hx, cy + (hy - chs), sb, mat);
+      c.box(cx - (hx - chs), cy - hy, sa, cx + (hx - chs), cy + hy, sb, mat);
+    }
   }
   c.part('body');
   return c;
