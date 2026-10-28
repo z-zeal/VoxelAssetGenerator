@@ -134,8 +134,29 @@ game_assets/
 ```
 
 Runtime rule for composition: for every part of one entity, draw at
-`screen = entityTilePos + part.facings[f].anchor`; for rotation, rotate the part's image about
-`part.facings[f].pivot` by the desired traverse angle. Because `anchor` is shared (it is the projection of
+`screen = entityTilePos + part.facings[f].anchor`.
+
+### Traversal contract (do not rotate sprites)
+
+**A turret traverse is not an image rotation.** Rotating a sprite in the image plane about its pivot
+produces a spin about the *view* axis, which is not a yaw and reads as wrong immediately. Traverse works by
+selecting a different baked facing for the dynamic part and registering it by its **world pivot**:
+
+1. `design = (sceneFacing.angle + traverseDeg) mod 360`, snapped to the 22.5° grid.
+2. Query the part's sheet at `facing = facingAt(design)` — the same model photographed from another azimuth,
+   so its silhouette is physically correct rather than a rotated flat image.
+3. Place it with `offset = sceneFacing.screenMatrix · (part.pivotDesign − groundCentre) − part.facings[f].pivot`.
+
+`screenMatrix` (a 2×3 design-voxel→pixel projection, per facing) is in the manifest for exactly this, so a
+runtime never has to concatenate crop offsets. Granularity is the facing grid: 22.5° for units.
+
+Painter order: static structure first, then dynamic parts far-to-near. A per-part centroid depth alone is
+insufficient — once a turret swings to a facing where its centroid is deeper than the hull's, the hull paints
+over it. Dynamic parts are mounted *above* their host, so they must draw after it.
+
+**Elevation needs geometry.** Gun elevation changes the actual silhouette (the barrel rises), which is a
+different pose, not a different azimuth — it requires a re-bake (`barrel.pitch`) and is not a runtime
+transform. Animation clips remain the follow-up pass (D12). Because `anchor` is shared (it is the projection of
 the design-space ground centre `(256, 256, 0)` for that facing), the parts align with no per-part offsets.
 
 ---

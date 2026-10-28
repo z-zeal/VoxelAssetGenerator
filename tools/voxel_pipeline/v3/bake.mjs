@@ -171,10 +171,25 @@ export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, outRoot =
     superSample: ss,
     pxPerVoxel: k / (CANVAS / 64),
     facings: facings.map(f => f.id),
-    facingMeta: facings.map(f => ({
-      ...f,
-      viewDir: cameraBasis(f.angle, k).dHat,
-    })),
+    facingMeta: facings.map(f => {
+      const basis = cameraBasis(f.angle, k);
+      const G = [CANVAS / 2, CANVAS / 2, 0];
+      const p0 = basis.project(G[0], G[1], G[2]);
+      // 2x3 row-major: design-voxel offset from the ground centre -> pixels.
+      // A segmented part can then be registered by its WORLD pivot instead of
+      // by concatenating crop offsets: screenPos = screenMatrix · (pivot - G).
+      const col = (dx, dy, dz) => {
+        const q = basis.project(G[0] + dx, G[1] + dy, G[2] + dz);
+        return [q[0] - p0[0], q[1] - p0[1]];
+      };
+      const c0 = col(1, 0, 0), c1 = col(0, 1, 0), c2 = col(0, 0, 1);
+      return {
+        ...f,
+        viewDir: basis.dHat,
+        screenMatrix: [c0[0], c1[0], c2[0], c0[1], c1[1], c2[1]],
+        groundCentre: G,
+      };
+    }),
     teamTint: {
       note: 'Albedo is baked in the standard livery. Recolour pixels whose material map red channel matches these ids to apply an army livery.',
       materialIds: Object.entries(MATERIALS).filter(([, m]) => m.team).map(([name]) => ({ name, id: MATERIAL_IDS[name], role: MATERIALS[name].team })),

@@ -124,6 +124,11 @@
     </div>
 
     <h3>Parts <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(segmented)</span></h3>
+    <div class="row"><label>Traverse</label><input type="range" id="traverse" min="0" max="337.5" step="22.5" value="0"><span class="val" id="traverseVal">0°</span></div>
+    <div style="font-size:10px;color:var(--muted);margin:-2px 0 8px">
+      Dynamic parts re-draw from the baked facing at this angle and register on their world pivot —
+      a real traverse, not an image rotation. Elevation needs a re-bake.
+    </div>
     <div id="parts"></div>
     <div class="seg" style="margin-top:8px">
       <button id="allParts">Show all</button>
@@ -151,7 +156,8 @@ const state = {
   rig: true,
   specular: true,
   sweep: false,
-  parts: new Map(),      // name -> { visible, rotate }
+  parts: new Map(),      // name -> { visible }
+  traverse: 0,           // degrees added to dynamic parts (snapped to 22.5°)
   cache: new Map(),      // key -> ImageData
   composite: null,
   thumbCache: new Map(),
@@ -199,73 +205,75 @@ async function loadPartMaps(partName, facing) {
   return { a, n, m, entry };
 }
 
-function blitPart(dst, dstW, dstH, src, ox, oy, rotateDeg, pivot) {
-  const sw = src.width, sh = src.height;
-  const sx = src.data;
-  const cos = Math.cos((rotateDeg * Math.PI) / 180);
-  const sin = Math.sin((rotateDeg * Math.PI) / 180);
-  const px = pivot ? pivot[0] : 0;
-  const py = pivot ? pivot[1] : 0;
-
-  if (!rotateDeg) {
-    for (let y = 0; y < sh; y++) {
-      const dy = y + oy;
-      if (dy < 0 || dy >= dstH) continue;
-      for (let x = 0; x < sw; x++) {
-        const dx = x + ox;
-        if (dx < 0 || dx >= dstW) continue;
-        dst(dx, dy, (y * sw + x) * 4, sx);
-      }
-    }
-    return;
-  }
-
-  // Inverse-map the rotated bounding box so there are no holes.
-  const corners = [[0, 0], [sw, 0], [0, sh], [sw, sh]].map(([x, y]) => [
-    cos * (x - px) - sin * (y - py) + px + ox,
-    sin * (x - px) + cos * (y - py) + py + oy,
-  ]);
-  const bx0 = Math.max(0, Math.floor(Math.min(...corners.map(c => c[0]))));
-  const bx1 = Math.min(dstW - 1, Math.ceil(Math.max(...corners.map(c => c[0]))));
-  const by0 = Math.max(0, Math.floor(Math.min(...corners.map(c => c[1]))));
-  const by1 = Math.min(dstH - 1, Math.ceil(Math.max(...corners.map(c => c[1]))));
-  for (let dy = by0; dy <= by1; dy++) {
-    for (let dx = bx0; dx <= bx1; dx++) {
-      const relX = dx - ox - px;
-      const relY = dy - oy - py;
-      const sxp = Math.round(cos * relX + sin * relY + px);
-      const syp = Math.round(-sin * relX + cos * relY + py);
-      if (sxp < 0 || syp < 0 || sxp >= sw || syp >= sh) continue;
-      dst(dx, dy, (syp * sw + sxp) * 4, sx);
+function blitPart(dst, dstW, dstH, src, ox, oy) {
+  const sw = src.width, sh = src.height, sx = src.data;
+  for (let y = 0; y < sh; y++) {
+    const dy = Math.round(y + oy);
+    if (dy < 0 || dy >= dstH) continue;
+    for (let x = 0; x < sw; x++) {
+      const dx = Math.round(x + ox);
+      if (dx < 0 || dx >= dstW) continue;
+      const s = (y * sw + x) * 4;
+      if (sx[s + 3] === 0) continue;
+      dst(dx, dy, s);
     }
   }
 }
 
+/** Facing id shifted `steps` positions around the 16-direction ring. */
+function shiftFacing(facing, steps) {
+  const list = state.manifest.facings;
+  const i = list.indexOf(facing);
+  if (i < 0) return facing;
+  return list[(((i + steps) % list.length) + list.length) % list.length];
+}
+
+/** Project a design-space pivot through the SCENE facing's screen matrix. */
+function projectPivot(sceneMeta, pivotDesign) {
+  const M = sceneMeta.screenMatrix;
+  const G = sceneMeta.groundCentre;
+  const dx = pivotDesign[0] - G[0];
+  const dy = pivotDesign[1] - G[1];
+  const dz = (pivotDesign[2] ?? 0) - G[2];
+  return [M[0] * dx + M[1] * dy + M[2] * dz, M[3] * dx + M[4] * dy + M[5] * dz];
+}
+
 async function buildComposite() {
   const m = state.manifest;
-  const facing = state.facing;
+  const sceneFacing = state.facing;
+  const meta = m.facingMeta.find(f => f.id === sceneFacing);
   const visible = [...state.parts.entries()].filter(([, v]) => v.visible).map(([k]) => k);
   if (!visible.length) { state.composite = null; return; }
 
-  // Shared-anchor placement, identical to the baker: ox = maxAnchorX - anchorX.
-  const anchors = visible.map(name => m.parts[name].facings[facing]);
-  const maxAx = Math.max(...anchors.map(a => a.anchor[0]));
-  const maxAy = Math.max(...anchors.map(a => a.anchor[1]));
+  // A traversing part is NOT rotated in the image plane — that is not a yaw.
+  // It is drawn from a DIFFERENT baked facing (the same model photographed from
+  // another azimuth) and then registered by its world pivot, so it pivots on
+  // its own ring exactly like the real part would.
+  const steps = Math.round(state.traverse / 22.5) % 16;
 
-  const maps = await Promise.all(visible.map(name => loadPartMaps(name, facing)));
+  const pick = visible.map(name => ({
+    name,
+    partMeta: m.parts[name],
+    facing: m.parts[name].dynamic ? shiftFacing(sceneFacing, steps) : sceneFacing,
+  }));
 
-  // Composite bounds.
+  const maps = await Promise.all(pick.map(p => loadPartMaps(p.name, p.facing)));
+
   let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
   const placed = [];
-  for (let i = 0; i < visible.length; i++) {
+  for (let i = 0; i < pick.length; i++) {
+    const { name, partMeta, facing } = pick[i];
     const { a, entry } = maps[i];
-    const ox = maxAx - entry.anchor[0];
-    const oy = maxAy - entry.anchor[1];
-    placed.push({ name: visible[i], ox, oy, w: a.width, h: a.height,
-      rotate: state.parts.get(visible[i]).rotate, pivot: entry.pivot,
-      // Painter order comes from the baker's per-facing centroid depth, so it
-      // stays correct as the facing and the turret rotation change.
-      depth: entry.depth ?? 0 });
+    // Where the part's world pivot must appear on screen (scene camera), minus
+    // where that pivot sits inside the part's own crop.
+    const target = projectPivot(meta, partMeta.pivotDesign);
+    const ox = target[0] - entry.pivot[0];
+    const oy = target[1] - entry.pivot[1];
+    placed.push({
+      name, ox, oy, w: a.width, h: a.height,
+      depth: entry.depth ?? 0,
+      dynamic: !!partMeta.dynamic,
+    });
     minX = Math.min(minX, ox); minY = Math.min(minY, oy);
     maxX = Math.max(maxX, ox + a.width); maxY = Math.max(maxY, oy + a.height);
   }
@@ -278,7 +286,13 @@ async function buildComposite() {
   const M = new Uint8ClampedArray(W * H * 4);
   const cov = new Uint8Array(W * H);
 
-  placed.sort((p, q) => p.depth - q.depth);      // far to near
+  // Painter order: static structure first, then dynamic parts far-to-near.
+  // A per-part centroid depth alone is not enough — once a turret swings to a
+  // facing where its centroid is deeper than the hull's, the hull would paint
+  // straight over it. Dynamic parts are mounted above their host, so they must
+  // draw after it; among themselves they still sort by depth (barrel in front
+  // of turret when it points forward, behind it when it points back).
+  placed.sort((p, q) => (p.dynamic - q.dynamic) || (p.depth - q.depth));
 
   for (const p of placed) {
     const idx = visible.indexOf(p.name);
@@ -300,7 +314,7 @@ async function buildComposite() {
       // Material ids must never blend: an average of two ids is a third id.
       M[d] = mat.data[s];   M[d + 1] = mat.data[s + 1];
       M[d + 2] = mat.data[s + 2]; M[d + 3] = mat.data[s + 3];
-    }, W, H, a, ox, oy, p.rotate, p.pivot);
+    }, W, H, a, ox, oy);
   }
 
   state.composite = { W, H, A, N, M, cov };
@@ -466,7 +480,7 @@ async function selectAsset(id) {
   state.thumbCache.clear();
   state.parts = new Map();
   for (const [name, p] of Object.entries(state.manifest.parts)) {
-    state.parts.set(name, { visible: true, rotate: 0 });
+    state.parts.set(name, { visible: true });
   }
   renderAssetList();
   renderFacings();
@@ -513,11 +527,10 @@ function renderParts() {
       tag.className = 'tag';
       tag.textContent = 'DYNAMIC';
       row.appendChild(tag);
-      const rot = document.createElement('input');
-      rot.type = 'range'; rot.min = '-180'; rot.max = '180'; rot.value = st.rotate; rot.title = 'rotate about pivot';
-      rot.oninput = () => { st.rotate = Number(rot.value); render(); };
-      rot.onchange = () => rebuild();
-      row.appendChild(rot);
+      const info = document.createElement('span');
+      info.style.cssText = 'font-size:10px;color:var(--muted);font-variant-numeric:tabular-nums';
+      info.textContent = `${meta.facings ? Object.keys(meta.facings).length : 0} facings`;
+      row.appendChild(info);
     }
     box.appendChild(row);
   }
@@ -603,8 +616,16 @@ $('#allParts').onclick = () => {
   rebuild();
 };
 $('#resetPivots').onclick = () => {
-  for (const st of state.parts.values()) st.rotate = 0;
-  renderParts();
+  state.traverse = 0;
+  $('#traverse').value = 0;
+  $('#traverseVal').textContent = '0°';
+  rebuild();
+};
+$('#traverse').oninput = () => {
+  const raw = Number($('#traverse').value);
+  const snapped = Math.round(raw / 22.5) * 22.5;
+  state.traverse = snapped;
+  $('#traverseVal').textContent = `${snapped}°`;
   rebuild();
 };
 
