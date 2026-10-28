@@ -75,6 +75,12 @@ Status as of this commit — **B0 done, B1 done, B2 in progress**. One asset (`t
 - [x] **Contact strip** (`tools/voxel_pipeline/v3/contact.mjs` → `contact.png`) for whole-roster review.
 - [x] Turret rebuilt flush on the ring (no floating plinth) and the barrel now clears the turret shell.
 - [x] 16-facing distinctness verified programmatically (8×8 silhouette signature: **no duplicate pairs**).
+- [x] **Traverse fixed twice:** first the gallery rotated sprites in the image plane (a view-axis spin, not a
+      yaw); now dynamic parts re-query a different baked facing and register on their world pivot.
+- [x] **Parent chain added** (`c.parent('barrel','turret')` → `parts[].parent`): a mounted part's pivot is
+      orbited about its parent's pivot, so the gun follows the turret instead of being left behind.
+- [x] Barrel reworked for silhouette: mantlet narrowed (87 → 60 voxels wide), tube slimmed to 22 voxels, gun
+      lengthened to overhang the hull nose by 40 voxels so the traverse is legible at game scale.
 - [x] Turret ring registration checked across all 16 facings via the composite strips.
 - [ ] **Modelling pass (open):** the hull still reads slab-sided and the ground wheels could sit tighter in
       the track band. Proportions need another iteration — geometry work, not a pipeline change.

@@ -146,6 +146,9 @@ selecting a different baked facing for the dynamic part and registering it by it
 2. Query the part's sheet at `facing = facingAt(design)` — the same model photographed from another azimuth,
    so its silhouette is physically correct rather than a rotated flat image.
 3. Place it with `offset = sceneFacing.screenMatrix · (part.pivotDesign − groundCentre) − part.facings[f].pivot`.
+4. **Honour the parent chain.** A part mounted on another dynamic part (a gun on a turret ring) has its pivot
+   *orbited* about its parent's pivot by the same angle, transitively. Without this the turret traverses and
+   leaves its barrel behind in mid-air — the pivot has to move, not just the sprite.
 
 `screenMatrix` (a 2×3 design-voxel→pixel projection, per facing) is in the manifest for exactly this, so a
 runtime never has to concatenate crop offsets. Granularity is the facing grid: 22.5° for units.
@@ -166,7 +169,7 @@ the design-space ground centre `(256, 256, 0)` for that facing), the parts align
 | Family | Required parts | Rotates at runtime |
 | --- | --- | --- |
 | Foot infantry | `body`, `legL`, `legR`, `upper`, `weapon` | leg gait, weapon aim |
-| Tracked vehicle | `body`, `running.L`, `running.R`, `turret`, `barrel` | turret traverse, gun elevation, tread wrap |
+| Tracked vehicle | `body`, `running.L`, `running.R`, `turret`, `barrel` | turret traverse, gun elevation, tread wrap — `barrel.parent = "turret"` |
 | Wheeled vehicle | `body`, `wheels`, `turret`, `barrel` (where fitted) | wheel spin, turret |
 | Rotary air | `body`, `rotorMain`, `rotorTail` | rotor spin |
 | Jet | `body`, `gear`, `stores` | gear retract, store drop |
@@ -176,7 +179,8 @@ the design-space ground centre `(256, 256, 0)` for that facing), the parts align
 | Production building | `body`, `door`, plus `crane`/`fan` where animated | door open/close |
 
 Naming is enforced by `validate.mjs` (`requiredParts` per asset), so a model cannot silently lose its
-segmentation.
+segmentation. Mounting relationships are declared in the sculptor with `c.parent(child, parent)` and land in
+the manifest as `parts[].parent`.
 
 ---
 

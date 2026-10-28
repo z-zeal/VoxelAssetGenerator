@@ -228,14 +228,75 @@ function shiftFacing(facing, steps) {
   return list[(((i + steps) % list.length) + list.length) % list.length];
 }
 
-/** Project a design-space pivot through the SCENE facing's screen matrix. */
-function projectPivot(sceneMeta, pivotDesign) {
-  const M = sceneMeta.screenMatrix;
-  const G = sceneMeta.groundCentre;
-  const dx = pivotDesign[0] - G[0];
-  const dy = pivotDesign[1] - G[1];
-  const dz = (pivotDesign[2] ?? 0) - G[2];
-  return [M[0] * dx + M[1] * dy + M[2] * dz, M[3] * dx + M[4] * dy + M[5] * dz];
+/** Rotate a design-space point about a pivot by deg (yaw, +Z up). */
+function yawAbout(point, pivot, deg) {
+  const rad = (deg * Math.PI) / 180;
+  const c = Math.cos(rad), s = Math.sin(rad);
+  const dx = point[0] - pivot[0];
+  const dy = point[1] - pivot[1];
+  return [pivot[0] + dx * c - dy * s, pivot[1] + dx * s + dy * c, point[2]];
+}
+
+/**
+ * World transform for one part at the current traverse.
+ *
+ * A dynamic part is drawn from a shifted baked facing, and a part mounted on
+ * another part (a gun on a turret ring) has its pivot ORBITED about the parent's
+ * pivot — otherwise the turret swings away and leaves the barrel behind.
+ */
+function partTransform(name, sceneFacing, steps) {
+  const m = state.manifest;
+  const meta = m.facingMeta.find(f => f.id === sceneFacing);
+  const pmeta = m.parts[name];
+  const dynamic = !!pmeta.dynamic;
+
+  let pivot = pmeta.pivotDesign.slice();
+  let facing = sceneFacing;
+  let depthOffset = 0;
+
+  if (dynamic) {
+    facing = shiftFacing(sceneFacing, steps);
+    // Walk the parent chain: each dynamic ancestor contributes its own yaw.
+    let cursor = pmeta;
+    const guard = new Set();
+    while (cursor && cursor.parent && !guard.has(cursor.name)) {
+      guard.add(cursor.name);
+      const parent = m.parts[cursor.parent];
+      if (!parent) break;
+      pivot = yawAbout(pivot, parent.pivotDesign, steps * 22.5);
+      cursor = parent;
+    }
+  }
+
+  // World pivot -> screen, through the scene camera.
+  const M = meta.screenMatrix, G = meta.groundCentre;
+  const dx = pivot[0] - G[0], dy = pivot[1] - G[1], dz = (pivot[2] ?? 0) - G[2];
+  const screen = [M[0] * dx + M[1] * dy + M[2] * dz, M[3] * dx + M[4] * dy + M[5] * dz];
+
+  // Depth straight from the world transform, so ordering survives a traverse.
+  const bounds = m.sourceGeometry.parts.find(p => p.name === name)?.bounds;
+  if (bounds) {
+    let centroid = [
+      (bounds.minX + bounds.maxX) / 2,
+      (bounds.minY + bounds.maxY) / 2,
+      (bounds.minZ + bounds.maxZ) / 2,
+    ];
+    if (dynamic) {
+      let cursor = pmeta;
+      const guard = new Set();
+      while (cursor && cursor.parent && !guard.has(cursor.name)) {
+        guard.add(cursor.name);
+        const parent = m.parts[cursor.parent];
+        if (!parent) break;
+        centroid = yawAbout(centroid, parent.pivotDesign, steps * 22.5);
+        cursor = parent;
+      }
+    }
+    const v = meta.viewDir;
+    depthOffset = v[0] * (centroid[0] - G[0]) + v[1] * (centroid[1] - G[1]) + v[2] * (centroid[2] - G[2]);
+  }
+
+  return { facing, screen, depth: depthOffset, dynamic };
 }
 
 async function buildComposite() {
@@ -251,29 +312,19 @@ async function buildComposite() {
   // its own ring exactly like the real part would.
   const steps = Math.round(state.traverse / 22.5) % 16;
 
-  const pick = visible.map(name => ({
-    name,
-    partMeta: m.parts[name],
-    facing: m.parts[name].dynamic ? shiftFacing(sceneFacing, steps) : sceneFacing,
-  }));
-
-  const maps = await Promise.all(pick.map(p => loadPartMaps(p.name, p.facing)));
+  const pick = visible.map(name => ({ name, xf: partTransform(name, sceneFacing, steps) }));
+  const maps = await Promise.all(pick.map(p => loadPartMaps(p.name, p.xf.facing)));
 
   let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
   const placed = [];
   for (let i = 0; i < pick.length; i++) {
-    const { name, partMeta, facing } = pick[i];
+    const { name, xf } = pick[i];
     const { a, entry } = maps[i];
-    // Where the part's world pivot must appear on screen (scene camera), minus
-    // where that pivot sits inside the part's own crop.
-    const target = projectPivot(meta, partMeta.pivotDesign);
-    const ox = target[0] - entry.pivot[0];
-    const oy = target[1] - entry.pivot[1];
-    placed.push({
-      name, ox, oy, w: a.width, h: a.height,
-      depth: entry.depth ?? 0,
-      dynamic: !!partMeta.dynamic,
-    });
+    // Target screen position of the part's world pivot, minus where that pivot
+    // sits inside the part's own crop.
+    const ox = xf.screen[0] - entry.pivot[0];
+    const oy = xf.screen[1] - entry.pivot[1];
+    placed.push({ name, ox, oy, w: a.width, h: a.height, depth: xf.depth, dynamic: xf.dynamic });
     minX = Math.min(minX, ox); minY = Math.min(minY, oy);
     maxX = Math.max(maxX, ox + a.width); maxY = Math.max(maxY, oy + a.height);
   }

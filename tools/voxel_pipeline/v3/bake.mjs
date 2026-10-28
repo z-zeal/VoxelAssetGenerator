@@ -203,6 +203,7 @@ export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, outRoot =
       parts: geom.parts.map(p => ({
         name: p.name,
         dynamic: p.dynamic,
+        parent: p.parent ?? null,
         voxels: p.voxels.length,
         pivotDesign: p.pivot,
         bounds: p.bounds,
@@ -218,6 +219,9 @@ export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, outRoot =
     const entry = {
       name: part.name,
       dynamic: part.dynamic,
+      // Mounted-on part: the runtime rotates this part's pivot about the
+      // parent's pivot when the parent traverses.
+      parent: part.parent ?? null,
       pivotDesign: part.pivot,
       facings: {},
     };
