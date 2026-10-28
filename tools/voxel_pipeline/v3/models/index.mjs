@@ -10,6 +10,8 @@
  * 4 legacy cardinal poses and never more.
  */
 import { buildTank } from './tank.mjs';
+import { buildApc } from './apc.mjs';
+import { buildHeavy } from './heavy.mjs';
 import { buildBarracks } from './barracks.mjs';
 import { buildAtTurret } from './at-turret.mjs';
 
@@ -20,6 +22,22 @@ export const MODELS = {
     group: 'vehicles.tracked',
     label: 'Light Tank',
     build: buildTank,
+    requiredParts: ['body', 'turret', 'barrel'],
+  },
+  apc: {
+    kind: 'unit',
+    folder: 'units',
+    group: 'vehicles.tracked',
+    label: 'Armoured Personnel Carrier',
+    build: buildApc,
+    requiredParts: ['body', 'turret', 'barrel'],
+  },
+  heavy: {
+    kind: 'unit',
+    folder: 'units',
+    group: 'vehicles.tracked',
+    label: 'Heavy Tank',
+    build: buildHeavy,
     requiredParts: ['body', 'turret', 'barrel'],
   },
   barracks: {

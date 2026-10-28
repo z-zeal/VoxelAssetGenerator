@@ -183,6 +183,11 @@ the design-space ground centre `(256, 256, 0)` for that facing), the parts align
 
 ## 5. Segmentation contract
 
+Builders share kits rather than copy-pasting geometry: `kit.mjs` (vehicle fittings), `kit-vehicles.mjs`
+(tracked running gear, hull, engine deck, **octagonal cast turret**), `kit-buildings.mjs` (architecture),
+all re-exported through `kit-init.mjs`. A tracked vehicle is a chassis configuration plus a turret; the
+`WHEEL_INSET` and sponson-chamfer rules live in the kit, so they cannot be forgotten one model at a time.
+
 | Family | Required parts | Rotates at runtime |
 | --- | --- | --- |
 | Foot infantry | `body`, `legL`, `legR`, `upper`, `weapon` | leg gait, weapon aim |

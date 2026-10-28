@@ -65,7 +65,10 @@ export const BUILDING_FACINGS = [
  * tile. Review images are rendered separately at PREVIEW_K for eyeballing.
  */
 export const RUNTIME_K = 1;
-export const PREVIEW_K = 4;
+// Review images only: 8 puts a design voxel at half a pixel, which is where
+// silhouette and attachment can actually be judged. Override with
+// VOXEL_PREVIEW_K when a part needs a closer look; runtime sheets never change.
+export const PREVIEW_K = Number(process.env.VOXEL_PREVIEW_K ?? 8);
 // ss = 4 samples per output pixel. At runtime scale one pixel covers ~8 design
 // voxels per axis, so 4 samples is the smallest grid that stops the downsample
 // from aliasing into noise; it costs ~2x the bake time, not 4x (the work is per

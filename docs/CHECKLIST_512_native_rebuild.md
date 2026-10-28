@@ -140,10 +140,29 @@ while the structure stays put. ✅ (Gate met; art detail iterates with the rest 
 
 ---
 
-## B4 · Land units (three sub-batches)
+## B4 · Land units (three sub-batches) — **in progress**
 
-- [ ] **B4a tracked** — `apc`, `heavy`, `artillery`, `antiair`, `mega`, `bastion`, `aegis`, `ifv`,
-      `tank-destroyer`, `flame-tank`, `amphibious-tank`, `mine-layer`, `mobile-repair`, `mine-clearing`.
+- [x] **Shared chassis kit** (`tools/voxel_pipeline/v3/kit-vehicles.mjs`): `trackGear()` (track loop,
+      wheels, sprocket with real teeth, idler, return rollers, fender, optional skirt), `trackedHull()`
+      (belly, lower sides, **stair-stepped sponson chamfer**, deck plate, swept glacis), `engineDeck()`,
+      `castTurret()` (octagonal plan, tapered per level), `applique()`, `stowageRail()`.
+- [x] **Two B2 defects fixed at the source, not per model:**
+      * *road wheels proud of the track* — a wheel is now always placed `WHEEL_INSET = 3` voxels **inboard**
+        of the band's outer face, so the track ribbon paints over it and it only reads through the loop's
+        opening;
+      * *slab-sided hull* — the sponson is a three-step chamfer, not one vertical wall from belly to deck.
+- [x] `tank` ported onto the kit (still 16 facings / 5 parts) — 890,270 voxels, 0.15 MB, and the turret was
+      rebuilt twice: box slabs read as a bunker, `cylZ` rings read as a cake tin, an **octagonal tapered
+      plan** reads as a turret.
+- [x] `apc` — tall troop box, four firing ports a flank, rear ramp, roof kit, MG ring (`turret` + `barrel`,
+      so an APC's gun traverses like a tank's). 1,061,824 voxels, 240 PNG.
+- [x] `heavy` — six road wheels, wider track, steeper glacis, much larger octagonal turret with a long
+      bustle and basket, longer gun overhanging the nose. 1,208,391 voxels, 240 PNG.
+- [x] **Preview scale raised to 8** (`PREVIEW_K`): a design voxel at half a pixel is the smallest preview
+      where silhouette and part attachment can actually be judged. `VOXEL_PREVIEW_K` overrides it.
+- [ ] **B4a remaining** — `artillery`, `antiair`, `mega`, `bastion`, `aegis`, `ifv`, `tank-destroyer`,
+      `flame-tank`, `amphibious-tank`, `mine-layer`, `mobile-repair`, `mine-clearing` (+ `tank`, `apc`,
+      `heavy` done).
 - [ ] **B4b wheeled** — `recon`, `rockets`, `missiles`, `supply-truck`, `command-vehicle`.
 - [ ] **B4c foot** — `infantry`, `mech`, `engineer`, `medic`, `rocket-infantry`, `aa-infantry`, `sniper`,
       `grenadier`, `flamethrower`, `demolitionist`, `commando`, `officer`, `spy`, `elite-hero`,
@@ -151,6 +170,11 @@ while the structure stays put. ✅ (Gate met; art detail iterates with the rest 
 - [ ] Each asset: sculpt → `validate.mjs` → bake → preview → review.
 
 **Gate per sub-batch:** every asset bakes, budget met, parts present, previews reviewed.
+
+**Open art notes for B4a** — the turret/hull balance is close but not settled: the tank's deck still reads
+as a large flat plane at preview scale, and the APC's MG ring is heavy. Both are shape problems, not
+pipeline problems, and are cheaper to fix once the rest of the family exists and can be compared side by
+side.
 
 ---
 
