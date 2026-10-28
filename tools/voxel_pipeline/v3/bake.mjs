@@ -62,21 +62,37 @@ function partFileName(asset, part, facing, map) {
   return `${asset}__${part}__${facing}__${map}.png`;
 }
 
-/** Composite every part of one facing into a single preview PNG. */
-function compositePreview(parts, anchor, pad = 8) {
+/**
+ * Composite part renders onto one canvas using their shared ground anchor.
+ *
+ * A part's pixel (px, py) sits at world offset (px - anchor), so to place every
+ * part on one canvas each is drawn at `ox = originX + maxAnchorX - anchorX`
+ * (and the same for y). Getting that sign wrong scatters the parts — which is
+ * exactly the bug this replaces: the barrel used to land 2×120 px from its ring.
+ *
+ * Parts are drawn far-to-near using their centroid depth so overlaps read
+ * correctly; the authoritative preview is still the single-pass render, this is
+ * the anchor/segmentation check.
+ */
+function compositePreview(parts, pad = 8) {
+  const maxAx = Math.max(...parts.map(p => p.anchor[0]));
+  const maxAy = Math.max(...parts.map(p => p.anchor[1]));
   let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
   for (const p of parts) {
-    minX = Math.min(minX, -p.anchor[0]);
-    minY = Math.min(minY, -p.anchor[1]);
-    maxX = Math.max(maxX, p.w - p.anchor[0]);
-    maxY = Math.max(maxY, p.h - p.anchor[1]);
+    const ox = maxAx - p.anchor[0];
+    const oy = maxAy - p.anchor[1];
+    minX = Math.min(minX, ox);
+    minY = Math.min(minY, oy);
+    maxX = Math.max(maxX, ox + p.w);
+    maxY = Math.max(maxY, oy + p.h);
   }
   const w = Math.ceil(maxX - minX) + pad * 2;
   const h = Math.ceil(maxY - minY) + pad * 2;
   const out = new Uint8ClampedArray(w * h * 4);
-  for (const p of parts) {
-    const ox = Math.round(p.anchor[0] + minX) + pad;
-    const oy = Math.round(p.anchor[1] + minY) + pad;
+  const ordered = [...parts].sort((a, b) => a.depth - b.depth);
+  for (const p of ordered) {
+    const ox = Math.round(maxAx - p.anchor[0] - minX) + pad;
+    const oy = Math.round(maxAy - p.anchor[1] - minY) + pad;
     for (let y = 0; y < p.h; y++) {
       for (let x = 0; x < p.w; x++) {
         const s = (y * p.w + x) * 4;
@@ -87,14 +103,24 @@ function compositePreview(parts, anchor, pad = 8) {
         const d = (dy * w + dx) * 4;
         const da = out[d + 3] / 255;
         const oa = a + da * (1 - a);
-        for (let i = 0; i < 3; i++) {
-          out[d + i] = (p.albedo[s + i] * a + out[d + i] * da * (1 - a)) / (oa || 1);
-        }
+        for (let i = 0; i < 3; i++) out[d + i] = (p.albedo[s + i] * a + out[d + i] * da * (1 - a)) / (oa || 1);
         out[d + 3] = oa * 255;
       }
     }
   }
-  return { w, h, buf: Buffer.from(out.buffer, out.byteOffset, out.length), minX, minY };
+  return { w, h, buf: Buffer.from(out.buffer, out.byteOffset, out.length) };
+}
+
+/**
+ * Single-pass render of the whole model: every part's voxels in one depth
+ * buffer. This is the authoritative preview because occlusion between parts
+ * (turret ring inside hull, barrel over deck) is resolved by real depth instead
+ * of by draw order.
+ */
+function renderWhole(parts, { basis, palette, superSample, occluders }) {
+  const all = [];
+  for (const p of parts) for (const v of p.voxels) all.push(v);
+  return renderPart(all, { basis, palette, superSample, occluders });
 }
 
 export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, outRoot = ROOT } = {}) {
@@ -110,6 +136,7 @@ export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, outRoot =
   for (const part of geom.parts) for (const [x, y, z] of part.voxels) occluders.add(`${x},${y},${z}`);
 
   const facings = def.kind === 'unit' ? UNIT_FACINGS : BUILDING_FACINGS;
+  const PREVIEW_FACING = def.kind === 'unit' ? 'd00' : 'right';
   const assetDir = path.join(outRoot, 'game_assets', def.folder, id);
   const sheetDir = path.join(assetDir, 'sheets');
   fs.mkdirSync(sheetDir, { recursive: true });
@@ -147,16 +174,22 @@ export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, outRoot =
     },
   };
 
-  const previewParts = [];
+  // Pass 1: render every part at every facing, write the per-part sheets.
+  // Renders are kept in memory only for the composite pass below (few MB).
+  const byFacing = facings.map(() => []);
   for (const part of geom.parts) {
     const entry = {
       name: part.name,
       dynamic: part.dynamic,
       pivotDesign: part.pivot,
-      cell: null,
       facings: {},
     };
-    for (const facing of facings) {
+    const centroid = [
+      (part.bounds.minX + part.bounds.maxX) / 2,
+      (part.bounds.minY + part.bounds.maxY) / 2,
+      (part.bounds.minZ + part.bounds.maxZ) / 2,
+    ];
+    facings.forEach((facing, fi) => {
       const basis = cameraBasis(facing.angle, k);
       const rendered = renderPart(part.voxels, { basis, palette, superSample: ss, occluders });
       if (!rendered) throw new Error(`${id}/${part.name}/${facing.id}: empty render`);
@@ -178,21 +211,48 @@ export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, outRoot =
         h: rendered.h,
         files,
       };
-      if (facing.id === (def.kind === 'unit' ? 'd00' : 'right')) {
-        previewParts.push({ albedo: rendered.albedo, w: rendered.w, h: rendered.h, anchor });
-      }
-    }
+      byFacing[fi].push({
+        name: part.name,
+        albedo: rendered.albedo,
+        w: rendered.w,
+        h: rendered.h,
+        anchor,
+        depth: basis.depth(centroid[0], centroid[1], centroid[2]),
+      });
+    });
     manifest.parts[part.name] = entry;
   }
 
-  const preview = compositePreview(previewParts, null);
-  fs.writeFileSync(path.join(assetDir, 'preview.png'), pngBytes(preview.w, preview.h, preview.buf));
-  manifest.preview = {
-    file: 'preview.png',
-    facing: def.kind === 'unit' ? 'd00' : 'right',
-    w: preview.w,
-    h: preview.h,
+  // Pass 2: one composite per facing, built with exactly the anchor maths a
+  // runtime performs. If this ever disagrees with preview.png an anchor is
+  // wrong, which is precisely the failure this artifact exists to catch.
+  const facingComposite = {};
+  facings.forEach((facing, fi) => {
+    const comp = compositePreview(byFacing[fi], 2);
+    const name = `${id}__composite__${facing.id}__albedo.png`;
+    const blob = pngBytes(comp.w, comp.h, comp.buf);
+    fs.writeFileSync(path.join(sheetDir, name), blob);
+    facingComposite[facing.id] = { file: `sheets/${name}`, w: comp.w, h: comp.h, sha256: sha256(blob) };
+  });
+  manifest.composite = {
+    note: 'every part of one facing pre-composited through the shared ground anchor',
+    facings: facingComposite,
   };
+
+  // Authoritative preview: one depth buffer for the whole model.
+  const previewFixture = facings.findIndex(f => f.id === PREVIEW_FACING);
+  const previewBasis = cameraBasis(facings[previewFixture].angle, k);
+  const whole = renderWhole(geom.parts, { basis: previewBasis, palette, superSample: ss, occluders });
+  fs.writeFileSync(path.join(assetDir, 'preview.png'),
+    pngBytes(whole.w, whole.h, Buffer.from(whole.albedo.buffer)));
+
+  const composite = compositePreview(byFacing[previewFixture]);
+  fs.writeFileSync(path.join(assetDir, 'preview-parts.png'),
+    pngBytes(composite.w, composite.h, composite.buf));
+
+  manifest.preview = { file: 'preview.png', facing: PREVIEW_FACING, w: whole.w, h: whole.h, mode: 'single-pass' };
+  manifest.previewParts = { file: 'preview-parts.png', facing: PREVIEW_FACING, w: composite.w,
+    h: composite.h, mode: 'composited-from-part-sheets' };
   fs.writeFileSync(path.join(assetDir, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
 
   const fileCount = Object.values(manifest.parts)

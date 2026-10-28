@@ -63,11 +63,21 @@ Status as of this commit — **B0 done, B1 done, B2 in progress**. One asset (`t
 - [x] `preview.png` composite written and inspected.
 - [x] Payload extrapolation: 58 units ≈ 65 MB PNG, ≈ 38 min serial / ≈ 10 min at 4 jobs — comfortably inside
       the §7.3 budgets, so 512³ stays.
-- [ ] **Modelling pass (open):** proportions are off in the first sculpt — the hull reads too tall and the
-      roadwheels sit proud of the tracks instead of tucked behind the track band. Needs a redesign
-      iteration, not a re-bake.
-- [ ] Turret ring registration check at all 16 facings.
-- [ ] 16-facing contact strip for review (also satisfies the B1 facing-uniqueness check).
+- [x] **Preview layering bug fixed:** the compositor offset sign was inverted (`maxAnchor − anchor` had the
+      sign flipped), scattering parts — the barrel landed 2×120 px from its ring. Parts are also now drawn
+      far-to-near by centroid depth instead of in part-name order. Additionally the sprite crop is aligned to
+      the supersample grid so sub-pixel drift cannot accumulate.
+- [x] **Single-pass preview added:** `preview.png` renders every part into one depth buffer, so inter-part
+      occlusion (turret ring inside hull, barrel over deck) is resolved by depth rather than draw order.
+      `preview-parts.png` re-assembles the same parts from their sheets through the shared anchor — if the
+      two ever disagree, an anchor is wrong.
+- [x] **Per-facing composites baked:** `<asset>__composite__<facing>__albedo.png` for all 16 facings.
+- [x] **Contact strip** (`tools/voxel_pipeline/v3/contact.mjs` → `contact.png`) for whole-roster review.
+- [x] Turret rebuilt flush on the ring (no floating plinth) and the barrel now clears the turret shell.
+- [x] 16-facing distinctness verified programmatically (8×8 silhouette signature: **no duplicate pairs**).
+- [x] Turret ring registration checked across all 16 facings via the composite strips.
+- [ ] **Modelling pass (open):** the hull still reads slab-sided and the ground wheels could sit tighter in
+      the track band. Proportions need another iteration — geometry work, not a pipeline change.
 - [ ] Human review pass.
 
 **Gate:** 16 distinct facings, clean part registration, proportions approved.
