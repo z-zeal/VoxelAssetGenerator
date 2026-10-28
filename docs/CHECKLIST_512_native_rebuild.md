@@ -178,9 +178,14 @@ while the structure stays put. ✅ (Gate met; art detail iterates with the rest 
       artillery 1,052,379; antiair 1,074,620; tank-destroyer 1,190,238; ifv 985,041; at-turret 950,866).
       A 4-voxel tread is a quarter of a pixel in the 64 px sprite, so nothing changes at runtime; what
       changes is that the review sheets stop lying about the shape.
-- [ ] **B4a remaining** — `flame-tank`, `amphibious-tank`, `mine-layer`, `mobile-repair`,
-      `mine-clearing` (+ `tank`, `apc`, `heavy`, `artillery`, `antiair`, `tank-destroyer`, `ifv`,
-      `mega`, `bastion` done).
+- [x] **B4a batch 4** — `flame-tank` (two 34-radius fuel drums with banding, cradle feet and a
+      blast shield on the rear deck; the `barrel` part is a **flared projector** with a pilot light,
+      not a gun; 1,041,888 vox / 240 PNG) and `amphibious-tank` (boat hull: gunwale, belt strake,
+      splash rails, tapered prow, twin shrouded propellers behind a notched transom, caged snorkel,
+      no skirts so the run drains; light thin gun; 1,134,390 / 240).
+- [ ] **B4a remaining** — `mine-layer`, `mobile-repair`, `mine-clearing` (+ `tank`, `apc`, `heavy`,
+      `artillery`, `antiair`, `tank-destroyer`, `ifv`, `mega`, `bastion`, `flame-tank`,
+      `amphibious-tank` done).
 - [ ] **B4b wheeled** — `recon`, `rockets`, `missiles`, `supply-truck`, `command-vehicle`.
 - [ ] **B4c foot** — `infantry`, `mech`, `engineer`, `medic`, `rocket-infantry`, `aa-infantry`, `sniper`,
       `grenadier`, `flamethrower`, `demolitionist`, `commando`, `officer`, `spy`, `elite-hero`,
@@ -196,7 +201,9 @@ side. Newer notes from batch 3: `artillery`'s tube is only ~84 voxels long becau
 `CX 268` with `halfX 116`, so the gun reaches x500 and barely overhangs the nose — a howitzer wants a
 longer tube, which means either a smaller ring or letting the tube exceed the nose. `bastion`'s dozer
 blade was cut after two attempts (stacked slabs read as a fence; a ribbed plate hid the whole glacis)
-and replaced with a low stepped ram under the nose.
+and replaced with a low stepped ram under the nose. `amphibious-tank` is the flattest vehicle in the
+family and reads as a barge head-on until the gunwale catches the light; a taller freeboard, or an
+open transom with the screws visible from behind, would settle it.
 
 ---
 

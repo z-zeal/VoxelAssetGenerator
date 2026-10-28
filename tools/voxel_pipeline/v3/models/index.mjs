@@ -18,6 +18,8 @@ import { buildTankDestroyer } from './tank-destroyer.mjs';
 import { buildIfv } from './ifv.mjs';
 import { buildMega } from './mega.mjs';
 import { buildBastion } from './bastion.mjs';
+import { buildFlameTank } from './flame-tank.mjs';
+import { buildAmphibiousTank } from './amphibious-tank.mjs';
 import { buildBarracks } from './barracks.mjs';
 import { buildAtTurret } from './at-turret.mjs';
 
@@ -71,6 +73,14 @@ export const MODELS = {
     kind: 'unit', folder: 'units', group: 'vehicles.tracked', label: 'Bastion',
     build: buildBastion, requiredParts: ['body', 'turret', 'barrel'],
     voxelBudget: 1600000,
+  },
+  'flame-tank': {
+    kind: 'unit', folder: 'units', group: 'vehicles.tracked', label: 'Flame Tank',
+    build: buildFlameTank, requiredParts: ['body', 'turret', 'barrel'],
+  },
+  'amphibious-tank': {
+    kind: 'unit', folder: 'units', group: 'vehicles.tracked', label: 'Amphibious Tank',
+    build: buildAmphibiousTank, requiredParts: ['body', 'turret', 'barrel'],
   },
   barracks: {
     kind: 'building',
