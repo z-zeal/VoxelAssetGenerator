@@ -82,7 +82,7 @@ export function createScribe({ materialIds, canvas = CANVAS } = {}) {
     if (id === undefined) {
       id = partList.length + 1;
       partIndex.set(name, id);
-      partList.push({ name, order: id - 1, pivot: [N / 2, N / 2, 0], dynamic: false });
+      partList.push({ name, order: id - 1, pivot: [N / 2, N / 2, 0], dynamic: false, parent: null });
     }
     return id;
   };
@@ -127,6 +127,17 @@ export function createScribe({ materialIds, canvas = CANVAS } = {}) {
     dynamic(name, on = true) {
       const p = partList[partId(name ?? partList[current - 1]?.name) - 1];
       if (p) p.dynamic = on;
+      return api;
+    },
+    /**
+     * Declare that `name` is mounted on `parentName`'s pivot. A barrel hangs off
+     * its turret's ring: when the turret traverses, the barrel's trunnion orbits
+     * that ring, so the runtime has to move it, not just re-point it.
+     */
+    parent(name, parentName) {
+      const child = partList[partId(name) - 1];
+      partId(parentName);
+      child.parent = parentName;
       return api;
     },
     pivot(name, [px, py, pz = 0]) {
@@ -496,7 +507,7 @@ export function createScribe({ materialIds, canvas = CANVAS } = {}) {
         const voxels = byPart.get(id) ?? [];
         if (!voxels.length) continue;
         parts.push({ name: p.name, order: parts.length, voxels, pivot: p.pivot,
-          dynamic: p.dynamic, bounds: boundsOf(voxels) });
+          dynamic: p.dynamic, parent: p.parent, bounds: boundsOf(voxels) });
       }
       parts.sort((a, b) => (a.name === 'body' ? -1 : b.name === 'body' ? 1 : a.order - b.order));
       parts.forEach((p, i) => { p.order = i; });

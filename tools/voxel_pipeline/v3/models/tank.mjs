@@ -23,82 +23,82 @@ export function buildTank(c) {
     const y1 = y0 + 72;
     const outboard = side === 'L' ? y0 - 6 : y1;
     const part = `running.${side}`;
-    trackLoop(c, { x0: 60, x1: 468, y0, y1, z0: 0, z1: 126, part, linkWidth: 9 });
+    trackLoop(c, { x0: 60, x1: 424, y0, y1, z0: 0, z1: 126, part, linkWidth: 9 });
 
     // Road wheels proud of the outer track face (readable from every angle).
     c.part(part);
-    for (const x of [116, 178, 240, 302, 364, 424]) {
+    for (const x of [112, 168, 224, 280, 336]) {
       roadWheel(c, { x, y0: outboard, y1: outboard + 6, z: 62, r: 42, part });
       suspensionArm(c, { x, z: 34, y0: y0 + 20, y1: y1 - 20, part });
     }
     // Drive sprocket (front) and idler (rear) with real teeth.
-    c.cylY(452, outboard, outboard + 7, 62, 50, 'steel.dark', { hollowR: 30 });
+    c.cylY(408, outboard, outboard + 7, 62, 46, 'steel.dark', { hollowR: 28 });
     for (let i = 0; i < 12; i++) {
       const a = (i / 12) * Math.PI * 2;
-      const tx = Math.round(452 + Math.cos(a) * 50);
-      const tz = Math.round(62 + Math.sin(a) * 50);
+      const tx = Math.round(408 + Math.cos(a) * 46);
+      const tz = Math.round(62 + Math.sin(a) * 46);
       c.box(tx - 3, outboard, tz - 3, tx + 3, outboard + 7, tz + 3, 'steel');
     }
-    c.cylY(452, outboard + 7, outboard + 9, 62, 18, 'steel.bright');
+    c.cylY(408, outboard + 7, outboard + 9, 62, 17, 'steel.bright');
     c.cylY(74, outboard, outboard + 7, 62, 44, 'steel.dark', { hollowR: 26 });
     c.bolts(74, outboard + 7, 62, 30, 10, 'steel', 2);
     // Return rollers on the top run.
-    for (const x of [156, 268, 380]) {
+    for (const x of [150, 250, 340]) {
       c.cylY(x, outboard, outboard + 5, 118, 15, 'steel.dark');
       c.cylY(x, outboard + 5, outboard + 6, 118, 8, 'steel.bright');
     }
     // Mud flap and skirt lip.
     c.box(60, y0 - 4, 84, 96, y1 + 4, 130, 'rubber');
-    c.box(60, y0 - 2, 126, 468, y1 + 2, 132, 'team.dark');
+    c.box(60, y0 - 2, 126, 424, y1 + 2, 132, 'team.dark');
     c.part('body');
   }
 
   /* ------------------------------------------------------------------ hull */
   c.part('body');
   // Belly / lower hull between the tracks.
-  c.box(104, HULL_Y0 - 28, 26, 432, HULL_Y1 + 28, 44, 'plate.dark');
-  c.box(112, HULL_Y0 - 20, 44, 424, HULL_Y1 + 20, 96, 'team.dark');
-  seam(c, { x0: 116, y0: HULL_Y0 - 18, z0: 72, x1: 420, y1: HULL_Y0 - 18, z1: 72 });
-  seam(c, { x0: 116, y0: HULL_Y1 + 17, z0: 72, x1: 420, y1: HULL_Y1 + 17, z1: 72 });
+  c.box(104, HULL_Y0 - 28, 26, 408, HULL_Y1 + 28, 44, 'plate.dark');
+  c.box(112, HULL_Y0 - 20, 44, 400, HULL_Y1 + 20, 96, 'team.dark');
+  seam(c, { x0: 116, y0: HULL_Y0 - 18, z0: 72, x1: 396, y1: HULL_Y0 - 18, z1: 72 });
+  seam(c, { x0: 116, y0: HULL_Y1 + 17, z0: 72, x1: 396, y1: HULL_Y1 + 17, z1: 72 });
 
   // Upper hull / sponsons overhanging both tracks.
-  c.box(96, 88, 96, 440, 424, DECK_Z, 'team.hull');
+  c.box(96, 88, 96, 406, 424, DECK_Z, 'team.hull');
   // Deck plate is a *paint* on the hull top, not a second stacked slab.
-  c.paint((x, y, z) => z === DECK_Z - 1 && x >= 104 && x < 432 && y >= 96 && y < 416, 'team.light');
-  c.box(104, 96, DECK_Z - 1, 432, 416, DECK_Z, 'team.light');
+  c.paint((x, y, z) => z === DECK_Z - 1 && x >= 104 && x < 402 && y >= 96 && y < 416, 'team.light');
+  c.box(104, 96, DECK_Z - 1, 402, 416, DECK_Z, 'team.light');
   // Side skirts with panel lines.
-  for (let x = 104; x < 432; x += 22) {
+  for (let x = 104; x < 406; x += 22) {
     c.box(x, 88, 100, x + 1, 94, 142, 'team.dark');
   }
-  c.rivets(102, 88, 140, 436, 88, 140, 14, 'steel.dark');
-  c.rivets(102, 424, 140, 436, 424, 140, 14, 'steel.dark');
+  c.rivets(102, 88, 140, 404, 88, 140, 14, 'steel.dark');
+  c.rivets(102, 424, 140, 404, 424, 140, 14, 'steel.dark');
   // Fenders over the tracks.
-  c.box(92, 84, 134, 446, 100, 140, 'plate');
-  c.box(92, 412, 134, 446, 428, 140, 'plate');
-  c.rivets(96, 86, 140, 444, 86, 140, 9, 'steel.dark');
-  c.rivets(96, 426, 140, 444, 426, 140, 9, 'steel.dark');
+  c.box(92, 84, 134, 420, 100, 140, 'plate');
+  c.box(92, 412, 134, 420, 428, 140, 'plate');
+  c.rivets(96, 86, 140, 418, 86, 140, 9, 'steel.dark');
+  c.rivets(96, 426, 140, 418, 426, 140, 9, 'steel.dark');
 
   // Glacis: swept profile, surface only (top slope + walls + end caps).
-  c.profileX(440, 496, 112, 400,
-    x => DECK_Z - ((x - 440) / 56) * 54,
+  c.profileX(406, 462, 112, 400,
+    x => DECK_Z - ((x - 406) / 56) * 54,
     () => 96,
     'team.hull');
   // Highlight band along the slope crest: paint, never stack another layer.
-  c.paint((x, y, z) => x >= 440 && x < 496 && z >= DECK_Z - 8, 'team.light');
+  c.paint((x, y, z) => x >= 406 && x < 462 && z >= DECK_Z - 8, 'team.light');
   // Nose beam, tow hooks, headlight brush guards.
-  c.box(492, 108, 92, 500, 404, 104, 'steel.dark');
+  c.box(458, 108, 92, 466, 404, 104, 'steel.dark');
   for (const y of [136, 356]) {
-    liftingEye(c, { x: 482, y: y - 6, z: 100 });
-    c.box(496, y - 8, 104, 504, y + 8, 112, 'steel.dark');
-    c.cylX(486, 500, y, 128, 13, 'steel.dark');              // lamp housing
-    c.cylX(500, 502, y, 128, 10, 'lamp.warm');
-    c.box(482, y - 16, 112, 486, y + 16, 118, 'steel');      // guard bar
-    c.box(482, y - 16, 112, 502, y - 14, 140, 'steel.dark');
-    c.box(482, y + 14, 112, 502, y + 16, 140, 'steel.dark');
+    liftingEye(c, { x: 448, y: y - 6, z: 100 });
+    c.box(462, y - 8, 104, 470, y + 8, 112, 'steel.dark');
+    c.cylX(452, 466, y, 128, 13, 'steel.dark');              // lamp housing
+    c.cylX(466, 468, y, 128, 10, 'lamp.warm');
+    c.box(448, y - 16, 112, 452, y + 16, 118, 'steel');      // guard bar
+    c.box(448, y - 16, 112, 468, y - 14, 140, 'steel.dark');
+    c.box(448, y + 14, 112, 468, y + 16, 140, 'steel.dark');
   }
   // Spare track links stowed on the glacis.
   for (let i = 0; i < 5; i++) {
-    const x = 452 + i * 8;
+    const x = 416 + i * 8;
     for (let y = 156; y < 236; y += 10) {
       c.box(x, y, 126 - i * 8, x + 7, y + 8, 132 - i * 8, 'track.worn');
       c.box(x + 1, y + 2, 132 - i * 8, x + 6, y + 6, 134 - i * 8, 'steel.dark');
@@ -106,13 +106,13 @@ export function buildTank(c) {
   }
 
   // Driver's hatch + periscopes on the front deck.
-  hatch(c, { cx: 420, cy: 210, z: DECK_Z + 4, r: 30 });
-  periscope(c, { x: 428, y: 176, z: DECK_Z + 4, w: 7, h: 5 });
-  periscope(c, { x: 428, y: 236, z: DECK_Z + 4, w: 7, h: 5 });
-  c.box(400, 194, DECK_Z + 4, 416, 250, DECK_Z + 12, 'steel.dark');   // hatch shroud
+  hatch(c, { cx: 388, cy: 210, z: DECK_Z + 4, r: 30 });
+  periscope(c, { x: 396, y: 176, z: DECK_Z + 4, w: 7, h: 5 });
+  periscope(c, { x: 396, y: 236, z: DECK_Z + 4, w: 7, h: 5 });
+  c.box(370, 194, DECK_Z + 4, 386, 250, DECK_Z + 12, 'steel.dark');   // hatch shroud
   // Hull machine-gun ball mount (coaxial bow gun).
-  c.sphere(438, 268, DECK_Z + 6, 12, 'steel.dark', { top: true });
-  c.cylX(438, 470, 268, DECK_Z + 6, 4, 'gunmetal');
+  c.sphere(404, 268, DECK_Z + 6, 12, 'steel.dark', { top: true });
+  c.cylX(404, 440, 268, DECK_Z + 6, 4, 'gunmetal');
 
   // Engine deck: louvres, exhaust, radiator caps, stowage.
   louvres(c, { x0: 150, x1: 300, y0: 130, y1: 220, z: DECK_Z + 4, slat: 5 });
@@ -213,18 +213,24 @@ export function buildTank(c) {
   // The mantlet closes the turret front and the tube runs clear of the hull
   // nose, so the barrel is never buried inside the turret shell.
   c.part('barrel');
-  c.box(374, 212, 150, 398, 300, 194, 'team.dark');
-  c.box(390, 224, 156, 412, 288, 188, 'steel.dark');
-  c.cylX(404, 452, 256, 172, 12, 'gunmetal');
-  c.cylX(450, 466, 256, 172, 17, 'gunmetal.lit');
-  c.cylX(466, 502, 256, 172, 13, 'steel.dark');
+  // Mantlet is deliberately narrow: it only has to close the turret front, and a
+  // wide slab swallows the gun silhouette at iso scale.
+  c.box(374, 226, 156, 396, 286, 188, 'team.dark');
+  c.box(390, 236, 162, 406, 276, 182, 'steel.dark');
+  // Tube: slimmer, and long enough to overhang the hull nose by ~40 voxels so a
+  // traverse is unmistakable.
+  c.cylX(400, 452, 256, 172, 11, 'gunmetal');
+  c.cylX(448, 466, 256, 172, 16, 'gunmetal.lit');             // bore evacuator
+  c.cylX(466, 500, 256, 172, 12, 'steel.dark');
   for (let i = 0; i < 3; i++) {
-    c.box(470 + i * 10, 256 - 17, 168, 474 + i * 10, 256 + 17, 176, 'steel.bright');
+    c.box(470 + i * 10, 256 - 15, 168, 473 + i * 10, 256 + 15, 176, 'steel.bright');
   }
-  c.cylX(502, 506, 256, 172, 8, 'scorch');
-  c.box(400, 232, 160, 420, 252, 186, 'steel.dark');   // recoil cylinder
-  c.cylX(404, 424, 280, 164, 5, 'steel');
+  c.cylX(500, 508, 256, 172, 15, 'steel.dark');               // muzzle brake
+  c.cylX(508, 510, 256, 172, 7, 'scorch');                    // bore
+  c.box(396, 240, 164, 414, 254, 182, 'steel.dark');          // recoil cylinder
+  c.cylX(400, 420, 276, 166, 5, 'steel');
   c.pivot('barrel', [400, 256, 172]);
+  c.parent('barrel', 'turret');   // the gun rides the turret ring
   c.dynamic('barrel');
   c.part('body');
 

@@ -12,7 +12,8 @@
     "voxels3:bake": "node tools/voxel_pipeline/v3/bake.mjs",
     "voxels3:tank": "node tools/voxel_pipeline/v3/bake.mjs --only tank",
     "voxels3:ps1": "powershell -File tools/voxel_pipeline/v3/bake-all.ps1",
-    "voxels3:all": "node tools/voxel_pipeline/v3/bake.mjs",
-    "voxels3:contact": "node tools/voxel_pipeline/v3/contact.mjs"
+    "voxels3:all": "node tools/voxel_pipeline/v3/bake.mjs && node tools/voxel_pipeline/v3/contact.mjs",
+    "voxels3:contact": "node tools/voxel_pipeline/v3/contact.mjs",
+    "voxels3:review": "node tools/voxel_pipeline/v3/serve.mjs"
   }
 }

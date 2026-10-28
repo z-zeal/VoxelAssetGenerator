@@ -75,9 +75,24 @@ Status as of this commit — **B0 done, B1 done, B2 in progress**. One asset (`t
 - [x] **Contact strip** (`tools/voxel_pipeline/v3/contact.mjs` → `contact.png`) for whole-roster review.
 - [x] Turret rebuilt flush on the ring (no floating plinth) and the barrel now clears the turret shell.
 - [x] 16-facing distinctness verified programmatically (8×8 silhouette signature: **no duplicate pairs**).
+- [x] **Traverse fixed twice:** first the gallery rotated sprites in the image plane (a view-axis spin, not a
+      yaw); now dynamic parts re-query a different baked facing and register on their world pivot.
+- [x] **Parent chain added** (`c.parent('barrel','turret')` → `parts[].parent`): a mounted part's pivot is
+      orbited about its parent's pivot, so the gun follows the turret instead of being left behind.
+- [x] Barrel reworked for silhouette: mantlet narrowed (87 → 60 voxels wide), tube slimmed to 22 voxels, gun
+      lengthened to overhang the hull nose by 40 voxels so the traverse is legible at game scale.
 - [x] Turret ring registration checked across all 16 facings via the composite strips.
 - [ ] **Modelling pass (open):** the hull still reads slab-sided and the ground wheels could sit tighter in
       the track band. Proportions need another iteration — geometry work, not a pipeline change.
+- [x] **Virtual light rig for normal/material testing** — `light.mjs` relights the composite through a
+      three-point rig and a single-light sweep; because it shades from the normal + material maps, bad
+      normals or dead PBR channels fail at bake time.
+- [x] Review images per asset: `preview-lit.png` (three-point), `preview-lights.png` (8 azimuths),
+      `preview-maps.png` (albedo | normal | material id | metalness | roughness | emissive),
+      `preview-parts.png` (segmentation check), `contact.png` (16 facings, relit).
+- [x] Fixed composite masking: silhouette coverage now comes from the albedo alpha, never from the material
+      map's emissive alpha; material ids take the nearest part instead of blending.
+- [x] Fixed `contact.mjs` executing its CLI body on import (needed a main guard).
 - [ ] Human review pass.
 
 **Gate:** 16 distinct facings, clean part registration, proportions approved.
@@ -177,7 +192,10 @@ Status as of this commit — **B0 done, B1 done, B2 in progress**. One asset (`t
 
 ## B10 · Tooling, tests, docs
 
-- [ ] Review gallery: every asset × facing × map, offline HTML.
+- [x] **Interactive review gallery** — `voxel-sprite-review-v4.html` + `npm run voxels3:review`
+      (zero-dep static server; browsers block `fetch`/pixel reads on `file://`). Relights live from the normal +
+      material maps, exposes an azimuth/elevation/intensity/ambient/exposure light rig, a light sweep, per-map
+      views, part toggles, and turret/barrel rotation about their pivots.
 - [ ] Contact-sheet generator (one image per asset, all facings in a row) for human review.
 - [ ] Validation report command (`voxels3:report`): voxel counts, part counts, payload, timing.
 - [ ] Tests: `sheet-contract`, `anchor`, `facing-uniqueness`, `payload`, `determinism`.
@@ -206,4 +224,5 @@ Status as of this commit — **B0 done, B1 done, B2 in progress**. One asset (`t
 | PNG per unit asset | — | 240 |
 | Payload per unit asset | ≤ 3 MB | 1.12 MB |
 | Bake determinism | byte-identical | **verified** |
+| Dynamic part pivots in manifest | per facing | **added** (`depth` + `viewDir`) |
 | Total PNG payload | ≤ 400 MB | 65 MB projected (163 MB legacy, archived later) |

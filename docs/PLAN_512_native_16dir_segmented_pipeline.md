@@ -134,8 +134,32 @@ game_assets/
 ```
 
 Runtime rule for composition: for every part of one entity, draw at
-`screen = entityTilePos + part.facings[f].anchor`; for rotation, rotate the part's image about
-`part.facings[f].pivot` by the desired traverse angle. Because `anchor` is shared (it is the projection of
+`screen = entityTilePos + part.facings[f].anchor`.
+
+### Traversal contract (do not rotate sprites)
+
+**A turret traverse is not an image rotation.** Rotating a sprite in the image plane about its pivot
+produces a spin about the *view* axis, which is not a yaw and reads as wrong immediately. Traverse works by
+selecting a different baked facing for the dynamic part and registering it by its **world pivot**:
+
+1. `design = (sceneFacing.angle + traverseDeg) mod 360`, snapped to the 22.5° grid.
+2. Query the part's sheet at `facing = facingAt(design)` — the same model photographed from another azimuth,
+   so its silhouette is physically correct rather than a rotated flat image.
+3. Place it with `offset = sceneFacing.screenMatrix · (part.pivotDesign − groundCentre) − part.facings[f].pivot`.
+4. **Honour the parent chain.** A part mounted on another dynamic part (a gun on a turret ring) has its pivot
+   *orbited* about its parent's pivot by the same angle, transitively. Without this the turret traverses and
+   leaves its barrel behind in mid-air — the pivot has to move, not just the sprite.
+
+`screenMatrix` (a 2×3 design-voxel→pixel projection, per facing) is in the manifest for exactly this, so a
+runtime never has to concatenate crop offsets. Granularity is the facing grid: 22.5° for units.
+
+Painter order: static structure first, then dynamic parts far-to-near. A per-part centroid depth alone is
+insufficient — once a turret swings to a facing where its centroid is deeper than the hull's, the hull paints
+over it. Dynamic parts are mounted *above* their host, so they must draw after it.
+
+**Elevation needs geometry.** Gun elevation changes the actual silhouette (the barrel rises), which is a
+different pose, not a different azimuth — it requires a re-bake (`barrel.pitch`) and is not a runtime
+transform. Animation clips remain the follow-up pass (D12). Because `anchor` is shared (it is the projection of
 the design-space ground centre `(256, 256, 0)` for that facing), the parts align with no per-part offsets.
 
 ---
@@ -145,7 +169,7 @@ the design-space ground centre `(256, 256, 0)` for that facing), the parts align
 | Family | Required parts | Rotates at runtime |
 | --- | --- | --- |
 | Foot infantry | `body`, `legL`, `legR`, `upper`, `weapon` | leg gait, weapon aim |
-| Tracked vehicle | `body`, `running.L`, `running.R`, `turret`, `barrel` | turret traverse, gun elevation, tread wrap |
+| Tracked vehicle | `body`, `running.L`, `running.R`, `turret`, `barrel` | turret traverse, gun elevation, tread wrap — `barrel.parent = "turret"` |
 | Wheeled vehicle | `body`, `wheels`, `turret`, `barrel` (where fitted) | wheel spin, turret |
 | Rotary air | `body`, `rotorMain`, `rotorTail` | rotor spin |
 | Jet | `body`, `gear`, `stores` | gear retract, store drop |
@@ -155,7 +179,8 @@ the design-space ground centre `(256, 256, 0)` for that facing), the parts align
 | Production building | `body`, `door`, plus `crane`/`fan` where animated | door open/close |
 
 Naming is enforced by `validate.mjs` (`requiredParts` per asset), so a model cannot silently lose its
-segmentation.
+segmentation. Mounting relationships are declared in the sculptor with `c.parent(child, parent)` and land in
+the manifest as `parts[].parent`.
 
 ---
 
@@ -170,6 +195,14 @@ segmentation.
 * **Team tinting** — albedo is baked in `standard` livery. A runtime that wants `allies` builds a 3×n
   channel swap from `teamTint.liveries` and applies it only to pixels whose material id carries a `team`
   role. That replaces the seven baked variant sets (17,881 → ~9,300 PNG).
+* **Composite masking** — composited maps always take silhouette coverage from the *albedo* alpha. The
+  material map's alpha is the emissive channel and the normal map's alpha is meaningless, so masking by a
+  channel's own alpha silently erases every non-emissive pixel. Material ids are never blended (an average of
+  two ids is a third id): the nearest part wins.
+* **Virtual light rig (normals test)** — `tools/voxel_pipeline/v3/light.mjs` re-shades the composite through
+  a configurable rig (warm key / cool fill / cold rim, plus a single-light sweep at 8 azimuths). Because it
+  shades from the *normal* and *material* maps rather than the pre-lit albedo, a flipped normal axis, a stale
+  metalness channel or a dead emissive channel fails visibly at bake time instead of at runtime.
 * **Payload control** — the material map is a low-cardinality image; if payload gate B2 fails, emit it as
   an indexed PNG or at half resolution with nearest-neighbour sampling (documented in the manifest as
   `materialMap.scale`).

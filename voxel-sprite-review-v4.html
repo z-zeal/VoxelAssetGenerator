@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Voxel 512³ Review — segmented sheets, normals, material maps, virtual light</title>
+<style>
+  :root{
+    --bg:#0b0d12;--surface:#12151d;--surface2:#181c26;--line:#242a38;--text:#e4eaf2;
+    --muted:#8b96a9;--accent:#e8c46a;--accent2:#7ecfff;--good:#7ad17a;--bad:#e2705d;
+    --font:system-ui,-apple-system,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 var(--font);-webkit-font-smoothing:antialiased}
+  header{padding:14px 22px;border-bottom:1px solid var(--line);background:rgba(11,13,18,.96);
+         position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  h1{font-size:18px;margin:0;letter-spacing:-.02em}
+  .sub{color:var(--muted);font-size:12px;margin:2px 0 0}
+  .banner{background:#3a2a12;border-bottom:1px solid #6b4e1c;color:#f0d9a8;padding:10px 22px;font-size:13px;display:none}
+  .banner code{background:#241a09;padding:1px 6px;border-radius:4px}
+  .layout{display:grid;grid-template-columns:250px 1fr 300px;gap:0;min-height:calc(100vh - 62px)}
+  @media(max-width:1150px){.layout{grid-template-columns:220px 1fr}.panel-right{grid-column:1/-1;border-left:none;border-top:1px solid var(--line)}}
+  .sidebar{background:var(--surface);border-right:1px solid var(--line);padding:12px;overflow-y:auto;max-height:calc(100vh - 62px);position:sticky;top:62px}
+  .panel-right{background:var(--surface);border-left:1px solid var(--line);padding:12px 14px;overflow-y:auto;max-height:calc(100vh - 62px);position:sticky;top:62px}
+  h3{font-size:10px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin:16px 0 7px;
+     border-bottom:1px solid var(--line);padding-bottom:5px}
+  h3:first-child{margin-top:0}
+  button{font:inherit;color:var(--text);background:var(--surface2);border:1px solid var(--line);
+         border-radius:8px;padding:6px 10px;cursor:pointer;font-size:12px}
+  button:hover{border-color:var(--accent2)}
+  button.active{background:linear-gradient(135deg,#2a2415,#1d1a10);border-color:var(--accent);font-weight:600}
+  input[type=search]{width:100%;background:var(--surface2);border:1px solid var(--line);border-radius:8px;
+        padding:7px 10px;color:var(--text);font:inherit;outline:none}
+  input[type=search]:focus{border-color:var(--accent2)}
+  .asset-list{display:flex;flex-direction:column;gap:2px;margin-top:8px}
+  .asset-list button{text-align:left;background:transparent;border-color:transparent;padding:5px 8px;border-radius:6px}
+  .asset-list button:hover{background:var(--surface2)}
+  .main{padding:16px 20px;min-width:0}
+  .stage{background:radial-gradient(circle at 50% 35%,#151a24,#0a0c11 75%);border:1px solid var(--line);
+         border-radius:14px;padding:12px;display:flex;align-items:center;justify-content:center;min-height:420px;
+         position:relative;overflow:hidden}
+  #view{image-rendering:pixelated;max-width:100%;max-height:64vh;cursor:grab;touch-action:none}
+  .hud{position:absolute;left:12px;bottom:10px;font-size:11px;color:var(--muted);
+       background:rgba(8,10,14,.72);padding:4px 9px;border-radius:6px;line-height:1.5}
+  .hud b{color:var(--text);font-weight:600}
+  .facing-strip{display:flex;gap:4px;flex-wrap:wrap;margin-top:10px;justify-content:center}
+  .facing-strip button{padding:2px;border-radius:6px;line-height:0;background:#0d1017}
+  .facing-strip img{height:44px;image-rendering:pixelated;display:block}
+  .facing-strip button.active{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
+  .row{display:flex;align-items:center;gap:8px;margin:7px 0}
+  .row label{flex:0 0 86px;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+  .row input[type=range]{flex:1;min-width:0;accent-color:var(--accent)}
+  .row .val{flex:0 0 46px;text-align:right;font-variant-numeric:tabular-nums;font-size:11px;color:var(--text)}
+  .seg{display:flex;flex-wrap:wrap;gap:4px}
+  .seg button{padding:4px 8px;font-size:11px}
+  .partrow{display:flex;align-items:center;gap:6px;margin:3px 0;font-size:12px}
+  .partrow input[type=checkbox]{accent-color:var(--accent)}
+  .partrow .name{flex:1;font-family:ui-monospace,monospace;font-size:11px}
+  .partrow .tag{font-size:9px;color:#0b0d12;background:var(--accent);padding:1px 5px;border-radius:4px;font-weight:700}
+  .partrow input[type=range]{width:70px;accent-color:var(--accent2)}
+  .meta{font-size:11px;color:var(--muted);font-family:ui-monospace,monospace;line-height:1.6;
+        background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:8px}
+  .meta b{color:var(--text);font-weight:600}
+  .ok{color:var(--good)}.warn{color:var(--bad)}
+  .hint{position:absolute;inset:0;display:none;align-items:center;justify-content:center;text-align:center;
+        padding:30px;color:var(--muted);font-size:13px;background:rgba(10,12,17,.9)}
+</style>
+</head>
+<body>
+<div class="banner" id="fileBanner">
+  <b>Open through the local server.</b> Browsers block <code>fetch</code> and pixel reads on
+  <code>file://</code>. Run <code>npm run voxels3:review</code> and open
+  <code>http://localhost:8099/voxel-sprite-review-v4.html</code>.
+</div>
+<header>
+  <div>
+    <h1>Voxel 512³ Review</h1>
+    <p class="sub">Segmented sheets · 16 directions · albedo + normal + material maps · virtual light rig</p>
+  </div>
+  <div class="seg" id="kindSwitch">
+    <button data-kind="units" class="active">Units</button>
+    <button data-kind="buildings">Buildings</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <h3>Asset</h3>
+    <input type="search" id="search" placeholder="filter assets…">
+    <div class="asset-list" id="assetList"></div>
+  </aside>
+
+  <main class="main">
+    <div class="stage">
+      <canvas id="view"></canvas>
+      <div class="hint" id="hint">Select an asset</div>
+      <div class="hud" id="hud"></div>
+    </div>
+    <div class="facing-strip" id="facings"></div>
+  </main>
+
+  <aside class="panel-right">
+    <h3>View</h3>
+    <div class="seg" id="viewMode">
+      <button data-mode="lit" class="active">Lit</button>
+      <button data-mode="albedo">Albedo</button>
+      <button data-mode="normal">Normal</button>
+      <button data-mode="material">Material id</button>
+      <button data-mode="metal">Metalness</button>
+      <button data-mode="rough">Roughness</button>
+      <button data-mode="emissive">Emissive</button>
+    </div>
+
+    <h3>Virtual light</h3>
+    <div class="row"><label>Azimuth</label><input type="range" id="az" min="0" max="360" value="125"><span class="val" id="azVal">125°</span></div>
+    <div class="row"><label>Elevation</label><input type="range" id="el" min="-10" max="88" value="45"><span class="val" id="elVal">45°</span></div>
+    <div class="row"><label>Intensity</label><input type="range" id="inten" min="0" max="200" value="105"><span class="val" id="intenVal">1.05</span></div>
+    <div class="row"><label>Ambient</label><input type="range" id="amb" min="0" max="100" value="30"><span class="val" id="ambVal">0.30</span></div>
+    <div class="row"><label>Exposure</label><input type="range" id="exp" min="40" max="220" value="100"><span class="val" id="expVal">1.00</span></div>
+    <div class="seg" style="margin-top:8px">
+      <button id="sweep">Sweep light</button>
+      <button id="rig" class="active">3-point rig</button>
+      <button id="specOn" class="active">Specular</button>
+    </div>
+
+    <h3>Parts <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(segmented)</span></h3>
+    <div class="row"><label>Traverse</label><input type="range" id="traverse" min="0" max="337.5" step="22.5" value="0"><span class="val" id="traverseVal">0°</span></div>
+    <div style="font-size:10px;color:var(--muted);margin:-2px 0 8px">
+      Dynamic parts re-draw from the baked facing at this angle and register on their world pivot —
+      a real traverse, not an image rotation. Elevation needs a re-bake.
+    </div>
+    <div id="parts"></div>
+    <div class="seg" style="margin-top:8px">
+      <button id="allParts">Show all</button>
+      <button id="resetPivots">Reset rotation</button>
+    </div>
+
+    <h3>Sheet</h3>
+    <div class="meta" id="meta">—</div>
+  </aside>
+</div>
+
+<script type="module">
+// ---------------------------------------------------------------------------
+// State
+// ---------------------------------------------------------------------------
+const state = {
+  index: null,
+  kind: 'units',
+  asset: null,
+  manifest: null,
+  dir: '',
+  facing: null,
+  viewMode: 'lit',
+  light: { az: 125, el: 45, intensity: 1.05, ambient: 0.30, exposure: 1.0 },
+  rig: true,
+  specular: true,
+  sweep: false,
+  parts: new Map(),      // name -> { visible }
+  traverse: 0,           // degrees added to dynamic parts (snapped to 22.5°)
+  cache: new Map(),      // key -> ImageData
+  composite: null,
+  thumbCache: new Map(),
+};
+
+const $ = sel => document.querySelector(sel);
+const clamp255 = v => (v < 0 ? 0 : v > 255 ? 255 : v | 0);
+
+// ---------------------------------------------------------------------------
+// Image loading (same-origin only, hence the server)
+// ---------------------------------------------------------------------------
+function imageData(url) {
+  if (state.cache.has(url)) return Promise.resolve(state.cache.get(url));
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => {
+      const c = document.createElement('canvas');
+      c.width = img.naturalWidth;
+      c.height = img.naturalHeight;
+      const cx = c.getContext('2d', { willReadFrequently: true });
+      cx.drawImage(img, 0, 0);
+      let data;
+      try { data = cx.getImageData(0, 0, c.width, c.height); }
+      catch (e) { reject(new Error('canvas tainted — serve over http (npm run voxels3:review)')); return; }
+      state.cache.set(url, data);
+      resolve(data);
+    };
+    img.onerror = () => reject(new Error(`failed to load ${url}`));
+    img.src = url;
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Composite: parts -> albedo / normal / material buffers (shared anchor)
+// ---------------------------------------------------------------------------
+async function loadPartMaps(partName, facing) {
+  const entry = state.manifest.parts[partName].facings[facing];
+  const base = `${state.dir}/`;
+  const [a, n, m] = await Promise.all([
+    imageData(base + entry.files.albedo.file),
+    imageData(base + entry.files.normal.file),
+    imageData(base + entry.files.material.file),
+  ]);
+  return { a, n, m, entry };
+}
+
+function blitPart(dst, dstW, dstH, src, ox, oy) {
+  const sw = src.width, sh = src.height, sx = src.data;
+  for (let y = 0; y < sh; y++) {
+    const dy = Math.round(y + oy);
+    if (dy < 0 || dy >= dstH) continue;
+    for (let x = 0; x < sw; x++) {
+      const dx = Math.round(x + ox);
+      if (dx < 0 || dx >= dstW) continue;
+      const s = (y * sw + x) * 4;
+      if (sx[s + 3] === 0) continue;
+      dst(dx, dy, s);
+    }
+  }
+}
+
+/** Facing id shifted `steps` positions around the 16-direction ring. */
+function shiftFacing(facing, steps) {
+  const list = state.manifest.facings;
+  const i = list.indexOf(facing);
+  if (i < 0) return facing;
+  return list[(((i + steps) % list.length) + list.length) % list.length];
+}
+
+/** Rotate a design-space point about a pivot by deg (yaw, +Z up). */
+function yawAbout(point, pivot, deg) {
+  const rad = (deg * Math.PI) / 180;
+  const c = Math.cos(rad), s = Math.sin(rad);
+  const dx = point[0] - pivot[0];
+  const dy = point[1] - pivot[1];
+  return [pivot[0] + dx * c - dy * s, pivot[1] + dx * s + dy * c, point[2]];
+}
+
+/**
+ * World transform for one part at the current traverse.
+ *
+ * A dynamic part is drawn from a shifted baked facing, and a part mounted on
+ * another part (a gun on a turret ring) has its pivot ORBITED about the parent's
+ * pivot — otherwise the turret swings away and leaves the barrel behind.
+ */
+function partTransform(name, sceneFacing, steps) {
+  const m = state.manifest;
+  const meta = m.facingMeta.find(f => f.id === sceneFacing);
+  const pmeta = m.parts[name];
+  const dynamic = !!pmeta.dynamic;
+
+  let pivot = pmeta.pivotDesign.slice();
+  let facing = sceneFacing;
+  let depthOffset = 0;
+
+  if (dynamic) {
+    facing = shiftFacing(sceneFacing, steps);
+    // Walk the parent chain: each dynamic ancestor contributes its own yaw.
+    let cursor = pmeta;
+    const guard = new Set();
+    while (cursor && cursor.parent && !guard.has(cursor.name)) {
+      guard.add(cursor.name);
+      const parent = m.parts[cursor.parent];
+      if (!parent) break;
+      pivot = yawAbout(pivot, parent.pivotDesign, steps * 22.5);
+      cursor = parent;
+    }
+  }
+
+  // World pivot -> screen, through the scene camera.
+  const M = meta.screenMatrix, G = meta.groundCentre;
+  const dx = pivot[0] - G[0], dy = pivot[1] - G[1], dz = (pivot[2] ?? 0) - G[2];
+  const screen = [M[0] * dx + M[1] * dy + M[2] * dz, M[3] * dx + M[4] * dy + M[5] * dz];
+
+  // Depth straight from the world transform, so ordering survives a traverse.
+  const bounds = m.sourceGeometry.parts.find(p => p.name === name)?.bounds;
+  if (bounds) {
+    let centroid = [
+      (bounds.minX + bounds.maxX) / 2,
+      (bounds.minY + bounds.maxY) / 2,
+      (bounds.minZ + bounds.maxZ) / 2,
+    ];
+    if (dynamic) {
+      let cursor = pmeta;
+      const guard = new Set();
+      while (cursor && cursor.parent && !guard.has(cursor.name)) {
+        guard.add(cursor.name);
+        const parent = m.parts[cursor.parent];
+        if (!parent) break;
+        centroid = yawAbout(centroid, parent.pivotDesign, steps * 22.5);
+        cursor = parent;
+      }
+    }
+    const v = meta.viewDir;
+    depthOffset = v[0] * (centroid[0] - G[0]) + v[1] * (centroid[1] - G[1]) + v[2] * (centroid[2] - G[2]);
+  }
+
+  return { facing, screen, depth: depthOffset, dynamic };
+}
+
+async function buildComposite() {
+  const m = state.manifest;
+  const sceneFacing = state.facing;
+  const meta = m.facingMeta.find(f => f.id === sceneFacing);
+  const visible = [...state.parts.entries()].filter(([, v]) => v.visible).map(([k]) => k);
+  if (!visible.length) { state.composite = null; return; }
+
+  // A traversing part is NOT rotated in the image plane — that is not a yaw.
+  // It is drawn from a DIFFERENT baked facing (the same model photographed from
+  // another azimuth) and then registered by its world pivot, so it pivots on
+  // its own ring exactly like the real part would.
+  const steps = Math.round(state.traverse / 22.5) % 16;
+
+  const pick = visible.map(name => ({ name, xf: partTransform(name, sceneFacing, steps) }));
+  const maps = await Promise.all(pick.map(p => loadPartMaps(p.name, p.xf.facing)));
+
+  let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+  const placed = [];
+  for (let i = 0; i < pick.length; i++) {
+    const { name, xf } = pick[i];
+    const { a, entry } = maps[i];
+    // Target screen position of the part's world pivot, minus where that pivot
+    // sits inside the part's own crop.
+    const ox = xf.screen[0] - entry.pivot[0];
+    const oy = xf.screen[1] - entry.pivot[1];
+    placed.push({ name, ox, oy, w: a.width, h: a.height, depth: xf.depth, dynamic: xf.dynamic });
+    minX = Math.min(minX, ox); minY = Math.min(minY, oy);
+    maxX = Math.max(maxX, ox + a.width); maxY = Math.max(maxY, oy + a.height);
+  }
+  const pad = 4;
+  const W = Math.ceil(maxX - minX) + pad * 2;
+  const H = Math.ceil(maxY - minY) + pad * 2;
+
+  const A = new Uint8ClampedArray(W * H * 4);
+  const N = new Uint8ClampedArray(W * H * 4);
+  const M = new Uint8ClampedArray(W * H * 4);
+  const cov = new Uint8Array(W * H);
+
+  // Painter order: static structure first, then dynamic parts far-to-near.
+  // A per-part centroid depth alone is not enough — once a turret swings to a
+  // facing where its centroid is deeper than the hull's, the hull would paint
+  // straight over it. Dynamic parts are mounted above their host, so they must
+  // draw after it; among themselves they still sort by depth (barrel in front
+  // of turret when it points forward, behind it when it points back).
+  placed.sort((p, q) => (p.dynamic - q.dynamic) || (p.depth - q.depth));
+
+  for (const p of placed) {
+    const idx = visible.indexOf(p.name);
+    const a = maps[idx].a, n = maps[idx].n, mat = maps[idx].m;
+    const ox = Math.round(p.ox - minX) + pad;
+    const oy = Math.round(p.oy - minY) + pad;
+
+    // Parts are drawn far-to-near, so a later write is a nearer surface.
+    blitPart((dx, dy, s) => {
+      const alpha = a.data[s + 3];
+      if (alpha === 0) return;
+      const d = (dy * W + dx) * 4;
+      if (alpha > cov[dy * W + dx]) cov[dy * W + dx] = alpha;
+      // Albedo and normals are stored flat: the painter order already resolved
+      // which surface is on top, and the sheets are hard-edged voxels, so
+      // alpha-blending two parts only produces halos.
+      A[d] = a.data[s];     A[d + 1] = a.data[s + 1]; A[d + 2] = a.data[s + 2]; A[d + 3] = 255;
+      N[d] = n.data[s];     N[d + 1] = n.data[s + 1]; N[d + 2] = n.data[s + 2]; N[d + 3] = 255;
+      // Material ids must never blend: an average of two ids is a third id.
+      M[d] = mat.data[s];   M[d + 1] = mat.data[s + 1];
+      M[d + 2] = mat.data[s + 2]; M[d + 3] = mat.data[s + 3];
+    }, W, H, a, ox, oy);
+  }
+
+  state.composite = { W, H, A, N, M, cov };
+}
+
+
+// ---------------------------------------------------------------------------
+// Shading (mirrors tools/voxel_pipeline/v3/light.mjs)
+// ---------------------------------------------------------------------------
+function lightDir(azDeg, elDeg) {
+  const az = (azDeg * Math.PI) / 180;
+  const el = (elDeg * Math.PI) / 180;
+  return [Math.cos(el) * Math.cos(az), Math.cos(el) * Math.sin(az), Math.sin(el)];
+}
+
+function currentLights() {
+  const key = { dir: lightDir(state.light.az, state.light.el), color: [1.0, 0.96, 0.88], intensity: state.light.intensity };
+  if (!state.rig) return [key];
+  return [
+    key,
+    { dir: lightDir(state.light.az - 165, 18), color: [0.55, 0.68, 0.90], intensity: state.light.intensity * 0.45 },
+    { dir: lightDir(state.light.az + 130, 30), color: [0.65, 0.80, 1.0], intensity: state.light.intensity * 0.35 },
+  ];
+}
+
+const MAT_NAMES = [];
+
+function shadePixel(A, N, M, o, lights) {
+  if (A[o + 3] === 0) return null;
+  let nx = (N[o] / 255) * 2 - 1;
+  let ny = (N[o + 1] / 255) * 2 - 1;
+  let nz = (N[o + 2] / 255) * 2 - 1;
+  const nl = Math.hypot(nx, ny, nz) || 1;
+  nx /= nl; ny /= nl; nz /= nl;
+
+  const metal = M[o + 1] / 255;
+  const rough = M[o + 2] / 255;
+  const emis = M[o + 3] / 255;
+
+  const ar = A[o] / 255, ag = A[o + 1] / 255, ab = A[o + 2] / 255;
+  const dr = ar * (1 - metal * 0.9), dg = ag * (1 - metal * 0.9), db = ab * (1 - metal * 0.9);
+  const sr = 0.04 + (ar - 0.04) * metal;
+  const sg = 0.04 + (ag - 0.04) * metal;
+  const sb = 0.04 + (ab - 0.04) * metal;
+  const specPow = Math.pow(2, 1 + 9 * (1 - rough));
+
+  let r = dr * state.light.ambient, g = dg * state.light.ambient, b = db * state.light.ambient;
+  for (const L of lights) {
+    const ndl = Math.max(0, nx * L.dir[0] + ny * L.dir[1] + nz * L.dir[2]);
+    r += dr * L.color[0] * L.intensity * ndl;
+    g += dg * L.color[1] * L.intensity * ndl;
+    b += db * L.color[2] * L.intensity * ndl;
+    if (state.specular && ndl > 0) {
+      const hx = L.dir[0], hy = L.dir[1], hz = L.dir[2] + 1;
+      const hl = Math.hypot(hx, hy, hz) || 1;
+      const ndh = Math.max(0, (nx * hx + ny * hy + nz * hz) / hl);
+      const spec = Math.pow(ndh, specPow) * L.intensity;
+      r += sr * spec * L.color[0]; g += sg * spec * L.color[1]; b += sb * spec * L.color[2];
+    }
+  }
+  const rim = Math.pow(1 - Math.min(1, Math.max(0, nz)), 3) * 0.30;
+  r += rim; g += rim; b += rim;
+  if (emis > 0) { r += ar * emis * 1.6; g += ag * emis * 1.6; b += ab * emis * 1.6; }
+  const e = state.light.exposure;
+  return [clamp255(r * 255 * e), clamp255(g * 255 * e), clamp255(b * 255 * e)];
+}
+
+function hashColor(id) {
+  const h = (id * 137.508) % 360 / 360;
+  const s = 0.62, l = 0.56;
+  const f = n => {
+    const k = (n + h * 12) % 12;
+    const a = s * Math.min(l, 1 - l);
+    return 255 * (l - a * Math.max(-1, Math.min(k - 3, Math.min(9 - k, 1))));
+  };
+  return [f(0), f(8), f(4)];
+}
+
+// ---------------------------------------------------------------------------
+// Render loop
+// ---------------------------------------------------------------------------
+const canvas = $('#view');
+const ctx2d = canvas.getContext('2d', { willReadFrequently: true });
+
+function render() {
+  const C = state.composite;
+  if (!C) return;
+  canvas.width = C.W;
+  canvas.height = C.H;
+  const out = ctx2d.createImageData(C.W, C.H);
+  const px = out.data;
+  const lights = currentLights();
+  const mode = state.viewMode;
+
+  for (let i = 0; i < C.W * C.H; i++) {
+    const o = i * 4;
+    if (C.cov[i] === 0) { px[o + 3] = 0; continue; }
+    if (mode === 'albedo') {
+      px[o] = C.A[o]; px[o + 1] = C.A[o + 1]; px[o + 2] = C.A[o + 2];
+    } else if (mode === 'normal') {
+      px[o] = C.N[o]; px[o + 1] = C.N[o + 1]; px[o + 2] = C.N[o + 2];
+    } else if (mode === 'material') {
+      const c = hashColor(C.M[o]);
+      px[o] = c[0]; px[o + 1] = c[1]; px[o + 2] = c[2];
+    } else if (mode === 'metal' || mode === 'rough' || mode === 'emissive') {
+      const v = C.M[o + (mode === 'metal' ? 1 : mode === 'rough' ? 2 : 3)];
+      px[o] = v; px[o + 1] = v; px[o + 2] = v;
+    } else {
+      const c = shadePixel(C.A, C.N, C.M, o, lights);
+      if (!c) { px[o + 3] = 0; continue; }
+      px[o] = c[0]; px[o + 1] = c[1]; px[o + 2] = c[2];
+    }
+    px[o + 3] = C.cov[i];
+  }
+  ctx2d.putImageData(out, 0, 0);
+  updateHud();
+}
+
+function updateHud() {
+  const C = state.composite;
+  if (!C || !state.manifest) { $('#hud').textContent = ''; return; }
+  const vis = [...state.parts.values()].filter(p => p.visible).length;
+  $('#hud').innerHTML =
+    `<b>${state.asset}</b> · facing <b>${state.facing}</b> · ${C.W}×${C.H}px`
+    + ` · ${vis}/${state.parts.size} parts · ${state.manifest.pxPerVoxel} px/voxel`;
+}
+
+// ---------------------------------------------------------------------------
+// UI wiring
+// ---------------------------------------------------------------------------
+async function loadIndex() {
+  state.index = await (await fetch('game_assets/voxel-index.json')).json();
+  renderAssetList();
+}
+
+function renderAssetList() {
+  const q = $('#search').value.toLowerCase();
+  const bucket = state.index?.[state.kind] ?? {};
+  const list = $('#assetList');
+  list.innerHTML = '';
+  const ids = Object.keys(bucket).filter(id => id.includes(q)).sort();
+  if (!ids.length) {
+    list.innerHTML = `<div style="color:var(--muted);font-size:12px;padding:6px">
+      no baked ${state.kind} yet — run <code>npm run voxels3:bake</code></div>`;
+    return;
+  }
+  for (const id of ids) {
+    const b = document.createElement('button');
+    b.textContent = id;
+    if (id === state.asset) b.className = 'active';
+    b.onclick = () => selectAsset(id);
+    list.appendChild(b);
+  }
+}
+
+async function selectAsset(id) {
+  state.asset = id;
+  const entry = state.index[state.kind][id];
+  state.dir = entry.folder;
+  state.manifest = await (await fetch(entry.manifest)).json();
+  state.facing = state.manifest.facings[0];
+  state.cache.clear();
+  state.thumbCache.clear();
+  state.parts = new Map();
+  for (const [name, p] of Object.entries(state.manifest.parts)) {
+    state.parts.set(name, { visible: true });
+  }
+  renderAssetList();
+  renderFacings();
+  renderParts();
+  renderMeta();
+  await rebuild();
+}
+
+function renderFacings() {
+  const strip = $('#facings');
+  strip.innerHTML = '';
+  for (const f of state.manifest.facings) {
+    const btn = document.createElement('button');
+    if (f === state.facing) btn.className = 'active';
+    const img = document.createElement('img');
+    const lit = state.manifest.lit?.facings?.[f];
+    const comp = state.manifest.composite?.facings?.[f]?.files?.albedo;
+    img.src = `${state.dir}/${lit ? lit.file : comp ? comp.file : ''}`;
+    img.alt = f;
+    img.title = f + (lit ? ' (relit)' : '');
+    btn.appendChild(img);
+    btn.onclick = () => { state.facing = f; renderFacings(); rebuild(); };
+    strip.appendChild(btn);
+  }
+}
+
+function renderParts() {
+  const box = $('#parts');
+  box.innerHTML = '';
+  for (const [name, st] of state.parts) {
+    const meta = state.manifest.parts[name];
+    const row = document.createElement('div');
+    row.className = 'partrow';
+    const cb = document.createElement('input');
+    cb.type = 'checkbox';
+    cb.checked = st.visible;
+    cb.onchange = () => { st.visible = cb.checked; rebuild(); };
+    const label = document.createElement('span');
+    label.className = 'name';
+    label.textContent = name;
+    row.append(cb, label);
+    if (meta.dynamic) {
+      const tag = document.createElement('span');
+      tag.className = 'tag';
+      tag.textContent = 'DYNAMIC';
+      row.appendChild(tag);
+      const info = document.createElement('span');
+      info.style.cssText = 'font-size:10px;color:var(--muted);font-variant-numeric:tabular-nums';
+      info.textContent = `${meta.facings ? Object.keys(meta.facings).length : 0} facings`;
+      row.appendChild(info);
+    }
+    box.appendChild(row);
+  }
+}
+
+function renderMeta() {
+  const m = state.manifest;
+  const vox = m.sourceGeometry.totalVoxels.toLocaleString();
+  const files = Object.values(m.parts).reduce((s, p) => s + Object.keys(p.facings).length * 3, 0);
+  $('#meta').innerHTML =
+    `canvas <b>${m.canvas}³</b> · ${m.kind}<br>`
+    + `facings <b>${m.facings.length}</b> · parts <b>${Object.keys(m.parts).length}</b><br>`
+    + `voxels <b>${vox}</b><br>`
+    + `sheets <b>${files}</b> PNG · ${m.pxPerVoxel} px/voxel<br>`
+    + `<span class="ok">✓ normal map</span> <span class="ok">✓ material map</span>`;
+}
+
+async function rebuild() {
+  $('#hint').style.display = 'none';
+  await buildComposite();
+  render();
+}
+
+// Controls
+$('#search').oninput = renderAssetList;
+document.querySelectorAll('#kindSwitch button').forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll('#kindSwitch button').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    state.kind = b.dataset.kind;
+    renderAssetList();
+  };
+});
+document.querySelectorAll('#viewMode button').forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll('#viewMode button').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    state.viewMode = b.dataset.mode;
+    render();
+  };
+});
+
+const bind = (id, valId, apply, fmt) => {
+  const el = $(id);
+  el.oninput = () => {
+    apply(Number(el.value));
+    $(valId).textContent = fmt(Number(el.value));
+    render();
+  };
+};
+bind('#az', '#azVal', v => state.light.az = v, v => `${v}°`);
+bind('#el', '#elVal', v => state.light.el = v, v => `${v}°`);
+bind('#inten', '#intenVal', v => state.light.intensity = v / 100, v => (v / 100).toFixed(2));
+bind('#amb', '#ambVal', v => state.light.ambient = v / 100, v => (v / 100).toFixed(2));
+bind('#exp', '#expVal', v => state.light.exposure = v / 100, v => (v / 100).toFixed(2));
+
+$('#rig').onclick = e => {
+  state.rig = !state.rig;
+  e.target.classList.toggle('active', state.rig);
+  render();
+};
+$('#specOn').onclick = e => {
+  state.specular = !state.specular;
+  e.target.classList.toggle('active', state.specular);
+  render();
+};
+$('#sweep').onclick = e => {
+  state.sweep = !state.sweep;
+  e.target.classList.toggle('active', state.sweep);
+  if (state.sweep) sweepLoop();
+};
+function sweepLoop() {
+  if (!state.sweep) return;
+  state.light.az = (state.light.az + 1.6) % 360;
+  $('#az').value = state.light.az;
+  $('#azVal').textContent = `${Math.round(state.light.az)}°`;
+  render();
+  requestAnimationFrame(sweepLoop);
+}
+$('#allParts').onclick = () => {
+  for (const st of state.parts.values()) st.visible = true;
+  renderParts();
+  rebuild();
+};
+$('#resetPivots').onclick = () => {
+  state.traverse = 0;
+  $('#traverse').value = 0;
+  $('#traverseVal').textContent = '0°';
+  rebuild();
+};
+$('#traverse').oninput = () => {
+  const raw = Number($('#traverse').value);
+  const snapped = Math.round(raw / 22.5) * 22.5;
+  state.traverse = snapped;
+  $('#traverseVal').textContent = `${snapped}°`;
+  rebuild();
+};
+
+// Boot
+if (location.protocol === 'file:') {
+  $('#fileBanner').style.display = 'block';
+}
+loadIndex().catch(err => {
+  $('#hint').style.display = 'flex';
+  $('#hint').innerHTML = `Could not load <code>game_assets/voxel-index.json</code>.<br>`
+    + `Bake something first (<code>npm run voxels3:tank</code>) and serve over http `
+    + `(<code>npm run voxels3:review</code>).<br><br><small>${err.message}</small>`;
+});
+</script>
+</body>
+</html>
