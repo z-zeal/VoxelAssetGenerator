@@ -1,0 +1,4352 @@
+{
+  "format": "field-command-voxel-sheet-4",
+  "asset": "artillery",
+  "kind": "unit",
+  "group": "vehicles.tracked",
+  "canvas": 512,
+  "designVoxelsPerTileUnit": 8,
+  "renderScale": 1,
+  "previewScale": 8,
+  "superSample": 4,
+  "pxPerVoxel": 0.125,
+  "tileDiamond": [
+    64,
+    32
+  ],
+  "facings": [
+    "d00",
+    "d01",
+    "d02",
+    "d03",
+    "d04",
+    "d05",
+    "d06",
+    "d07",
+    "d08",
+    "d09",
+    "d10",
+    "d11",
+    "d12",
+    "d13",
+    "d14",
+    "d15"
+  ],
+  "facingMeta": [
+    {
+      "id": "d00",
+      "angle": 0,
+      "screenAngle": 45,
+      "label": "SE",
+      "unitIndex": 0,
+      "viewDir": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.0625,
+        -0.0625,
+        0,
+        0.03125,
+        0.03125,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d01",
+      "angle": 22.5,
+      "screenAngle": 67.5,
+      "label": "SSE",
+      "unitIndex": 1,
+      "viewDir": [
+        0.7543444794845715,
+        0.3124597141037824,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        0.03382475625913983,
+        -0.08166018530477004,
+        0,
+        0.040830092652386796,
+        0.01691237812956814,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d02",
+      "angle": 45,
+      "screenAngle": 90,
+      "label": "S",
+      "unitIndex": 2,
+      "viewDir": [
+        0.8164965809277261,
+        6.409875621278547e-17,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0,
+        -0.08838834764831915,
+        0,
+        0.04419417382415958,
+        0,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d03",
+      "angle": 67.5,
+      "screenAngle": 112.5,
+      "label": "SSW",
+      "unitIndex": 3,
+      "viewDir": [
+        0.7543444794845715,
+        -0.3124597141037824,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.03382475625913628,
+        -0.08166018530477004,
+        0,
+        0.04083009265238502,
+        -0.016912378129569028,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d04",
+      "angle": 90,
+      "screenAngle": 135,
+      "label": "SW",
+      "unitIndex": 4,
+      "viewDir": [
+        0.5773502691896258,
+        -0.5773502691896257,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        -0.0625,
+        -0.0625,
+        0,
+        0.03125,
+        -0.03125000000000089,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d05",
+      "angle": 112.5,
+      "screenAngle": 157.5,
+      "label": "WSW",
+      "unitIndex": 5,
+      "viewDir": [
+        0.3124597141037825,
+        -0.7543444794845715,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.08166018530477359,
+        -0.03382475625913628,
+        0,
+        0.016912378129569028,
+        -0.04083009265238591,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d06",
+      "angle": 135,
+      "screenAngle": 180,
+      "label": "W",
+      "unitIndex": 6,
+      "viewDir": [
+        6.409875621278547e-17,
+        -0.8164965809277261,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        -0.08838834764831915,
+        0,
+        0,
+        0,
+        -0.04419417382415958,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d07",
+      "angle": 157.5,
+      "screenAngle": 202.5,
+      "label": "WNW",
+      "unitIndex": 7,
+      "viewDir": [
+        -0.3124597141037824,
+        -0.7543444794845715,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.08166018530477537,
+        0.03382475625913628,
+        0,
+        -0.01691237812956814,
+        -0.04083009265238502,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d08",
+      "angle": 180,
+      "screenAngle": 225,
+      "label": "NW",
+      "unitIndex": 8,
+      "viewDir": [
+        -0.5773502691896256,
+        -0.5773502691896258,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.0625,
+        0.062499999999998224,
+        0,
+        -0.03125,
+        -0.03125,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d09",
+      "angle": 202.5,
+      "screenAngle": 247.5,
+      "label": "NNW",
+      "unitIndex": 9,
+      "viewDir": [
+        -0.7543444794845713,
+        -0.3124597141037829,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.03382475625913628,
+        0.08166018530477537,
+        0,
+        -0.04083009265238502,
+        -0.01691237812956814,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d10",
+      "angle": 225,
+      "screenAngle": 270,
+      "label": "N",
+      "unitIndex": 10,
+      "viewDir": [
+        -0.8164965809277261,
+        -1.2819751242557095e-16,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0,
+        0.08838834764831915,
+        0,
+        -0.04419417382415958,
+        0,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d11",
+      "angle": 247.5,
+      "screenAngle": 292.5,
+      "label": "NNE",
+      "unitIndex": 11,
+      "viewDir": [
+        -0.7543444794845715,
+        0.3124597141037827,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.03382475625913983,
+        0.08166018530477359,
+        0,
+        -0.040830092652386796,
+        0.016912378129569028,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d12",
+      "angle": 270,
+      "screenAngle": 315,
+      "label": "NE",
+      "unitIndex": 12,
+      "viewDir": [
+        -0.5773502691896258,
+        0.5773502691896256,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        0.0625,
+        0.0625,
+        0,
+        -0.03125,
+        0.03125,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d13",
+      "angle": 292.5,
+      "screenAngle": 337.5,
+      "label": "ENE",
+      "unitIndex": 13,
+      "viewDir": [
+        -0.3124597141037823,
+        0.7543444794845715,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        0.08166018530477004,
+        0.03382475625913983,
+        0,
+        -0.01691237812956814,
+        0.040830092652387684,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d14",
+      "angle": 315,
+      "screenAngle": 0,
+      "label": "E",
+      "unitIndex": 14,
+      "viewDir": [
+        -1.9229626863835643e-16,
+        0.8164965809277261,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.08838834764831915,
+        0,
+        0,
+        0,
+        0.04419417382415958,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d15",
+      "angle": 337.5,
+      "screenAngle": 22.5,
+      "label": "ESE",
+      "unitIndex": 15,
+      "viewDir": [
+        0.3124597141037827,
+        0.7543444794845715,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.08166018530477537,
+        -0.03382475625913273,
+        0,
+        0.016912378129569916,
+        0.040830092652386796,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    }
+  ],
+  "teamTint": {
+    "note": "Albedo is baked in the standard livery. Recolour pixels whose material map red channel matches these ids to apply an army livery.",
+    "materialIds": [
+      {
+        "name": "team.hull",
+        "id": 0,
+        "role": "hull"
+      },
+      {
+        "name": "team.light",
+        "id": 1,
+        "role": "light"
+      },
+      {
+        "name": "team.dark",
+        "id": 2,
+        "role": "dark"
+      },
+      {
+        "name": "team.accent",
+        "id": 3,
+        "role": "accent"
+      },
+      {
+        "name": "roof",
+        "id": 37,
+        "role": "hull"
+      },
+      {
+        "name": "roof.light",
+        "id": 38,
+        "role": "light"
+      },
+      {
+        "name": "roof.dark",
+        "id": 39,
+        "role": "dark"
+      }
+    ],
+    "liveries": {
+      "_note": "Army liveries for runtime tinting of team materials. Mirrors src/renderer.js TEAM_COLORS and tools/voxel_pipeline/v3/materials.mjs ARMY_LIVERY.",
+      "standard": {
+        "hull": "#df794b",
+        "light": "#ffc68b",
+        "dark": "#934b32",
+        "accent": "#ece7bc"
+      },
+      "allies": {
+        "hull": "#639bc3",
+        "light": "#a9d0e1",
+        "dark": "#345f78",
+        "accent": "#e8f1f4"
+      },
+      "soviets": {
+        "hull": "#7eb06a",
+        "light": "#b8e0a8",
+        "dark": "#2d4a2d",
+        "accent": "#dfe8c8"
+      },
+      "empire": {
+        "hull": "#d9b44e",
+        "light": "#ffe79a",
+        "dark": "#8a6a1a",
+        "accent": "#f6eecd"
+      },
+      "legion": {
+        "hull": "#c65a54",
+        "light": "#ffb0a8",
+        "dark": "#7a2a2a",
+        "accent": "#f3d9d4"
+      },
+      "neutral": {
+        "hull": "#aaa78b",
+        "light": "#cfcdb6",
+        "dark": "#6c6a55",
+        "accent": "#e2e0cf"
+      }
+    }
+  },
+  "normalMap": {
+    "space": "view",
+    "channelOrder": "rgb",
+    "range": "0..255 maps -1..1",
+    "up": "+g means screen up"
+  },
+  "materialMap": {
+    "channelOrder": "rgba",
+    "meaning": [
+      "materialId",
+      "metalness",
+      "roughness",
+      "emissive"
+    ],
+    "table": [
+      {
+        "id": 0,
+        "name": "team.hull",
+        "metalness": 0.35,
+        "roughness": 0.62,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "hull"
+      },
+      {
+        "id": 1,
+        "name": "team.light",
+        "metalness": 0.35,
+        "roughness": 0.58,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "light"
+      },
+      {
+        "id": 2,
+        "name": "team.dark",
+        "metalness": 0.4,
+        "roughness": 0.66,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "dark"
+      },
+      {
+        "id": 3,
+        "name": "team.accent",
+        "metalness": 0.2,
+        "roughness": 0.7,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "accent"
+      },
+      {
+        "id": 4,
+        "name": "steel",
+        "metalness": 0.85,
+        "roughness": 0.42,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 5,
+        "name": "steel.dark",
+        "metalness": 0.85,
+        "roughness": 0.5,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 6,
+        "name": "steel.bright",
+        "metalness": 0.95,
+        "roughness": 0.24,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 7,
+        "name": "gunmetal",
+        "metalness": 0.9,
+        "roughness": 0.38,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 8,
+        "name": "gunmetal.lit",
+        "metalness": 0.9,
+        "roughness": 0.32,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 9,
+        "name": "iron",
+        "metalness": 0.8,
+        "roughness": 0.62,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 10,
+        "name": "brass",
+        "metalness": 0.95,
+        "roughness": 0.3,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 11,
+        "name": "copper",
+        "metalness": 0.95,
+        "roughness": 0.34,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 12,
+        "name": "chrome",
+        "metalness": 1,
+        "roughness": 0.12,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 13,
+        "name": "rubber",
+        "metalness": 0.05,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 14,
+        "name": "track",
+        "metalness": 0.7,
+        "roughness": 0.68,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 15,
+        "name": "track.worn",
+        "metalness": 0.85,
+        "roughness": 0.44,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 16,
+        "name": "tyre",
+        "metalness": 0.03,
+        "roughness": 0.95,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 17,
+        "name": "plate",
+        "metalness": 0.55,
+        "roughness": 0.66,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 18,
+        "name": "plate.lit",
+        "metalness": 0.55,
+        "roughness": 0.6,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 19,
+        "name": "plate.dark",
+        "metalness": 0.55,
+        "roughness": 0.72,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 20,
+        "name": "glass",
+        "metalness": 0.3,
+        "roughness": 0.08,
+        "emissive": 0,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 21,
+        "name": "glass.dark",
+        "metalness": 0.4,
+        "roughness": 0.12,
+        "emissive": 0,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 22,
+        "name": "optic",
+        "metalness": 0.6,
+        "roughness": 0.05,
+        "emissive": 0.55,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 23,
+        "name": "lamp.warm",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.85,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 24,
+        "name": "lamp.red",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.8,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 25,
+        "name": "lamp.cyan",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.8,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 26,
+        "name": "skin",
+        "metalness": 0,
+        "roughness": 0.78,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 27,
+        "name": "skin.dark",
+        "metalness": 0,
+        "roughness": 0.8,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 28,
+        "name": "cloth",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 29,
+        "name": "cloth.dark",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 30,
+        "name": "webbing",
+        "metalness": 0.05,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 31,
+        "name": "boot",
+        "metalness": 0.1,
+        "roughness": 0.85,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 32,
+        "name": "hair",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 33,
+        "name": "concrete",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 34,
+        "name": "concrete.lit",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 35,
+        "name": "concrete.dark",
+        "metalness": 0,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 36,
+        "name": "brick",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 37,
+        "name": "roof",
+        "metalness": 0.1,
+        "roughness": 0.82,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "hull"
+      },
+      {
+        "id": 38,
+        "name": "roof.light",
+        "metalness": 0.1,
+        "roughness": 0.8,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "light"
+      },
+      {
+        "id": 39,
+        "name": "roof.dark",
+        "metalness": 0.1,
+        "roughness": 0.84,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "dark"
+      },
+      {
+        "id": 40,
+        "name": "asphalt",
+        "metalness": 0,
+        "roughness": 0.96,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 41,
+        "name": "paint.line",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 42,
+        "name": "wood",
+        "metalness": 0,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 43,
+        "name": "wood.dark",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 44,
+        "name": "canvas",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 45,
+        "name": "sandbag",
+        "metalness": 0,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 46,
+        "name": "solar",
+        "metalness": 0.6,
+        "roughness": 0.22,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 47,
+        "name": "rust",
+        "metalness": 0.3,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 48,
+        "name": "scorch",
+        "metalness": 0.2,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 49,
+        "name": "smoke",
+        "metalness": 0,
+        "roughness": 1,
+        "emissive": 0.1,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 50,
+        "name": "water",
+        "metalness": 0.2,
+        "roughness": 0.15,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 51,
+        "name": "foam",
+        "metalness": 0,
+        "roughness": 0.6,
+        "emissive": 0.1,
+        "blend": "opaque",
+        "team": null
+      }
+    ]
+  },
+  "parts": {
+    "body": {
+      "name": "body",
+      "dynamic": false,
+      "parent": null,
+      "pivotDesign": [
+        256,
+        256,
+        0
+      ],
+      "traverse": false,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            28,
+            28
+          ],
+          "pivot": [
+            28,
+            28
+          ],
+          "depth": 48.17,
+          "w": 57,
+          "h": 43,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__body__d00__albedo.png",
+              "w": 57,
+              "h": 43,
+              "sha256": "9dc803fda180616765fb9db697a1ebce600b874208cb09f1806c180fd874d251"
+            },
+            "normal": {
+              "file": "sheets/artillery__body__d00__normal.png",
+              "w": 57,
+              "h": 43,
+              "sha256": "7ec217f8eca690ccaa46aedae370fa8acb0676a6af348700ae49ed69a6f95597"
+            },
+            "material": {
+              "file": "sheets/artillery__body__d00__material.png",
+              "w": 57,
+              "h": 43,
+              "sha256": "67088bdd798ffbfdc7791e3e00649efa1a510f7b6c412c57e8c19bd4037bc0ec"
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            26.75,
+            29.78
+          ],
+          "pivot": [
+            26.75,
+            29.78
+          ],
+          "depth": 45.25,
+          "w": 53,
+          "h": 44,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__body__d01__albedo.png",
+              "w": 53,
+              "h": 44,
+              "sha256": "8c3ec0657624bc7c8fb2b231f5cc86017a02a6c66de9641bbc858a6474e026f5"
+            },
+            "normal": {
+              "file": "sheets/artillery__body__d01__normal.png",
+              "w": 53,
+              "h": 44,
+              "sha256": "97929757038af275d6d4a72cda8da76f9b394441f1859b31691edac39c36e0d3"
+            },
+            "material": {
+              "file": "sheets/artillery__body__d01__material.png",
+              "w": 53,
+              "h": 44,
+              "sha256": "e0cbe0284833c4637d3bafc7be4b4256553de19f23fc905d2e6dfac754c0b7ef"
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            21.37,
+            30.31
+          ],
+          "pivot": [
+            21.37,
+            30.31
+          ],
+          "depth": 37.19,
+          "w": 43,
+          "h": 42,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__body__d02__albedo.png",
+              "w": 43,
+              "h": 42,
+              "sha256": "c046847d6e8e7765f5778da5d1f36a90fed696ebd19248d3d5f33a4aa10ba3f0"
+            },
+            "normal": {
+              "file": "sheets/artillery__body__d02__normal.png",
+              "w": 43,
+              "h": 42,
+              "sha256": "336586b76a85bd7dd573c6f92f1a80b7e9600932151a81bab6418d8193d2e58a"
+            },
+            "material": {
+              "file": "sheets/artillery__body__d02__material.png",
+              "w": 43,
+              "h": 42,
+              "sha256": "442e3f173466ea537c9e82ee2b1e39d17f9f73c2128c84d71e108acf29247aa6"
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            25.44,
+            30.12
+          ],
+          "pivot": [
+            25.44,
+            30.12
+          ],
+          "depth": 25.22,
+          "w": 52,
+          "h": 44,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__body__d03__albedo.png",
+              "w": 52,
+              "h": 44,
+              "sha256": "be2738ab877a8509059dc88f8cbba7ef60f55983a287ec279f84353f61922e12"
+            },
+            "normal": {
+              "file": "sheets/artillery__body__d03__normal.png",
+              "w": 52,
+              "h": 44,
+              "sha256": "1d62d9a65173321cc76739a03c43a2b22e329dfeaffd1ddce99a73a1d8879ae7"
+            },
+            "material": {
+              "file": "sheets/artillery__body__d03__material.png",
+              "w": 52,
+              "h": 44,
+              "sha256": "938502d7b19807c260cb2caa1dc0330bd63dc9b5a8fd769832ce6d6e08b0353a"
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            29,
+            28
+          ],
+          "pivot": [
+            29,
+            28
+          ],
+          "depth": 11.15,
+          "w": 58,
+          "h": 43,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__body__d04__albedo.png",
+              "w": 58,
+              "h": 43,
+              "sha256": "502c500965b8efb33372dd550fe85a9e6a9f3ad877ee91feb2cabf1561341a19"
+            },
+            "normal": {
+              "file": "sheets/artillery__body__d04__normal.png",
+              "w": 58,
+              "h": 43,
+              "sha256": "c5bebcf934e1238f5c4cc4b54aebb368530e620fe2fbb031a9a968a5fe36fff2"
+            },
+            "material": {
+              "file": "sheets/artillery__body__d04__material.png",
+              "w": 58,
+              "h": 43,
+              "sha256": "86d0249e2b67f53fa301f3ca6124e29eb5a06cc37a643d8bc9f534ebb1d388a4"
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            28.44,
+            25.88
+          ],
+          "pivot": [
+            28.44,
+            25.88
+          ],
+          "depth": -2.87,
+          "w": 57,
+          "h": 39,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__body__d05__albedo.png",
+              "w": 57,
+              "h": 39,
+              "sha256": "a5998419e78568546e015e94a1cc014c884d356d9b1862991f6aeb12f1dc5f0e"
+            },
+            "normal": {
+              "file": "sheets/artillery__body__d05__normal.png",
+              "w": 57,
+              "h": 39,
+              "sha256": "96c6f560e36b4334aa27859fb90c9dff6e1ad1de98c83897f1a89ce12b77fb7f"
+            },
+            "material": {
+              "file": "sheets/artillery__body__d05__material.png",
+              "w": 57,
+              "h": 39,
+              "sha256": "20c8a307a8cef1e77556492303bf910d1a7399a91aa2ade7dda4410467c640af"
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            24.37,
+            24.69
+          ],
+          "pivot": [
+            24.37,
+            24.69
+          ],
+          "depth": -14.7,
+          "w": 50,
+          "h": 36,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__body__d06__albedo.png",
+              "w": 50,
+              "h": 36,
+              "sha256": "3ff5accf88b80ec6137ed9f4890e82d12cd718728459cb3c8b6282c904faf7e4"
+            },
+            "normal": {
+              "file": "sheets/artillery__body__d06__normal.png",
+              "w": 50,
+              "h": 36,
+              "sha256": "791f087d669c3110f5ad9ab6097f2e69b1fe8fe18d0283e1bfc582cb501e83a4"
+            },
+            "material": {
+              "file": "sheets/artillery__body__d06__material.png",
+              "w": 50,
+              "h": 36,
+              "sha256": "cec07e8c890afc28f819ade458350dad54965e24d864587fc6dff58d6e40fa53"
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            28.75,
+            25.22
+          ],
+          "pivot": [
+            28.75,
+            25.22
+          ],
+          "depth": -22.55,
+          "w": 56,
+          "h": 39,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__body__d07__albedo.png",
+              "w": 56,
+              "h": 39,
+              "sha256": "7f694ad3392c71a76f705b315e7db0b50d691932ecbdfeaf6b6a90cca8375314"
+            },
+            "normal": {
+              "file": "sheets/artillery__body__d07__normal.png",
+              "w": 56,
+              "h": 39,
+              "sha256": "435bcaf96fe7abfe4824b82ad1590f04d09e26dfcf7e6c2b1f6b3b59d37d87c1"
+            },
+            "material": {
+              "file": "sheets/artillery__body__d07__material.png",
+              "w": 56,
+              "h": 39,
+              "sha256": "6eba2e8ca7f493a1a36e6b036fd9973f3cce438c71f569fa4715d853f791b40c"
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            29,
+            25
+          ],
+          "pivot": [
+            29,
+            25
+          ],
+          "depth": -25.22,
+          "w": 57,
+          "h": 40,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__body__d08__albedo.png",
+              "w": 57,
+              "h": 40,
+              "sha256": "2f0b2be1892a1a9bf37750b046fc0891e5a39835738d059fab59aa12062bafc9"
+            },
+            "normal": {
+              "file": "sheets/artillery__body__d08__normal.png",
+              "w": 57,
+              "h": 40,
+              "sha256": "b5b40923d5f6c36c49d3dcfaaf9fadee3d2505e12f042fd613f0b817d5bf4bc2"
+            },
+            "material": {
+              "file": "sheets/artillery__body__d08__material.png",
+              "w": 57,
+              "h": 40,
+              "sha256": "c486eaf28862c3ffa5e00ac01dfbce7b9256d252350ff70251cf7fd6577e9d32"
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            26.25,
+            26.22
+          ],
+          "pivot": [
+            26.25,
+            26.22
+          ],
+          "depth": -22.31,
+          "w": 53,
+          "h": 40,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__body__d09__albedo.png",
+              "w": 53,
+              "h": 40,
+              "sha256": "25e53e05b5c4ec3dd667a0e85faec6f114b315046d85eb598b49bdfb1fcb50fe"
+            },
+            "normal": {
+              "file": "sheets/artillery__body__d09__normal.png",
+              "w": 53,
+              "h": 40,
+              "sha256": "43de47cd80e9a38232c0acb1a44c68ae996e6630ff6fcdb9f90c4e7d31e24461"
+            },
+            "material": {
+              "file": "sheets/artillery__body__d09__material.png",
+              "w": 53,
+              "h": 40,
+              "sha256": "9f0dee09885f48b5ca08a15e31a0b1d2c6d09a8ac3162fc4dce39a0810c8ea93"
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            21.63,
+            25.69
+          ],
+          "pivot": [
+            21.63,
+            25.69
+          ],
+          "depth": -14.24,
+          "w": 43,
+          "h": 38,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__body__d10__albedo.png",
+              "w": 43,
+              "h": 38,
+              "sha256": "989fa8ccc7dc322f4898ff76524ac17edf26afd28e537c0b051a147906317d21"
+            },
+            "normal": {
+              "file": "sheets/artillery__body__d10__normal.png",
+              "w": 43,
+              "h": 38,
+              "sha256": "566181e10ada66f982caec4e8f36240415b447ba51d2286a33fb8d19c4a96086"
+            },
+            "material": {
+              "file": "sheets/artillery__body__d10__material.png",
+              "w": 43,
+              "h": 38,
+              "sha256": "86d3cf2e8c3ee79cf65a4614feea49bc64c5e7dfdbc9a8775f054ef25b118d34"
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            26.56,
+            25.88
+          ],
+          "pivot": [
+            26.56,
+            25.88
+          ],
+          "depth": -2.27,
+          "w": 52,
+          "h": 39,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__body__d11__albedo.png",
+              "w": 52,
+              "h": 39,
+              "sha256": "a6b9ff474768d8607a48c2a53539bd97581c3c31d927b2c4eede9bba8f4f4177"
+            },
+            "normal": {
+              "file": "sheets/artillery__body__d11__normal.png",
+              "w": 52,
+              "h": 39,
+              "sha256": "cd7d550eb5f3e1942fa3a1934dfac94e9534f33335dde3c9687db4f69e94e5f1"
+            },
+            "material": {
+              "file": "sheets/artillery__body__d11__material.png",
+              "w": 52,
+              "h": 39,
+              "sha256": "a5d05c25523f0fed8c0e9e5936b94e7bb9875c7687c4a9437a02307bbee9ea3c"
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            29,
+            25
+          ],
+          "pivot": [
+            29,
+            25
+          ],
+          "depth": 11.8,
+          "w": 58,
+          "h": 38,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__body__d12__albedo.png",
+              "w": 58,
+              "h": 38,
+              "sha256": "f07197b6093a5700f62870be4def667da5f702977a71b60a6f97defc86fcdf43"
+            },
+            "normal": {
+              "file": "sheets/artillery__body__d12__normal.png",
+              "w": 58,
+              "h": 38,
+              "sha256": "288646ae031844ca085fb24ddd90cced046a81782d09945e7b24ba7d295d9f7d"
+            },
+            "material": {
+              "file": "sheets/artillery__body__d12__material.png",
+              "w": 58,
+              "h": 38,
+              "sha256": "d3eae59f11aeb79db617eba25cab28860a018a3cf175a14470396ea00a16881a"
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            28.56,
+            24.12
+          ],
+          "pivot": [
+            28.56,
+            24.12
+          ],
+          "depth": 25.82,
+          "w": 57,
+          "h": 36,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__body__d13__albedo.png",
+              "w": 57,
+              "h": 36,
+              "sha256": "eafd817c15d4927d45b7b7ef1eefb8fc91d27dc47e21269ebbb1d8ebcfc3392a"
+            },
+            "normal": {
+              "file": "sheets/artillery__body__d13__normal.png",
+              "w": 57,
+              "h": 36,
+              "sha256": "d31c407d673898c1a15abcca6eb766374528ce2baa73cd5790e0b2395b4b629f"
+            },
+            "material": {
+              "file": "sheets/artillery__body__d13__material.png",
+              "w": 57,
+              "h": 36,
+              "sha256": "3aa456d4cbcc67143c53138c04a5a5ddae7546c923a128e1e106e4a0ad57bdb1"
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            25.63,
+            23.31
+          ],
+          "pivot": [
+            25.63,
+            23.31
+          ],
+          "depth": 37.65,
+          "w": 50,
+          "h": 34,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__body__d14__albedo.png",
+              "w": 50,
+              "h": 34,
+              "sha256": "56001b5d368d0b93f043ae731f78d9053f19943bc8c21d0c26343d2d32d23e5f"
+            },
+            "normal": {
+              "file": "sheets/artillery__body__d14__normal.png",
+              "w": 50,
+              "h": 34,
+              "sha256": "1b37a59fdcd888bb6d5da6267c6ce312b5eb98c3aa6be8d58ab09ee38e8685d3"
+            },
+            "material": {
+              "file": "sheets/artillery__body__d14__material.png",
+              "w": 50,
+              "h": 34,
+              "sha256": "3814dc5864ca8cc36bf1056274dd0b957eb5ee9b2f1b286b8f9dedb0c7602787"
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            27.25,
+            25.78
+          ],
+          "pivot": [
+            27.25,
+            25.78
+          ],
+          "depth": 45.5,
+          "w": 56,
+          "h": 39,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__body__d15__albedo.png",
+              "w": 56,
+              "h": 39,
+              "sha256": "cd2c1f2643409fdb03a50d17b89efb76479ee2b02a5173bcf29a42b4f4b3d25e"
+            },
+            "normal": {
+              "file": "sheets/artillery__body__d15__normal.png",
+              "w": 56,
+              "h": 39,
+              "sha256": "9b6c4cc2b66dbeaf8765774430ca8e2b18f626cf2416264e2c91fc5c515e74a2"
+            },
+            "material": {
+              "file": "sheets/artillery__body__d15__material.png",
+              "w": 56,
+              "h": 39,
+              "sha256": "819888ee0538782e080c74177c2d94a6c3db137fe4f31dcecbccd690f50cfeba"
+            }
+          }
+        }
+      }
+    },
+    "running.L": {
+      "name": "running.L",
+      "dynamic": false,
+      "parent": null,
+      "pivotDesign": [
+        256,
+        256,
+        0
+      ],
+      "traverse": false,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            11,
+            23
+          ],
+          "pivot": [
+            11,
+            23
+          ],
+          "depth": 31.57,
+          "w": 39,
+          "h": 29,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.L__d00__albedo.png",
+              "w": 39,
+              "h": 29,
+              "sha256": "658f60b4d5fbe94200c4d1c3cbe95fa81e591b4169888859f66803e541360c82"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.L__d00__normal.png",
+              "w": 39,
+              "h": 29,
+              "sha256": "7b56d8ed907aa29bc91a788cbf611dfbc307b75111be9df78dbe500595396004"
+            },
+            "material": {
+              "file": "sheets/artillery__running.L__d00__material.png",
+              "w": 39,
+              "h": 29,
+              "sha256": "69a2db4a1fdcb01aad9e8d2bdd61109fbf840d8533c20ad15088a97954dc2375"
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            3.75,
+            22.78
+          ],
+          "pivot": [
+            3.75,
+            22.78
+          ],
+          "depth": 33.25,
+          "w": 29,
+          "h": 32,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.L__d01__albedo.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "7ab09194c63a311fabe383088ae3d66f32101018aae901fdf09cfbfbdbd2e25e"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.L__d01__normal.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "3a6bfdeac587abde47cff7e2e8afe641058e74ddd7627442b36f0f73ad4bd019"
+            },
+            "material": {
+              "file": "sheets/artillery__running.L__d01__material.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "10e02376d21c904ce2a43c1ce1c7d1fb6f202724b9fdba5a1ee152ba3cd603f5"
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            -4.63,
+            20.31
+          ],
+          "pivot": [
+            -4.63,
+            20.31
+          ],
+          "depth": 30.61,
+          "w": 15,
+          "h": 32,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.L__d02__albedo.png",
+              "w": 15,
+              "h": 32,
+              "sha256": "15aabce6f786ac9e3a4f51024f55d292e1e485ac833621d5812840370f076000"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.L__d02__normal.png",
+              "w": 15,
+              "h": 32,
+              "sha256": "3435103f9cea1ddf4e23d743551b724ed30ec2bacf38221de57d86ba84e3f3a2"
+            },
+            "material": {
+              "file": "sheets/artillery__running.L__d02__material.png",
+              "w": 15,
+              "h": 32,
+              "sha256": "a073d1fab999114f48fb5623ce0a5e72e527a0da6b4ee460679f5ea95a3931c3"
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            3.44,
+            18.12
+          ],
+          "pivot": [
+            3.44,
+            18.12
+          ],
+          "depth": 24.04,
+          "w": 29,
+          "h": 32,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.L__d03__albedo.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "8516a63cb7f816c7b4cc4533f2891da64b9086cf4363c60f97d7aab015bc633a"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.L__d03__normal.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "ebc7f676c1dcfbde26639db29b0838218f4562d1bd91aff8bdcc909a0fe14a3e"
+            },
+            "material": {
+              "file": "sheets/artillery__running.L__d03__material.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "44d353e6e154389a1c534e20b2941a4e65e0463823200928b6fb17610e6066af"
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            11,
+            15
+          ],
+          "pivot": [
+            11,
+            15
+          ],
+          "depth": 14.54,
+          "w": 39,
+          "h": 30,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.L__d04__albedo.png",
+              "w": 39,
+              "h": 30,
+              "sha256": "e6812153a67b3f2126dd70fe48fe48af663c89104271400efa7e32d2d8630744"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.L__d04__normal.png",
+              "w": 39,
+              "h": 30,
+              "sha256": "fe45560f691431d2ef006aefee7dcc2752cffa3f45980de3944e89777bb9d48f"
+            },
+            "material": {
+              "file": "sheets/artillery__running.L__d04__material.png",
+              "w": 39,
+              "h": 30,
+              "sha256": "17e199cd3a52b43f595d742d3fdbd372a7eed5c9630851b65adb7778c1445cb3"
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            17.44,
+            10.88
+          ],
+          "pivot": [
+            17.44,
+            10.88
+          ],
+          "depth": 3.57,
+          "w": 45,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.L__d05__albedo.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "5468dd7381c7655cfdf1ff105754e6075e7bfd0977cbac4b82b47dd75c94ed9e"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.L__d05__normal.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "97310f228f88dea1786d652e1032b29f0beaea475cd71ee8f1f66bc02d8d4326"
+            },
+            "material": {
+              "file": "sheets/artillery__running.L__d05__material.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "cf85c200c165d8cac42a49f922a913e2cb1cc0df50bafa4cd65295fa4ca7f4ce"
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            22.37,
+            7.69
+          ],
+          "pivot": [
+            22.37,
+            7.69
+          ],
+          "depth": -7.21,
+          "w": 45,
+          "h": 20,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.L__d06__albedo.png",
+              "w": 45,
+              "h": 20,
+              "sha256": "c6fde4b790a3e06ab7ea467c5aa0848ad00e724117b488659abc57832ff6db6c"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.L__d06__normal.png",
+              "w": 45,
+              "h": 20,
+              "sha256": "4c8ab09d3190dfabf96041d4b2df1a2bc57e54f04a1e12578382bdbaf2ce7644"
+            },
+            "material": {
+              "file": "sheets/artillery__running.L__d06__material.png",
+              "w": 45,
+              "h": 20,
+              "sha256": "6b1b08e6f894270d115b1961c26961b462749bd2e5baa637a807640a998ea86d"
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            26.75,
+            9.22
+          ],
+          "pivot": [
+            26.75,
+            9.22
+          ],
+          "depth": -16.15,
+          "w": 45,
+          "h": 23,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.L__d07__albedo.png",
+              "w": 45,
+              "h": 23,
+              "sha256": "95624119f0cea8650506b95b833f2010b8722afd658d23b194790587b7f969e1"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.L__d07__normal.png",
+              "w": 45,
+              "h": 23,
+              "sha256": "33d7fdc677ca939fd956f6a490d672fbfa2cbe4746f1f1e22139e2b208699fb6"
+            },
+            "material": {
+              "file": "sheets/artillery__running.L__d07__material.png",
+              "w": 45,
+              "h": 23,
+              "sha256": "bdb5462ffe5d4361d8d166177d81458e0b8af8375745db8dc32a530312d34626"
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            28,
+            13
+          ],
+          "pivot": [
+            28,
+            13
+          ],
+          "depth": -21.9,
+          "w": 39,
+          "h": 28,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.L__d08__albedo.png",
+              "w": 39,
+              "h": 28,
+              "sha256": "6eaa3218a720683672da5612ce35ac905d8c45d6b1c0b69af2baeae145142d35"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.L__d08__normal.png",
+              "w": 39,
+              "h": 28,
+              "sha256": "a0ded2bdfcb582dd8b36ccfdc4579ed4834356267ba22ae4363a0ac54bfa501f"
+            },
+            "material": {
+              "file": "sheets/artillery__running.L__d08__material.png",
+              "w": 39,
+              "h": 28,
+              "sha256": "f6d376f2cb617d362a6964eeb38b33055383f5358dd5b85584021d9a31969bbb"
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            25.25,
+            17.22
+          ],
+          "pivot": [
+            25.25,
+            17.22
+          ],
+          "depth": -23.58,
+          "w": 29,
+          "h": 31,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.L__d09__albedo.png",
+              "w": 29,
+              "h": 31,
+              "sha256": "21ba1d8a6225610db31b334bf672a0dadf996fea626bf9fcbc2e6258e5fa9757"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.L__d09__normal.png",
+              "w": 29,
+              "h": 31,
+              "sha256": "203f3e55f31afdc7d7360487e619bbb3ed923449c2f3fc82383e2edde0f01628"
+            },
+            "material": {
+              "file": "sheets/artillery__running.L__d09__material.png",
+              "w": 29,
+              "h": 31,
+              "sha256": "283c12944566e16086d9cacf3788d9fd69e6affded0164b17f92bbb501accd31"
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            19.63,
+            19.69
+          ],
+          "pivot": [
+            19.63,
+            19.69
+          ],
+          "depth": -20.94,
+          "w": 15,
+          "h": 32,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.L__d10__albedo.png",
+              "w": 15,
+              "h": 32,
+              "sha256": "ce63f4168a94c23dda648649ede76f6849b7de81d9acbe7851380ca7fa740627"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.L__d10__normal.png",
+              "w": 15,
+              "h": 32,
+              "sha256": "4768eab4fd4082d4ecfe0fdd1ec6a838869bf1f52136297834c2242a2a21b351"
+            },
+            "material": {
+              "file": "sheets/artillery__running.L__d10__material.png",
+              "w": 15,
+              "h": 32,
+              "sha256": "b446cca2f378e7c0008feb4898a89bcd72d9ddfb8de0f01d82f0da26618a9687"
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            25.56,
+            21.88
+          ],
+          "pivot": [
+            25.56,
+            21.88
+          ],
+          "depth": -14.36,
+          "w": 29,
+          "h": 31,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.L__d11__albedo.png",
+              "w": 29,
+              "h": 31,
+              "sha256": "705c041ba3859b09bc107e2bace4d35c98b40f78ae8423358e70c9d10543b28c"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.L__d11__normal.png",
+              "w": 29,
+              "h": 31,
+              "sha256": "9a4b725dfa9a122b51c305986522351d1353477e55e27bd360651c9fc32562a0"
+            },
+            "material": {
+              "file": "sheets/artillery__running.L__d11__material.png",
+              "w": 29,
+              "h": 31,
+              "sha256": "0bc59816bb4a8d086a7ca697ee4d17d577bb904dc907be1a2774540c73012cd8"
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            28,
+            23
+          ],
+          "pivot": [
+            28,
+            23
+          ],
+          "depth": -4.87,
+          "w": 39,
+          "h": 29,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.L__d12__albedo.png",
+              "w": 39,
+              "h": 29,
+              "sha256": "9ee1f9c064d981a678824ef16a0573e903ae5df9ebe6340feca358f19d42579d"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.L__d12__normal.png",
+              "w": 39,
+              "h": 29,
+              "sha256": "9a50fd0fc1b4e01c0b629b08fe35beafd88ce6919fe5105c85eaf019894998da"
+            },
+            "material": {
+              "file": "sheets/artillery__running.L__d12__material.png",
+              "w": 39,
+              "h": 29,
+              "sha256": "c4b9cbf6f19687b0ececb4229a05fb51e231d83574558d51dd3070637f981f39"
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            27.56,
+            22.12
+          ],
+          "pivot": [
+            27.56,
+            22.12
+          ],
+          "depth": 6.1,
+          "w": 45,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.L__d13__albedo.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "737e13a44f84c9bb7d05dd57d0e4db54da324fa6356ffdede300fdc18606d661"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.L__d13__normal.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "41a679c21e2a21b837dda349aea6daa607f69e745e764eddbb62c79c09b718a7"
+            },
+            "material": {
+              "file": "sheets/artillery__running.L__d13__material.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "c9d987ee8446312fe0e7ee44df9e09cbc6c3384c0e2f9f9ba49add883f8ed3ca"
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            22.63,
+            20.31
+          ],
+          "pivot": [
+            22.63,
+            20.31
+          ],
+          "depth": 16.88,
+          "w": 45,
+          "h": 20,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.L__d14__albedo.png",
+              "w": 45,
+              "h": 20,
+              "sha256": "5e7e450d95cda7f06a078dca564b29e8c8aaa45e3f165e4a9f42da3132207f51"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.L__d14__normal.png",
+              "w": 45,
+              "h": 20,
+              "sha256": "2e1059241dad26d64fd84ba4d13ab602f54a819995d57c6b1a6055a252513d7e"
+            },
+            "material": {
+              "file": "sheets/artillery__running.L__d14__material.png",
+              "w": 45,
+              "h": 20,
+              "sha256": "ef4c1d4717fe97036c3bf886af7b166b0ea181eeee78f9e52dbd9de41db8afc7"
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            18.25,
+            22.78
+          ],
+          "pivot": [
+            18.25,
+            22.78
+          ],
+          "depth": 25.82,
+          "w": 45,
+          "h": 26,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.L__d15__albedo.png",
+              "w": 45,
+              "h": 26,
+              "sha256": "b3a5d65f582318c625ed42aee69bfb3513a3019e27f2f0673f8c8b6d78d79ea8"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.L__d15__normal.png",
+              "w": 45,
+              "h": 26,
+              "sha256": "2a41db30d38479a00b49a1d3228b94c39a5424f03fbc3a7ac9c117217cbaeac1"
+            },
+            "material": {
+              "file": "sheets/artillery__running.L__d15__material.png",
+              "w": 45,
+              "h": 26,
+              "sha256": "5b163fc052d45b7fbc1d591c607cba39ce4528c773753e2db9ac818eaf95f263"
+            }
+          }
+        }
+      }
+    },
+    "running.R": {
+      "name": "running.R",
+      "dynamic": false,
+      "parent": null,
+      "pivotDesign": [
+        256,
+        256,
+        0
+      ],
+      "traverse": false,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            28,
+            15
+          ],
+          "pivot": [
+            28,
+            15
+          ],
+          "depth": 51.64,
+          "w": 39,
+          "h": 30,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.R__d00__albedo.png",
+              "w": 39,
+              "h": 30,
+              "sha256": "425816258483b4fc92155147f4097ea619084fcb01703a519890274343cbce61"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.R__d00__normal.png",
+              "w": 39,
+              "h": 30,
+              "sha256": "f0f6585ced0cee1c8dd5a2c9dd7183950b53ed7227ee8d164975316f2dcb1e0a"
+            },
+            "material": {
+              "file": "sheets/artillery__running.R__d00__material.png",
+              "w": 39,
+              "h": 30,
+              "sha256": "0ea617eee5d01618772f6ddfe6017adf4ad2cab1e9994d634a884354c37ad7da"
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            25.75,
+            17.78
+          ],
+          "pivot": [
+            25.75,
+            17.78
+          ],
+          "depth": 44.11,
+          "w": 29,
+          "h": 32,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.R__d01__albedo.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "d62403accb58c1ec59c30b3e9d7c68c5c6a4c761c459a9759a7da120a7dca5f8"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.R__d01__normal.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "cd9740159e576dd8f7ec74c442dfd9a151cd98e3af0c7f8735b7a00be98a6cdd"
+            },
+            "material": {
+              "file": "sheets/artillery__running.R__d01__material.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "75551f740f1d41824c1f4a62509c844aeada140d6de8a49296b194902dc99b6e"
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            20.37,
+            20.31
+          ],
+          "pivot": [
+            20.37,
+            20.31
+          ],
+          "depth": 30.61,
+          "w": 16,
+          "h": 32,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.R__d02__albedo.png",
+              "w": 16,
+              "h": 32,
+              "sha256": "4c586a216eb3ec278e1c54260873d4f3f0f466fee2e395fde7782c6e62fc0401"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.R__d02__normal.png",
+              "w": 16,
+              "h": 32,
+              "sha256": "66de932344965c6f8bb675ce72c8a838333f8a61fe2411b65e53cdb85bc2c2e6"
+            },
+            "material": {
+              "file": "sheets/artillery__running.R__d02__material.png",
+              "w": 16,
+              "h": 32,
+              "sha256": "08014455b07df94e390043128447bf2ffd62a2b5ad1ebc28f9efeb0944d9a183"
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            25.44,
+            22.12
+          ],
+          "pivot": [
+            25.44,
+            22.12
+          ],
+          "depth": 13.18,
+          "w": 29,
+          "h": 31,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.R__d03__albedo.png",
+              "w": 29,
+              "h": 31,
+              "sha256": "1a0f255fd3baa7b7e4ab81ea0255026c0d27405a10db8b1062fab27eb199376f"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.R__d03__normal.png",
+              "w": 29,
+              "h": 31,
+              "sha256": "5a074e5eb396827219d223320ae6bf8e64359a91336a5b6135be49f06b2c1005"
+            },
+            "material": {
+              "file": "sheets/artillery__running.R__d03__material.png",
+              "w": 29,
+              "h": 31,
+              "sha256": "9df80a24fa4194c439f12f78b17d48f5dca55c2853c8784c7f7e183fc3715bf4"
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            28,
+            23
+          ],
+          "pivot": [
+            28,
+            23
+          ],
+          "depth": -5.52,
+          "w": 39,
+          "h": 29,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.R__d04__albedo.png",
+              "w": 39,
+              "h": 29,
+              "sha256": "04378a04919760a1db390cc4c40eca633de96f4121162df0c944190d9fa5a0e6"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.R__d04__normal.png",
+              "w": 39,
+              "h": 29,
+              "sha256": "cdc1e0ffb6d2a5f396e2e2dfdc6d9b03ef985ecc7178b82dfee83e7880d410ea"
+            },
+            "material": {
+              "file": "sheets/artillery__running.R__d04__material.png",
+              "w": 39,
+              "h": 29,
+              "sha256": "a87c83c7db5d7e5c56e1ae1d218c90d51e63bc998f4581a2e1427198982721d5"
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            26.44,
+            22.88
+          ],
+          "pivot": [
+            26.44,
+            22.88
+          ],
+          "depth": -22.64,
+          "w": 44,
+          "h": 26,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.R__d05__albedo.png",
+              "w": 44,
+              "h": 26,
+              "sha256": "d8a4f5340ee377986fa9279f5a2acbb57e1708190163391c3c25334f1b1a6c17"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.R__d05__normal.png",
+              "w": 44,
+              "h": 26,
+              "sha256": "f7183e0bd02dc3db0f6490b24103f2f7d39483e366aa4c44d71530e11bcc7645"
+            },
+            "material": {
+              "file": "sheets/artillery__running.R__d05__material.png",
+              "w": 44,
+              "h": 26,
+              "sha256": "3ce37c7275b612e3bb0fb6c156a9f3afc68b17a3c838a380215e8d24a21fcd2f"
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            22.37,
+            20.69
+          ],
+          "pivot": [
+            22.37,
+            20.69
+          ],
+          "depth": -35.58,
+          "w": 45,
+          "h": 21,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.R__d06__albedo.png",
+              "w": 45,
+              "h": 21,
+              "sha256": "392b582b4483eba137435434e20dd23dd7c1fcea4eedfd49c98fc927d65d9d08"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.R__d06__normal.png",
+              "w": 45,
+              "h": 21,
+              "sha256": "5ac6a1d493954cb517f08a224c172d6a07f69e56b7f3118cbebc573567dcfa53"
+            },
+            "material": {
+              "file": "sheets/artillery__running.R__d06__material.png",
+              "w": 45,
+              "h": 21,
+              "sha256": "d58036b8ca52f50f0af4f8abed344603198f5e8ef1564feaccbe78805d966183"
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            17.75,
+            22.22
+          ],
+          "pivot": [
+            17.75,
+            22.22
+          ],
+          "depth": -42.37,
+          "w": 45,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.R__d07__albedo.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "2eada3d7a9b08c72f281a7dd9aa813f91406c7ccc249ad23d5b4cdaf64f9b4c7"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.R__d07__normal.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "94822bb391900a770b1e5b37b7b09910cb62a6ab9035e968f3ae741e12f84e4c"
+            },
+            "material": {
+              "file": "sheets/artillery__running.R__d07__material.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "d7c0f53c376a15cdc2affe984659d116584836e858150e26eadfbd2c16139c81"
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            11,
+            23
+          ],
+          "pivot": [
+            11,
+            23
+          ],
+          "depth": -41.97,
+          "w": 39,
+          "h": 29,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.R__d08__albedo.png",
+              "w": 39,
+              "h": 29,
+              "sha256": "ab40100492822fc971e04e447a1f1855d523c38413fd73509b7c9975af049e2b"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.R__d08__normal.png",
+              "w": 39,
+              "h": 29,
+              "sha256": "494e384d9d9e2779a11cfd6596921994683d2f59cdb58009e8386efc736a528b"
+            },
+            "material": {
+              "file": "sheets/artillery__running.R__d08__material.png",
+              "w": 39,
+              "h": 29,
+              "sha256": "2d4f420ea4e0e15ddc0f3c02518ae1f1ab9166a36090ff39e3a07a6a16441ae8"
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            3.25,
+            22.22
+          ],
+          "pivot": [
+            3.25,
+            22.22
+          ],
+          "depth": -34.44,
+          "w": 29,
+          "h": 32,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.R__d09__albedo.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "5ea202d975b8446c14c945f15fa799e5f00b2c54a6b9b9eb6c449f646fb48880"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.R__d09__normal.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "0089c0d700a8889d5b1b7bc556016beaa26ce237dd8e81039178d9a00d66de5e"
+            },
+            "material": {
+              "file": "sheets/artillery__running.R__d09__material.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "93896327c6d321808b4688cd1998253af0d466868acdbae3cc2ebe88df3a439a"
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            -4.37,
+            19.69
+          ],
+          "pivot": [
+            -4.37,
+            19.69
+          ],
+          "depth": -20.94,
+          "w": 16,
+          "h": 32,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.R__d10__albedo.png",
+              "w": 16,
+              "h": 32,
+              "sha256": "351f954fe114c25bcef6b288b299e1a85a3b06818aadbbb3b842b8863f101ca4"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.R__d10__normal.png",
+              "w": 16,
+              "h": 32,
+              "sha256": "0ec92c51d2534ef79d819ba2c278af4ee03533f6425c3d9e3cdd465dcaaff387"
+            },
+            "material": {
+              "file": "sheets/artillery__running.R__d10__material.png",
+              "w": 16,
+              "h": 32,
+              "sha256": "ca4ab5ab40ed2a941edafc676b8f1cb9f4fdc3c37530c0b965067a53de2a5c99"
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            3.56,
+            16.88
+          ],
+          "pivot": [
+            3.56,
+            16.88
+          ],
+          "depth": -3.51,
+          "w": 29,
+          "h": 31,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.R__d11__albedo.png",
+              "w": 29,
+              "h": 31,
+              "sha256": "ce67ac5b3200b5d53c28545da67ef9100fbc4e5a144be7cb1216676d9347c375"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.R__d11__normal.png",
+              "w": 29,
+              "h": 31,
+              "sha256": "45c7603b4b50481a7ef6e7f75c8b9ba6d123713e8d67b0d03c919e23058ad160"
+            },
+            "material": {
+              "file": "sheets/artillery__running.R__d11__material.png",
+              "w": 29,
+              "h": 31,
+              "sha256": "76b79619dfec584bb5b7e26fcedf62f2145e1c96875bf72373208ff4dcc006b5"
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            11,
+            13
+          ],
+          "pivot": [
+            11,
+            13
+          ],
+          "depth": 15.19,
+          "w": 39,
+          "h": 28,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.R__d12__albedo.png",
+              "w": 39,
+              "h": 28,
+              "sha256": "dab13d36808beb764237215b17e3b2320eb7b6d34a251d9a039de64cb92b8cd8"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.R__d12__normal.png",
+              "w": 39,
+              "h": 28,
+              "sha256": "6e405a5604ec9e5899cfa6194611fffcd56706ca2440482491388f335b58d350"
+            },
+            "material": {
+              "file": "sheets/artillery__running.R__d12__material.png",
+              "w": 39,
+              "h": 28,
+              "sha256": "e6f0abc888936c8f4ac569bb452ba584d86746246887a51376d80b3cb3901fea"
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            17.56,
+            10.12
+          ],
+          "pivot": [
+            17.56,
+            10.12
+          ],
+          "depth": 32.31,
+          "w": 44,
+          "h": 24,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.R__d13__albedo.png",
+              "w": 44,
+              "h": 24,
+              "sha256": "1f527057931247959e9368e63b12ef660a032bed0763f5b765e20cb6d1b7c675"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.R__d13__normal.png",
+              "w": 44,
+              "h": 24,
+              "sha256": "4a552eb3ee822e9c6299bbc066366212f49329fc39ab945a09314d59a5871471"
+            },
+            "material": {
+              "file": "sheets/artillery__running.R__d13__material.png",
+              "w": 44,
+              "h": 24,
+              "sha256": "1a4994a8f8f54a65c74530b2a4182a64021c97420b8dfd7e06b2564ed0eaa97f"
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            22.63,
+            7.31
+          ],
+          "pivot": [
+            22.63,
+            7.31
+          ],
+          "depth": 45.25,
+          "w": 45,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.R__d14__albedo.png",
+              "w": 45,
+              "h": 19,
+              "sha256": "e6b031897e48ce4abad248e0f5e20f2f78d7368b190fece4e038117d923b3f0a"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.R__d14__normal.png",
+              "w": 45,
+              "h": 19,
+              "sha256": "b03bdf9213f4cee9b75151e61c155924e5c563b227468b0e586e206aef38a39c"
+            },
+            "material": {
+              "file": "sheets/artillery__running.R__d14__material.png",
+              "w": 45,
+              "h": 19,
+              "sha256": "cab487561b03d17f40a5f0d25690c6714e946199f3f86ad983c3875c835f3a6c"
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            27.25,
+            10.78
+          ],
+          "pivot": [
+            27.25,
+            10.78
+          ],
+          "depth": 52.04,
+          "w": 45,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__running.R__d15__albedo.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "c12d949213fb3fb3cbf4414a703e158f0e6aface136f73d11cb03a9b64e13386"
+            },
+            "normal": {
+              "file": "sheets/artillery__running.R__d15__normal.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "d7db34c4fc4d6bd39313ac7d005ac792f9a6e10eb58b444a25761b20cb283439"
+            },
+            "material": {
+              "file": "sheets/artillery__running.R__d15__material.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "234c9f6e977a5f5c23b7d8eedfa9890392bc59a242c6021b5e78cab36afa072d"
+            }
+          }
+        }
+      }
+    },
+    "turret": {
+      "name": "turret",
+      "dynamic": true,
+      "parent": null,
+      "pivotDesign": [
+        268,
+        256,
+        150
+      ],
+      "traverse": true,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            16,
+            25
+          ],
+          "pivot": [
+            16.75,
+            16
+          ],
+          "depth": 54.45,
+          "w": 33,
+          "h": 26,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__turret__d00__albedo.png",
+              "w": 33,
+              "h": 26,
+              "sha256": "eb51b9e3be53fb1e9c83a00d08bd60d33d0141de52437a049931a8ec9c29cc86"
+            },
+            "normal": {
+              "file": "sheets/artillery__turret__d00__normal.png",
+              "w": 33,
+              "h": 26,
+              "sha256": "9cdb9883979b081d4acd30931ef0cbfca43f8fd2e11875effd5549fe8980593f"
+            },
+            "material": {
+              "file": "sheets/artillery__turret__d00__material.png",
+              "w": 33,
+              "h": 26,
+              "sha256": "0ad1cf90f15903ed605b2b472fc177e13d92ff574054c7b82acc73f0704f169e"
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            15.75,
+            24.78
+          ],
+          "pivot": [
+            16.16,
+            15.9
+          ],
+          "depth": 51.9,
+          "w": 32,
+          "h": 26,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__turret__d01__albedo.png",
+              "w": 32,
+              "h": 26,
+              "sha256": "16b85d83251e7d84be8e833cd2061178e55358ff6be223dc062c2b2420668a85"
+            },
+            "normal": {
+              "file": "sheets/artillery__turret__d01__normal.png",
+              "w": 32,
+              "h": 26,
+              "sha256": "0ca25c96e112df590cbe93ddcbb03de6e1b21228fce3bbb9c468769443c3750d"
+            },
+            "material": {
+              "file": "sheets/artillery__turret__d01__material.png",
+              "w": 32,
+              "h": 26,
+              "sha256": "21f53006f0ef4148e229ae2bd23867db9c532efd8fdc7f63d1a449a8ecd1403b"
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            15.37,
+            26.31
+          ],
+          "pivot": [
+            15.37,
+            17.47
+          ],
+          "depth": 43.99,
+          "w": 30,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__turret__d02__albedo.png",
+              "w": 30,
+              "h": 27,
+              "sha256": "0c4251bf8adc7783fa2f28e6c12850d7ac57b505dc5b54595186b97051434a78"
+            },
+            "normal": {
+              "file": "sheets/artillery__turret__d02__normal.png",
+              "w": 30,
+              "h": 27,
+              "sha256": "33a6e4b6439974e70c9efea60a386ce44c44474f31ef16637f0fcf834cf89507"
+            },
+            "material": {
+              "file": "sheets/artillery__turret__d02__material.png",
+              "w": 30,
+              "h": 27,
+              "sha256": "d17bf5bfa0bf0ac445a9bb86ec8df7f81c4c1553cfdfeebf3bffdb9425637bba"
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            16.44,
+            27.12
+          ],
+          "pivot": [
+            16.03,
+            18.24
+          ],
+          "depth": 31.91,
+          "w": 32,
+          "h": 28,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__turret__d03__albedo.png",
+              "w": 32,
+              "h": 28,
+              "sha256": "6cacfd1267569d6e135f9846face7668cc9b70f700f0e5f2daf67ded27ab57de"
+            },
+            "normal": {
+              "file": "sheets/artillery__turret__d03__normal.png",
+              "w": 32,
+              "h": 28,
+              "sha256": "9800c0648d302816aae9c666e7f1a498b0135f07246e0d62c58930a2f1126748"
+            },
+            "material": {
+              "file": "sheets/artillery__turret__d03__material.png",
+              "w": 32,
+              "h": 28,
+              "sha256": "fc3b94f3a889413b41585ad8409b95457efd9e8b9a10f4f94c00866fe2960377"
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            17,
+            27
+          ],
+          "pivot": [
+            16.25,
+            18
+          ],
+          "depth": 17.5,
+          "w": 33,
+          "h": 28,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__turret__d04__albedo.png",
+              "w": 33,
+              "h": 28,
+              "sha256": "a89db0090d98f2816fdaa62d0ce63e9a077f455b21de7e4097443b22ad82dc32"
+            },
+            "normal": {
+              "file": "sheets/artillery__turret__d04__normal.png",
+              "w": 33,
+              "h": 28,
+              "sha256": "7161dc51faf79a9f626b4b87b43b21db47ee7cd4b422e563e01280febabcc16a"
+            },
+            "material": {
+              "file": "sheets/artillery__turret__d04__material.png",
+              "w": 33,
+              "h": 28,
+              "sha256": "25952a9fdf5eff934a7a7e3a449a4c34b3be1248b5b81b8e481d7d9105b02662"
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            17.44,
+            26.88
+          ],
+          "pivot": [
+            16.46,
+            17.71
+          ],
+          "depth": 2.96,
+          "w": 33,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__turret__d05__albedo.png",
+              "w": 33,
+              "h": 27,
+              "sha256": "536d206e9bbe832b9d56eae132da3655b11687d56100a70d80b8a5d5573eaeb3"
+            },
+            "normal": {
+              "file": "sheets/artillery__turret__d05__normal.png",
+              "w": 33,
+              "h": 27,
+              "sha256": "6baae6281c0f4e415795dd2dd51f77b1f2168d826df6a78a9919d2a15f5b25fb"
+            },
+            "material": {
+              "file": "sheets/artillery__turret__d05__material.png",
+              "w": 33,
+              "h": 27,
+              "sha256": "33822966885f1755c66b685bff2f62657f67d08db3e2227d278fdf18684c79b9"
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            16.37,
+            26.69
+          ],
+          "pivot": [
+            15.31,
+            17.31
+          ],
+          "depth": -9.49,
+          "w": 30,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__turret__d06__albedo.png",
+              "w": 30,
+              "h": 27,
+              "sha256": "b0d638022c38a36127e4e35fef857b24c4235baf02ab18542ac9a0c98fb8adbc"
+            },
+            "normal": {
+              "file": "sheets/artillery__turret__d06__normal.png",
+              "w": 30,
+              "h": 27,
+              "sha256": "0ce16c143e80435b3ce17effb5b96ed233b12ba0c69dbef8540d5ebba72245b5"
+            },
+            "material": {
+              "file": "sheets/artillery__turret__d06__material.png",
+              "w": 30,
+              "h": 27,
+              "sha256": "5dd5b31f2e10c172ea52781bf8ecb2274500986c720f80935aef3cb0e6a03bfb"
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            17.75,
+            26.22
+          ],
+          "pivot": [
+            16.77,
+            16.64
+          ],
+          "depth": -17.97,
+          "w": 33,
+          "h": 26,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__turret__d07__albedo.png",
+              "w": 33,
+              "h": 26,
+              "sha256": "0cb2764ab83a0b87cb8547523b5e044f2bd123be69669cba3b375316c81e8dc0"
+            },
+            "normal": {
+              "file": "sheets/artillery__turret__d07__normal.png",
+              "w": 33,
+              "h": 26,
+              "sha256": "7f0d8dff94021563e281d4eccde261a208977133ca4d15b176250f810786dc87"
+            },
+            "material": {
+              "file": "sheets/artillery__turret__d07__material.png",
+              "w": 33,
+              "h": 26,
+              "sha256": "875e312ee03dcf52f91cdc6a564e9ad6d4e472e1afa0b9e99c1cd6c645031c54"
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            17,
+            25
+          ],
+          "pivot": [
+            16.25,
+            15.25
+          ],
+          "depth": -21.18,
+          "w": 33,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__turret__d08__albedo.png",
+              "w": 33,
+              "h": 25,
+              "sha256": "928518bea0c89cb9b663e875df2eaf38e952b54f35946407fb5d8f262f32a601"
+            },
+            "normal": {
+              "file": "sheets/artillery__turret__d08__normal.png",
+              "w": 33,
+              "h": 25,
+              "sha256": "fa8197d2dc3a2e1cff46192f59d15d6bcc69e66ba2542ae08bff3b4498a63e6c"
+            },
+            "material": {
+              "file": "sheets/artillery__turret__d08__material.png",
+              "w": 33,
+              "h": 25,
+              "sha256": "eaf75a476bdca8f89620dd407b263b6b6e9561b2eaee97ba794d0394bcb8dbb9"
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            16.25,
+            25.22
+          ],
+          "pivot": [
+            15.84,
+            15.35
+          ],
+          "depth": -18.63,
+          "w": 32,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__turret__d09__albedo.png",
+              "w": 32,
+              "h": 25,
+              "sha256": "4ceb32bb60552d87617f9313159665a64a1fd3c3bf17f320a90d4c7882919d51"
+            },
+            "normal": {
+              "file": "sheets/artillery__turret__d09__normal.png",
+              "w": 32,
+              "h": 25,
+              "sha256": "3938d94e6d4ee0a4d5a424f94e46ec601af862d62166c029151f1d57e4660480"
+            },
+            "material": {
+              "file": "sheets/artillery__turret__d09__material.png",
+              "w": 32,
+              "h": 25,
+              "sha256": "b35946fe989b459eeba9fbe30a5c0f6d6580f15174ae7aee6191d28ce53daa5f"
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            14.63,
+            24.69
+          ],
+          "pivot": [
+            14.63,
+            14.78
+          ],
+          "depth": -10.72,
+          "w": 30,
+          "h": 24,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__turret__d10__albedo.png",
+              "w": 30,
+              "h": 24,
+              "sha256": "c9964c5390e6447ad17cec768353d595a4d51c2ac4be345db969260cce8bf317"
+            },
+            "normal": {
+              "file": "sheets/artillery__turret__d10__normal.png",
+              "w": 30,
+              "h": 24,
+              "sha256": "13609fc14fff4313f85bdfe753c255ad565f4ae39c6141ca3f814b2958db82bb"
+            },
+            "material": {
+              "file": "sheets/artillery__turret__d10__material.png",
+              "w": 30,
+              "h": 24,
+              "sha256": "d1d3fe4734e84ce86b37c3f4a82b01076a5509a130744f19af6a356b975bc7d8"
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            15.56,
+            25.88
+          ],
+          "pivot": [
+            15.97,
+            16.01
+          ],
+          "depth": 1.36,
+          "w": 32,
+          "h": 26,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__turret__d11__albedo.png",
+              "w": 32,
+              "h": 26,
+              "sha256": "451102d3aeac3bde2fb9b8980f83623289e92f8ec5d79ef5b11bd70ef78f8d71"
+            },
+            "normal": {
+              "file": "sheets/artillery__turret__d11__normal.png",
+              "w": 32,
+              "h": 26,
+              "sha256": "59360ae9d4935de873301ccc7aafef114eeea9ac8c65bb2707ee150ab7ceafa8"
+            },
+            "material": {
+              "file": "sheets/artillery__turret__d11__material.png",
+              "w": 32,
+              "h": 26,
+              "sha256": "125f3d7679dc3f2c97ff133d816b559b60622bc340ff40281219e9a831a0ce79"
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            16,
+            26
+          ],
+          "pivot": [
+            16.75,
+            16.25
+          ],
+          "depth": 15.77,
+          "w": 33,
+          "h": 26,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__turret__d12__albedo.png",
+              "w": 33,
+              "h": 26,
+              "sha256": "9930e17e380d65b98b0b76ed457286f7e4796f7b2986e7ffdd457666d22b0be9"
+            },
+            "normal": {
+              "file": "sheets/artillery__turret__d12__normal.png",
+              "w": 33,
+              "h": 26,
+              "sha256": "7703fac41d0c6a17fdff38a559c06f18d1bd0d7797dd02113e8ed9a289da4f8a"
+            },
+            "material": {
+              "file": "sheets/artillery__turret__d12__material.png",
+              "w": 33,
+              "h": 26,
+              "sha256": "3968698e642afbe5eab6b97df051b3b75471dd99919adcfc773b48ae701fc375"
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            15.56,
+            25.12
+          ],
+          "pivot": [
+            16.54,
+            15.54
+          ],
+          "depth": 30.31,
+          "w": 33,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__turret__d13__albedo.png",
+              "w": 33,
+              "h": 25,
+              "sha256": "7b9d2b9c9d2d757dff91d16951aa92157df671374e969ea884fd9d9c6b2520bc"
+            },
+            "normal": {
+              "file": "sheets/artillery__turret__d13__normal.png",
+              "w": 33,
+              "h": 25,
+              "sha256": "dcf0ea5d8257804e6e05d860b1edb423c31acc191c82bdf810a5e13f6a9da890"
+            },
+            "material": {
+              "file": "sheets/artillery__turret__d13__material.png",
+              "w": 33,
+              "h": 25,
+              "sha256": "1081539dd377c94c22ece0073c8817011157e4881b5caab569c640f838fda65b"
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            13.63,
+            24.31
+          ],
+          "pivot": [
+            14.69,
+            14.94
+          ],
+          "depth": 42.76,
+          "w": 30,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__turret__d14__albedo.png",
+              "w": 30,
+              "h": 25,
+              "sha256": "d4321bc3a2cd96578aee60624ea30ef0deee58eb9c953ab2609e98870bb0256f"
+            },
+            "normal": {
+              "file": "sheets/artillery__turret__d14__normal.png",
+              "w": 30,
+              "h": 25,
+              "sha256": "765a8a5021f5c909f3ca864a737098caa394574bc3a69d2569e9ee639e1164af"
+            },
+            "material": {
+              "file": "sheets/artillery__turret__d14__material.png",
+              "w": 30,
+              "h": 25,
+              "sha256": "e4ac68c7c91f4a35a4de6ff6765e61fd009c06e8175ed400f7f4a7b034dc74b2"
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            15.25,
+            24.78
+          ],
+          "pivot": [
+            16.23,
+            15.61
+          ],
+          "depth": 51.24,
+          "w": 33,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__turret__d15__albedo.png",
+              "w": 33,
+              "h": 25,
+              "sha256": "01e3c5721bc24d87010b4ee2b296db785a5962eac873a9c291e04d78d30a2391"
+            },
+            "normal": {
+              "file": "sheets/artillery__turret__d15__normal.png",
+              "w": 33,
+              "h": 25,
+              "sha256": "4c71b7f5a54e92bdd648528ee64d8af2ba4ce129b7446ca4d53faa878906378c"
+            },
+            "material": {
+              "file": "sheets/artillery__turret__d15__material.png",
+              "w": 33,
+              "h": 25,
+              "sha256": "8e11a7d81e858b3eb4ec94fdddfe3a1b5fe561b6a9076745a37ebd2c2de929de"
+            }
+          }
+        }
+      }
+    },
+    "barrel": {
+      "name": "barrel",
+      "dynamic": true,
+      "parent": "turret",
+      "pivotDesign": [
+        390,
+        256,
+        208
+      ],
+      "traverse": true,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            -1,
+            17
+          ],
+          "pivot": [
+            7.38,
+            8.19
+          ],
+          "depth": 68.2,
+          "w": 20,
+          "h": 16,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__barrel__d00__albedo.png",
+              "w": 20,
+              "h": 16,
+              "sha256": "617d43c32551a2858aa7d8f51a86e29f469292dcabcec195b676321dc87fc74a"
+            },
+            "normal": {
+              "file": "sheets/artillery__barrel__d00__normal.png",
+              "w": 20,
+              "h": 16,
+              "sha256": "8978a13107632de07b24d6798ffc0150b8425e2206a897bc47b80f0b341e253c"
+            },
+            "material": {
+              "file": "sheets/artillery__barrel__d00__material.png",
+              "w": 20,
+              "h": 16,
+              "sha256": "f19be6ae96677a9aa2c90bb73a80354b54d533a44d9015429eb21dbb86fc431e"
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            3.75,
+            14.78
+          ],
+          "pivot": [
+            8.29,
+            7.25
+          ],
+          "depth": 69.44,
+          "w": 18,
+          "h": 15,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__barrel__d01__albedo.png",
+              "w": 18,
+              "h": 15,
+              "sha256": "afc5155c4b9a5f40eccdb4e6d519ac8380a5047710042e0c869164aad2eb0ca0"
+            },
+            "normal": {
+              "file": "sheets/artillery__barrel__d01__normal.png",
+              "w": 18,
+              "h": 15,
+              "sha256": "d4bfe5220c5bd6b917933e3406b605bafb88041855395dbb09ca5dff39160428"
+            },
+            "material": {
+              "file": "sheets/artillery__barrel__d01__material.png",
+              "w": 18,
+              "h": 15,
+              "sha256": "43ea777af680019bfc77e97f9a30d81e749bb6ce74a1bfe8064187abc6c7f759"
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            7.37,
+            14.31
+          ],
+          "pivot": [
+            7.37,
+            7.24
+          ],
+          "depth": 62.87,
+          "w": 15,
+          "h": 14,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__barrel__d02__albedo.png",
+              "w": 15,
+              "h": 14,
+              "sha256": "fbbdbaaa080d843304ca49fc56470aebe022d735ca1b1346ca2f7fdb1a9d228d"
+            },
+            "normal": {
+              "file": "sheets/artillery__barrel__d02__normal.png",
+              "w": 15,
+              "h": 14,
+              "sha256": "2bec4129af8bf344d07408a1a18d5e684171652871a7541a73d1e0081abc5577"
+            },
+            "material": {
+              "file": "sheets/artillery__barrel__d02__material.png",
+              "w": 15,
+              "h": 14,
+              "sha256": "7a7da065a1fca5ad226954cfc14f8b1cf5baf370727f8d78910610c36bda1dda"
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            14.44,
+            15.12
+          ],
+          "pivot": [
+            9.9,
+            7.59
+          ],
+          "depth": 49.48,
+          "w": 18,
+          "h": 15,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__barrel__d03__albedo.png",
+              "w": 18,
+              "h": 15,
+              "sha256": "85f9da9240a948ffcda232b49fd0a9347d28ec7cc9c9ccf778d73bd76ef88b26"
+            },
+            "normal": {
+              "file": "sheets/artillery__barrel__d03__normal.png",
+              "w": 18,
+              "h": 15,
+              "sha256": "82b486e5a90e9217c5a230db6916429ac6c083b3376083de900bcd743d121f6b"
+            },
+            "material": {
+              "file": "sheets/artillery__barrel__d03__material.png",
+              "w": 18,
+              "h": 15,
+              "sha256": "73b293bbc008ac07a925312c537847f76cd68799f7a2f8a3677b8a3059171ef2"
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            21,
+            17
+          ],
+          "pivot": [
+            12.63,
+            8.19
+          ],
+          "depth": 31.32,
+          "w": 20,
+          "h": 16,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__barrel__d04__albedo.png",
+              "w": 20,
+              "h": 16,
+              "sha256": "f7f24dfcb20d5dde54498e67c83a05ad0612f429289835107a31a0415b5e4bdb"
+            },
+            "normal": {
+              "file": "sheets/artillery__barrel__d04__normal.png",
+              "w": 20,
+              "h": 16,
+              "sha256": "48b5f32c84decb7197ac7e35a988605f5f082fa63fdecfee6849afebb46e4ddf"
+            },
+            "material": {
+              "file": "sheets/artillery__barrel__d04__material.png",
+              "w": 20,
+              "h": 16,
+              "sha256": "90cddd20a2e09cc057ef664923a7052f806501acb05f636dbf756b5405d8936b"
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            25.44,
+            20.88
+          ],
+          "pivot": [
+            14.49,
+            10.14
+          ],
+          "depth": 11.15,
+          "w": 22,
+          "h": 18,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__barrel__d05__albedo.png",
+              "w": 22,
+              "h": 18,
+              "sha256": "e922bf312030713aed5356526c14db7f11e29a7f431e76be5bcad19e2fe66409"
+            },
+            "normal": {
+              "file": "sheets/artillery__barrel__d05__normal.png",
+              "w": 22,
+              "h": 18,
+              "sha256": "7b4f72f18c88d1123f2dbec15156269c665619222baa6e8ec92d1812725df2fc"
+            },
+            "material": {
+              "file": "sheets/artillery__barrel__d05__material.png",
+              "w": 22,
+              "h": 18,
+              "sha256": "89ee85f53cc8ec2b55e531e44abdee31ce92c18b9906d58c5dd26d4484a388b2"
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            26.37,
+            24.69
+          ],
+          "pivot": [
+            14.53,
+            11.69
+          ],
+          "depth": -7.96,
+          "w": 21,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__barrel__d06__albedo.png",
+              "w": 21,
+              "h": 19,
+              "sha256": "f77b4de3fca7ed1c088a723b1c5c03b706fa5df2e5396850ec72c506b444dfee"
+            },
+            "normal": {
+              "file": "sheets/artillery__barrel__d06__normal.png",
+              "w": 21,
+              "h": 19,
+              "sha256": "3a15d9d61a3a18b1c9ecde99b18be83f9ee2e0f081855e195bbe8b4d4690221b"
+            },
+            "material": {
+              "file": "sheets/artillery__barrel__d06__material.png",
+              "w": 21,
+              "h": 19,
+              "sha256": "3da8d023b5f612df7420f81f38c2d8ba47f2c9cc1051736234bfdcf09761d501"
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            25.75,
+            29.22
+          ],
+          "pivot": [
+            14.81,
+            13.95
+          ],
+          "depth": -23.1,
+          "w": 22,
+          "h": 21,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__barrel__d07__albedo.png",
+              "w": 22,
+              "h": 21,
+              "sha256": "33c2649b7a936fb5eb2d4b46c6343c82d355c4ca989a13324e34b3d4d76c47f5"
+            },
+            "normal": {
+              "file": "sheets/artillery__barrel__d07__normal.png",
+              "w": 22,
+              "h": 21,
+              "sha256": "f73a88aac0ce8eedb5834db70d8033c5427c63849c627f35b22f4dc1ea36569c"
+            },
+            "material": {
+              "file": "sheets/artillery__barrel__d07__material.png",
+              "w": 22,
+              "h": 21,
+              "sha256": "c8b151d206f734f3423ba0d97e79f9c19253cba439e5e108cc05c3c6079b9038"
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            21,
+            32
+          ],
+          "pivot": [
+            12.62,
+            14.81
+          ],
+          "depth": -31.97,
+          "w": 20,
+          "h": 22,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__barrel__d08__albedo.png",
+              "w": 20,
+              "h": 22,
+              "sha256": "ae6ab371523063dc5e545244f8803114a282a750ab5b26dadf94ccbd4702993c"
+            },
+            "normal": {
+              "file": "sheets/artillery__barrel__d08__normal.png",
+              "w": 20,
+              "h": 22,
+              "sha256": "7bc6446c97f6b3492b9921afe3667f13454423d452b152e2f581e7435df1f8ae"
+            },
+            "material": {
+              "file": "sheets/artillery__barrel__d08__material.png",
+              "w": 20,
+              "h": 22,
+              "sha256": "52a853fbc2b83124303b24c3acb6a583b589d3d71e799ca4c7eae73d3e451543"
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            14.25,
+            34.22
+          ],
+          "pivot": [
+            9.71,
+            15.75
+          ],
+          "depth": -33.21,
+          "w": 18,
+          "h": 22,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__barrel__d09__albedo.png",
+              "w": 18,
+              "h": 22,
+              "sha256": "4ea6b902ebf90eaf09e17f438facfcabd9153b0344213a5422e1387735b2e49d"
+            },
+            "normal": {
+              "file": "sheets/artillery__barrel__d09__normal.png",
+              "w": 18,
+              "h": 22,
+              "sha256": "145f63c1137dcfc9e3630163b3c92d8b8d08ad0c9dd8a8ec94b82bbb80530e2b"
+            },
+            "material": {
+              "file": "sheets/artillery__barrel__d09__material.png",
+              "w": 18,
+              "h": 22,
+              "sha256": "27af937b372bf6a8e92072544a972909159054ee8e081aede8f0ab585bcbf699"
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            7.63,
+            35.69
+          ],
+          "pivot": [
+            7.63,
+            16.76
+          ],
+          "depth": -26.64,
+          "w": 15,
+          "h": 23,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__barrel__d10__albedo.png",
+              "w": 15,
+              "h": 23,
+              "sha256": "b028faaaaac8b210bc01b4e3d812e2d8b09effd048b59d78f35091a8cd4c601b"
+            },
+            "normal": {
+              "file": "sheets/artillery__barrel__d10__normal.png",
+              "w": 15,
+              "h": 23,
+              "sha256": "cb7c70c86b4aa7b76e7a971d8cf450e75ec9518724763b1e0200b2a4e0008145"
+            },
+            "material": {
+              "file": "sheets/artillery__barrel__d10__material.png",
+              "w": 15,
+              "h": 23,
+              "sha256": "0f38a41b797f0e69fb7585e78846a2002626b00154681bb2700eff39da8cdcd9"
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            3.56,
+            34.88
+          ],
+          "pivot": [
+            8.1,
+            16.41
+          ],
+          "depth": -13.25,
+          "w": 18,
+          "h": 23,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__barrel__d11__albedo.png",
+              "w": 18,
+              "h": 23,
+              "sha256": "b8d931981f17f52c47c1414d61b0b6d111b89d332799e6d6099fb1109f9a43c2"
+            },
+            "normal": {
+              "file": "sheets/artillery__barrel__d11__normal.png",
+              "w": 18,
+              "h": 23,
+              "sha256": "764e8b92046f9d3954450345352a2bde502938d112313b11bb2ad53b586afb03"
+            },
+            "material": {
+              "file": "sheets/artillery__barrel__d11__material.png",
+              "w": 18,
+              "h": 23,
+              "sha256": "1dbf3bc329312b0be736a3bc1f5c753cf2e3d4f9e2578c2cbf3a053b018c6969"
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            -1,
+            32
+          ],
+          "pivot": [
+            7.38,
+            14.81
+          ],
+          "depth": 4.91,
+          "w": 20,
+          "h": 22,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__barrel__d12__albedo.png",
+              "w": 20,
+              "h": 22,
+              "sha256": "ac5c09305046f3a37b7678fff2d1b0e09cb2680cd0dcf85606253c6390748374"
+            },
+            "normal": {
+              "file": "sheets/artillery__barrel__d12__normal.png",
+              "w": 20,
+              "h": 22,
+              "sha256": "47ca3474d6a149eb4ff0f5136ff61f934a63eaca860e764e5ded635b20a57f29"
+            },
+            "material": {
+              "file": "sheets/artillery__barrel__d12__material.png",
+              "w": 20,
+              "h": 22,
+              "sha256": "85253cd8161f744184bf51a82dc95618e341ea365196d1eb51b786224c67a649"
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            -3.44,
+            29.12
+          ],
+          "pivot": [
+            7.51,
+            13.86
+          ],
+          "depth": 25.08,
+          "w": 22,
+          "h": 21,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__barrel__d13__albedo.png",
+              "w": 22,
+              "h": 21,
+              "sha256": "7b3caa21447f361ea53eb063f88c4d8aa83fded18df11823062f42242421ecd2"
+            },
+            "normal": {
+              "file": "sheets/artillery__barrel__d13__normal.png",
+              "w": 22,
+              "h": 21,
+              "sha256": "0bc08be2296689280fb3527797515d10795299ba66b4c4aba67d616587cbc87b"
+            },
+            "material": {
+              "file": "sheets/artillery__barrel__d13__material.png",
+              "w": 22,
+              "h": 21,
+              "sha256": "6068b7b500f1c064f3b6c50b73834a57c424316c271c6da6bb826ff6388cc11f"
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            -5.37,
+            24.31
+          ],
+          "pivot": [
+            6.47,
+            11.31
+          ],
+          "depth": 44.19,
+          "w": 21,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__barrel__d14__albedo.png",
+              "w": 21,
+              "h": 19,
+              "sha256": "2004267042cb911f993bcfb6306dce4eb44471e69ffb8e328fd3bf4e5bbe0150"
+            },
+            "normal": {
+              "file": "sheets/artillery__barrel__d14__normal.png",
+              "w": 21,
+              "h": 19,
+              "sha256": "6431f7433bc589628c2d9d3e8e183a2d891684afe30a42f5f77ac6501cd99b0c"
+            },
+            "material": {
+              "file": "sheets/artillery__barrel__d14__material.png",
+              "w": 21,
+              "h": 19,
+              "sha256": "fa2d6f1a364a749739df115c9350ff865015ed09f8b23d68887245a8b80f84b6"
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            -3.75,
+            20.78
+          ],
+          "pivot": [
+            7.19,
+            10.05
+          ],
+          "depth": 59.33,
+          "w": 22,
+          "h": 18,
+          "files": {
+            "albedo": {
+              "file": "sheets/artillery__barrel__d15__albedo.png",
+              "w": 22,
+              "h": 18,
+              "sha256": "bc058158e193f531526d5194d9d2ec92014f21d0aa8e928c7b26a82e4e584e5a"
+            },
+            "normal": {
+              "file": "sheets/artillery__barrel__d15__normal.png",
+              "w": 22,
+              "h": 18,
+              "sha256": "cde1583ebece8f5ebc0f1e1a12400114db63c6b1567190d56447c6b64a97da04"
+            },
+            "material": {
+              "file": "sheets/artillery__barrel__d15__material.png",
+              "w": 22,
+              "h": 18,
+              "sha256": "a75e10395034000bce6ce5c79ae10f7457ecb0860d96feac638d4cd1f8fe3f3c"
+            }
+          }
+        }
+      }
+    }
+  },
+  "clips": {
+    "idle": 1
+  },
+  "sourceGeometry": {
+    "parts": [
+      {
+        "name": "body",
+        "dynamic": false,
+        "traverse": false,
+        "parent": null,
+        "voxels": 571063,
+        "pivotDesign": [
+          256,
+          256,
+          0
+        ],
+        "bounds": {
+          "minX": 22,
+          "minY": 67,
+          "minZ": 15,
+          "maxX": 482,
+          "maxY": 446,
+          "maxZ": 303
+        }
+      },
+      {
+        "name": "running.L",
+        "dynamic": false,
+        "traverse": false,
+        "parent": null,
+        "voxels": 185351,
+        "pivotDesign": [
+          256,
+          256,
+          0
+        ],
+        "bounds": {
+          "minX": 49,
+          "minY": 79,
+          "minZ": 0,
+          "maxX": 456,
+          "maxY": 157,
+          "maxZ": 134
+        }
+      },
+      {
+        "name": "running.R",
+        "dynamic": false,
+        "traverse": false,
+        "parent": null,
+        "voxels": 148473,
+        "pivotDesign": [
+          256,
+          256,
+          0
+        ],
+        "bounds": {
+          "minX": 49,
+          "minY": 354,
+          "minZ": 0,
+          "maxX": 456,
+          "maxY": 438,
+          "maxZ": 134
+        }
+      },
+      {
+        "name": "turret",
+        "dynamic": true,
+        "traverse": true,
+        "parent": null,
+        "voxels": 134096,
+        "pivotDesign": [
+          268,
+          256,
+          150
+        ],
+        "bounds": {
+          "minX": 150,
+          "minY": 138,
+          "minZ": 150,
+          "maxX": 386,
+          "maxY": 374,
+          "maxZ": 311
+        }
+      },
+      {
+        "name": "barrel",
+        "dynamic": true,
+        "traverse": true,
+        "parent": "turret",
+        "voxels": 18767,
+        "pivotDesign": [
+          390,
+          256,
+          208
+        ],
+        "bounds": {
+          "minX": 372,
+          "minY": 222,
+          "minZ": 182,
+          "maxX": 505,
+          "maxY": 289,
+          "maxZ": 320
+        }
+      }
+    ],
+    "totalVoxels": 1057750
+  },
+  "composite": {
+    "note": "every part of one facing pre-composited through the shared ground anchor",
+    "facings": {
+      "d00": {
+        "w": 61,
+        "h": 47,
+        "files": {
+          "albedo": {
+            "file": "sheets/artillery__composite__d00__albedo.png",
+            "sha256": "b5214af77b71540ea9a7da0f46e34681f74a8860f8dd62f3a0982660411d1c38"
+          },
+          "normal": {
+            "file": "sheets/artillery__composite__d00__normal.png",
+            "sha256": "3b458278fa25cbc1faa3f0dc7b47f420524b70a5f5abdbba8bf9976915c91f9a"
+          },
+          "material": {
+            "file": "sheets/artillery__composite__d00__material.png",
+            "sha256": "1618be0c995e3ddef9027bc1cbd2a9f78c4753f519c33b9027590f00378ac1da"
+          }
+        }
+      },
+      "d01": {
+        "w": 57,
+        "h": 48,
+        "files": {
+          "albedo": {
+            "file": "sheets/artillery__composite__d01__albedo.png",
+            "sha256": "4dfcf8f334d846723e65d059a88fd0f3ce52987d98cb85b4342e9984d816eb20"
+          },
+          "normal": {
+            "file": "sheets/artillery__composite__d01__normal.png",
+            "sha256": "3171db243ba9ed52162c3f4f8ec4af1fcda4f04de2ef1d69b7de4bf25fce56d5"
+          },
+          "material": {
+            "file": "sheets/artillery__composite__d01__material.png",
+            "sha256": "be0f5fa67e79323ba40100b42478ed274431d70620fe4a24dac7bcf6f2aea0a6"
+          }
+        }
+      },
+      "d02": {
+        "w": 47,
+        "h": 46,
+        "files": {
+          "albedo": {
+            "file": "sheets/artillery__composite__d02__albedo.png",
+            "sha256": "9fb4d93bf5ba5de7ac224bc79e81577d9f4a4c11150844c058dbbb294671306b"
+          },
+          "normal": {
+            "file": "sheets/artillery__composite__d02__normal.png",
+            "sha256": "ae790d1f68beefe0f9a6b93ca03805c4aac7cb42f6ded9743b1ea0b1224f9da5"
+          },
+          "material": {
+            "file": "sheets/artillery__composite__d02__material.png",
+            "sha256": "96ff58f5bdd4dbfed2ad95eda07a3c95b5809db715827a23a70267c5f06a156b"
+          }
+        }
+      },
+      "d03": {
+        "w": 56,
+        "h": 48,
+        "files": {
+          "albedo": {
+            "file": "sheets/artillery__composite__d03__albedo.png",
+            "sha256": "095f5169c4d98162ab57ca0434245e8d25fd4a8fdb143cca3796ee05fcad0a82"
+          },
+          "normal": {
+            "file": "sheets/artillery__composite__d03__normal.png",
+            "sha256": "0bbe1504d5857e5e1367c3e45e9a41d4a4aafa87416b3698f3e702ef3d751776"
+          },
+          "material": {
+            "file": "sheets/artillery__composite__d03__material.png",
+            "sha256": "7c2073293e4b44a905770f19935bc505370c16d2db7f2deae67782ee875a4571"
+          }
+        }
+      },
+      "d04": {
+        "w": 62,
+        "h": 47,
+        "files": {
+          "albedo": {
+            "file": "sheets/artillery__composite__d04__albedo.png",
+            "sha256": "0c83ddc62d52fa535dcd99629e4ad75a6bcb062d6ab66d429e8267f7aa96f035"
+          },
+          "normal": {
+            "file": "sheets/artillery__composite__d04__normal.png",
+            "sha256": "71328130d074dd8fb75160d9a404b220f1960e0f1a8e1047a90a3a4e833c2ec3"
+          },
+          "material": {
+            "file": "sheets/artillery__composite__d04__material.png",
+            "sha256": "5422c0984766b10524e72db5a6838e495a5a83a8ea6d594f2649a03847e8bc1d"
+          }
+        }
+      },
+      "d05": {
+        "w": 61,
+        "h": 45,
+        "files": {
+          "albedo": {
+            "file": "sheets/artillery__composite__d05__albedo.png",
+            "sha256": "e909732dc1758e505d8bed3ec769bcf19ca2370d98e9f2ff20f3e01597472e8f"
+          },
+          "normal": {
+            "file": "sheets/artillery__composite__d05__normal.png",
+            "sha256": "87f6d7ed7d5d5b74c2fcd981559af389676447c39a8bd7cc37c33aa2b466c850"
+          },
+          "material": {
+            "file": "sheets/artillery__composite__d05__material.png",
+            "sha256": "bcbd240bb5c1c9ee44d4d6e0925edf10c1c61c060a63e152e69db38020c4299b"
+          }
+        }
+      },
+      "d06": {
+        "w": 56,
+        "h": 43,
+        "files": {
+          "albedo": {
+            "file": "sheets/artillery__composite__d06__albedo.png",
+            "sha256": "47ce440044b73e5670fb098a0d04c315fb8888d9ddbe5ab74e9f0d31da0fb9d9"
+          },
+          "normal": {
+            "file": "sheets/artillery__composite__d06__normal.png",
+            "sha256": "3294c864be4bfdf5351737b30fcd1221c281d3a655ddb8293e21562a6a279d3b"
+          },
+          "material": {
+            "file": "sheets/artillery__composite__d06__material.png",
+            "sha256": "c28bf07bac9727ef920cf69a479d9c8bfb5e977b6394f3fc5f7ceae75d364a2f"
+          }
+        }
+      },
+      "d07": {
+        "w": 60,
+        "h": 47,
+        "files": {
+          "albedo": {
+            "file": "sheets/artillery__composite__d07__albedo.png",
+            "sha256": "6c5515bfca5e19db3db010cc4086400d950a7dc48fd5916275d24f193c197a8d"
+          },
+          "normal": {
+            "file": "sheets/artillery__composite__d07__normal.png",
+            "sha256": "b356ac5ccfd6051a196f9e598a20da041e4eed1707142c8bca8e248e86319fc8"
+          },
+          "material": {
+            "file": "sheets/artillery__composite__d07__material.png",
+            "sha256": "3c7747e47e6c1987ec5937ad97550889b9afec5156d7ec96d3c0114289b5477e"
+          }
+        }
+      },
+      "d08": {
+        "w": 61,
+        "h": 51,
+        "files": {
+          "albedo": {
+            "file": "sheets/artillery__composite__d08__albedo.png",
+            "sha256": "a68bb77fb3d50be3b48e7ccbbc478215133caeaa249fa985dfaf82f5559e1a01"
+          },
+          "normal": {
+            "file": "sheets/artillery__composite__d08__normal.png",
+            "sha256": "456b70c329500ab5a8055997db0160503d69727ef6db08e462502254a57f2dcc"
+          },
+          "material": {
+            "file": "sheets/artillery__composite__d08__material.png",
+            "sha256": "5815a4b8f834308c6b5dbda62a6f51a962a02eaccaabfedd90b69e70d322943d"
+          }
+        }
+      },
+      "d09": {
+        "w": 57,
+        "h": 52,
+        "files": {
+          "albedo": {
+            "file": "sheets/artillery__composite__d09__albedo.png",
+            "sha256": "29c08c4421b2a0741b933ed00f15649ab4a5b3a992d2a92f1b641edabe361c82"
+          },
+          "normal": {
+            "file": "sheets/artillery__composite__d09__normal.png",
+            "sha256": "e914115346cc5793505a40662a946f85dceeb1980447fb0c32d6efb807a2d98a"
+          },
+          "material": {
+            "file": "sheets/artillery__composite__d09__material.png",
+            "sha256": "a7b97d6d224edd695f09443410968010c0fae3bac7b8b0bb4fc915ff55886ffc"
+          }
+        }
+      },
+      "d10": {
+        "w": 47,
+        "h": 52,
+        "files": {
+          "albedo": {
+            "file": "sheets/artillery__composite__d10__albedo.png",
+            "sha256": "597504dd76415eb06eb74a1b36f1bdbfed89b0e22919ebeb1b0dbf5b015d38f1"
+          },
+          "normal": {
+            "file": "sheets/artillery__composite__d10__normal.png",
+            "sha256": "f05975f830660c174e016aadd25fec8cfcefe28bd629be0a845cbe398927b6c1"
+          },
+          "material": {
+            "file": "sheets/artillery__composite__d10__material.png",
+            "sha256": "5ec8ecca233a936f58b40816b6600b9f2a1996bb8db000f482716c6d02157b74"
+          }
+        }
+      },
+      "d11": {
+        "w": 56,
+        "h": 53,
+        "files": {
+          "albedo": {
+            "file": "sheets/artillery__composite__d11__albedo.png",
+            "sha256": "197e3c9f5d1efba709dc97850ce130337d15a466f8262d6d59cde3dc6753ea26"
+          },
+          "normal": {
+            "file": "sheets/artillery__composite__d11__normal.png",
+            "sha256": "32ddcefd3ec6f98ec9b5e6979a4498dcd9e3c7165c035431151af5e8b54a1444"
+          },
+          "material": {
+            "file": "sheets/artillery__composite__d11__material.png",
+            "sha256": "c4dfc41854a4d979238ca6571d20d310cde171a29b5b2a4a9c2c738c291875dd"
+          }
+        }
+      },
+      "d12": {
+        "w": 62,
+        "h": 51,
+        "files": {
+          "albedo": {
+            "file": "sheets/artillery__composite__d12__albedo.png",
+            "sha256": "aa4eb2d345fac4334f79c859943810899dad2ea172dc3c68b5d5af0f7a79d978"
+          },
+          "normal": {
+            "file": "sheets/artillery__composite__d12__normal.png",
+            "sha256": "439a254065670e6f7236479ed225ff761803cc11af215261ef264935926bef9b"
+          },
+          "material": {
+            "file": "sheets/artillery__composite__d12__material.png",
+            "sha256": "ed1183b343b4206d597964d72e75dd6386f2f7e3e1895f32bd968533752e744d"
+          }
+        }
+      },
+      "d13": {
+        "w": 61,
+        "h": 47,
+        "files": {
+          "albedo": {
+            "file": "sheets/artillery__composite__d13__albedo.png",
+            "sha256": "db250e3b6ca2cd97aee74fa8832013756dc470e6279e03e853523ac281086e9f"
+          },
+          "normal": {
+            "file": "sheets/artillery__composite__d13__normal.png",
+            "sha256": "d4622a65dc6ec5e910cde32b8e4b2660d9db16ec03569a270015614fc77e4edf"
+          },
+          "material": {
+            "file": "sheets/artillery__composite__d13__material.png",
+            "sha256": "715aaad9b8f2b739be0d64ea2e263fd3d68d6b77fbcf444427ce8739696acdff"
+          }
+        }
+      },
+      "d14": {
+        "w": 56,
+        "h": 40,
+        "files": {
+          "albedo": {
+            "file": "sheets/artillery__composite__d14__albedo.png",
+            "sha256": "384006988e5167f00e3336b34d5350b372b64d37afb046f45ac1ae2f72eec2e3"
+          },
+          "normal": {
+            "file": "sheets/artillery__composite__d14__normal.png",
+            "sha256": "1bbe5c7d21d64f022fd49cad6c2cb27178e51163f06d2f74ed7cfda9e20fb5e9"
+          },
+          "material": {
+            "file": "sheets/artillery__composite__d14__material.png",
+            "sha256": "5fefad61257783799a346c9e1038d9a676ddb683c714e7fbcc0af1e92a67cf09"
+          }
+        }
+      },
+      "d15": {
+        "w": 60,
+        "h": 44,
+        "files": {
+          "albedo": {
+            "file": "sheets/artillery__composite__d15__albedo.png",
+            "sha256": "fc11bcba459f18fcfda19fddaf11ec55638f5c41b41e4db47a8ee9cb90f884d2"
+          },
+          "normal": {
+            "file": "sheets/artillery__composite__d15__normal.png",
+            "sha256": "c6eb090ae6ba3df2a0a1a33488f067fc42cdaf7cba5cdfd8fdd257feba73c095"
+          },
+          "material": {
+            "file": "sheets/artillery__composite__d15__material.png",
+            "sha256": "800bd402145349dc1e57cc23848e1cc0236e059b74d039c5ded532c6265cb9a2"
+          }
+        }
+      }
+    }
+  },
+  "lit": {
+    "note": "the composite re-shaded through a virtual three-point rig using the normal and material maps (key/fill/rim). If normals or PBR channels are wrong, this is where it shows.",
+    "rig": "three-point",
+    "facings": {
+      "d00": {
+        "file": "sheets/artillery__lit__d00__albedo.png",
+        "w": 61,
+        "h": 47,
+        "sha256": "20c2f9097c501653ea073a018c993677050f6df05ee921407a44e4a606b18264"
+      },
+      "d01": {
+        "file": "sheets/artillery__lit__d01__albedo.png",
+        "w": 57,
+        "h": 48,
+        "sha256": "e593c04dfc9bcb54b45428c522a492c01496a084742a409b40b12c179c3f4e3a"
+      },
+      "d02": {
+        "file": "sheets/artillery__lit__d02__albedo.png",
+        "w": 47,
+        "h": 46,
+        "sha256": "ff44c681f91cfffa5b5a03ecdf6568bbf36ab7e9d0dc4a9ce7f5271e405123e1"
+      },
+      "d03": {
+        "file": "sheets/artillery__lit__d03__albedo.png",
+        "w": 56,
+        "h": 48,
+        "sha256": "190ffd5cb9eed029a6dfb2bc73ef17c0cd876544794be5e5e92cce28330220ab"
+      },
+      "d04": {
+        "file": "sheets/artillery__lit__d04__albedo.png",
+        "w": 62,
+        "h": 47,
+        "sha256": "37649d97cbd85e8fad7df0ad6bbdef541d324aa7cb89983e56d79b70c2b88847"
+      },
+      "d05": {
+        "file": "sheets/artillery__lit__d05__albedo.png",
+        "w": 61,
+        "h": 45,
+        "sha256": "37c803a65fddce2c650374297734f6f194be7fac08cbd6c87ba3834f640fab5e"
+      },
+      "d06": {
+        "file": "sheets/artillery__lit__d06__albedo.png",
+        "w": 56,
+        "h": 43,
+        "sha256": "54794a327a25f916c37e6bd4fb56ec46cd468f8bad7afc2e6f78099a9b6279fa"
+      },
+      "d07": {
+        "file": "sheets/artillery__lit__d07__albedo.png",
+        "w": 60,
+        "h": 47,
+        "sha256": "e3bd8617dbb0ed050e860961520a5b75e57bc4f64a28d226082dc59104afbe58"
+      },
+      "d08": {
+        "file": "sheets/artillery__lit__d08__albedo.png",
+        "w": 61,
+        "h": 51,
+        "sha256": "486467d536addf7dad75e669b85f8d185ca7d5646e69968ab39ebd8b218605ae"
+      },
+      "d09": {
+        "file": "sheets/artillery__lit__d09__albedo.png",
+        "w": 57,
+        "h": 52,
+        "sha256": "e8623678e5725afd29908441eb85de1d2b5dfef8073772a6b10ce47bf77de5d3"
+      },
+      "d10": {
+        "file": "sheets/artillery__lit__d10__albedo.png",
+        "w": 47,
+        "h": 52,
+        "sha256": "12e1ad337068399623f9aa2952d21c6dceda4a482813b66d00e3f875606a8d23"
+      },
+      "d11": {
+        "file": "sheets/artillery__lit__d11__albedo.png",
+        "w": 56,
+        "h": 53,
+        "sha256": "0a4a029f97c234a2636477658883ade8162dc9989c511400eee4bf28ec1ee764"
+      },
+      "d12": {
+        "file": "sheets/artillery__lit__d12__albedo.png",
+        "w": 62,
+        "h": 51,
+        "sha256": "aaa65d53b9c37b606698f675a16b5bb552b9a78445813c9c74cacee655dc4a33"
+      },
+      "d13": {
+        "file": "sheets/artillery__lit__d13__albedo.png",
+        "w": 61,
+        "h": 47,
+        "sha256": "ab3c105b01a1825e8f8c9c99149ee2ccf2dc6706657edca788cbab335fd61240"
+      },
+      "d14": {
+        "file": "sheets/artillery__lit__d14__albedo.png",
+        "w": 56,
+        "h": 40,
+        "sha256": "6d12a46c868cf66948fb0485b944f1129deebacfa629713568efe48f6871ec13"
+      },
+      "d15": {
+        "file": "sheets/artillery__lit__d15__albedo.png",
+        "w": 60,
+        "h": 44,
+        "sha256": "8d0c64ec3477fc1cdbf93a54109041e02603bf964d21ad583c066c87559a883f"
+      }
+    }
+  },
+  "previewLit": {
+    "file": "preview-lit.png",
+    "facing": "d00",
+    "rig": "three-point",
+    "note": "relit from the normal + material maps"
+  },
+  "previewLights": {
+    "file": "preview-lights.png",
+    "facing": "d00",
+    "order": [
+      "azimuth 0deg / elevation 40deg",
+      "azimuth 45deg / elevation 40deg",
+      "azimuth 90deg / elevation 40deg",
+      "azimuth 135deg / elevation 40deg",
+      "azimuth 180deg / elevation 40deg",
+      "azimuth 225deg / elevation 40deg",
+      "azimuth 270deg / elevation 40deg",
+      "azimuth 315deg / elevation 40deg"
+    ],
+    "note": "one virtual light per panel, proving the normal map is directionally correct"
+  },
+  "previewMaps": {
+    "file": "preview-maps.png",
+    "facing": "d00",
+    "panels": [
+      "albedo",
+      "normal",
+      "material-id",
+      "metalness",
+      "roughness",
+      "emissive"
+    ]
+  },
+  "preview": {
+    "file": "preview.png",
+    "facing": "d00",
+    "w": 454,
+    "h": 338,
+    "mode": "single-pass"
+  },
+  "previewParts": {
+    "file": "preview-parts.png",
+    "facing": "d00",
+    "w": 458,
+    "h": 342,
+    "mode": "composited-from-part-sheets"
+  }
+}

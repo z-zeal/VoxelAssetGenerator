@@ -12,6 +12,10 @@
 import { buildTank } from './tank.mjs';
 import { buildApc } from './apc.mjs';
 import { buildHeavy } from './heavy.mjs';
+import { buildArtillery } from './artillery.mjs';
+import { buildAntiair } from './antiair.mjs';
+import { buildTankDestroyer } from './tank-destroyer.mjs';
+import { buildIfv } from './ifv.mjs';
 import { buildBarracks } from './barracks.mjs';
 import { buildAtTurret } from './at-turret.mjs';
 
@@ -39,6 +43,22 @@ export const MODELS = {
     label: 'Heavy Tank',
     build: buildHeavy,
     requiredParts: ['body', 'turret', 'barrel'],
+  },
+  artillery: {
+    kind: 'unit', folder: 'units', group: 'vehicles.tracked', label: 'Self-Propelled Artillery',
+    build: buildArtillery, requiredParts: ['body', 'turret', 'barrel'],
+  },
+  antiair: {
+    kind: 'unit', folder: 'units', group: 'vehicles.tracked', label: 'Anti-Aircraft Vehicle',
+    build: buildAntiair, requiredParts: ['body', 'turret', 'barrel', 'radar'],
+  },
+  'tank-destroyer': {
+    kind: 'unit', folder: 'units', group: 'vehicles.tracked', label: 'Tank Destroyer',
+    build: buildTankDestroyer, requiredParts: ['body', 'turret', 'barrel'],
+  },
+  ifv: {
+    kind: 'unit', folder: 'units', group: 'vehicles.tracked', label: 'Infantry Fighting Vehicle',
+    build: buildIfv, requiredParts: ['body', 'turret', 'barrel', 'atgm'],
   },
   barracks: {
     kind: 'building',

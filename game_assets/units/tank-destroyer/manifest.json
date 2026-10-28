@@ -1,0 +1,4352 @@
+{
+  "format": "field-command-voxel-sheet-4",
+  "asset": "tank-destroyer",
+  "kind": "unit",
+  "group": "vehicles.tracked",
+  "canvas": 512,
+  "designVoxelsPerTileUnit": 8,
+  "renderScale": 1,
+  "previewScale": 8,
+  "superSample": 4,
+  "pxPerVoxel": 0.125,
+  "tileDiamond": [
+    64,
+    32
+  ],
+  "facings": [
+    "d00",
+    "d01",
+    "d02",
+    "d03",
+    "d04",
+    "d05",
+    "d06",
+    "d07",
+    "d08",
+    "d09",
+    "d10",
+    "d11",
+    "d12",
+    "d13",
+    "d14",
+    "d15"
+  ],
+  "facingMeta": [
+    {
+      "id": "d00",
+      "angle": 0,
+      "screenAngle": 45,
+      "label": "SE",
+      "unitIndex": 0,
+      "viewDir": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.0625,
+        -0.0625,
+        0,
+        0.03125,
+        0.03125,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d01",
+      "angle": 22.5,
+      "screenAngle": 67.5,
+      "label": "SSE",
+      "unitIndex": 1,
+      "viewDir": [
+        0.7543444794845715,
+        0.3124597141037824,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        0.03382475625913983,
+        -0.08166018530477004,
+        0,
+        0.040830092652386796,
+        0.01691237812956814,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d02",
+      "angle": 45,
+      "screenAngle": 90,
+      "label": "S",
+      "unitIndex": 2,
+      "viewDir": [
+        0.8164965809277261,
+        6.409875621278547e-17,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0,
+        -0.08838834764831915,
+        0,
+        0.04419417382415958,
+        0,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d03",
+      "angle": 67.5,
+      "screenAngle": 112.5,
+      "label": "SSW",
+      "unitIndex": 3,
+      "viewDir": [
+        0.7543444794845715,
+        -0.3124597141037824,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.03382475625913628,
+        -0.08166018530477004,
+        0,
+        0.04083009265238502,
+        -0.016912378129569028,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d04",
+      "angle": 90,
+      "screenAngle": 135,
+      "label": "SW",
+      "unitIndex": 4,
+      "viewDir": [
+        0.5773502691896258,
+        -0.5773502691896257,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        -0.0625,
+        -0.0625,
+        0,
+        0.03125,
+        -0.03125000000000089,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d05",
+      "angle": 112.5,
+      "screenAngle": 157.5,
+      "label": "WSW",
+      "unitIndex": 5,
+      "viewDir": [
+        0.3124597141037825,
+        -0.7543444794845715,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.08166018530477359,
+        -0.03382475625913628,
+        0,
+        0.016912378129569028,
+        -0.04083009265238591,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d06",
+      "angle": 135,
+      "screenAngle": 180,
+      "label": "W",
+      "unitIndex": 6,
+      "viewDir": [
+        6.409875621278547e-17,
+        -0.8164965809277261,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        -0.08838834764831915,
+        0,
+        0,
+        0,
+        -0.04419417382415958,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d07",
+      "angle": 157.5,
+      "screenAngle": 202.5,
+      "label": "WNW",
+      "unitIndex": 7,
+      "viewDir": [
+        -0.3124597141037824,
+        -0.7543444794845715,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.08166018530477537,
+        0.03382475625913628,
+        0,
+        -0.01691237812956814,
+        -0.04083009265238502,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d08",
+      "angle": 180,
+      "screenAngle": 225,
+      "label": "NW",
+      "unitIndex": 8,
+      "viewDir": [
+        -0.5773502691896256,
+        -0.5773502691896258,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.0625,
+        0.062499999999998224,
+        0,
+        -0.03125,
+        -0.03125,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d09",
+      "angle": 202.5,
+      "screenAngle": 247.5,
+      "label": "NNW",
+      "unitIndex": 9,
+      "viewDir": [
+        -0.7543444794845713,
+        -0.3124597141037829,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.03382475625913628,
+        0.08166018530477537,
+        0,
+        -0.04083009265238502,
+        -0.01691237812956814,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d10",
+      "angle": 225,
+      "screenAngle": 270,
+      "label": "N",
+      "unitIndex": 10,
+      "viewDir": [
+        -0.8164965809277261,
+        -1.2819751242557095e-16,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0,
+        0.08838834764831915,
+        0,
+        -0.04419417382415958,
+        0,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d11",
+      "angle": 247.5,
+      "screenAngle": 292.5,
+      "label": "NNE",
+      "unitIndex": 11,
+      "viewDir": [
+        -0.7543444794845715,
+        0.3124597141037827,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.03382475625913983,
+        0.08166018530477359,
+        0,
+        -0.040830092652386796,
+        0.016912378129569028,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d12",
+      "angle": 270,
+      "screenAngle": 315,
+      "label": "NE",
+      "unitIndex": 12,
+      "viewDir": [
+        -0.5773502691896258,
+        0.5773502691896256,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        0.0625,
+        0.0625,
+        0,
+        -0.03125,
+        0.03125,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d13",
+      "angle": 292.5,
+      "screenAngle": 337.5,
+      "label": "ENE",
+      "unitIndex": 13,
+      "viewDir": [
+        -0.3124597141037823,
+        0.7543444794845715,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        0.08166018530477004,
+        0.03382475625913983,
+        0,
+        -0.01691237812956814,
+        0.040830092652387684,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d14",
+      "angle": 315,
+      "screenAngle": 0,
+      "label": "E",
+      "unitIndex": 14,
+      "viewDir": [
+        -1.9229626863835643e-16,
+        0.8164965809277261,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.08838834764831915,
+        0,
+        0,
+        0,
+        0.04419417382415958,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d15",
+      "angle": 337.5,
+      "screenAngle": 22.5,
+      "label": "ESE",
+      "unitIndex": 15,
+      "viewDir": [
+        0.3124597141037827,
+        0.7543444794845715,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.08166018530477537,
+        -0.03382475625913273,
+        0,
+        0.016912378129569916,
+        0.040830092652386796,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    }
+  ],
+  "teamTint": {
+    "note": "Albedo is baked in the standard livery. Recolour pixels whose material map red channel matches these ids to apply an army livery.",
+    "materialIds": [
+      {
+        "name": "team.hull",
+        "id": 0,
+        "role": "hull"
+      },
+      {
+        "name": "team.light",
+        "id": 1,
+        "role": "light"
+      },
+      {
+        "name": "team.dark",
+        "id": 2,
+        "role": "dark"
+      },
+      {
+        "name": "team.accent",
+        "id": 3,
+        "role": "accent"
+      },
+      {
+        "name": "roof",
+        "id": 37,
+        "role": "hull"
+      },
+      {
+        "name": "roof.light",
+        "id": 38,
+        "role": "light"
+      },
+      {
+        "name": "roof.dark",
+        "id": 39,
+        "role": "dark"
+      }
+    ],
+    "liveries": {
+      "_note": "Army liveries for runtime tinting of team materials. Mirrors src/renderer.js TEAM_COLORS and tools/voxel_pipeline/v3/materials.mjs ARMY_LIVERY.",
+      "standard": {
+        "hull": "#df794b",
+        "light": "#ffc68b",
+        "dark": "#934b32",
+        "accent": "#ece7bc"
+      },
+      "allies": {
+        "hull": "#639bc3",
+        "light": "#a9d0e1",
+        "dark": "#345f78",
+        "accent": "#e8f1f4"
+      },
+      "soviets": {
+        "hull": "#7eb06a",
+        "light": "#b8e0a8",
+        "dark": "#2d4a2d",
+        "accent": "#dfe8c8"
+      },
+      "empire": {
+        "hull": "#d9b44e",
+        "light": "#ffe79a",
+        "dark": "#8a6a1a",
+        "accent": "#f6eecd"
+      },
+      "legion": {
+        "hull": "#c65a54",
+        "light": "#ffb0a8",
+        "dark": "#7a2a2a",
+        "accent": "#f3d9d4"
+      },
+      "neutral": {
+        "hull": "#aaa78b",
+        "light": "#cfcdb6",
+        "dark": "#6c6a55",
+        "accent": "#e2e0cf"
+      }
+    }
+  },
+  "normalMap": {
+    "space": "view",
+    "channelOrder": "rgb",
+    "range": "0..255 maps -1..1",
+    "up": "+g means screen up"
+  },
+  "materialMap": {
+    "channelOrder": "rgba",
+    "meaning": [
+      "materialId",
+      "metalness",
+      "roughness",
+      "emissive"
+    ],
+    "table": [
+      {
+        "id": 0,
+        "name": "team.hull",
+        "metalness": 0.35,
+        "roughness": 0.62,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "hull"
+      },
+      {
+        "id": 1,
+        "name": "team.light",
+        "metalness": 0.35,
+        "roughness": 0.58,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "light"
+      },
+      {
+        "id": 2,
+        "name": "team.dark",
+        "metalness": 0.4,
+        "roughness": 0.66,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "dark"
+      },
+      {
+        "id": 3,
+        "name": "team.accent",
+        "metalness": 0.2,
+        "roughness": 0.7,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "accent"
+      },
+      {
+        "id": 4,
+        "name": "steel",
+        "metalness": 0.85,
+        "roughness": 0.42,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 5,
+        "name": "steel.dark",
+        "metalness": 0.85,
+        "roughness": 0.5,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 6,
+        "name": "steel.bright",
+        "metalness": 0.95,
+        "roughness": 0.24,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 7,
+        "name": "gunmetal",
+        "metalness": 0.9,
+        "roughness": 0.38,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 8,
+        "name": "gunmetal.lit",
+        "metalness": 0.9,
+        "roughness": 0.32,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 9,
+        "name": "iron",
+        "metalness": 0.8,
+        "roughness": 0.62,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 10,
+        "name": "brass",
+        "metalness": 0.95,
+        "roughness": 0.3,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 11,
+        "name": "copper",
+        "metalness": 0.95,
+        "roughness": 0.34,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 12,
+        "name": "chrome",
+        "metalness": 1,
+        "roughness": 0.12,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 13,
+        "name": "rubber",
+        "metalness": 0.05,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 14,
+        "name": "track",
+        "metalness": 0.7,
+        "roughness": 0.68,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 15,
+        "name": "track.worn",
+        "metalness": 0.85,
+        "roughness": 0.44,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 16,
+        "name": "tyre",
+        "metalness": 0.03,
+        "roughness": 0.95,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 17,
+        "name": "plate",
+        "metalness": 0.55,
+        "roughness": 0.66,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 18,
+        "name": "plate.lit",
+        "metalness": 0.55,
+        "roughness": 0.6,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 19,
+        "name": "plate.dark",
+        "metalness": 0.55,
+        "roughness": 0.72,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 20,
+        "name": "glass",
+        "metalness": 0.3,
+        "roughness": 0.08,
+        "emissive": 0,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 21,
+        "name": "glass.dark",
+        "metalness": 0.4,
+        "roughness": 0.12,
+        "emissive": 0,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 22,
+        "name": "optic",
+        "metalness": 0.6,
+        "roughness": 0.05,
+        "emissive": 0.55,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 23,
+        "name": "lamp.warm",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.85,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 24,
+        "name": "lamp.red",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.8,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 25,
+        "name": "lamp.cyan",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.8,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 26,
+        "name": "skin",
+        "metalness": 0,
+        "roughness": 0.78,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 27,
+        "name": "skin.dark",
+        "metalness": 0,
+        "roughness": 0.8,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 28,
+        "name": "cloth",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 29,
+        "name": "cloth.dark",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 30,
+        "name": "webbing",
+        "metalness": 0.05,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 31,
+        "name": "boot",
+        "metalness": 0.1,
+        "roughness": 0.85,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 32,
+        "name": "hair",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 33,
+        "name": "concrete",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 34,
+        "name": "concrete.lit",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 35,
+        "name": "concrete.dark",
+        "metalness": 0,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 36,
+        "name": "brick",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 37,
+        "name": "roof",
+        "metalness": 0.1,
+        "roughness": 0.82,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "hull"
+      },
+      {
+        "id": 38,
+        "name": "roof.light",
+        "metalness": 0.1,
+        "roughness": 0.8,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "light"
+      },
+      {
+        "id": 39,
+        "name": "roof.dark",
+        "metalness": 0.1,
+        "roughness": 0.84,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "dark"
+      },
+      {
+        "id": 40,
+        "name": "asphalt",
+        "metalness": 0,
+        "roughness": 0.96,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 41,
+        "name": "paint.line",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 42,
+        "name": "wood",
+        "metalness": 0,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 43,
+        "name": "wood.dark",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 44,
+        "name": "canvas",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 45,
+        "name": "sandbag",
+        "metalness": 0,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 46,
+        "name": "solar",
+        "metalness": 0.6,
+        "roughness": 0.22,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 47,
+        "name": "rust",
+        "metalness": 0.3,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 48,
+        "name": "scorch",
+        "metalness": 0.2,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 49,
+        "name": "smoke",
+        "metalness": 0,
+        "roughness": 1,
+        "emissive": 0.1,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 50,
+        "name": "water",
+        "metalness": 0.2,
+        "roughness": 0.15,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 51,
+        "name": "foam",
+        "metalness": 0,
+        "roughness": 0.6,
+        "emissive": 0.1,
+        "blend": "opaque",
+        "team": null
+      }
+    ]
+  },
+  "parts": {
+    "body": {
+      "name": "body",
+      "dynamic": false,
+      "parent": null,
+      "pivotDesign": [
+        256,
+        256,
+        0
+      ],
+      "traverse": false,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            29,
+            28
+          ],
+          "pivot": [
+            29,
+            28
+          ],
+          "depth": 50.66,
+          "w": 58,
+          "h": 43,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__body__d00__albedo.png",
+              "w": 58,
+              "h": 43,
+              "sha256": "fa90150dd98c173b84a9b3e68723bc3fa34cd1116513e2d350af91686ad0226e"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__body__d00__normal.png",
+              "w": 58,
+              "h": 43,
+              "sha256": "92c9df58aaf7bb3b40e8586e075cec5a1974c2eb125528452ab0fcc136143d05"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__body__d00__material.png",
+              "w": 58,
+              "h": 43,
+              "sha256": "0478a4da1030a54427e16ca78f2eff9e0c497b39134137311df0b1adf5f5b727"
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            26.75,
+            27.78
+          ],
+          "pivot": [
+            26.75,
+            27.78
+          ],
+          "depth": 47.82,
+          "w": 54,
+          "h": 42,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__body__d01__albedo.png",
+              "w": 54,
+              "h": 42,
+              "sha256": "9576099b38e576c29546911a2ed01938d911994fadbede43d04a8e73ac03166e"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__body__d01__normal.png",
+              "w": 54,
+              "h": 42,
+              "sha256": "cc44e6ee88bd5ca22864db32ac928a8bcee0faf54903a9f1dce3b8de9f8a3041"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__body__d01__material.png",
+              "w": 54,
+              "h": 42,
+              "sha256": "dbe8781ca24ac4716b738a88d51fc693c7fe71de228be12e0dc9bc7fc2e33f49"
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            25.37,
+            29.31
+          ],
+          "pivot": [
+            25.37,
+            29.31
+          ],
+          "depth": 39.79,
+          "w": 50,
+          "h": 42,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__body__d02__albedo.png",
+              "w": 50,
+              "h": 42,
+              "sha256": "96539d5e812612296e046c873aca72d93d6d046200c4809bc2002995347f3640"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__body__d02__normal.png",
+              "w": 50,
+              "h": 42,
+              "sha256": "07b4ab818de30aef35edd67a376a53030595aa9f36361ad8f1a871ef21bbc3af"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__body__d02__material.png",
+              "w": 50,
+              "h": 42,
+              "sha256": "e70581ee3ef68a6d9ecdd3dc71e242a1b7d5d9d94705b8cee66b157ebfdd1c92"
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            27.44,
+            31.12
+          ],
+          "pivot": [
+            27.44,
+            31.12
+          ],
+          "depth": 27.79,
+          "w": 54,
+          "h": 46,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__body__d03__albedo.png",
+              "w": 54,
+              "h": 46,
+              "sha256": "033704558fe23bdfb5d7ac4bab232ed26f0237a23a9fd85d147d3fa77b4120c6"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__body__d03__normal.png",
+              "w": 54,
+              "h": 46,
+              "sha256": "137b635fe58b2ad808418112563a1a6c10b9906d032d8094376c6be8dc1856ab"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__body__d03__material.png",
+              "w": 54,
+              "h": 46,
+              "sha256": "260091742681ed77d30b29df6777467157904939acc4d571d74891a137161902"
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            29,
+            31
+          ],
+          "pivot": [
+            29,
+            31
+          ],
+          "depth": 13.64,
+          "w": 58,
+          "h": 46,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__body__d04__albedo.png",
+              "w": 58,
+              "h": 46,
+              "sha256": "d7fe9ad8b9c43995e041c620e182b5b8b4738de82fc669892df4e3e90e457aa7"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__body__d04__normal.png",
+              "w": 58,
+              "h": 46,
+              "sha256": "6097f68b985dd0ab83fcd9e5546072cc7bba9109aee21966ab5fc9a15023dc5a"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__body__d04__material.png",
+              "w": 58,
+              "h": 46,
+              "sha256": "0f16015fa285f572e5904129554fc57eb88f7825a392979c731d9dac0a063053"
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            28.44,
+            30.88
+          ],
+          "pivot": [
+            28.44,
+            30.88
+          ],
+          "depth": -0.49,
+          "w": 58,
+          "h": 44,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__body__d05__albedo.png",
+              "w": 58,
+              "h": 44,
+              "sha256": "d31bbb2e5313445561dae10e76585daf9fc9cc56e0303248d54c16035e76852d"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__body__d05__normal.png",
+              "w": 58,
+              "h": 44,
+              "sha256": "b31b9b74c076f196fd64d653c152f8a910df7868a81d83ac80bb77c1a2882017"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__body__d05__material.png",
+              "w": 58,
+              "h": 44,
+              "sha256": "3fadcf511b4c900512d7c4c537db310e41312abec6ed87bd4863b2cec0423b1c"
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            25.37,
+            30.69
+          ],
+          "pivot": [
+            25.37,
+            30.69
+          ],
+          "depth": -12.47,
+          "w": 50,
+          "h": 42,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__body__d06__albedo.png",
+              "w": 50,
+              "h": 42,
+              "sha256": "28c4733bbbefac4829cbacd1b17af7f4d631a0e16c0b95df4dc52269b27bdadd"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__body__d06__normal.png",
+              "w": 50,
+              "h": 42,
+              "sha256": "c14935e5cf7e9bc72b01092e18053f10b755d4d0eee373c09128c2f395297480"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__body__d06__material.png",
+              "w": 50,
+              "h": 42,
+              "sha256": "be697c21b0054c591a6953e34b1fd1b03264d0d12ce986c696d478a578bf4317"
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            28.75,
+            29.22
+          ],
+          "pivot": [
+            28.75,
+            29.22
+          ],
+          "depth": -20.45,
+          "w": 57,
+          "h": 43,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__body__d07__albedo.png",
+              "w": 57,
+              "h": 43,
+              "sha256": "76afa1c2872f7e89bcf46460162c6081fa6481393189de24da23230b601b02bd"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__body__d07__normal.png",
+              "w": 57,
+              "h": 43,
+              "sha256": "ee8bf15d8ef9c85369a2a554fbc44ca7e86594a68a2eb6f66c483cd16bc7f4c9"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__body__d07__material.png",
+              "w": 57,
+              "h": 43,
+              "sha256": "3f95698121815dd663d7bff43220e0f3839506d23916d90a28013eafd839e908"
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            29,
+            30
+          ],
+          "pivot": [
+            29,
+            30
+          ],
+          "depth": -23.24,
+          "w": 58,
+          "h": 45,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__body__d08__albedo.png",
+              "w": 58,
+              "h": 45,
+              "sha256": "b4ae76b0063c5d30b0b605302d8e305a219e49260491dea69c87d1b0f568eab7"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__body__d08__normal.png",
+              "w": 58,
+              "h": 45,
+              "sha256": "3c52e8becfc5c6fc7bc8efd937d4238af5bc4614e56dabf478756ea81cd819ec"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__body__d08__material.png",
+              "w": 58,
+              "h": 45,
+              "sha256": "271cde3802a5c9c2e32f773dd77a29a13732c312854ab2a384030d8a393b7e67"
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            27.25,
+            29.22
+          ],
+          "pivot": [
+            27.25,
+            29.22
+          ],
+          "depth": -20.4,
+          "w": 54,
+          "h": 44,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__body__d09__albedo.png",
+              "w": 54,
+              "h": 44,
+              "sha256": "3f1381ff501013d7aa36bdbf9461b7edda661580204206d96d26f24450ef247d"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__body__d09__normal.png",
+              "w": 54,
+              "h": 44,
+              "sha256": "9f130516416536514257d61ae986aea2144a4e8ac69bd68ab21a5a71b992c145"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__body__d09__material.png",
+              "w": 54,
+              "h": 44,
+              "sha256": "69c4df0dc005e521fa71d032f097fd850e350b374bfb6ec923a47b088f915e6b"
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            24.63,
+            27.69
+          ],
+          "pivot": [
+            24.63,
+            27.69
+          ],
+          "depth": -12.36,
+          "w": 50,
+          "h": 40,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__body__d10__albedo.png",
+              "w": 50,
+              "h": 40,
+              "sha256": "9dccd7e02d4b158e237589299e57b7081b626ad6ffdb5090d50745505f9d2fea"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__body__d10__normal.png",
+              "w": 50,
+              "h": 40,
+              "sha256": "5f5bce42a0c42d89af3d32c743b18a84a80d9fe2eb9fb2181b22e5bf972b4a8a"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__body__d10__material.png",
+              "w": 50,
+              "h": 40,
+              "sha256": "e8ce3aa421f2fd9089c55a26b00b4d8dbf77add8eeae5d790f86b037f63adc84"
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            26.56,
+            29.88
+          ],
+          "pivot": [
+            26.56,
+            29.88
+          ],
+          "depth": -0.36,
+          "w": 54,
+          "h": 42,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__body__d11__albedo.png",
+              "w": 54,
+              "h": 42,
+              "sha256": "692b13835ab066432614b38e971719d476e945d362ad6c1b4f3080389c3b9619"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__body__d11__normal.png",
+              "w": 54,
+              "h": 42,
+              "sha256": "0969c38ab3054743365879da0fcdfb965d5b38da9efa8333f2c5315d54688d8c"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__body__d11__material.png",
+              "w": 54,
+              "h": 42,
+              "sha256": "102da6c19e3007a32d912ba1cb8110374e6263ed7212b9058f62a5af26da1992"
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            29,
+            30
+          ],
+          "pivot": [
+            29,
+            30
+          ],
+          "depth": 13.78,
+          "w": 58,
+          "h": 43,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__body__d12__albedo.png",
+              "w": 58,
+              "h": 43,
+              "sha256": "d085e3514aa3e30887fcf4d0b72200237152d4f33dc337cd3992ae21e1e8062d"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__body__d12__normal.png",
+              "w": 58,
+              "h": 43,
+              "sha256": "76db5fdf4030c166696e61e4918978eca2f09d383faec307e4a95320c3df32fd"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__body__d12__material.png",
+              "w": 58,
+              "h": 43,
+              "sha256": "32f1fe1800ac7ecb18d195404e4093561db8971370457f48c95594a339453d64"
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            29.56,
+            29.12
+          ],
+          "pivot": [
+            29.56,
+            29.12
+          ],
+          "depth": 27.92,
+          "w": 58,
+          "h": 41,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__body__d13__albedo.png",
+              "w": 58,
+              "h": 41,
+              "sha256": "3d1f62af0513a1f23efa52846be2da5be0b87d890ccb83f4b212f23b34420610"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__body__d13__normal.png",
+              "w": 58,
+              "h": 41,
+              "sha256": "356ff454944d6edae732622ab133315a59730c16d9e30eceb00d564f1a6a82b3"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__body__d13__material.png",
+              "w": 58,
+              "h": 41,
+              "sha256": "1ff43a5c76666713455fb45784122e07c2d90eb8b07e623e2f372e3539737cb0"
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            24.63,
+            28.31
+          ],
+          "pivot": [
+            24.63,
+            28.31
+          ],
+          "depth": 39.89,
+          "w": 50,
+          "h": 39,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__body__d14__albedo.png",
+              "w": 50,
+              "h": 39,
+              "sha256": "1591c1db87a7607ce4a2fb0fbeb59104d51b46729283d1b2b011249f87284dd0"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__body__d14__normal.png",
+              "w": 50,
+              "h": 39,
+              "sha256": "505756e47da8da8bbc4714817c114278309f656416fc0e161f8381d61a65636b"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__body__d14__material.png",
+              "w": 50,
+              "h": 39,
+              "sha256": "b042414a072c6cd27a48e4b1d80ca4c9066b32e39dc89e89bf834a79aba109e7"
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            28.25,
+            28.78
+          ],
+          "pivot": [
+            28.25,
+            28.78
+          ],
+          "depth": 47.88,
+          "w": 57,
+          "h": 42,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__body__d15__albedo.png",
+              "w": 57,
+              "h": 42,
+              "sha256": "1ea7c78044fede766733e372d0f6f68f750890023c718fe8b84b0428cad47a33"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__body__d15__normal.png",
+              "w": 57,
+              "h": 42,
+              "sha256": "2c6822fc136cc0af0c311506aa3ed439d0b4128d5bf0650ff466ed76057f7194"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__body__d15__material.png",
+              "w": 57,
+              "h": 42,
+              "sha256": "f712e07f284a55bfd9e08a53bcb8e9cbcbc7980ab79759e6f0b63b799759fcdd"
+            }
+          }
+        }
+      }
+    },
+    "running.L": {
+      "name": "running.L",
+      "dynamic": false,
+      "parent": null,
+      "pivotDesign": [
+        256,
+        256,
+        0
+      ],
+      "traverse": false,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            11,
+            23
+          ],
+          "pivot": [
+            11,
+            23
+          ],
+          "depth": 31.21,
+          "w": 39,
+          "h": 29,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.L__d00__albedo.png",
+              "w": 39,
+              "h": 29,
+              "sha256": "8a0e3eef5d88f297d6b19d5cbe20082bfa22620afb1f1f96db13673e1282a925"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.L__d00__normal.png",
+              "w": 39,
+              "h": 29,
+              "sha256": "da42b11e1f8fea57d7a0b8ac03f67cb487d4edb69af290e7b45c3a7f80afc660"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.L__d00__material.png",
+              "w": 39,
+              "h": 29,
+              "sha256": "e3984719987cdcecc01249d055766d23340c9a105a086a96af5aec2d883a4e4f"
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            3.75,
+            22.78
+          ],
+          "pivot": [
+            3.75,
+            22.78
+          ],
+          "depth": 32.86,
+          "w": 29,
+          "h": 32,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.L__d01__albedo.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "0f0b0d1aaa5fd81d844f69cc60785f8375230cf304ca7eb186c2e18a281a2d06"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.L__d01__normal.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "f2f4325a10ad46ebb0e7c6730841e2323eff53c675b0642f5f1cd2823ca80c6a"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.L__d01__material.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "1b3bbdd60f2ecf75775ffb3b4310414307ae340c94827c0e283243c36b669258"
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            -4.63,
+            20.31
+          ],
+          "pivot": [
+            -4.63,
+            20.31
+          ],
+          "depth": 30.23,
+          "w": 15,
+          "h": 32,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.L__d02__albedo.png",
+              "w": 15,
+              "h": 32,
+              "sha256": "aab0727fcdf51064a1f49b43e4b247098c7e0e4cc1ede0de370a2f9419133f81"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.L__d02__normal.png",
+              "w": 15,
+              "h": 32,
+              "sha256": "6b994dff64fe89fde18db240a5339390408b09953c5417089727f951a0b867e8"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.L__d02__material.png",
+              "w": 15,
+              "h": 32,
+              "sha256": "2e467561db5be167ba613b54097b9facbb9c6424c9dc12620abf7be244647a5b"
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            3.44,
+            18.12
+          ],
+          "pivot": [
+            3.44,
+            18.12
+          ],
+          "depth": 23.72,
+          "w": 29,
+          "h": 32,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.L__d03__albedo.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "e4fcbb1ce8a923b60c47073551e9e508e4cf32ddcd50bae58bf833a68d0b9099"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.L__d03__normal.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "4e3a7c111323b18a2aafe93a9bd25d60f2f7b392f9edc9aa433923d0f7557d73"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.L__d03__material.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "c6762bc2b01e737d78655ff3e06b5a1a37f72549e247d33d9ebef77c8bbe4f0b"
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            11,
+            15
+          ],
+          "pivot": [
+            11,
+            15
+          ],
+          "depth": 14.33,
+          "w": 39,
+          "h": 30,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.L__d04__albedo.png",
+              "w": 39,
+              "h": 30,
+              "sha256": "08ca51d729214eab5d68fbba38e41997264e5507bbbaa6e693d0d45a817548aa"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.L__d04__normal.png",
+              "w": 39,
+              "h": 30,
+              "sha256": "327fc370e0dc2860e2ccc2a8b0fb38dab27f53ec45afcaf64eb6b3627ea55538"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.L__d04__material.png",
+              "w": 39,
+              "h": 30,
+              "sha256": "06645f5f263b12809b6c064412719b88257f7deba69119585007c8b49088fe57"
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            17.44,
+            10.88
+          ],
+          "pivot": [
+            17.44,
+            10.88
+          ],
+          "depth": 3.48,
+          "w": 45,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.L__d05__albedo.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "b64a37de6c553a07efb9fb25523eb5136b9357863c77784620af6b23d8e978e7"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.L__d05__normal.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "5dd6341cd6dc5601a96fabb3c63afa41d4079def7370041abcc12ce3218c1fd5"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.L__d05__material.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "387b8506ca485b73bf3a10f15af8a5dff5468f07f76a6902c7eff85670cafec3"
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            22.37,
+            7.69
+          ],
+          "pivot": [
+            22.37,
+            7.69
+          ],
+          "depth": -7.18,
+          "w": 46,
+          "h": 20,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.L__d06__albedo.png",
+              "w": 46,
+              "h": 20,
+              "sha256": "2b854a62961144ee7cd5e05f11289c938ce3084449e5ff49c5c2423e547a246a"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.L__d06__normal.png",
+              "w": 46,
+              "h": 20,
+              "sha256": "bc82413f0d2d9fb8bdbc2600b844f7de067749d8f877de90236d881be2e0ff9f"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.L__d06__material.png",
+              "w": 46,
+              "h": 20,
+              "sha256": "eea29333f4aad80583114a26d27a7fee105c6f7fad18d225dbab6c03455fcc8f"
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            26.75,
+            9.22
+          ],
+          "pivot": [
+            26.75,
+            9.22
+          ],
+          "depth": -16.01,
+          "w": 45,
+          "h": 24,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.L__d07__albedo.png",
+              "w": 45,
+              "h": 24,
+              "sha256": "a33952b5294d75374a4aed130cd4eda911f274d6d64f15da6f5251a2268b106b"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.L__d07__normal.png",
+              "w": 45,
+              "h": 24,
+              "sha256": "73ad5c6b9b844f6742571081618c3b506f41ea9c4e236db54115a1e72d80d74a"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.L__d07__material.png",
+              "w": 45,
+              "h": 24,
+              "sha256": "949224cac8eaa56fe45946ab6d8fd3e264d38d08c7b83f428091502fab19ddb7"
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            28,
+            13
+          ],
+          "pivot": [
+            28,
+            13
+          ],
+          "depth": -21.69,
+          "w": 39,
+          "h": 28,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.L__d08__albedo.png",
+              "w": 39,
+              "h": 28,
+              "sha256": "c85c67057ad962288f072ab7a1abf82ab4014268913904914d54623347e0ba0b"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.L__d08__normal.png",
+              "w": 39,
+              "h": 28,
+              "sha256": "2f60f66d18d9db02d2066dcda7cc34d1e4e8e0a68a10b1bca53c0bb6cf4071f3"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.L__d08__material.png",
+              "w": 39,
+              "h": 28,
+              "sha256": "18ecbf18ca0db370c2c66fd1b4b1669cc4f1c503dc3009a713d2898812856277"
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            25.25,
+            16.22
+          ],
+          "pivot": [
+            25.25,
+            16.22
+          ],
+          "depth": -23.33,
+          "w": 29,
+          "h": 31,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.L__d09__albedo.png",
+              "w": 29,
+              "h": 31,
+              "sha256": "964b7a1a56c4f7bc5135518d96e4868e6e977f08f5d54dab939d8a769bff6fc8"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.L__d09__normal.png",
+              "w": 29,
+              "h": 31,
+              "sha256": "ba44df8aeefc31d0fcde293581ba9a1cefff5c32ffd9ba3b550ec1b9458d7030"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.L__d09__material.png",
+              "w": 29,
+              "h": 31,
+              "sha256": "5483f1d30f629e7c4f7852a7733f4d985485eb15f3116cd639cbbad2260d246e"
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            19.63,
+            19.69
+          ],
+          "pivot": [
+            19.63,
+            19.69
+          ],
+          "depth": -20.7,
+          "w": 15,
+          "h": 32,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.L__d10__albedo.png",
+              "w": 15,
+              "h": 32,
+              "sha256": "4949b1e7ed3b7ac2f1357107ccd6093faff71b4442f537752297fdb5ed0a997d"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.L__d10__normal.png",
+              "w": 15,
+              "h": 32,
+              "sha256": "58693ad137c472760b558d1998aafac6f0e91fb96898fe035f85c884f0bf911b"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.L__d10__material.png",
+              "w": 15,
+              "h": 32,
+              "sha256": "3b83eb4293e38699b1da9d75e2ad9888e79b361da347ecb679e789ea09ca8b78"
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            25.56,
+            21.88
+          ],
+          "pivot": [
+            25.56,
+            21.88
+          ],
+          "depth": -14.19,
+          "w": 29,
+          "h": 32,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.L__d11__albedo.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "93318c8bac4e3c1d7ca36204d0a61b46e150713ee425a0882281bed3e1fee1a6"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.L__d11__normal.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "bd82f108c8cbb44d8d3c4adb7144beeaa7df5e613527158c6482bb099c4082ec"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.L__d11__material.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "a24381a0e9e290eb13e673d86eaa078e85bde4a7c02edfb2a83c89a03468c110"
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            28,
+            23
+          ],
+          "pivot": [
+            28,
+            23
+          ],
+          "depth": -4.8,
+          "w": 39,
+          "h": 30,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.L__d12__albedo.png",
+              "w": 39,
+              "h": 30,
+              "sha256": "85e5c223e7e8f400a45301b031bb9eb3f7311a128674eec459502216fd04e6a2"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.L__d12__normal.png",
+              "w": 39,
+              "h": 30,
+              "sha256": "e315fe0fb2924f666f1385d9161bd11cc4def514cc16248119135a131a2cb96c"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.L__d12__material.png",
+              "w": 39,
+              "h": 30,
+              "sha256": "dcebe6d7930c8ca862a69628972a62bc3a77174f9098330f9419144f588ab1f6"
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            27.56,
+            22.12
+          ],
+          "pivot": [
+            27.56,
+            22.12
+          ],
+          "depth": 6.05,
+          "w": 45,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.L__d13__albedo.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "81f2166e652e9e30f65c6c5f13056b749f7bf2701e569b6ee9de3a945115281c"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.L__d13__normal.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "271a529ad21e1b786bd8493cb219892b559c678d102ab20bf84be86720ffeeae"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.L__d13__material.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "478fb486bd25d941fb97eb579533489c84425a9cc91ce34b540099562f282804"
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            23.63,
+            20.31
+          ],
+          "pivot": [
+            23.63,
+            20.31
+          ],
+          "depth": 16.7,
+          "w": 46,
+          "h": 20,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.L__d14__albedo.png",
+              "w": 46,
+              "h": 20,
+              "sha256": "7bf8f9e542246447ed062d32d6de9bd274000fca9acfe1976c80f23f05fd0206"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.L__d14__normal.png",
+              "w": 46,
+              "h": 20,
+              "sha256": "4500c7e9d75f2df8c9be308ad0c67fcaa15632e70effe59d719560dae4c4077e"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.L__d14__material.png",
+              "w": 46,
+              "h": 20,
+              "sha256": "542edce65cfd339f3267ac20392458c84df6a04f0d05d52539e137041927880b"
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            18.25,
+            22.78
+          ],
+          "pivot": [
+            18.25,
+            22.78
+          ],
+          "depth": 25.54,
+          "w": 45,
+          "h": 26,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.L__d15__albedo.png",
+              "w": 45,
+              "h": 26,
+              "sha256": "24a1099077a58b63619d9171bf866e9850d2c56717da4acb937f2a98c2e7370e"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.L__d15__normal.png",
+              "w": 45,
+              "h": 26,
+              "sha256": "b5bb0c9fb4ccc8e3b885402eee2b54abf0333f2d6f90de9e65e43500e598dda7"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.L__d15__material.png",
+              "w": 45,
+              "h": 26,
+              "sha256": "9f3bc84cc5b48797996a6892879d122024c8f038c1c14aad8001417c77f50a05"
+            }
+          }
+        }
+      }
+    },
+    "running.R": {
+      "name": "running.R",
+      "dynamic": false,
+      "parent": null,
+      "pivotDesign": [
+        256,
+        256,
+        0
+      ],
+      "traverse": false,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            28,
+            15
+          ],
+          "pivot": [
+            28,
+            15
+          ],
+          "depth": 51.42,
+          "w": 39,
+          "h": 30,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.R__d00__albedo.png",
+              "w": 39,
+              "h": 30,
+              "sha256": "67a3c10cb9197e2832ecf580a1de67ad561f661e99ea891b267de471c344a8be"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.R__d00__normal.png",
+              "w": 39,
+              "h": 30,
+              "sha256": "ed616eece24fb379835573cba60127dbbc69abb48d16e9cf226daff2dedf5415"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.R__d00__material.png",
+              "w": 39,
+              "h": 30,
+              "sha256": "918499759cee9f2b1b7cdd2442e26e747ee1d3c946beb9f2964ab74f72b3535f"
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            25.75,
+            17.78
+          ],
+          "pivot": [
+            25.75,
+            17.78
+          ],
+          "depth": 43.8,
+          "w": 29,
+          "h": 32,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.R__d01__albedo.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "6fad7f9a1061db428011d878d752c04aa29ebc45408c798c1a1b10141823dc29"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.R__d01__normal.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "09b5e83b00acede004f7b1d593ae2ab006b2fa4275b0ef3b71ba62863bb9b716"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.R__d01__material.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "657c6788e2ae2c982404fe6b3e8a9044e0f331ae5a6805a3863455d0ddf7ecdb"
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            20.37,
+            20.31
+          ],
+          "pivot": [
+            20.37,
+            20.31
+          ],
+          "depth": 30.23,
+          "w": 16,
+          "h": 32,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.R__d02__albedo.png",
+              "w": 16,
+              "h": 32,
+              "sha256": "c032fd8d358ff37bd8ec2d5448305d33735e8678b399eff682fc729840af989d"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.R__d02__normal.png",
+              "w": 16,
+              "h": 32,
+              "sha256": "1706dc9bb75da36f764c71bcebcee45fa6eb55bcc941750e60a9a7f6d7516d63"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.R__d02__material.png",
+              "w": 16,
+              "h": 32,
+              "sha256": "fe63a5ce45b3caecffac457b990ff827fd259ac956e2d050f6729efc9e3947a4"
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            25.44,
+            22.12
+          ],
+          "pivot": [
+            25.44,
+            22.12
+          ],
+          "depth": 12.78,
+          "w": 29,
+          "h": 31,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.R__d03__albedo.png",
+              "w": 29,
+              "h": 31,
+              "sha256": "e7d926e12599f2bdf9c19269f9486605b7251b5b9d9e46a48c6b3311cdf4c68c"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.R__d03__normal.png",
+              "w": 29,
+              "h": 31,
+              "sha256": "b574e912d25269bb9323eacf4b9b86e853972632eeddc0fce88374fc8889efbd"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.R__d03__material.png",
+              "w": 29,
+              "h": 31,
+              "sha256": "322aad8b186d1e2d656136136e0b3878f1118739a9a66700ac7461edaf461020"
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            28,
+            23
+          ],
+          "pivot": [
+            28,
+            23
+          ],
+          "depth": -5.88,
+          "w": 39,
+          "h": 29,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.R__d04__albedo.png",
+              "w": 39,
+              "h": 29,
+              "sha256": "cef7749868517a6f3fe9191e9b06cc6dfd13741db67a94f9d3ac2437262850a4"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.R__d04__normal.png",
+              "w": 39,
+              "h": 29,
+              "sha256": "3083f522c67217428c93df8b22f568563499149f9e4c965634e8ae4b4f33290e"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.R__d04__material.png",
+              "w": 39,
+              "h": 29,
+              "sha256": "e736cbf13bb363d45cd4c97596509f1a2ff469a589a98b6606c56d36387cc36b"
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            26.44,
+            22.88
+          ],
+          "pivot": [
+            26.44,
+            22.88
+          ],
+          "depth": -22.93,
+          "w": 45,
+          "h": 26,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.R__d05__albedo.png",
+              "w": 45,
+              "h": 26,
+              "sha256": "f9ff667cce497f25bc6a303079c238d99990406c74b88c73851d9070988e06bc"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.R__d05__normal.png",
+              "w": 45,
+              "h": 26,
+              "sha256": "f68048ade1678944ac6571391fcb24daeb8ccee3b12f89119f2b0bc6d5026a3e"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.R__d05__material.png",
+              "w": 45,
+              "h": 26,
+              "sha256": "42656d57533bd16be5ce904a5d5e6e24c0ef722be80ce1787f6af062930db20b"
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            22.37,
+            20.69
+          ],
+          "pivot": [
+            22.37,
+            20.69
+          ],
+          "depth": -35.76,
+          "w": 46,
+          "h": 21,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.R__d06__albedo.png",
+              "w": 46,
+              "h": 21,
+              "sha256": "d762c97328103d0b69ce57d844b2c7e5227eb6e423fbd286f8ca2c3c22dc0909"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.R__d06__normal.png",
+              "w": 46,
+              "h": 21,
+              "sha256": "b57038e04881212153b493f775a10664cc7862bf89bca3cb687c1d1af60c948c"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.R__d06__material.png",
+              "w": 46,
+              "h": 21,
+              "sha256": "6dc42ae1a67f13cf0776a823f6e90c84e218e182a22928f89edf5a5b7e1a835d"
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            17.75,
+            22.22
+          ],
+          "pivot": [
+            17.75,
+            22.22
+          ],
+          "depth": -42.42,
+          "w": 45,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.R__d07__albedo.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "6d4c1d39828847aeee53ca2d5bd605e6653d6a7bb8f0454a6d246d9c7605e999"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.R__d07__normal.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "700c4fd0bb35364c01821a24d1c31f4cb8c438f96ecb8e3e209f6003326de250"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.R__d07__material.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "928854dc27777be6bac45edfa5ddbe2e8cc78db05f870e2c124336f78d45ba24"
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            11,
+            23
+          ],
+          "pivot": [
+            11,
+            23
+          ],
+          "depth": -41.89,
+          "w": 39,
+          "h": 30,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.R__d08__albedo.png",
+              "w": 39,
+              "h": 30,
+              "sha256": "20ac0f25044907bbb4b32e3cde4cebaa5714e13fdfd0db9523d459094b2b64e5"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.R__d08__normal.png",
+              "w": 39,
+              "h": 30,
+              "sha256": "733c7e976e0c041baa7defaefbf91c3f11d1a29ddcac17ebe70a82895ee2e636"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.R__d08__material.png",
+              "w": 39,
+              "h": 30,
+              "sha256": "0dc1af41c1196b01913eddcc6d1eae8cada498cac6dd863c8aa62af68ab3c60d"
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            3.25,
+            22.22
+          ],
+          "pivot": [
+            3.25,
+            22.22
+          ],
+          "depth": -34.27,
+          "w": 29,
+          "h": 32,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.R__d09__albedo.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "5b7f714093395f8441d5e78321040be32465b9a6645b533bc07af985f27340d2"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.R__d09__normal.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "07927fbaf3c4c46ddab37dc0b5788168ddf865ce803ee1b2909a90f5bbc20390"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.R__d09__material.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "2cbb48aa004672dd64c08baebfd04e4213991fc0a31f292970a55b71092c80ab"
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            -4.37,
+            19.69
+          ],
+          "pivot": [
+            -4.37,
+            19.69
+          ],
+          "depth": -20.7,
+          "w": 16,
+          "h": 32,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.R__d10__albedo.png",
+              "w": 16,
+              "h": 32,
+              "sha256": "63b5e5807522ea2d978c7dfbf167bd6f27747ea0f35336d4c8cfc0f4a200a53e"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.R__d10__normal.png",
+              "w": 16,
+              "h": 32,
+              "sha256": "b2f431739dae84f3b31634ee53b969a237a89b0c9149154089124e04f2abd7a4"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.R__d10__material.png",
+              "w": 16,
+              "h": 32,
+              "sha256": "d19db0e388388eae1e3bde28e10e5686c69a5e4b27e3eb9e1a9eb35a0d98605b"
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            3.56,
+            16.88
+          ],
+          "pivot": [
+            3.56,
+            16.88
+          ],
+          "depth": -3.26,
+          "w": 29,
+          "h": 31,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.R__d11__albedo.png",
+              "w": 29,
+              "h": 31,
+              "sha256": "253fb5e7f34c70213cc95c4c82407eebd1aadb9e49e03301d34b5a45475ada8f"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.R__d11__normal.png",
+              "w": 29,
+              "h": 31,
+              "sha256": "8c68044e38100c79e1c100de97c50bae16a11a9540798dfa7ffc1b33af1e5e25"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.R__d11__material.png",
+              "w": 29,
+              "h": 31,
+              "sha256": "851a8d75d547feab4389077859e0bdda4ab304d62f9e9efdf4c30be66c066bf0"
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            11,
+            13
+          ],
+          "pivot": [
+            11,
+            13
+          ],
+          "depth": 15.41,
+          "w": 39,
+          "h": 28,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.R__d12__albedo.png",
+              "w": 39,
+              "h": 28,
+              "sha256": "903c29a14b182dc418151c0f6f8b40c8bb80f2a6351990fda5e0ce6e8ce6ea57"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.R__d12__normal.png",
+              "w": 39,
+              "h": 28,
+              "sha256": "5ac515863ceab54672a2c7c27d46d0abd95e68f0459eb4fcd96b7fd560edf3c3"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.R__d12__material.png",
+              "w": 39,
+              "h": 28,
+              "sha256": "65ac75b7695094fc1187e023ba69bc6173978b2783e88683f863f122b8431002"
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            18.56,
+            9.12
+          ],
+          "pivot": [
+            18.56,
+            9.12
+          ],
+          "depth": 32.45,
+          "w": 45,
+          "h": 23,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.R__d13__albedo.png",
+              "w": 45,
+              "h": 23,
+              "sha256": "6602c291570328cfd5ab0c647b48c57ec258c1189726f2620710833b3ee22a6b"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.R__d13__normal.png",
+              "w": 45,
+              "h": 23,
+              "sha256": "c3aba4d5737b74cc5842ba7361ad976bc1a15b145ad82e87e9c36a1d9ee4638f"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.R__d13__material.png",
+              "w": 45,
+              "h": 23,
+              "sha256": "b69c91a04c44e3a07e7a167301c79e9e6b30652883a43c21514a388bc8f1ec88"
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            23.63,
+            7.31
+          ],
+          "pivot": [
+            23.63,
+            7.31
+          ],
+          "depth": 45.28,
+          "w": 46,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.R__d14__albedo.png",
+              "w": 46,
+              "h": 19,
+              "sha256": "0215067d3bb520f8c5b90afc4dce7771eb66b434cd75ce7aa6a52fd1aafe50e8"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.R__d14__normal.png",
+              "w": 46,
+              "h": 19,
+              "sha256": "76279fd574f6a0c0c9a279ba75ece2a7d4d69443ac440e70f2d9ecd5c146f7d5"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.R__d14__material.png",
+              "w": 46,
+              "h": 19,
+              "sha256": "10e1278d9e25e25ce9264ea6da33ea2c2a582f70f297f8946800ff39dd1136c1"
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            27.25,
+            10.78
+          ],
+          "pivot": [
+            27.25,
+            10.78
+          ],
+          "depth": 51.94,
+          "w": 45,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__running.R__d15__albedo.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "186a76c71e848f709260aa3259b4d74fff0eec161bb325e3a2055a4fb5961f88"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__running.R__d15__normal.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "bb0157d5199af9026e6254976be308a8c399385c5c549b3714f8eb508a5e6d69"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__running.R__d15__material.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "ce5a0292bd7b758e1a77fbcccf220babf0872553f90c0357a4d86b7f06512c66"
+            }
+          }
+        }
+      }
+    },
+    "turret": {
+      "name": "turret",
+      "dynamic": true,
+      "parent": null,
+      "pivotDesign": [
+        400,
+        256,
+        192
+      ],
+      "traverse": true,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            -5,
+            13
+          ],
+          "pivot": [
+            4,
+            5.5
+          ],
+          "depth": 65.35,
+          "w": 13,
+          "h": 11,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__turret__d00__albedo.png",
+              "w": 13,
+              "h": 11,
+              "sha256": "f978414e76c70d99eeb0986f3df1a0f49f30f92e897dd1233f5108331cdbc96f"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__turret__d00__normal.png",
+              "w": 13,
+              "h": 11,
+              "sha256": "943ed9ea46172745c4cca561a583be2c3a7d9b0b0f72340992feec31b819312a"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__turret__d00__material.png",
+              "w": 13,
+              "h": 11,
+              "sha256": "4f0e9c1b9edb7b5e4ab0baf8f3083a381384c184376591f691e60843b6fd9759"
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            0.75,
+            11.78
+          ],
+          "pivot": [
+            5.62,
+            5.66
+          ],
+          "depth": 66.54,
+          "w": 14,
+          "h": 12,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__turret__d01__albedo.png",
+              "w": 14,
+              "h": 12,
+              "sha256": "79787e080a6c9963ac0bdf7e4b5dc85c827700db5e1759dd145b72f90a69f4e8"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__turret__d01__normal.png",
+              "w": 14,
+              "h": 12,
+              "sha256": "200a3bd2619bee71b75a110ff267b04156e31c0abe3258d4c3741b0dde3d0adb"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__turret__d01__material.png",
+              "w": 14,
+              "h": 12,
+              "sha256": "700b8a4c34dc4b6e46fced871987b214b54808a5bee1de6df9a8e2eb5a2fd16c"
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            7.37,
+            10.31
+          ],
+          "pivot": [
+            7.37,
+            4.68
+          ],
+          "depth": 59.94,
+          "w": 15,
+          "h": 10,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__turret__d02__albedo.png",
+              "w": 15,
+              "h": 10,
+              "sha256": "c578fe38fd99e5668c1ececc34fad1d297faa0d541911033fca8a3e087406c7d"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__turret__d02__normal.png",
+              "w": 15,
+              "h": 10,
+              "sha256": "dc0db0027422a9e514e04b241bca242f25e492ad3d25c00fbf2f4b5a35ab3ab6"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__turret__d02__material.png",
+              "w": 15,
+              "h": 10,
+              "sha256": "374b28b8d2dd190edeebb467a1e133c0ed85bca2ec09dfdb3344dddb13bc4779"
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            13.44,
+            11.12
+          ],
+          "pivot": [
+            8.57,
+            5
+          ],
+          "depth": 46.58,
+          "w": 14,
+          "h": 11,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__turret__d03__albedo.png",
+              "w": 14,
+              "h": 11,
+              "sha256": "9bb8d592e0325ff2a79d0a902cc0977c6a973bc9ea2fe8cd81e4a9b3fa6ccfce"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__turret__d03__normal.png",
+              "w": 14,
+              "h": 11,
+              "sha256": "5a558f202bd4c96dc1961b66a0c537637b2df5b00af9ae82fa29014d4bff3dc6"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__turret__d03__material.png",
+              "w": 14,
+              "h": 11,
+              "sha256": "5c412cadf3087a351f84ff43660114de401ef1d64b1e1fab85454b9b11fcd700"
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            18,
+            14
+          ],
+          "pivot": [
+            9,
+            6.5
+          ],
+          "depth": 28.47,
+          "w": 13,
+          "h": 12,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__turret__d04__albedo.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "5d8fa92a0dcaa0c7d5bc806141b20401a23a851c445e60416ac42de92644f606"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__turret__d04__normal.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "3710f3ac5c432b95674bfb3f5e3d45bc2c17f3566e5b09aa0d09ecb4beb4f53f"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__turret__d04__material.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "119ac7c0db7b1ca95b25282e35c1091c50257ce83c512b2c5b18f86fa918392c"
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            20.44,
+            15.88
+          ],
+          "pivot": [
+            8.68,
+            6.31
+          ],
+          "depth": 8.38,
+          "w": 11,
+          "h": 12,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__turret__d05__albedo.png",
+              "w": 11,
+              "h": 12,
+              "sha256": "498fbdc2b7ee6e2d2ec943d5148b19cc7d03e524ae56d6e4e104134bdd689c7c"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__turret__d05__normal.png",
+              "w": 11,
+              "h": 12,
+              "sha256": "0b24c2f3320a944e40b2f003fa2339313504382ea6223f974b5436a08d7fcc04"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__turret__d05__material.png",
+              "w": 11,
+              "h": 12,
+              "sha256": "11c2a0e192c75889a53aa402dedcefb0c522f72dc349e1ff2d6200d36cc7eb5e"
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            21.37,
+            19.69
+          ],
+          "pivot": [
+            8.64,
+            7.69
+          ],
+          "depth": -10.63,
+          "w": 10,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__turret__d06__albedo.png",
+              "w": 10,
+              "h": 13,
+              "sha256": "95d813845e574d338eceee54920daec29a4e3fdef090f71caf70a580f272da6e"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__turret__d06__normal.png",
+              "w": 10,
+              "h": 13,
+              "sha256": "e1eb3f68e2da7a233e000e44d51a052a6471f1e78263758c32af07030e153b6d"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__turret__d06__material.png",
+              "w": 10,
+              "h": 13,
+              "sha256": "556e3557e04bb4afe5d08b0093b436cce7b9f4b37071aab6df66fb3719225fc6"
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            20.75,
+            22.22
+          ],
+          "pivot": [
+            9,
+            7.78
+          ],
+          "depth": -25.68,
+          "w": 12,
+          "h": 12,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__turret__d07__albedo.png",
+              "w": 12,
+              "h": 12,
+              "sha256": "b20855552bc612055ba8569fac97f892adc935a63bfd3bdc279a6af2b6df594f"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__turret__d07__normal.png",
+              "w": 12,
+              "h": 12,
+              "sha256": "575d81b66172810891689b60027577525b5f2c5db7668a00c0e5b4c56ced7837"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__turret__d07__material.png",
+              "w": 12,
+              "h": 12,
+              "sha256": "fa06886d85dbc39399fd0881450c7f84184311f6f62b9e0ddeec301842087cf9"
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            18,
+            24
+          ],
+          "pivot": [
+            9,
+            7.5
+          ],
+          "depth": -34.46,
+          "w": 13,
+          "h": 11,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__turret__d08__albedo.png",
+              "w": 13,
+              "h": 11,
+              "sha256": "239dc0bd9ebc537ef6cc4fad93a26d2351fd98a128eec8efd95ff96295bcdf1c"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__turret__d08__normal.png",
+              "w": 13,
+              "h": 11,
+              "sha256": "d54ba2aa23200816c049a6a080c1dc7f537d371150724ed072d10a288c211d98"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__turret__d08__material.png",
+              "w": 13,
+              "h": 11,
+              "sha256": "906de438355d8cc3a62ed42ca1157d6c915f875d3f4449bc062a8e4dcf8ffa57"
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            13.25,
+            26.22
+          ],
+          "pivot": [
+            8.38,
+            8.34
+          ],
+          "depth": -35.65,
+          "w": 14,
+          "h": 11,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__turret__d09__albedo.png",
+              "w": 14,
+              "h": 11,
+              "sha256": "7523887fd27cd520619e9e9a01b61fa729bd31385d60abec9a64d5a4ce5b7543"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__turret__d09__normal.png",
+              "w": 14,
+              "h": 11,
+              "sha256": "bfd21bec6d6d12177e8987f3b25a3b94380205b8a09eb18b5e8b3759db9b6302"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__turret__d09__material.png",
+              "w": 14,
+              "h": 11,
+              "sha256": "35f9d4ad6718d8d4dec60ad539669750022ceb3ae90edf5fa37a96c1bf51f600"
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            7.63,
+            26.69
+          ],
+          "pivot": [
+            7.63,
+            8.32
+          ],
+          "depth": -29.05,
+          "w": 15,
+          "h": 10,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__turret__d10__albedo.png",
+              "w": 15,
+              "h": 10,
+              "sha256": "5ab07c8a16fe46c1bcc3664f8a5334bf214ec7f4798b0cd95e6c384d2dc3bf49"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__turret__d10__normal.png",
+              "w": 15,
+              "h": 10,
+              "sha256": "d64c2e841a2f12fdf8db49d9740dbd18690c6957d68460c8db32303b2b2a2611"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__turret__d10__material.png",
+              "w": 15,
+              "h": 10,
+              "sha256": "c45d0a04d2ef84e1f127e690a29d227e512bb2bbf8709f61bf22932a6fafa5bd"
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            0.56,
+            25.88
+          ],
+          "pivot": [
+            5.43,
+            8
+          ],
+          "depth": -15.69,
+          "w": 14,
+          "h": 11,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__turret__d11__albedo.png",
+              "w": 14,
+              "h": 11,
+              "sha256": "7167fd0f91fd38bce46c25829f02dee8e46d6067d2171496101502622cd806ab"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__turret__d11__normal.png",
+              "w": 14,
+              "h": 11,
+              "sha256": "1e91f33eaed8649c960c794d5d8fc74d2652bf7b2132cd106fd9ededd152ad36"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__turret__d11__material.png",
+              "w": 14,
+              "h": 11,
+              "sha256": "df45f99a53957068e597ac6a4b589562557d2d9bb39227369f84de3e0ec38329"
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            -5,
+            24
+          ],
+          "pivot": [
+            4,
+            7.5
+          ],
+          "depth": 2.42,
+          "w": 13,
+          "h": 11,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__turret__d12__albedo.png",
+              "w": 13,
+              "h": 11,
+              "sha256": "29b8ff12f762bd148d9969cb0a47bedd91f72ad717aeed44fe660cfc80ef11be"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__turret__d12__normal.png",
+              "w": 13,
+              "h": 11,
+              "sha256": "672b56888219e308af642fe0b17fd8cecbe8c0ab2d1cdf295b29533084429fff"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__turret__d12__material.png",
+              "w": 13,
+              "h": 11,
+              "sha256": "2aa4f53ee1090ed65a966e5af6b583a57508cdc99c8f164a9c44e4f161b142b5"
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            -9.44,
+            22.12
+          ],
+          "pivot": [
+            2.32,
+            7.69
+          ],
+          "depth": 22.51,
+          "w": 11,
+          "h": 12,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__turret__d13__albedo.png",
+              "w": 11,
+              "h": 12,
+              "sha256": "d326e47010d572d2e0b253e1f364ed5b529bf7828f42223adbdcdcd7a784db15"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__turret__d13__normal.png",
+              "w": 11,
+              "h": 12,
+              "sha256": "95dddbe7a87c657237c250abbd2e1b2f61badcc12758422979aefd74a25fc304"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__turret__d13__material.png",
+              "w": 11,
+              "h": 12,
+              "sha256": "e86a8427ed7dd250a986b7fa418d9c5d3bd0a4075db0925dacbf35952a29fa95"
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            -11.37,
+            19.31
+          ],
+          "pivot": [
+            1.36,
+            7.31
+          ],
+          "depth": 41.52,
+          "w": 10,
+          "h": 12,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__turret__d14__albedo.png",
+              "w": 10,
+              "h": 12,
+              "sha256": "05669af4e7c25ce6f7e88061d21d2b129970b03da380b13a5f7680ce69c09854"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__turret__d14__normal.png",
+              "w": 10,
+              "h": 12,
+              "sha256": "1cfd3f9eedacc53dde5444bfdb34d74bcf9e206e6989e8fbf11b2fa3681c86dd"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__turret__d14__material.png",
+              "w": 10,
+              "h": 12,
+              "sha256": "50c40231bd51b94472af455addc4e0502ee1f466275a31bccd5bd9a8e05a114b"
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            -8.75,
+            15.78
+          ],
+          "pivot": [
+            3,
+            6.22
+          ],
+          "depth": 56.57,
+          "w": 12,
+          "h": 12,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__turret__d15__albedo.png",
+              "w": 12,
+              "h": 12,
+              "sha256": "39c2030b3ee1757518280f859492771b990497531dc3148126d18bdb7f26cbc6"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__turret__d15__normal.png",
+              "w": 12,
+              "h": 12,
+              "sha256": "8f9f5b93c369d276f65851dee68cb9529b7d8dc661affc34112efd4bea5e5394"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__turret__d15__material.png",
+              "w": 12,
+              "h": 12,
+              "sha256": "284d739acfcfbf752f2ec022fe0ab76f64c9d3bc5ecff44f52c5c41379aae659"
+            }
+          }
+        }
+      }
+    },
+    "barrel": {
+      "name": "barrel",
+      "dynamic": true,
+      "parent": "turret",
+      "pivotDesign": [
+        442,
+        256,
+        190
+      ],
+      "traverse": true,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            -6,
+            12
+          ],
+          "pivot": [
+            5.63,
+            5.94
+          ],
+          "depth": 66.58,
+          "w": 15,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__barrel__d00__albedo.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "f905e647dee2decc3b81ded27cbb63448803c0a1362b40637de409b7485fc265"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__barrel__d00__normal.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "64411b6e43372d6290fae45108b0eb8d90f79e70934b3d8aa82cd38ea964e35a"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__barrel__d00__material.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "43c0cec4abf0c889f40ab895612c52d7cecbc8056ff99c7a750ae432b9aacbac"
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            -0.25,
+            9.78
+          ],
+          "pivot": [
+            6.05,
+            5.5
+          ],
+          "depth": 68.67,
+          "w": 14,
+          "h": 14,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__barrel__d01__albedo.png",
+              "w": 14,
+              "h": 14,
+              "sha256": "62799d3682517bc2b79343dc00bbbafda72b14e9c235da4ecfbba5904c807241"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__barrel__d01__normal.png",
+              "w": 14,
+              "h": 14,
+              "sha256": "57b17cb30a3b13c2d43d25bddc9d3b76bbae5098b9beafa26230973ee80b6694"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__barrel__d01__material.png",
+              "w": 14,
+              "h": 14,
+              "sha256": "7eb20bfe6ee98ed15f88523597cc360eaff7890a6ca45052c7a90c8c201be7f9"
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            5.37,
+            8.31
+          ],
+          "pivot": [
+            5.37,
+            4.66
+          ],
+          "depth": 62.4,
+          "w": 11,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__barrel__d02__albedo.png",
+              "w": 11,
+              "h": 13,
+              "sha256": "12587c3b9bf20be1009a625cf7e0be1763ca53e2f7326b7af53a45712045fc2c"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__barrel__d02__normal.png",
+              "w": 11,
+              "h": 13,
+              "sha256": "c0417b66b20585c247d8cfbaf6671b538994364236c0148619324ffdca042702"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__barrel__d02__material.png",
+              "w": 11,
+              "h": 13,
+              "sha256": "a172df63adb890b4af53d02078636bb798eb61ac6aaefdf8ab2f1f9e1fb3306a"
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            14.44,
+            9.12
+          ],
+          "pivot": [
+            8.14,
+            4.84
+          ],
+          "depth": 48.71,
+          "w": 14,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__barrel__d03__albedo.png",
+              "w": 14,
+              "h": 13,
+              "sha256": "059f5c2c5438bbf9fedc7333fbb93386ad074286d638d4fade18572c1b47d0aa"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__barrel__d03__normal.png",
+              "w": 14,
+              "h": 13,
+              "sha256": "cc2b000dfe1e6cd10bed90990a35247525d1720f826cedba4f2b58b5803cc5fd"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__barrel__d03__material.png",
+              "w": 14,
+              "h": 13,
+              "sha256": "e3f1fabc38103841216b1eb0ad317373b72055e7665ba8e7c4f93009e472ca45"
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            21,
+            12
+          ],
+          "pivot": [
+            9.38,
+            5.94
+          ],
+          "depth": 29.7,
+          "w": 15,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__barrel__d04__albedo.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "c82e2431a8f37ba12c8f4159ce98bc1d17413e86e309ab7f2be8519809e9c22d"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__barrel__d04__normal.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "be3d7d7eaddc8d5ca795ee1dbed5d4ca4c9ffe92b1a7c3b4dea9dc53923ab4d9"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__barrel__d04__material.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "b082c74f821b7edb011605a92cf9c6be802c04017f94a530ee94f0adcbb22104"
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            25.44,
+            14.88
+          ],
+          "pivot": [
+            10.25,
+            6.15
+          ],
+          "depth": 8.25,
+          "w": 15,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__barrel__d05__albedo.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "8cd6042e6ac54f5ede494ebd6bbfb0c0e7a1fe4d90a67a083e117ca70cb46679"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__barrel__d05__normal.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "80444ef528462d8a69a2f3598ace363f6347130cc0f94a4e386a8fc0936e9d7d"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__barrel__d05__material.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "00eec5e3429218e7ece08a78bdd32b50b69d0a5d23f278444755a11c7c072c25"
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            27.37,
+            17.69
+          ],
+          "pivot": [
+            10.93,
+            5.81
+          ],
+          "depth": -12.36,
+          "w": 15,
+          "h": 12,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__barrel__d06__albedo.png",
+              "w": 15,
+              "h": 12,
+              "sha256": "23d80b74b510d48d99cab91b81ec5889766959c7c077d81668787e736bdfb1a1"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__barrel__d06__normal.png",
+              "w": 15,
+              "h": 12,
+              "sha256": "133b65f2ea189210c4f1769e1416be7704a467f5c295e084bb19f14584173bfa"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__barrel__d06__material.png",
+              "w": 15,
+              "h": 12,
+              "sha256": "b2be40f61e478755399baee17092e58330117ab6352b73a6d06364dd0db2208a"
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            25.75,
+            21.22
+          ],
+          "pivot": [
+            10.57,
+            6.2
+          ],
+          "depth": -29.01,
+          "w": 15,
+          "h": 12,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__barrel__d07__albedo.png",
+              "w": 15,
+              "h": 12,
+              "sha256": "337cf28759a3a9d1976d8691810d17f637edbb7b64659deb4054a3d0b525c4c7"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__barrel__d07__normal.png",
+              "w": 15,
+              "h": 12,
+              "sha256": "09768acca8d5259a51c6c85feb4e1eb24be569f00fbed93bff89668d69200a46"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__barrel__d07__material.png",
+              "w": 15,
+              "h": 12,
+              "sha256": "cdc4626a2fc5d43ddd6743cba46d447b65e1f969cd9f1cd9efa400fe0035ccb8"
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            21,
+            25
+          ],
+          "pivot": [
+            9.37,
+            7.31
+          ],
+          "depth": -39.15,
+          "w": 15,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__barrel__d08__albedo.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "e0a33cbf273b989e43382c2289905922685f190de4d46faac510cb53525bfc0c"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__barrel__d08__normal.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "c9f3761e441ea98e00d4cc3bf313ad63ef07716780bf866d0d51c47a27f5eabb"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__barrel__d08__material.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "1ff817badd4da5fe5376cc4c4995c0f6f7a9acbbdcc9c29d5e802c9d3073c266"
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            14.25,
+            27.22
+          ],
+          "pivot": [
+            7.95,
+            7.75
+          ],
+          "depth": -41.24,
+          "w": 14,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__barrel__d09__albedo.png",
+              "w": 14,
+              "h": 13,
+              "sha256": "6706466dbbd733dcbf0f2298fb90904d5eea579fa54fc491284d73d2b3149b32"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__barrel__d09__normal.png",
+              "w": 14,
+              "h": 13,
+              "sha256": "0208d8c8a9b5423675bdbd9a166d825a65cf8e0c7e8992a3e08649d7f83afb49"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__barrel__d09__material.png",
+              "w": 14,
+              "h": 13,
+              "sha256": "41e8418db47bf9049a6233e796b4dbb5b3718f254f6ca7d531f346365babb24d"
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            5.63,
+            28.69
+          ],
+          "pivot": [
+            5.63,
+            8.59
+          ],
+          "depth": -34.97,
+          "w": 11,
+          "h": 14,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__barrel__d10__albedo.png",
+              "w": 11,
+              "h": 14,
+              "sha256": "aa3416c4bbdb24501c6c958a13afe40b74ee15393a1a8913f80b44bcc2511e87"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__barrel__d10__normal.png",
+              "w": 11,
+              "h": 14,
+              "sha256": "661598ee27103e3ae29f935ce18a58ad894e1f8f852f0376669916cfd8570fb7"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__barrel__d10__material.png",
+              "w": 11,
+              "h": 14,
+              "sha256": "3ef645d0e932aead0ab8f36a320498d3d937394c304c622fb0317a2ba8cfdaf3"
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            -0.44,
+            27.88
+          ],
+          "pivot": [
+            5.86,
+            8.41
+          ],
+          "depth": -21.29,
+          "w": 14,
+          "h": 14,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__barrel__d11__albedo.png",
+              "w": 14,
+              "h": 14,
+              "sha256": "60ae0137329c5cd155ff9842fde7af7b452e9490adc11c7abe5757dc6bc32adf"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__barrel__d11__normal.png",
+              "w": 14,
+              "h": 14,
+              "sha256": "61f0f0f5313d2f2a303104934533a18e02ecd4e15daad8178917e5b311bb2663"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__barrel__d11__material.png",
+              "w": 14,
+              "h": 14,
+              "sha256": "0bfd512cf141d5de59bf7ecd24dcf481b4d18cc963f541e45a0b3266bf569948"
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            -6,
+            25
+          ],
+          "pivot": [
+            5.63,
+            7.31
+          ],
+          "depth": -2.27,
+          "w": 15,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__barrel__d12__albedo.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "c246551abb41c434b67397c643632433308a14847aa58ba5125c821070dde704"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__barrel__d12__normal.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "8216c906660dd72a5f95ce6f5ba4ecf6d34570417fd72caed5752688d2990d0f"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__barrel__d12__material.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "3153ee2a7230e40c06bbdc4d98c5149d89b2d64f31ae0e14f0c9330aad3d5a1c"
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            -10.44,
+            22.12
+          ],
+          "pivot": [
+            4.75,
+            7.1
+          ],
+          "depth": 19.17,
+          "w": 15,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__barrel__d13__albedo.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "ebaaeb5ef347cccba0dc56206ce4a8b497a18f81e49b9382e10ef97f297ebfb3"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__barrel__d13__normal.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "44743443188b3df113e272817332f48eb28aab816465e564cdd9f0a8c3210d1c"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__barrel__d13__material.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "a265a169317f3d5b73a13101e2e00fcf4ef90211c294bbf68e796a591b22612d"
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            -12.37,
+            17.31
+          ],
+          "pivot": [
+            4.07,
+            5.44
+          ],
+          "depth": 39.79,
+          "w": 15,
+          "h": 11,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__barrel__d14__albedo.png",
+              "w": 15,
+              "h": 11,
+              "sha256": "81f3492d8066c5ffe62cc6be9b0913463c4a1ea43dc780925bcb899c89a3d871"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__barrel__d14__normal.png",
+              "w": 15,
+              "h": 11,
+              "sha256": "5750788df1ba1c1f56ff3492f43de3716df4a0d95538e139c3af5e2d857db3f9"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__barrel__d14__material.png",
+              "w": 15,
+              "h": 11,
+              "sha256": "aff071ef10e08f66b64c3d06bb7f78b529f87a6a8e95811381bf6b88eff4b893"
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            -10.75,
+            14.78
+          ],
+          "pivot": [
+            4.43,
+            6.05
+          ],
+          "depth": 56.43,
+          "w": 15,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank-destroyer__barrel__d15__albedo.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "f80a19c89e061d6c867c5822a96f61a9955cb732e0db6e3d04be233a6495b104"
+            },
+            "normal": {
+              "file": "sheets/tank-destroyer__barrel__d15__normal.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "7e4b76231918dc0d02da56e1497336d7f480e6071921b00ab15219c74c99c9da"
+            },
+            "material": {
+              "file": "sheets/tank-destroyer__barrel__d15__material.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "c1e251d60f1da19b9df2c544a25e2c8656fa113883245d200f93aa45090e601c"
+            }
+          }
+        }
+      }
+    }
+  },
+  "clips": {
+    "idle": 1
+  },
+  "sourceGeometry": {
+    "parts": [
+      {
+        "name": "body",
+        "dynamic": false,
+        "traverse": false,
+        "parent": null,
+        "voxels": 865617,
+        "pivotDesign": [
+          256,
+          256,
+          0
+        ],
+        "bounds": {
+          "minX": 24,
+          "minY": 23,
+          "minZ": 13,
+          "maxX": 487,
+          "maxY": 490,
+          "maxZ": 367
+        }
+      },
+      {
+        "name": "running.L",
+        "dynamic": false,
+        "traverse": false,
+        "parent": null,
+        "voxels": 178434,
+        "pivotDesign": [
+          256,
+          256,
+          0
+        ],
+        "bounds": {
+          "minX": 43,
+          "minY": 79,
+          "minZ": 0,
+          "maxX": 456,
+          "maxY": 155,
+          "maxZ": 132
+        }
+      },
+      {
+        "name": "running.R",
+        "dynamic": false,
+        "traverse": false,
+        "parent": null,
+        "voxels": 139087,
+        "pivotDesign": [
+          256,
+          256,
+          0
+        ],
+        "bounds": {
+          "minX": 43,
+          "minY": 356,
+          "minZ": 0,
+          "maxX": 456,
+          "maxY": 438,
+          "maxZ": 132
+        }
+      },
+      {
+        "name": "turret",
+        "dynamic": true,
+        "traverse": true,
+        "parent": null,
+        "voxels": 740,
+        "pivotDesign": [
+          400,
+          256,
+          192
+        ],
+        "bounds": {
+          "minX": 431,
+          "minY": 222,
+          "minZ": 205,
+          "maxX": 441,
+          "maxY": 289,
+          "maxZ": 223
+        }
+      },
+      {
+        "name": "barrel",
+        "dynamic": true,
+        "traverse": true,
+        "parent": "turret",
+        "voxels": 6360,
+        "pivotDesign": [
+          442,
+          256,
+          190
+        ],
+        "bounds": {
+          "minX": 444,
+          "minY": 240,
+          "minZ": 175,
+          "maxX": 510,
+          "maxY": 271,
+          "maxZ": 205
+        }
+      }
+    ],
+    "totalVoxels": 1190238
+  },
+  "composite": {
+    "note": "every part of one facing pre-composited through the shared ground anchor",
+    "facings": {
+      "d00": {
+        "w": 62,
+        "h": 47,
+        "files": {
+          "albedo": {
+            "file": "sheets/tank-destroyer__composite__d00__albedo.png",
+            "sha256": "0f051940427f5381c4e5d217f54d0423c0e063acdd54ab3d2fc0e459ad4fe39b"
+          },
+          "normal": {
+            "file": "sheets/tank-destroyer__composite__d00__normal.png",
+            "sha256": "33b736aed675c3190b53287adb59be48220ea3a2389ab71290583d0dc7cfaadc"
+          },
+          "material": {
+            "file": "sheets/tank-destroyer__composite__d00__material.png",
+            "sha256": "7ac00478ba44b43658b8f12d0e37c5abd74c1a287a18ecac39d040684360c58f"
+          }
+        }
+      },
+      "d01": {
+        "w": 58,
+        "h": 46,
+        "files": {
+          "albedo": {
+            "file": "sheets/tank-destroyer__composite__d01__albedo.png",
+            "sha256": "a7cdb88bb16997a7826908c0306ff1136b0b2739e5423a7605715b53d64e63fc"
+          },
+          "normal": {
+            "file": "sheets/tank-destroyer__composite__d01__normal.png",
+            "sha256": "9f46e0c25b8372bdcb2ebfd190108954d69184952da60c9e114b4c997d67845f"
+          },
+          "material": {
+            "file": "sheets/tank-destroyer__composite__d01__material.png",
+            "sha256": "62e7c4ecce3ce94fea29223a7b504a2d2d3b54fb7bb1983b4244ee92d160fe94"
+          }
+        }
+      },
+      "d02": {
+        "w": 54,
+        "h": 46,
+        "files": {
+          "albedo": {
+            "file": "sheets/tank-destroyer__composite__d02__albedo.png",
+            "sha256": "345e474c5fd4b71def347622d85a6829daf27eabb040f023294e4bf67f9fa995"
+          },
+          "normal": {
+            "file": "sheets/tank-destroyer__composite__d02__normal.png",
+            "sha256": "e848cd554794ee44c55ef154841c0b92bfc3572fbf2e82b04b09d13a7d6e283f"
+          },
+          "material": {
+            "file": "sheets/tank-destroyer__composite__d02__material.png",
+            "sha256": "91a3ad710c715047fe5246d1d62ae85ab0ed1772c254fd1038a91f8e1905ddfd"
+          }
+        }
+      },
+      "d03": {
+        "w": 58,
+        "h": 50,
+        "files": {
+          "albedo": {
+            "file": "sheets/tank-destroyer__composite__d03__albedo.png",
+            "sha256": "5d5cbc24cd4da260605632728d11faa769044233925291f9ca181f02c17dbe96"
+          },
+          "normal": {
+            "file": "sheets/tank-destroyer__composite__d03__normal.png",
+            "sha256": "a39fc12e31b304200dafee9bd158efd63a7654ea568901d53e199f539f0d631a"
+          },
+          "material": {
+            "file": "sheets/tank-destroyer__composite__d03__material.png",
+            "sha256": "102dc981ef7d5ed0f004e182d44ca7552cee571c5bea325cd5b40872f8c66f5e"
+          }
+        }
+      },
+      "d04": {
+        "w": 62,
+        "h": 50,
+        "files": {
+          "albedo": {
+            "file": "sheets/tank-destroyer__composite__d04__albedo.png",
+            "sha256": "bd4f4f57f5489b7bcb52043b360509cea072c1d3e0fbe9bb5fe4dec2c08c9e07"
+          },
+          "normal": {
+            "file": "sheets/tank-destroyer__composite__d04__normal.png",
+            "sha256": "18e3a7b36961b7db651a1504895783ebdd16c7673977541f706caf78a93ba3db"
+          },
+          "material": {
+            "file": "sheets/tank-destroyer__composite__d04__material.png",
+            "sha256": "fb8d3d2ef6f6d105aa06eba8bc03a3c4f72597403f89c9b6c80a15c4563ab730"
+          }
+        }
+      },
+      "d05": {
+        "w": 62,
+        "h": 49,
+        "files": {
+          "albedo": {
+            "file": "sheets/tank-destroyer__composite__d05__albedo.png",
+            "sha256": "b020f592355fe9d4a6b7a1bf4717a490af6f6d3f801ef3784ca5da188b1a0292"
+          },
+          "normal": {
+            "file": "sheets/tank-destroyer__composite__d05__normal.png",
+            "sha256": "53fc485af97a6d13ef479a66d7dbdb9cd036be6d5501e59200914834376a6ebf"
+          },
+          "material": {
+            "file": "sheets/tank-destroyer__composite__d05__material.png",
+            "sha256": "5cff467d572f2dc645c3f086db118a01715016272a91ce967b4b944e1a2f1013"
+          }
+        }
+      },
+      "d06": {
+        "w": 56,
+        "h": 47,
+        "files": {
+          "albedo": {
+            "file": "sheets/tank-destroyer__composite__d06__albedo.png",
+            "sha256": "22bf54826ef05e14ba4fbb946d2d165c05a9ca3cbcf78bb01ad40320ceb96565"
+          },
+          "normal": {
+            "file": "sheets/tank-destroyer__composite__d06__normal.png",
+            "sha256": "155dd5e667fdedf3674d65aaec464d65b1bfd20a795e4b4c958b15e908b95a4a"
+          },
+          "material": {
+            "file": "sheets/tank-destroyer__composite__d06__material.png",
+            "sha256": "4170d71766bda38a2428e0f0188e7bc813730617557a003a405f32770fe022ff"
+          }
+        }
+      },
+      "d07": {
+        "w": 61,
+        "h": 48,
+        "files": {
+          "albedo": {
+            "file": "sheets/tank-destroyer__composite__d07__albedo.png",
+            "sha256": "8525ffc018be7143ab3e76197931ccb5c20672a7756cf09a70c9f5c9cc7d79ef"
+          },
+          "normal": {
+            "file": "sheets/tank-destroyer__composite__d07__normal.png",
+            "sha256": "9bcc0f36527c28fcd9782c170b4e0bec3806fee6b6277970f2a145111686b9eb"
+          },
+          "material": {
+            "file": "sheets/tank-destroyer__composite__d07__material.png",
+            "sha256": "ceed05787dbfefc0b10d6173ffb995b67e0b6c562a7323def8d000fbd6270058"
+          }
+        }
+      },
+      "d08": {
+        "w": 62,
+        "h": 49,
+        "files": {
+          "albedo": {
+            "file": "sheets/tank-destroyer__composite__d08__albedo.png",
+            "sha256": "330ef46943faf6aaf02d7140a6473a953fe36c41ca7fee01b9b896caa3e588cd"
+          },
+          "normal": {
+            "file": "sheets/tank-destroyer__composite__d08__normal.png",
+            "sha256": "68c51ffa40c46d9403f564f8facd044e2066715aa150abff7b44a8cce1c1505d"
+          },
+          "material": {
+            "file": "sheets/tank-destroyer__composite__d08__material.png",
+            "sha256": "500a0e8e73b86999a7ba651799050cae1b8bd4f34a68d1cc8d9f963c66ea0f33"
+          }
+        }
+      },
+      "d09": {
+        "w": 58,
+        "h": 48,
+        "files": {
+          "albedo": {
+            "file": "sheets/tank-destroyer__composite__d09__albedo.png",
+            "sha256": "e119eedf3e826c206c0bcf01cba618560d161bce4a1ed56a6551b52e3b9dacf0"
+          },
+          "normal": {
+            "file": "sheets/tank-destroyer__composite__d09__normal.png",
+            "sha256": "1beb7bdcb7def6039d5f80d20e79526d95c9a3e0845d20df06423f7af7af98b4"
+          },
+          "material": {
+            "file": "sheets/tank-destroyer__composite__d09__material.png",
+            "sha256": "ccb34ba345a4f6c67ca77bbcd5f196c8e6176805a5578bf8f62ba1147ff77401"
+          }
+        }
+      },
+      "d10": {
+        "w": 54,
+        "h": 45,
+        "files": {
+          "albedo": {
+            "file": "sheets/tank-destroyer__composite__d10__albedo.png",
+            "sha256": "698532e2bd685e79feb07a2fb86ef02b06a7877aa0f04bc0c9f358ee37eceec9"
+          },
+          "normal": {
+            "file": "sheets/tank-destroyer__composite__d10__normal.png",
+            "sha256": "a87a89a660d595ce4b019e5f3f409c09cc5130cb2bc2dad434b1c08d949710b2"
+          },
+          "material": {
+            "file": "sheets/tank-destroyer__composite__d10__material.png",
+            "sha256": "d559ec9eca5cfd6d792fcfe6d1137cedffb7bc92ec8a43b86772e05d31b1567c"
+          }
+        }
+      },
+      "d11": {
+        "w": 58,
+        "h": 48,
+        "files": {
+          "albedo": {
+            "file": "sheets/tank-destroyer__composite__d11__albedo.png",
+            "sha256": "d5bdf2847767716b3de55dffc1e81c57f8e01b0e460689e598823c8488b7bcc5"
+          },
+          "normal": {
+            "file": "sheets/tank-destroyer__composite__d11__normal.png",
+            "sha256": "8b1b0a295ba50e252e741281bc2606e23644ee357d5fa6e787301e5de6fd7050"
+          },
+          "material": {
+            "file": "sheets/tank-destroyer__composite__d11__material.png",
+            "sha256": "fb07ae0f00ca63ad2d1db04fa1f7fbbcb78b5b7e1cdedbf29cd1d10afc26e64a"
+          }
+        }
+      },
+      "d12": {
+        "w": 62,
+        "h": 49,
+        "files": {
+          "albedo": {
+            "file": "sheets/tank-destroyer__composite__d12__albedo.png",
+            "sha256": "40ff136ae49c322cc00ff84295c3b09c822c42cfd7f27ed3aad2b587be1fb262"
+          },
+          "normal": {
+            "file": "sheets/tank-destroyer__composite__d12__normal.png",
+            "sha256": "3b68c112c525fc98faeae06371aa9a4d999ea222a604edda4d1fbfe3ff3ec838"
+          },
+          "material": {
+            "file": "sheets/tank-destroyer__composite__d12__material.png",
+            "sha256": "5845c4fa5fe2ea30a2129f731c10c4fbb86a271d7421903a76aaf523b2a53bf6"
+          }
+        }
+      },
+      "d13": {
+        "w": 62,
+        "h": 47,
+        "files": {
+          "albedo": {
+            "file": "sheets/tank-destroyer__composite__d13__albedo.png",
+            "sha256": "dfae549083ecb10854fcbe3f789d2ff07ac0a4bfededc2abf20bc444f0e151f3"
+          },
+          "normal": {
+            "file": "sheets/tank-destroyer__composite__d13__normal.png",
+            "sha256": "e7da11d4ae9eb8452e08f64191046f11321796f433f1c53c773b755a9d97642e"
+          },
+          "material": {
+            "file": "sheets/tank-destroyer__composite__d13__material.png",
+            "sha256": "c8e698566d40ffa7d8e0403b87c95679777e4d61091aadddb8bf002061f04573"
+          }
+        }
+      },
+      "d14": {
+        "w": 56,
+        "h": 44,
+        "files": {
+          "albedo": {
+            "file": "sheets/tank-destroyer__composite__d14__albedo.png",
+            "sha256": "16192c9d938685efd52192283a4a74b9b43a3c41780245b0ceb57c281cd18b0a"
+          },
+          "normal": {
+            "file": "sheets/tank-destroyer__composite__d14__normal.png",
+            "sha256": "e0b08a3f2c704760cd50e88d7ddb01622ef6cdd4141b9f4217ff09709dfe07d8"
+          },
+          "material": {
+            "file": "sheets/tank-destroyer__composite__d14__material.png",
+            "sha256": "30106d8b4f8f55310238f5cdcb903e26baf2fc80bea21e9d5e168e943c996438"
+          }
+        }
+      },
+      "d15": {
+        "w": 61,
+        "h": 47,
+        "files": {
+          "albedo": {
+            "file": "sheets/tank-destroyer__composite__d15__albedo.png",
+            "sha256": "e1806c946b8fc9f0566fcebb94fc0e9b217fa3e99c89a3f9228ceef27031a557"
+          },
+          "normal": {
+            "file": "sheets/tank-destroyer__composite__d15__normal.png",
+            "sha256": "fec352bdc9fcde43f94ba2ce3614d4541f6e053b522d43e908cd442ac5be3ef3"
+          },
+          "material": {
+            "file": "sheets/tank-destroyer__composite__d15__material.png",
+            "sha256": "eb2040079317b5f27fedae3f616a5fc54854774a8f8c626232d1f05aaf953bf7"
+          }
+        }
+      }
+    }
+  },
+  "lit": {
+    "note": "the composite re-shaded through a virtual three-point rig using the normal and material maps (key/fill/rim). If normals or PBR channels are wrong, this is where it shows.",
+    "rig": "three-point",
+    "facings": {
+      "d00": {
+        "file": "sheets/tank-destroyer__lit__d00__albedo.png",
+        "w": 62,
+        "h": 47,
+        "sha256": "62bca9eb41f98173bc250fbec9e6e6c2e8b03be55e8a7f2451f849d1bac7266e"
+      },
+      "d01": {
+        "file": "sheets/tank-destroyer__lit__d01__albedo.png",
+        "w": 58,
+        "h": 46,
+        "sha256": "deb18e939d88fb191836e4793320387393e429e0b546fd17e4c4cd0980813a32"
+      },
+      "d02": {
+        "file": "sheets/tank-destroyer__lit__d02__albedo.png",
+        "w": 54,
+        "h": 46,
+        "sha256": "553043a170d4762c8abe5bc22e157c2029a1ba94aa13ff4200870e4609c42e23"
+      },
+      "d03": {
+        "file": "sheets/tank-destroyer__lit__d03__albedo.png",
+        "w": 58,
+        "h": 50,
+        "sha256": "7c750b09364086dcc7e1662e16cfd6884e2dd77029f16604d7cc026212ece796"
+      },
+      "d04": {
+        "file": "sheets/tank-destroyer__lit__d04__albedo.png",
+        "w": 62,
+        "h": 50,
+        "sha256": "28d5ad368270637f97a3d15d7b6495d14e22a0c8ccb286600bf2b3730c6ba6d8"
+      },
+      "d05": {
+        "file": "sheets/tank-destroyer__lit__d05__albedo.png",
+        "w": 62,
+        "h": 49,
+        "sha256": "341e4a7541491ca864fa14e443be1b660e182714203980868fa5724a7d78135f"
+      },
+      "d06": {
+        "file": "sheets/tank-destroyer__lit__d06__albedo.png",
+        "w": 56,
+        "h": 47,
+        "sha256": "c967cf9f3d8011cd5506b8c136b9190af08eaaaccf0b3c86a5d21b798d7e11d1"
+      },
+      "d07": {
+        "file": "sheets/tank-destroyer__lit__d07__albedo.png",
+        "w": 61,
+        "h": 48,
+        "sha256": "5720432c9a71b89ee624817f5917b93d24c35f5aec29d0c8a280497df0a2538e"
+      },
+      "d08": {
+        "file": "sheets/tank-destroyer__lit__d08__albedo.png",
+        "w": 62,
+        "h": 49,
+        "sha256": "15f50d48a24444303914120a3311429940b460ebb3f6c92b289c9d9aabaa0089"
+      },
+      "d09": {
+        "file": "sheets/tank-destroyer__lit__d09__albedo.png",
+        "w": 58,
+        "h": 48,
+        "sha256": "58b8bd6e23a867c4c3d9a5cb7679b0688cab43fca8f9c7927dc8930afb04fa48"
+      },
+      "d10": {
+        "file": "sheets/tank-destroyer__lit__d10__albedo.png",
+        "w": 54,
+        "h": 45,
+        "sha256": "09b145f207dca037f728ae31842315a80ae0f15ace6915a5a70f52a477c3d906"
+      },
+      "d11": {
+        "file": "sheets/tank-destroyer__lit__d11__albedo.png",
+        "w": 58,
+        "h": 48,
+        "sha256": "1a8736ae9d8f1f393437dbdbbbe4807f2e4aa5fb88e533dc134409889ac47a5b"
+      },
+      "d12": {
+        "file": "sheets/tank-destroyer__lit__d12__albedo.png",
+        "w": 62,
+        "h": 49,
+        "sha256": "1db9c1f8220ec4572491288d9e571651ace2c2399435536e9007481832715f3d"
+      },
+      "d13": {
+        "file": "sheets/tank-destroyer__lit__d13__albedo.png",
+        "w": 62,
+        "h": 47,
+        "sha256": "c9e60648cbf4e18ed0d285200ec4e63c8ce2fa3b86a857f8a2f1e9ed45b58e1a"
+      },
+      "d14": {
+        "file": "sheets/tank-destroyer__lit__d14__albedo.png",
+        "w": 56,
+        "h": 44,
+        "sha256": "61946531525fa882da5e816cfca0e64f5efbc994f637fe53caa2b7427765c4d4"
+      },
+      "d15": {
+        "file": "sheets/tank-destroyer__lit__d15__albedo.png",
+        "w": 61,
+        "h": 47,
+        "sha256": "02214b543593b4005d70b425e2c7d0e8ab0aa6b82d920b7c35a9fc0718772bde"
+      }
+    }
+  },
+  "previewLit": {
+    "file": "preview-lit.png",
+    "facing": "d00",
+    "rig": "three-point",
+    "note": "relit from the normal + material maps"
+  },
+  "previewLights": {
+    "file": "preview-lights.png",
+    "facing": "d00",
+    "order": [
+      "azimuth 0deg / elevation 40deg",
+      "azimuth 45deg / elevation 40deg",
+      "azimuth 90deg / elevation 40deg",
+      "azimuth 135deg / elevation 40deg",
+      "azimuth 180deg / elevation 40deg",
+      "azimuth 225deg / elevation 40deg",
+      "azimuth 270deg / elevation 40deg",
+      "azimuth 315deg / elevation 40deg"
+    ],
+    "note": "one virtual light per panel, proving the normal map is directionally correct"
+  },
+  "previewMaps": {
+    "file": "preview-maps.png",
+    "facing": "d00",
+    "panels": [
+      "albedo",
+      "normal",
+      "material-id",
+      "metalness",
+      "roughness",
+      "emissive"
+    ]
+  },
+  "preview": {
+    "file": "preview.png",
+    "facing": "d00",
+    "w": 457,
+    "h": 334,
+    "mode": "single-pass"
+  },
+  "previewParts": {
+    "file": "preview-parts.png",
+    "facing": "d00",
+    "w": 461,
+    "h": 338,
+    "mode": "composited-from-part-sheets"
+  }
+}

@@ -226,3 +226,36 @@ export function castTurret(c, {
   c.part('body');
   return c;
 }
+
+/**
+ * Tube that rises (or falls) along its length, one voxel-slice at a time.
+ *
+ * Elevation is a re-bake in this pipeline, so a howitzer or an AA mount ships
+ * its barrel already at its service angle. A stepped approximation leaves
+ * visible stair-steps on a 13-voxel tube, so each slice gets its own centre.
+ */
+export function slantedBarrel(c, {
+  x0, x1, y, z0, z1, r0, r1 = r0, mat = 'gunmetal', part = 'barrel',
+}) {
+  c.part(part);
+  for (let x = Math.round(x0); x < Math.round(x1); x++) {
+    const t = (x - x0) / Math.max(1, x1 - x0);
+    const z = z0 + (z1 - z0) * t;
+    c.cylX(x, x + 1, y, z, r0 + (r1 - r0) * t, mat);
+  }
+  // Leaves `part` current on purpose: callers usually add a brake or a mantlet
+  // straight afterwards, and a silent switch back to 'body' would drop them
+  // into the hull.
+  return c;
+}
+
+/** Muzzle brake: a fat collar plus a bore, at the end of a barrel. */
+export function muzzleBrake(c, { x, y, z, r = 15, mat = 'steel.dark', part = 'barrel' }) {
+  c.part(part);
+  c.cylX(x - 9, x + 2, y, z, r, mat);
+  c.cylX(x + 1, x + 3, y, z, r * 0.45, 'scorch');
+  for (let i = 0; i < 3; i++) {
+    c.box(x - 8 + i * 3, y - r, z - r * 0.35, x - 6 + i * 3, y + r, z + r * 0.35, 'steel.bright');
+  }
+  return c;
+}

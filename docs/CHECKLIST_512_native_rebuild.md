@@ -160,9 +160,15 @@ while the structure stays put. ✅ (Gate met; art detail iterates with the rest 
       bustle and basket, longer gun overhanging the nose. 1,208,391 voxels, 240 PNG.
 - [x] **Preview scale raised to 8** (`PREVIEW_K`): a design voxel at half a pixel is the smallest preview
       where silhouette and part attachment can actually be judged. `VOXEL_PREVIEW_K` overrides it.
-- [ ] **B4a remaining** — `artillery`, `antiair`, `mega`, `bastion`, `aegis`, `ifv`, `tank-destroyer`,
-      `flame-tank`, `amphibious-tank`, `mine-layer`, `mobile-repair`, `mine-clearing` (+ `tank`, `apc`,
-      `heavy` done).
+- [x] **B4a batch 2** — `artillery` (rear turret, spades + ground anchor aft, travel lock forward,
+      1,057,750 vox / 240 PNG), `antiair` (open-topped four-wall turret, twin elevated guns, radar as its
+      own spinning part, 1,074,620 / 288), `tank-destroyer` (fixed casemate + traversing collar and
+      overhanging gun so its 16 facings differ from the tank's, 1,190,238 / 240), `ifv` (rear troop box,
+      ramp, firing ports, small turret, ATGM launcher as its own pivoted part, 986,644 / 288).
+      Kit grew `slantedBarrel()` and `muzzleBrake()` for these; both leave the caller's `part` current.
+- [ ] **B4a remaining** — `mega`, `bastion`, `aegis`, `flame-tank`, `amphibious-tank`, `mine-layer`,
+      `mobile-repair`, `mine-clearing` (+ `tank`, `apc`, `heavy`, `artillery`, `antiair`,
+      `tank-destroyer`, `ifv` done).
 - [ ] **B4b wheeled** — `recon`, `rockets`, `missiles`, `supply-truck`, `command-vehicle`.
 - [ ] **B4c foot** — `infantry`, `mech`, `engineer`, `medic`, `rocket-infantry`, `aa-infantry`, `sniper`,
       `grenadier`, `flamethrower`, `demolitionist`, `commando`, `officer`, `spy`, `elite-hero`,
