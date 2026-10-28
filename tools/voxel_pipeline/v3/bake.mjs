@@ -171,7 +171,10 @@ export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, outRoot =
     superSample: ss,
     pxPerVoxel: k / (CANVAS / 64),
     facings: facings.map(f => f.id),
-    facingMeta: facings,
+    facingMeta: facings.map(f => ({
+      ...f,
+      viewDir: cameraBasis(f.angle, k).dHat,
+    })),
     teamTint: {
       note: 'Albedo is baked in the standard livery. Recolour pixels whose material map red channel matches these ids to apply an army livery.',
       materialIds: Object.entries(MATERIALS).filter(([, m]) => m.team).map(([name]) => ({ name, id: MATERIAL_IDS[name], role: MATERIALS[name].team })),
@@ -226,6 +229,10 @@ export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, outRoot =
       entry.facings[facing.id] = {
         anchor: [round2(anchor[0]), round2(anchor[1])],
         pivot: [round2(pivotPx[0]), round2(pivotPx[1])],
+        // Painter order for segmented composition: parts with a smaller
+        // view-space depth draw first. Runtimes should sort on this rather than
+        // guessing from the part name.
+        depth: round2(basis.depth(centroid[0], centroid[1], centroid[2])),
         w: rendered.w,
         h: rendered.h,
         files,

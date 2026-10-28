@@ -186,7 +186,10 @@ Status as of this commit — **B0 done, B1 done, B2 in progress**. One asset (`t
 
 ## B10 · Tooling, tests, docs
 
-- [ ] Review gallery: every asset × facing × map, offline HTML.
+- [x] **Interactive review gallery** — `voxel-sprite-review-v4.html` + `npm run voxels3:review`
+      (zero-dep static server; browsers block `fetch`/pixel reads on `file://`). Relights live from the normal +
+      material maps, exposes an azimuth/elevation/intensity/ambient/exposure light rig, a light sweep, per-map
+      views, part toggles, and turret/barrel rotation about their pivots.
 - [ ] Contact-sheet generator (one image per asset, all facings in a row) for human review.
 - [ ] Validation report command (`voxels3:report`): voxel counts, part counts, payload, timing.
 - [ ] Tests: `sheet-contract`, `anchor`, `facing-uniqueness`, `payload`, `determinism`.
@@ -215,4 +218,5 @@ Status as of this commit — **B0 done, B1 done, B2 in progress**. One asset (`t
 | PNG per unit asset | — | 240 |
 | Payload per unit asset | ≤ 3 MB | 1.12 MB |
 | Bake determinism | byte-identical | **verified** |
+| Dynamic part pivots in manifest | per facing | **added** (`depth` + `viewDir`) |
 | Total PNG payload | ≤ 400 MB | 65 MB projected (163 MB legacy, archived later) |
