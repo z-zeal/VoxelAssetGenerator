@@ -5,6 +5,12 @@
 **Written against:** `main` at `0d691f1` (the commit that merged PR #39).
 **Audience:** whoever implements the phases below, one phase at a time, on explicit instruction.
 
+> **SUPERSEDED for the asset pipeline (2026-10):** sheet production moved to
+> `docs/PLAN_512_native_16dir_segmented_pipeline.md` — 512×512×512 native geometry, 16 unit
+> directions (4 for buildings), segmented per-part sheets, and normal + material maps. This
+> document's audit and animation/effects vocabulary remain as historical reference for the
+> animation pass that follows the rebuild.
+
 > **64³ voxel rebuild update (2026-10):** the isometric asset pipeline was
 > rebuilt at a standardized 64×64×64 modeling resolution. Where this document
 > names `tools/voxel_pipeline/bake.py` and `preview.py`, the Node replacements
