@@ -78,6 +78,15 @@ Status as of this commit — **B0 done, B1 done, B2 in progress**. One asset (`t
 - [x] Turret ring registration checked across all 16 facings via the composite strips.
 - [ ] **Modelling pass (open):** the hull still reads slab-sided and the ground wheels could sit tighter in
       the track band. Proportions need another iteration — geometry work, not a pipeline change.
+- [x] **Virtual light rig for normal/material testing** — `light.mjs` relights the composite through a
+      three-point rig and a single-light sweep; because it shades from the normal + material maps, bad
+      normals or dead PBR channels fail at bake time.
+- [x] Review images per asset: `preview-lit.png` (three-point), `preview-lights.png` (8 azimuths),
+      `preview-maps.png` (albedo | normal | material id | metalness | roughness | emissive),
+      `preview-parts.png` (segmentation check), `contact.png` (16 facings, relit).
+- [x] Fixed composite masking: silhouette coverage now comes from the albedo alpha, never from the material
+      map's emissive alpha; material ids take the nearest part instead of blending.
+- [x] Fixed `contact.mjs` executing its CLI body on import (needed a main guard).
 - [ ] Human review pass.
 
 **Gate:** 16 distinct facings, clean part registration, proportions approved.

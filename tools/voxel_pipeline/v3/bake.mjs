@@ -27,6 +27,9 @@ import { MATERIALS, MATERIAL_IDS, MATERIAL_NAMES, colorFor, materialMapDescripto
 import { cameraBasis, renderPart, buildPalette } from './raster.mjs';
 import { MODELS } from './models/index.mjs';
 import { validateModel } from './validate.mjs';
+import {
+  relight, defaultRig, singleLight, normalView, materialIdView, channelView, tilePanels,
+} from './light.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
 
@@ -74,7 +77,15 @@ function partFileName(asset, part, facing, map) {
  * correctly; the authoritative preview is still the single-pass render, this is
  * the anchor/segmentation check.
  */
-function compositePreview(parts, pad = 8) {
+function compositePreview(parts, pad = 8, key = 'albedo') {
+  // Coverage always comes from the albedo alpha. The material map carries
+  // emissive in its own alpha channel, and the normal map has no meaningful
+  // alpha, so masking by the channel's own alpha silently drops every
+  // non-emissive pixel (that bug blanked the metalness/roughness panels).
+  const mask = p => p.albedo;
+  // Material ids must never be blended (an average of two ids is a third id);
+  // the nearest part wins. Colour and normals are alpha-composited.
+  const pickNearest = key === 'material';
   const maxAx = Math.max(...parts.map(p => p.anchor[0]));
   const maxAy = Math.max(...parts.map(p => p.anchor[1]));
   let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
@@ -89,6 +100,7 @@ function compositePreview(parts, pad = 8) {
   const w = Math.ceil(maxX - minX) + pad * 2;
   const h = Math.ceil(maxY - minY) + pad * 2;
   const out = new Uint8ClampedArray(w * h * 4);
+  const cov = new Uint8Array(w * h);      // silhouette coverage, independent of channel alpha
   const ordered = [...parts].sort((a, b) => a.depth - b.depth);
   for (const p of ordered) {
     const ox = Math.round(maxAx - p.anchor[0] - minX) + pad;
@@ -96,19 +108,26 @@ function compositePreview(parts, pad = 8) {
     for (let y = 0; y < p.h; y++) {
       for (let x = 0; x < p.w; x++) {
         const s = (y * p.w + x) * 4;
-        const a = p.albedo[s + 3] / 255;
+        const a = mask(p)[s + 3] / 255;
         if (a <= 0) continue;
         const dx = x + ox, dy = y + oy;
         if (dx < 0 || dy < 0 || dx >= w || dy >= h) continue;
         const d = (dy * w + dx) * 4;
+        if (a * 255 > cov[dy * w + dx]) cov[dy * w + dx] = Math.round(a * 255);
+        if (pickNearest) {
+          // Parts are drawn far-to-near, so a later write is nearer.
+          out[d] = p[key][s]; out[d + 1] = p[key][s + 1];
+          out[d + 2] = p[key][s + 2]; out[d + 3] = p[key][s + 3];
+          continue;
+        }
         const da = out[d + 3] / 255;
         const oa = a + da * (1 - a);
-        for (let i = 0; i < 3; i++) out[d + i] = (p.albedo[s + i] * a + out[d + i] * da * (1 - a)) / (oa || 1);
+        for (let i = 0; i < 3; i++) out[d + i] = (p[key][s + i] * a + out[d + i] * da * (1 - a)) / (oa || 1);
         out[d + 3] = oa * 255;
       }
     }
   }
-  return { w, h, buf: Buffer.from(out.buffer, out.byteOffset, out.length) };
+  return { w, h, buf: Buffer.from(out.buffer, out.byteOffset, out.length), coverage: cov };
 }
 
 /**
@@ -214,6 +233,8 @@ export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, outRoot =
       byFacing[fi].push({
         name: part.name,
         albedo: rendered.albedo,
+        normal: rendered.normal,
+        material: rendered.material,
         w: rendered.w,
         h: rendered.h,
         anchor,
@@ -227,16 +248,41 @@ export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, outRoot =
   // runtime performs. If this ever disagrees with preview.png an anchor is
   // wrong, which is precisely the failure this artifact exists to catch.
   const facingComposite = {};
+  const facingLit = {};
   facings.forEach((facing, fi) => {
-    const comp = compositePreview(byFacing[fi], 2);
-    const name = `${id}__composite__${facing.id}__albedo.png`;
-    const blob = pngBytes(comp.w, comp.h, comp.buf);
-    fs.writeFileSync(path.join(sheetDir, name), blob);
-    facingComposite[facing.id] = { file: `sheets/${name}`, w: comp.w, h: comp.h, sha256: sha256(blob) };
+    const maps = {};
+    for (const key of ['albedo', 'normal', 'material']) {
+      const comp = compositePreview(byFacing[fi], 2, key);
+      maps[key] = comp;
+      const name = `${id}__composite__${facing.id}__${key}.png`;
+      const blob = pngBytes(comp.w, comp.h, comp.buf);
+      fs.writeFileSync(path.join(sheetDir, name), blob);
+      facingComposite[facing.id] ??= { w: comp.w, h: comp.h, files: {} };
+      facingComposite[facing.id].files[key] = { file: `sheets/${name}`, sha256: sha256(blob) };
+    }
+    // Relight from the composited normal + material maps, not from the
+    // pre-lit albedo, so this image is an actual test of those maps.
+    const lit = relight(
+      new Uint8ClampedArray(maps.albedo.buf),
+      new Uint8ClampedArray(maps.normal.buf),
+      new Uint8ClampedArray(maps.material.buf),
+      defaultRig(),
+    );
+    const litName = `${id}__lit__${facing.id}__albedo.png`;
+    const litBlob = pngBytes(maps.albedo.w, maps.albedo.h, Buffer.from(lit.buffer));
+    fs.writeFileSync(path.join(sheetDir, litName), litBlob);
+    facingLit[facing.id] = { file: `sheets/${litName}`, w: maps.albedo.w, h: maps.albedo.h,
+      sha256: sha256(litBlob) };
   });
   manifest.composite = {
     note: 'every part of one facing pre-composited through the shared ground anchor',
     facings: facingComposite,
+  };
+  manifest.lit = {
+    note: 'the composite re-shaded through a virtual three-point rig using the normal and '
+      + 'material maps (key/fill/rim). If normals or PBR channels are wrong, this is where it shows.',
+    rig: 'three-point',
+    facings: facingLit,
   };
 
   // Authoritative preview: one depth buffer for the whole model.
@@ -245,6 +291,51 @@ export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, outRoot =
   const whole = renderWhole(geom.parts, { basis: previewBasis, palette, superSample: ss, occluders });
   fs.writeFileSync(path.join(assetDir, 'preview.png'),
     pngBytes(whole.w, whole.h, Buffer.from(whole.albedo.buffer)));
+
+  // Lighting tests on the preview facing.
+  const pv = byFacing[previewFixture];
+  const pvAlbedo = compositePreview(pv, 2, 'albedo');
+  const pvNormal = compositePreview(pv, 2, 'normal');
+  const pvMaterial = compositePreview(pv, 2, 'material');
+  const A = new Uint8ClampedArray(pvAlbedo.buf);
+  const N = new Uint8ClampedArray(pvNormal.buf);
+  const M = new Uint8ClampedArray(pvMaterial.buf);
+  const panel = data => ({ w: pvAlbedo.w, h: pvAlbedo.h, data });
+
+  // (a) full three-point rig
+  fs.writeFileSync(path.join(assetDir, 'preview-lit.png'),
+    pngBytes(pvAlbedo.w, pvAlbedo.h, Buffer.from(relight(A, N, M, defaultRig()).buffer)));
+
+  // (b) light-direction sweep: eight azimuths, one light each. Normals that are
+  // wrong (flipped axis, zeroed, or aliased across facings) cannot survive this.
+  const sweep = [];
+  for (let i = 0; i < 8; i++) {
+    const az = i * 45;
+    sweep.push(panel(relight(A, N, M, singleLight(az, 40))));
+  }
+  const sweepTiled = tilePanels(sweep);
+  fs.writeFileSync(path.join(assetDir, 'preview-lights.png'),
+    pngBytes(sweepTiled.w, sweepTiled.h, Buffer.from(sweepTiled.data.buffer)));
+
+  // (c) map inspection: albedo | normal | material id | metalness | roughness | emissive
+  const mapPanels = tilePanels([
+    panel(A),
+    panel(normalView(N, pvNormal.coverage)),
+    panel(materialIdView(M, pvMaterial.coverage)),
+    panel(channelView(M, 'metalness', pvMaterial.coverage)),
+    panel(channelView(M, 'roughness', pvMaterial.coverage)),
+    panel(channelView(M, 'emissive', pvMaterial.coverage)),
+  ]);
+  fs.writeFileSync(path.join(assetDir, 'preview-maps.png'),
+    pngBytes(mapPanels.w, mapPanels.h, Buffer.from(mapPanels.data.buffer)));
+
+  manifest.previewLit = { file: 'preview-lit.png', facing: PREVIEW_FACING, rig: 'three-point',
+    note: 'relit from the normal + material maps' };
+  manifest.previewLights = { file: 'preview-lights.png', facing: PREVIEW_FACING,
+    order: Array.from({ length: 8 }, (_, i) => `azimuth ${i * 45}deg / elevation 40deg`),
+    note: 'one virtual light per panel, proving the normal map is directionally correct' };
+  manifest.previewMaps = { file: 'preview-maps.png', facing: PREVIEW_FACING,
+    panels: ['albedo', 'normal', 'material-id', 'metalness', 'roughness', 'emissive'] };
 
   const composite = compositePreview(byFacing[previewFixture]);
   fs.writeFileSync(path.join(assetDir, 'preview-parts.png'),

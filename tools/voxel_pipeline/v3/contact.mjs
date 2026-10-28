@@ -94,11 +94,13 @@ function stitchRow(images, { pad = 6, background = [24, 26, 28] } = {}) {
   return { w, h, buf: out };
 }
 
+const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
 const arg = (name, fallback) => {
   const i = process.argv.indexOf(name);
   return i >= 0 ? process.argv[i + 1] : fallback;
 };
 
+if (isMain) {
 const onlyArg = arg('--only', null);
 const ids = onlyArg ? onlyArg.split(',').map(s => s.trim()) : Object.keys(MODELS);
 
@@ -109,14 +111,21 @@ for (const id of ids) {
   const manifestPath = path.join(dir, 'manifest.json');
   if (!fs.existsSync(manifestPath)) { console.error(`${id}: not baked yet`); continue; }
   const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+  // Prefer the relit composite: it is shaded from the normal + material maps, so
+  // the strip doubles as a lighting check.
+  const lit = manifest.lit?.facings ?? {};
+  const useLit = Object.keys(lit).length > 0;
   const images = [];
   for (const facing of manifest.facings) {
-    const entry = manifest.composite?.facings?.[facing];
+    const entry = useLit ? lit[facing] : manifest.composite?.facings?.[facing]?.files?.albedo
+      ? { file: manifest.composite.facings[facing].files.albedo.file }
+      : null;
     if (!entry) continue;
     images.push(decodePng(fs.readFileSync(path.join(dir, entry.file))));
   }
   if (!images.length) { console.error(`${id}: no composites`); continue; }
   const strip = stitchRow(images);
   fs.writeFileSync(path.join(dir, 'contact.png'), pngBytes(strip.w, strip.h, strip.buf));
-  console.log(`${id}: ${images.length} facings → contact.png (${strip.w}×${strip.h})`);
+  console.log(`${id}: ${images.length} facings (${useLit ? 'relit' : 'pre-lit'}) → contact.png (${strip.w}×${strip.h})`);
+}
 }

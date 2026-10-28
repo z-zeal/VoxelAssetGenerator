@@ -170,6 +170,14 @@ segmentation.
 * **Team tinting** — albedo is baked in `standard` livery. A runtime that wants `allies` builds a 3×n
   channel swap from `teamTint.liveries` and applies it only to pixels whose material id carries a `team`
   role. That replaces the seven baked variant sets (17,881 → ~9,300 PNG).
+* **Composite masking** — composited maps always take silhouette coverage from the *albedo* alpha. The
+  material map's alpha is the emissive channel and the normal map's alpha is meaningless, so masking by a
+  channel's own alpha silently erases every non-emissive pixel. Material ids are never blended (an average of
+  two ids is a third id): the nearest part wins.
+* **Virtual light rig (normals test)** — `tools/voxel_pipeline/v3/light.mjs` re-shades the composite through
+  a configurable rig (warm key / cool fill / cold rim, plus a single-light sweep at 8 azimuths). Because it
+  shades from the *normal* and *material* maps rather than the pre-lit albedo, a flipped normal axis, a stale
+  metalness channel or a dead emissive channel fails visibly at bake time instead of at runtime.
 * **Payload control** — the material map is a low-cardinality image; if payload gate B2 fails, emit it as
   an indexed PNG or at half resolution with nearest-neighbour sampling (documented in the manifest as
   `materialMap.scale`).
