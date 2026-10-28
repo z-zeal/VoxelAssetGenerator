@@ -276,6 +276,11 @@ open transom with the screws visible from behind, would settle it.
 ## B10 · Tooling, tests, docs
 
 - [x] **Interactive review gallery** — `voxel-sprite-review-v4.html` + `npm run voxels3:review`
+- [x] **Review sheet set** — `bake.mjs --sheet-k 4` (`npm run voxels3:sheets:hi`) writes the same
+      part/facing renders at 4× into `sheets-hi/`, with pivots and anchors re-projected in hi pixels.
+      The gallery composites those instead of magnifying a ~60×43 runtime sheet, which is what made a
+      rotated segment look blurry. Review artifact only — the engine keeps reading `sheets/`. Costs
+      ~1.5 MB an asset and about doubles bake time; `--sheet-k 0` turns it off.
       (zero-dep static server; browsers block `fetch`/pixel reads on `file://`). Relights live from the normal +
       material maps, exposes an azimuth/elevation/intensity/ambient/exposure light rig, a light sweep, per-map
       views, part toggles, and turret/barrel rotation about their pivots.

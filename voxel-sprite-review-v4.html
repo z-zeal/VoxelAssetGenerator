@@ -39,13 +39,22 @@
   .stage{background:radial-gradient(circle at 50% 35%,#151a24,#0a0c11 75%);border:1px solid var(--line);
          border-radius:14px;padding:12px;display:flex;align-items:center;justify-content:center;min-height:420px;
          position:relative;overflow:hidden}
-  #view{image-rendering:pixelated;display:block;max-width:100%;max-height:64vh;cursor:grab;touch-action:none}
+  #view{image-rendering:auto;display:block;cursor:grab;touch-action:none}
+  /* Nearest-neighbour is only honest at a whole-number scale, and it is only
+     *useful* when the reviewer is hunting individual runtime pixels. As a
+     default it is wrong: at 8x a 60x43 sheet is a mosaic of 8-pixel blocks and
+     the silhouette of the vehicle disappears into the grid. So the smooth
+     filter is the default and crisp is a deliberate choice. */
+  .stage.crisp #view{image-rendering:pixelated}
+  #hires{display:none;max-width:100%;max-height:64vh;border-radius:6px;border:1px solid var(--line)}
+  .stage.hires #view{display:none}
+  .stage.hires #hires{display:block}
   .hud{position:absolute;left:12px;bottom:10px;font-size:11px;color:var(--muted);
        background:rgba(8,10,14,.72);padding:4px 9px;border-radius:6px;line-height:1.5}
   .hud b{color:var(--text);font-weight:600}
   .facing-strip{display:flex;gap:4px;flex-wrap:wrap;margin-top:10px;justify-content:center}
   .facing-strip button{padding:2px;border-radius:6px;line-height:0;background:#0d1017}
-  .facing-strip img{height:44px;image-rendering:pixelated;display:block}
+  .facing-strip img{height:44px;image-rendering:auto;display:block}
   .facing-strip button.active{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
   .row{display:flex;align-items:center;gap:8px;margin:7px 0}
   .row label{flex:0 0 86px;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.06em}
@@ -91,8 +100,9 @@
   </aside>
 
   <main class="main">
-    <div class="stage">
+    <div class="stage" id="stage">
       <canvas id="view"></canvas>
+      <img id="hires" alt="baked preview">
       <div class="hint" id="hint">Select an asset</div>
       <div class="hud" id="hud"></div>
     </div>
@@ -111,18 +121,27 @@
       <button data-mode="emissive">Emissive</button>
     </div>
 
-    <h3>Zoom <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0" id="zoomNow">auto</span></h3>
+    <h3>Display <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0" id="zoomNow">fit</span></h3>
     <div class="seg" id="zoomSwitch">
-      <button data-zoom="0" class="active">Auto</button>
+      <button data-zoom="0" class="active">Fit</button>
+      <button data-zoom="1">1:1</button>
       <button data-zoom="2">2×</button>
-      <button data-zoom="4">4×</button>
-      <button data-zoom="8">8×</button>
-      <button data-zoom="12">12×</button>
-      <button data-zoom="16">16×</button>
+      <button data-zoom="3">3×</button>
+    </div>
+    <div class="seg" id="sharpSwitch" style="margin-top:5px">
+      <button data-crisp="0">Smooth</button>
+      <button data-crisp="1" class="active">Crisp pixels</button>
+    </div>
+    <div class="seg" id="detailSwitch" style="margin-top:5px">
+      <button data-hires="0">Live sheet</button>
+      <button data-hires="1" class="active">Baked 8× preview</button>
     </div>
     <div style="font-size:10px;color:var(--muted);margin:6px 0 0">
-      Sheets are baked at runtime scale — one pixel is one runtime pixel — so an integer zoom is the
-      honest view. Mouse-wheel over the stage also zooms.
+      The page opens on the <b>baked 8× preview</b>, which is rendered at full review resolution.
+      Touching a part, the traverse or the light rig switches to the <b>live sheet</b>, which composites
+      the <b>4× review sheets</b> (`sheets-hi/`) rather than magnifying a 60-pixel runtime sheet — that
+      is what used to make a rotated turret look like frosted glass. Zoom presets are multiples of a
+      <i>sheet</i> pixel, so <b>1:1</b> is real pixels with nothing invented.
     </div>
 
     <h3>Virtual light</h3>
@@ -155,6 +174,8 @@
 </div>
 
 <script type="module">
+import { computeLayout, pickSheetSet } from './tools/voxel_pipeline/v3/gallery-zoom.mjs';
+
 // ---------------------------------------------------------------------------
 // State
 // ---------------------------------------------------------------------------
@@ -166,7 +187,12 @@ const state = {
   dir: '',
   facing: null,
   viewMode: 'lit',
-  zoom: 0,               // 0 = fit the stage; otherwise an integer pixel scale
+  zoom: 0,               // 0 = fit; otherwise CSS px per SOURCE pixel
+  sheetScale: 1,         // source pixels per runtime pixel (1, or hiSheetScale)
+  sheetHi: false,        // the hi sheet set is loaded
+  crisp: true,           // whole-number scale + nearest-neighbour
+  hires: true,           // open on the high-resolution baked render
+  selecting: false,      // guards the auto-switch while an asset loads
   light: { az: 125, el: 45, intensity: 1.05, ambient: 0.30, exposure: 1.0 },
   rig: true,
   specular: true,
@@ -209,15 +235,25 @@ function imageData(url) {
 // ---------------------------------------------------------------------------
 // Composite: parts -> albedo / normal / material buffers (shared anchor)
 // ---------------------------------------------------------------------------
+/**
+ * Load one part's three maps for a facing.
+ *
+ * When the asset has a review sheet set (`sheets-hi/`) this reads that instead:
+ * the composite is drawn at 4× the runtime detail, so a rotated segment is not
+ * a 60-pixel image blown up to fill the stage. `entry.pivot` travels with the
+ * chosen set, because a pivot is a pixel coordinate and hi pixels are a
+ * different unit — mixing the two offsets the part by a growing amount.
+ */
 async function loadPartMaps(partName, facing) {
-  const entry = state.manifest.parts[partName].facings[facing];
+  const rec = state.manifest.parts[partName].facings[facing];
+  const entry = (state.sheetHi && rec.filesHi) ? rec.filesHi : rec;
   const base = `${state.dir}/`;
   const [a, n, m] = await Promise.all([
     imageData(base + entry.files.albedo.file),
     imageData(base + entry.files.normal.file),
     imageData(base + entry.files.material.file),
   ]);
-  return { a, n, m, entry };
+  return { a, n, m, entry, hi: entry === rec.filesHi };
 }
 
 function blitPart(dst, dstW, dstH, src, ox, oy) {
@@ -347,11 +383,13 @@ async function buildComposite() {
   const placed = [];
   for (let i = 0; i < pick.length; i++) {
     const { name, xf } = pick[i];
-    const { a, entry } = maps[i];
-    // Target screen position of the part's world pivot, minus where that pivot
-    // sits inside the part's own crop.
-    const ox = xf.screen[0] - entry.pivot[0];
-    const oy = xf.screen[1] - entry.pivot[1];
+    const { a, entry, hi } = maps[i];
+    // `xf.screen` is in runtime pixels (it comes from the manifest's screen
+    // matrix); a hi sheet's crop and pivot are `sheetScale` times finer, so the
+    // screen position is scaled up to match before the pivot is subtracted.
+    const S = hi ? state.sheetScale : 1;
+    const ox = xf.screen[0] * S - entry.pivot[0];
+    const oy = xf.screen[1] * S - entry.pivot[1];
     placed.push({ name, ox, oy, w: a.width, h: a.height, depth: xf.depth, dynamic: xf.dynamic });
     minX = Math.min(minX, ox); minY = Math.min(minY, oy);
     maxX = Math.max(maxX, ox + a.width); maxY = Math.max(maxY, oy + a.height);
@@ -514,41 +552,86 @@ function render() {
 }
 
 /**
- * Integer pixel zoom.
+ * Display scale.
  *
- * The composite is drawn at runtime scale, so a 512³ tank is a 60×43 image — at
- * 1:1 CSS pixels it is a postage stamp in a 420 px stage. `image-rendering:
- * pixelated` plus a whole-number scale keeps every runtime pixel a crisp square
- * instead of resampling it into mush; fractional scales would blur exactly the
- * thing the reviewer is looking at.
+ * All the arithmetic lives in `gallery-zoom.mjs` so it can be tested without a
+ * browser — the last two display bugs were both problems in this maths, and
+ * neither was catchable from the bake side. Scales are quoted in SOURCE (sheet)
+ * pixels: 1× means one sheet pixel per CSS pixel, which is the only scale where
+ * nothing is invented.
  */
-function fitZoom(C) {
-  const stage = canvas.parentElement;
-  const availW = Math.max(160, stage.clientWidth - 48);
-  const availH = Math.max(160, stage.clientHeight - 48);
-  return Math.max(1, Math.min(16, Math.floor(Math.min(availW / C.W, availH / C.H))));
+/**
+ * Leave the baked render and go back to the live composite.
+ *
+ * Every interactive control on this page (parts, traverse, the light rig, the
+ * view mode) only exists in the live composite, so using one of them has to put
+ * the stage back on the live sheet — otherwise the control appears broken
+ * because the picture does not move. `selecting` keeps the initial load from
+ * undoing the default.
+ */
+function showLive() {
+  if (!state.hires || state.selecting) return;
+  state.hires = false;
+  document.querySelectorAll('#detailSwitch button').forEach(x => {
+    x.classList.toggle('active', x.dataset.hires === '0');
+  });
+  applyZoom();
+  updateHud();
 }
 
 function applyZoom() {
+  const stage = $('#stage');
+  stage.classList.toggle('crisp', state.crisp);
+  stage.classList.toggle('hires', state.hires);
+
+  const label = $('#zoomNow');
+  if (state.hires) {
+    state.effectiveZoom = state.manifest?.previewScale ?? 8;
+    if (label) label.textContent = 'baked preview';
+    return;
+  }
+
   const C = state.composite;
   if (!C) return;
-  const z = state.zoom > 0 ? state.zoom : fitZoom(C);
-  state.effectiveZoom = z;
-  canvas.style.width = `${C.W * z}px`;
-  canvas.style.height = `${C.H * z}px`;
-  const label = $('#zoomNow');
-  if (label) label.textContent = z + '×' + (state.zoom > 0 ? '' : ' (auto)');
+  const box = stage.getBoundingClientRect();
+  const L = computeLayout({
+    cw: C.W,
+    ch: C.H,
+    stageW: box.width - 24,
+    stageH: box.height - 24,
+    zoom: state.zoom,
+    crisp: state.crisp,
+    srcScale: state.sheetScale,
+  });
+  state.effectiveZoom = L.runtime;
+  state.effectiveSource = L.source;
+  canvas.style.width = `${L.cssW}px`;
+  canvas.style.height = `${L.cssH}px`;
+  const shown = state.crisp ? `${L.source}×` : `${(Math.round(L.source * 10) / 10)}×`;
+  if (label) label.textContent = (L.pinned ? '' : 'fit · ') + shown;
   const badge = $('#zoomBadge');
-  if (badge) badge.textContent = z + '×';
+  if (badge) badge.textContent = shown;
 }
 
 function updateHud() {
   const C = state.composite;
   if (!C || !state.manifest) { $('#hud').textContent = ''; return; }
   const vis = [...state.parts.values()].filter(p => p.visible).length;
+  if (state.hires) {
+    $('#hud').innerHTML = `<b>${state.asset}</b> · baked <b>${state.manifest.previewScale}×</b> preview`
+      + ` · <span style="color:var(--accent)">touch a part or the light rig to go live</span>`;
+    return;
+  }
+  const src = state.effectiveSource ?? 1;
+  const zoomText = `${state.crisp ? '' : '~'}${src}× sheet`
+    + ` (${state.effectiveZoom ?? 1}× runtime)`;
+  const sheetText = state.sheetHi
+    ? ` · review sheets ${state.sheetScale}×`
+    : ' · runtime sheets 1×';
   $('#hud').innerHTML =
     `<b>${state.asset}</b> · facing <b>${state.facing}</b> · ${C.W}×${C.H}px`
-    + ` · <span id="zoomBadge">${state.effectiveZoom ?? 1}×</span>`
+    + ` · <span id="zoomBadge">${zoomText}</span>`
+    + sheetText
     + ` · ${vis}/${state.parts.size} parts · ${state.manifest.pxPerVoxel} px/voxel`;
 }
 
@@ -581,9 +664,12 @@ function renderAssetList() {
 }
 
 async function selectAsset(id) {
+  state.selecting = true;
   state.asset = id;
   const entry = state.index[state.kind][id];
   state.dir = entry.folder;
+  const hi = $('#hires');
+  if (hi) { hi.src = entry.preview ?? `${entry.folder}/preview.png`; hi.alt = `${id} — baked preview`; }
   state.manifest = await (await fetch(entry.manifest)).json();
   state.facing = state.manifest.facings[0];
   state.cache.clear();
@@ -592,11 +678,19 @@ async function selectAsset(id) {
   for (const [name, p] of Object.entries(state.manifest.parts)) {
     state.parts.set(name, { visible: true });
   }
+  // Review sheets if this asset was baked with them; otherwise fall back to the
+  // runtime sheets and say so in the HUD.
+  const set = pickSheetSet(state.manifest, [...state.parts.keys()]);
+  state.sheetHi = set.hi;
+  state.sheetScale = set.scale;
   renderAssetList();
   renderFacings();
   renderParts();
   renderMeta();
   await rebuild();
+  state.selecting = false;
+  applyZoom();
+  updateHud();
 }
 
 function renderFacings() {
@@ -612,7 +706,7 @@ function renderFacings() {
     img.alt = f;
     img.title = f + (lit ? ' (relit)' : '');
     btn.appendChild(img);
-    btn.onclick = () => { state.facing = f; renderFacings(); rebuild(); };
+    btn.onclick = () => { state.facing = f; showLive(); renderFacings(); rebuild(); };
     strip.appendChild(btn);
   }
 }
@@ -627,7 +721,7 @@ function renderParts() {
     const cb = document.createElement('input');
     cb.type = 'checkbox';
     cb.checked = st.visible;
-    cb.onchange = () => { st.visible = cb.checked; rebuild(); };
+    cb.onchange = () => { st.visible = cb.checked; showLive(); rebuild(); };
     const label = document.createElement('span');
     label.className = 'name';
     label.textContent = name;
@@ -683,29 +777,54 @@ document.querySelectorAll('#viewMode button').forEach(b => {
     document.querySelectorAll('#viewMode button').forEach(x => x.classList.remove('active'));
     b.classList.add('active');
     state.viewMode = b.dataset.mode;
+    showLive();
     render();
   };
 });
 
-// Zoom: Auto fits the stage, the presets are integer pixel scales.
-document.querySelectorAll('#zoomSwitch button').forEach(b => {
-  b.onclick = () => {
-    document.querySelectorAll('#zoomSwitch button').forEach(x => x.classList.remove('active'));
-    b.classList.add('active');
-    state.zoom = Number(b.dataset.zoom);
-    applyZoom();
-  };
-});
-// Wheel zooms in whole steps and pins the result (no half-pixel blur).
-canvas.addEventListener('wheel', e => {
-  e.preventDefault();
-  const base = state.zoom > 0 ? state.zoom : (state.effectiveZoom || 1);
-  const next = Math.max(1, Math.min(16, base + (e.deltaY < 0 ? 1 : -1)));
-  state.zoom = next;
-  const btn = document.querySelector(`#zoomSwitch button[data-zoom="${next}"]`);
+// Zoom presets: fit, or a pinned scale.
+function setZoom(v) {
+  state.zoom = v;
+  const btn = document.querySelector(`#zoomSwitch button[data-zoom="${v}"]`);
   document.querySelectorAll('#zoomSwitch button').forEach(x => x.classList.remove('active'));
   if (btn) btn.classList.add('active');
   applyZoom();
+}
+document.querySelectorAll('#zoomSwitch button').forEach(b => {
+  b.onclick = () => setZoom(Number(b.dataset.zoom));
+});
+
+// Smooth vs crisp, and live sheet vs baked render.
+document.querySelectorAll('#sharpSwitch button').forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll('#sharpSwitch button').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    state.crisp = b.dataset.crisp === '1';
+    applyZoom();
+    updateHud();
+  };
+});
+document.querySelectorAll('#detailSwitch button').forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll('#detailSwitch button').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    state.hires = b.dataset.hires === '1';
+    applyZoom();
+    updateHud();
+  };
+});
+
+// Wheel: hardware-independent zoom, half a step at a time, clamped to 1–12.
+const ZOOM_LADDER = [0.5, 0.75, 1, 1.5, 2, 3, 4, 6, 8];
+const view2 = $('#view');
+view2.addEventListener('wheel', e => {
+  e.preventDefault();
+  const cur = state.zoom > 0 ? state.zoom : (state.effectiveSource || 1);
+  const up = e.deltaY < 0;
+  const next = up
+    ? (ZOOM_LADDER.find(v => v > cur + 1e-3) ?? 8)
+    : ([...ZOOM_LADDER].reverse().find(v => v < cur - 1e-3) ?? 0.5);
+  setZoom(next);
 }, { passive: false });
 window.addEventListener('resize', () => { if (state.zoom === 0) applyZoom(); });
 
@@ -714,6 +833,7 @@ const bind = (id, valId, apply, fmt) => {
   el.oninput = () => {
     apply(Number(el.value));
     $(valId).textContent = fmt(Number(el.value));
+    showLive();
     render();
   };
 };
@@ -726,16 +846,19 @@ bind('#exp', '#expVal', v => state.light.exposure = v / 100, v => (v / 100).toFi
 $('#rig').onclick = e => {
   state.rig = !state.rig;
   e.target.classList.toggle('active', state.rig);
+  showLive();
   render();
 };
 $('#specOn').onclick = e => {
   state.specular = !state.specular;
   e.target.classList.toggle('active', state.specular);
+  showLive();
   render();
 };
 $('#sweep').onclick = e => {
   state.sweep = !state.sweep;
   e.target.classList.toggle('active', state.sweep);
+  showLive();
   if (state.sweep) sweepLoop();
 };
 function sweepLoop() {
@@ -749,12 +872,14 @@ function sweepLoop() {
 $('#allParts').onclick = () => {
   for (const st of state.parts.values()) st.visible = true;
   renderParts();
+  showLive();
   rebuild();
 };
 $('#resetPivots').onclick = () => {
   state.traverse = 0;
   $('#traverse').value = 0;
   $('#traverseVal').textContent = '0°';
+  showLive();
   rebuild();
 };
 $('#traverse').oninput = () => {
@@ -762,6 +887,7 @@ $('#traverse').oninput = () => {
   const snapped = Math.round(raw / 22.5) * 22.5;
   state.traverse = snapped;
   $('#traverseVal').textContent = `${snapped}°`;
+  showLive();
   rebuild();
 };
 

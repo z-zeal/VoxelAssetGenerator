@@ -41,6 +41,9 @@ asset is split into **segmented parts** (turret / barrel / rotor / legs …), an
 - Output contract: `game_assets/[units|buildings]/<asset>/{manifest.json,preview.png,sheets/}`
   plus `game_assets/voxel-index.json`
 - Review gallery: `npm run voxels3:review` → http://localhost:8099/voxel-sprite-review-v4.html
+  - The gallery's live view composites `game_assets/**/sheets-hi/` (4× review sheets). If an asset has
+    none, it falls back to the runtime sheets and says so in the HUD. Re-bake them with
+    `npm run voxels3:sheets:hi` (`bake.mjs --sheet-k 4`); `--sheet-k 0` skips them.
   (live virtual-light rig over the baked normal + material maps, per-part toggles, turret rotation)
 
 Status: pipeline skeleton written, pilot asset over the voxel budget — see batch **B1** in the checklist.

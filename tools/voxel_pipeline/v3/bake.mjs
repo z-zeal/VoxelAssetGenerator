@@ -74,6 +74,20 @@ export const PREVIEW_K = Number(process.env.VOXEL_PREVIEW_K ?? 8);
 // from aliasing into noise; it costs ~2x the bake time, not 4x (the work is per
 // covered face, not per sample).
 const DEFAULTS = { k: RUNTIME_K, ss: 4 };
+/**
+ * Scale of the optional review sheet set (`--sheet-k N`).
+ *
+ * Runtime sheets are 1:1 with the game and stay that way — a 512³ tank is a
+ * ~60×43 image, which is right for the engine and useless for inspection. The
+ * review gallery composites those sheets and magnifies them, and magnifying a
+ * 60-pixel image is what made a rotated turret look like frosted glass.
+ *
+ * So the same part/facing renders are also written at `sheetK` into
+ * `sheets-hi/`, where the gallery can draw them at (or near) display size
+ * without inventing detail. Review artifact only: the engine keeps reading
+ * `sheets/`, and `--sheet-k 0` turns the set off entirely.
+ */
+const SHEET_K_DEFAULT = Number(process.env.VOXEL_SHEET_K ?? 4);
 
 function sha256(buf) {
   return crypto.createHash('sha256').update(buf).digest('hex');
@@ -160,7 +174,7 @@ function renderWhole(parts, { basis, palette, superSample, occluders }) {
   return renderPart(all, { basis, palette, superSample, occluders });
 }
 
-export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, outRoot = ROOT } = {}) {
+export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, sheetK = 0, outRoot = ROOT } = {}) {
   const scribe = createScribe({ materialIds: MATERIAL_IDS });
   def.build(scribe);
   const geom = scribe.finish({ cull: true });
@@ -190,9 +204,15 @@ export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, outRoot =
   const assetDir = path.join(outRoot, 'game_assets', def.folder, id);
   const sheetDir = path.join(assetDir, 'sheets');
   fs.mkdirSync(sheetDir, { recursive: true });
+  const hiK = sheetK > k ? sheetK : 0;              // 0 = no review sheet set
+  const hiSheetDir = path.join(assetDir, 'sheets-hi');
+  if (hiK) fs.mkdirSync(hiSheetDir, { recursive: true });
 
   const manifest = {
     format: 'field-command-voxel-sheet-4',
+    // Review-only sheet set at hiK times the runtime detail; null when the bake
+    // was run without `--sheet-k`.
+    hiSheetScale: hiK || null,
     asset: id,
     kind: def.kind,
     group: def.group,
@@ -304,6 +324,35 @@ export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, outRoot =
         fs.writeFileSync(path.join(sheetDir, name), blob);
         files[map] = { file: `sheets/${name}`, w: rendered.w, h: rendered.h, sha256: sha256(blob) };
       }
+      // Review sheet: same part, same camera, `hiK` times the detail. Anchors and
+      // pivots are re-derived from THIS render, because a pivot is a pixel
+      // coordinate and hi pixels are a different unit to runtime pixels.
+      let filesHi = null;
+      if (hiK) {
+        const hiBasis = cameraBasis(facing.angle, hiK);
+        const hi = renderPart(part.voxels, { basis: hiBasis, palette, superSample: ss, occluders });
+        // Every screen quantity is re-projected at the hi scale: `ax` above is in
+        // runtime pixels, and mixing the two units silently offsets the part.
+        const hiPivot = hiBasis.project(part.pivot[0], part.pivot[1], part.pivot[2] ?? 0);
+        const hiAx = hiBasis.project(CANVAS / 2, CANVAS / 2, 0);
+        filesHi = {};
+        const hiFiles = {};
+        for (const map of ['albedo', 'normal', 'material']) {
+          const name = `${id}__${part.name}__${facing.id}__${map}@${hiK}x.png`;
+          const blob = pngBytes(hi.w, hi.h, Buffer.from(hi[map].buffer));
+          fs.writeFileSync(path.join(hiSheetDir, name), blob);
+          hiFiles[map] = { file: `sheets-hi/${name}`, w: hi.w, h: hi.h, sha256: sha256(blob) };
+        }
+        filesHi = {
+          w: hi.w,
+          h: hi.h,
+          // Screen position of the part pivot inside its own crop, in hi pixels.
+          pivot: [round2(hiPivot[0] - hi.origin[0]), round2(hiPivot[1] - hi.origin[1])],
+          anchor: [round2(hiAx[0] - hi.origin[0]), round2(hiAx[1] - hi.origin[1])],
+          files: hiFiles,
+        };
+      }
+
       const depth = basis.depth(centroid[0], centroid[1], centroid[2]);
       entry.facings[facing.id] = {
         anchor: [round2(anchor[0]), round2(anchor[1])],
@@ -315,6 +364,7 @@ export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, outRoot =
         w: rendered.w,
         h: rendered.h,
         files,
+        ...(filesHi ? { filesHi } : {}),
       };
       cache.set(facing.id, {
         name: part.name,
@@ -509,13 +559,16 @@ if (isMain) {
   const only = onlyArg ? onlyArg.split(',').map(s => s.trim()).filter(Boolean) : null;
   const k = Number(arg('--k', DEFAULTS.k));
   const ss = Number(arg('--ss', DEFAULTS.ss));
+  // Review sheet set. Off by default (`--sheet-k 0`): it roughly quadruples the
+  // bytes on disk and only the review gallery reads it.
+  const sheetK = Number(arg('--sheet-k', SHEET_K_DEFAULT));
   const ids = only ?? Object.keys(MODELS);
   const t0 = Date.now();
   let files = 0, bytes = 0, voxels = 0;
   for (const id of ids) {
     const def = MODELS[id];
     if (!def) { console.error(`unknown asset "${id}"`); process.exitCode = 1; continue; }
-    const r = bakeAsset(id, def, { k, ss });
+    const r = bakeAsset(id, def, { k, ss, sheetK });
     files += r.fileCount; bytes += r.bytes; voxels += r.voxels;
     console.log(`  ${id.padEnd(22)} ${String(r.voxels).padStart(8)} voxels  `
       + `${String(r.fileCount).padStart(4)} png  ${(r.bytes / 1048576).toFixed(2)} MB`);
