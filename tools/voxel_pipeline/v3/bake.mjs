@@ -66,7 +66,11 @@ export const BUILDING_FACINGS = [
  */
 export const RUNTIME_K = 1;
 export const PREVIEW_K = 4;
-const DEFAULTS = { k: RUNTIME_K, ss: 2 };
+// ss = 4 samples per output pixel. At runtime scale one pixel covers ~8 design
+// voxels per axis, so 4 samples is the smallest grid that stops the downsample
+// from aliasing into noise; it costs ~2x the bake time, not 4x (the work is per
+// covered face, not per sample).
+const DEFAULTS = { k: RUNTIME_K, ss: 4 };
 
 function sha256(buf) {
   return crypto.createHash('sha256').update(buf).digest('hex');
