@@ -126,22 +126,22 @@
       <button data-zoom="0" class="active">Fit</button>
       <button data-zoom="1">1:1</button>
       <button data-zoom="2">2×</button>
-      <button data-zoom="4">4×</button>
+      <button data-zoom="3">3×</button>
     </div>
     <div class="seg" id="sharpSwitch" style="margin-top:5px">
-      <button data-crisp="0" class="active">Smooth</button>
-      <button data-crisp="1">Crisp pixels</button>
+      <button data-crisp="0">Smooth</button>
+      <button data-crisp="1" class="active">Crisp pixels</button>
     </div>
     <div class="seg" id="detailSwitch" style="margin-top:5px">
       <button data-hires="0">Live sheet</button>
       <button data-hires="1" class="active">Baked 8× preview</button>
     </div>
     <div style="font-size:10px;color:var(--muted);margin:6px 0 0">
-      The page opens on the <b>baked 8× preview</b> so the sprite is shown at the resolution it was
-      rendered at. The <b>live sheet</b> is the interactive one — parts, traverse and the light rig —
-      but its source is a ~60×43 runtime sheet, so it gets scaled up: <b>Smooth</b> keeps it looking
-      like a sprite, <b>Crisp pixels</b> snaps to whole numbers when you need to count voxels. Touching
-      any part or light control switches back to the live sheet automatically.
+      The page opens on the <b>baked 8× preview</b>, which is rendered at full review resolution.
+      Touching a part, the traverse or the light rig switches to the <b>live sheet</b>, which composites
+      the <b>4× review sheets</b> (`sheets-hi/`) rather than magnifying a 60-pixel runtime sheet — that
+      is what used to make a rotated turret look like frosted glass. Zoom presets are multiples of a
+      <i>sheet</i> pixel, so <b>1:1</b> is real pixels with nothing invented.
     </div>
 
     <h3>Virtual light</h3>
@@ -174,6 +174,8 @@
 </div>
 
 <script type="module">
+import { computeLayout, pickSheetSet } from './tools/voxel_pipeline/v3/gallery-zoom.mjs';
+
 // ---------------------------------------------------------------------------
 // State
 // ---------------------------------------------------------------------------
@@ -185,8 +187,10 @@ const state = {
   dir: '',
   facing: null,
   viewMode: 'lit',
-  zoom: 0,               // 0 = fit the stage; otherwise a CSS pixel scale
-  crisp: false,          // whole-number scale + nearest-neighbour
+  zoom: 0,               // 0 = fit; otherwise CSS px per SOURCE pixel
+  sheetScale: 1,         // source pixels per runtime pixel (1, or hiSheetScale)
+  sheetHi: false,        // the hi sheet set is loaded
+  crisp: true,           // whole-number scale + nearest-neighbour
   hires: true,           // open on the high-resolution baked render
   selecting: false,      // guards the auto-switch while an asset loads
   light: { az: 125, el: 45, intensity: 1.05, ambient: 0.30, exposure: 1.0 },
@@ -231,15 +235,25 @@ function imageData(url) {
 // ---------------------------------------------------------------------------
 // Composite: parts -> albedo / normal / material buffers (shared anchor)
 // ---------------------------------------------------------------------------
+/**
+ * Load one part's three maps for a facing.
+ *
+ * When the asset has a review sheet set (`sheets-hi/`) this reads that instead:
+ * the composite is drawn at 4× the runtime detail, so a rotated segment is not
+ * a 60-pixel image blown up to fill the stage. `entry.pivot` travels with the
+ * chosen set, because a pivot is a pixel coordinate and hi pixels are a
+ * different unit — mixing the two offsets the part by a growing amount.
+ */
 async function loadPartMaps(partName, facing) {
-  const entry = state.manifest.parts[partName].facings[facing];
+  const rec = state.manifest.parts[partName].facings[facing];
+  const entry = (state.sheetHi && rec.filesHi) ? rec.filesHi : rec;
   const base = `${state.dir}/`;
   const [a, n, m] = await Promise.all([
     imageData(base + entry.files.albedo.file),
     imageData(base + entry.files.normal.file),
     imageData(base + entry.files.material.file),
   ]);
-  return { a, n, m, entry };
+  return { a, n, m, entry, hi: entry === rec.filesHi };
 }
 
 function blitPart(dst, dstW, dstH, src, ox, oy) {
@@ -369,11 +383,13 @@ async function buildComposite() {
   const placed = [];
   for (let i = 0; i < pick.length; i++) {
     const { name, xf } = pick[i];
-    const { a, entry } = maps[i];
-    // Target screen position of the part's world pivot, minus where that pivot
-    // sits inside the part's own crop.
-    const ox = xf.screen[0] - entry.pivot[0];
-    const oy = xf.screen[1] - entry.pivot[1];
+    const { a, entry, hi } = maps[i];
+    // `xf.screen` is in runtime pixels (it comes from the manifest's screen
+    // matrix); a hi sheet's crop and pivot are `sheetScale` times finer, so the
+    // screen position is scaled up to match before the pivot is subtracted.
+    const S = hi ? state.sheetScale : 1;
+    const ox = xf.screen[0] * S - entry.pivot[0];
+    const oy = xf.screen[1] * S - entry.pivot[1];
     placed.push({ name, ox, oy, w: a.width, h: a.height, depth: xf.depth, dynamic: xf.dynamic });
     minX = Math.min(minX, ox); minY = Math.min(minY, oy);
     maxX = Math.max(maxX, ox + a.width); maxY = Math.max(maxY, oy + a.height);
@@ -538,24 +554,12 @@ function render() {
 /**
  * Display scale.
  *
- * The composite is drawn at runtime scale, so a 512³ tank is a 60×43 image. It
- * has to be magnified to be looked at in a 700 px stage — but *how* it is
- * magnified decides whether the reviewer sees the vehicle or a grid of blocks.
- *
- *   fit     — fractional scale, smooth filter (the browser's bilinear): the
- *             sprite reads as a picture at any size.
- *   crisp   — integer scale, nearest-neighbour: every runtime pixel becomes an
- *             exact N×N square. Necessary for counting voxels, useless for
- *             judging shape, so it is opt-in.
- *   hires   — the baked 8× preview, for actual detail.
+ * All the arithmetic lives in `gallery-zoom.mjs` so it can be tested without a
+ * browser — the last two display bugs were both problems in this maths, and
+ * neither was catchable from the bake side. Scales are quoted in SOURCE (sheet)
+ * pixels: 1× means one sheet pixel per CSS pixel, which is the only scale where
+ * nothing is invented.
  */
-function fitScale(C) {
-  const stage = canvas.parentElement;
-  const availW = Math.max(160, stage.clientWidth - 48);
-  const availH = Math.max(160, stage.clientHeight - 48);
-  return Math.min(availW / C.W, availH / C.H);
-}
-
 /**
  * Leave the baked render and go back to the live composite.
  *
@@ -589,20 +593,22 @@ function applyZoom() {
 
   const C = state.composite;
   if (!C) return;
-  // One scale, clamped to the stage. Size is set on the element itself, so the
-  // old `max-width:100%` on the canvas had to go: it clamped the width without
-  // clamping the height and squashed the sprite whenever a preset overflowed.
-  const maxFit = fitScale(C);
-  let z = state.zoom > 0 ? state.zoom : maxFit;
-  z = Math.min(z, maxFit);                 // never overflow the stage
-  z = Math.max(1, z);                      // never downscale the real sheet
-  if (state.crisp) z = Math.max(1, Math.floor(z));
-  state.effectiveZoom = z;
-  canvas.style.width = `${Math.round(C.W * z * 100) / 100}px`;
-  canvas.style.height = `${Math.round(C.H * z * 100) / 100}px`;
-  const shown = state.crisp ? `${Math.round(z)}×` : `${(Math.round(z * 10) / 10)}×`;
-  const pinned = state.zoom > 0 && state.zoom <= maxFit + 1e-3;
-  if (label) label.textContent = pinned ? shown : `fit · ${shown}`;
+  const box = stage.getBoundingClientRect();
+  const L = computeLayout({
+    cw: C.W,
+    ch: C.H,
+    stageW: box.width - 24,
+    stageH: box.height - 24,
+    zoom: state.zoom,
+    crisp: state.crisp,
+    srcScale: state.sheetScale,
+  });
+  state.effectiveZoom = L.runtime;
+  state.effectiveSource = L.source;
+  canvas.style.width = `${L.cssW}px`;
+  canvas.style.height = `${L.cssH}px`;
+  const shown = state.crisp ? `${L.source}×` : `${(Math.round(L.source * 10) / 10)}×`;
+  if (label) label.textContent = (L.pinned ? '' : 'fit · ') + shown;
   const badge = $('#zoomBadge');
   if (badge) badge.textContent = shown;
 }
@@ -616,12 +622,16 @@ function updateHud() {
       + ` · <span style="color:var(--accent)">touch a part or the light rig to go live</span>`;
     return;
   }
-  const zoomText = state.crisp
-    ? `${state.effectiveZoom ?? 1}× crisp`
-    : `${Math.round((state.effectiveZoom ?? 1) * 10) / 10}× smooth`;
+  const src = state.effectiveSource ?? 1;
+  const zoomText = `${state.crisp ? '' : '~'}${src}× sheet`
+    + ` (${state.effectiveZoom ?? 1}× runtime)`;
+  const sheetText = state.sheetHi
+    ? ` · review sheets ${state.sheetScale}×`
+    : ' · runtime sheets 1×';
   $('#hud').innerHTML =
     `<b>${state.asset}</b> · facing <b>${state.facing}</b> · ${C.W}×${C.H}px`
     + ` · <span id="zoomBadge">${zoomText}</span>`
+    + sheetText
     + ` · ${vis}/${state.parts.size} parts · ${state.manifest.pxPerVoxel} px/voxel`;
 }
 
@@ -668,6 +678,11 @@ async function selectAsset(id) {
   for (const [name, p] of Object.entries(state.manifest.parts)) {
     state.parts.set(name, { visible: true });
   }
+  // Review sheets if this asset was baked with them; otherwise fall back to the
+  // runtime sheets and say so in the HUD.
+  const set = pickSheetSet(state.manifest, [...state.parts.keys()]);
+  state.sheetHi = set.hi;
+  state.sheetScale = set.scale;
   renderAssetList();
   renderFacings();
   renderParts();
@@ -800,15 +815,15 @@ document.querySelectorAll('#detailSwitch button').forEach(b => {
 });
 
 // Wheel: hardware-independent zoom, half a step at a time, clamped to 1–12.
-const ZOOM_LADDER = [1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10, 12];
+const ZOOM_LADDER = [0.5, 0.75, 1, 1.5, 2, 3, 4, 6, 8];
 const view2 = $('#view');
 view2.addEventListener('wheel', e => {
   e.preventDefault();
-  const cur = state.zoom > 0 ? state.zoom : (state.effectiveZoom || 1);
+  const cur = state.zoom > 0 ? state.zoom : (state.effectiveSource || 1);
   const up = e.deltaY < 0;
   const next = up
-    ? (ZOOM_LADDER.find(v => v > cur + 1e-3) ?? 12)
-    : ([...ZOOM_LADDER].reverse().find(v => v < cur - 1e-3) ?? 1);
+    ? (ZOOM_LADDER.find(v => v > cur + 1e-3) ?? 8)
+    : ([...ZOOM_LADDER].reverse().find(v => v < cur - 1e-3) ?? 0.5);
   setZoom(next);
 }, { passive: false });
 window.addEventListener('resize', () => { if (state.zoom === 0) applyZoom(); });

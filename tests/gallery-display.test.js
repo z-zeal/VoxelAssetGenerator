@@ -1,19 +1,19 @@
 /**
  * Display contract for the review gallery.
  *
- * The gallery composites *runtime-scale* sheets, so a tank is a ~60×43 image. To
- * be legible it has to be magnified, and PR #18 magnified it with
- * `image-rendering: pixelated` at an integer scale — which turned every sprite
- * into an 8-pixel mosaic and was reported, correctly, as "the preview becomes
- * pixelated". The fix is a display contract worth pinning down, because it is
- * invisible to every other test in this repo: nothing bakes a wrong pixel, the
- * page just *shows* one badly.
+ * This is the second time the gallery has been reported for showing the sprite
+ * badly while every baked pixel was correct, so the contract is worth pinning
+ * down. It lives here (and in `gallery-zoom.mjs` / `gallery-sheets.test.js`)
+ * because nothing else in the repo can catch it: no bake produces a wrong pixel,
+ * the page just *presents* one badly.
  *
- *   1. the default filter is smooth — nearest-neighbour is opt-in;
- *   2. the default zoom fits the stage at a fractional scale, not a fixed
- *      integer;
- *   3. a high-resolution baked preview is reachable from the stage;
- *   4. crisp mode still exists, because counting voxels needs it.
+ *   1. the page opens on the baked 8× preview — full review resolution;
+ *   2. the live composite is composited from `sheets-hi/`, not from the
+ *      60-pixel runtime sheets;
+ *   3. crisp (nearest-neighbour) is the default for the live view, because at a
+ *      4× sheet set the integer scale is 1–3 CSS px per sheet pixel — that reads
+ *      as pixel art, not as the 8 px mosaic that was rejected;
+ *   4. touching any interactive control leaves the baked render.
  */
 import assert from 'node:assert/strict';
 import test from 'node:test';
@@ -27,51 +27,51 @@ const rule = (selector) => {
   return m ? m[2] : null;
 };
 
-test('the canvas is not nearest-neighbour by default', () => {
+test('the canvas is never nearest-neighbour by default at the CSS level', () => {
   const base = rule('#view');
   assert.ok(base, '#view rule is missing');
-  assert.match(base, /image-rendering:\s*auto/, '#view must scale smoothly by default');
-  assert.doesNotMatch(base, /pixelated/,
-    '#view must not be pixelated at rest — that is the mosaic bug');
-});
-
-test('crisp pixel mode exists, but only under an explicit class', () => {
+  assert.match(base, /image-rendering:\s*auto/, '#view must not be pixelated at rest');
+  assert.doesNotMatch(base, /pixelated/, 'crisp must be a class, not the base style');
   assert.match(html, /\.stage\.crisp\s+#view\s*\{[^}]*pixelated/,
     'pixelated must be gated behind .stage.crisp');
-});
-
-test('the default zoom fits the stage instead of pinning an integer scale', () => {
-  const zoomButtons = [...html.matchAll(/<button data-zoom="(\d+)"( class="active")?>/g)];
-  assert.ok(zoomButtons.length >= 3, 'zoom presets missing');
-  const active = zoomButtons.find(([, , cls]) => cls);
-  assert.ok(active, 'one zoom preset must be active by default');
-  assert.equal(active[1], '0', 'default zoom must be "fit" (data-zoom="0")');
-  // The old mosaic presets: anything above 4x exists only to blow the sprite up
-  // into blocks, and fit/crisp already cover looking at it closely.
-  for (const [, v] of zoomButtons) {
-    assert.ok(Number(v) <= 4, `zoom preset ${v}x is a mosaic preset; cap presets at 4x`);
-  }
-  assert.match(html, /fitScale\(/, 'fit must be computed as a fractional scale');
-  assert.doesNotMatch(html, /Math\.floor\(Math\.min\(availW \/ C\.W/, 'fit must not floor to an integer');
-});
-
-test('smooth is the default filter and crisp is opt-in', () => {
-  const m = html.match(/<button data-crisp="1"( class="active")?>/);
-  assert.ok(m, 'crisp toggle missing');
-  assert.equal(m[1], undefined, 'crisp must not be active by default');
-  assert.match(html, /<button data-crisp="0" class="active">/, 'smooth must be the default');
 });
 
 test('the stage opens on the high-resolution baked preview', () => {
   assert.match(html, /<img id="hires"/, 'the stage needs a slot for the baked preview');
   assert.match(html, /<button data-hires="1" class="active">/, 'baked preview must be the default');
   assert.match(html, /hires: true,/, 'state must start on the baked preview');
-  assert.match(html, /hi\.src = entry\.preview/, 'the stage must load the asset\'s preview.png');
+  assert.match(html, /hi\.src = entry\.preview/, "the stage must load the asset's preview.png");
+});
+
+test('the live composite reads the review sheets, not the runtime sheets', () => {
+  assert.match(html, /from '\.\/tools\/voxel_pipeline\/v3\/gallery-zoom\.mjs'/,
+    'display maths must live in the shared, testable module');
+  assert.match(html, /const entry = \(state\.sheetHi && rec\.filesHi\) \? rec\.filesHi : rec;/,
+    'loadPartMaps must prefer the hi sheet set');
+  assert.match(html, /pickSheetSet\(state\.manifest/, 'the sheet set must be chosen per asset');
+  assert.match(html, /const S = hi \? state\.sheetScale : 1;/,
+    'hi sheets are in different pixel units — the screen position must be scaled');
+});
+
+test('crisp pixels is the default for the live view', () => {
+  assert.match(html, /<button data-crisp="1" class="active">/, 'crisp must be the default');
+  assert.match(html, /crisp: true,/, 'state must start crisp');
+  assert.match(html, /<button data-crisp="0">Smooth<\/button>/, 'smooth must remain available');
+});
+
+test('the default zoom fits, and the presets are sheet-pixel multiples', () => {
+  const buttons = [...html.matchAll(/<button data-zoom="(\d+)"( class="active")?>/g)];
+  assert.ok(buttons.length >= 3, 'zoom presets missing');
+  const active = buttons.find(([, , cls]) => cls);
+  assert.ok(active, 'one zoom preset must be active by default');
+  assert.equal(active[1], '0', 'default zoom must be "fit"');
+  for (const [, v] of buttons) {
+    assert.ok(Number(v) <= 4, `zoom preset ${v}× is a mosaic preset at review scale`);
+  }
+  assert.match(html, /zoom: 0, /, 'state.zoom must start at fit');
 });
 
 test('interactive controls fall back to the live sheet', () => {
-  // A control that cannot move the picture is worse than no control, so every
-  // handler that changes what is drawn has to leave the static bake first.
   assert.match(html, /function showLive\(\)/, 'showLive() must exist');
   const hooks = [
     /cb\.onchange = \(\) => \{ st\.visible = cb\.checked; showLive\(\); rebuild\(\); \}/,
@@ -80,6 +80,5 @@ test('interactive controls fall back to the live sheet', () => {
     /showLive\(\);\n\s*render\(\);/,   // view mode + light sliders
   ];
   for (const re of hooks) assert.match(html, re, `missing showLive() hook: ${re}`);
-  // ...but the initial load must not fight the default.
   assert.match(html, /state\.selecting = true;/, 'selectAsset must guard the auto-switch');
 });
