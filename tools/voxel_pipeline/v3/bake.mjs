@@ -186,7 +186,7 @@ export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, outRoot =
   }
 
   const preview = compositePreview(previewParts, null);
-  fs.writeFileSync(path.join(assetDir, 'preview.png'), preview.buf);
+  fs.writeFileSync(path.join(assetDir, 'preview.png'), pngBytes(preview.w, preview.h, preview.buf));
   manifest.preview = {
     file: 'preview.png',
     facing: def.kind === 'unit' ? 'd00' : 'right',
@@ -232,6 +232,15 @@ if (isMain) {
     const i = process.argv.indexOf(name);
     return i >= 0 ? process.argv[i + 1] : fallback;
   };
+  if (process.argv.includes('--list')) {
+    for (const [id, def] of Object.entries(MODELS)) console.log(`${id} ${def.kind}`);
+    process.exit(0);
+  }
+  if (process.argv.includes('--index-only')) {
+    const index = writeIndex();
+    console.log(`Index rewritten: ${Object.keys(index.units).length} units, ${Object.keys(index.buildings).length} buildings`);
+    process.exit(0);
+  }
   const onlyArg = arg('--only', null);
   const only = onlyArg ? onlyArg.split(',').map(s => s.trim()).filter(Boolean) : null;
   const k = Number(arg('--k', DEFAULTS.k));

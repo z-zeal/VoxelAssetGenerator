@@ -6,10 +6,11 @@
  * that can be checked on the lattice is checked here; anything visual belongs to
  * the preview review.
  */
-import { CANVAS } from './scribe.mjs';
+import { CANVAS, SURFACE_BUDGET } from './scribe.mjs';
 
 export function validateModel(id, def, geom) {
   const problems = [];
+  const warnings = [];
   if (!geom.parts.length) problems.push('model produced no voxels');
 
   for (const part of geom.parts) {
@@ -43,6 +44,16 @@ export function validateModel(id, def, geom) {
   }
   if (hi[2] > CANVAS - 8) problems.push('model touches the top of the canvas');
 
+  // Budget gate: interior fill is the classic 512³ mistake, so it fails loudly.
+  const budget = def.voxelBudget ?? SURFACE_BUDGET;
+  if (geom.totalVoxels > budget * 2) {
+    problems.push(`BUDGET EXCEEDED: ${geom.totalVoxels.toLocaleString()} voxels vs budget `
+      + `${budget.toLocaleString()} — a large volume is being filled instead of shelled `
+      + ' — the surface pass should keep a 512³ asset well under this; check for solids that are carved open');
+  } else if (geom.totalVoxels > budget) {
+    warnings.push(`${geom.totalVoxels.toLocaleString()} voxels is over the ${budget.toLocaleString()} budget (hard fail at 2×)`);
+  }
+
   for (const required of def.requiredParts ?? []) {
     if (!geom.parts.some(p => p.name === required)) {
       problems.push(`missing required part "${required}"`);
@@ -53,4 +64,11 @@ export function validateModel(id, def, geom) {
     if (!dynamic.length) problems.push('unit has no dynamic part (turret/barrel/rotor) to segment');
   }
   return problems;
+}
+
+export function modelWarnings(id, def, geom) {
+  const w = [];
+  const budget = def.voxelBudget ?? SURFACE_BUDGET;
+  if (geom.totalVoxels > budget) w.push(`${geom.totalVoxels.toLocaleString()} voxels over budget ${budget.toLocaleString()}`);
+  return w;
 }

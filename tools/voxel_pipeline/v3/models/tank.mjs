@@ -63,7 +63,9 @@ export function buildTank(c) {
 
   // Upper hull / sponsons overhanging both tracks.
   c.box(96, 88, 96, 440, 424, DECK_Z, 'team.hull');
-  c.box(104, 96, DECK_Z, 432, 416, DECK_Z + 4, 'team.light');   // deck plate
+  // Deck plate is a *paint* on the hull top, not a second stacked slab.
+  c.paint((x, y, z) => z === DECK_Z - 1 && x >= 104 && x < 432 && y >= 96 && y < 416, 'team.light');
+  c.box(104, 96, DECK_Z - 1, 432, 416, DECK_Z, 'team.light');
   // Side skirts with panel lines.
   for (let x = 104; x < 432; x += 22) {
     c.box(x, 88, 100, x + 1, 94, 142, 'team.dark');
@@ -76,13 +78,13 @@ export function buildTank(c) {
   c.rivets(96, 86, 140, 444, 86, 140, 9, 'steel.dark');
   c.rivets(96, 426, 140, 444, 426, 140, 9, 'steel.dark');
 
-  // Glacis: a true stepped slope from the nose to the deck (no cube stamps).
-  for (let x = 440; x < 496; x++) {
-    const t = (x - 440) / 56;
-    const zTop = Math.round(DECK_Z - t * 54);
-    c.box(x, 112, 96, x + 1, 400, Math.max(98, zTop), 'team.hull');
-    c.box(x, 112, Math.max(98, zTop) - 3, x + 1, 400, Math.max(98, zTop), 'team.light');
-  }
+  // Glacis: swept profile, surface only (top slope + walls + end caps).
+  c.profileX(440, 496, 112, 400,
+    x => DECK_Z - ((x - 440) / 56) * 54,
+    () => 96,
+    'team.hull');
+  // Highlight band along the slope crest: paint, never stack another layer.
+  c.paint((x, y, z) => x >= 440 && x < 496 && z >= DECK_Z - 8, 'team.light');
   // Nose beam, tow hooks, headlight brush guards.
   c.box(492, 108, 92, 500, 404, 104, 'steel.dark');
   for (const y of [136, 356]) {
