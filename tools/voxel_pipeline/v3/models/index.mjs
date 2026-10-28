@@ -16,6 +16,8 @@ import { buildArtillery } from './artillery.mjs';
 import { buildAntiair } from './antiair.mjs';
 import { buildTankDestroyer } from './tank-destroyer.mjs';
 import { buildIfv } from './ifv.mjs';
+import { buildMega } from './mega.mjs';
+import { buildBastion } from './bastion.mjs';
 import { buildBarracks } from './barracks.mjs';
 import { buildAtTurret } from './at-turret.mjs';
 
@@ -59,6 +61,16 @@ export const MODELS = {
   ifv: {
     kind: 'unit', folder: 'units', group: 'vehicles.tracked', label: 'Infantry Fighting Vehicle',
     build: buildIfv, requiredParts: ['body', 'turret', 'barrel', 'atgm'],
+  },
+  mega: {
+    kind: 'unit', folder: 'units', group: 'vehicles.tracked', label: 'Mega Tank',
+    build: buildMega, requiredParts: ['body', 'turret', 'barrel'],
+    voxelBudget: 1600000,
+  },
+  bastion: {
+    kind: 'unit', folder: 'units', group: 'vehicles.tracked', label: 'Bastion',
+    build: buildBastion, requiredParts: ['body', 'turret', 'barrel'],
+    voxelBudget: 1600000,
   },
   barracks: {
     kind: 'building',

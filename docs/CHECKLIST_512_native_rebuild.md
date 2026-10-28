@@ -166,9 +166,21 @@ while the structure stays put. ✅ (Gate met; art detail iterates with the rest 
       overhanging gun so its 16 facings differ from the tank's, 1,190,238 / 240), `ifv` (rear troop box,
       ramp, firing ports, small turret, ATGM launcher as its own pivoted part, 986,644 / 288).
       Kit grew `slantedBarrel()` and `muzzleBrake()` for these; both leave the caller's `part` current.
-- [ ] **B4a remaining** — `mega`, `bastion`, `aegis`, `flame-tank`, `amphibious-tank`, `mine-layer`,
-      `mobile-repair`, `mine-clearing` (+ `tank`, `apc`, `heavy`, `artillery`, `antiair`,
-      `tank-destroyer`, `ifv` done).
+- [x] **B4a batch 3** — `mega` (seven road wheels on a 444-voxel run, deck 12 higher than `heavy`,
+      **twin gun** in one `barrel` part so both tubes share a trunnion; 1,425,673 vox / 240 PNG) and
+      `bastion` (low, widest hull, four-step sponson chamfer, six **hang-on appliqué panels** a side on
+      visible rails, armoured **collar ring** with the turret sunk inside it, short fat braked gun,
+      fuel drums; 1,270,424 / 240). `aegis` moved to **B4b**: `data/units.json` gives it
+      `moveType: "tires"`, so it is wheeled, not tracked.
+- [x] **`castTurret` fixed at the source** — the shell is now cut into 4-voxel sub-slabs with the
+      footprint taken from each slab's bottom, so the taper reads as a ramp instead of a ziggurat.
+      Every turreted asset was re-baked for it (tank 917,800; apc 1,061,824; heavy 1,200,253;
+      artillery 1,052,379; antiair 1,074,620; tank-destroyer 1,190,238; ifv 985,041; at-turret 950,866).
+      A 4-voxel tread is a quarter of a pixel in the 64 px sprite, so nothing changes at runtime; what
+      changes is that the review sheets stop lying about the shape.
+- [ ] **B4a remaining** — `flame-tank`, `amphibious-tank`, `mine-layer`, `mobile-repair`,
+      `mine-clearing` (+ `tank`, `apc`, `heavy`, `artillery`, `antiair`, `tank-destroyer`, `ifv`,
+      `mega`, `bastion` done).
 - [ ] **B4b wheeled** — `recon`, `rockets`, `missiles`, `supply-truck`, `command-vehicle`.
 - [ ] **B4c foot** — `infantry`, `mech`, `engineer`, `medic`, `rocket-infantry`, `aa-infantry`, `sniper`,
       `grenadier`, `flamethrower`, `demolitionist`, `commando`, `officer`, `spy`, `elite-hero`,
@@ -180,7 +192,11 @@ while the structure stays put. ✅ (Gate met; art detail iterates with the rest 
 **Open art notes for B4a** — the turret/hull balance is close but not settled: the tank's deck still reads
 as a large flat plane at preview scale, and the APC's MG ring is heavy. Both are shape problems, not
 pipeline problems, and are cheaper to fix once the rest of the family exists and can be compared side by
-side.
+side. Newer notes from batch 3: `artillery`'s tube is only ~84 voxels long because the ring sits at
+`CX 268` with `halfX 116`, so the gun reaches x500 and barely overhangs the nose — a howitzer wants a
+longer tube, which means either a smaller ring or letting the tube exceed the nose. `bastion`'s dozer
+blade was cut after two attempts (stacked slabs read as a fence; a ribbed plate hid the whole glacis)
+and replaced with a low stepped ram under the nose.
 
 ---
 

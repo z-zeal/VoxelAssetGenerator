@@ -1,0 +1,4352 @@
+{
+  "format": "field-command-voxel-sheet-4",
+  "asset": "mega",
+  "kind": "unit",
+  "group": "vehicles.tracked",
+  "canvas": 512,
+  "designVoxelsPerTileUnit": 8,
+  "renderScale": 1,
+  "previewScale": 8,
+  "superSample": 4,
+  "pxPerVoxel": 0.125,
+  "tileDiamond": [
+    64,
+    32
+  ],
+  "facings": [
+    "d00",
+    "d01",
+    "d02",
+    "d03",
+    "d04",
+    "d05",
+    "d06",
+    "d07",
+    "d08",
+    "d09",
+    "d10",
+    "d11",
+    "d12",
+    "d13",
+    "d14",
+    "d15"
+  ],
+  "facingMeta": [
+    {
+      "id": "d00",
+      "angle": 0,
+      "screenAngle": 45,
+      "label": "SE",
+      "unitIndex": 0,
+      "viewDir": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.0625,
+        -0.0625,
+        0,
+        0.03125,
+        0.03125,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d01",
+      "angle": 22.5,
+      "screenAngle": 67.5,
+      "label": "SSE",
+      "unitIndex": 1,
+      "viewDir": [
+        0.7543444794845715,
+        0.3124597141037824,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        0.03382475625913983,
+        -0.08166018530477004,
+        0,
+        0.040830092652386796,
+        0.01691237812956814,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d02",
+      "angle": 45,
+      "screenAngle": 90,
+      "label": "S",
+      "unitIndex": 2,
+      "viewDir": [
+        0.8164965809277261,
+        6.409875621278547e-17,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0,
+        -0.08838834764831915,
+        0,
+        0.04419417382415958,
+        0,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d03",
+      "angle": 67.5,
+      "screenAngle": 112.5,
+      "label": "SSW",
+      "unitIndex": 3,
+      "viewDir": [
+        0.7543444794845715,
+        -0.3124597141037824,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.03382475625913628,
+        -0.08166018530477004,
+        0,
+        0.04083009265238502,
+        -0.016912378129569028,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d04",
+      "angle": 90,
+      "screenAngle": 135,
+      "label": "SW",
+      "unitIndex": 4,
+      "viewDir": [
+        0.5773502691896258,
+        -0.5773502691896257,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        -0.0625,
+        -0.0625,
+        0,
+        0.03125,
+        -0.03125000000000089,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d05",
+      "angle": 112.5,
+      "screenAngle": 157.5,
+      "label": "WSW",
+      "unitIndex": 5,
+      "viewDir": [
+        0.3124597141037825,
+        -0.7543444794845715,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.08166018530477359,
+        -0.03382475625913628,
+        0,
+        0.016912378129569028,
+        -0.04083009265238591,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d06",
+      "angle": 135,
+      "screenAngle": 180,
+      "label": "W",
+      "unitIndex": 6,
+      "viewDir": [
+        6.409875621278547e-17,
+        -0.8164965809277261,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        -0.08838834764831915,
+        0,
+        0,
+        0,
+        -0.04419417382415958,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d07",
+      "angle": 157.5,
+      "screenAngle": 202.5,
+      "label": "WNW",
+      "unitIndex": 7,
+      "viewDir": [
+        -0.3124597141037824,
+        -0.7543444794845715,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.08166018530477537,
+        0.03382475625913628,
+        0,
+        -0.01691237812956814,
+        -0.04083009265238502,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d08",
+      "angle": 180,
+      "screenAngle": 225,
+      "label": "NW",
+      "unitIndex": 8,
+      "viewDir": [
+        -0.5773502691896256,
+        -0.5773502691896258,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.0625,
+        0.062499999999998224,
+        0,
+        -0.03125,
+        -0.03125,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d09",
+      "angle": 202.5,
+      "screenAngle": 247.5,
+      "label": "NNW",
+      "unitIndex": 9,
+      "viewDir": [
+        -0.7543444794845713,
+        -0.3124597141037829,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.03382475625913628,
+        0.08166018530477537,
+        0,
+        -0.04083009265238502,
+        -0.01691237812956814,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d10",
+      "angle": 225,
+      "screenAngle": 270,
+      "label": "N",
+      "unitIndex": 10,
+      "viewDir": [
+        -0.8164965809277261,
+        -1.2819751242557095e-16,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0,
+        0.08838834764831915,
+        0,
+        -0.04419417382415958,
+        0,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d11",
+      "angle": 247.5,
+      "screenAngle": 292.5,
+      "label": "NNE",
+      "unitIndex": 11,
+      "viewDir": [
+        -0.7543444794845715,
+        0.3124597141037827,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.03382475625913983,
+        0.08166018530477359,
+        0,
+        -0.040830092652386796,
+        0.016912378129569028,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d12",
+      "angle": 270,
+      "screenAngle": 315,
+      "label": "NE",
+      "unitIndex": 12,
+      "viewDir": [
+        -0.5773502691896258,
+        0.5773502691896256,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        0.0625,
+        0.0625,
+        0,
+        -0.03125,
+        0.03125,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d13",
+      "angle": 292.5,
+      "screenAngle": 337.5,
+      "label": "ENE",
+      "unitIndex": 13,
+      "viewDir": [
+        -0.3124597141037823,
+        0.7543444794845715,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        0.08166018530477004,
+        0.03382475625913983,
+        0,
+        -0.01691237812956814,
+        0.040830092652387684,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d14",
+      "angle": 315,
+      "screenAngle": 0,
+      "label": "E",
+      "unitIndex": 14,
+      "viewDir": [
+        -1.9229626863835643e-16,
+        0.8164965809277261,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.08838834764831915,
+        0,
+        0,
+        0,
+        0.04419417382415958,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d15",
+      "angle": 337.5,
+      "screenAngle": 22.5,
+      "label": "ESE",
+      "unitIndex": 15,
+      "viewDir": [
+        0.3124597141037827,
+        0.7543444794845715,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.08166018530477537,
+        -0.03382475625913273,
+        0,
+        0.016912378129569916,
+        0.040830092652386796,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    }
+  ],
+  "teamTint": {
+    "note": "Albedo is baked in the standard livery. Recolour pixels whose material map red channel matches these ids to apply an army livery.",
+    "materialIds": [
+      {
+        "name": "team.hull",
+        "id": 0,
+        "role": "hull"
+      },
+      {
+        "name": "team.light",
+        "id": 1,
+        "role": "light"
+      },
+      {
+        "name": "team.dark",
+        "id": 2,
+        "role": "dark"
+      },
+      {
+        "name": "team.accent",
+        "id": 3,
+        "role": "accent"
+      },
+      {
+        "name": "roof",
+        "id": 37,
+        "role": "hull"
+      },
+      {
+        "name": "roof.light",
+        "id": 38,
+        "role": "light"
+      },
+      {
+        "name": "roof.dark",
+        "id": 39,
+        "role": "dark"
+      }
+    ],
+    "liveries": {
+      "_note": "Army liveries for runtime tinting of team materials. Mirrors src/renderer.js TEAM_COLORS and tools/voxel_pipeline/v3/materials.mjs ARMY_LIVERY.",
+      "standard": {
+        "hull": "#df794b",
+        "light": "#ffc68b",
+        "dark": "#934b32",
+        "accent": "#ece7bc"
+      },
+      "allies": {
+        "hull": "#639bc3",
+        "light": "#a9d0e1",
+        "dark": "#345f78",
+        "accent": "#e8f1f4"
+      },
+      "soviets": {
+        "hull": "#7eb06a",
+        "light": "#b8e0a8",
+        "dark": "#2d4a2d",
+        "accent": "#dfe8c8"
+      },
+      "empire": {
+        "hull": "#d9b44e",
+        "light": "#ffe79a",
+        "dark": "#8a6a1a",
+        "accent": "#f6eecd"
+      },
+      "legion": {
+        "hull": "#c65a54",
+        "light": "#ffb0a8",
+        "dark": "#7a2a2a",
+        "accent": "#f3d9d4"
+      },
+      "neutral": {
+        "hull": "#aaa78b",
+        "light": "#cfcdb6",
+        "dark": "#6c6a55",
+        "accent": "#e2e0cf"
+      }
+    }
+  },
+  "normalMap": {
+    "space": "view",
+    "channelOrder": "rgb",
+    "range": "0..255 maps -1..1",
+    "up": "+g means screen up"
+  },
+  "materialMap": {
+    "channelOrder": "rgba",
+    "meaning": [
+      "materialId",
+      "metalness",
+      "roughness",
+      "emissive"
+    ],
+    "table": [
+      {
+        "id": 0,
+        "name": "team.hull",
+        "metalness": 0.35,
+        "roughness": 0.62,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "hull"
+      },
+      {
+        "id": 1,
+        "name": "team.light",
+        "metalness": 0.35,
+        "roughness": 0.58,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "light"
+      },
+      {
+        "id": 2,
+        "name": "team.dark",
+        "metalness": 0.4,
+        "roughness": 0.66,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "dark"
+      },
+      {
+        "id": 3,
+        "name": "team.accent",
+        "metalness": 0.2,
+        "roughness": 0.7,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "accent"
+      },
+      {
+        "id": 4,
+        "name": "steel",
+        "metalness": 0.85,
+        "roughness": 0.42,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 5,
+        "name": "steel.dark",
+        "metalness": 0.85,
+        "roughness": 0.5,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 6,
+        "name": "steel.bright",
+        "metalness": 0.95,
+        "roughness": 0.24,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 7,
+        "name": "gunmetal",
+        "metalness": 0.9,
+        "roughness": 0.38,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 8,
+        "name": "gunmetal.lit",
+        "metalness": 0.9,
+        "roughness": 0.32,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 9,
+        "name": "iron",
+        "metalness": 0.8,
+        "roughness": 0.62,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 10,
+        "name": "brass",
+        "metalness": 0.95,
+        "roughness": 0.3,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 11,
+        "name": "copper",
+        "metalness": 0.95,
+        "roughness": 0.34,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 12,
+        "name": "chrome",
+        "metalness": 1,
+        "roughness": 0.12,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 13,
+        "name": "rubber",
+        "metalness": 0.05,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 14,
+        "name": "track",
+        "metalness": 0.7,
+        "roughness": 0.68,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 15,
+        "name": "track.worn",
+        "metalness": 0.85,
+        "roughness": 0.44,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 16,
+        "name": "tyre",
+        "metalness": 0.03,
+        "roughness": 0.95,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 17,
+        "name": "plate",
+        "metalness": 0.55,
+        "roughness": 0.66,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 18,
+        "name": "plate.lit",
+        "metalness": 0.55,
+        "roughness": 0.6,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 19,
+        "name": "plate.dark",
+        "metalness": 0.55,
+        "roughness": 0.72,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 20,
+        "name": "glass",
+        "metalness": 0.3,
+        "roughness": 0.08,
+        "emissive": 0,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 21,
+        "name": "glass.dark",
+        "metalness": 0.4,
+        "roughness": 0.12,
+        "emissive": 0,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 22,
+        "name": "optic",
+        "metalness": 0.6,
+        "roughness": 0.05,
+        "emissive": 0.55,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 23,
+        "name": "lamp.warm",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.85,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 24,
+        "name": "lamp.red",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.8,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 25,
+        "name": "lamp.cyan",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.8,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 26,
+        "name": "skin",
+        "metalness": 0,
+        "roughness": 0.78,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 27,
+        "name": "skin.dark",
+        "metalness": 0,
+        "roughness": 0.8,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 28,
+        "name": "cloth",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 29,
+        "name": "cloth.dark",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 30,
+        "name": "webbing",
+        "metalness": 0.05,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 31,
+        "name": "boot",
+        "metalness": 0.1,
+        "roughness": 0.85,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 32,
+        "name": "hair",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 33,
+        "name": "concrete",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 34,
+        "name": "concrete.lit",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 35,
+        "name": "concrete.dark",
+        "metalness": 0,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 36,
+        "name": "brick",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 37,
+        "name": "roof",
+        "metalness": 0.1,
+        "roughness": 0.82,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "hull"
+      },
+      {
+        "id": 38,
+        "name": "roof.light",
+        "metalness": 0.1,
+        "roughness": 0.8,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "light"
+      },
+      {
+        "id": 39,
+        "name": "roof.dark",
+        "metalness": 0.1,
+        "roughness": 0.84,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "dark"
+      },
+      {
+        "id": 40,
+        "name": "asphalt",
+        "metalness": 0,
+        "roughness": 0.96,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 41,
+        "name": "paint.line",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 42,
+        "name": "wood",
+        "metalness": 0,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 43,
+        "name": "wood.dark",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 44,
+        "name": "canvas",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 45,
+        "name": "sandbag",
+        "metalness": 0,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 46,
+        "name": "solar",
+        "metalness": 0.6,
+        "roughness": 0.22,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 47,
+        "name": "rust",
+        "metalness": 0.3,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 48,
+        "name": "scorch",
+        "metalness": 0.2,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 49,
+        "name": "smoke",
+        "metalness": 0,
+        "roughness": 1,
+        "emissive": 0.1,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 50,
+        "name": "water",
+        "metalness": 0.2,
+        "roughness": 0.15,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 51,
+        "name": "foam",
+        "metalness": 0,
+        "roughness": 0.6,
+        "emissive": 0.1,
+        "blend": "opaque",
+        "team": null
+      }
+    ]
+  },
+  "parts": {
+    "body": {
+      "name": "body",
+      "dynamic": false,
+      "parent": null,
+      "pivotDesign": [
+        256,
+        256,
+        0
+      ],
+      "traverse": false,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            34,
+            29
+          ],
+          "pivot": [
+            34,
+            29
+          ],
+          "depth": 48.82,
+          "w": 66,
+          "h": 45,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__body__d00__albedo.png",
+              "w": 66,
+              "h": 45,
+              "sha256": "ab360ad887a108134f68883b612d55e43be36e6bfaf7b59478f5adb21a557c21"
+            },
+            "normal": {
+              "file": "sheets/mega__body__d00__normal.png",
+              "w": 66,
+              "h": 45,
+              "sha256": "a20176d248052338041a7d394c5c4df3158f203b7e973487908fee5edb58cc1f"
+            },
+            "material": {
+              "file": "sheets/mega__body__d00__material.png",
+              "w": 66,
+              "h": 45,
+              "sha256": "c311461482d6c7929bbcb436e88a287e3603ce46d51737f7cc86f77b353658d8"
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            31.75,
+            28.78
+          ],
+          "pivot": [
+            31.75,
+            28.78
+          ],
+          "depth": 45.75,
+          "w": 61,
+          "h": 44,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__body__d01__albedo.png",
+              "w": 61,
+              "h": 44,
+              "sha256": "3e4e11178daaa027f1b9a2e1589ec407bd8be58b7f2bddc76df0713e6c2e285b"
+            },
+            "normal": {
+              "file": "sheets/mega__body__d01__normal.png",
+              "w": 61,
+              "h": 44,
+              "sha256": "b7f62b574f4db74025e6d2d289cc70cf6d0a9c764110e88dcd1c577d3719e29e"
+            },
+            "material": {
+              "file": "sheets/mega__body__d01__material.png",
+              "w": 61,
+              "h": 44,
+              "sha256": "741567d78df2b093829f548a8e20e6ae12c21c5ac47e36d4d4a762eadebe7fe5"
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            25.37,
+            26.31
+          ],
+          "pivot": [
+            25.37,
+            26.31
+          ],
+          "depth": 37.63,
+          "w": 50,
+          "h": 38,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__body__d02__albedo.png",
+              "w": 50,
+              "h": 38,
+              "sha256": "29cd7f9ce55948ab1d66807f9a9265364656c51bc80a9daa7090ed87b931063f"
+            },
+            "normal": {
+              "file": "sheets/mega__body__d02__normal.png",
+              "w": 50,
+              "h": 38,
+              "sha256": "06e513ddebbb602baa8241ad53efe14048e8ffefed0728392a403fcf5c3db8bc"
+            },
+            "material": {
+              "file": "sheets/mega__body__d02__material.png",
+              "w": 50,
+              "h": 38,
+              "sha256": "250752cb0612de9e08976cab41b8c75d31e122778d12d61923a89aeec85acf82"
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            29.44,
+            29.12
+          ],
+          "pivot": [
+            29.44,
+            29.12
+          ],
+          "depth": 25.71,
+          "w": 61,
+          "h": 44,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__body__d03__albedo.png",
+              "w": 61,
+              "h": 44,
+              "sha256": "26367edd09e2490239712e43a190f3a27bf53e64acf15fe26bc0dd67834cf817"
+            },
+            "normal": {
+              "file": "sheets/mega__body__d03__normal.png",
+              "w": 61,
+              "h": 44,
+              "sha256": "c60253217f48647eb0eca6da4c9fff2e885201413aec5be613cd86381b05c663"
+            },
+            "material": {
+              "file": "sheets/mega__body__d03__material.png",
+              "w": 61,
+              "h": 44,
+              "sha256": "9dfd8bf9ba68c10de157b195850764e40513ea431a861a091500e353e2de0ae4"
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            32,
+            29
+          ],
+          "pivot": [
+            32,
+            29
+          ],
+          "depth": 11.8,
+          "w": 66,
+          "h": 45,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__body__d04__albedo.png",
+              "w": 66,
+              "h": 45,
+              "sha256": "7594fd5e6f8d902676ba184e1a1eac010431df958f7c0a4884f32f8503b553c9"
+            },
+            "normal": {
+              "file": "sheets/mega__body__d04__normal.png",
+              "w": 66,
+              "h": 45,
+              "sha256": "6341c4dc9de48f06fe3c62a8e34691f8899e372859cd23a94a2be3b00223d4b8"
+            },
+            "material": {
+              "file": "sheets/mega__body__d04__material.png",
+              "w": 66,
+              "h": 45,
+              "sha256": "eb9b4ecbfe17aa3bd6da24e97ee6b6179f8e01ffd42a59b21885d598811fe279"
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            30.44,
+            27.88
+          ],
+          "pivot": [
+            30.44,
+            27.88
+          ],
+          "depth": -1.99,
+          "w": 63,
+          "h": 43,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__body__d05__albedo.png",
+              "w": 63,
+              "h": 43,
+              "sha256": "febeaefbfba120ebc7cf4755d8e1e53a3f5a8d789c39c745dd88878b7bba75d0"
+            },
+            "normal": {
+              "file": "sheets/mega__body__d05__normal.png",
+              "w": 63,
+              "h": 43,
+              "sha256": "69ac2ea6b4a5536358ccd65a5a80673a51e33ea1a7db2476a2a8573595ab8a65"
+            },
+            "material": {
+              "file": "sheets/mega__body__d05__material.png",
+              "w": 63,
+              "h": 43,
+              "sha256": "56f3c1ff2dcab032c827186754a19a91af6e19dbdff0095f4d761730ef64223e"
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            25.37,
+            27.69
+          ],
+          "pivot": [
+            25.37,
+            27.69
+          ],
+          "depth": -13.55,
+          "w": 52,
+          "h": 40,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__body__d06__albedo.png",
+              "w": 52,
+              "h": 40,
+              "sha256": "3d93e083705dd8c48d522dd5e7601d4d7fa6bd07ff8d5650e15a9990ec2d28b7"
+            },
+            "normal": {
+              "file": "sheets/mega__body__d06__normal.png",
+              "w": 52,
+              "h": 40,
+              "sha256": "2ec1f9b5e9a18b11fdbab24d0135721e8cf1154f4406e5f7a9b6f88192c51f89"
+            },
+            "material": {
+              "file": "sheets/mega__body__d06__material.png",
+              "w": 52,
+              "h": 40,
+              "sha256": "edbeb11024d949d55f51b61a7e30cb8f3dfdd2e9acdde4ae2c3d397ee90352f3"
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            30.75,
+            28.22
+          ],
+          "pivot": [
+            30.75,
+            28.22
+          ],
+          "depth": -21.13,
+          "w": 63,
+          "h": 43,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__body__d07__albedo.png",
+              "w": 63,
+              "h": 43,
+              "sha256": "b7e7a1e2f03eaa80fee7332e5eadf279fd7e5cb8fc410f08a79d8f4e520436e2"
+            },
+            "normal": {
+              "file": "sheets/mega__body__d07__normal.png",
+              "w": 63,
+              "h": 43,
+              "sha256": "755f757c757c98225a2cdebb10bb96478658c5f0c347befcc0b814a21bd9336f"
+            },
+            "material": {
+              "file": "sheets/mega__body__d07__material.png",
+              "w": 63,
+              "h": 43,
+              "sha256": "6e448153cf1b462d362b190e1346ba6effbe03d1931fed868909f0083c7261d9"
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            32,
+            29
+          ],
+          "pivot": [
+            32,
+            29
+          ],
+          "depth": -23.56,
+          "w": 66,
+          "h": 46,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__body__d08__albedo.png",
+              "w": 66,
+              "h": 46,
+              "sha256": "782a79332038f64fa9c4098af63480ead1179b354bce29105bc2e0c436a8fe88"
+            },
+            "normal": {
+              "file": "sheets/mega__body__d08__normal.png",
+              "w": 66,
+              "h": 46,
+              "sha256": "697cbf7675f80c5e29f567e1414f474b4afa7aef34b385c84bbf4174851e4f16"
+            },
+            "material": {
+              "file": "sheets/mega__body__d08__material.png",
+              "w": 66,
+              "h": 46,
+              "sha256": "f6ea6c066dbd345e1dd145a1cdcb42e11ca15709bcb90068750b59d0f60c9d8a"
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            29.25,
+            28.22
+          ],
+          "pivot": [
+            29.25,
+            28.22
+          ],
+          "depth": -20.49,
+          "w": 61,
+          "h": 44,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__body__d09__albedo.png",
+              "w": 61,
+              "h": 44,
+              "sha256": "749bee71e62f012f9c8e9768ef51d1abaa8f9b77dfcffba4879bf8a572bef56d"
+            },
+            "normal": {
+              "file": "sheets/mega__body__d09__normal.png",
+              "w": 61,
+              "h": 44,
+              "sha256": "58065b92d2f53ee1b58a3ffdeaefbf0a0bef32ae44d7b4e53824ce79d4ad742b"
+            },
+            "material": {
+              "file": "sheets/mega__body__d09__material.png",
+              "w": 61,
+              "h": 44,
+              "sha256": "4bb722d55ab6a6c7c34b6f6d71dac7ece9e6f743890372c207e6cdca2c15d9cb"
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            24.63,
+            27.69
+          ],
+          "pivot": [
+            24.63,
+            27.69
+          ],
+          "depth": -12.38,
+          "w": 50,
+          "h": 41,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__body__d10__albedo.png",
+              "w": 50,
+              "h": 41,
+              "sha256": "0d11d6df3b70a1fba8103def854d70dc18c4327827bf05fa1b27fe07c02f1eaf"
+            },
+            "normal": {
+              "file": "sheets/mega__body__d10__normal.png",
+              "w": 50,
+              "h": 41,
+              "sha256": "d3de1620d08099ece85ad1a6ea4fd68ab7b4fec764b40e17fb8451096d38180b"
+            },
+            "material": {
+              "file": "sheets/mega__body__d10__material.png",
+              "w": 50,
+              "h": 41,
+              "sha256": "8c85cb8d7779ab64069b5b94be30ce102b3305908d58e5292545371743956124"
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            31.56,
+            26.88
+          ],
+          "pivot": [
+            31.56,
+            26.88
+          ],
+          "depth": -0.45,
+          "w": 61,
+          "h": 40,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__body__d11__albedo.png",
+              "w": 61,
+              "h": 40,
+              "sha256": "67777239413fc51b756cde215c4dcf2939b9caf70b75960f28f0d5718e416ee2"
+            },
+            "normal": {
+              "file": "sheets/mega__body__d11__normal.png",
+              "w": 61,
+              "h": 40,
+              "sha256": "6574f13122ed8c2e10f578132a470025fe34e9763fc559aaee2a040455417184"
+            },
+            "material": {
+              "file": "sheets/mega__body__d11__material.png",
+              "w": 61,
+              "h": 40,
+              "sha256": "59b374c36c43967491a2418a776293ea0ae49abe733366e763426409809e6fe4"
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            34,
+            28
+          ],
+          "pivot": [
+            34,
+            28
+          ],
+          "depth": 13.46,
+          "w": 66,
+          "h": 42,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__body__d12__albedo.png",
+              "w": 66,
+              "h": 42,
+              "sha256": "6ae0fa6d489aa1d8c50c1a21fba76ec2aa74284ecc6422fe3de25ae8d88dcf83"
+            },
+            "normal": {
+              "file": "sheets/mega__body__d12__normal.png",
+              "w": 66,
+              "h": 42,
+              "sha256": "4077afdd7d38e931c192a5c0a16137470c7edae5da00b87dad2975a895dbb6db"
+            },
+            "material": {
+              "file": "sheets/mega__body__d12__material.png",
+              "w": 66,
+              "h": 42,
+              "sha256": "2691fb5e2d8353221b77aa071c86e3f09d072eea934f912c92a609e0fcdb8639"
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            32.56,
+            27.12
+          ],
+          "pivot": [
+            32.56,
+            27.12
+          ],
+          "depth": 27.25,
+          "w": 63,
+          "h": 40,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__body__d13__albedo.png",
+              "w": 63,
+              "h": 40,
+              "sha256": "b1fc8b2390e79a5969397579dcabfba255c491be984426032ef7539084026629"
+            },
+            "normal": {
+              "file": "sheets/mega__body__d13__normal.png",
+              "w": 63,
+              "h": 40,
+              "sha256": "1039ef61a62db0f9517232fc41a385b228df6d196dda9112f5b19ef186b8e136"
+            },
+            "material": {
+              "file": "sheets/mega__body__d13__material.png",
+              "w": 63,
+              "h": 40,
+              "sha256": "a208dbce39785bc457d272fef3bd76114a58fa1c92238a71653705270d57c751"
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            26.63,
+            25.31
+          ],
+          "pivot": [
+            26.63,
+            25.31
+          ],
+          "depth": 38.81,
+          "w": 52,
+          "h": 38,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__body__d14__albedo.png",
+              "w": 52,
+              "h": 38,
+              "sha256": "c34dee9ad3bd68404c9733a6098ff113621bd15ab14d33e38c44399ad90ef719"
+            },
+            "normal": {
+              "file": "sheets/mega__body__d14__normal.png",
+              "w": 52,
+              "h": 38,
+              "sha256": "eeea27c374ed0f8198f30fac1f6fa310e376aa3d0204a4b6484930e24c0c1c7d"
+            },
+            "material": {
+              "file": "sheets/mega__body__d14__material.png",
+              "w": 52,
+              "h": 38,
+              "sha256": "a49e887dd5fcfc993e8deb9f7e10f50d56c042dfcd931749ab5a63d87dce47b2"
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            32.25,
+            27.78
+          ],
+          "pivot": [
+            32.25,
+            27.78
+          ],
+          "depth": 46.38,
+          "w": 63,
+          "h": 43,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__body__d15__albedo.png",
+              "w": 63,
+              "h": 43,
+              "sha256": "8d046689191e9d2052f9d4e6ad2d5356e6e89cc9ac9c716746b0934f6580308e"
+            },
+            "normal": {
+              "file": "sheets/mega__body__d15__normal.png",
+              "w": 63,
+              "h": 43,
+              "sha256": "140537aa5e0a91e7449d6908f140a5debf553c91ec7f811e834dcdd7b9093cbd"
+            },
+            "material": {
+              "file": "sheets/mega__body__d15__material.png",
+              "w": 63,
+              "h": 43,
+              "sha256": "19518ad6d5b77fc704546eb35ec52e89c2a585e5da4f566bc8ed50044ebade09"
+            }
+          }
+        }
+      }
+    },
+    "running.L": {
+      "name": "running.L",
+      "dynamic": false,
+      "parent": null,
+      "pivotDesign": [
+        256,
+        256,
+        0
+      ],
+      "traverse": false,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            13,
+            27
+          ],
+          "pivot": [
+            13,
+            27
+          ],
+          "depth": 28.83,
+          "w": 44,
+          "h": 33,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.L__d00__albedo.png",
+              "w": 44,
+              "h": 33,
+              "sha256": "c97c0b2224789f3a2a2e37e28a86c9ac744f9f93a8993e16b63fa6f401dacf63"
+            },
+            "normal": {
+              "file": "sheets/mega__running.L__d00__normal.png",
+              "w": 44,
+              "h": 33,
+              "sha256": "65c8deb52019cdfa8ee56b92db5d8525610c0aa84aa7f02fba09060abed8b461"
+            },
+            "material": {
+              "file": "sheets/mega__running.L__d00__material.png",
+              "w": 44,
+              "h": 33,
+              "sha256": "a8fa4b152dcefc6ac3a18dd6596452f53e07743e6ec3798869dd24e1bacc0add"
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            3.75,
+            25.78
+          ],
+          "pivot": [
+            3.75,
+            25.78
+          ],
+          "depth": 31.08,
+          "w": 32,
+          "h": 35,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.L__d01__albedo.png",
+              "w": 32,
+              "h": 35,
+              "sha256": "4c2ee5a2041937f93adcc59956b4e21733534070a1bae7145cdcfde2d2c47601"
+            },
+            "normal": {
+              "file": "sheets/mega__running.L__d01__normal.png",
+              "w": 32,
+              "h": 35,
+              "sha256": "e8924540a3c873a7e47998ade9ed7fb4e8a5dd16224b206045456aca719edd9d"
+            },
+            "material": {
+              "file": "sheets/mega__running.L__d01__material.png",
+              "w": 32,
+              "h": 35,
+              "sha256": "6949e7ce8baa5aa7dfdeb8a82c2a003c1f312601f14e97ed95c6953cadc96125"
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            -5.63,
+            23.31
+          ],
+          "pivot": [
+            -5.63,
+            23.31
+          ],
+          "depth": 29.46,
+          "w": 18,
+          "h": 35,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.L__d02__albedo.png",
+              "w": 18,
+              "h": 35,
+              "sha256": "a77e7a0f5a31d5c69a7c138616258fbd5278cf72ef8a38183dd02bb94ee327bb"
+            },
+            "normal": {
+              "file": "sheets/mega__running.L__d02__normal.png",
+              "w": 18,
+              "h": 35,
+              "sha256": "2344394658be0705c654956ba851b8294702eb589f31ac92aac2aede348a025a"
+            },
+            "material": {
+              "file": "sheets/mega__running.L__d02__material.png",
+              "w": 18,
+              "h": 35,
+              "sha256": "66ed0c0cc82edd3b1c5af6b1407701a6b9231e19eeefe62df495deb2f066dee7"
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            2.44,
+            20.12
+          ],
+          "pivot": [
+            2.44,
+            20.12
+          ],
+          "depth": 24.21,
+          "w": 33,
+          "h": 35,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.L__d03__albedo.png",
+              "w": 33,
+              "h": 35,
+              "sha256": "ccb4597910844f80a5467957586dd37d626fd24913109359fabdf11251c71eed"
+            },
+            "normal": {
+              "file": "sheets/mega__running.L__d03__normal.png",
+              "w": 33,
+              "h": 35,
+              "sha256": "d73081b2991a5f80e06a19b68800653663b5afff77932813ad469415ce62755e"
+            },
+            "material": {
+              "file": "sheets/mega__running.L__d03__material.png",
+              "w": 33,
+              "h": 35,
+              "sha256": "c030a87b367f037ec7396b4330c8b92db02e2212cacb9a204b5eede3c79fa43c"
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            10,
+            17
+          ],
+          "pivot": [
+            10,
+            17
+          ],
+          "depth": 16.13,
+          "w": 43,
+          "h": 33,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.L__d04__albedo.png",
+              "w": 43,
+              "h": 33,
+              "sha256": "b6a12bc5726ac095aa6834c407d6bf657b1c6d1a1e3eedc294114a12b05b57e9"
+            },
+            "normal": {
+              "file": "sheets/mega__running.L__d04__normal.png",
+              "w": 43,
+              "h": 33,
+              "sha256": "dc183cfd040e496e5a8e06bcfc9d0763b4d74303e24ea7ae3c0f9ba3e0fec29e"
+            },
+            "material": {
+              "file": "sheets/mega__running.L__d04__material.png",
+              "w": 43,
+              "h": 33,
+              "sha256": "00da495883622faf035c32be03b56439f1ff04c10d09a03ab49c4565ddc00638"
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            17.44,
+            12.88
+          ],
+          "pivot": [
+            17.44,
+            12.88
+          ],
+          "depth": 6.45,
+          "w": 49,
+          "h": 28,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.L__d05__albedo.png",
+              "w": 49,
+              "h": 28,
+              "sha256": "129b5a490706a524010588032c0712a81cc8e9f8c86f651090865b6091ac2749"
+            },
+            "normal": {
+              "file": "sheets/mega__running.L__d05__normal.png",
+              "w": 49,
+              "h": 28,
+              "sha256": "dc214ac41ce5ce76e37ccf8b943bae81363bdd11c45f266cd454ec4666e2f492"
+            },
+            "material": {
+              "file": "sheets/mega__running.L__d05__material.png",
+              "w": 49,
+              "h": 28,
+              "sha256": "013ae31fc1057af13414fbf0e8d572e8f20794c4a8cca490d1f719aca582c979"
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            22.37,
+            8.69
+          ],
+          "pivot": [
+            22.37,
+            8.69
+          ],
+          "depth": -3.35,
+          "w": 49,
+          "h": 23,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.L__d06__albedo.png",
+              "w": 49,
+              "h": 23,
+              "sha256": "f4628b03b66160bd9240d353edbfd4cb910d1e89e345955715b849400292f891"
+            },
+            "normal": {
+              "file": "sheets/mega__running.L__d06__normal.png",
+              "w": 49,
+              "h": 23,
+              "sha256": "2c9cab86f6daccd156b423c51028e39d3794302cea0905a9dca224307fd63cfd"
+            },
+            "material": {
+              "file": "sheets/mega__running.L__d06__material.png",
+              "w": 49,
+              "h": 23,
+              "sha256": "ed77a6b00fe6e8bb9f210987f954d8fffa0873797bb8bd997709f26c87e122ce"
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            28.75,
+            9.22
+          ],
+          "pivot": [
+            28.75,
+            9.22
+          ],
+          "depth": -11.79,
+          "w": 50,
+          "h": 26,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.L__d07__albedo.png",
+              "w": 50,
+              "h": 26,
+              "sha256": "de28d69284b5eb09db8792769b162223e0efa2572ae626980ccac7c08523f6ea"
+            },
+            "normal": {
+              "file": "sheets/mega__running.L__d07__normal.png",
+              "w": 50,
+              "h": 26,
+              "sha256": "871f0ae224da4ef5fca2ea0ba30c54d2d8c36975f5c25069554f7f44a9639232"
+            },
+            "material": {
+              "file": "sheets/mega__running.L__d07__material.png",
+              "w": 50,
+              "h": 26,
+              "sha256": "3673c5f323abfddbca7e1ea1035d8e84afb6efcc3b6e93bcd06cfdc601e35d0e"
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            31,
+            13
+          ],
+          "pivot": [
+            31,
+            13
+          ],
+          "depth": -17.57,
+          "w": 44,
+          "h": 30,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.L__d08__albedo.png",
+              "w": 44,
+              "h": 30,
+              "sha256": "bf7815c896c735dfc99cca5abf18411bcfce278ed3bc7fa78afff5fbcdb53dff"
+            },
+            "normal": {
+              "file": "sheets/mega__running.L__d08__normal.png",
+              "w": 44,
+              "h": 30,
+              "sha256": "0b5e719e1c0f256a18713880533f934581f38a81883480cb81da72236377a0c2"
+            },
+            "material": {
+              "file": "sheets/mega__running.L__d08__material.png",
+              "w": 44,
+              "h": 30,
+              "sha256": "af6983c29a81924a1a0d5db2a2c033c54afc3f29751f34fb59011580c68f9ffd"
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            28.25,
+            17.22
+          ],
+          "pivot": [
+            28.25,
+            17.22
+          ],
+          "depth": -19.83,
+          "w": 32,
+          "h": 33,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.L__d09__albedo.png",
+              "w": 32,
+              "h": 33,
+              "sha256": "995253a6c22a804047682c39e507e9328f62f9a641f5a8e941664cb93e699264"
+            },
+            "normal": {
+              "file": "sheets/mega__running.L__d09__normal.png",
+              "w": 32,
+              "h": 33,
+              "sha256": "c58cda1e1ad6733aa196b5ffb8b053d38bc4d87ae7225dd3eeaa8b2460b99431"
+            },
+            "material": {
+              "file": "sheets/mega__running.L__d09__material.png",
+              "w": 32,
+              "h": 33,
+              "sha256": "9e9d8aaf30e9b62706af8aa50a606b1142a3a0afedc9697641a38451f6c749fd"
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            23.63,
+            20.69
+          ],
+          "pivot": [
+            23.63,
+            20.69
+          ],
+          "depth": -18.2,
+          "w": 18,
+          "h": 34,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.L__d10__albedo.png",
+              "w": 18,
+              "h": 34,
+              "sha256": "e9d25135b10a562932b99afa10a2b8b8a38496f388ea1ed5e401a1f8dbeac386"
+            },
+            "normal": {
+              "file": "sheets/mega__running.L__d10__normal.png",
+              "w": 18,
+              "h": 34,
+              "sha256": "4c9ce4f5e9ac1c7ab59f4d7e896731f55c93de2d25f26050af43750cdf7c098d"
+            },
+            "material": {
+              "file": "sheets/mega__running.L__d10__material.png",
+              "w": 18,
+              "h": 34,
+              "sha256": "7166137f12573e49eb12cbac698b64447a17093fe99683c08afd92791497d144"
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            30.56,
+            23.88
+          ],
+          "pivot": [
+            30.56,
+            23.88
+          ],
+          "depth": -12.95,
+          "w": 33,
+          "h": 35,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.L__d11__albedo.png",
+              "w": 33,
+              "h": 35,
+              "sha256": "c6acce946d8115b62175db388e2cd0c87ae63b0dbb61b5c74e8f460b2fb883c6"
+            },
+            "normal": {
+              "file": "sheets/mega__running.L__d11__normal.png",
+              "w": 33,
+              "h": 35,
+              "sha256": "b8840dbf10a1bd958b9ee6a22debba2529d54e46e8d8a5660826f0b5a78a440b"
+            },
+            "material": {
+              "file": "sheets/mega__running.L__d11__material.png",
+              "w": 33,
+              "h": 35,
+              "sha256": "a8b548cc43c2039dd7be88f7c31fe88ee92bdce95ed771476dc5f6df386da584"
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            33,
+            25
+          ],
+          "pivot": [
+            33,
+            25
+          ],
+          "depth": -4.87,
+          "w": 43,
+          "h": 32,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.L__d12__albedo.png",
+              "w": 43,
+              "h": 32,
+              "sha256": "32ae1494fd8115fba1b89863b1b0ab68d02b7217484fcfb1b429ab991a95decc"
+            },
+            "normal": {
+              "file": "sheets/mega__running.L__d12__normal.png",
+              "w": 43,
+              "h": 32,
+              "sha256": "e80d733bf2a7c7757c53f2c8533fe213624bf51f76eb069508aaff9b3348aba1"
+            },
+            "material": {
+              "file": "sheets/mega__running.L__d12__material.png",
+              "w": 43,
+              "h": 32,
+              "sha256": "ceef314dc9f3a6578adace152bb9f4999447ed3e826c1dbe2ec680a48d73b551"
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            31.56,
+            25.12
+          ],
+          "pivot": [
+            31.56,
+            25.12
+          ],
+          "depth": 4.81,
+          "w": 49,
+          "h": 28,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.L__d13__albedo.png",
+              "w": 49,
+              "h": 28,
+              "sha256": "9cd2fc92513708f7ad8871bf239160f0cd1bf66033ce1267bc98a00f1efed1f6"
+            },
+            "normal": {
+              "file": "sheets/mega__running.L__d13__normal.png",
+              "w": 49,
+              "h": 28,
+              "sha256": "3925107a9f6105c3887152b998882d9f23a4cc087b14d312bd6648f96854d261"
+            },
+            "material": {
+              "file": "sheets/mega__running.L__d13__material.png",
+              "w": 49,
+              "h": 28,
+              "sha256": "834320b803657353f318f942c517b8d0104282768483c306fa5268aa12f22d4d"
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            26.63,
+            23.31
+          ],
+          "pivot": [
+            26.63,
+            23.31
+          ],
+          "depth": 14.61,
+          "w": 49,
+          "h": 23,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.L__d14__albedo.png",
+              "w": 49,
+              "h": 23,
+              "sha256": "c8f4e99fd84dc543001be155560ac4818d1e37da8e4484f1f9de51f27ce4d27c"
+            },
+            "normal": {
+              "file": "sheets/mega__running.L__d14__normal.png",
+              "w": 49,
+              "h": 23,
+              "sha256": "84b3dc9f7de923fc026c2ab80f63499abe87c64ecda614c8730cd000f5db0fc8"
+            },
+            "material": {
+              "file": "sheets/mega__running.L__d14__material.png",
+              "w": 49,
+              "h": 23,
+              "sha256": "31a6da33dfaa289ae6ec328bac859df0e12deefcd45eb56c23db505a4305f2ee"
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            21.25,
+            25.78
+          ],
+          "pivot": [
+            21.25,
+            25.78
+          ],
+          "depth": 23.05,
+          "w": 50,
+          "h": 28,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.L__d15__albedo.png",
+              "w": 50,
+              "h": 28,
+              "sha256": "29dc24b6cf2c20f06674973ad99812cf5b56b4c16d8155b9e343ff3890484cc0"
+            },
+            "normal": {
+              "file": "sheets/mega__running.L__d15__normal.png",
+              "w": 50,
+              "h": 28,
+              "sha256": "f2599db8b33f06c5a909268755a83450aa71a8fc94707610a33a7cd07de43199"
+            },
+            "material": {
+              "file": "sheets/mega__running.L__d15__material.png",
+              "w": 50,
+              "h": 28,
+              "sha256": "6e06b1e0c6690e78bb41cd45bad20dee1b79acc22dc1c3105017299544b8225f"
+            }
+          }
+        }
+      }
+    },
+    "running.R": {
+      "name": "running.R",
+      "dynamic": false,
+      "parent": null,
+      "pivotDesign": [
+        256,
+        256,
+        0
+      ],
+      "traverse": false,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            33,
+            17
+          ],
+          "pivot": [
+            33,
+            17
+          ],
+          "depth": 53.22,
+          "w": 43,
+          "h": 33,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.R__d00__albedo.png",
+              "w": 43,
+              "h": 33,
+              "sha256": "6e25ea8c98fc636f74db6388dbe349c78ebe1b71b21e83bfdac57e551c568706"
+            },
+            "normal": {
+              "file": "sheets/mega__running.R__d00__normal.png",
+              "w": 43,
+              "h": 33,
+              "sha256": "77b83f0f640daaa12632a89cc2dea7905512067011cb0b7da5bf1678ebfae2df"
+            },
+            "material": {
+              "file": "sheets/mega__running.R__d00__material.png",
+              "w": 43,
+              "h": 33,
+              "sha256": "7f4caa0f9b465a512cfb2b1acedff2ed4816f55cbb8aab6e3e107d94bfe50f13"
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            29.75,
+            19.78
+          ],
+          "pivot": [
+            29.75,
+            19.78
+          ],
+          "depth": 44.29,
+          "w": 32,
+          "h": 34,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.R__d01__albedo.png",
+              "w": 32,
+              "h": 34,
+              "sha256": "eb3ad33a94231f22b2b1a8187bc3fcb17483c984917bcf7808878af3e9fa5225"
+            },
+            "normal": {
+              "file": "sheets/mega__running.R__d01__normal.png",
+              "w": 32,
+              "h": 34,
+              "sha256": "0ee1411ce88f5680bf1553475c83887f102bedbcd1a673741aaae83ff95a5bac"
+            },
+            "material": {
+              "file": "sheets/mega__running.R__d01__material.png",
+              "w": 32,
+              "h": 34,
+              "sha256": "3a5fb034c4ec6e38dae4841eaf4fa84fa5416b93aa3e7416b1ae0eac05bbf11d"
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            24.37,
+            23.31
+          ],
+          "pivot": [
+            24.37,
+            23.31
+          ],
+          "depth": 29.46,
+          "w": 19,
+          "h": 35,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.R__d02__albedo.png",
+              "w": 19,
+              "h": 35,
+              "sha256": "e534b4d2756be1877cfda93ebac0c92531acff141922c18e0743fcc4292dd325"
+            },
+            "normal": {
+              "file": "sheets/mega__running.R__d02__normal.png",
+              "w": 19,
+              "h": 35,
+              "sha256": "1a4d33cc101e69b8c4453e66c538df854f87b87cbc6ed55c64df28cb935b101b"
+            },
+            "material": {
+              "file": "sheets/mega__running.R__d02__material.png",
+              "w": 19,
+              "h": 35,
+              "sha256": "2e97a871cbf74961d077ea800023881e0b4042801a6e92bcda08199ff8bb6eab"
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            28.44,
+            26.12
+          ],
+          "pivot": [
+            28.44,
+            26.12
+          ],
+          "depth": 11.01,
+          "w": 32,
+          "h": 35,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.R__d03__albedo.png",
+              "w": 32,
+              "h": 35,
+              "sha256": "9a19f01b13e27731766d5214aaac9fa7a39a5893ccffc8e5a923001d7bcf309b"
+            },
+            "normal": {
+              "file": "sheets/mega__running.R__d03__normal.png",
+              "w": 32,
+              "h": 35,
+              "sha256": "bebc8250ae72477058cc730c14e5c365150b0a237c5651e0d90de3747717ed99"
+            },
+            "material": {
+              "file": "sheets/mega__running.R__d03__material.png",
+              "w": 32,
+              "h": 35,
+              "sha256": "636bac278a33a703b24b36682c8fc4ed86ae5a7dabcdfb26737286bada3c1ffb"
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            31,
+            27
+          ],
+          "pivot": [
+            31,
+            27
+          ],
+          "depth": -8.26,
+          "w": 44,
+          "h": 33,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.R__d04__albedo.png",
+              "w": 44,
+              "h": 33,
+              "sha256": "94d6b77d2894bf77d1c2e3f5db547044a3add3bddffd6c6b3b7ce5ad99dba41d"
+            },
+            "normal": {
+              "file": "sheets/mega__running.R__d04__normal.png",
+              "w": 44,
+              "h": 33,
+              "sha256": "1a6bf03780e8051a6117d3ff9c0c2c58cb25401c4a5fb3b246cad58a8725fa3c"
+            },
+            "material": {
+              "file": "sheets/mega__running.R__d04__material.png",
+              "w": 44,
+              "h": 33,
+              "sha256": "a1a6bf930b2794a68b98b632302790f3aa4778079cbb82a8750e40b67cf0082c"
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            28.44,
+            25.88
+          ],
+          "pivot": [
+            28.44,
+            25.88
+          ],
+          "depth": -25.42,
+          "w": 49,
+          "h": 28,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.R__d05__albedo.png",
+              "w": 49,
+              "h": 28,
+              "sha256": "6becb28a6a4ed4297ec1bf48a054081d670c0a1b7a7f9dcf1accb00c14114642"
+            },
+            "normal": {
+              "file": "sheets/mega__running.R__d05__normal.png",
+              "w": 49,
+              "h": 28,
+              "sha256": "cd1a7fc850f57b64d85d6d4483447855a0c18636b047f91285fc46e9735d489e"
+            },
+            "material": {
+              "file": "sheets/mega__running.R__d05__material.png",
+              "w": 49,
+              "h": 28,
+              "sha256": "b44afa5a0c8fa03f7ada02676ca92d8081ceba22ac84d446a4c26b3f8dc6c68c"
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            22.37,
+            23.69
+          ],
+          "pivot": [
+            22.37,
+            23.69
+          ],
+          "depth": -37.85,
+          "w": 49,
+          "h": 23,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.R__d06__albedo.png",
+              "w": 49,
+              "h": 23,
+              "sha256": "3db0b0f643982a441babc12d43d3898a32606e06b69bf7eed098d1a03a030862"
+            },
+            "normal": {
+              "file": "sheets/mega__running.R__d06__normal.png",
+              "w": 49,
+              "h": 23,
+              "sha256": "5ed96d48145a536eef552ca698b72dcbe51364adfbb5d2bca2a0744c61a47208"
+            },
+            "material": {
+              "file": "sheets/mega__running.R__d06__material.png",
+              "w": 49,
+              "h": 23,
+              "sha256": "b3a7cb35511d47b9c3b7a6435f61268e45ec1e0bf8bcbeb94753fd72b47983af"
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            17.75,
+            25.22
+          ],
+          "pivot": [
+            17.75,
+            25.22
+          ],
+          "depth": -43.66,
+          "w": 50,
+          "h": 28,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.R__d07__albedo.png",
+              "w": 50,
+              "h": 28,
+              "sha256": "58d5e0e5bff63f798caa325d9d4d5b944a866fa1e2fb15e9d2f8852583186254"
+            },
+            "normal": {
+              "file": "sheets/mega__running.R__d07__normal.png",
+              "w": 50,
+              "h": 28,
+              "sha256": "fcfbd99cc5db3a9543105715f9c3b3a289cb5c9593013eb8e843d918c9ac7e6b"
+            },
+            "material": {
+              "file": "sheets/mega__running.R__d07__material.png",
+              "w": 50,
+              "h": 28,
+              "sha256": "0db492310974513204cc95ec8c9988c62d92e2b2d93a1dfacf82ae7462df7cb4"
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            10,
+            25
+          ],
+          "pivot": [
+            10,
+            25
+          ],
+          "depth": -41.97,
+          "w": 43,
+          "h": 32,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.R__d08__albedo.png",
+              "w": 43,
+              "h": 32,
+              "sha256": "2cf1eba738c72169fa9bea65820f73cc3738bc54d1d61e383015fb05926f3a10"
+            },
+            "normal": {
+              "file": "sheets/mega__running.R__d08__normal.png",
+              "w": 43,
+              "h": 32,
+              "sha256": "9c4a5da31ebab3a8d41a94b334979e115e86127f4beeeda5ef5bc861f971b514"
+            },
+            "material": {
+              "file": "sheets/mega__running.R__d08__material.png",
+              "w": 43,
+              "h": 32,
+              "sha256": "97d68a25cde0747e3c40fcf88d7b7bb724da77f5dc0e8d5826e0cc262d1005ef"
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            2.25,
+            24.22
+          ],
+          "pivot": [
+            2.25,
+            24.22
+          ],
+          "depth": -33.03,
+          "w": 32,
+          "h": 35,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.R__d09__albedo.png",
+              "w": 32,
+              "h": 35,
+              "sha256": "360f6bf7ccbed0342ce152467f399aa5f627a441c1228d75e5717aee43731577"
+            },
+            "normal": {
+              "file": "sheets/mega__running.R__d09__normal.png",
+              "w": 32,
+              "h": 35,
+              "sha256": "3af309d1c24f2bebd943c36a7abd7186a3aa6f78aace406484342c233cdd80e5"
+            },
+            "material": {
+              "file": "sheets/mega__running.R__d09__material.png",
+              "w": 32,
+              "h": 35,
+              "sha256": "be9198c4d5ca15d05e4e2bc256681e5ed4452dd0255e8e9eb1ebfbc5aef45ba1"
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            -5.37,
+            20.69
+          ],
+          "pivot": [
+            -5.37,
+            20.69
+          ],
+          "depth": -18.2,
+          "w": 19,
+          "h": 34,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.R__d10__albedo.png",
+              "w": 19,
+              "h": 34,
+              "sha256": "a898a298a6c9ed353ffde51fdf656c2031bd7db30a15ae8772dfe5ac0e351835"
+            },
+            "normal": {
+              "file": "sheets/mega__running.R__d10__normal.png",
+              "w": 19,
+              "h": 34,
+              "sha256": "6053dead10388e4351aba782fdd57bf1e77ddf216133975106927f94364d2bf3"
+            },
+            "material": {
+              "file": "sheets/mega__running.R__d10__material.png",
+              "w": 19,
+              "h": 34,
+              "sha256": "0ea79f499aa85fe6fd56a70d6d5b060a461e27a87857408cbfe6d89160ec1fc8"
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            3.56,
+            17.88
+          ],
+          "pivot": [
+            3.56,
+            17.88
+          ],
+          "depth": 0.25,
+          "w": 32,
+          "h": 34,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.R__d11__albedo.png",
+              "w": 32,
+              "h": 34,
+              "sha256": "e42eb1a901b1c94bab8350d84b090bc9a0551a87e9e1bce0bba767756d10d1b1"
+            },
+            "normal": {
+              "file": "sheets/mega__running.R__d11__normal.png",
+              "w": 32,
+              "h": 34,
+              "sha256": "f910012704f42e0f4b68740d35b6d2319309e89bb0f1a49c9c704726e9996957"
+            },
+            "material": {
+              "file": "sheets/mega__running.R__d11__material.png",
+              "w": 32,
+              "h": 34,
+              "sha256": "47e4d7cd0a55454bb939195ea68a73c90c464191cbbe4eddff97369b18b57c70"
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            13,
+            13
+          ],
+          "pivot": [
+            13,
+            13
+          ],
+          "depth": 19.52,
+          "w": 44,
+          "h": 30,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.R__d12__albedo.png",
+              "w": 44,
+              "h": 30,
+              "sha256": "2e93180049299efd9d23165e1d613d1c7acbd19a75727ba6013d0ec4bd16dd2e"
+            },
+            "normal": {
+              "file": "sheets/mega__running.R__d12__normal.png",
+              "w": 44,
+              "h": 30,
+              "sha256": "05dc9af9d7524b52bc7114e3240936e65687064afa0b7aec15abb05e03c40996"
+            },
+            "material": {
+              "file": "sheets/mega__running.R__d12__material.png",
+              "w": 44,
+              "h": 30,
+              "sha256": "795a2096f71c1146584b4ae35ae35ccb50ca174b2b4accb18647b6a031c0000b"
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            20.56,
+            9.12
+          ],
+          "pivot": [
+            20.56,
+            9.12
+          ],
+          "depth": 36.68,
+          "w": 49,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.R__d13__albedo.png",
+              "w": 49,
+              "h": 25,
+              "sha256": "298ae9e27a5960127cd9bd2a7530dfe4babad136917fa80982ed5bb3951dd689"
+            },
+            "normal": {
+              "file": "sheets/mega__running.R__d13__normal.png",
+              "w": 49,
+              "h": 25,
+              "sha256": "b9c74600c43cc7757780f8680c954a4a26fe06c33e196e0e12b926d4df926a8a"
+            },
+            "material": {
+              "file": "sheets/mega__running.R__d13__material.png",
+              "w": 49,
+              "h": 25,
+              "sha256": "c4d069b1e7bcccd0c33d19d48502fd60544c371b656e4ad4839049e30526a908"
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            26.63,
+            8.31
+          ],
+          "pivot": [
+            26.63,
+            8.31
+          ],
+          "depth": 49.11,
+          "w": 49,
+          "h": 22,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.R__d14__albedo.png",
+              "w": 49,
+              "h": 22,
+              "sha256": "489870497ae65641656e155ce483fca3b1ff09a1f4653c77b7bd8feb81594b80"
+            },
+            "normal": {
+              "file": "sheets/mega__running.R__d14__normal.png",
+              "w": 49,
+              "h": 22,
+              "sha256": "3cc8edc5a30d1fac83d1893a487bca305fd4f3558a782eb6b1ff153f05f0a88e"
+            },
+            "material": {
+              "file": "sheets/mega__running.R__d14__material.png",
+              "w": 49,
+              "h": 22,
+              "sha256": "8471a343c2ce9443eee5d58719e5d4a906d017e06b2bc1d06ef4e350052f2e9c"
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            32.25,
+            12.78
+          ],
+          "pivot": [
+            32.25,
+            12.78
+          ],
+          "depth": 54.92,
+          "w": 50,
+          "h": 28,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__running.R__d15__albedo.png",
+              "w": 50,
+              "h": 28,
+              "sha256": "aecc3186cb9977fc735952b4f33a1483f11e43d996914c04adba113474e1c3c2"
+            },
+            "normal": {
+              "file": "sheets/mega__running.R__d15__normal.png",
+              "w": 50,
+              "h": 28,
+              "sha256": "fb21c07dfb4bd2ce965d8faf118c1e4d45bb4ef270940347cfd527eaa50dc2f2"
+            },
+            "material": {
+              "file": "sheets/mega__running.R__d15__material.png",
+              "w": 50,
+              "h": 28,
+              "sha256": "3e346520281b08e244bdec8b3a98a22b88f9c76d88b45991755b6cbcd446dcc1"
+            }
+          }
+        }
+      }
+    },
+    "turret": {
+      "name": "turret",
+      "dynamic": true,
+      "parent": null,
+      "pivotDesign": [
+        236,
+        256,
+        168
+      ],
+      "traverse": true,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            23,
+            32
+          ],
+          "pivot": [
+            21.75,
+            20.88
+          ],
+          "depth": 52.03,
+          "w": 38,
+          "h": 30,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__turret__d00__albedo.png",
+              "w": 38,
+              "h": 30,
+              "sha256": "72a70ddfa202f5696e222bfbff25497c0e222214be48e3ff4a7556e2c0f3bd46"
+            },
+            "normal": {
+              "file": "sheets/mega__turret__d00__normal.png",
+              "w": 38,
+              "h": 30,
+              "sha256": "12742cc98d932039c724fc99dabf5b4227d8f102215eef390fef34267bbf6191"
+            },
+            "material": {
+              "file": "sheets/mega__turret__d00__material.png",
+              "w": 38,
+              "h": 30,
+              "sha256": "1beb22365ca125b1da7b2186d229a01b97fa2038cc9fda82162aed1c79905cf9"
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            18.75,
+            31.78
+          ],
+          "pivot": [
+            18.08,
+            20.47
+          ],
+          "depth": 47.91,
+          "w": 33,
+          "h": 29,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__turret__d01__albedo.png",
+              "w": 33,
+              "h": 29,
+              "sha256": "162985b7beb2e906e7a1fff85efeb888eae1388831ea8aad11f13378eeffb592"
+            },
+            "normal": {
+              "file": "sheets/mega__turret__d01__normal.png",
+              "w": 33,
+              "h": 29,
+              "sha256": "d0e0c730844eda48941b367bc5a134c99e4e2cbfd1df18fbd7e8de109ee33ff3"
+            },
+            "material": {
+              "file": "sheets/mega__turret__d01__material.png",
+              "w": 33,
+              "h": 29,
+              "sha256": "d87f9890ade0d0c58f971087cd94d582024a1eafe2d3c530bdf65c505d516536"
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            13.37,
+            32.31
+          ],
+          "pivot": [
+            13.37,
+            20.93
+          ],
+          "depth": 39.45,
+          "w": 27,
+          "h": 30,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__turret__d02__albedo.png",
+              "w": 27,
+              "h": 30,
+              "sha256": "dff87bd3776df18c41e48e34287aecb442a7c5f97715975c2dbcdfdb263e3993"
+            },
+            "normal": {
+              "file": "sheets/mega__turret__d02__normal.png",
+              "w": 27,
+              "h": 30,
+              "sha256": "3681a051edfb4849a1872ec1c16bb37026f97e5a1827468e3db531ea497aaee8"
+            },
+            "material": {
+              "file": "sheets/mega__turret__d02__material.png",
+              "w": 27,
+              "h": 30,
+              "sha256": "d04757b0dfec432b00eaf62171109446d1e44ecc5864dd9b9613d96d0528d1f9"
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            14.44,
+            33.12
+          ],
+          "pivot": [
+            15.11,
+            21.81
+          ],
+          "depth": 27.95,
+          "w": 33,
+          "h": 31,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__turret__d03__albedo.png",
+              "w": 33,
+              "h": 31,
+              "sha256": "38cf1b40e64d637bc227b2591919e28fc8a3010747848e8af1a542d1db186042"
+            },
+            "normal": {
+              "file": "sheets/mega__turret__d03__normal.png",
+              "w": 33,
+              "h": 31,
+              "sha256": "870969b183d3d26bfc3c4da559a0bad382b889992a80702daa4213e45619ad54"
+            },
+            "material": {
+              "file": "sheets/mega__turret__d03__material.png",
+              "w": 33,
+              "h": 31,
+              "sha256": "dbd9467f87565fa78e69545efced608ddffbf6ffbe65300ac3225603a90fe62c"
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            15,
+            33
+          ],
+          "pivot": [
+            16.25,
+            21.88
+          ],
+          "depth": 15.16,
+          "w": 38,
+          "h": 31,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__turret__d04__albedo.png",
+              "w": 38,
+              "h": 31,
+              "sha256": "3b9fe56651322413be1f4c6f6b662f315115fdc0536f1aaca3d89373e2f704a5"
+            },
+            "normal": {
+              "file": "sheets/mega__turret__d04__normal.png",
+              "w": 38,
+              "h": 31,
+              "sha256": "47fa4c594487259c39a5acd4e55cb96b0411b4454c731451644e22b9fd883074"
+            },
+            "material": {
+              "file": "sheets/mega__turret__d04__material.png",
+              "w": 38,
+              "h": 31,
+              "sha256": "390ff1c731d7695c1b8bfc896be345fa75c6ff720e6dc30c5846616b656e4763"
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            14.44,
+            32.88
+          ],
+          "pivot": [
+            16.07,
+            22.04
+          ],
+          "depth": 3.01,
+          "w": 39,
+          "h": 31,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__turret__d05__albedo.png",
+              "w": 39,
+              "h": 31,
+              "sha256": "9f9f95634daa4281e01e51e4debd9a575e3553943f0e0d4ede3d9b1846fda7a8"
+            },
+            "normal": {
+              "file": "sheets/mega__turret__d05__normal.png",
+              "w": 39,
+              "h": 31,
+              "sha256": "66a0264b68d472b81ccdc5f0cee9f253b0a13b0e99f5ae3bb88b438ba62c2de5"
+            },
+            "material": {
+              "file": "sheets/mega__turret__d05__material.png",
+              "w": 39,
+              "h": 31,
+              "sha256": "f8e62588cd72a7ff7f2c30404542e57362d60e3b80537227978d79edc7165869"
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            12.37,
+            30.69
+          ],
+          "pivot": [
+            14.14,
+            20.19
+          ],
+          "depth": -6.63,
+          "w": 35,
+          "h": 29,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__turret__d06__albedo.png",
+              "w": 35,
+              "h": 29,
+              "sha256": "5fba9d50f57a1e179e78abed4080ad1bc3c106f7b0a768886b2faeeb1bdef403"
+            },
+            "normal": {
+              "file": "sheets/mega__turret__d06__normal.png",
+              "w": 35,
+              "h": 29,
+              "sha256": "806f33fd57f3bf870c960439c22951c40eb583a860b67acc16d387917ddf48b0"
+            },
+            "material": {
+              "file": "sheets/mega__turret__d06__material.png",
+              "w": 35,
+              "h": 29,
+              "sha256": "d8554b4cb31618f29e747796ec23ba121d1fa6a4a73940b94428485ef92dcfb6"
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            13.75,
+            29.22
+          ],
+          "pivot": [
+            15.39,
+            19.06
+          ],
+          "depth": -12.3,
+          "w": 38,
+          "h": 29,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__turret__d07__albedo.png",
+              "w": 38,
+              "h": 29,
+              "sha256": "5d63fd5f5b074af331798bdb81a129eca301706d545d8ab579865caa577ff902"
+            },
+            "normal": {
+              "file": "sheets/mega__turret__d07__normal.png",
+              "w": 38,
+              "h": 29,
+              "sha256": "80590e6ae652caf83702e9e4222b42e6d25b345f21e208fa9d837979d71b1fc6"
+            },
+            "material": {
+              "file": "sheets/mega__turret__d07__material.png",
+              "w": 38,
+              "h": 29,
+              "sha256": "4ca875120a46867257757bcea13cd8e493fa938984d750208c24e6fa77589950"
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            15,
+            27
+          ],
+          "pivot": [
+            16.25,
+            17.13
+          ],
+          "depth": -13.13,
+          "w": 38,
+          "h": 28,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__turret__d08__albedo.png",
+              "w": 38,
+              "h": 28,
+              "sha256": "a6549da6dac37e60dc71c4e2f0b38038fd4d575a43df1d348ae56aa106dee4c9"
+            },
+            "normal": {
+              "file": "sheets/mega__turret__d08__normal.png",
+              "w": 38,
+              "h": 28,
+              "sha256": "9596a192503ff78b4612b46f12aa64ecf4dc839b681cd629db48aebd93f75641"
+            },
+            "material": {
+              "file": "sheets/mega__turret__d08__material.png",
+              "w": 38,
+              "h": 28,
+              "sha256": "0c7f3cd6db75d597fdac7fbacdb73fe3fa476fdff7b30f6ca9fd4c7d410dcb9f"
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            14.25,
+            25.22
+          ],
+          "pivot": [
+            14.92,
+            15.53
+          ],
+          "depth": -9.01,
+          "w": 33,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__turret__d09__albedo.png",
+              "w": 33,
+              "h": 27,
+              "sha256": "ade3a1ceb5799ac09994e5703e3af9f56284af6629d0eba4551aec9056d72c7f"
+            },
+            "normal": {
+              "file": "sheets/mega__turret__d09__normal.png",
+              "w": 33,
+              "h": 27,
+              "sha256": "b86bad1a6e08c62bb1f83beb2f3951202f7d160b649ca49c8b6e23e1873a9247"
+            },
+            "material": {
+              "file": "sheets/mega__turret__d09__material.png",
+              "w": 33,
+              "h": 27,
+              "sha256": "4c76dcc22ba3b8727791f2594a88df309e97c02df8362144ee8099e665448f1e"
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            13.63,
+            24.69
+          ],
+          "pivot": [
+            13.63,
+            15.07
+          ],
+          "depth": -0.55,
+          "w": 27,
+          "h": 26,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__turret__d10__albedo.png",
+              "w": 27,
+              "h": 26,
+              "sha256": "029b116471c7f1b70b3ada194d14a3c65f577adf85c99938ff20c10c012fff5f"
+            },
+            "normal": {
+              "file": "sheets/mega__turret__d10__normal.png",
+              "w": 27,
+              "h": 26,
+              "sha256": "ed8227ee62cb1e50f3fcc4d66a686bef2bc26ff388a31a690af814a9b2cdd7f0"
+            },
+            "material": {
+              "file": "sheets/mega__turret__d10__material.png",
+              "w": 27,
+              "h": 26,
+              "sha256": "08b2c0ba3b9b3b250d2377c76dd6ac9b76eeda427eb2000159f379c092dc9a88"
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            18.56,
+            24.88
+          ],
+          "pivot": [
+            17.89,
+            15.19
+          ],
+          "depth": 10.95,
+          "w": 33,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__turret__d11__albedo.png",
+              "w": 33,
+              "h": 27,
+              "sha256": "3eb592c0fe4377743e06c5f9091bac29c229919a953a3ad655567bb1625d101b"
+            },
+            "normal": {
+              "file": "sheets/mega__turret__d11__normal.png",
+              "w": 33,
+              "h": 27,
+              "sha256": "6ff070ba38cedfb804e8b702110751bf7caf972c382958912fb897ab42df6f9a"
+            },
+            "material": {
+              "file": "sheets/mega__turret__d11__material.png",
+              "w": 33,
+              "h": 27,
+              "sha256": "939e2420d29c75fc99b91f8d5a433d3c723f794206a5494cacd349e7a078751e"
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            23,
+            25
+          ],
+          "pivot": [
+            21.75,
+            15.12
+          ],
+          "depth": 23.74,
+          "w": 38,
+          "h": 26,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__turret__d12__albedo.png",
+              "w": 38,
+              "h": 26,
+              "sha256": "51f6bc4146347853ffd044c69d56ae56c333ec589e3a8328e2423ea5cf3c76dd"
+            },
+            "normal": {
+              "file": "sheets/mega__turret__d12__normal.png",
+              "w": 38,
+              "h": 26,
+              "sha256": "674c76662f89d3869129926a1d7e9e4f2d0f0395df4a0f13cdbf1d3dc343b73c"
+            },
+            "material": {
+              "file": "sheets/mega__turret__d12__material.png",
+              "w": 38,
+              "h": 26,
+              "sha256": "ab49118d1f09293b3ee84670f6343ed24d83f65f2dd81ce7df0a692b26cb5ebb"
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            24.56,
+            27.12
+          ],
+          "pivot": [
+            22.93,
+            16.96
+          ],
+          "depth": 35.89,
+          "w": 39,
+          "h": 26,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__turret__d13__albedo.png",
+              "w": 39,
+              "h": 26,
+              "sha256": "26d814a7e420db894df89e044edddf067f161b3406729e86de1d3f532d3adfc1"
+            },
+            "normal": {
+              "file": "sheets/mega__turret__d13__normal.png",
+              "w": 39,
+              "h": 26,
+              "sha256": "2617530632af39d93bfbced4eb0da1bf8e9204144dbf4bcf0f74ed867ed89c5d"
+            },
+            "material": {
+              "file": "sheets/mega__turret__d13__material.png",
+              "w": 39,
+              "h": 26,
+              "sha256": "822df23ee69dc4a36de0aae7a704e2ace1dbb6b98561c81747228fd3301bf2b4"
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            22.63,
+            29.31
+          ],
+          "pivot": [
+            20.86,
+            18.81
+          ],
+          "depth": 45.53,
+          "w": 35,
+          "h": 28,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__turret__d14__albedo.png",
+              "w": 35,
+              "h": 28,
+              "sha256": "6451b0f63432a33019d7755249d99128a8bfeff06456da04d01b362cbfd24875"
+            },
+            "normal": {
+              "file": "sheets/mega__turret__d14__normal.png",
+              "w": 35,
+              "h": 28,
+              "sha256": "24a06b08f4fe4206739e70a1963958293e107fd7227dca774357b16b6e023536"
+            },
+            "material": {
+              "file": "sheets/mega__turret__d14__material.png",
+              "w": 35,
+              "h": 28,
+              "sha256": "2c77b4fc3f3956acc6c07a32d408dbd505464a0209c525bed3134e44a0801540"
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            24.25,
+            30.78
+          ],
+          "pivot": [
+            22.61,
+            19.94
+          ],
+          "depth": 51.2,
+          "w": 38,
+          "h": 29,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__turret__d15__albedo.png",
+              "w": 38,
+              "h": 29,
+              "sha256": "4a522eef7527f42521768967992f00d7118bf9b0745120a91d7ee38168088241"
+            },
+            "normal": {
+              "file": "sheets/mega__turret__d15__normal.png",
+              "w": 38,
+              "h": 29,
+              "sha256": "986b047d71d2db5489cfd919b616e533458454a068cb7955921450ffa340d0ee"
+            },
+            "material": {
+              "file": "sheets/mega__turret__d15__material.png",
+              "w": 38,
+              "h": 29,
+              "sha256": "16ac40c21bc83631e0e4fa580e45b3611134f3f9f4b25ef4e2fc04a173d2ea37"
+            }
+          }
+        }
+      }
+    },
+    "barrel": {
+      "name": "barrel",
+      "dynamic": true,
+      "parent": "turret",
+      "pivotDesign": [
+        338,
+        256,
+        230
+      ],
+      "traverse": true,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            3,
+            19
+          ],
+          "pivot": [
+            8.13,
+            7.19
+          ],
+          "depth": 65.24,
+          "w": 27,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__barrel__d00__albedo.png",
+              "w": 27,
+              "h": 19,
+              "sha256": "d4f3814f735c556c94238eb3ca3fcab3e4614a42d5ab075a6d056a4fc17e8ed5"
+            },
+            "normal": {
+              "file": "sheets/mega__barrel__d00__normal.png",
+              "w": 27,
+              "h": 19,
+              "sha256": "a71ddb96918a88e280de4a898641cab5a536f389851e2c5154b996476f2d526d"
+            },
+            "material": {
+              "file": "sheets/mega__barrel__d00__material.png",
+              "w": 27,
+              "h": 19,
+              "sha256": "33e3995a0e8db1f8dbb2995dba430678074050c7eec5a75e03e80e1869227560"
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            6.75,
+            17.78
+          ],
+          "pivot": [
+            9.53,
+            6.76
+          ],
+          "depth": 66.01,
+          "w": 24,
+          "h": 20,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__barrel__d01__albedo.png",
+              "w": 24,
+              "h": 20,
+              "sha256": "3642a215d9889f6e56ce74642f4cdf2dfd54965402c559234b18c235e37e38b4"
+            },
+            "normal": {
+              "file": "sheets/mega__barrel__d01__normal.png",
+              "w": 24,
+              "h": 20,
+              "sha256": "6d03e704ff3864646ea8c7785cc3ee9b75a27ac09b4e3ba8b7a3f2b60f902d72"
+            },
+            "material": {
+              "file": "sheets/mega__barrel__d01__material.png",
+              "w": 24,
+              "h": 20,
+              "sha256": "f4890a33a77aa1aaee05af9ff0718935dcedfc2c125bd40dd8b825b5c0193df9"
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            9.37,
+            18.31
+          ],
+          "pivot": [
+            9.37,
+            7.56
+          ],
+          "depth": 59.26,
+          "w": 19,
+          "h": 20,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__barrel__d02__albedo.png",
+              "w": 19,
+              "h": 20,
+              "sha256": "2f92f005f39bd2ddd8b0b194c2e3bf7e2b1f32d36fd80b99627c1d99c9815189"
+            },
+            "normal": {
+              "file": "sheets/mega__barrel__d02__normal.png",
+              "w": 19,
+              "h": 20,
+              "sha256": "edf7154460473e2a0dc4efce3e9d7eb5360b7b7d83ef5a9319248c0a6e406a81"
+            },
+            "material": {
+              "file": "sheets/mega__barrel__d02__material.png",
+              "w": 19,
+              "h": 20,
+              "sha256": "00723003587b51cf69eddad2b997f8ba04d637f67323a6794e8a9d211bd9bdbb"
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            17.44,
+            18.12
+          ],
+          "pivot": [
+            14.66,
+            7.1
+          ],
+          "depth": 46.01,
+          "w": 24,
+          "h": 20,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__barrel__d03__albedo.png",
+              "w": 24,
+              "h": 20,
+              "sha256": "15b5fd47033bdda20fe7447fafcffc857cae737a0eb003b631c65fe15b66f37b"
+            },
+            "normal": {
+              "file": "sheets/mega__barrel__d03__normal.png",
+              "w": 24,
+              "h": 20,
+              "sha256": "f159e8d469b0d23f94fb14314206a416206fd7cc8c441fead244e6966f28670d"
+            },
+            "material": {
+              "file": "sheets/mega__barrel__d03__material.png",
+              "w": 24,
+              "h": 20,
+              "sha256": "f60948b3b0762c70964d3d719708750f41b88e0485c40bc0ce4bdb0a31212295"
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            24,
+            19
+          ],
+          "pivot": [
+            18.88,
+            7.19
+          ],
+          "depth": 28.29,
+          "w": 27,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__barrel__d04__albedo.png",
+              "w": 27,
+              "h": 19,
+              "sha256": "4a5089e4105daeb3eab213ff0083cc78d8b1a2d9cba8bc971b80475ce625df65"
+            },
+            "normal": {
+              "file": "sheets/mega__barrel__d04__normal.png",
+              "w": 27,
+              "h": 19,
+              "sha256": "a6400bbff2c0e4420f0c9c1e600df9935702090dab6a8cce13cd3191f18ab8a5"
+            },
+            "material": {
+              "file": "sheets/mega__barrel__d04__material.png",
+              "w": 27,
+              "h": 19,
+              "sha256": "164260100c3d2db377e158b580be0d3061efdf964c2846647b4516c2d5a32cd6"
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            26.44,
+            20.88
+          ],
+          "pivot": [
+            19.74,
+            7.89
+          ],
+          "depth": 8.79,
+          "w": 27,
+          "h": 18,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__barrel__d05__albedo.png",
+              "w": 27,
+              "h": 18,
+              "sha256": "2b2c0607d78e47f9bda936dbd75ed60a9dfa09bb7e94a391afda8ce3167d4113"
+            },
+            "normal": {
+              "file": "sheets/mega__barrel__d05__normal.png",
+              "w": 27,
+              "h": 18,
+              "sha256": "a7fb0c1fcd3e0b7129210a7582f506a4360317fa079165b60efb39ff2d457adb"
+            },
+            "material": {
+              "file": "sheets/mega__barrel__d05__material.png",
+              "w": 27,
+              "h": 18,
+              "sha256": "1a9a68c4647ff94200ccec9e83abc2833ee286a6e38775d8192e6a8af87b94b5"
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            26.37,
+            22.69
+          ],
+          "pivot": [
+            19.12,
+            8.31
+          ],
+          "depth": -9.53,
+          "w": 24,
+          "h": 16,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__barrel__d06__albedo.png",
+              "w": 24,
+              "h": 16,
+              "sha256": "27b4949e938ed963143de69e12cfa2136420af52c1aa8b8f44866ef964c544c6"
+            },
+            "normal": {
+              "file": "sheets/mega__barrel__d06__normal.png",
+              "w": 24,
+              "h": 16,
+              "sha256": "435f79356d721008366134543746f484be786537911204fcda8008f2fefe622b"
+            },
+            "material": {
+              "file": "sheets/mega__barrel__d06__material.png",
+              "w": 24,
+              "h": 16,
+              "sha256": "886d5a68b489dfb13d0ff70ae69fa56a7fcc304a6f7fff5f223c9f52b6485276"
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            26.75,
+            26.22
+          ],
+          "pivot": [
+            20.06,
+            10.46
+          ],
+          "depth": -23.87,
+          "w": 27,
+          "h": 18,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__barrel__d07__albedo.png",
+              "w": 27,
+              "h": 18,
+              "sha256": "dc7bc466bdb10c739f23917d6f36f9a32ec10df7f01228fcb9019e731b168bb3"
+            },
+            "normal": {
+              "file": "sheets/mega__barrel__d07__normal.png",
+              "w": 27,
+              "h": 18,
+              "sha256": "cff77d6d96a57cb135900a1d77fc16b73264eccb87e369a33043655d3538454d"
+            },
+            "material": {
+              "file": "sheets/mega__barrel__d07__material.png",
+              "w": 27,
+              "h": 18,
+              "sha256": "97c8904ec77643d6bb8ece3a8b12bc93117387daa9151bf8057cb58ab13b468e"
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            24,
+            29
+          ],
+          "pivot": [
+            18.87,
+            12.06
+          ],
+          "depth": -32.04,
+          "w": 27,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__barrel__d08__albedo.png",
+              "w": 27,
+              "h": 19,
+              "sha256": "a8450a78ad2bdf09d1ac169ba52604b132b81413f85da3b68140eabd3701a871"
+            },
+            "normal": {
+              "file": "sheets/mega__barrel__d08__normal.png",
+              "w": 27,
+              "h": 19,
+              "sha256": "1020cc71b7dc9ed15950a6e6a3b8fd0ff44e64f87270c45dd46264dcd87f5e3d"
+            },
+            "material": {
+              "file": "sheets/mega__barrel__d08__material.png",
+              "w": 27,
+              "h": 19,
+              "sha256": "c615ffbe8d691ee7159ede8d8fe177197edce1201d56280ea0a73e36a981daca"
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            17.25,
+            31.22
+          ],
+          "pivot": [
+            14.47,
+            13.49
+          ],
+          "depth": -32.81,
+          "w": 24,
+          "h": 20,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__barrel__d09__albedo.png",
+              "w": 24,
+              "h": 20,
+              "sha256": "cbeb63ef6f0f9e2284b11a064229aa774a09a76b6020f80b037e6f968aca0029"
+            },
+            "normal": {
+              "file": "sheets/mega__barrel__d09__normal.png",
+              "w": 24,
+              "h": 20,
+              "sha256": "8f555191b5393685f58eb039563d0f8c379d98705aaeaf851cccee2b35719e3d"
+            },
+            "material": {
+              "file": "sheets/mega__barrel__d09__material.png",
+              "w": 24,
+              "h": 20,
+              "sha256": "052fbc75fb59f09fa3335a25dc8c3304ba592410851107944dc8f3e9b3ee3cda"
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            9.63,
+            30.69
+          ],
+          "pivot": [
+            9.63,
+            12.69
+          ],
+          "depth": -26.06,
+          "w": 19,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__barrel__d10__albedo.png",
+              "w": 19,
+              "h": 19,
+              "sha256": "b49e10f271f4b1f6dea6cba9f697a9f51b691396d54f05b3e307796439e09c85"
+            },
+            "normal": {
+              "file": "sheets/mega__barrel__d10__normal.png",
+              "w": 19,
+              "h": 19,
+              "sha256": "a2135f90c148194d726ad86ca870ab83c329a876b146f91ec0380d9def0c16b1"
+            },
+            "material": {
+              "file": "sheets/mega__barrel__d10__material.png",
+              "w": 19,
+              "h": 19,
+              "sha256": "3afdcc4cc35762d70d0debb530ee586bd594c9d3fdb256da906de389d256a605"
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            6.56,
+            30.88
+          ],
+          "pivot": [
+            9.34,
+            13.15
+          ],
+          "depth": -12.82,
+          "w": 24,
+          "h": 20,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__barrel__d11__albedo.png",
+              "w": 24,
+              "h": 20,
+              "sha256": "98dfc95625f8b3cb6234b2be29a185d1a2d0cb7f50494db2dd79cbc7af77cb35"
+            },
+            "normal": {
+              "file": "sheets/mega__barrel__d11__normal.png",
+              "w": 24,
+              "h": 20,
+              "sha256": "c521ba78e6909f66816c61a8e092b026c7da6ea48c58452cf66f9f79be2a0dfd"
+            },
+            "material": {
+              "file": "sheets/mega__barrel__d11__material.png",
+              "w": 24,
+              "h": 20,
+              "sha256": "70f3888b26ae98d488b102e071a9cf02a274c60dc9fc150987d043391d324784"
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            3,
+            29
+          ],
+          "pivot": [
+            8.13,
+            12.06
+          ],
+          "depth": 4.91,
+          "w": 27,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__barrel__d12__albedo.png",
+              "w": 27,
+              "h": 19,
+              "sha256": "201afd0fb31215fbf45dc817dcce46c131fd7fc98972d8012bac7eaf582f4036"
+            },
+            "normal": {
+              "file": "sheets/mega__barrel__d12__normal.png",
+              "w": 27,
+              "h": 19,
+              "sha256": "6901530d4eb56030e1474224ed38782a882686c0eebcb84e8b2a8d0a5bcf3803"
+            },
+            "material": {
+              "file": "sheets/mega__barrel__d12__material.png",
+              "w": 27,
+              "h": 19,
+              "sha256": "84daa1e59afac2dc8067eb16b730749523a930ac78c1fc4d55201943e401432e"
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            0.56,
+            26.12
+          ],
+          "pivot": [
+            7.26,
+            10.36
+          ],
+          "depth": 24.41,
+          "w": 27,
+          "h": 18,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__barrel__d13__albedo.png",
+              "w": 27,
+              "h": 18,
+              "sha256": "9efcfe9752c12c9c37602e6e8c4c24fa4bd3686acc833abe71fe93d40f38a3da"
+            },
+            "normal": {
+              "file": "sheets/mega__barrel__d13__normal.png",
+              "w": 27,
+              "h": 18,
+              "sha256": "7ef660b5e84d07112131a4218b4e73fa1fe2200044283811dac0960017f16340"
+            },
+            "material": {
+              "file": "sheets/mega__barrel__d13__material.png",
+              "w": 27,
+              "h": 18,
+              "sha256": "ac9e63a330bf8ffe656caf426ddd696abc26743e4043a9373826d1c52599ef14"
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            -2.37,
+            22.31
+          ],
+          "pivot": [
+            4.88,
+            7.94
+          ],
+          "depth": 42.73,
+          "w": 24,
+          "h": 16,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__barrel__d14__albedo.png",
+              "w": 24,
+              "h": 16,
+              "sha256": "4ee2c871114e6c287931114a856c2784963a7491dd2e4059e5d2f17aec119aa3"
+            },
+            "normal": {
+              "file": "sheets/mega__barrel__d14__normal.png",
+              "w": 24,
+              "h": 16,
+              "sha256": "31755879c6b8be4cf2e8b19e78d23d64ef8495f0c158753739a5620d8ab536d5"
+            },
+            "material": {
+              "file": "sheets/mega__barrel__d14__material.png",
+              "w": 24,
+              "h": 16,
+              "sha256": "f0188bc2fd6c56d96dc7ac10e3e512acc183abfbb069b9d85a26badf7526ef93"
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            0.25,
+            20.78
+          ],
+          "pivot": [
+            6.94,
+            7.79
+          ],
+          "depth": 57.06,
+          "w": 27,
+          "h": 18,
+          "files": {
+            "albedo": {
+              "file": "sheets/mega__barrel__d15__albedo.png",
+              "w": 27,
+              "h": 18,
+              "sha256": "3513ab565133f3c98df2441ebf488e9373a6a4bfc7e937f664bf53ce9b750b06"
+            },
+            "normal": {
+              "file": "sheets/mega__barrel__d15__normal.png",
+              "w": 27,
+              "h": 18,
+              "sha256": "ce4c893af888882e36ade905b78df5c19b03620fe78e76a3d964abcb9873e82d"
+            },
+            "material": {
+              "file": "sheets/mega__barrel__d15__material.png",
+              "w": 27,
+              "h": 18,
+              "sha256": "aadeba3ad5f7cf9c2f73386aaf94c3b8d65b6d8df55ca27e89b3aa57daead8a3"
+            }
+          }
+        }
+      }
+    }
+  },
+  "clips": {
+    "idle": 1
+  },
+  "sourceGeometry": {
+    "parts": [
+      {
+        "name": "body",
+        "dynamic": false,
+        "traverse": false,
+        "parent": null,
+        "voxels": 794667,
+        "pivotDesign": [
+          256,
+          256,
+          0
+        ],
+        "bounds": {
+          "minX": 0,
+          "minY": 25,
+          "minZ": 21,
+          "maxX": 490,
+          "maxY": 488,
+          "maxZ": 329
+        }
+      },
+      {
+        "name": "running.L",
+        "dynamic": false,
+        "traverse": false,
+        "parent": null,
+        "voxels": 259529,
+        "pivotDesign": [
+          256,
+          256,
+          0
+        ],
+        "bounds": {
+          "minX": 6,
+          "minY": 37,
+          "minZ": 0,
+          "maxX": 461,
+          "maxY": 139,
+          "maxZ": 156
+        }
+      },
+      {
+        "name": "running.R",
+        "dynamic": false,
+        "traverse": false,
+        "parent": null,
+        "voxels": 216411,
+        "pivotDesign": [
+          256,
+          256,
+          0
+        ],
+        "bounds": {
+          "minX": 6,
+          "minY": 372,
+          "minZ": 0,
+          "maxX": 461,
+          "maxY": 480,
+          "maxZ": 156
+        }
+      },
+      {
+        "name": "turret",
+        "dynamic": true,
+        "traverse": true,
+        "parent": null,
+        "voxels": 122535,
+        "pivotDesign": [
+          236,
+          256,
+          168
+        ],
+        "bounds": {
+          "minX": 52,
+          "minY": 152,
+          "minZ": 168,
+          "maxX": 340,
+          "maxY": 359,
+          "maxZ": 371
+        }
+      },
+      {
+        "name": "barrel",
+        "dynamic": true,
+        "traverse": true,
+        "parent": "turret",
+        "voxels": 32531,
+        "pivotDesign": [
+          338,
+          256,
+          230
+        ],
+        "bounds": {
+          "minX": 330,
+          "minY": 196,
+          "minZ": 193,
+          "maxX": 506,
+          "maxY": 316,
+          "maxZ": 267
+        }
+      }
+    ],
+    "totalVoxels": 1425673
+  },
+  "composite": {
+    "note": "every part of one facing pre-composited through the shared ground anchor",
+    "facings": {
+      "d00": {
+        "w": 70,
+        "h": 52,
+        "files": {
+          "albedo": {
+            "file": "sheets/mega__composite__d00__albedo.png",
+            "sha256": "7f3b6874f9c7ae4b21fba775b9912c979ee5b0c8aa10cb5987d3e4f5d2fe9334"
+          },
+          "normal": {
+            "file": "sheets/mega__composite__d00__normal.png",
+            "sha256": "93e2b8d9d917ef316bd358912e86e777c1524b08e6f6a1becdc0ca09a0af14fc"
+          },
+          "material": {
+            "file": "sheets/mega__composite__d00__material.png",
+            "sha256": "30665f1329d800bf0becc2a1f063feab2b89a61a8fb270bfc5a0c684fc2daee8"
+          }
+        }
+      },
+      "d01": {
+        "w": 65,
+        "h": 51,
+        "files": {
+          "albedo": {
+            "file": "sheets/mega__composite__d01__albedo.png",
+            "sha256": "7054dc83e890c24b543ffb838bbc7b40ad7026e27963eefb027060b83ea3c37b"
+          },
+          "normal": {
+            "file": "sheets/mega__composite__d01__normal.png",
+            "sha256": "565556c3de8fec983c7d4b6a8bbc16df03e257c9752a34fab0e289548582043f"
+          },
+          "material": {
+            "file": "sheets/mega__composite__d01__material.png",
+            "sha256": "96511ba10566e90af5a4370fcc1fc03b5b059f48543f4c0fd836f3225656a493"
+          }
+        }
+      },
+      "d02": {
+        "w": 54,
+        "h": 48,
+        "files": {
+          "albedo": {
+            "file": "sheets/mega__composite__d02__albedo.png",
+            "sha256": "66d18fd65c80f92a24706b37a863b4e805223a35f318e4112f71f4b2dcc7931a"
+          },
+          "normal": {
+            "file": "sheets/mega__composite__d02__normal.png",
+            "sha256": "c931348198b08cb9159e7507b35b8c5f08c00ff858164e6a82663585354423de"
+          },
+          "material": {
+            "file": "sheets/mega__composite__d02__material.png",
+            "sha256": "5cb9577e795a5e6303cd749962ff0e061b80a546dfed11d744b9e5982d86db02"
+          }
+        }
+      },
+      "d03": {
+        "w": 65,
+        "h": 52,
+        "files": {
+          "albedo": {
+            "file": "sheets/mega__composite__d03__albedo.png",
+            "sha256": "bf6a63480e7792e88fec01e076408093f6da74049ad6c0229be5cfae1639e193"
+          },
+          "normal": {
+            "file": "sheets/mega__composite__d03__normal.png",
+            "sha256": "2e3c969ec8e4bab13ccf155c94e95ccbfc58eb7c789ea67e1383eaca5b729e37"
+          },
+          "material": {
+            "file": "sheets/mega__composite__d03__material.png",
+            "sha256": "55471a3e3eb7dcb88df5d5383ba9611e08cde572958d40d0cdbdbc5ad6ff4e6a"
+          }
+        }
+      },
+      "d04": {
+        "w": 70,
+        "h": 53,
+        "files": {
+          "albedo": {
+            "file": "sheets/mega__composite__d04__albedo.png",
+            "sha256": "508a2989f7db0c1742185bd541e07432eb156ab130065c87d4825b8ff8fba473"
+          },
+          "normal": {
+            "file": "sheets/mega__composite__d04__normal.png",
+            "sha256": "bedef33fe73a83e25432bb5e8d265972f476c27e3d37c3dd9bbb2e0fce34be7f"
+          },
+          "material": {
+            "file": "sheets/mega__composite__d04__material.png",
+            "sha256": "4cb377358c7bfcf0dc8e7ab3fb10691c3c41a45946307374023c8793d0263549"
+          }
+        }
+      },
+      "d05": {
+        "w": 67,
+        "h": 52,
+        "files": {
+          "albedo": {
+            "file": "sheets/mega__composite__d05__albedo.png",
+            "sha256": "328eaafc1ace9bc34cdf823b99b03fe1d305033128a5d1eeea35e075233d9e8a"
+          },
+          "normal": {
+            "file": "sheets/mega__composite__d05__normal.png",
+            "sha256": "fe7db2322066c7011d04486af029ccfb3b099133ddad2a9ea7c3dcacc790b3fd"
+          },
+          "material": {
+            "file": "sheets/mega__composite__d05__material.png",
+            "sha256": "062755d675d5170a7df44145db8ebbfd4d1a3115944c7ba9876a48106a089278"
+          }
+        }
+      },
+      "d06": {
+        "w": 57,
+        "h": 49,
+        "files": {
+          "albedo": {
+            "file": "sheets/mega__composite__d06__albedo.png",
+            "sha256": "a5b3e77e12d05e8327099e8264f66dbbbbc744ba36b0c7231b29aec79a214e71"
+          },
+          "normal": {
+            "file": "sheets/mega__composite__d06__normal.png",
+            "sha256": "6359b160e1bd6f829dda2c471aaf050bdabce5eabf4bee54ebf8d8b52cd59b69"
+          },
+          "material": {
+            "file": "sheets/mega__composite__d06__material.png",
+            "sha256": "1e86da825773e212a673c5759dc42ad544d6886d97a9c9ba42ad20bf3e58757c"
+          }
+        }
+      },
+      "d07": {
+        "w": 67,
+        "h": 50,
+        "files": {
+          "albedo": {
+            "file": "sheets/mega__composite__d07__albedo.png",
+            "sha256": "5946470a862a96a2c4565c9f34076807dc7280acfb3bddbcffaec7a70f9bf9fc"
+          },
+          "normal": {
+            "file": "sheets/mega__composite__d07__normal.png",
+            "sha256": "b91db18f11a61568694b33cae5ea1271cf230f44fcbec7df72598478f20f8fca"
+          },
+          "material": {
+            "file": "sheets/mega__composite__d07__material.png",
+            "sha256": "853ef3a5bc8243f9ba7ef54f17ee7c5a329435629f083db99766c9693f2a4f99"
+          }
+        }
+      },
+      "d08": {
+        "w": 70,
+        "h": 50,
+        "files": {
+          "albedo": {
+            "file": "sheets/mega__composite__d08__albedo.png",
+            "sha256": "9d8c278ed6fc7041879f74a9e93387370af698092e1d6a51c53476e082c49081"
+          },
+          "normal": {
+            "file": "sheets/mega__composite__d08__normal.png",
+            "sha256": "eb4c05fb4cfd30b9df8dc71bf8d852ef112bcafbf89a06da1d120045ec1306e2"
+          },
+          "material": {
+            "file": "sheets/mega__composite__d08__material.png",
+            "sha256": "de7c541f4d39f35ecff9a522a185e7e15e27973cc851decdf7ce2c1a24dd61a0"
+          }
+        }
+      },
+      "d09": {
+        "w": 65,
+        "h": 51,
+        "files": {
+          "albedo": {
+            "file": "sheets/mega__composite__d09__albedo.png",
+            "sha256": "834fe1d8f6cbb052077c6c91be9c3c2effb266cd555b36e1d41a803a8af43aa4"
+          },
+          "normal": {
+            "file": "sheets/mega__composite__d09__normal.png",
+            "sha256": "204b21e554b545d188dc522aad12e7a591829383587f1f2f958326e5e2945201"
+          },
+          "material": {
+            "file": "sheets/mega__composite__d09__material.png",
+            "sha256": "cf28e5f8ca631b0dccdb2cfa86f9d261c7a247033ad104029c04cffd18b324ce"
+          }
+        }
+      },
+      "d10": {
+        "w": 54,
+        "h": 48,
+        "files": {
+          "albedo": {
+            "file": "sheets/mega__composite__d10__albedo.png",
+            "sha256": "2de29276b875c4c7732180df4d1f0d59c984963bb60aea0121390228fe70b886"
+          },
+          "normal": {
+            "file": "sheets/mega__composite__d10__normal.png",
+            "sha256": "c2a1e09f80d2b60a71adf01e128d7765b437a776e0c88a66e6f12c521c8edf2a"
+          },
+          "material": {
+            "file": "sheets/mega__composite__d10__material.png",
+            "sha256": "8d4796bd3de940a8859842412ec3aff506b8ede9f50b6300afc89955e0228020"
+          }
+        }
+      },
+      "d11": {
+        "w": 65,
+        "h": 51,
+        "files": {
+          "albedo": {
+            "file": "sheets/mega__composite__d11__albedo.png",
+            "sha256": "76cb0a1a0cfd0cbd139b65288017c25b70d37832f865f9ef7f19954bb14a9ba7"
+          },
+          "normal": {
+            "file": "sheets/mega__composite__d11__normal.png",
+            "sha256": "e0e33887f897076de553e239226b15cb5271332e8390ee566040cee384bcc5cd"
+          },
+          "material": {
+            "file": "sheets/mega__composite__d11__material.png",
+            "sha256": "85ec1e3b3c36ceb77720b35b2e46760b8ce98d53c0a2ffe81c0f00939ee3de4f"
+          }
+        }
+      },
+      "d12": {
+        "w": 70,
+        "h": 50,
+        "files": {
+          "albedo": {
+            "file": "sheets/mega__composite__d12__albedo.png",
+            "sha256": "58a6b901ef82ccf5da2834be14c5284aa38ae4aa58e628c1134e58b984d939cd"
+          },
+          "normal": {
+            "file": "sheets/mega__composite__d12__normal.png",
+            "sha256": "1021b7efeef7096cfb817c7ca5dc8a76349f8bfc9e1bb39d1b94aa3c8093a542"
+          },
+          "material": {
+            "file": "sheets/mega__composite__d12__material.png",
+            "sha256": "8ec478eae2b17d88d665ab1fe83e5bf540d73105cfadfd0a456a4d81676968fa"
+          }
+        }
+      },
+      "d13": {
+        "w": 67,
+        "h": 47,
+        "files": {
+          "albedo": {
+            "file": "sheets/mega__composite__d13__albedo.png",
+            "sha256": "0c9c0320d93821542458f850c758907d04b53402bc8c7031af8d23def860392a"
+          },
+          "normal": {
+            "file": "sheets/mega__composite__d13__normal.png",
+            "sha256": "4842188b586782c2b6e2d0195f40044ee536be4e456b7b1f9872459f2a6721b1"
+          },
+          "material": {
+            "file": "sheets/mega__composite__d13__material.png",
+            "sha256": "1729a5d68164a424c7d638907ca1551ceb9856669f50dd368b674ddb14feda38"
+          }
+        }
+      },
+      "d14": {
+        "w": 57,
+        "h": 47,
+        "files": {
+          "albedo": {
+            "file": "sheets/mega__composite__d14__albedo.png",
+            "sha256": "4cbe36ef3535f9ec05c832e4d14a0ad03f203a406a9fbc76abe0b4dc630d00cd"
+          },
+          "normal": {
+            "file": "sheets/mega__composite__d14__normal.png",
+            "sha256": "57f1d5fc8cefd7767d5ffa46ba312ae3bba2a659a866f583ce493d4574a72f11"
+          },
+          "material": {
+            "file": "sheets/mega__composite__d14__material.png",
+            "sha256": "b3d5b7848b5cef134056bfa4e818fa38f6b5dd76dc24a781e47edf2b84362331"
+          }
+        }
+      },
+      "d15": {
+        "w": 67,
+        "h": 50,
+        "files": {
+          "albedo": {
+            "file": "sheets/mega__composite__d15__albedo.png",
+            "sha256": "0a61d7033a1c309ce41f4afa45183f689fedce1a6af71eb8965bd334325cf017"
+          },
+          "normal": {
+            "file": "sheets/mega__composite__d15__normal.png",
+            "sha256": "c303b5168ab510e152320560483756f6bf3c76c0efeb1419d733ba8f924101c5"
+          },
+          "material": {
+            "file": "sheets/mega__composite__d15__material.png",
+            "sha256": "60963cdd5a0ef71e62b345f76fffcd460a4c8285286ee610f42d7a96adbafae3"
+          }
+        }
+      }
+    }
+  },
+  "lit": {
+    "note": "the composite re-shaded through a virtual three-point rig using the normal and material maps (key/fill/rim). If normals or PBR channels are wrong, this is where it shows.",
+    "rig": "three-point",
+    "facings": {
+      "d00": {
+        "file": "sheets/mega__lit__d00__albedo.png",
+        "w": 70,
+        "h": 52,
+        "sha256": "5007348747d0113616263d333b7a942989abb510a61b1ef06e066be5649315e9"
+      },
+      "d01": {
+        "file": "sheets/mega__lit__d01__albedo.png",
+        "w": 65,
+        "h": 51,
+        "sha256": "47cfaa46aa80d747c616c64a68ec2ee41051b346caa5d4f3bf9b85ee661cacd2"
+      },
+      "d02": {
+        "file": "sheets/mega__lit__d02__albedo.png",
+        "w": 54,
+        "h": 48,
+        "sha256": "764acc6919a5c373f346b421ad48a8e5bb62690001acd6d7eb7412b74db21636"
+      },
+      "d03": {
+        "file": "sheets/mega__lit__d03__albedo.png",
+        "w": 65,
+        "h": 52,
+        "sha256": "f0a7118bd4d03ffaae520b7acb3e9988cd5e6aeffc58960fbde285c739923f45"
+      },
+      "d04": {
+        "file": "sheets/mega__lit__d04__albedo.png",
+        "w": 70,
+        "h": 53,
+        "sha256": "e4cdb9bee966bada1747386d25d2acecaf3029a81ece416ff16df0133072df47"
+      },
+      "d05": {
+        "file": "sheets/mega__lit__d05__albedo.png",
+        "w": 67,
+        "h": 52,
+        "sha256": "5a71e71fb7e74b212714a0247473b87577771de18e9ec0dd881a94828c3e02e4"
+      },
+      "d06": {
+        "file": "sheets/mega__lit__d06__albedo.png",
+        "w": 57,
+        "h": 49,
+        "sha256": "ea1c67501266f9f84dbb0f41b0ad418685701fb06f84e5037cb9598c14541feb"
+      },
+      "d07": {
+        "file": "sheets/mega__lit__d07__albedo.png",
+        "w": 67,
+        "h": 50,
+        "sha256": "a0fdaa41941a93dcef57c9307bf59dc1f575d7ef883728ee836aa9f32b3394ed"
+      },
+      "d08": {
+        "file": "sheets/mega__lit__d08__albedo.png",
+        "w": 70,
+        "h": 50,
+        "sha256": "0b769f1edbc96dd910845fbea7317d5fb73963dfae2eb843f0283b4f511c694c"
+      },
+      "d09": {
+        "file": "sheets/mega__lit__d09__albedo.png",
+        "w": 65,
+        "h": 51,
+        "sha256": "d8ff59f95052ec8442171e4af336172eb7d062616c5a022f91419c7f95e20f0e"
+      },
+      "d10": {
+        "file": "sheets/mega__lit__d10__albedo.png",
+        "w": 54,
+        "h": 48,
+        "sha256": "6da680d564a1eb4db5ca7a57c98dcfff03eb52c5ff65330c3ebac6912c3cec84"
+      },
+      "d11": {
+        "file": "sheets/mega__lit__d11__albedo.png",
+        "w": 65,
+        "h": 51,
+        "sha256": "7122840fece1ef4d11d2f5c68e62141be2ff7c714fe71a57a3e4a31371e9a258"
+      },
+      "d12": {
+        "file": "sheets/mega__lit__d12__albedo.png",
+        "w": 70,
+        "h": 50,
+        "sha256": "2f33690aa6a857ebe48a873ae87a9fcbc1d4ec52d3b85e718d8cfc27f14556df"
+      },
+      "d13": {
+        "file": "sheets/mega__lit__d13__albedo.png",
+        "w": 67,
+        "h": 47,
+        "sha256": "b11387e266fce454c0a0c1b669be03d9f296b82110ba6af0aecf5c196ebe827f"
+      },
+      "d14": {
+        "file": "sheets/mega__lit__d14__albedo.png",
+        "w": 57,
+        "h": 47,
+        "sha256": "3b418174aa3b1095759ed87063a0d04bd98be24c0bac08be61a503a3c75cebb5"
+      },
+      "d15": {
+        "file": "sheets/mega__lit__d15__albedo.png",
+        "w": 67,
+        "h": 50,
+        "sha256": "e386aebc19d56b925f739c63bd147812b30f8113c42d1bf437a4f14f44f4aa00"
+      }
+    }
+  },
+  "previewLit": {
+    "file": "preview-lit.png",
+    "facing": "d00",
+    "rig": "three-point",
+    "note": "relit from the normal + material maps"
+  },
+  "previewLights": {
+    "file": "preview-lights.png",
+    "facing": "d00",
+    "order": [
+      "azimuth 0deg / elevation 40deg",
+      "azimuth 45deg / elevation 40deg",
+      "azimuth 90deg / elevation 40deg",
+      "azimuth 135deg / elevation 40deg",
+      "azimuth 180deg / elevation 40deg",
+      "azimuth 225deg / elevation 40deg",
+      "azimuth 270deg / elevation 40deg",
+      "azimuth 315deg / elevation 40deg"
+    ],
+    "note": "one virtual light per panel, proving the normal map is directionally correct"
+  },
+  "previewMaps": {
+    "file": "preview-maps.png",
+    "facing": "d00",
+    "panels": [
+      "albedo",
+      "normal",
+      "material-id",
+      "metalness",
+      "roughness",
+      "emissive"
+    ]
+  },
+  "preview": {
+    "file": "preview.png",
+    "facing": "d00",
+    "w": 519,
+    "h": 375,
+    "mode": "single-pass"
+  },
+  "previewParts": {
+    "file": "preview-parts.png",
+    "facing": "d00",
+    "w": 523,
+    "h": 379,
+    "mode": "composited-from-part-sheets"
+  }
+}
