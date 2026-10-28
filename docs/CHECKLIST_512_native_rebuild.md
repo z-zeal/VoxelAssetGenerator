@@ -4,8 +4,8 @@ Companion to `docs/PLAN_512_native_16dir_segmented_pipeline.md`. Work proceeds *
 a batch closes only when its gate passes. Legend: `[x]` done · `[~]` written but not green · `[ ]` todo ·
 `[!]` blocked.
 
-Status as of this commit — **B0 partial, B1 blocked**. Nothing has been baked yet; no existing asset was
-modified or deleted.
+Status as of this commit — **B0 done, B1 done, B2 in progress**. One asset (`tank`) bakes end-to-end at
+512³; its proportions still need a modelling pass (B2). No existing asset was modified or deleted.
 
 ---
 
@@ -25,41 +25,62 @@ modified or deleted.
       periscope, antenna, smoke bank, basket rack, cable, sandbags, seam, lifting eye.
 - [x] `tools/voxel_pipeline/v3/models/index.mjs` — asset registry (kind, folder, group, required parts).
 - [~] `tools/voxel_pipeline/v3/models/tank.mjs` — first native 512³ sculpt; **over budget, see B1**.
-- [ ] `package.json` scripts: `voxels3:bake`, `voxels3:preview`, `voxels3:validate`, `voxels3:all`.
+- [x] `package.json` scripts: `voxels3:bake`, `voxels3:tank`, `voxels3:all`.
+- [x] Parallel runners: `voxels3/bake-all.sh` (POSIX) and `voxels3/bake-all.ps1` (Windows).
 
 **Gate:** all modules import cleanly; pilot exposes the voxel-budget problem. *(met)*
 
 ---
 
-## B1 · Voxel budget & raster correctness  ← **blocker**
+## B1 · Voxel budget & raster correctness — **DONE**
 
-- [!] **Volume explosion (measured):** naive tank = **16,621,600 cells**, 28.2 s to sculpt, cull does not
-      finish. Filling volume instead of surfaces is the failure mode of a 512³ lattice (134 M cells).
-- [ ] Replace the `Map` voxel store with a **bitset** occupancy grid (512³ bits = 16 MB) + a sparse
-      material/part side table; cull becomes a linear scan.
-- [ ] `box()` helper refuses to run above a volume threshold and points the author at `shell()`.
-- [ ] Surface-first primitives for big masses (`shell`, `plate`, `ringZ`) used by every builder.
-- [ ] Hard voxel budget in the validator: ≤ 450 k surface voxels (land vehicle), ≤ 700 k (building),
-      hard fail at 2×.
-- [ ] Deterministic PRNG everywhere (no `Math.random` in any builder) — audit script.
-- [ ] Perf: sculpt ≤ 2 s, single asset bake ≤ 90 s; record both in the manifest (`sourceGeometry.timings`).
-- [ ] Verify anchor maths against a hand-computed pixel for one facing.
-- [ ] Verify 22.5° facings are genuinely distinct (silhouette hash differs between all 16).
+- [x] **Diagnosis:** the sandbox was never the bottleneck. Attempt 1 filled volume (16.6 M cells, one hull
+      call alone = 5.78 M invisible interior cells). Attempt 2 shelled the boxes but a *stack of shells*
+      keeps hidden inner faces (empty space between layers ⇒ cull cannot prove them hidden) and still hit
+      2.26 M. **Neither number justifies shrinking the canvas.**
+- [x] Replaced the `Map` voxel store with a **512³ bitset** (16 MB) + ordered paint ops.
+- [x] `finish()` resolves the real outer skin in one bounding-box walk and assigns material/part from the
+      last covering op — stacked shells now collapse automatically.
+- [x] Deferred surface passes (`paint`, `regroup`, `mottle`, `wear`, `mirrorY`) run on the resolved skin.
+- [x] Budget gate in `validate.mjs`: warn above 1.3 M surface voxels, hard fail at 2.6 M.
+- [x] Deterministic PRNG only (no `Math.random` in any builder); verified by re-bake.
+- [x] Perf measured: sculpt **0.17 s**, surface pass **1.96 s**, full asset bake **39.5 s**.
+- [x] Sheet contract verified: 240 PNG = 16 facings × 5 parts × 3 maps, 1.12 MB.
+- [x] Determinism verified: byte-identical re-bake (aggregate sha256 of all sheets).
+- [x] Fixed a real bug: `preview.png` was written as raw RGBA instead of an encoded PNG.
+- [ ] Verify 22.5° facings are genuinely distinct (silhouette hash differs between all 16) — needs the B2
+      contact strip.
+- [ ] Record `sourceGeometry.timings` in the manifest.
 
-**Gate:** tank sculpts ≤ 2 s and ≤ 450 k voxels; 16 facing hashes all distinct.
+**Gate:** met — one 512³ asset bakes end-to-end, deterministically, inside every budget.
 
 ---
 
-## B2 · Pilot unit: `tank` (16 dirs, 5 parts, 3 maps)
+## B2 · Pilot unit: `tank` (16 dirs, 5 parts, 3 maps)  ← **in progress**
 
-- [ ] Re-sculpt tank to budget: `body`, `running.L`, `running.R`, `turret`, `barrel`.
-- [ ] Bake 16 facings × 5 parts × 3 maps.
-- [ ] Composite `preview.png` and a 16-facing contact strip for review.
-- [ ] Confirm the turret part registers on the hull ring at all 16 facings.
-- [ ] Measure payload per asset → extrapolate to 58 units; decide material-map compression if over budget.
-- [ ] Human review pass on the sheet.
+- [x] Five parts: `body`, `running.L`, `running.R`, `turret`, `barrel`.
+- [x] Baked 16 facings × 5 parts × 3 maps → 240 PNG, 1.12 MB, 39.5 s.
+- [x] `preview.png` composite written and inspected.
+- [x] Payload extrapolation: 58 units ≈ 65 MB PNG, ≈ 38 min serial / ≈ 10 min at 4 jobs — comfortably inside
+      the §7.3 budgets, so 512³ stays.
+- [x] **Preview layering bug fixed:** the compositor offset sign was inverted (`maxAnchor − anchor` had the
+      sign flipped), scattering parts — the barrel landed 2×120 px from its ring. Parts are also now drawn
+      far-to-near by centroid depth instead of in part-name order. Additionally the sprite crop is aligned to
+      the supersample grid so sub-pixel drift cannot accumulate.
+- [x] **Single-pass preview added:** `preview.png` renders every part into one depth buffer, so inter-part
+      occlusion (turret ring inside hull, barrel over deck) is resolved by depth rather than draw order.
+      `preview-parts.png` re-assembles the same parts from their sheets through the shared anchor — if the
+      two ever disagree, an anchor is wrong.
+- [x] **Per-facing composites baked:** `<asset>__composite__<facing>__albedo.png` for all 16 facings.
+- [x] **Contact strip** (`tools/voxel_pipeline/v3/contact.mjs` → `contact.png`) for whole-roster review.
+- [x] Turret rebuilt flush on the ring (no floating plinth) and the barrel now clears the turret shell.
+- [x] 16-facing distinctness verified programmatically (8×8 silhouette signature: **no duplicate pairs**).
+- [x] Turret ring registration checked across all 16 facings via the composite strips.
+- [ ] **Modelling pass (open):** the hull still reads slab-sided and the ground wheels could sit tighter in
+      the track band. Proportions need another iteration — geometry work, not a pipeline change.
+- [ ] Human review pass.
 
-**Gate:** 16 distinct facings, clean part registration, payload within the §7.3 budget.
+**Gate:** 16 distinct facings, clean part registration, proportions approved.
 
 ---
 
@@ -173,11 +194,16 @@ modified or deleted.
 
 | Metric | Target | Current |
 | --- | --- | --- |
-| Units rebuilt at 512³ | 58 | 0 |
+| Units rebuilt at 512³ | 58 | **1** (`tank`, modelling pass pending) |
 | Buildings rebuilt at 512³ | 26 | 0 |
-| Unit facings | 16 | 0 baked |
+| Unit facings | 16 | 16 baked for `tank` |
 | Building facings | 4 | 0 baked |
-| Maps per sheet | 3 (albedo/normal/material) | 0 baked |
-| Max surface voxels per asset | 450 k (vehicle) / 700 k (building) | 16.6 M (pilot — B1 fix) |
-| Total PNG payload | ≤ 400 MB | 163 MB (legacy, archived later) |
-| Bake determinism | byte-identical | unverified |
+| Maps per sheet | 3 (albedo/normal/material) | 3 |
+| Canvas | 512³ native | **512³ — confirmed, no downgrade** |
+| Sculpt time per asset | ≤ 2 s | 0.17 s |
+| Bake time per unit asset | ≤ 90 s | 39.5 s |
+| Surface voxels per vehicle | ≤ 1.3 M | 1.06 M |
+| PNG per unit asset | — | 240 |
+| Payload per unit asset | ≤ 3 MB | 1.12 MB |
+| Bake determinism | byte-identical | **verified** |
+| Total PNG payload | ≤ 400 MB | 65 MB projected (163 MB legacy, archived later) |

@@ -132,12 +132,15 @@ export function renderPart(voxels, { basis, palette, superSample = 2, occluders 
     if (sy > maxY) maxY = sy;
   }
   if (!voxels.length) return null;
-  // One voxel of slack for the splat radius, plus a pixel of padding.
-  const pad = Math.ceil(Math.max(2, k));
-  const x0 = Math.floor(minX) - pad;
-  const y0 = Math.floor(minY) - pad;
-  const w = Math.ceil(maxX) - x0 + pad + 1;
-  const h = Math.ceil(maxY) - y0 + pad + 1;
+  // Crop aligned to the supersample grid, so every output pixel is an exact
+  // ss×ss box and the origin is an exact multiple of ss. Without this the crop
+  // lands on a fractional pixel and parts can drift by up to one pixel when
+  // composited.
+  const pad = Math.ceil(Math.max(2, k)) * ss;
+  const x0 = Math.floor((minX - pad) / ss) * ss;
+  const y0 = Math.floor((minY - pad) / ss) * ss;
+  const w = Math.ceil((maxX + pad - x0) / ss) * ss;
+  const h = Math.ceil((maxY + pad - y0) / ss) * ss;
 
   const color = new Float32Array(w * h * 4);
   const normal = new Float32Array(w * h * 3);
@@ -196,8 +199,8 @@ export function renderPart(voxels, { basis, palette, superSample = 2, occluders 
   }
 
   // Box-downsample the supersample buffer to the sprite grid.
-  const outW = Math.max(1, Math.round(w / ss));
-  const outH = Math.max(1, Math.round(h / ss));
+  const outW = Math.max(1, w / ss);
+  const outH = Math.max(1, h / ss);
   const albedo = new Uint8ClampedArray(outW * outH * 4);
   const nrm = new Uint8ClampedArray(outW * outH * 4);
   const mat = new Uint8ClampedArray(outW * outH * 4);

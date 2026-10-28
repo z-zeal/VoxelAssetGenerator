@@ -63,7 +63,9 @@ export function buildTank(c) {
 
   // Upper hull / sponsons overhanging both tracks.
   c.box(96, 88, 96, 440, 424, DECK_Z, 'team.hull');
-  c.box(104, 96, DECK_Z, 432, 416, DECK_Z + 4, 'team.light');   // deck plate
+  // Deck plate is a *paint* on the hull top, not a second stacked slab.
+  c.paint((x, y, z) => z === DECK_Z - 1 && x >= 104 && x < 432 && y >= 96 && y < 416, 'team.light');
+  c.box(104, 96, DECK_Z - 1, 432, 416, DECK_Z, 'team.light');
   // Side skirts with panel lines.
   for (let x = 104; x < 432; x += 22) {
     c.box(x, 88, 100, x + 1, 94, 142, 'team.dark');
@@ -76,13 +78,13 @@ export function buildTank(c) {
   c.rivets(96, 86, 140, 444, 86, 140, 9, 'steel.dark');
   c.rivets(96, 426, 140, 444, 426, 140, 9, 'steel.dark');
 
-  // Glacis: a true stepped slope from the nose to the deck (no cube stamps).
-  for (let x = 440; x < 496; x++) {
-    const t = (x - 440) / 56;
-    const zTop = Math.round(DECK_Z - t * 54);
-    c.box(x, 112, 96, x + 1, 400, Math.max(98, zTop), 'team.hull');
-    c.box(x, 112, Math.max(98, zTop) - 3, x + 1, 400, Math.max(98, zTop), 'team.light');
-  }
+  // Glacis: swept profile, surface only (top slope + walls + end caps).
+  c.profileX(440, 496, 112, 400,
+    x => DECK_Z - ((x - 440) / 56) * 54,
+    () => 96,
+    'team.hull');
+  // Highlight band along the slope crest: paint, never stack another layer.
+  c.paint((x, y, z) => x >= 440 && x < 496 && z >= DECK_Z - 8, 'team.light');
   // Nose beam, tow hooks, headlight brush guards.
   c.box(492, 108, 92, 500, 404, 104, 'steel.dark');
   for (const y of [136, 356]) {
@@ -145,91 +147,84 @@ export function buildTank(c) {
 
   /* ----------------------------------------------------------------- turret */
   c.part('turret');
-  // Ring + basket floor.
-  c.ringZ(320, 256, DECK_Z + 4, TURRET_BASE, 104, 78, 'steel.dark');
-  c.bolts(320, 256, TURRET_BASE - 1, 92, 20, 'steel', 3);
-  // Faceted turret body: stacked rings give a real sloped casting, not a box.
-  const turretRings = [
-    [158, 232, 176, 336],   // z0, z1, y0, y1 (rectangular core at the base)
-    [232, 244, 182, 330],
-    [244, 254, 190, 322],
-  ];
-  for (const [z0, z1, y0, y1] of turretRings) {
-    c.box(244, y0, z0, 400, y1, z1, 'team.hull');
-  }
-  c.box(250, 188, 244, 394, 316, 256, 'team.light');
-  // Sloped front cheeks and rear bustle.
-  for (let x = 388; x < 412; x++) {
-    const shrink = Math.round((x - 388) * 1.1);
-    c.box(x, 186 + shrink, 158, x + 1, 322 - shrink, 232, 'team.hull');
-  }
-  c.box(232, 190, 168, 250, 322, 236, 'team.dark');
-  c.box(214, 206, 172, 236, 306, 224, 'team.dark');
-  crate(c, { x0: 202, y0: 216, z0: 176, x1: 232, y1: 296, z1: 214, part: 'turret', mat: 'canvas' });
-  basketRack(c, { x0: 194, x1: 232, y0: 300, y1: 350, z0: 166, z1: 212, part: 'turret' });
-  crate(c, { x0: 200, y0: 306, z0: 168, x1: 232, y1: 344, z1: 196, part: 'turret', mat: 'canvas' });
+  // The turret shell starts *at* deck height on a flush ring: no plinth, no
+  // floating segment. Ring outer radius matches the hull race.
+  c.ringZ(320, 256, DECK_Z, DECK_Z + 8, 106, 84, 'steel.dark');
+  c.bolts(320, 256, DECK_Z + 8, 96, 22, 'steel', 3);
 
-  // Commander's cupola with vision blocks and an AA mount.
-  c.cylZ(386, 300, 254, 286, 40, 'team.hull');
-  c.ringZ(386, 300, 286, 292, 40, 30, 'steel');
-  hatch(c, { cx: 386, cy: 300, z: 292, r: 26, part: 'turret' });
+  // Cast turret as four shrinking slabs: the silhouette slopes inward with
+  // height instead of reading as a tall box. Width runs 192 -> 132 voxels.
+  const slabs = [
+    [150, 168, 160, 352, 252, 390],
+    [168, 186, 168, 344, 258, 384],
+    [186, 198, 180, 332, 266, 376],
+    [198, 206, 194, 318, 276, 366],
+  ];
+  for (const [z0, z1, y0, y1, x0, x1] of slabs) c.box(x0, y0, z0, x1, y1, z1, 'team.hull');
+  // Sloped front plate cheeks (the mantlet recess sits between them).
+  c.box(388, 160, 150, 396, 214, 190, 'team.dark');
+  c.box(388, 298, 150, 396, 352, 190, 'team.dark');
+  // Rear bustle: ammunition rack behind the crew compartment.
+  c.box(232, 172, 150, 254, 340, 194, 'team.dark');
+  c.box(236, 178, 194, 250, 334, 198, 'steel.dark');
+  basketRack(c, { x0: 196, x1: 236, y0: 180, y1: 262, z0: 158, z1: 196, part: 'turret' });
+  crate(c, { x0: 200, y0: 188, z0: 160, x1: 234, y1: 258, z1: 190, part: 'turret', mat: 'canvas' });
+
+  // Commander's cupola, offset to the left of the gun.
+  c.cylZ(322, 306, 206, 226, 34, 'team.hull');
+  c.ringZ(322, 306, 226, 232, 34, 24, 'steel');
+  hatch(c, { cx: 322, cy: 306, z: 232, r: 21, part: 'turret' });
   for (let i = 0; i < 8; i++) {
     const a = (i / 8) * Math.PI * 2;
-    const vx = Math.round(386 + Math.cos(a) * 33);
-    const vy = Math.round(300 + Math.sin(a) * 33);
-    c.box(vx - 3, vy - 3, 266, vx + 3, vy + 3, 280, 'steel.dark');
-    c.box(vx - 2, vy - 2, 268, vx + 2, vy + 2, 278, 'glass');
+    const vx = Math.round(322 + Math.cos(a) * 28);
+    const vy = Math.round(306 + Math.sin(a) * 28);
+    c.box(vx - 3, vy - 3, 208, vx + 3, vy + 3, 220, 'steel.dark');
+    c.box(vx - 2, vy - 2, 210, vx + 2, vy + 2, 218, 'glass');
   }
-  // Roof AA machine gun on a pintle.
-  c.cylZ(386, 300, 300, 312, 5, 'steel.dark');
-  c.box(376, 296, 312, 392, 304, 320, 'steel.dark');
-  c.box(388, 296, 314, 442, 302, 320, 'gunmetal');
-  c.cylX(436, 446, 299, 317, 5, 'steel');
-  c.box(360, 292, 316, 378, 308, 322, 'steel.dark');          // ammo box
+  // Roof AA machine gun on the cupola pintle.
+  c.cylZ(322, 306, 236, 244, 4, 'steel.dark');
+  c.box(312, 302, 244, 330, 310, 250, 'steel.dark');
+  c.box(330, 303, 245, 372, 309, 249, 'gunmetal');
+  c.cylX(368, 376, 306, 247, 4, 'steel');
+  c.box(296, 298, 246, 312, 314, 252, 'steel.dark');
 
-  // Loader hatch, periscopes, gunner's sight.
-  hatch(c, { cx: 300, cy: 206, z: 256, r: 24, part: 'turret' });
-  periscope(c, { x: 300, y: 316, z: 256, w: 8, h: 6, part: 'turret' });
-  c.box(342, 326, 246, 384, 352, 274, 'steel.dark');          // sight housing
-  c.box(384, 330, 252, 396, 348, 268, 'optic');
-  c.cylZ(352, 340, 274, 282, 9, 'steel');                     // sight head
-  c.box(348, 334, 282, 360, 346, 286, 'glass');
+  // Loader's hatch and the gunner's sight on the roof.
+  hatch(c, { cx: 300, cy: 210, z: 206, r: 18, part: 'turret' });
+  periscope(c, { x: 290, y: 300, z: 206, w: 7, h: 5, part: 'turret' });
+  c.box(344, 316, 200, 380, 342, 222, 'steel.dark');
+  c.box(380, 320, 205, 390, 338, 218, 'optic');
+  c.cylZ(366, 330, 222, 228, 7, 'steel');
 
-  // Smoke launcher banks, one each side.
-  smokeBank(c, { x: 380, y: 168, z: 226, dx: -6, dy: 12, part: 'turret' });
-  smokeBank(c, { x: 380, y: 330, z: 226, dx: -6, dy: -12, part: 'turret' });
-  // Lifting eyes, grab rails, stowage straps.
-  liftingEye(c, { x: 268, y: 180, z: 254, part: 'turret' });
-  liftingEye(c, { x: 268, y: 320, z: 254, part: 'turret' });
-  for (let x = 270; x < 380; x += 26) {
-    c.box(x, 182, 238, x + 14, 186, 242, 'steel.dark');       // side grab rails
-    c.box(x, 326, 238, x + 14, 330, 242, 'steel.dark');
+  // Smoke launcher banks on the turret cheeks.
+  smokeBank(c, { x: 370, y: 168, z: 186, dx: -7, dy: 12, part: 'turret' });
+  smokeBank(c, { x: 370, y: 334, z: 186, dx: -7, dy: -12, part: 'turret' });
+  liftingEye(c, { x: 262, y: 168, z: 204, part: 'turret' });
+  liftingEye(c, { x: 262, y: 330, z: 204, part: 'turret' });
+  for (let x = 276; x < 360; x += 24) {
+    c.box(x, 162, 194, x + 12, 166, 198, 'steel.dark');
+    c.box(x, 344, 194, x + 12, 348, 198, 'steel.dark');
   }
-  antenna(c, { x: 236, y: 316, z: 220, height: 104, part: 'turret' });
-  antenna(c, { x: 236, y: 196, z: 220, height: 78, part: 'turret' });
-  c.pivot('turret', [320, 256, TURRET_BASE]);
+  antenna(c, { x: 240, y: 322, z: 196, height: 96, part: 'turret' });
+  antenna(c, { x: 240, y: 190, z: 196, height: 72, part: 'turret' });
+  c.pivot('turret', [320, 256, DECK_Z]);
   c.dynamic('turret');
 
   /* ----------------------------------------------------------------- barrel */
+  // The mantlet closes the turret front and the tube runs clear of the hull
+  // nose, so the barrel is never buried inside the turret shell.
   c.part('barrel');
-  c.box(396, 200, 178, 424, 312, 238, 'team.dark');           // mantlet cheek
-  c.box(400, 216, 184, 424, 296, 232, 'team.hull');
-  c.box(404, 226, 192, 426, 286, 226, 'steel.dark');          // trunnion collar
-  c.cylX(420, 486, 256, 208, 13, 'gunmetal');                 // tube
-  c.cylX(420, 432, 256, 208, 17, 'steel.dark');               // breech collar
-  c.cylX(452, 474, 256, 208, 19, 'gunmetal.lit');             // bore evacuator
-  c.cylX(455, 471, 256, 208, 15, 'gunmetal');
-  for (let x = 480; x < 500; x++) {
-    c.cylX(x, x + 1, 256, 208, 16, 'steel.dark');             // muzzle brake
-  }
+  c.box(374, 212, 150, 398, 300, 194, 'team.dark');
+  c.box(390, 224, 156, 412, 288, 188, 'steel.dark');
+  c.cylX(404, 452, 256, 172, 12, 'gunmetal');
+  c.cylX(450, 466, 256, 172, 17, 'gunmetal.lit');
+  c.cylX(466, 502, 256, 172, 13, 'steel.dark');
   for (let i = 0; i < 3; i++) {
-    c.box(482 + i * 6, 256 - 18, 208 - 4, 485 + i * 6, 256 + 18, 208 + 4, 'steel.bright');
+    c.box(470 + i * 10, 256 - 17, 168, 474 + i * 10, 256 + 17, 176, 'steel.bright');
   }
-  c.cylX(496, 500, 256, 208, 9, 'scorch');                    // bore
-  c.box(430, 244, 196, 446, 268, 220, 'steel.dark');          // recoil cylinder
-  c.cylX(432, 452, 236, 200, 6, 'steel');
-  c.cylX(432, 452, 276, 200, 6, 'steel');
-  c.pivot('barrel', [420, 256, 208]);
+  c.cylX(502, 506, 256, 172, 8, 'scorch');
+  c.box(400, 232, 160, 420, 252, 186, 'steel.dark');   // recoil cylinder
+  c.cylX(404, 424, 280, 164, 5, 'steel');
+  c.pivot('barrel', [400, 256, 172]);
   c.dynamic('barrel');
   c.part('body');
 

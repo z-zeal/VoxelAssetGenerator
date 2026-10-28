@@ -1,0 +1,3521 @@
+{
+  "format": "field-command-voxel-sheet-4",
+  "asset": "tank",
+  "kind": "unit",
+  "group": "vehicles.tracked",
+  "canvas": 512,
+  "designVoxelsPerTileUnit": 8,
+  "renderScale": 4,
+  "superSample": 2,
+  "pxPerVoxel": 0.5,
+  "facings": [
+    "d00",
+    "d01",
+    "d02",
+    "d03",
+    "d04",
+    "d05",
+    "d06",
+    "d07",
+    "d08",
+    "d09",
+    "d10",
+    "d11",
+    "d12",
+    "d13",
+    "d14",
+    "d15"
+  ],
+  "facingMeta": [
+    {
+      "id": "d00",
+      "angle": 0,
+      "screenAngle": 45,
+      "label": "SE"
+    },
+    {
+      "id": "d01",
+      "angle": 22.5,
+      "screenAngle": 67.5,
+      "label": "SSE"
+    },
+    {
+      "id": "d02",
+      "angle": 45,
+      "screenAngle": 90,
+      "label": "S"
+    },
+    {
+      "id": "d03",
+      "angle": 67.5,
+      "screenAngle": 112.5,
+      "label": "SSW"
+    },
+    {
+      "id": "d04",
+      "angle": 90,
+      "screenAngle": 135,
+      "label": "SW"
+    },
+    {
+      "id": "d05",
+      "angle": 112.5,
+      "screenAngle": 157.5,
+      "label": "WSW"
+    },
+    {
+      "id": "d06",
+      "angle": 135,
+      "screenAngle": 180,
+      "label": "W"
+    },
+    {
+      "id": "d07",
+      "angle": 157.5,
+      "screenAngle": 202.5,
+      "label": "WNW"
+    },
+    {
+      "id": "d08",
+      "angle": 180,
+      "screenAngle": 225,
+      "label": "NW"
+    },
+    {
+      "id": "d09",
+      "angle": 202.5,
+      "screenAngle": 247.5,
+      "label": "NNW"
+    },
+    {
+      "id": "d10",
+      "angle": 225,
+      "screenAngle": 270,
+      "label": "N"
+    },
+    {
+      "id": "d11",
+      "angle": 247.5,
+      "screenAngle": 292.5,
+      "label": "NNE"
+    },
+    {
+      "id": "d12",
+      "angle": 270,
+      "screenAngle": 315,
+      "label": "NE"
+    },
+    {
+      "id": "d13",
+      "angle": 292.5,
+      "screenAngle": 337.5,
+      "label": "ENE"
+    },
+    {
+      "id": "d14",
+      "angle": 315,
+      "screenAngle": 0,
+      "label": "E"
+    },
+    {
+      "id": "d15",
+      "angle": 337.5,
+      "screenAngle": 22.5,
+      "label": "ESE"
+    }
+  ],
+  "teamTint": {
+    "note": "Albedo is baked in the standard livery. Recolour pixels whose material map red channel matches these ids to apply an army livery.",
+    "materialIds": [
+      {
+        "name": "team.hull",
+        "id": 0,
+        "role": "hull"
+      },
+      {
+        "name": "team.light",
+        "id": 1,
+        "role": "light"
+      },
+      {
+        "name": "team.dark",
+        "id": 2,
+        "role": "dark"
+      },
+      {
+        "name": "team.accent",
+        "id": 3,
+        "role": "accent"
+      },
+      {
+        "name": "roof",
+        "id": 37,
+        "role": "hull"
+      },
+      {
+        "name": "roof.light",
+        "id": 38,
+        "role": "light"
+      },
+      {
+        "name": "roof.dark",
+        "id": 39,
+        "role": "dark"
+      }
+    ],
+    "liveries": {
+      "_note": "Army liveries for runtime tinting of team materials. Mirrors src/renderer.js TEAM_COLORS and tools/voxel_pipeline/v3/materials.mjs ARMY_LIVERY.",
+      "standard": {
+        "hull": "#df794b",
+        "light": "#ffc68b",
+        "dark": "#934b32",
+        "accent": "#ece7bc"
+      },
+      "allies": {
+        "hull": "#639bc3",
+        "light": "#a9d0e1",
+        "dark": "#345f78",
+        "accent": "#e8f1f4"
+      },
+      "soviets": {
+        "hull": "#7eb06a",
+        "light": "#b8e0a8",
+        "dark": "#2d4a2d",
+        "accent": "#dfe8c8"
+      },
+      "empire": {
+        "hull": "#d9b44e",
+        "light": "#ffe79a",
+        "dark": "#8a6a1a",
+        "accent": "#f6eecd"
+      },
+      "legion": {
+        "hull": "#c65a54",
+        "light": "#ffb0a8",
+        "dark": "#7a2a2a",
+        "accent": "#f3d9d4"
+      },
+      "neutral": {
+        "hull": "#aaa78b",
+        "light": "#cfcdb6",
+        "dark": "#6c6a55",
+        "accent": "#e2e0cf"
+      }
+    }
+  },
+  "normalMap": {
+    "space": "view",
+    "channelOrder": "rgb",
+    "range": "0..255 maps -1..1",
+    "up": "+g means screen up"
+  },
+  "materialMap": {
+    "channelOrder": "rgba",
+    "meaning": [
+      "materialId",
+      "metalness",
+      "roughness",
+      "emissive"
+    ],
+    "table": [
+      {
+        "id": 0,
+        "name": "team.hull",
+        "metalness": 0.35,
+        "roughness": 0.62,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "hull"
+      },
+      {
+        "id": 1,
+        "name": "team.light",
+        "metalness": 0.35,
+        "roughness": 0.58,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "light"
+      },
+      {
+        "id": 2,
+        "name": "team.dark",
+        "metalness": 0.4,
+        "roughness": 0.66,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "dark"
+      },
+      {
+        "id": 3,
+        "name": "team.accent",
+        "metalness": 0.2,
+        "roughness": 0.7,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "accent"
+      },
+      {
+        "id": 4,
+        "name": "steel",
+        "metalness": 0.85,
+        "roughness": 0.42,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 5,
+        "name": "steel.dark",
+        "metalness": 0.85,
+        "roughness": 0.5,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 6,
+        "name": "steel.bright",
+        "metalness": 0.95,
+        "roughness": 0.24,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 7,
+        "name": "gunmetal",
+        "metalness": 0.9,
+        "roughness": 0.38,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 8,
+        "name": "gunmetal.lit",
+        "metalness": 0.9,
+        "roughness": 0.32,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 9,
+        "name": "iron",
+        "metalness": 0.8,
+        "roughness": 0.62,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 10,
+        "name": "brass",
+        "metalness": 0.95,
+        "roughness": 0.3,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 11,
+        "name": "copper",
+        "metalness": 0.95,
+        "roughness": 0.34,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 12,
+        "name": "chrome",
+        "metalness": 1,
+        "roughness": 0.12,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 13,
+        "name": "rubber",
+        "metalness": 0.05,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 14,
+        "name": "track",
+        "metalness": 0.7,
+        "roughness": 0.68,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 15,
+        "name": "track.worn",
+        "metalness": 0.85,
+        "roughness": 0.44,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 16,
+        "name": "tyre",
+        "metalness": 0.03,
+        "roughness": 0.95,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 17,
+        "name": "plate",
+        "metalness": 0.55,
+        "roughness": 0.66,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 18,
+        "name": "plate.lit",
+        "metalness": 0.55,
+        "roughness": 0.6,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 19,
+        "name": "plate.dark",
+        "metalness": 0.55,
+        "roughness": 0.72,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 20,
+        "name": "glass",
+        "metalness": 0.3,
+        "roughness": 0.08,
+        "emissive": 0,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 21,
+        "name": "glass.dark",
+        "metalness": 0.4,
+        "roughness": 0.12,
+        "emissive": 0,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 22,
+        "name": "optic",
+        "metalness": 0.6,
+        "roughness": 0.05,
+        "emissive": 0.55,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 23,
+        "name": "lamp.warm",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.85,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 24,
+        "name": "lamp.red",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.8,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 25,
+        "name": "lamp.cyan",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.8,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 26,
+        "name": "skin",
+        "metalness": 0,
+        "roughness": 0.78,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 27,
+        "name": "skin.dark",
+        "metalness": 0,
+        "roughness": 0.8,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 28,
+        "name": "cloth",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 29,
+        "name": "cloth.dark",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 30,
+        "name": "webbing",
+        "metalness": 0.05,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 31,
+        "name": "boot",
+        "metalness": 0.1,
+        "roughness": 0.85,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 32,
+        "name": "hair",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 33,
+        "name": "concrete",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 34,
+        "name": "concrete.lit",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 35,
+        "name": "concrete.dark",
+        "metalness": 0,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 36,
+        "name": "brick",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 37,
+        "name": "roof",
+        "metalness": 0.1,
+        "roughness": 0.82,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "hull"
+      },
+      {
+        "id": 38,
+        "name": "roof.light",
+        "metalness": 0.1,
+        "roughness": 0.8,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "light"
+      },
+      {
+        "id": 39,
+        "name": "roof.dark",
+        "metalness": 0.1,
+        "roughness": 0.84,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "dark"
+      },
+      {
+        "id": 40,
+        "name": "asphalt",
+        "metalness": 0,
+        "roughness": 0.96,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 41,
+        "name": "paint.line",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 42,
+        "name": "wood",
+        "metalness": 0,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 43,
+        "name": "wood.dark",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 44,
+        "name": "canvas",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 45,
+        "name": "sandbag",
+        "metalness": 0,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 46,
+        "name": "solar",
+        "metalness": 0.6,
+        "roughness": 0.22,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 47,
+        "name": "rust",
+        "metalness": 0.3,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 48,
+        "name": "scorch",
+        "metalness": 0.2,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 49,
+        "name": "smoke",
+        "metalness": 0,
+        "roughness": 1,
+        "emissive": 0.1,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 50,
+        "name": "water",
+        "metalness": 0.2,
+        "roughness": 0.15,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 51,
+        "name": "foam",
+        "metalness": 0,
+        "roughness": 0.6,
+        "emissive": 0.1,
+        "blend": "opaque",
+        "team": null
+      }
+    ]
+  },
+  "parts": {
+    "body": {
+      "name": "body",
+      "dynamic": false,
+      "pivotDesign": [
+        256,
+        256,
+        0
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            106,
+            176
+          ],
+          "pivot": [
+            106,
+            176
+          ],
+          "w": 218,
+          "h": 274,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__body__d00__albedo.png",
+              "w": 218,
+              "h": 274,
+              "sha256": "063437d5224b042ca2b8ed356a50c9591ec8afa631518cc30a02ac04eee55d0a"
+            },
+            "normal": {
+              "file": "sheets/tank__body__d00__normal.png",
+              "w": 218,
+              "h": 274,
+              "sha256": "6eefea7f1e31ccf37d2c0ab830239e8673da6f2ef7defaed805bb6858e7e6e56"
+            },
+            "material": {
+              "file": "sheets/tank__body__d00__material.png",
+              "w": 218,
+              "h": 274,
+              "sha256": "6550bbeca78185fbff7a667760f4445168a2b5c318eb27e2a93a7668f757f193"
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            99.02,
+            178.26
+          ],
+          "pivot": [
+            99.02,
+            178.26
+          ],
+          "w": 195,
+          "h": 274,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__body__d01__albedo.png",
+              "w": 195,
+              "h": 274,
+              "sha256": "d5ef9a154ddd40c641b12617c7531034809aea79084a2fec15bee6b86113465b"
+            },
+            "normal": {
+              "file": "sheets/tank__body__d01__normal.png",
+              "w": 195,
+              "h": 274,
+              "sha256": "019ee54c735e8dfedbcb092fa7e30e8994296b1f9878f405631f1d3634c6476d"
+            },
+            "material": {
+              "file": "sheets/tank__body__d01__material.png",
+              "w": 195,
+              "h": 274,
+              "sha256": "1d0a82f1a4c33bc6f2a50e28e4a1d31310c496808187c783d9f21a5e8d0226a8"
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            78.49,
+            173.51
+          ],
+          "pivot": [
+            78.49,
+            173.51
+          ],
+          "w": 153,
+          "h": 253,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__body__d02__albedo.png",
+              "w": 153,
+              "h": 253,
+              "sha256": "25bce7a682f3dd37c0a843834ab5ebecc7a4e9a8836c60a6b3a654ef77f5fd8f"
+            },
+            "normal": {
+              "file": "sheets/tank__body__d02__normal.png",
+              "w": 153,
+              "h": 253,
+              "sha256": "96a3e5c77754b9dc3a534c92f1c06434d0d68d6625cf90914e167158cc49c9ee"
+            },
+            "material": {
+              "file": "sheets/tank__body__d02__material.png",
+              "w": 153,
+              "h": 253,
+              "sha256": "9a5527a4f788f8e7fb4c9e5ae7e4a22fa0898fcd9900ad47f8638b9c7a76a9e2"
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            96.74,
+            160.98
+          ],
+          "pivot": [
+            96.74,
+            160.98
+          ],
+          "w": 192,
+          "h": 257,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__body__d03__albedo.png",
+              "w": 192,
+              "h": 257,
+              "sha256": "e071347bc60d84a383594d0920fee1594133c774fc813b9e78495a5c4f740159"
+            },
+            "normal": {
+              "file": "sheets/tank__body__d03__normal.png",
+              "w": 192,
+              "h": 257,
+              "sha256": "842a53c482b3a92d98e042642c2586b7d565f7029a6b63854da347b468542dd7"
+            },
+            "material": {
+              "file": "sheets/tank__body__d03__material.png",
+              "w": 192,
+              "h": 257,
+              "sha256": "c363607c405aac6adaba2a01f17328b043f6a863afee86f454c280112dae289f"
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            112,
+            163
+          ],
+          "pivot": [
+            112,
+            163
+          ],
+          "w": 218,
+          "h": 260,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__body__d04__albedo.png",
+              "w": 218,
+              "h": 260,
+              "sha256": "efe7122feac95e30a01df4d7c45cdf8afedc073be06296425460acb8df82a4b7"
+            },
+            "normal": {
+              "file": "sheets/tank__body__d04__normal.png",
+              "w": 218,
+              "h": 260,
+              "sha256": "8e9dc3b040473dc624c2b7d1dfd4ad0e08efdc352fe2b353068610825e2fd095"
+            },
+            "material": {
+              "file": "sheets/tank__body__d04__material.png",
+              "w": 218,
+              "h": 260,
+              "sha256": "0153d3eee896c1830835613a305944db4a51fa660b7204e3a27411cce66ee46f"
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            111.74,
+            158.02
+          ],
+          "pivot": [
+            111.74,
+            158.02
+          ],
+          "w": 216,
+          "h": 243,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__body__d05__albedo.png",
+              "w": 216,
+              "h": 243,
+              "sha256": "0705d9833260badc956d8a7efd4093f85a357ad972102cea6671bf680ca06a68"
+            },
+            "normal": {
+              "file": "sheets/tank__body__d05__normal.png",
+              "w": 216,
+              "h": 243,
+              "sha256": "2781cc67cf22da83cf54e99b474e79006e7fdbd34f5c9771e115c2f1a393c1cf"
+            },
+            "material": {
+              "file": "sheets/tank__body__d05__material.png",
+              "w": 216,
+              "h": 243,
+              "sha256": "d58a53e27746b7091e747ac8a108d0049e082a90659beabda6c3751c44392096"
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            96.49,
+            154.49
+          ],
+          "pivot": [
+            96.49,
+            154.49
+          ],
+          "w": 185,
+          "h": 217,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__body__d06__albedo.png",
+              "w": 185,
+              "h": 217,
+              "sha256": "74ecd4718c8d02c2cee4112ff86b4c0278bb79268a4a5752cd23a0abbcbdf5d9"
+            },
+            "normal": {
+              "file": "sheets/tank__body__d06__normal.png",
+              "w": 185,
+              "h": 217,
+              "sha256": "b61c2f9c2dcf6031da60d9083927d110bbfc6e1f77ed917cec54817a69154085"
+            },
+            "material": {
+              "file": "sheets/tank__body__d06__material.png",
+              "w": 185,
+              "h": 217,
+              "sha256": "f5fe26b91b077b29c039b214bdad5e687af7fa585fcfa07d72079339b7e1ce5b"
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            112.02,
+            171.74
+          ],
+          "pivot": [
+            112.02,
+            171.74
+          ],
+          "w": 217,
+          "h": 250,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__body__d07__albedo.png",
+              "w": 217,
+              "h": 250,
+              "sha256": "a9d5fce11da7765ebaa14c067ffab692b43c4116484ec377b09a6ad4cb7dbafe"
+            },
+            "normal": {
+              "file": "sheets/tank__body__d07__normal.png",
+              "w": 217,
+              "h": 250,
+              "sha256": "e14cca53c520455ccbac0fd35427d51240d52368e73c232a861807471632dee8"
+            },
+            "material": {
+              "file": "sheets/tank__body__d07__material.png",
+              "w": 217,
+              "h": 250,
+              "sha256": "bbc2795ea9944c77ef1d5fa18f61374cb8183ae06e649d571bcd7af59a382162"
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            112,
+            179
+          ],
+          "pivot": [
+            112,
+            179
+          ],
+          "w": 218,
+          "h": 267,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__body__d08__albedo.png",
+              "w": 218,
+              "h": 267,
+              "sha256": "2a8f810695d26490d3db126b559eb6d3c0c193a849f61ab940e8fe6f3b82db69"
+            },
+            "normal": {
+              "file": "sheets/tank__body__d08__normal.png",
+              "w": 218,
+              "h": 267,
+              "sha256": "ff54fcd2515fa8e131f8c7b31307f0723c7df911728649a75acb41165f37cf65"
+            },
+            "material": {
+              "file": "sheets/tank__body__d08__material.png",
+              "w": 218,
+              "h": 267,
+              "sha256": "3de7853f37062d274981d29f20ae6392825d99a866ba37f0927334abb03335ba"
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            95.98,
+            179.74
+          ],
+          "pivot": [
+            95.98,
+            179.74
+          ],
+          "w": 195,
+          "h": 265,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__body__d09__albedo.png",
+              "w": 195,
+              "h": 265,
+              "sha256": "ee646635fea1d009d33751eb30305a3859529da03b9edf0c6bd2add1f50ea474"
+            },
+            "normal": {
+              "file": "sheets/tank__body__d09__normal.png",
+              "w": 195,
+              "h": 265,
+              "sha256": "f55661fdd3e6da856b1935dc4cc8c0a891f32eb634e83585064949a0138e2c6a"
+            },
+            "material": {
+              "file": "sheets/tank__body__d09__material.png",
+              "w": 195,
+              "h": 265,
+              "sha256": "4288132f49b95487a112e0c165dcc900952bfebf727c2ad02ab4a7211dc14042"
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            74.51,
+            176.49
+          ],
+          "pivot": [
+            74.51,
+            176.49
+          ],
+          "w": 153,
+          "h": 245,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__body__d10__albedo.png",
+              "w": 153,
+              "h": 245,
+              "sha256": "680d235d24f0138cd1bd39703f683815bc9df9c2bf6a1a11ce15a1dc0f9b5ab7"
+            },
+            "normal": {
+              "file": "sheets/tank__body__d10__normal.png",
+              "w": 153,
+              "h": 245,
+              "sha256": "b88a76b12fdbdb27a3729aa48430127c1bbf3fa28ecf0f97fa3b2e3dafeebab3"
+            },
+            "material": {
+              "file": "sheets/tank__body__d10__material.png",
+              "w": 153,
+              "h": 245,
+              "sha256": "7b6dba9b5d7c4c9a19bb423469a1f67761b51bc4bd9ef856bc3c279c01814e19"
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            95.26,
+            177.02
+          ],
+          "pivot": [
+            95.26,
+            177.02
+          ],
+          "w": 192,
+          "h": 262,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__body__d11__albedo.png",
+              "w": 192,
+              "h": 262,
+              "sha256": "9109c454f357ca44ebd6f3a9ca28999ce44a1ded7eac22d033d0b6cbebe1380b"
+            },
+            "normal": {
+              "file": "sheets/tank__body__d11__normal.png",
+              "w": 192,
+              "h": 262,
+              "sha256": "e7cac5ba167c51f45207464b038824bf6e73b880a858c7eb322835edcc72945e"
+            },
+            "material": {
+              "file": "sheets/tank__body__d11__material.png",
+              "w": 192,
+              "h": 262,
+              "sha256": "e44e47052fac2d48a39041b2e2934a0de2ea704b8a05ae8753602d90bc9fbf04"
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            106,
+            179
+          ],
+          "pivot": [
+            106,
+            179
+          ],
+          "w": 218,
+          "h": 268,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__body__d12__albedo.png",
+              "w": 218,
+              "h": 268,
+              "sha256": "e4d06ba89a116abae1a214b057c2a23e6b0c6d755ac3908fef2662b58e05a769"
+            },
+            "normal": {
+              "file": "sheets/tank__body__d12__normal.png",
+              "w": 218,
+              "h": 268,
+              "sha256": "317ac4b01e02a996ef0726cb4259065b8e4f0a7370ad80f2f1d6ce0007225f94"
+            },
+            "material": {
+              "file": "sheets/tank__body__d12__material.png",
+              "w": 218,
+              "h": 268,
+              "sha256": "4bffaed64ec2d9eb235e2f63ff3c13989dc7f02725c108bcad6ee472dc3fb8f0"
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            104.26,
+            171.98
+          ],
+          "pivot": [
+            104.26,
+            171.98
+          ],
+          "w": 216,
+          "h": 251,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__body__d13__albedo.png",
+              "w": 216,
+              "h": 251,
+              "sha256": "9dd3a9636c2d04cf8e99f4d2ea46ae262536c7671b0759b2b45146f6fac93502"
+            },
+            "normal": {
+              "file": "sheets/tank__body__d13__normal.png",
+              "w": 216,
+              "h": 251,
+              "sha256": "852e81e145f565361341eda3894b6cd1f622a6cbd4fcd3fbfd56a4abe7f4f1c3"
+            },
+            "material": {
+              "file": "sheets/tank__body__d13__material.png",
+              "w": 216,
+              "h": 251,
+              "sha256": "3141a6c3f1594db4f73d95dc270f28dbed2f43438da8c5459b7a1e2e33824b2d"
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            88.51,
+            152.51
+          ],
+          "pivot": [
+            88.51,
+            152.51
+          ],
+          "w": 185,
+          "h": 215,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__body__d14__albedo.png",
+              "w": 185,
+              "h": 215,
+              "sha256": "f5b63c66a99c32ce6a1878c194f8cd1955db4c2cb3945f8d0aa51d0346d952a6"
+            },
+            "normal": {
+              "file": "sheets/tank__body__d14__normal.png",
+              "w": 185,
+              "h": 215,
+              "sha256": "c631305e07d64748da645ea7abb7b5b55e425073e42db419377f9e357809126c"
+            },
+            "material": {
+              "file": "sheets/tank__body__d14__material.png",
+              "w": 185,
+              "h": 215,
+              "sha256": "5708f7b815da7fa1ecab98e2ba8cd9ecba961092aa607a98ad81391a5008ba33"
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            104.98,
+            165.26
+          ],
+          "pivot": [
+            104.98,
+            165.26
+          ],
+          "w": 217,
+          "h": 250,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__body__d15__albedo.png",
+              "w": 217,
+              "h": 250,
+              "sha256": "6bc819dcc39e8f001dd47c767166f6afb58f55754b251f8c6da21f4ce090df9e"
+            },
+            "normal": {
+              "file": "sheets/tank__body__d15__normal.png",
+              "w": 217,
+              "h": 250,
+              "sha256": "5cf21b7c7cfa0ef0f0934c805b86e7844a58dceec2040e375b9d725c41011d65"
+            },
+            "material": {
+              "file": "sheets/tank__body__d15__material.png",
+              "w": 217,
+              "h": 250,
+              "sha256": "4f5faf19879b492a8cea2ab9ba25f6449deb1391779df13462f7a22c9dd4a530"
+            }
+          }
+        }
+      }
+    },
+    "running.L": {
+      "name": "running.L",
+      "dynamic": false,
+      "pivotDesign": [
+        256,
+        256,
+        0
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            36,
+            140
+          ],
+          "pivot": [
+            36,
+            140
+          ],
+          "w": 138,
+          "h": 169,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.L__d00__albedo.png",
+              "w": 138,
+              "h": 169,
+              "sha256": "011c59a8e5d15ee94696dd1bb15121a2f3a30b01e3d60bc483e243053469ae8c"
+            },
+            "normal": {
+              "file": "sheets/tank__running.L__d00__normal.png",
+              "w": 138,
+              "h": 169,
+              "sha256": "30fa0dbb84e088735d560c4bbc340442e59a87adf9b58c3fc4c42da295a694f5"
+            },
+            "material": {
+              "file": "sheets/tank__running.L__d00__material.png",
+              "w": 138,
+              "h": 169,
+              "sha256": "d5374276cf404c58b5850f5e515376af3f01f943abdd965e9096670931644382"
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            7.02,
+            137.26
+          ],
+          "pivot": [
+            7.02,
+            137.26
+          ],
+          "w": 98,
+          "h": 191,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.L__d01__albedo.png",
+              "w": 98,
+              "h": 191,
+              "sha256": "a04a757a7f203f93454cd4faa9dce8928a40cb52b9a870626ed9529103ba8aa4"
+            },
+            "normal": {
+              "file": "sheets/tank__running.L__d01__normal.png",
+              "w": 98,
+              "h": 191,
+              "sha256": "2958575bdc16b5a2c51ea19800123f221c92395ae24388591cdb30a598dabfa2"
+            },
+            "material": {
+              "file": "sheets/tank__running.L__d01__material.png",
+              "w": 98,
+              "h": 191,
+              "sha256": "35bbc1203390a40344ab7531786b5c57abe651c7c360bbc4e09fa4b824c11c38"
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            -22.51,
+            120.51
+          ],
+          "pivot": [
+            -22.51,
+            120.51
+          ],
+          "w": 48,
+          "h": 192,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.L__d02__albedo.png",
+              "w": 48,
+              "h": 192,
+              "sha256": "aaf5c9d05ff73d6893f901b8ae07bdb1a7efc6a0574d37f12d9e4509ed382b5b"
+            },
+            "normal": {
+              "file": "sheets/tank__running.L__d02__normal.png",
+              "w": 48,
+              "h": 192,
+              "sha256": "4b42ca0673964a233fe69bba1d31c7f735e56a733c60798020bb973549da4023"
+            },
+            "material": {
+              "file": "sheets/tank__running.L__d02__material.png",
+              "w": 48,
+              "h": 192,
+              "sha256": "bf4421da22dc5be6ffcb0eea692638a81245650e0e64391fffb56af4b64c61ac"
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            8.74,
+            102.98
+          ],
+          "pivot": [
+            8.74,
+            102.98
+          ],
+          "w": 96,
+          "h": 191,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.L__d03__albedo.png",
+              "w": 96,
+              "h": 191,
+              "sha256": "93707932c49ea13eed29c9e83f0025645d58e64b4bf9d32952320d2d18dc0bce"
+            },
+            "normal": {
+              "file": "sheets/tank__running.L__d03__normal.png",
+              "w": 96,
+              "h": 191,
+              "sha256": "c42f692295c4b499f3ede9461bca35034604b08cdce464442325f622f374efa7"
+            },
+            "material": {
+              "file": "sheets/tank__running.L__d03__material.png",
+              "w": 96,
+              "h": 191,
+              "sha256": "cb765d2d22cac8ce821ee2354b0b8cf189ed4a4269113b324082e4080ae4e1fd"
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            40,
+            78
+          ],
+          "pivot": [
+            40,
+            78
+          ],
+          "w": 138,
+          "h": 169,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.L__d04__albedo.png",
+              "w": 138,
+              "h": 169,
+              "sha256": "392a2214c7286c138e330fda2021ab6a11dcd4aa779f052cd7c072ec9f4b95a6"
+            },
+            "normal": {
+              "file": "sheets/tank__running.L__d04__normal.png",
+              "w": 138,
+              "h": 169,
+              "sha256": "d6562d188600f39d1356803dd5e13210bc85d0fa80884dae5caf39b019063879"
+            },
+            "material": {
+              "file": "sheets/tank__running.L__d04__material.png",
+              "w": 138,
+              "h": 169,
+              "sha256": "b16a71526561967c92ae787a836fba14ce34394407009da18b189bad280f7a37"
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            67.74,
+            49.02
+          ],
+          "pivot": [
+            67.74,
+            49.02
+          ],
+          "w": 163,
+          "h": 132,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.L__d05__albedo.png",
+              "w": 163,
+              "h": 132,
+              "sha256": "334fe5145090536b3134ce90e11f37ddf05c163d2a45d10748d3461cfdac45e2"
+            },
+            "normal": {
+              "file": "sheets/tank__running.L__d05__normal.png",
+              "w": 163,
+              "h": 132,
+              "sha256": "80c55533e8b25054f4a2e9f2c969de6c1073aa2d51d23fa93c805d2f24606590"
+            },
+            "material": {
+              "file": "sheets/tank__running.L__d05__material.png",
+              "w": 163,
+              "h": 132,
+              "sha256": "c53fcb55697e0daed593d8e0706358be36bc0693a936c7ee3992ba903e88c2fd"
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            85.49,
+            24.49
+          ],
+          "pivot": [
+            85.49,
+            24.49
+          ],
+          "w": 165,
+          "h": 89,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.L__d06__albedo.png",
+              "w": 165,
+              "h": 89,
+              "sha256": "de42d3558fc081397a26ed8020e130e7740a38e908a7031199a8b575d27fa4cf"
+            },
+            "normal": {
+              "file": "sheets/tank__running.L__d06__normal.png",
+              "w": 165,
+              "h": 89,
+              "sha256": "1845a9766f2ba85618b247fa6c7c312fa713a551ebc6252a49076a86f3f2554e"
+            },
+            "material": {
+              "file": "sheets/tank__running.L__d06__material.png",
+              "w": 165,
+              "h": 89,
+              "sha256": "4568d53c289f80f2911831ebe46ccbb11004c5e1f87d92236801e6b5dbead91f"
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            101.02,
+            54.74
+          ],
+          "pivot": [
+            101.02,
+            54.74
+          ],
+          "w": 163,
+          "h": 136,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.L__d07__albedo.png",
+              "w": 163,
+              "h": 136,
+              "sha256": "6f13ace929d1db1fe071231fa1247954e073ff1bf95dc8e015070995bc83baea"
+            },
+            "normal": {
+              "file": "sheets/tank__running.L__d07__normal.png",
+              "w": 163,
+              "h": 136,
+              "sha256": "3fe1d629a6a4b5d1c0c94455e951fd8835c52e7eb51a4c8eb237013cd634c230"
+            },
+            "material": {
+              "file": "sheets/tank__running.L__d07__material.png",
+              "w": 163,
+              "h": 136,
+              "sha256": "d082a9e31dfb80b77a67104eebbb6ce33fbb7c3c71874e1b6f2658a5cedd1932"
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            103,
+            85
+          ],
+          "pivot": [
+            103,
+            85
+          ],
+          "w": 139,
+          "h": 172,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.L__d08__albedo.png",
+              "w": 139,
+              "h": 172,
+              "sha256": "96135a8c2d7bea87584ad0fd090dd8c49b1ddf9dcc0a24502279361810d4fb31"
+            },
+            "normal": {
+              "file": "sheets/tank__running.L__d08__normal.png",
+              "w": 139,
+              "h": 172,
+              "sha256": "573ed25fcc684d1fad01b43b6116e385daf9f04847223af7782fc6bc253de9a1"
+            },
+            "material": {
+              "file": "sheets/tank__running.L__d08__material.png",
+              "w": 139,
+              "h": 172,
+              "sha256": "70d784af9f6f0ce5128af2e22fb729590fee0fdd362914f5ba1d2bebc16a95f3"
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            90.98,
+            111.74
+          ],
+          "pivot": [
+            90.98,
+            111.74
+          ],
+          "w": 98,
+          "h": 194,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.L__d09__albedo.png",
+              "w": 98,
+              "h": 194,
+              "sha256": "2f7d06cf14cf8b50e5d152174ca04250c89b105be3f43615848267311bfc7c2e"
+            },
+            "normal": {
+              "file": "sheets/tank__running.L__d09__normal.png",
+              "w": 98,
+              "h": 194,
+              "sha256": "e21383f692cacbc62033befbcb3ff6ca6593a77b7e489c0b8c7aba3d19a32702"
+            },
+            "material": {
+              "file": "sheets/tank__running.L__d09__material.png",
+              "w": 98,
+              "h": 194,
+              "sha256": "2ca957c0f9e6ef770f76cd307fecec7c4587e144d59a530af6321922994e31df"
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            70.51,
+            134.49
+          ],
+          "pivot": [
+            70.51,
+            134.49
+          ],
+          "w": 48,
+          "h": 200,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.L__d10__albedo.png",
+              "w": 48,
+              "h": 200,
+              "sha256": "8e9f00ce7d775338ce25a786151b91d8fd57a6d696346721a01f976aa1793f12"
+            },
+            "normal": {
+              "file": "sheets/tank__running.L__d10__normal.png",
+              "w": 48,
+              "h": 200,
+              "sha256": "5df84f4670c6d852182d949f222641087ca47f4411c1866141306bae7af6ae3e"
+            },
+            "material": {
+              "file": "sheets/tank__running.L__d10__material.png",
+              "w": 48,
+              "h": 200,
+              "sha256": "cc3657be6d5f14789e391957d3ab4e89ec6b3268b283fccb00e8771198f8e2cc"
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            87.26,
+            151.02
+          ],
+          "pivot": [
+            87.26,
+            151.02
+          ],
+          "w": 96,
+          "h": 200,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.L__d11__albedo.png",
+              "w": 96,
+              "h": 200,
+              "sha256": "aa1fec3fdb668ba12ac6b77bdb21cb0e39e66e58bbf23cb930b91652138d6bcd"
+            },
+            "normal": {
+              "file": "sheets/tank__running.L__d11__normal.png",
+              "w": 96,
+              "h": 200,
+              "sha256": "d54c3a8c5734b3250c6a3dc4609e00c3ddea30de191c9f91faa5df4f97c51fab"
+            },
+            "material": {
+              "file": "sheets/tank__running.L__d11__material.png",
+              "w": 96,
+              "h": 200,
+              "sha256": "b3df160a49c0986397c55aca6ab52f42777c25edd95b30f1d23038aa9b0d6dde"
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            98,
+            155
+          ],
+          "pivot": [
+            98,
+            155
+          ],
+          "w": 138,
+          "h": 180,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.L__d12__albedo.png",
+              "w": 138,
+              "h": 180,
+              "sha256": "8fc54674161ba97a42ab99f5fc7fb8dc2e14759909682ba9b7e921a62d701323"
+            },
+            "normal": {
+              "file": "sheets/tank__running.L__d12__normal.png",
+              "w": 138,
+              "h": 180,
+              "sha256": "42a5c24758c989e1dc4c872910efdec90d8e3c4181985cc15e59e3003757febf"
+            },
+            "material": {
+              "file": "sheets/tank__running.L__d12__material.png",
+              "w": 138,
+              "h": 180,
+              "sha256": "77a46052573fa4ef3554707834edb2b99363ffa3adc05c9dc10d6eb7656b54b5"
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            95.26,
+            145.98
+          ],
+          "pivot": [
+            95.26,
+            145.98
+          ],
+          "w": 163,
+          "h": 146,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.L__d13__albedo.png",
+              "w": 163,
+              "h": 146,
+              "sha256": "e91571b1d8df1e005e99216ed43f62ac2d485b0822bf3b875e7cf0cbae2104df"
+            },
+            "normal": {
+              "file": "sheets/tank__running.L__d13__normal.png",
+              "w": 163,
+              "h": 146,
+              "sha256": "0ffb70741ca1881413dad4c2ea34ec30fbf36213ce2f10b1e253fbff6296c533"
+            },
+            "material": {
+              "file": "sheets/tank__running.L__d13__material.png",
+              "w": 163,
+              "h": 146,
+              "sha256": "7ff2ca237527a4a301301fc1abcb6a55afe103fc28f4e4fcf7d967a892eb68d2"
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            79.51,
+            124.51
+          ],
+          "pivot": [
+            79.51,
+            124.51
+          ],
+          "w": 165,
+          "h": 101,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.L__d14__albedo.png",
+              "w": 165,
+              "h": 101,
+              "sha256": "7e0168c9933cf0c9f9d6e4f0fb2d1fb096b22728d1dba91a100a61c86aef0bee"
+            },
+            "normal": {
+              "file": "sheets/tank__running.L__d14__normal.png",
+              "w": 165,
+              "h": 101,
+              "sha256": "396cea51cb97f35db1c76625ec689f640d7a0cac405f6ef9762f8dfccdf106cf"
+            },
+            "material": {
+              "file": "sheets/tank__running.L__d14__material.png",
+              "w": 165,
+              "h": 101,
+              "sha256": "b36e0733a10cb016b29425117791d9a57dc95232b6c7ada5d462b649cf297a15"
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            61.98,
+            131.26
+          ],
+          "pivot": [
+            61.98,
+            131.26
+          ],
+          "w": 163,
+          "h": 134,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.L__d15__albedo.png",
+              "w": 163,
+              "h": 134,
+              "sha256": "51f54bb63206d2872881401145678645da379fee9bd93ac1a2d810856ea9d282"
+            },
+            "normal": {
+              "file": "sheets/tank__running.L__d15__normal.png",
+              "w": 163,
+              "h": 134,
+              "sha256": "89bc18250cce2de2058c2e176389c96aec1204232c1f082207df1e72e9c38fcc"
+            },
+            "material": {
+              "file": "sheets/tank__running.L__d15__material.png",
+              "w": 163,
+              "h": 134,
+              "sha256": "05e3f70a408a1384b9c777270694f824925ae6a7bc594199e05329c43fbfb779"
+            }
+          }
+        }
+      }
+    },
+    "running.R": {
+      "name": "running.R",
+      "dynamic": false,
+      "pivotDesign": [
+        256,
+        256,
+        0
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            98,
+            78
+          ],
+          "pivot": [
+            98,
+            78
+          ],
+          "w": 138,
+          "h": 169,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.R__d00__albedo.png",
+              "w": 138,
+              "h": 169,
+              "sha256": "1eac78e48b27ecb2bcaa730ff192a6d7b9247ea3900264f868db025ee56a342b"
+            },
+            "normal": {
+              "file": "sheets/tank__running.R__d00__normal.png",
+              "w": 138,
+              "h": 169,
+              "sha256": "16ea0533df6392f110af53b8b7cae0fe94f1e7675db0292d70f1db09d2fdde21"
+            },
+            "material": {
+              "file": "sheets/tank__running.R__d00__material.png",
+              "w": 138,
+              "h": 169,
+              "sha256": "450714d49a13fa685482d98c88bfe996ee2754801f8ae6b8355229a73e4b3dcf"
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            89.02,
+            103.26
+          ],
+          "pivot": [
+            89.02,
+            103.26
+          ],
+          "w": 98,
+          "h": 191,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.R__d01__albedo.png",
+              "w": 98,
+              "h": 191,
+              "sha256": "594a84e8aeffb761299388c802d65bd68649af1bf7ce80b5f982fd5e0790c6fa"
+            },
+            "normal": {
+              "file": "sheets/tank__running.R__d01__normal.png",
+              "w": 98,
+              "h": 191,
+              "sha256": "22973eedbca2503ddb6489eedf061babd3067c028777f5b2f8bf3eb2f5ab201a"
+            },
+            "material": {
+              "file": "sheets/tank__running.R__d01__material.png",
+              "w": 98,
+              "h": 191,
+              "sha256": "c73e203f106e7cc16b1bb2808b31eb40b263a1b3970a31f43fbd54ed22a1eccf"
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            74.49,
+            120.51
+          ],
+          "pivot": [
+            74.49,
+            120.51
+          ],
+          "w": 52,
+          "h": 192,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.R__d02__albedo.png",
+              "w": 52,
+              "h": 192,
+              "sha256": "7b4546187adf918fe5780bd60bc330d499736b7962df05ffa625523af8c9a951"
+            },
+            "normal": {
+              "file": "sheets/tank__running.R__d02__normal.png",
+              "w": 52,
+              "h": 192,
+              "sha256": "ce9672421beda50bf49e78fec73ae25c48fd373db954e9416ffd38abbd9c909f"
+            },
+            "material": {
+              "file": "sheets/tank__running.R__d02__material.png",
+              "w": 52,
+              "h": 192,
+              "sha256": "9a9cfd99b9cb230ec2ca1f162a30947cf0d4d9b277e6fd0dac1874a97ef10709"
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            92.74,
+            136.98
+          ],
+          "pivot": [
+            92.74,
+            136.98
+          ],
+          "w": 99,
+          "h": 191,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.R__d03__albedo.png",
+              "w": 99,
+              "h": 191,
+              "sha256": "94558b2069eff8f43c46312696ec89320bfa5d5a9d7a1c1fc3c761d3288cd91d"
+            },
+            "normal": {
+              "file": "sheets/tank__running.R__d03__normal.png",
+              "w": 99,
+              "h": 191,
+              "sha256": "6f0db5df735af26fd0ac804ea5b1e46349a8083a21d137ce3a4ff365eada38e7"
+            },
+            "material": {
+              "file": "sheets/tank__running.R__d03__material.png",
+              "w": 99,
+              "h": 191,
+              "sha256": "e97fcf8c95733cb5c295d06c33e03ef39d1e945b085538d883272841ec3f5235"
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            102,
+            140
+          ],
+          "pivot": [
+            102,
+            140
+          ],
+          "w": 138,
+          "h": 169,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.R__d04__albedo.png",
+              "w": 138,
+              "h": 169,
+              "sha256": "b88d161406466ad7c4989102cceb3a9d5dc2bd07f9fd62d0f1b35416a8808893"
+            },
+            "normal": {
+              "file": "sheets/tank__running.R__d04__normal.png",
+              "w": 138,
+              "h": 169,
+              "sha256": "b0c189e97be1533a46835112e78b6fb1bfa18a565fcaded4fa4f222882c425ec"
+            },
+            "material": {
+              "file": "sheets/tank__running.R__d04__material.png",
+              "w": 138,
+              "h": 169,
+              "sha256": "0de42e78b98472faa188b76d0a304f9fd3971be86240cba6751c811f465010aa"
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            100.74,
+            131.02
+          ],
+          "pivot": [
+            100.74,
+            131.02
+          ],
+          "w": 162,
+          "h": 133,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.R__d05__albedo.png",
+              "w": 162,
+              "h": 133,
+              "sha256": "47ed7ec72570f7d4f9836e0d145346e25938e1eb6b45110cba885bc16ce3f887"
+            },
+            "normal": {
+              "file": "sheets/tank__running.R__d05__normal.png",
+              "w": 162,
+              "h": 133,
+              "sha256": "0c9c215fd1ab2789ba66e65253157cf3963521b62fafebdc6fa7eafea31b8bdd"
+            },
+            "material": {
+              "file": "sheets/tank__running.R__d05__material.png",
+              "w": 162,
+              "h": 133,
+              "sha256": "96d1c757a6987e307595c8f09139b1483132f2057ab78a078d92d674f00fcf0f"
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            85.49,
+            124.49
+          ],
+          "pivot": [
+            85.49,
+            124.49
+          ],
+          "w": 165,
+          "h": 101,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.R__d06__albedo.png",
+              "w": 165,
+              "h": 101,
+              "sha256": "2b21f827ab5a84aeb20bb4e8ad0f085caf6b7e270be12c11fc226da6ad25c0f8"
+            },
+            "normal": {
+              "file": "sheets/tank__running.R__d06__normal.png",
+              "w": 165,
+              "h": 101,
+              "sha256": "0f9907aecf97951d1d6b3cb106345e9c58b98d6c4cb3568f4c3c2ef9320bf417"
+            },
+            "material": {
+              "file": "sheets/tank__running.R__d06__material.png",
+              "w": 165,
+              "h": 101,
+              "sha256": "9aa6af01e17db7fe5002be8efeef3c4fac9494133b318269bd9b9421878d8bc0"
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            67.02,
+            145.74
+          ],
+          "pivot": [
+            67.02,
+            145.74
+          ],
+          "w": 162,
+          "h": 146,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.R__d07__albedo.png",
+              "w": 162,
+              "h": 146,
+              "sha256": "04d3f20ed3c31466e805de5f68c71c2b584d53695936bfee93055c74db25360f"
+            },
+            "normal": {
+              "file": "sheets/tank__running.R__d07__normal.png",
+              "w": 162,
+              "h": 146,
+              "sha256": "278213a06f74afc554a5ae070ee34289a33888ca907f80eb8ebf2b2c880f9ca6"
+            },
+            "material": {
+              "file": "sheets/tank__running.R__d07__material.png",
+              "w": 162,
+              "h": 146,
+              "sha256": "65e13fd26b4f9b195100f8f91cdb52be7f54bb23b647896f8090d38a74c52161"
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            41,
+            155
+          ],
+          "pivot": [
+            41,
+            155
+          ],
+          "w": 139,
+          "h": 180,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.R__d08__albedo.png",
+              "w": 139,
+              "h": 180,
+              "sha256": "1b4c76a32e8486db2dbbeac9a85c1185e00e2c97b971973606b6901fa7f7472e"
+            },
+            "normal": {
+              "file": "sheets/tank__running.R__d08__normal.png",
+              "w": 139,
+              "h": 180,
+              "sha256": "5af655dfa505e748b8980a1da23acf938a0b585c82a652501c8b8f6bb9a7c1f0"
+            },
+            "material": {
+              "file": "sheets/tank__running.R__d08__material.png",
+              "w": 139,
+              "h": 180,
+              "sha256": "df4715ced45195bea6f27c45c3a2703f3c83517bcb2052e8cfdf1c12db027e85"
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            8.98,
+            150.74
+          ],
+          "pivot": [
+            8.98,
+            150.74
+          ],
+          "w": 98,
+          "h": 200,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.R__d09__albedo.png",
+              "w": 98,
+              "h": 200,
+              "sha256": "05e9f69f1c443635354c68a4d8dbc9e7a5db1b6d3f68113b697f99be56bfdda1"
+            },
+            "normal": {
+              "file": "sheets/tank__running.R__d09__normal.png",
+              "w": 98,
+              "h": 200,
+              "sha256": "2a4b5221263d97066e18a50409e22080d8fc07c96a1933206ab7dbdd6abb9b54"
+            },
+            "material": {
+              "file": "sheets/tank__running.R__d09__material.png",
+              "w": 98,
+              "h": 200,
+              "sha256": "967c820c19ca97743e82ec55fcda09eebe85221f54e160c81248c1c17347cc7d"
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            -22.49,
+            134.49
+          ],
+          "pivot": [
+            -22.49,
+            134.49
+          ],
+          "w": 52,
+          "h": 200,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.R__d10__albedo.png",
+              "w": 52,
+              "h": 200,
+              "sha256": "7f24d5174e87b0711b8b6cb95717355de1030f00233fdc784be40e684c78619b"
+            },
+            "normal": {
+              "file": "sheets/tank__running.R__d10__normal.png",
+              "w": 52,
+              "h": 200,
+              "sha256": "bd3b34d65df78159b19eb889bf2031583e74cf6bc19a3a39f2d6d86144bb2540"
+            },
+            "material": {
+              "file": "sheets/tank__running.R__d10__material.png",
+              "w": 52,
+              "h": 200,
+              "sha256": "d20de7e08fca81875f673187a0111148280247995350267ae64d6ad6b08646af"
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            6.26,
+            112.02
+          ],
+          "pivot": [
+            6.26,
+            112.02
+          ],
+          "w": 99,
+          "h": 194,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.R__d11__albedo.png",
+              "w": 99,
+              "h": 194,
+              "sha256": "320a5e2467d603c56f3a767973f690fba09b225d0e58b8f05828ac2b37ecb9b4"
+            },
+            "normal": {
+              "file": "sheets/tank__running.R__d11__normal.png",
+              "w": 99,
+              "h": 194,
+              "sha256": "ccf78638501593a388e6ff70962ef0a50e661b87a4ae7fac37e45a09483775ba"
+            },
+            "material": {
+              "file": "sheets/tank__running.R__d11__material.png",
+              "w": 99,
+              "h": 194,
+              "sha256": "78ab805bdf283320a506696593949f5110418b99ba3f7666f306ae481c91be13"
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            36,
+            86
+          ],
+          "pivot": [
+            36,
+            86
+          ],
+          "w": 138,
+          "h": 173,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.R__d12__albedo.png",
+              "w": 138,
+              "h": 173,
+              "sha256": "2d1a85bff8a74a19f7140ae64b7fe9ce780fda5b6e9110ee64b497ffafc6b6d2"
+            },
+            "normal": {
+              "file": "sheets/tank__running.R__d12__normal.png",
+              "w": 138,
+              "h": 173,
+              "sha256": "a36478f1954d03f408f7b98e25f9c361ad56554d57bf9c3221d3f2537c06e350"
+            },
+            "material": {
+              "file": "sheets/tank__running.R__d12__material.png",
+              "w": 138,
+              "h": 173,
+              "sha256": "0f274e348c284ae1fa1ad78b89b51143e23cd2d0b3e52fae88d845818fed21d8"
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            61.26,
+            54.98
+          ],
+          "pivot": [
+            61.26,
+            54.98
+          ],
+          "w": 162,
+          "h": 136,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.R__d13__albedo.png",
+              "w": 162,
+              "h": 136,
+              "sha256": "75f122326abf5cbeef987434aae184dac92ba726bf49c1e57ddea05d8a75bd4a"
+            },
+            "normal": {
+              "file": "sheets/tank__running.R__d13__normal.png",
+              "w": 162,
+              "h": 136,
+              "sha256": "261fca83079c306a093126a7bad1290b1fac30a172983e3a14715032569cd3c2"
+            },
+            "material": {
+              "file": "sheets/tank__running.R__d13__material.png",
+              "w": 162,
+              "h": 136,
+              "sha256": "6ee676edc07f5a701acc478171c3debca6aef3c7a3056c242c15dae91c2c7c87"
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            79.51,
+            24.51
+          ],
+          "pivot": [
+            79.51,
+            24.51
+          ],
+          "w": 165,
+          "h": 89,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.R__d14__albedo.png",
+              "w": 165,
+              "h": 89,
+              "sha256": "d91f83ce9f9cf33983cd5277cce4c9c77b965f6fc442394f942a96afe818ee87"
+            },
+            "normal": {
+              "file": "sheets/tank__running.R__d14__normal.png",
+              "w": 165,
+              "h": 89,
+              "sha256": "5d47f163b1411bb815204ffc003272a80716abd0973debab7150228a29aa462a"
+            },
+            "material": {
+              "file": "sheets/tank__running.R__d14__material.png",
+              "w": 165,
+              "h": 89,
+              "sha256": "0e1b0be2dfc45115c00cd932be56398c79c41710ad57a4b6343a8ff031b3f44c"
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            94.98,
+            48.26
+          ],
+          "pivot": [
+            94.98,
+            48.26
+          ],
+          "w": 162,
+          "h": 132,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__running.R__d15__albedo.png",
+              "w": 162,
+              "h": 132,
+              "sha256": "92294ecb1d41819c45a576326e5a1efc34b30d7eff00480b89bb5b355772bd1b"
+            },
+            "normal": {
+              "file": "sheets/tank__running.R__d15__normal.png",
+              "w": 162,
+              "h": 132,
+              "sha256": "8fd9eeacd77d5866050bbaf97e4d68a9f2cef2639e100e6597e5ae2f7936ab0f"
+            },
+            "material": {
+              "file": "sheets/tank__running.R__d15__material.png",
+              "w": 162,
+              "h": 132,
+              "sha256": "20b0c1875934f13751ba728c3e1ad20b4ab672e28949fa42de16aa1dab4ab519"
+            }
+          }
+        }
+      }
+    },
+    "turret": {
+      "name": "turret",
+      "dynamic": true,
+      "pivotDesign": [
+        320,
+        256,
+        146
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            35,
+            162
+          ],
+          "pivot": [
+            51,
+            105
+          ],
+          "w": 102,
+          "h": 154,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__turret__d00__albedo.png",
+              "w": 102,
+              "h": 154,
+              "sha256": "6094300b7ac0c6d983f9617ee359beee980ea0e363dd195e3bdbe4e32101d7b6"
+            },
+            "normal": {
+              "file": "sheets/tank__turret__d00__normal.png",
+              "w": 102,
+              "h": 154,
+              "sha256": "a099dcd3f71fa19518fb43de7b068a685562e01f98a8f9a08c5b056326b0def4"
+            },
+            "material": {
+              "file": "sheets/tank__turret__d00__material.png",
+              "w": 102,
+              "h": 154,
+              "sha256": "a99b90acd894ac5b82a021478011bac4c58beb263bc1936d1e9c5f036086a06c"
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            40.02,
+            156.26
+          ],
+          "pivot": [
+            48.68,
+            104.16
+          ],
+          "w": 99,
+          "h": 150,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__turret__d01__albedo.png",
+              "w": 99,
+              "h": 150,
+              "sha256": "00f802a2047bc4cbd724d092ee23b74209e2ea7352bf603b98ec8612a62b5f16"
+            },
+            "normal": {
+              "file": "sheets/tank__turret__d01__normal.png",
+              "w": 99,
+              "h": 150,
+              "sha256": "c6b1314d3864511f3a366afe48833ab2ce995976a9795c52942c5128f314cadc"
+            },
+            "material": {
+              "file": "sheets/tank__turret__d01__material.png",
+              "w": 99,
+              "h": 150,
+              "sha256": "72e959e514785136fc70500ca146de75bfbbbe3b11dfbcd059bfd6e6680a86b1"
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            46.49,
+            159.51
+          ],
+          "pivot": [
+            46.49,
+            109.14
+          ],
+          "w": 92,
+          "h": 155,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__turret__d02__albedo.png",
+              "w": 92,
+              "h": 155,
+              "sha256": "1594e31127bf113517fa497ded1666d9bdaa9d3138ad84df9d2ba33d5b6d3e1b"
+            },
+            "normal": {
+              "file": "sheets/tank__turret__d02__normal.png",
+              "w": 92,
+              "h": 155,
+              "sha256": "21f00dbe12dfd83f21c9a9a1df33a1ed85c4c5e986edf7ce820c840bd8708192"
+            },
+            "material": {
+              "file": "sheets/tank__turret__d02__material.png",
+              "w": 92,
+              "h": 155,
+              "sha256": "85a2b851aba58bf9ddba55dbf77a7151f393cf156aee23ee3a244c241488fa82"
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            58.74,
+            167.98
+          ],
+          "pivot": [
+            50.08,
+            115.89
+          ],
+          "w": 100,
+          "h": 162,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__turret__d03__albedo.png",
+              "w": 100,
+              "h": 162,
+              "sha256": "e57cb789775e88f78b322b751e2b7fb4878a0ab5c5565f366254b6051dfaad9c"
+            },
+            "normal": {
+              "file": "sheets/tank__turret__d03__normal.png",
+              "w": 100,
+              "h": 162,
+              "sha256": "d15d01810c85c4bc7607a2bb6cd66894b429dc44ee68a3aef9078414774fa623"
+            },
+            "material": {
+              "file": "sheets/tank__turret__d03__material.png",
+              "w": 100,
+              "h": 162,
+              "sha256": "12e6414c2d556a3e9d7abf6fc8dc1cac0a3a6a6755b3bc5ffb0c1f918ad0098a"
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            67,
+            175
+          ],
+          "pivot": [
+            51,
+            118
+          ],
+          "w": 109,
+          "h": 167,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__turret__d04__albedo.png",
+              "w": 109,
+              "h": 167,
+              "sha256": "444ee53f61f681621e3f27b896bde17f9c24ddf5cf02896d5f46cb4200260c85"
+            },
+            "normal": {
+              "file": "sheets/tank__turret__d04__normal.png",
+              "w": 109,
+              "h": 167,
+              "sha256": "f30247297bae34f6c68e4ad3e03d0681429123caee0d3244ccc50fbfb2b80e1a"
+            },
+            "material": {
+              "file": "sheets/tank__turret__d04__material.png",
+              "w": 109,
+              "h": 167,
+              "sha256": "551e9aac1a1b48b1aeb14a6f34fd3ac0cfc7da0142c269c2a585b02ef955b4ac"
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            66.74,
+            178.02
+          ],
+          "pivot": [
+            45.84,
+            113.68
+          ],
+          "w": 105,
+          "h": 161,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__turret__d05__albedo.png",
+              "w": 105,
+              "h": 161,
+              "sha256": "d53ca28ccf2a2fe86a06a9056011ea18dafd0e7537cc197239c5e52fddaac5fb"
+            },
+            "normal": {
+              "file": "sheets/tank__turret__d05__normal.png",
+              "w": 105,
+              "h": 161,
+              "sha256": "54d184932230b899c9247b0cd6974fb80948e7df17a38fb188dc8fada0b1a3af"
+            },
+            "material": {
+              "file": "sheets/tank__turret__d05__material.png",
+              "w": 105,
+              "h": 161,
+              "sha256": "a9e57e32056b9bbacf89efa1e9cb7674064bdb3ac0236f57cedee636d94ccd36"
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            68.49,
+            177.49
+          ],
+          "pivot": [
+            45.86,
+            104.49
+          ],
+          "w": 98,
+          "h": 150,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__turret__d06__albedo.png",
+              "w": 98,
+              "h": 150,
+              "sha256": "0084e4fa9d13b9b2658409e097a5c6660fe77ec1d818d3ee14f41273011c8719"
+            },
+            "normal": {
+              "file": "sheets/tank__turret__d06__normal.png",
+              "w": 98,
+              "h": 150,
+              "sha256": "94e731b1bee2840e7c33aa594f4a091d749600b0426d12f47f30dc145276c507"
+            },
+            "material": {
+              "file": "sheets/tank__turret__d06__material.png",
+              "w": 98,
+              "h": 150,
+              "sha256": "1f7478672d23801fcda0f15f05f9366593f1f3a1afbf11b37a2c8519eff23857"
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            67.02,
+            173.74
+          ],
+          "pivot": [
+            46.11,
+            92.08
+          ],
+          "w": 96,
+          "h": 139,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__turret__d07__albedo.png",
+              "w": 96,
+              "h": 139,
+              "sha256": "391886c07d718d8f3ced27695d86da8b14f845e1dcccd89891264c9e1a7ce7d5"
+            },
+            "normal": {
+              "file": "sheets/tank__turret__d07__normal.png",
+              "w": 96,
+              "h": 139,
+              "sha256": "153d312ee81b7a87195294368a63220b9b1aa36af662e260029a7b21900169b6"
+            },
+            "material": {
+              "file": "sheets/tank__turret__d07__material.png",
+              "w": 96,
+              "h": 139,
+              "sha256": "9150aa42e82e8527fda1de907b9ea01b7f30f764a0687a51947115227bdbb116"
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            67,
+            167
+          ],
+          "pivot": [
+            51,
+            78
+          ],
+          "w": 102,
+          "h": 130,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__turret__d08__albedo.png",
+              "w": 102,
+              "h": 130,
+              "sha256": "c81c8eac562552f0c012e24571c893859578205b2e24298f88a5624b8af2eb88"
+            },
+            "normal": {
+              "file": "sheets/tank__turret__d08__normal.png",
+              "w": 102,
+              "h": 130,
+              "sha256": "7c8a693a066b3613d768611b0271218441775b4f57282b4d0dc57dee202ae6a2"
+            },
+            "material": {
+              "file": "sheets/tank__turret__d08__material.png",
+              "w": 102,
+              "h": 130,
+              "sha256": "895e0b6dbad1e2722d874ba3c09733866bf961e6cacd2c04f54a92fe19ee8a77"
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            58.98,
+            163.74
+          ],
+          "pivot": [
+            50.32,
+            69.84
+          ],
+          "w": 99,
+          "h": 123,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__turret__d09__albedo.png",
+              "w": 99,
+              "h": 123,
+              "sha256": "fe6f2b71711711baa1bec2d6c99d67ff12930ef67b9118536b865e4c0735d318"
+            },
+            "normal": {
+              "file": "sheets/tank__turret__d09__normal.png",
+              "w": 99,
+              "h": 123,
+              "sha256": "dd467b65fd0e95d3a891b81b6031f63a96f63b41b12f1f9fc82fff1ae506f5bb"
+            },
+            "material": {
+              "file": "sheets/tank__turret__d09__material.png",
+              "w": 99,
+              "h": 123,
+              "sha256": "7f5826d76095777509b2feefd99d6c15d3af2e3e9e251a31550672513fbe8bc3"
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            45.51,
+            159.49
+          ],
+          "pivot": [
+            45.51,
+            63.86
+          ],
+          "w": 92,
+          "h": 110,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__turret__d10__albedo.png",
+              "w": 92,
+              "h": 110,
+              "sha256": "2de5277ff4fef55cb2e57cc7d3fb2a2898124c5ba637fa5804c2538f78005817"
+            },
+            "normal": {
+              "file": "sheets/tank__turret__d10__normal.png",
+              "w": 92,
+              "h": 110,
+              "sha256": "dd6f28d2fad7cdf25f33280a3e64fa225e4a8890f4551e2b7e69fe4056b88f0a"
+            },
+            "material": {
+              "file": "sheets/tank__turret__d10__material.png",
+              "w": 92,
+              "h": 110,
+              "sha256": "7a743a4f1cdd117637f135189950fb25a92fc73d9808d21ef380aff40da5372d"
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            41.26,
+            162.02
+          ],
+          "pivot": [
+            49.92,
+            68.11
+          ],
+          "w": 100,
+          "h": 114,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__turret__d11__albedo.png",
+              "w": 100,
+              "h": 114,
+              "sha256": "f947008c634f2430facf5662095772ee781fb5bb059b5e0c5f4a6daa379c06d3"
+            },
+            "normal": {
+              "file": "sheets/tank__turret__d11__normal.png",
+              "w": 100,
+              "h": 114,
+              "sha256": "e518ff134027bfb2c885b5777f8ff84281db78581f1f3dd05510c2985f6d0c07"
+            },
+            "material": {
+              "file": "sheets/tank__turret__d11__material.png",
+              "w": 100,
+              "h": 114,
+              "sha256": "4e7b1c6c5792011fda27751da777457b9926b2f3245675e60d6a0fc806de75ec"
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            42,
+            162
+          ],
+          "pivot": [
+            58,
+            73
+          ],
+          "w": 109,
+          "h": 122,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__turret__d12__albedo.png",
+              "w": 109,
+              "h": 122,
+              "sha256": "729437584eced182ca58998b2cee51cb5937b3e2c40c4517ce26f5f692a9bfd6"
+            },
+            "normal": {
+              "file": "sheets/tank__turret__d12__normal.png",
+              "w": 109,
+              "h": 122,
+              "sha256": "33cf5f28ced245cc41d9842ea072e5608879e184544a732603d055940d25910e"
+            },
+            "material": {
+              "file": "sheets/tank__turret__d12__material.png",
+              "w": 109,
+              "h": 122,
+              "sha256": "26dcb90018d8e6bfac96d607f1a4d22de9fda4ecddcc4298b2c3fa70b6233696"
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            38.26,
+            161.98
+          ],
+          "pivot": [
+            59.16,
+            80.32
+          ],
+          "w": 105,
+          "h": 126,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__turret__d13__albedo.png",
+              "w": 105,
+              "h": 126,
+              "sha256": "b873048202e7fbe02268bad4efb45676c65f7bdb5689360229dd3748baff6dc0"
+            },
+            "normal": {
+              "file": "sheets/tank__turret__d13__normal.png",
+              "w": 105,
+              "h": 126,
+              "sha256": "57ba93ef6a5806f611d9d10065061f498af0ce929bcdfe4ff53f684b26a0ec3d"
+            },
+            "material": {
+              "file": "sheets/tank__turret__d13__material.png",
+              "w": 105,
+              "h": 126,
+              "sha256": "d535761df5d72212bdcbdc90384030a944cc25d547da54464ddb3ec78aa347c0"
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            29.51,
+            165.51
+          ],
+          "pivot": [
+            52.14,
+            92.51
+          ],
+          "w": 98,
+          "h": 138,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__turret__d14__albedo.png",
+              "w": 98,
+              "h": 138,
+              "sha256": "e029df49b105239856deccd63b6557617540ee6762a84c926ea2f70f959ef08b"
+            },
+            "normal": {
+              "file": "sheets/tank__turret__d14__normal.png",
+              "w": 98,
+              "h": 138,
+              "sha256": "ce0d6cae06b3743022fc789459f4877db8b8e2a1d31841545cce7121f5fbcee8"
+            },
+            "material": {
+              "file": "sheets/tank__turret__d14__material.png",
+              "w": 98,
+              "h": 138,
+              "sha256": "3f94b58131fe08a7884a48c2f04e9ee9d145361c3b59467d4f2b8420ca7a634d"
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            28.98,
+            165.26
+          ],
+          "pivot": [
+            49.89,
+            100.92
+          ],
+          "w": 96,
+          "h": 149,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__turret__d15__albedo.png",
+              "w": 96,
+              "h": 149,
+              "sha256": "b60e993e91920c01f81f6012ceb6477bfa9f1d68fd1649615ccecab6594c4fb7"
+            },
+            "normal": {
+              "file": "sheets/tank__turret__d15__normal.png",
+              "w": 96,
+              "h": 149,
+              "sha256": "361e61c232f12b45c32617a7f6640032edcc32da08f8f88b6b2381857dfac019"
+            },
+            "material": {
+              "file": "sheets/tank__turret__d15__material.png",
+              "w": 96,
+              "h": 149,
+              "sha256": "51c24c65c55ce5345b0008bd23503be402d5c6171c91431f6e2bd8d05b3a9a43"
+            }
+          }
+        }
+      }
+    },
+    "barrel": {
+      "name": "barrel",
+      "dynamic": true,
+      "pivotDesign": [
+        400,
+        256,
+        172
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            -10,
+            86
+          ],
+          "pivot": [
+            26,
+            36
+          ],
+          "w": 63,
+          "h": 77,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__barrel__d00__albedo.png",
+              "w": 63,
+              "h": 77,
+              "sha256": "9e9b1e2ac3addce8a36a701c8d0a5ac81f522eae331d4c8386241278c8aa45b5"
+            },
+            "normal": {
+              "file": "sheets/tank__barrel__d00__normal.png",
+              "w": 63,
+              "h": 77,
+              "sha256": "f2f5ba2ced0e86feef46683c06d46cc1679f9b5d0b5ce7ac1828fd8971115a21"
+            },
+            "material": {
+              "file": "sheets/tank__barrel__d00__material.png",
+              "w": 63,
+              "h": 77,
+              "sha256": "ca86284289890c45cc380a7df8a331ea1bdf8498c2f850371ae734c946a93191"
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            7.02,
+            72.26
+          ],
+          "pivot": [
+            26.5,
+            33.29
+          ],
+          "w": 53,
+          "h": 81,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__barrel__d01__albedo.png",
+              "w": 53,
+              "h": 81,
+              "sha256": "ba367cd0ca629c5df44bf7cafa3d2f07fa9a0964cc61df8fa514f8efd7da505b"
+            },
+            "normal": {
+              "file": "sheets/tank__barrel__d01__normal.png",
+              "w": 53,
+              "h": 81,
+              "sha256": "6b58a1dfcb2ed704f0b7766a16ad02c63a7e11a21231e1fa2aa11626406fccec"
+            },
+            "material": {
+              "file": "sheets/tank__barrel__d01__material.png",
+              "w": 53,
+              "h": 81,
+              "sha256": "a36b0b84460d0ff81dba0c876110821225a80e93849baa5bfa0c0943c3ea1eec"
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            23.49,
+            62.51
+          ],
+          "pivot": [
+            23.49,
+            27.42
+          ],
+          "w": 47,
+          "h": 78,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__barrel__d02__albedo.png",
+              "w": 47,
+              "h": 78,
+              "sha256": "49c6ebd38af61c52dc009b1b73f54bb36e1785502a7e8b8758ee55757cab4e73"
+            },
+            "normal": {
+              "file": "sheets/tank__barrel__d02__normal.png",
+              "w": 47,
+              "h": 78,
+              "sha256": "8d9a0fdc697fc6e7dc5f9c1ecb4f86d00342ba070774b823262c288d81bc243c"
+            },
+            "material": {
+              "file": "sheets/tank__barrel__d02__material.png",
+              "w": 47,
+              "h": 78,
+              "sha256": "ca35aeb74bdb02f63ac661d4e1074c498aa2cfcd5f1eaf914ae60e9f81d35d3f"
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            45.74,
+            71.98
+          ],
+          "pivot": [
+            26.26,
+            33.02
+          ],
+          "w": 52,
+          "h": 81,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__barrel__d03__albedo.png",
+              "w": 52,
+              "h": 81,
+              "sha256": "016fc5ed53ea14feaed272882058058db92fd2769bf36ad933a2fd0fc5338903"
+            },
+            "normal": {
+              "file": "sheets/tank__barrel__d03__normal.png",
+              "w": 52,
+              "h": 81,
+              "sha256": "22086649d79efea04fa67d28ef32bf8defc7c1c6e6a429217348f47642f7075f"
+            },
+            "material": {
+              "file": "sheets/tank__barrel__d03__material.png",
+              "w": 52,
+              "h": 81,
+              "sha256": "f6b52bd3146be89368b5c0f74b570ba4345d93b60d92814b3f7b756c7459d380"
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            73,
+            86
+          ],
+          "pivot": [
+            37,
+            36
+          ],
+          "w": 63,
+          "h": 77,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__barrel__d04__albedo.png",
+              "w": 63,
+              "h": 77,
+              "sha256": "36afe946a573e887d2fa9cb62ef0d2b79d88094c99893e591b1d50999626e490"
+            },
+            "normal": {
+              "file": "sheets/tank__barrel__d04__normal.png",
+              "w": 63,
+              "h": 77,
+              "sha256": "76e1376264e79774143922c2ca745538e508b0d3fbcceebb7716bfa3d339e4ed"
+            },
+            "material": {
+              "file": "sheets/tank__barrel__d04__material.png",
+              "w": 63,
+              "h": 77,
+              "sha256": "1ef5f7ef3316e031e40dd7ea1afc2390c5879a5c6be2e978100ae47d428806fa"
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            90.74,
+            103.02
+          ],
+          "pivot": [
+            43.71,
+            36.5
+          ],
+          "w": 66,
+          "h": 69,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__barrel__d05__albedo.png",
+              "w": 66,
+              "h": 69,
+              "sha256": "1776a73c0130b0f03b2bd33aecf76e3e43c16dc335ad29b1b35e54f57b00c1c4"
+            },
+            "normal": {
+              "file": "sheets/tank__barrel__d05__normal.png",
+              "w": 66,
+              "h": 69,
+              "sha256": "e17684ea61d55a0c7d308527042bb295ed8efa169020eed295f9a032fe5d4f91"
+            },
+            "material": {
+              "file": "sheets/tank__barrel__d05__material.png",
+              "w": 66,
+              "h": 69,
+              "sha256": "e0d346ce11a4b470188d4ecdd3cc9812c7ff7ac3cd71c97d08d2a47645c44f14"
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            96.49,
+            120.49
+          ],
+          "pivot": [
+            45.58,
+            34.49
+          ],
+          "w": 63,
+          "h": 69,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__barrel__d06__albedo.png",
+              "w": 63,
+              "h": 69,
+              "sha256": "6e955cbccff15f25c0cb4cc0b757d26c6703a4a11bdc2cd909ed5cfa2cae0aa8"
+            },
+            "normal": {
+              "file": "sheets/tank__barrel__d06__normal.png",
+              "w": 63,
+              "h": 69,
+              "sha256": "51c2a891c81ba393f34a7b5d733651a0fc74d46f5a7b76df9fa7484bda521d85"
+            },
+            "material": {
+              "file": "sheets/tank__barrel__d06__material.png",
+              "w": 63,
+              "h": 69,
+              "sha256": "921e0eb752942e05f235e0438260ea52be6f7a5c42cd1d0a8d2cf0fe291b0cd5"
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            91.02,
+            138.74
+          ],
+          "pivot": [
+            43.98,
+            33.26
+          ],
+          "w": 67,
+          "h": 70,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__barrel__d07__albedo.png",
+              "w": 67,
+              "h": 70,
+              "sha256": "cf5c5e818c2d61df52a1ba90d6aa9fb5d1b8ad71b1c36ffab61d0fbc921585a1"
+            },
+            "normal": {
+              "file": "sheets/tank__barrel__d07__normal.png",
+              "w": 67,
+              "h": 70,
+              "sha256": "7ba7f773a4ca95fb1d59303bf0fd908022054d12a98a44d6159a685ecbf3d02e"
+            },
+            "material": {
+              "file": "sheets/tank__barrel__d07__material.png",
+              "w": 67,
+              "h": 70,
+              "sha256": "01ac44fa2917a8abea2a7f0bfddb267558bf54584225fe5a8c14bac17221944b"
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            73,
+            163
+          ],
+          "pivot": [
+            37,
+            41
+          ],
+          "w": 63,
+          "h": 77,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__barrel__d08__albedo.png",
+              "w": 63,
+              "h": 77,
+              "sha256": "1507e3d5667c1b074b217148fedaa7ca59beb6a94f4ee43bc41c6ad93e4d12ec"
+            },
+            "normal": {
+              "file": "sheets/tank__barrel__d08__normal.png",
+              "w": 63,
+              "h": 77,
+              "sha256": "46572955c4c4eb3954172ab59cfda7c36708a7349d4ab7a646256bc925c983fa"
+            },
+            "material": {
+              "file": "sheets/tank__barrel__d08__material.png",
+              "w": 63,
+              "h": 77,
+              "sha256": "46d40692f3c5321f625438a0b2d7f4a67b3aa3753e7804d47d37e540dc72a109"
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            45.98,
+            181.74
+          ],
+          "pivot": [
+            26.5,
+            48.71
+          ],
+          "w": 53,
+          "h": 82,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__barrel__d09__albedo.png",
+              "w": 53,
+              "h": 82,
+              "sha256": "07af926a520e43a38f20f7bad74023d1151ae44930369f7b505a59f657669351"
+            },
+            "normal": {
+              "file": "sheets/tank__barrel__d09__normal.png",
+              "w": 53,
+              "h": 82,
+              "sha256": "1224e5d9f52ffcad0d9b4b18b530e623738bd94ed9fd40f4a4fe125f7ecfa16b"
+            },
+            "material": {
+              "file": "sheets/tank__barrel__d09__material.png",
+              "w": 53,
+              "h": 82,
+              "sha256": "0e82060178178aecc65c688a34bd31c51beb4ef355e1405b6af61bac95be501d"
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            23.51,
+            188.49
+          ],
+          "pivot": [
+            23.51,
+            51.58
+          ],
+          "w": 47,
+          "h": 80,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__barrel__d10__albedo.png",
+              "w": 47,
+              "h": 80,
+              "sha256": "9a81da7c4036742f9d29b0464278b6702352a6bf1af072f1bd063f66c690152d"
+            },
+            "normal": {
+              "file": "sheets/tank__barrel__d10__normal.png",
+              "w": 47,
+              "h": 80,
+              "sha256": "77ac6b7e86d75ba34384ddaa54f887fef719c4e3387fb354a93e40ea832aff9e"
+            },
+            "material": {
+              "file": "sheets/tank__barrel__d10__material.png",
+              "w": 47,
+              "h": 80,
+              "sha256": "995c25b51de866964bc0b00869dfa488ef3359dfd920665c6919ad9a2a52c40e"
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            6.26,
+            182.02
+          ],
+          "pivot": [
+            25.74,
+            48.98
+          ],
+          "w": 52,
+          "h": 82,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__barrel__d11__albedo.png",
+              "w": 52,
+              "h": 82,
+              "sha256": "d77ff7c9072ae8aa353ba250c6282ead15ef418598ac3683cc68d6e12c15c2ef"
+            },
+            "normal": {
+              "file": "sheets/tank__barrel__d11__normal.png",
+              "w": 52,
+              "h": 82,
+              "sha256": "e970f42be19eed7d09287736035ec9a14ee9306a613136572a762b34d04c3b50"
+            },
+            "material": {
+              "file": "sheets/tank__barrel__d11__material.png",
+              "w": 52,
+              "h": 82,
+              "sha256": "315c31fe3eb7db5eaf848614c3fc58e6b0da1568a5173b50a447ca929380a9f5"
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            -10,
+            163
+          ],
+          "pivot": [
+            26,
+            41
+          ],
+          "w": 63,
+          "h": 77,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__barrel__d12__albedo.png",
+              "w": 63,
+              "h": 77,
+              "sha256": "be67d40756389ba76a0aae772d3cc19ec3218f27043fa8568aa46cccb858bfe5"
+            },
+            "normal": {
+              "file": "sheets/tank__barrel__d12__normal.png",
+              "w": 63,
+              "h": 77,
+              "sha256": "25921e77281e464cf033f7f506cd50bf3dc628514ae6ce7bd913dae867358923"
+            },
+            "material": {
+              "file": "sheets/tank__barrel__d12__material.png",
+              "w": 63,
+              "h": 77,
+              "sha256": "6bb8b4df05e5397ef5f6716f92655cf2f45d707cade1829b9de6c84ca00a0974"
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            -24.74,
+            138.98
+          ],
+          "pivot": [
+            22.29,
+            33.5
+          ],
+          "w": 66,
+          "h": 70,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__barrel__d13__albedo.png",
+              "w": 66,
+              "h": 70,
+              "sha256": "0ed7401b8214f5ea81960c184c7759d9d772f94938b245251064fb4c5105af8e"
+            },
+            "normal": {
+              "file": "sheets/tank__barrel__d13__normal.png",
+              "w": 66,
+              "h": 70,
+              "sha256": "401da57d1887031ace69b09937304a76981cd0db912953c0307e23686b55f67c"
+            },
+            "material": {
+              "file": "sheets/tank__barrel__d13__material.png",
+              "w": 66,
+              "h": 70,
+              "sha256": "790808aa43363b295156eadfec1c297fae0ade994bc7cf332a8ba6cfdb86b1c1"
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            -33.49,
+            120.51
+          ],
+          "pivot": [
+            17.42,
+            34.51
+          ],
+          "w": 63,
+          "h": 69,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__barrel__d14__albedo.png",
+              "w": 63,
+              "h": 69,
+              "sha256": "afc90d785a53660b8a41c4747d51f310c7b508d93a2592c289feeecc0aa67aae"
+            },
+            "normal": {
+              "file": "sheets/tank__barrel__d14__normal.png",
+              "w": 63,
+              "h": 69,
+              "sha256": "a4f1c450bdf39acdcf5b2a0073dd3520cdec5b30139b58718da0c07e736dadb4"
+            },
+            "material": {
+              "file": "sheets/tank__barrel__d14__material.png",
+              "w": 63,
+              "h": 69,
+              "sha256": "5d9091bf85e2486e41764468b08c71b910e3f52e5d8201ed90583a6df4901bda"
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            -24.02,
+            103.26
+          ],
+          "pivot": [
+            23.02,
+            36.74
+          ],
+          "w": 67,
+          "h": 69,
+          "files": {
+            "albedo": {
+              "file": "sheets/tank__barrel__d15__albedo.png",
+              "w": 67,
+              "h": 69,
+              "sha256": "c7fdaf8193d24f5981c02483f391918cd27e5dfbdb29045331b57889f68fa435"
+            },
+            "normal": {
+              "file": "sheets/tank__barrel__d15__normal.png",
+              "w": 67,
+              "h": 69,
+              "sha256": "a236f64f91d5cc5cd28481d4376644e5f480bfdd1fc207bda28872826cf0eea1"
+            },
+            "material": {
+              "file": "sheets/tank__barrel__d15__material.png",
+              "w": 67,
+              "h": 69,
+              "sha256": "2a234845fb4a2496267a32e8e16e40bd84947587b7a36534b030f7fe8c4a8930"
+            }
+          }
+        }
+      }
+    }
+  },
+  "clips": {
+    "idle": 1
+  },
+  "sourceGeometry": {
+    "parts": [
+      {
+        "name": "body",
+        "dynamic": false,
+        "voxels": 562169,
+        "pivotDesign": [
+          256,
+          256,
+          0
+        ],
+        "bounds": {
+          "minX": 30,
+          "minY": 68,
+          "minZ": 9,
+          "maxX": 504,
+          "maxY": 453,
+          "maxZ": 251
+        }
+      },
+      {
+        "name": "running.L",
+        "dynamic": false,
+        "voxels": 152089,
+        "pivotDesign": [
+          256,
+          256,
+          0
+        ],
+        "bounds": {
+          "minX": 56,
+          "minY": 80,
+          "minZ": 0,
+          "maxX": 472,
+          "maxY": 167,
+          "maxZ": 120
+        }
+      },
+      {
+        "name": "running.R",
+        "dynamic": false,
+        "voxels": 152511,
+        "pivotDesign": [
+          256,
+          256,
+          0
+        ],
+        "bounds": {
+          "minX": 56,
+          "minY": 344,
+          "minZ": 0,
+          "maxX": 472,
+          "maxY": 443,
+          "maxZ": 120
+        }
+      },
+      {
+        "name": "turret",
+        "dynamic": true,
+        "voxels": 103459,
+        "pivotDesign": [
+          320,
+          256,
+          146
+        ],
+        "bounds": {
+          "minX": 196,
+          "minY": 150,
+          "minZ": 146,
+          "maxX": 426,
+          "maxY": 362,
+          "maxZ": 291
+        }
+      },
+      {
+        "name": "barrel",
+        "dynamic": true,
+        "voxels": 18377,
+        "pivotDesign": [
+          400,
+          256,
+          172
+        ],
+        "bounds": {
+          "minX": 374,
+          "minY": 212,
+          "minZ": 150,
+          "maxX": 505,
+          "maxY": 299,
+          "maxZ": 193
+        }
+      }
+    ],
+    "totalVoxels": 988605
+  },
+  "composite": {
+    "note": "every part of one facing pre-composited through the shared ground anchor",
+    "facings": {
+      "d00": {
+        "file": "sheets/tank__composite__d00__albedo.png",
+        "w": 222,
+        "h": 278,
+        "sha256": "0c4572450b5ed9f198659ae865c5328ff4124a4372c8f7cb9d6081488a3207a9"
+      },
+      "d01": {
+        "file": "sheets/tank__composite__d01__albedo.png",
+        "w": 199,
+        "h": 278,
+        "sha256": "f039dca58c93f0fc647f2e7591b10097b2ba6655496cc01426fdd0304d266712"
+      },
+      "d02": {
+        "file": "sheets/tank__composite__d02__albedo.png",
+        "w": 157,
+        "h": 257,
+        "sha256": "0cd98a7b9ea52e5a735b7c22e2f2b92a4f6f5f55263f3759d21e1ec5994aa52a"
+      },
+      "d03": {
+        "file": "sheets/tank__composite__d03__albedo.png",
+        "w": 196,
+        "h": 268,
+        "sha256": "72c960fe82dea0f8281bc91712ee8ea4c7cbb42f8cfe456af2629a8ab228e107"
+      },
+      "d04": {
+        "file": "sheets/tank__composite__d04__albedo.png",
+        "w": 222,
+        "h": 276,
+        "sha256": "3ae7d312a0079e481bcf8622cef396f65f820a0b7617d2d753806073c4a40180"
+      },
+      "d05": {
+        "file": "sheets/tank__composite__d05__albedo.png",
+        "w": 220,
+        "h": 267,
+        "sha256": "419fb996143c05d2cd4371b922e96c0831c87a59fb502335bfa9c4dc338e7528"
+      },
+      "d06": {
+        "file": "sheets/tank__composite__d06__albedo.png",
+        "w": 189,
+        "h": 246,
+        "sha256": "41292163a6ea149f29668746c5dd9f942b087207df73316f13c091a9af577c9c"
+      },
+      "d07": {
+        "file": "sheets/tank__composite__d07__albedo.png",
+        "w": 221,
+        "h": 259,
+        "sha256": "ed8b5c464571c9748287e880dab052d097fed3ab6ae6d2e68ccfb9ddd5f753b6"
+      },
+      "d08": {
+        "file": "sheets/tank__composite__d08__albedo.png",
+        "w": 222,
+        "h": 271,
+        "sha256": "3647fb59b57567d7bc0401dafd710fd2cc7f6c17e4421515da14ef67864e5d22"
+      },
+      "d09": {
+        "file": "sheets/tank__composite__d09__albedo.png",
+        "w": 199,
+        "h": 271,
+        "sha256": "83d897be0fa0fd1a377002f44b843db31015493bead554864302493339772b0d"
+      },
+      "d10": {
+        "file": "sheets/tank__composite__d10__albedo.png",
+        "w": 157,
+        "h": 261,
+        "sha256": "5d303a7886ba50da206d3821b16507cd03ddb5231f2f881b5e219ed80e5e005c"
+      },
+      "d11": {
+        "file": "sheets/tank__composite__d11__albedo.png",
+        "w": 196,
+        "h": 271,
+        "sha256": "af9c4123439a157474b403191612bf61e1f34f9f8873e81e8d0b996e964df247"
+      },
+      "d12": {
+        "file": "sheets/tank__composite__d12__albedo.png",
+        "w": 222,
+        "h": 272,
+        "sha256": "248a41bd280b83b3fad253ade4541f3e2695f180cc2e84a3a8fe8f90b582c43a"
+      },
+      "d13": {
+        "file": "sheets/tank__composite__d13__albedo.png",
+        "w": 220,
+        "h": 257,
+        "sha256": "233912c1f874e0156c7f7f1ee05d8f90edf571d4293dea796f362a25092ab001"
+      },
+      "d14": {
+        "file": "sheets/tank__composite__d14__albedo.png",
+        "w": 189,
+        "h": 234,
+        "sha256": "269c2ed5a6e9bf80c79a7ddf0c3f3f9ad9014318d08c79040814ac5211aad6e3"
+      },
+      "d15": {
+        "file": "sheets/tank__composite__d15__albedo.png",
+        "w": 221,
+        "h": 254,
+        "sha256": "f07d076dcf13cf2d845176d96e9b573a06a6c3fc306a523d06dd25ebbc3bbf27"
+      }
+    }
+  },
+  "preview": {
+    "file": "preview.png",
+    "facing": "d00",
+    "w": 218,
+    "h": 274,
+    "mode": "single-pass"
+  },
+  "previewParts": {
+    "file": "preview-parts.png",
+    "facing": "d00",
+    "w": 234,
+    "h": 290,
+    "mode": "composited-from-part-sheets"
+  }
+}

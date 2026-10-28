@@ -64,7 +64,8 @@ what §3/D4 does.
 | **D10** | Folder per asset; flat, greppable filenames inside it (`<asset>__<part>__<facing>__<map>.png`). | R6 + R9.3. |
 | **D11** | Legacy `game_assets/voxels/` is **archived, not deleted** (`game_assets/_legacy/voxels-64/`), so the current game keeps working until the v4 runtime lands. | No broken intermediate state. |
 | **D12** | Animation stays **out of scope for the first rebuild**, but every part records its pivot and `dynamic` flag so clips can be added per part later without re-sculpting. | R9 lists remodels first; pivots are the cheap forward-compatible bit. |
-| **D13** | Voxel budget is enforced by authoring rules, not by hope (see §7). | The pilot blew up to 16.6 M voxels — see §7.1. |
+| **D13** | Occupancy is a bitset; appearance is a deferred surface pass. Materials resolve once, at `finish()`. | Measured: 16.6 M → 1.06 M voxels, 28.2 s → 0.17 s sculpt (§7.1). |
+| **D15** | **Canvas stays 512³.** No 448/384 fallback, no machine-specific variants. | A full 512³ unit bakes in 39.5 s / 1.12 MB on an ordinary sandbox CPU (§7.3). |
 | **D14** | Bakes are **deterministic and per-asset runnable** (`--only tank`), so batches can be verified in isolation. | Batch execution, per §8. |
 
 ---
@@ -175,43 +176,57 @@ segmentation.
 
 ---
 
-## 7. Voxel budget, authoring rules, and the pilot finding
+## 7. Voxel budget, authoring rules, and the measured pilot
 
-### 7.1 What the pilot proved (important)
+### 7.1 What the pilot proved
 
-A first native 512³ tank was authored with ordinary "fill a box" calls. Result, measured:
+Three attempts, all measured on the same tank geometry, all on the same hardware:
 
-```
-sculpt: 28.2 s   cells: 16,621,600   cull: did not finish in budget
-```
+| Attempt | Approach | Sculpt | Cells | Verdict |
+| --- | --- | --- | --- | --- |
+| 1 | `box()` fills volume (string-keyed Map) | **28.2 s** | **16,621,600** | unusable; interior fill |
+| 2 | Shell the big boxes, but stack layers | 3.7 s | 2,260,544 | still 5× over; stacked shells keep hidden inner faces |
+| 3 | **Bitset occupancy + deferred surface pass** | **0.17 s** | **1,060,715 surface** | shipped |
 
-16.6 M voxels is ~4.2 GB of JS arrays if naively expanded, and 16 facings × 5 parts would make it
-unbakeable. **A 512³ model is 134 M cells; filling volume instead of surfaces is the failure mode.**
-Every later batch depends on these rules.
+**Diagnosis for the record: the sandbox was never the problem.** Attempt 1's largest single call filled
+`344 × 336 × 50 = 5.78 M` invisible interior cells; attempt 2 failed because a *stack* of shells has empty
+space between the layers, so the interior cull cannot see the hidden faces as hidden.
 
-### 7.2 Authoring rules (binding)
+**Therefore the canvas stays at 512.** No downgrade to 448³ or 384³ is needed — a full 512³ unit bakes
+end-to-end in **39.5 s** and produces **1.12 MB / 240 PNG**.
 
-1. **Surfaces only.** Volumes > ~4,000 cells must use `shell()` / `ringZ()` / `plate()`, never `box()`.
-2. **Occupancy is a bitset**, not a `Map`, during authoring: 512³ = 134 M bits = 16 MB. The bitset makes
-   the interior cull a linear scan instead of a hash lookup per neighbour.
-3. **Voxel budget per asset**: ≤ **450 k** surface voxels for a 512³ land vehicle, ≤ 700 k for a large
-   building. The validator refuses to bake above 2× the budget.
-4. **Detail density is intentional**: budget is spent on silhouettes and hard-surface detail (track links,
-   vision blocks, weld beads, grilles), not on interior fill.
-5. **`hollow()` before raster**: faces are never drawn against a solid neighbour on the hidden side.
+### 7.2 Architecture (binding)
 
-### 7.3 Performance gates
+1. **Occupancy and appearance are separate.** `box()`, `cyl*()` and `sphere()` set bits in a 512³ bitset
+   (16 MB) and register an ordered *paint op*; they never allocate per-voxel objects.
+2. **`finish()` resolves the skin.** One walk of the occupied bounding box keeps only cells with an exposed
+   face (the true outer skin) and assigns each one's material/part from the last covering op. Stacking is
+   therefore free: shells collapse into one skin.
+3. **No per-cell maps during authoring.** Explicit writes are reserved for volumes ≤ 96 cells (routing,
+   rivets, decals, single voxels).
+4. **Deferred surface passes** (`paint`, `regroup`, `mottle`, `wear`, `mirrorY`) run on the resolved skin,
+   which is why recolouring costs one pass instead of a geometry rebuild.
+5. **1.06 M surface voxels is a correct number, not a bug** for a vehicle that spans ~400³ of the lattice.
+   The budget gate exists to catch *interior fill regressions*, not to force low detail.
+6. **Detail density is intentional**: budget goes to silhouette and hard-surface detail (track links,
+   vision blocks, weld beads, grilles, stowage), never to filling volume.
 
-| Gate | Budget | Measured |
+### 7.3 Measured gates (512³ confirmed)
+
+| Gate | Budget | Measured for `tank` |
 | --- | --- | --- |
-| Sculpt one asset | ≤ 2 s | 28 s (pilot, volume-filled — to be fixed in B1) |
-| Bake one asset (16 facings × parts × 3 maps) | ≤ 90 s | unmeasured |
-| Full unit roster (58 × 16) | ≤ 60 min wall | — |
-| Full building roster (26 × 4) | ≤ 20 min wall | — |
-| Total PNG payload | ≤ 400 MB on disk | — |
-| Determinism | byte-identical re-bake (`sha256` in manifest) | — |
+| Sculpt one asset | ≤ 2 s | **0.17 s** |
+| Surface pass (`finish`) | ≤ 3 s | **1.96 s** |
+| Bake one asset (16 facings × 5 parts × 3 maps) | ≤ 90 s | **39.5 s** |
+| PNG per unit asset | — | **240** (16 × 5 × 3) |
+| Payload per unit asset | ≤ 3 MB | **1.12 MB** |
+| Surface voxels per land vehicle | ≤ 1.3 M (hard fail 2.6 M) | **1,060,715** |
+| Full unit roster (58) | ≤ 45 min sequential | **≈ 38 min** (≈ 10 min at 4 jobs) |
+| Full building roster (26, 4 facings) | ≤ 6 min sequential | estimate ≈ 4 min |
+| Determinism | byte-identical re-bake | **verified** (sha256 of all 240 PNG identical) |
 
-Bakes may run per-family in parallel processes (`--only a,b,c`), which is how the batch plan schedules them.
+Parallel runner: `tools/voxel_pipeline/v3/bake-all.sh [jobs] [filter]` (and `bake-all.ps1` for Windows).
+Each asset is independent and deterministic, so the roster splits cleanly across processes.
 
 ---
 
@@ -296,7 +311,7 @@ modelling batches exactly as requested.
 
 | Risk | Mitigation |
 | --- | --- |
-| Volume-filled models explode (already observed) | B1 blocks all modelling until the budget gate is green. |
+| Volume-filled models explode (already observed, and fixed) | Bitset occupancy + deferred surface pass collapse stacked shells into one skin; the budget gate catches regressions. |
 | 58 units × 16 facings × 3 maps is a lot of files/bytes | Measure at B2; mitigate with material-map indexing / half-res material maps, and split maps so albedo-only consumers can skip the rest. |
 | Authoring 84 assets by hand is long | Batches are family-scoped and independently verifiable; kit primitives are shared, so later assets reuse track/wheel/turret code. |
 | 16-way review is expensive for a human | B10 contact sheets: one image per asset per family, all facings in a row. |

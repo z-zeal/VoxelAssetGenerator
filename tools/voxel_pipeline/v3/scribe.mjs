@@ -1,26 +1,45 @@
 /**
- * Scribe — the 512³ native voxel canvas.
+ * Scribe — the native voxel canvas (512³ by default).
  *
- * Design rules enforced here (see docs/PLAN_512_native_16dir_segmented_pipeline.md):
+ * ## Why this is not a voxel Map any more
  *
- *  * The canvas is exactly 512×512×512 design voxels. It is never scaled: the
- *    integer lattice *is* the authoring resolution, so a rivet is a rivet, not
- *    a "detail blob" produced by enlarging a 64³ model.
- *  * X is forward (a model's canonical facing is +X), Y is lateral (256 is the
- *    centre line), Z is up (0 is the ground plane).
- *  * Every voxel carries a material id and a part id. Parts are the unit of
- *    segmentation: the baker emits one sprite strip per part so a turret can
- *    rotate independently of its hull at runtime.
- *  * Geometry is deterministic: no Math.random anywhere; mottling and wear use
- *    a seeded mulberry32 so re-bakes are byte-identical.
+ * A 512³ lattice is 134,217,728 cells. The pilot tank authored "the obvious
+ * way" (solid `box()` calls) allocated **16.6 M** cells into a string-keyed Map:
+ * 28 s to sculpt, and the interior cull never finished. The follow-up attempt
+ * avoided that by shelling every big box, but a *stacked* stack of shells keeps
+ * all its hidden inner faces (there is empty space between the shells, so the
+ * cull cannot remove them) and still landed at 2.3 M cells.
  *
- * Nothing in this module knows about sprites, cameras, PNGs or armies. It only
- * produces voxels.
+ * So the canvas now separates the two questions:
+ *
+ *   1. **Occupancy** — a flat bitset over all 512³ cells (16 MB, one bit each).
+ *      `box()`, `cylX/Y/Z()`, `sphere()` and friends just set bits. Filling a
+ *      5.8 M-cell hull volume costs 5.8 M bit sets (~40 ms), not 5.8 M Map
+ *      entries (~7 GB of JS objects).
+ *   2. **Appearance** — an ordered list of *paint operations* (volume + material
+ *      + part). The material of a surface voxel is resolved lazily, at finish,
+ *      from the last operation that covers it.
+ *
+ * `finish()` then walks the occupied bounding box once, keeps only cells with an
+ * exposed face (the real outer skin, ~200 k for a tank) and resolves each one's
+ * material from the operation list. Nothing is scaled, resampled, or inherited
+ * from the 64³ era: the lattice is the model.
+ *
+ * Determinism: no Math.random anywhere; all noise is seeded mulberry32.
  */
 
-export const CANVAS = 512;
+/** Canvas edge in design voxels (spec 512; override for experiments). */
+export const CANVAS = Number(process.env.VOXEL_CANVAS ?? 512);
 
-/** mulberry32 — deterministic PRNG shared by every stochastic detail pass. */
+/** Soft authoring budget for surface voxels; validator warns, then fails at 2×. */
+export const SURFACE_BUDGET = Number(process.env.VOXEL_BUDGET ?? 1300000);
+
+/** Operations smaller than this are stored per-cell instead of as a volume op. */
+const EXPLICIT_LIMIT = 96;
+
+/** Coarse bucket size for resolving which ops touch a region (32³ blocks). */
+const BUCKET = 32;
+
 export function rng(seed) {
   let a = seed >>> 0;
   return () => {
@@ -31,16 +50,31 @@ export function rng(seed) {
   };
 }
 
-/** Compressed sparse voxel map: 9 bits per axis, 18 bits per record. */
-const key = (x, y, z) => (x << 18) | (y << 9) | z;
-
 export function createScribe({ materialIds, canvas = CANVAS } = {}) {
   if (!materialIds) throw new Error('createScribe needs a material id table');
-  const cells = new Map();          // key -> (matId << 6) | partId
-  const partList = [];              // [{name, order, pivot, dynamic, hideIn]} 
+  const N = canvas;
+  const NN = N * N;
+  const bits = new Uint8Array((N * N * N) >> 3);
+
+  const idxOf = (x, y, z) => z * NN + y * N + x;
+  const setBit = i => { bits[i >> 3] |= 1 << (i & 7); };
+  const clearBit = i => { bits[i >> 3] &= ~(1 << (i & 7)); };
+  const getBit = i => (bits[i >> 3] >> (i & 7)) & 1;
+  const inBounds = (x, y, z) => x >= 0 && x < N && y >= 0 && y < N && z >= 0 && z < N;
+
+  // Explicit per-cell overrides (small edits, decals, single voxels).
+  const explicit = new Map();       // idx -> (matId << 6) | partId
+  // Ordered volume operations: { kind, box/params, mat, part }.
+  const ops = [];
+  const buckets = new Map();        // coarse cell -> [opIndex]
+  const bucketKey = (x, y, z) => ((x / BUCKET) | 0) + ',' + ((y / BUCKET) | 0) + ',' + ((z / BUCKET) | 0);
+  const surfacePasses = [];         // deferred paint/regroup/mottle/wear
+
+  const partList = [];
   const partIndex = new Map();
   const pivots = {};
   let current = 0;
+  let minX = N, minY = N, minZ = N, maxX = -1, maxY = -1, maxZ = -1;
 
   const partId = name => {
     if (!name) return 0;
@@ -48,28 +82,53 @@ export function createScribe({ materialIds, canvas = CANVAS } = {}) {
     if (id === undefined) {
       id = partList.length + 1;
       partIndex.set(name, id);
-      partList.push({ name, order: id - 1, pivot: [canvas / 2, canvas / 2, 0], dynamic: false, hidden: false });
+      partList.push({ name, order: id - 1, pivot: [N / 2, N / 2, 0], dynamic: false });
     }
     return id;
   };
   partId('body');
 
-  const inBounds = (x, y, z) => x >= 0 && x < canvas && y >= 0 && y < canvas && z >= 0 && z < canvas;
+  const touch = (x, y, z) => {
+    if (x < minX) minX = x; if (x > maxX) maxX = x;
+    if (y < minY) minY = y; if (y > maxY) maxY = y;
+    if (z < minZ) minZ = z; if (z > maxZ) maxZ = z;
+  };
+
+  /** Set a cell's bit (and bounds). */
+  const occupy = (x, y, z) => {
+    if (!inBounds(x, y, z)) return false;
+    setBit(idxOf(x, y, z));
+    touch(x, y, z);
+    return true;
+  };
+
+  /** Register a volume op so `finish()` can resolve materials for it. */
+  const pushOp = op => {
+    const i = ops.length;
+    ops.push(op);
+    const per = Math.floor(op.x1 / BUCKET), pey = Math.floor(op.y1 / BUCKET), pez = Math.floor(op.z1 / BUCKET);
+    for (let bx = Math.floor(op.x0 / BUCKET); bx <= per; bx++)
+      for (let by = Math.floor(op.y0 / BUCKET); by <= pey; by++)
+        for (let bz = Math.floor(op.z0 / BUCKET); bz <= pez; bz++) {
+          const k = bx + ',' + by + ',' + bz;
+          let arr = buckets.get(k);
+          if (!arr) buckets.set(k, arr = []);
+          arr.push(i);
+        }
+    return i;
+  };
 
   const api = {
-    canvas,
-    cells,
+    canvas: N,
     parts: partList,
+    bits,
 
-    /** Switch the active part. All following geometry belongs to it. */
     part(name) { current = partId(name); return api; },
-    /** Mark the current (or named) part as mechanically independent. */
     dynamic(name, on = true) {
       const p = partList[partId(name ?? partList[current - 1]?.name) - 1];
       if (p) p.dynamic = on;
       return api;
     },
-    /** Rotation/translation pivot in design voxels (x, y, z). */
     pivot(name, [px, py, pz = 0]) {
       const id = partId(name);
       pivots[name] = [px, py, pz];
@@ -77,119 +136,173 @@ export function createScribe({ materialIds, canvas = CANVAS } = {}) {
       return api;
     },
     pivotOf(name) { return pivots[name] ?? null; },
-
     matId(name) {
       const id = materialIds[name];
       if (id === undefined) throw new Error(`unknown material "${name}"`);
       return id;
     },
 
+    /* ------------------------------------------------------------ edits --- */
     put(x, y, z, mat) {
-      const xi = Math.round(x), yi = Math.round(y), zi = Math.round(z);
-      if (!inBounds(xi, yi, zi)) return api;
-      cells.set(key(xi, yi, zi), (api.matId(mat) << 6) | current);
+      const xi = x | 0, yi = y | 0, zi = z | 0;
+      if (!occupy(xi, yi, zi)) return api;
+      explicit.set(idxOf(xi, yi, zi), (api.matId(mat) << 6) | current);
       return api;
     },
     del(x, y, z) {
-      cells.delete(key(Math.round(x), Math.round(y), Math.round(z)));
+      const xi = x | 0, yi = y | 0, zi = z | 0;
+      if (!inBounds(xi, yi, zi)) return api;
+      clearBit(idxOf(xi, yi, zi));
+      explicit.delete(idxOf(xi, yi, zi));
       return api;
     },
-    has(x, y, z) { return cells.has(key(Math.round(x), Math.round(y), Math.round(z))); },
-    get(x, y, z) {
-      const v = cells.get(key(Math.round(x), Math.round(y), Math.round(z)));
-      return v === undefined ? null : { mat: v >> 6, part: v & 63 };
+    has(x, y, z) {
+      const xi = x | 0, yi = y | 0, zi = z | 0;
+      return inBounds(xi, yi, zi) && getBit(idxOf(xi, yi, zi)) === 1;
     },
 
-    /** Inclusive-lower / exclusive-upper box, the workhorse primitive. */
+    /* ------------------------------------------------- volumes (solid) --- */
     box(x0, y0, z0, x1, y1, z1, mat) {
-      const [ax, bx] = x0 <= x1 ? [x0, x1] : [x1, x0];
-      const [ay, by] = y0 <= y1 ? [y0, y1] : [y1, y0];
-      const [az, bz] = z0 <= z1 ? [z0, z1] : [z1, z0];
-      for (let z = Math.round(az); z < Math.round(bz); z++)
-        for (let y = Math.round(ay); y < Math.round(by); y++)
-          for (let x = Math.round(ax); x < Math.round(bx); x++) api.put(x, y, z, mat);
+      const ax = Math.round(Math.min(x0, x1)), bx = Math.round(Math.max(x0, x1));
+      const ay = Math.round(Math.min(y0, y1)), by = Math.round(Math.max(y0, y1));
+      const az = Math.round(Math.min(z0, z1)), bz = Math.round(Math.max(z0, z1));
+      if (bx <= ax || by <= ay || bz <= az) return api;
+      const mid = api.matId(mat);
+      const packed = (mid << 6) | current;
+      const volume = (bx - ax) * (by - ay) * (bz - az);
+      if (volume <= EXPLICIT_LIMIT) {
+        for (let z = az; z < bz; z++)
+          for (let y = ay; y < by; y++)
+            for (let x = ax; x < bx; x++) {
+              if (!occupy(x, y, z)) continue;
+              explicit.set(idxOf(x, y, z), packed);
+            }
+        return api;
+      }
+      for (let z = az; z < bz; z++)
+        for (let y = ay; y < by; y++) {
+          const row = idxOf(ax, y, z);
+          for (let x = 0; x < bx - ax; x++) setBit(row + x);
+        }
+      touch(ax, ay, az); touch(bx - 1, by - 1, bz - 1);
+      pushOp({ kind: 'box', x0: ax, y0: ay, z0: az, x1: bx, y1: by, z1: bz, packed });
       return api;
     },
-    /** Centred box: centre + full size. */
     boxC(cx, cy, cz, sx, sy, sz, mat) {
       return api.box(cx - sx / 2, cy - sy / 2, cz - sz / 2, cx + sx / 2, cy + sy / 2, cz + sz / 2, mat);
     },
-    /** Six walls only — big masses stay light in the bake. */
+    /** Kept for API compatibility: a shell is just a set of boxes. */
     shell(x0, y0, z0, x1, y1, z1, mat) {
-      const [ax, bx] = [Math.round(x0), Math.round(x1)];
-      const [ay, by] = [Math.round(y0), Math.round(y1)];
-      const [az, bz] = [Math.round(z0), Math.round(z1)];
-      for (let z = az; z < bz; z++)
-        for (let y = ay; y < by; y++)
-          for (let x = ax; x < bx; x++) {
-            if (x === ax || x === bx - 1 || y === ay || y === by - 1 || z === az || z === bz - 1) {
-              api.put(x, y, z, mat);
-            }
-          }
+      api.box(x0, y0, z0, x1, y1, z0 + 1, mat);
+      api.box(x0, y0, z1 - 1, x1, y1, z1, mat);
+      api.box(x0, y0, z0 + 1, x1, y0 + 1, z1 - 1, mat);
+      api.box(x0, y1 - 1, z0 + 1, x1, y1, z1 - 1, mat);
+      api.box(x0, y0 + 1, z0 + 1, x0 + 1, y1 - 1, z1 - 1, mat);
+      api.box(x1 - 1, y0 + 1, z0 + 1, x1, y1 - 1, z1 - 1, mat);
       return api;
     },
     clear(x0, y0, z0, x1, y1, z1) {
-      for (let z = Math.round(z0); z < Math.round(z1); z++)
-        for (let y = Math.round(y0); y < Math.round(y1); y++)
-          for (let x = Math.round(x0); x < Math.round(x1); x++) api.del(x, y, z);
+      const ax = Math.round(x0), bx = Math.round(x1), ay = Math.round(y0),
+        by = Math.round(y1), az = Math.round(z0), bz = Math.round(z1);
+      for (let z = az; z < bz; z++)
+        for (let y = ay; y < by; y++)
+          for (let x = ax; x < bx; x++) {
+            if (!inBounds(x, y, z)) continue;
+            clearBit(idxOf(x, y, z));
+            explicit.delete(idxOf(x, y, z));
+          }
+      pushOp({ kind: 'erase', x0: ax, y0: ay, z0: az, x1: bx, y1: by, z1: bz, packed: 0 });
       return api;
     },
 
-    /** Vertical cylinder / wheel disc (axis +Z). */
     cylZ(cx, cy, z0, z1, r, mat, { hollowR = 0 } = {}) {
-      const r2 = r * r;
-      for (let z = Math.round(z0); z < Math.round(z1); z++)
+      const zs = Math.round(z0), ze = Math.round(z1);
+      const r2 = r * r, h2 = hollowR * hollowR;
+      const mid = api.matId(mat);
+      const packed = (mid << 6) | current;
+      let touched = false;
+      for (let z = zs; z < ze; z++)
         for (let y = Math.floor(cy - r); y <= Math.ceil(cy + r); y++)
           for (let x = Math.floor(cx - r); x <= Math.ceil(cx + r); x++) {
             const d2 = (x - cx) ** 2 + (y - cy) ** 2;
-            if (d2 <= r2 && d2 >= hollowR * hollowR) api.put(x, y, z, mat);
+            if (d2 > r2 || d2 < h2) continue;
+            if (occupy(x, y, z)) touched = true;
           }
+      if (touched) {
+        pushOp({ kind: 'cylZ', cx, cy, r, hollowR, x0: Math.floor(cx - r), x1: Math.ceil(cx + r) + 1,
+          y0: Math.floor(cy - r), y1: Math.ceil(cy + r) + 1, z0: zs, z1: ze, packed });
+      }
       return api;
     },
-    /** Cylinder along X (barrels, axles, pipes). */
     cylX(x0, x1, cy, cz, r, mat, { hollowR = 0 } = {}) {
-      const r2 = r * r;
-      for (let x = Math.round(x0); x < Math.round(x1); x++)
+      const xs = Math.round(x0), xe = Math.round(x1);
+      const r2 = r * r, h2 = hollowR * hollowR;
+      const mid = api.matId(mat);
+      const packed = (mid << 6) | current;
+      let touched = false;
+      for (let x = xs; x < xe; x++)
         for (let z = Math.floor(cz - r); z <= Math.ceil(cz + r); z++)
           for (let y = Math.floor(cy - r); y <= Math.ceil(cy + r); y++) {
             const d2 = (y - cy) ** 2 + (z - cz) ** 2;
-            if (d2 <= r2 && d2 >= hollowR * hollowR) api.put(x, y, z, mat);
+            if (d2 > r2 || d2 < h2) continue;
+            if (occupy(x, y, z)) touched = true;
           }
+      if (touched) {
+        pushOp({ kind: 'cylX', cy, cz, r, hollowR, x0: xs, x1: xe,
+          y0: Math.floor(cy - r), y1: Math.ceil(cy + r) + 1,
+          z0: Math.floor(cz - r), z1: Math.ceil(cz + r) + 1, packed });
+      }
       return api;
     },
-    /** Cylinder along Y (road wheels, rollers, boat masts lying sideways). */
     cylY(cx, y0, y1, cz, r, mat, { hollowR = 0 } = {}) {
-      const r2 = r * r;
-      for (let y = Math.round(y0); y < Math.round(y1); y++)
+      const ys = Math.round(y0), ye = Math.round(y1);
+      const r2 = r * r, h2 = hollowR * hollowR;
+      const mid = api.matId(mat);
+      const packed = (mid << 6) | current;
+      let touched = false;
+      for (let y = ys; y < ye; y++)
         for (let z = Math.floor(cz - r); z <= Math.ceil(cz + r); z++)
           for (let x = Math.floor(cx - r); x <= Math.ceil(cx + r); x++) {
             const d2 = (x - cx) ** 2 + (z - cz) ** 2;
-            if (d2 <= r2 && d2 >= hollowR * hollowR) api.put(x, y, z, mat);
+            if (d2 > r2 || d2 < h2) continue;
+            if (occupy(x, y, z)) touched = true;
           }
+      if (touched) {
+        pushOp({ kind: 'cylY', cx, cz, r, hollowR, x0: Math.floor(cx - r), x1: Math.ceil(cx + r) + 1,
+          y0: ys, y1: ye, z0: Math.floor(cz - r), z1: Math.ceil(cz + r) + 1, packed });
+      }
       return api;
     },
     sphere(cx, cy, cz, r, mat, { top = false, bottom = false } = {}) {
       const r2 = r * r;
+      const mid = api.matId(mat);
+      const packed = (mid << 6) | current;
+      let touched = false;
       for (let z = Math.floor(cz - r); z <= Math.ceil(cz + r); z++) {
         if (top && z < cz) continue;
         if (bottom && z > cz) continue;
         for (let y = Math.floor(cy - r); y <= Math.ceil(cy + r); y++)
-          for (let x = Math.floor(cx - r); x <= Math.ceil(cx + r); x++)
-            if ((x - cx) ** 2 + (y - cy) ** 2 + (z - cz) ** 2 <= r2) api.put(x, y, z, mat);
+          for (let x = Math.floor(cx - r); x <= Math.ceil(cx + r); x++) {
+            if ((x - cx) ** 2 + (y - cy) ** 2 + (z - cz) ** 2 > r2) continue;
+            if (occupy(x, y, z)) touched = true;
+          }
+      }
+      if (touched) {
+        pushOp({ kind: 'sphere', cx, cy, cz, r, top, bottom,
+          x0: Math.floor(cx - r), x1: Math.ceil(cx + r) + 1,
+          y0: Math.floor(cy - r), y1: Math.ceil(cy + r) + 1,
+          z0: Math.floor(cz - r), z1: Math.ceil(cz + r) + 1, packed });
       }
       return api;
     },
-    /** Truncated cone along Z (masts, turret cones, funnels, tree trunks). */
     coneZ(cx, cy, z0, z1, r0, r1, mat) {
       const zs = Math.round(z0), ze = Math.round(z1);
       for (let z = zs; z < ze; z++) {
         const t = ze - zs <= 1 ? 0 : (z - zs) / (ze - zs - 1);
-        const r = r0 + (r1 - r0) * t;
-        api.cylZ(cx, cy, z, z + 1, r, mat);
+        api.cylZ(cx, cy, z, z + 1, r0 + (r1 - r0) * t, mat);
       }
       return api;
     },
-    /** Sloped armour / ramp rising along +X. */
     rampX(x0, x1, y0, y1, z0, rise, run, mat) {
       for (let x = Math.round(x0); x < Math.round(x1); x++) {
         const z = z0 + Math.floor(((x - x0) * rise) / run);
@@ -197,7 +310,6 @@ export function createScribe({ materialIds, canvas = CANVAS } = {}) {
       }
       return api;
     },
-    /** Wedge rising along +Y (boat bows, wing roots, sloped roofs). */
     rampY(x0, x1, y0, y1, z0, rise, run, mat) {
       for (let y = Math.round(y0); y < Math.round(y1); y++) {
         const z = z0 + Math.floor(((y - y0) * rise) / run);
@@ -205,26 +317,32 @@ export function createScribe({ materialIds, canvas = CANVAS } = {}) {
       }
       return api;
     },
-    /** Thin ring (turret ring, hatch rim, hatch coaming, tyre sidewall). */
     ringZ(cx, cy, z0, z1, rOuter, rInner, mat) {
       return api.cylZ(cx, cy, z0, z1, rOuter, mat, { hollowR: rInner });
     },
+    /** Swept solid along X; interior handled by the occupancy pass. */
+    profileX(x0, x1, y0, y1, zTopFn, zBotFn, mat) {
+      const xs = Math.round(x0), xe = Math.round(x1);
+      for (let x = xs; x < xe; x++) {
+        const zt = Math.round(zTopFn(x)), zb = Math.round(zBotFn(x));
+        if (zt <= zb) continue;
+        api.box(x, y0, zb, x + 1, y1, zt, mat);
+      }
+      return api;
+    },
 
-    /** 3D line (Bresenham) — panel gaps, weld seams, cables, antenna wires. */
-    line(x0, y0, z0, x1, y1, z1, mat, { thickness = 0 } = {}) {
+    line(x0, y0, z0, x1, y1, z1, mat, { thickness = 1 } = {}) {
       const steps = Math.max(Math.abs(x1 - x0), Math.abs(y1 - y0), Math.abs(z1 - z0));
       for (let i = 0; i <= steps; i++) {
         const t = steps === 0 ? 0 : i / steps;
         const x = Math.round(x0 + (x1 - x0) * t);
         const y = Math.round(y0 + (y1 - y0) * t);
         const z = Math.round(z0 + (z1 - z0) * t);
-        if (thickness <= 0) api.put(x, y, z, mat);
-        else api.box(x, y, z, x + thickness, y + thickness, z + thickness, mat);
+        api.box(x, y, z, x + thickness, y + thickness, z + thickness, mat);
       }
       return api;
     },
-    /** Ring of bolts for hubs, hatches, sprockets, structural joints. */
-    bolts(cx, cy, z, radius, count, mat, size = 1) {
+    bolts(cx, cy, z, radius, count, mat, size = 2) {
       for (let i = 0; i < count; i++) {
         const a = (i / count) * Math.PI * 2;
         const bx = Math.round(cx + Math.cos(a) * radius);
@@ -233,8 +351,7 @@ export function createScribe({ materialIds, canvas = CANVAS } = {}) {
       }
       return api;
     },
-    /** Evenly spaced rivets along a straight run (hull seams, armour joints). */
-    rivets(x0, y0, z0, x1, y1, z1, spacing, mat, size = 1) {
+    rivets(x0, y0, z0, x1, y1, z1, spacing, mat, size = 2) {
       const len = Math.hypot(x1 - x0, y1 - y0, z1 - z0);
       const n = Math.max(1, Math.round(len / spacing));
       for (let i = 0; i <= n; i++) {
@@ -246,7 +363,6 @@ export function createScribe({ materialIds, canvas = CANVAS } = {}) {
       }
       return api;
     },
-    /** Louvred vent grille lying in the XY plane. */
     grille(x0, x1, y0, y1, z, step, mat, matGap) {
       for (let y = Math.round(y0); y < Math.round(y1); y++) {
         const m = (y - Math.round(y0)) % step === 0 ? mat : matGap;
@@ -254,132 +370,148 @@ export function createScribe({ materialIds, canvas = CANVAS } = {}) {
       }
       return api;
     },
-    /** Repaint voxels matching a predicate (decals, wear, insignia). */
-    paint(pred, mat, part = null) {
-      for (const [k, v] of cells) {
-        const x = (k >> 18) & 511, y = (k >> 9) & 511, z = k & 511;
-        if (part !== null && (v & 63) !== part) continue;
-        if (pred(x, y, z, v >> 6, v & 63)) {
-          const matId = api.matId(mat);
-          cells.set(k, (matId << 6) | (v & 63));
-        }
-      }
+
+    /* ------------------------------------------- deferred surface passes --- */
+    /** Repaint every surviving surface voxel matching `pred`. */
+    paint(pred, mat) { surfacePasses.push({ kind: 'paint', pred, packed: (api.matId(mat) << 6) | current }); return api; },
+    /** Move matching surface voxels into another part. */
+    regroup(pred, name) { surfacePasses.push({ kind: 'regroup', pred, part: partId(name) }); return api; },
+    mottle(seed, mats, density) {
+      surfacePasses.push({ kind: 'mottle', seed, ids: mats.map(m => api.matId(m)), density });
       return api;
     },
-    /** Move matching voxels into another part (re-tagging after assembly). */
-    regroup(pred, name) {
-      const id = partId(name);
-      for (const [k, v] of cells) {
-        const x = (k >> 18) & 511, y = (k >> 9) & 511, z = k & 511;
-        if (pred(x, y, z, v >> 6, v & 63)) cells.set(k, ((v >> 6) << 6) | id);
-      }
-      return api;
-    },
-    /** Duplicate a part across the Y centre line (mirrors geometry, keeps parts). */
-    mirrorY(partName, centreY = canvas / 2) {
-      const id = partId(partName);
-      const copies = [];
-      for (const [k, v] of cells) {
-        if ((v & 63) !== id) continue;
-        const x = (k >> 18) & 511, y = (k >> 9) & 511, z = k & 511;
-        copies.push([x, 2 * centreY - 1 - y, z, v]);
-      }
-      for (const [x, y, z, v] of copies) {
-        if (inBounds(x, y, z)) cells.set(key(x, y, z), v);
-      }
-      return api;
-    },
-    /** Surface mottling (camouflage, weathering). Only repaints exposed faces. */
-    mottle(seed, mats, density, { zMax = canvas } = {}) {
-      const r = rng(seed);
-      const exposed = [];
-      for (const [k, v] of cells) {
-        const x = (k >> 18) & 511, y = (k >> 9) & 511, z = k & 511;
-        if (z > zMax) continue;
-        if (!cells.has(key(x, y, z + 1))) exposed.push([k, x, y, z, v]);
-      }
-      for (const [k, x, y, z, v] of exposed) {
-        // Cheap value-noise blob: hash with two frequencies plus the seed.
-        const n = Math.sin(x * 0.11 + seed) * Math.cos(y * 0.13 - seed * 0.7) + Math.sin(z * 0.09);
-        if (n * 0.5 + r() * 0.5 > 1 - density) {
-          const pick = mats[Math.floor(r() * mats.length) % mats.length];
-          cells.set(k, (api.matId(pick) << 6) | (v & 63));
-        }
-      }
-      return api;
-    },
-    /** Edge wear: brighten voxels on convex corners (reads as chipped paint). */
     wear(seed, mat, { rate = 0.18 } = {}) {
-      const r = rng(seed);
-      for (const [k, v] of [...cells]) {
-        const x = (k >> 18) & 511, y = (k >> 9) & 511, z = k & 511;
-        let exposed = 0;
-        if (!cells.has(key(x + 1, y, z))) exposed++;
-        if (!cells.has(key(x - 1, y, z))) exposed++;
-        if (!cells.has(key(x, y + 1, z))) exposed++;
-        if (!cells.has(key(x, y - 1, z))) exposed++;
-        if (!cells.has(key(x, y, z + 1))) exposed++;
-        if (exposed >= 3 && r() < rate) cells.set(k, (api.matId(mat) << 6) | (v & 63));
-      }
+      surfacePasses.push({ kind: 'wear', seed, id: api.matId(mat), rate });
+      return api;
+    },
+    mirrorY(partName, centreY = N / 2) {
+      surfacePasses.push({ kind: 'mirror', part: partId(partName), centreY });
       return api;
     },
 
-    /** Remove voxels no iso facing can see (interior fill), keeping surfaces. */
-    cull() {
-      for (const [k] of [...cells]) {
-        const x = (k >> 18) & 511, y = (k >> 9) & 511, z = k & 511;
-        if (cells.has(key(x + 1, y, z)) && cells.has(key(x - 1, y, z))
-          && cells.has(key(x, y + 1, z)) && cells.has(key(x, y - 1, z))
-          && cells.has(key(x, y, z + 1)) && cells.has(key(x, y, z - 1))) {
-          cells.delete(k);
+    /** No-op: the surface pass below replaces the old interior cull. */
+    cull() { return api; },
+
+    finish() {
+      if (maxX < 0) return { parts: [], size: N, totalVoxels: 0 };
+      const cells = [];
+      // One walk of the occupied bounding box: keep only cells with an
+      // exposed face. This *is* the interior cull.
+      for (let z = minZ; z <= maxZ; z++) {
+        for (let y = minY; y <= maxY; y++) {
+          for (let x = minX; x <= maxX; x++) {
+            const i = idxOf(x, y, z);
+            if (!getBit(i)) continue;
+            const exposed =
+              !(getBit(i + 1)) || !(getBit(i - 1))
+              || !getBit(i + N) || !getBit(i - N)
+              || !getBit(i + NN) || !getBit(i - NN);
+            if (!exposed) continue;
+            cells.push([x, y, z, 0, 0]);
+          }
         }
       }
-      return api;
-    },
+      // Resolve material + part: explicit override wins, else last covering op.
+      for (const cell of cells) {
+        const [x, y, z] = cell;
+        const i = idxOf(x, y, z);
+        let packed = explicit.get(i);
+        if (packed === undefined) {
+          const list = buckets.get(bucketKey(x, y, z));
+          if (list) {
+            for (let k = list.length - 1; k >= 0; k--) {
+              const op = ops[list[k]];
+              if (x < op.x0 || x >= op.x1 || y < op.y0 || y >= op.y1 || z < op.z0 || z >= op.z1) continue;
+              if (op.kind === 'erase') { packed = 0; break; }
+              if (op.kind === 'cylZ') {
+                const d2 = (x - op.cx) ** 2 + (y - op.cy) ** 2;
+                if (d2 > op.r * op.r || d2 < op.hollowR * op.hollowR) continue;
+              } else if (op.kind === 'cylX') {
+                const d2 = (y - op.cy) ** 2 + (z - op.cz) ** 2;
+                if (d2 > op.r * op.r || d2 < op.hollowR * op.hollowR) continue;
+              } else if (op.kind === 'cylY') {
+                const d2 = (x - op.cx) ** 2 + (z - op.cz) ** 2;
+                if (d2 > op.r * op.r || d2 < op.hollowR * op.hollowR) continue;
+              } else if (op.kind === 'sphere') {
+                const d2 = (x - op.cx) ** 2 + (y - op.cy) ** 2 + (z - op.cz) ** 2;
+                if (d2 > op.r * op.r) continue;
+                if (op.top && z < op.cz) continue;
+                if (op.bottom && z > op.cz) continue;
+              }
+              packed = op.packed;
+              break;
+            }
+          }
+        }
+        if (!packed) continue;
+        cell[3] = packed >> 6;
+        cell[4] = packed & 63;
+      }
 
-    /** Immutable geometry snapshot: parts with their voxels, bounds and pivots. */
-    finish({ cull = true } = {}) {
-      if (cull) api.cull();
+      // Deferred authoring passes, in call order.
+      let live = cells.filter(c => c[4] !== undefined);
+      for (const pass of surfacePasses) {
+        if (pass.kind === 'paint') {
+          for (const c of live) if (pass.pred(c[0], c[1], c[2], c[3], c[4])) c[3] = pass.packed >> 6;
+        } else if (pass.kind === 'regroup') {
+          for (const c of live) if (pass.pred(c[0], c[1], c[2], c[3], c[4])) c[4] = pass.part;
+        } else if (pass.kind === 'mottle') {
+          const r = rng(pass.seed);
+          for (const c of live) {
+            const [x, y, z] = c;
+            const n = Math.sin(x * 0.11 + pass.seed) * Math.cos(y * 0.13 - pass.seed * 0.7) + Math.sin(z * 0.09);
+            if (n * 0.5 + r() * 0.5 > 1 - pass.density) {
+              c[3] = pass.ids[Math.floor(r() * pass.ids.length) % pass.ids.length];
+            }
+          }
+        } else if (pass.kind === 'wear') {
+          const r = rng(pass.seed);
+          const occupied = new Set(live.map(c => idxOf(c[0], c[1], c[2])));
+          for (const c of live) {
+            const [x, y, z] = c;
+            const i = idxOf(x, y, z);
+            let n = 0;
+            if (!occupied.has(i + 1)) n++;
+            if (!occupied.has(i - 1)) n++;
+            if (!occupied.has(i + N)) n++;
+            if (!occupied.has(i - N)) n++;
+            if (!occupied.has(i + NN)) n++;
+            if (n >= 3 && r() < pass.rate) c[3] = pass.id;
+          }
+        } else if (pass.kind === 'mirror') {
+          const src = live.filter(c => c[4] === pass.part).map(c => [c[0], 2 * pass.centreY - 1 - c[1], c[2], c[3], c[4]]);
+          live = live.concat(src);
+        }
+      }
+
       const byPart = new Map();
-      for (const [k, v] of cells) {
-        const x = (k >> 18) & 511, y = (k >> 9) & 511, z = k & 511;
-        const pid = v & 63;
-        if (!byPart.has(pid)) byPart.set(pid, []);
-        byPart.get(pid).push([x, y, z, v >> 6]);
+      for (const c of live) {
+        let arr = byPart.get(c[4]);
+        if (!arr) byPart.set(c[4], arr = []);
+        arr.push([c[0], c[1], c[2], c[3]]);
       }
       const parts = [];
       for (const p of partList) {
         const id = partIndex.get(p.name);
         const voxels = byPart.get(id) ?? [];
         if (!voxels.length) continue;
-        parts.push({
-          name: p.name,
-          order: parts.length,
-          voxels,
-          pivot: p.pivot,
-          dynamic: p.dynamic,
-          bounds: boundsOf(voxels),
-        });
+        parts.push({ name: p.name, order: parts.length, voxels, pivot: p.pivot,
+          dynamic: p.dynamic, bounds: boundsOf(voxels) });
       }
-      // Body first, then parts by declaration order.
       parts.sort((a, b) => (a.name === 'body' ? -1 : b.name === 'body' ? 1 : a.order - b.order));
       parts.forEach((p, i) => { p.order = i; });
-      return { parts, size: canvas, totalVoxels: cells.size };
+      const total = parts.reduce((s, p) => s + p.voxels.length, 0);
+      return { parts, size: N, totalVoxels: total, ops: ops.length };
     },
   };
   return api;
 }
 
 export function boundsOf(voxels) {
-  let minX = Infinity, minY = Infinity, minZ = Infinity;
-  let maxX = -Infinity, maxY = -Infinity, maxZ = -Infinity;
+  let minX = Infinity, minY = Infinity, minZ = Infinity, maxX = -Infinity, maxY = -Infinity, maxZ = -Infinity;
   for (const [x, y, z] of voxels) {
-    if (x < minX) minX = x;
-    if (y < minY) minY = y;
-    if (z < minZ) minZ = z;
-    if (x > maxX) maxX = x;
-    if (y > maxY) maxY = y;
-    if (z > maxZ) maxZ = z;
+    if (x < minX) minX = x; if (y < minY) minY = y; if (z < minZ) minZ = z;
+    if (x > maxX) maxX = x; if (y > maxY) maxY = y; if (z > maxZ) maxZ = z;
   }
   return { minX, minY, minZ, maxX, maxY, maxZ };
 }
