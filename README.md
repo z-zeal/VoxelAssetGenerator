@@ -28,6 +28,22 @@ The ZIP includes a minimal `package.json` for these commands. Re-baking can take
 
 This is a **source-and-assets starter bundle**, not the fully implemented natural-language voxel asset-generation agent/studio. The included prompt asks a coding agent to implement that system using the bundled pipeline. The HTML page is a working local reviewer for the sprites already included here; it does not itself generate new voxel models.
 
+## 512³-native rebuild (in progress)
+
+The next asset generation runs on a **512×512×512 native voxel lattice** — geometry is authored at that
+resolution, never scaled up from the 64³ models. Units bake **16 directions**, buildings keep **4**, every
+asset is split into **segmented parts** (turret / barrel / rotor / legs …), and every sprite is emitted as an
+**albedo + normal + material** trio, one folder per asset.
+
+- Plan: `docs/PLAN_512_native_16dir_segmented_pipeline.md`
+- Batch checklist: `docs/CHECKLIST_512_native_rebuild.md`
+- Pipeline: `tools/voxel_pipeline/v3/` (`bake.mjs`, `scribe.mjs`, `raster.mjs`, `materials.mjs`, `models/`)
+- Output contract: `game_assets/[units|buildings]/<asset>/{manifest.json,preview.png,sheets/}`
+  plus `game_assets/voxel-index.json`
+
+Status: pipeline skeleton written, pilot asset over the voxel budget — see batch **B1** in the checklist.
+The 64³ pipeline below still owns the shipped sheets until the v4 runtime lands.
+
 ## Folder conventions
 
 - Preserve original filenames and manifest fields.

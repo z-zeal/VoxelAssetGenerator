@@ -1,5 +1,12 @@
 # Plan: New Voxel Assets and Eight-Directional Unit Movement
 
+> **SUPERSEDED (direction + resolution scope):** the 8-direction / 64³ direction work described
+> here is replaced by `docs/PLAN_512_native_16dir_segmented_pipeline.md`, which bakes units in
+> **16 directions** on a **512×512×512 native lattice** (buildings stay at 4), with segmented parts
+> and normal/material maps. Still valid and referenced: this document's asset-roster research
+> (which new units and buildings are worth adding, and why). Execution checklist:
+> `docs/CHECKLIST_512_native_rebuild.md`.
+
 **Branch:** `arena/82c2ca28-voxelassetgenerator` (current working branch)  
 **Status:** PLANNING ONLY — no implementation performed; no source/data/avatar files edited; no rebuild run; no generated PNG/JSON changed by this plan document.  
 **Document path:** `docs/PLAN_new_assets_and_voxel_eight_direction_movement.md`
