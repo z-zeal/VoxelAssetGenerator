@@ -206,9 +206,26 @@ while the structure stays put. ✅ (Gate met; art detail iterates with the rest 
       carrying yagi heads and a dish; 685,806 / 192), `aegis` (eight wheels, appliqué flanks, low stepped
       turret with a **flat phased array** — a tilted plate of emissive elements, nothing like the SAM's
       canisters; 668,860 / 240).
-- [ ] **B4c foot** — `infantry`, `mech`, `engineer`, `medic`, `rocket-infantry`, `aa-infantry`, `sniper`,
-      `grenadier`, `flamethrower`, `demolitionist`, `commando`, `officer`, `spy`, `elite-hero`,
-      `attack-dog`, `scout`.
+- [x] **B4c foot — complete (16/16)** — needed a third kit, `kit-foot.mjs` (a humanoid rig, a quadruped
+      and a walker), because infantry is the opposite sculpting problem to armour: 200 voxels tall and
+      60 wide, with no hull form to carry the identity. Three channels do all the work instead —
+      **proportion** (real shoulder/elbow/hip/knee joints), **headgear and weapon**, and **the load**.
+      Every humanoid is `body` + `head` (pivoted at the neck) + `arm.R` (the aiming arm *with* its weapon,
+      so an aim animation moves the gun and not just the arm), and every one shares the same standing rig
+      so the roster reads as one army.
+      `infantry` helmet/rucksack/rifle 63,815; `engineer` hard hat, toolbox carried two-handed, shovel and
+      pick 74,568; `medic` white aid panels and red crosses on the **front** as well as the pack, stretcher
+      roll 69,158; `rocket-infantry` shoulder tube overhanging both ends 64,113; `aa-infantry` MANPADS
+      angled at the sky, seeker head above the helmet 64,579; `sniper` ghillie hood and the longest barrel
+      in the game with a bipod 67,170; `grenadier` drum launcher 65,677; `flamethrower` twin standing fuel
+      cylinders and a lance 71,427; `demolitionist` sealed suit, charges on the belt, heavy rifle 68,559;
+      `commando` beret, radio, SMG — deliberately the emptiest silhouette 62,632; `officer` peaked cap,
+      binoculars, map board, rank tabs 66,555; `spy` fedora and a **trench coat as a cone** 70,956;
+      `elite-hero` flared cape, pauldrons, crested helmet 101,702; `scout` cap and binoculars up 62,278;
+      `attack-dog` quadruped with a raised head, weapon cradle and sensor mast 60,347; `mech` walker with
+      reverse-jointed legs and a traversing upper body 127,851 (96 PNG — two parts).
+      Foot units carry `minSpan: 60`: the 180-voxel footprint gate exists to catch 64³-scale mistakes, and
+      a man is legitimately smaller than that on a 512 lattice.
 - [ ] Each asset: sculpt → `validate.mjs` → bake → preview → review.
 
 **Gate per sub-batch:** every asset bakes, budget met, parts present, previews reviewed.
@@ -230,6 +247,19 @@ drum standing *ahead of the tracks*, not over the idler. Its blast shield was al
 which read as a black billboard from every facing, and its engine deck was one dark plate that flattened
 the whole vehicle. `mobile-repair`'s boom first held a constant height above its heel, so it floated
 detached in mid-air — the chords have to start at the heel and climb aft.
+
+**Foot-batch lessons, recorded so they are not retried:** a fist-sized glove drawn as a 48-voxel bar
+reads as a plank — hands are 12 voxels, and the arm has to *reach* the weapon rather than the weapon being
+dragged back to the hand. A 15-voxel-thick arm over a 30-voxel span is a sausage; 11 is a limb. A helmet in
+the uniform's own colour just thickens the head into a bucket, so helmets are olive and the hard hat is the
+only bright one. A cape or coat built as one vertical slab reads as a board strapped to the back; cloth only
+reads if the outline changes with height, so both are stacked, widening slabs (the coat also has to close
+*round* the body, not hang behind it). A flamethrower's tanks have to stand up and rise above the shoulders
+or the whole load hides behind the torso from every facing. A ghillie hood drawn as a single box round the
+head is a cardboard carton. The dog's head has to sit above and forward of the body line. And identity marks
+belong on the **front** first: a red cross only on the pack is invisible from most of the 16 facings.
+`walker` first had no dynamic part at all; a mech's upper body rotating at the waist both fixes the
+validation gate and is the right articulation.
 
 **Open art notes for B4a** — the turret/hull balance is close but not settled: the tank's deck still reads
 as a large flat plane at preview scale, and the APC's MG ring is heavy. Both are shape problems, not

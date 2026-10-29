@@ -1,0 +1,3637 @@
+{
+  "format": "field-command-voxel-sheet-4",
+  "hiSheetScale": 4,
+  "asset": "attack-dog",
+  "kind": "unit",
+  "group": "infantry.beasts",
+  "canvas": 512,
+  "designVoxelsPerTileUnit": 8,
+  "renderScale": 1,
+  "previewScale": 8,
+  "superSample": 4,
+  "pxPerVoxel": 0.125,
+  "tileDiamond": [
+    64,
+    32
+  ],
+  "facings": [
+    "d00",
+    "d01",
+    "d02",
+    "d03",
+    "d04",
+    "d05",
+    "d06",
+    "d07",
+    "d08",
+    "d09",
+    "d10",
+    "d11",
+    "d12",
+    "d13",
+    "d14",
+    "d15"
+  ],
+  "facingMeta": [
+    {
+      "id": "d00",
+      "angle": 0,
+      "screenAngle": 45,
+      "label": "SE",
+      "unitIndex": 0,
+      "viewDir": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.0625,
+        -0.0625,
+        0,
+        0.03125,
+        0.03125,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d01",
+      "angle": 22.5,
+      "screenAngle": 67.5,
+      "label": "SSE",
+      "unitIndex": 1,
+      "viewDir": [
+        0.7543444794845715,
+        0.3124597141037824,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        0.03382475625913983,
+        -0.08166018530477004,
+        0,
+        0.040830092652386796,
+        0.01691237812956814,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d02",
+      "angle": 45,
+      "screenAngle": 90,
+      "label": "S",
+      "unitIndex": 2,
+      "viewDir": [
+        0.8164965809277261,
+        6.409875621278547e-17,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0,
+        -0.08838834764831915,
+        0,
+        0.04419417382415958,
+        0,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d03",
+      "angle": 67.5,
+      "screenAngle": 112.5,
+      "label": "SSW",
+      "unitIndex": 3,
+      "viewDir": [
+        0.7543444794845715,
+        -0.3124597141037824,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.03382475625913628,
+        -0.08166018530477004,
+        0,
+        0.04083009265238502,
+        -0.016912378129569028,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d04",
+      "angle": 90,
+      "screenAngle": 135,
+      "label": "SW",
+      "unitIndex": 4,
+      "viewDir": [
+        0.5773502691896258,
+        -0.5773502691896257,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        -0.0625,
+        -0.0625,
+        0,
+        0.03125,
+        -0.03125000000000089,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d05",
+      "angle": 112.5,
+      "screenAngle": 157.5,
+      "label": "WSW",
+      "unitIndex": 5,
+      "viewDir": [
+        0.3124597141037825,
+        -0.7543444794845715,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.08166018530477359,
+        -0.03382475625913628,
+        0,
+        0.016912378129569028,
+        -0.04083009265238591,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d06",
+      "angle": 135,
+      "screenAngle": 180,
+      "label": "W",
+      "unitIndex": 6,
+      "viewDir": [
+        6.409875621278547e-17,
+        -0.8164965809277261,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        -0.08838834764831915,
+        0,
+        0,
+        0,
+        -0.04419417382415958,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d07",
+      "angle": 157.5,
+      "screenAngle": 202.5,
+      "label": "WNW",
+      "unitIndex": 7,
+      "viewDir": [
+        -0.3124597141037824,
+        -0.7543444794845715,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.08166018530477537,
+        0.03382475625913628,
+        0,
+        -0.01691237812956814,
+        -0.04083009265238502,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d08",
+      "angle": 180,
+      "screenAngle": 225,
+      "label": "NW",
+      "unitIndex": 8,
+      "viewDir": [
+        -0.5773502691896256,
+        -0.5773502691896258,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.0625,
+        0.062499999999998224,
+        0,
+        -0.03125,
+        -0.03125,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d09",
+      "angle": 202.5,
+      "screenAngle": 247.5,
+      "label": "NNW",
+      "unitIndex": 9,
+      "viewDir": [
+        -0.7543444794845713,
+        -0.3124597141037829,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.03382475625913628,
+        0.08166018530477537,
+        0,
+        -0.04083009265238502,
+        -0.01691237812956814,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d10",
+      "angle": 225,
+      "screenAngle": 270,
+      "label": "N",
+      "unitIndex": 10,
+      "viewDir": [
+        -0.8164965809277261,
+        -1.2819751242557095e-16,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0,
+        0.08838834764831915,
+        0,
+        -0.04419417382415958,
+        0,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d11",
+      "angle": 247.5,
+      "screenAngle": 292.5,
+      "label": "NNE",
+      "unitIndex": 11,
+      "viewDir": [
+        -0.7543444794845715,
+        0.3124597141037827,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.03382475625913983,
+        0.08166018530477359,
+        0,
+        -0.040830092652386796,
+        0.016912378129569028,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d12",
+      "angle": 270,
+      "screenAngle": 315,
+      "label": "NE",
+      "unitIndex": 12,
+      "viewDir": [
+        -0.5773502691896258,
+        0.5773502691896256,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        0.0625,
+        0.0625,
+        0,
+        -0.03125,
+        0.03125,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d13",
+      "angle": 292.5,
+      "screenAngle": 337.5,
+      "label": "ENE",
+      "unitIndex": 13,
+      "viewDir": [
+        -0.3124597141037823,
+        0.7543444794845715,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        0.08166018530477004,
+        0.03382475625913983,
+        0,
+        -0.01691237812956814,
+        0.040830092652387684,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d14",
+      "angle": 315,
+      "screenAngle": 0,
+      "label": "E",
+      "unitIndex": 14,
+      "viewDir": [
+        -1.9229626863835643e-16,
+        0.8164965809277261,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.08838834764831915,
+        0,
+        0,
+        0,
+        0.04419417382415958,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d15",
+      "angle": 337.5,
+      "screenAngle": 22.5,
+      "label": "ESE",
+      "unitIndex": 15,
+      "viewDir": [
+        0.3124597141037827,
+        0.7543444794845715,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.08166018530477537,
+        -0.03382475625913273,
+        0,
+        0.016912378129569916,
+        0.040830092652386796,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    }
+  ],
+  "teamTint": {
+    "note": "Albedo is baked in the standard livery. Recolour pixels whose material map red channel matches these ids to apply an army livery.",
+    "materialIds": [
+      {
+        "name": "team.hull",
+        "id": 0,
+        "role": "hull"
+      },
+      {
+        "name": "team.light",
+        "id": 1,
+        "role": "light"
+      },
+      {
+        "name": "team.dark",
+        "id": 2,
+        "role": "dark"
+      },
+      {
+        "name": "team.accent",
+        "id": 3,
+        "role": "accent"
+      },
+      {
+        "name": "roof",
+        "id": 37,
+        "role": "hull"
+      },
+      {
+        "name": "roof.light",
+        "id": 38,
+        "role": "light"
+      },
+      {
+        "name": "roof.dark",
+        "id": 39,
+        "role": "dark"
+      }
+    ],
+    "liveries": {
+      "_note": "Army liveries for runtime tinting of team materials. Mirrors src/renderer.js TEAM_COLORS and tools/voxel_pipeline/v3/materials.mjs ARMY_LIVERY.",
+      "standard": {
+        "hull": "#df794b",
+        "light": "#ffc68b",
+        "dark": "#934b32",
+        "accent": "#ece7bc"
+      },
+      "allies": {
+        "hull": "#639bc3",
+        "light": "#a9d0e1",
+        "dark": "#345f78",
+        "accent": "#e8f1f4"
+      },
+      "soviets": {
+        "hull": "#7eb06a",
+        "light": "#b8e0a8",
+        "dark": "#2d4a2d",
+        "accent": "#dfe8c8"
+      },
+      "empire": {
+        "hull": "#d9b44e",
+        "light": "#ffe79a",
+        "dark": "#8a6a1a",
+        "accent": "#f6eecd"
+      },
+      "legion": {
+        "hull": "#c65a54",
+        "light": "#ffb0a8",
+        "dark": "#7a2a2a",
+        "accent": "#f3d9d4"
+      },
+      "neutral": {
+        "hull": "#aaa78b",
+        "light": "#cfcdb6",
+        "dark": "#6c6a55",
+        "accent": "#e2e0cf"
+      }
+    }
+  },
+  "normalMap": {
+    "space": "view",
+    "channelOrder": "rgb",
+    "range": "0..255 maps -1..1",
+    "up": "+g means screen up"
+  },
+  "materialMap": {
+    "channelOrder": "rgba",
+    "meaning": [
+      "materialId",
+      "metalness",
+      "roughness",
+      "emissive"
+    ],
+    "table": [
+      {
+        "id": 0,
+        "name": "team.hull",
+        "metalness": 0.35,
+        "roughness": 0.62,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "hull"
+      },
+      {
+        "id": 1,
+        "name": "team.light",
+        "metalness": 0.35,
+        "roughness": 0.58,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "light"
+      },
+      {
+        "id": 2,
+        "name": "team.dark",
+        "metalness": 0.4,
+        "roughness": 0.66,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "dark"
+      },
+      {
+        "id": 3,
+        "name": "team.accent",
+        "metalness": 0.2,
+        "roughness": 0.7,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "accent"
+      },
+      {
+        "id": 4,
+        "name": "steel",
+        "metalness": 0.85,
+        "roughness": 0.42,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 5,
+        "name": "steel.dark",
+        "metalness": 0.85,
+        "roughness": 0.5,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 6,
+        "name": "steel.bright",
+        "metalness": 0.95,
+        "roughness": 0.24,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 7,
+        "name": "gunmetal",
+        "metalness": 0.9,
+        "roughness": 0.38,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 8,
+        "name": "gunmetal.lit",
+        "metalness": 0.9,
+        "roughness": 0.32,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 9,
+        "name": "iron",
+        "metalness": 0.8,
+        "roughness": 0.62,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 10,
+        "name": "brass",
+        "metalness": 0.95,
+        "roughness": 0.3,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 11,
+        "name": "copper",
+        "metalness": 0.95,
+        "roughness": 0.34,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 12,
+        "name": "chrome",
+        "metalness": 1,
+        "roughness": 0.12,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 13,
+        "name": "rubber",
+        "metalness": 0.05,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 14,
+        "name": "track",
+        "metalness": 0.7,
+        "roughness": 0.68,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 15,
+        "name": "track.worn",
+        "metalness": 0.85,
+        "roughness": 0.44,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 16,
+        "name": "tyre",
+        "metalness": 0.03,
+        "roughness": 0.95,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 17,
+        "name": "plate",
+        "metalness": 0.55,
+        "roughness": 0.66,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 18,
+        "name": "plate.lit",
+        "metalness": 0.55,
+        "roughness": 0.6,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 19,
+        "name": "plate.dark",
+        "metalness": 0.55,
+        "roughness": 0.72,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 20,
+        "name": "glass",
+        "metalness": 0.3,
+        "roughness": 0.08,
+        "emissive": 0,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 21,
+        "name": "glass.dark",
+        "metalness": 0.4,
+        "roughness": 0.12,
+        "emissive": 0,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 22,
+        "name": "optic",
+        "metalness": 0.6,
+        "roughness": 0.05,
+        "emissive": 0.55,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 23,
+        "name": "lamp.warm",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.85,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 24,
+        "name": "lamp.red",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.8,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 25,
+        "name": "lamp.cyan",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.8,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 26,
+        "name": "skin",
+        "metalness": 0,
+        "roughness": 0.78,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 27,
+        "name": "skin.dark",
+        "metalness": 0,
+        "roughness": 0.8,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 28,
+        "name": "cloth",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 29,
+        "name": "cloth.dark",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 30,
+        "name": "webbing",
+        "metalness": 0.05,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 31,
+        "name": "boot",
+        "metalness": 0.1,
+        "roughness": 0.85,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 32,
+        "name": "hair",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 33,
+        "name": "concrete",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 34,
+        "name": "concrete.lit",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 35,
+        "name": "concrete.dark",
+        "metalness": 0,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 36,
+        "name": "brick",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 37,
+        "name": "roof",
+        "metalness": 0.1,
+        "roughness": 0.82,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "hull"
+      },
+      {
+        "id": 38,
+        "name": "roof.light",
+        "metalness": 0.1,
+        "roughness": 0.8,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "light"
+      },
+      {
+        "id": 39,
+        "name": "roof.dark",
+        "metalness": 0.1,
+        "roughness": 0.84,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "dark"
+      },
+      {
+        "id": 40,
+        "name": "asphalt",
+        "metalness": 0,
+        "roughness": 0.96,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 41,
+        "name": "paint.line",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 42,
+        "name": "wood",
+        "metalness": 0,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 43,
+        "name": "wood.dark",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 44,
+        "name": "canvas",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 45,
+        "name": "sandbag",
+        "metalness": 0,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 46,
+        "name": "solar",
+        "metalness": 0.6,
+        "roughness": 0.22,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 47,
+        "name": "rust",
+        "metalness": 0.3,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 48,
+        "name": "scorch",
+        "metalness": 0.2,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 49,
+        "name": "smoke",
+        "metalness": 0,
+        "roughness": 1,
+        "emissive": 0.1,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 50,
+        "name": "water",
+        "metalness": 0.2,
+        "roughness": 0.15,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 51,
+        "name": "foam",
+        "metalness": 0,
+        "roughness": 0.6,
+        "emissive": 0.1,
+        "blend": "opaque",
+        "team": null
+      }
+    ]
+  },
+  "parts": {
+    "body": {
+      "name": "body",
+      "dynamic": false,
+      "parent": null,
+      "pivotDesign": [
+        256,
+        256,
+        0
+      ],
+      "traverse": false,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            9,
+            14
+          ],
+          "pivot": [
+            9,
+            14
+          ],
+          "depth": 42.07,
+          "w": 19,
+          "h": 21,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__body__d00__albedo.png",
+              "w": 19,
+              "h": 21,
+              "sha256": "3b354919c4558fff1e267ef9ea685b1d72f49b32bcd4b1049db591c34ad02b43"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__body__d00__normal.png",
+              "w": 19,
+              "h": 21,
+              "sha256": "62b2218d8594c2b7ec0fa5780b9d2c2453a9f67097b77b5472bce6420163d529"
+            },
+            "material": {
+              "file": "sheets/attack-dog__body__d00__material.png",
+              "w": 19,
+              "h": 21,
+              "sha256": "29d08787575e262e877f0fd3c90c836ba686644615eff5cd38bbc06681e5738c"
+            }
+          },
+          "filesHi": {
+            "w": 74,
+            "h": 79,
+            "pivot": [
+              36,
+              54
+            ],
+            "anchor": [
+              36,
+              54
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__body__d00__albedo@4x.png",
+                "w": 74,
+                "h": 79,
+                "sha256": "beb474f819874c4c9a3b8355adef927dcbc9ea6fd7a96dbdeb4f18daedf5ee00"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__body__d00__normal@4x.png",
+                "w": 74,
+                "h": 79,
+                "sha256": "40e529336ad4b629c9dd60eef81b391b03a06da291d231fa9856247830e1e271"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__body__d00__material@4x.png",
+                "w": 74,
+                "h": 79,
+                "sha256": "0ceed029edfaf2bb6baa6688ea31bc0e7e2cb132a79888447a7010444df02283"
+              }
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            8.75,
+            13.78
+          ],
+          "pivot": [
+            8.75,
+            13.78
+          ],
+          "depth": 39.15,
+          "w": 17,
+          "h": 20,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__body__d01__albedo.png",
+              "w": 17,
+              "h": 20,
+              "sha256": "2c5f8648bbb8f1f189dd6d25aa5828b0ad58b2f9de2728ce5e26e8ef695185c5"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__body__d01__normal.png",
+              "w": 17,
+              "h": 20,
+              "sha256": "7c1e21d4ad787bf435215fc0e332978ebbbc8064f7c78b164daf275cccb199be"
+            },
+            "material": {
+              "file": "sheets/attack-dog__body__d01__material.png",
+              "w": 17,
+              "h": 20,
+              "sha256": "e2d3e84d71a330a04575177d3e16549b5b051db2ec87dda14ba9fb06e2f0bd2f"
+            }
+          },
+          "filesHi": {
+            "w": 65,
+            "h": 80,
+            "pivot": [
+              33.02,
+              55.13
+            ],
+            "anchor": [
+              33.02,
+              55.13
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__body__d01__albedo@4x.png",
+                "w": 65,
+                "h": 80,
+                "sha256": "50a76fa7b9eb5fb33e1e7a43d77cf095cdfce57cd00c6c15d6db02e8cb6305b4"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__body__d01__normal@4x.png",
+                "w": 65,
+                "h": 80,
+                "sha256": "bb0591000f47b81fc2a18965f6c4c1f8f1c15d883c3d812f28d1f9beb74c2dcf"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__body__d01__material@4x.png",
+                "w": 65,
+                "h": 80,
+                "sha256": "a5204616ad6454eadca2cb8a2d202f2ceabb4dbf59a46d99e2b24d277c774d87"
+              }
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            8.37,
+            14.31
+          ],
+          "pivot": [
+            8.37,
+            14.31
+          ],
+          "depth": 31.02,
+          "w": 16,
+          "h": 20,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__body__d02__albedo.png",
+              "w": 16,
+              "h": 20,
+              "sha256": "5536f80a9c68e742ab84e2175d6c3751dbe8b6ac3a59ad621ca67a27c5f856c2"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__body__d02__normal.png",
+              "w": 16,
+              "h": 20,
+              "sha256": "88e5175b250ea86c4c22ca116d9f351b8dbc7fb4c5c867c05f96c0235c209ac2"
+            },
+            "material": {
+              "file": "sheets/attack-dog__body__d02__material.png",
+              "w": 16,
+              "h": 20,
+              "sha256": "b226941e4036230c3dc5b199aff3e208260095894e0e51e85817291b2502ad3c"
+            }
+          },
+          "filesHi": {
+            "w": 58,
+            "h": 78,
+            "pivot": [
+              30.49,
+              55.25
+            ],
+            "anchor": [
+              30.49,
+              55.25
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__body__d02__albedo@4x.png",
+                "w": 58,
+                "h": 78,
+                "sha256": "8a16593f345fb7da4abfa1548469757a20b84751621293af3668251b724f23c4"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__body__d02__normal@4x.png",
+                "w": 58,
+                "h": 78,
+                "sha256": "959b6f036ae95bda2c34b413781fb2b892d711903f5a197829eaaa8e88683309"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__body__d02__material@4x.png",
+                "w": 58,
+                "h": 78,
+                "sha256": "f62dfcfee570db618bffc9377decf7c2667255e8d606447541ddb32ece1ca3d5"
+              }
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            9.44,
+            14.12
+          ],
+          "pivot": [
+            9.44,
+            14.12
+          ],
+          "depth": 18.92,
+          "w": 17,
+          "h": 21,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__body__d03__albedo.png",
+              "w": 17,
+              "h": 21,
+              "sha256": "280355f1ac3a862966f0c32a325e9b0670ba613f84e15332f78ecf2503154e5e"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__body__d03__normal.png",
+              "w": 17,
+              "h": 21,
+              "sha256": "d524c30f69c1d77b77bf375455d29389a2c872a46f064864ed135e47b75c8c66"
+            },
+            "material": {
+              "file": "sheets/attack-dog__body__d03__material.png",
+              "w": 17,
+              "h": 21,
+              "sha256": "3262f72d7a11661c2c3e1e29d65b593e9c50364d152b736f84f0a49cb80ffc80"
+            }
+          },
+          "filesHi": {
+            "w": 67,
+            "h": 79,
+            "pivot": [
+              36.74,
+              54.49
+            ],
+            "anchor": [
+              36.74,
+              54.49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__body__d03__albedo@4x.png",
+                "w": 67,
+                "h": 79,
+                "sha256": "e86423cc0e9af4ea8780c5baa8122d8a528ed9ae6be4c9f874758a27287d9c23"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__body__d03__normal@4x.png",
+                "w": 67,
+                "h": 79,
+                "sha256": "914c47d6baf51d732860de136d0d9c177a09897002655032502910dc4f691161"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__body__d03__material@4x.png",
+                "w": 67,
+                "h": 79,
+                "sha256": "7586b4998f1d56c7f468e93cf7414bdcae4644a43e10eb390923ddae601e5bf4"
+              }
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            11,
+            14
+          ],
+          "pivot": [
+            11,
+            14
+          ],
+          "depth": 4.69,
+          "w": 20,
+          "h": 21,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__body__d04__albedo.png",
+              "w": 20,
+              "h": 21,
+              "sha256": "6e6175fb089f6f1a9759c28559ebf33d68b0545b3d1ebeabf2f2b2a1824666b0"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__body__d04__normal.png",
+              "w": 20,
+              "h": 21,
+              "sha256": "fdf5a9d181159e5e67b6bb63e265bde00728a97e8c58338f70627c37e196ea12"
+            },
+            "material": {
+              "file": "sheets/attack-dog__body__d04__material.png",
+              "w": 20,
+              "h": 21,
+              "sha256": "f62491be5a52406cd3b259f26617f954f91f23ae63d3ae7e5aa510b46da9918a"
+            }
+          },
+          "filesHi": {
+            "w": 77,
+            "h": 79,
+            "pivot": [
+              41,
+              54
+            ],
+            "anchor": [
+              41,
+              54
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__body__d04__albedo@4x.png",
+                "w": 77,
+                "h": 79,
+                "sha256": "d627bd5022e1c8b34b3b87ec37ca257925ab755ff06f5273778e1bd2e9366a29"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__body__d04__normal@4x.png",
+                "w": 77,
+                "h": 79,
+                "sha256": "c81e152e1073425821dedc27ab75ebbc4da2cc1dbdf8e0dd9d66f2e03cf5d134"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__body__d04__material@4x.png",
+                "w": 77,
+                "h": 79,
+                "sha256": "4ce4cc504d99e640f85bc68e3ab6c73889bbc41ed0299570e085e20a84161a36"
+              }
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            10.44,
+            13.88
+          ],
+          "pivot": [
+            10.44,
+            13.88
+          ],
+          "depth": -9.5,
+          "w": 21,
+          "h": 20,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__body__d05__albedo.png",
+              "w": 21,
+              "h": 20,
+              "sha256": "067c9e70b3e35325023481f7f78aac8894eac7968f85d38707ca92fb609dd43a"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__body__d05__normal.png",
+              "w": 21,
+              "h": 20,
+              "sha256": "0e0e1a3bcd258799b63e49febc3a49a2deb4d8980f87b09c553e24933f94d2c2"
+            },
+            "material": {
+              "file": "sheets/attack-dog__body__d05__material.png",
+              "w": 21,
+              "h": 20,
+              "sha256": "fbe533aaf986d8c6e7744c0e647ed1d0080d054461dfff5f8bac386a00e31134"
+            }
+          },
+          "filesHi": {
+            "w": 82,
+            "h": 77,
+            "pivot": [
+              41.74,
+              53.51
+            ],
+            "anchor": [
+              41.74,
+              53.51
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__body__d05__albedo@4x.png",
+                "w": 82,
+                "h": 77,
+                "sha256": "32295961dff07a54fc5ef0e253573c9fd64e38c850cb8d94f5293665bb4c71bd"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__body__d05__normal@4x.png",
+                "w": 82,
+                "h": 77,
+                "sha256": "099d02af747a2f81384b6bbc0e373f7bc34ab7b4bc6a3d8f08503ac539202cdd"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__body__d05__material@4x.png",
+                "w": 82,
+                "h": 77,
+                "sha256": "805604bd13ef257a73fb92cf7806a1dba34f02aaa9397f0148d01e41cfba3fce"
+              }
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            10.37,
+            13.69
+          ],
+          "pivot": [
+            10.37,
+            13.69
+          ],
+          "depth": -21.49,
+          "w": 21,
+          "h": 20,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__body__d06__albedo.png",
+              "w": 21,
+              "h": 20,
+              "sha256": "e2e75d8df41efaf1e62f2fe0cfe2173874fb2f68afe99664b83d6cd6649cc98e"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__body__d06__normal.png",
+              "w": 21,
+              "h": 20,
+              "sha256": "09d59a44779ef6ee9dd0d8594a0ac0fe111bfe4708ebca25084e677c952ba06d"
+            },
+            "material": {
+              "file": "sheets/attack-dog__body__d06__material.png",
+              "w": 21,
+              "h": 20,
+              "sha256": "ae8c3e3d6cab466443372fc20826d8d6714c225539acd8cd5b07b8935fd774ea"
+            }
+          },
+          "filesHi": {
+            "w": 83,
+            "h": 74,
+            "pivot": [
+              41.49,
+              51.75
+            ],
+            "anchor": [
+              41.49,
+              51.75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__body__d06__albedo@4x.png",
+                "w": 83,
+                "h": 74,
+                "sha256": "a77109a14fd1ab1acbb2f980a4e31f814d2476e1cc4abca48c3c94c6a86632da"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__body__d06__normal@4x.png",
+                "w": 83,
+                "h": 74,
+                "sha256": "93622bddbfa9ed88f3463c8bb1124e787ffce7f662d2e2c48f63ca55a39afc83"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__body__d06__material@4x.png",
+                "w": 83,
+                "h": 74,
+                "sha256": "0645379a30a32f36d7ea181a2c084724596c60f36efe5486fbde0f83e2b29fe8"
+              }
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            10.75,
+            13.22
+          ],
+          "pivot": [
+            10.75,
+            13.22
+          ],
+          "depth": -29.46,
+          "w": 21,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__body__d07__albedo.png",
+              "w": 21,
+              "h": 19,
+              "sha256": "4979d535d52e76fd8e1999a64167878727c366863b6a36343fdcf105e20aba50"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__body__d07__normal.png",
+              "w": 21,
+              "h": 19,
+              "sha256": "5625237a47ef539de8f092e2e31ae22818c76b0d6ed6725a696201c56f71136c"
+            },
+            "material": {
+              "file": "sheets/attack-dog__body__d07__material.png",
+              "w": 21,
+              "h": 19,
+              "sha256": "64a126dedd59dccd1f4e7c3dda32fe572ea3ea209ec9301c9fff0c99d49e8377"
+            }
+          },
+          "filesHi": {
+            "w": 83,
+            "h": 76,
+            "pivot": [
+              42.02,
+              52.87
+            ],
+            "anchor": [
+              42.02,
+              52.87
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__body__d07__albedo@4x.png",
+                "w": 83,
+                "h": 76,
+                "sha256": "a7a336ec8c289f14ccf7e8ee24e97ccb3efd35dcd946183692031e7f3bd363c0"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__body__d07__normal@4x.png",
+                "w": 83,
+                "h": 76,
+                "sha256": "c07075cce300f9d201ea659fccec57dd566915ab2a61d70a8d09484b7b3b503f"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__body__d07__material@4x.png",
+                "w": 83,
+                "h": 76,
+                "sha256": "b26a9d2729f3591ef0ccebae3a1ed0832a453610b806c7555e09838cc6ff0b61"
+              }
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            10,
+            14
+          ],
+          "pivot": [
+            10,
+            14
+          ],
+          "depth": -32.19,
+          "w": 19,
+          "h": 20,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__body__d08__albedo.png",
+              "w": 19,
+              "h": 20,
+              "sha256": "a62b4d7840eaac714c3fa36bc76a02e1b90789b4fcb5e1a9ddbd564654bca5e0"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__body__d08__normal.png",
+              "w": 19,
+              "h": 20,
+              "sha256": "1077beb06720f2dde94ae4c8ad0e4f687899808177434f14b86fd3ccfb30237e"
+            },
+            "material": {
+              "file": "sheets/attack-dog__body__d08__material.png",
+              "w": 19,
+              "h": 20,
+              "sha256": "6bcae9137fa950b5a2bbae7ff3c282b0337d2ab9b95b5fc62ba091e87053a810"
+            }
+          },
+          "filesHi": {
+            "w": 74,
+            "h": 78,
+            "pivot": [
+              38,
+              55
+            ],
+            "anchor": [
+              38,
+              55
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__body__d08__albedo@4x.png",
+                "w": 74,
+                "h": 78,
+                "sha256": "204ce98e5f2b74c96cabd92b8b2a650f586be4b65cd35e423b3d7e99d8e050e8"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__body__d08__normal@4x.png",
+                "w": 74,
+                "h": 78,
+                "sha256": "e434033e6312f30215e660d71b8d0b77aa2f3fb7cb324c90ec8968612595dbce"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__body__d08__material@4x.png",
+                "w": 74,
+                "h": 78,
+                "sha256": "293bb86024509c06dc4bd3543d35ec94d4fc5a84e3f5f40a7807aedbe3ae3572"
+              }
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            8.25,
+            14.22
+          ],
+          "pivot": [
+            8.25,
+            14.22
+          ],
+          "depth": -29.26,
+          "w": 17,
+          "h": 20,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__body__d09__albedo.png",
+              "w": 17,
+              "h": 20,
+              "sha256": "e8f9fbb3a164939f8db214454d4a3f1aeb17b6ee7042de32ccbb1006dba6a441"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__body__d09__normal.png",
+              "w": 17,
+              "h": 20,
+              "sha256": "995a3a6017214f934578c538f0e1bf620d79c5d148c7ea987ac7e65be7f8d769"
+            },
+            "material": {
+              "file": "sheets/attack-dog__body__d09__material.png",
+              "w": 17,
+              "h": 20,
+              "sha256": "cad179041f369149dd95dfb1ca2e6cfd4e16021168476f8a1f6e5e574e961d34"
+            }
+          },
+          "filesHi": {
+            "w": 65,
+            "h": 79,
+            "pivot": [
+              31.98,
+              56.87
+            ],
+            "anchor": [
+              31.98,
+              56.87
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__body__d09__albedo@4x.png",
+                "w": 65,
+                "h": 79,
+                "sha256": "f8e0a7ebba1a30c4729494aff5f0152e142c56d9c313bb1ade58fbb791e86a6e"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__body__d09__normal@4x.png",
+                "w": 65,
+                "h": 79,
+                "sha256": "317c90a531462271b8e0aff055eda1fa6b9a1e99d485157238cf1e0142d8b158"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__body__d09__material@4x.png",
+                "w": 65,
+                "h": 79,
+                "sha256": "87655dc0400751be0700079cc745a46b2db2cf637635bdbef6544a97eb5b6f58"
+              }
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            7.63,
+            14.69
+          ],
+          "pivot": [
+            7.63,
+            14.69
+          ],
+          "depth": -21.13,
+          "w": 16,
+          "h": 20,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__body__d10__albedo.png",
+              "w": 16,
+              "h": 20,
+              "sha256": "b4f9cad0fe1801c74beb67b3ff6345a43cb95fe604f4a950beeb9ea59bf7479a"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__body__d10__normal.png",
+              "w": 16,
+              "h": 20,
+              "sha256": "268e93cf37631c05bb74dfe4a58d08a2a52a18ccfd0561a4b0f06a9a4ffc33ba"
+            },
+            "material": {
+              "file": "sheets/attack-dog__body__d10__material.png",
+              "w": 16,
+              "h": 20,
+              "sha256": "a1c0f3e4477c79e641089ed72d65b12357c68f29a578687941f3177c6c6418f6"
+            }
+          },
+          "filesHi": {
+            "w": 58,
+            "h": 78,
+            "pivot": [
+              27.51,
+              57.75
+            ],
+            "anchor": [
+              27.51,
+              57.75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__body__d10__albedo@4x.png",
+                "w": 58,
+                "h": 78,
+                "sha256": "0a85b6aedce5b88d3509b9da714dc0c75f1c313d3da23865d35c7879fca1db15"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__body__d10__normal@4x.png",
+                "w": 58,
+                "h": 78,
+                "sha256": "38d188f16bfcdea8c03a89434609f6207952baa25f3108552109c1f86260b8f8"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__body__d10__material@4x.png",
+                "w": 58,
+                "h": 78,
+                "sha256": "a578b91a05cc65344c473b744ef42a69bd4be462e33ec0d35e4480e06e27304b"
+              }
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            7.56,
+            14.88
+          ],
+          "pivot": [
+            7.56,
+            14.88
+          ],
+          "depth": -9.03,
+          "w": 17,
+          "h": 21,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__body__d11__albedo.png",
+              "w": 17,
+              "h": 21,
+              "sha256": "e9cdc6be5664e12d66973ea9184b307b06496f9832ea0702e76deb54adb4a189"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__body__d11__normal.png",
+              "w": 17,
+              "h": 21,
+              "sha256": "1be420f73f5a31f8c4f1ae9f73227bb4ce7e88d3706530939e0069357d622f71"
+            },
+            "material": {
+              "file": "sheets/attack-dog__body__d11__material.png",
+              "w": 17,
+              "h": 21,
+              "sha256": "b865dbf1ad5b915757a6fd5486e8385fd1618bc625ac5fd485454298472e9ac3"
+            }
+          },
+          "filesHi": {
+            "w": 67,
+            "h": 79,
+            "pivot": [
+              30.26,
+              56.51
+            ],
+            "anchor": [
+              30.26,
+              56.51
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__body__d11__albedo@4x.png",
+                "w": 67,
+                "h": 79,
+                "sha256": "6763553df27bb570d1b750aeb9e89a4dcde206e854a6cc90b8730610bbc81841"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__body__d11__normal@4x.png",
+                "w": 67,
+                "h": 79,
+                "sha256": "c3eb3962ebf229c63b340c7ed181791b554e0682c841acb17517166977372c8d"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__body__d11__material@4x.png",
+                "w": 67,
+                "h": 79,
+                "sha256": "cb2fc06a3a04cd9f959ab40efb39815c08168ec3c656d0522957ba4eacf8e4d4"
+              }
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            9,
+            14
+          ],
+          "pivot": [
+            9,
+            14
+          ],
+          "depth": 5.2,
+          "w": 20,
+          "h": 20,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__body__d12__albedo.png",
+              "w": 20,
+              "h": 20,
+              "sha256": "663a5c3b65426c64a119eff45e5114c364e1310e7f6e6db1169cc03ab4ad1c68"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__body__d12__normal.png",
+              "w": 20,
+              "h": 20,
+              "sha256": "4684e1fed00ea91609a499f1551271e0469cdbbaf5f32d7f71840864637b9978"
+            },
+            "material": {
+              "file": "sheets/attack-dog__body__d12__material.png",
+              "w": 20,
+              "h": 20,
+              "sha256": "f6fbff590a1e20cbdfc9f5ff87594c1ba0b3a69d9ff20de2721fad3ea236e5af"
+            }
+          },
+          "filesHi": {
+            "w": 77,
+            "h": 78,
+            "pivot": [
+              36,
+              55
+            ],
+            "anchor": [
+              36,
+              55
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__body__d12__albedo@4x.png",
+                "w": 77,
+                "h": 78,
+                "sha256": "e1817b8209a5f30a2d8b6ddcf8d5884d0a0ecd31a6919df1d1c7de61622d532e"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__body__d12__normal@4x.png",
+                "w": 77,
+                "h": 78,
+                "sha256": "8aea4345df460a8d2752589ed43c657243687537d3297320d2d138abbb964f9f"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__body__d12__material@4x.png",
+                "w": 77,
+                "h": 78,
+                "sha256": "69add3b69e0f3bfebace681c1920f38813a990ae3fbe062895b0087cfc961f51"
+              }
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            10.56,
+            13.12
+          ],
+          "pivot": [
+            10.56,
+            13.12
+          ],
+          "depth": 19.39,
+          "w": 21,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__body__d13__albedo.png",
+              "w": 21,
+              "h": 19,
+              "sha256": "fd8ab6df4f6b296540e34f17a1f30d6e747d0864fa9071bebf59991af7425f01"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__body__d13__normal.png",
+              "w": 21,
+              "h": 19,
+              "sha256": "1518814f7579325f903d85344731f7f3b8d54c819ac6714f3d88a6b7b736003d"
+            },
+            "material": {
+              "file": "sheets/attack-dog__body__d13__material.png",
+              "w": 21,
+              "h": 19,
+              "sha256": "01721afd904308baa23726b79c017041688ec920694f12907cd48f690c304225"
+            }
+          },
+          "filesHi": {
+            "w": 82,
+            "h": 75,
+            "pivot": [
+              40.26,
+              52.49
+            ],
+            "anchor": [
+              40.26,
+              52.49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__body__d13__albedo@4x.png",
+                "w": 82,
+                "h": 75,
+                "sha256": "85da55b6873faa2c639d63106a1ecde372a88b0ff57074531d586c9d4dc3f5a3"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__body__d13__normal@4x.png",
+                "w": 82,
+                "h": 75,
+                "sha256": "7c08dcb13c2d2ce23aa2dffbc0b2399cf6bb05c477651a17f2f9207f2c925595"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__body__d13__material@4x.png",
+                "w": 82,
+                "h": 75,
+                "sha256": "ddbb6c20a95d273f68f543872c4e6640683cdcf0a3709bbb3eb5520a7be97f5a"
+              }
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            10.63,
+            13.31
+          ],
+          "pivot": [
+            10.63,
+            13.31
+          ],
+          "depth": 31.38,
+          "w": 21,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__body__d14__albedo.png",
+              "w": 21,
+              "h": 19,
+              "sha256": "856aeea31e6fca503309c968150d643dca697922da6b03dbac46ab4cafb384d7"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__body__d14__normal.png",
+              "w": 21,
+              "h": 19,
+              "sha256": "603335fb0e68e397193f4aa8ba42304ebae0ca638d35857310b1bef4f64c32e5"
+            },
+            "material": {
+              "file": "sheets/attack-dog__body__d14__material.png",
+              "w": 21,
+              "h": 19,
+              "sha256": "c562d6e1625ad6dcb7e7e68e07f3bca8897d0deddc8fdf9490b61140fff76504"
+            }
+          },
+          "filesHi": {
+            "w": 83,
+            "h": 74,
+            "pivot": [
+              41.51,
+              52.25
+            ],
+            "anchor": [
+              41.51,
+              52.25
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__body__d14__albedo@4x.png",
+                "w": 83,
+                "h": 74,
+                "sha256": "0a8fdefc9417817bc830f02402abdc00cdf5f882e5b59c1e0f915eb4f386c740"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__body__d14__normal@4x.png",
+                "w": 83,
+                "h": 74,
+                "sha256": "1f24151b597a61a93f79bfc36c86e3c26b9486ebf95740274eee2d2d40ee65dd"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__body__d14__material@4x.png",
+                "w": 83,
+                "h": 74,
+                "sha256": "b966eda8ceb86793a2ab378b11bd39670479de40fd448ed0e3d0da6d5b70f775"
+              }
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            10.25,
+            13.78
+          ],
+          "pivot": [
+            10.25,
+            13.78
+          ],
+          "depth": 39.34,
+          "w": 21,
+          "h": 20,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__body__d15__albedo.png",
+              "w": 21,
+              "h": 20,
+              "sha256": "f298b0f2910cb9c046c8bc424920094c52a93cfddf14fdcad998e56df1f626cf"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__body__d15__normal.png",
+              "w": 21,
+              "h": 20,
+              "sha256": "190b058570559de941d4c3e7d6852241c6d5b947351c72946fa85f83f179e8fc"
+            },
+            "material": {
+              "file": "sheets/attack-dog__body__d15__material.png",
+              "w": 21,
+              "h": 20,
+              "sha256": "48408c6d6303e6a60b13e202b6f398df87878d5872c42eeb2c3c829ccc4e617c"
+            }
+          },
+          "filesHi": {
+            "w": 83,
+            "h": 77,
+            "pivot": [
+              40.98,
+              53.13
+            ],
+            "anchor": [
+              40.98,
+              53.13
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__body__d15__albedo@4x.png",
+                "w": 83,
+                "h": 77,
+                "sha256": "94b14ff42d52868341f82795ae1d2b1725229b9398ba0607ee65aab6f2c77131"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__body__d15__normal@4x.png",
+                "w": 83,
+                "h": 77,
+                "sha256": "9fe356635a1e85e4ab1858f1d069777937824e5489a2004684cf52d6b5c5ecc7"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__body__d15__material@4x.png",
+                "w": 83,
+                "h": 77,
+                "sha256": "394ae3752668fcaf3c51370b5bf15fc5e5d2d71fe4271daf6ae95df411999a32"
+              }
+            }
+          }
+        }
+      }
+    },
+    "head": {
+      "name": "head",
+      "dynamic": true,
+      "parent": null,
+      "pivotDesign": [
+        326,
+        256,
+        112
+      ],
+      "traverse": false,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            1,
+            12
+          ],
+          "pivot": [
+            5.38,
+            7.19
+          ],
+          "depth": 52.65,
+          "w": 13,
+          "h": 14,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__head__d00__albedo.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "705424f3659fad08f9c354c8b7caa45d54fd869f1083a65b47488995c519985b"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__head__d00__normal.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "32f86a4d6b463d3bfbfe7d6eabea9f2d6bbdf19edc78e849ede576de1d6b49d8"
+            },
+            "material": {
+              "file": "sheets/attack-dog__head__d00__material.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "d03a57b33de4d4e0964b5e0b27563bb480c908e4c62eefde0efaa322af54e479"
+            }
+          },
+          "filesHi": {
+            "w": 51,
+            "h": 53,
+            "pivot": [
+              21.5,
+              28.75
+            ],
+            "anchor": [
+              4,
+              48
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__head__d00__albedo@4x.png",
+                "w": 51,
+                "h": 53,
+                "sha256": "3849b8d7fea37ec65ac4c89b8496274b2067a9d733d2b28b606f370307372fb0"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__head__d00__normal@4x.png",
+                "w": 51,
+                "h": 53,
+                "sha256": "597010cfd836d2ca3ada782fb410f3e1066b692e24c5da90a3899cbe2310de15"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__head__d00__material@4x.png",
+                "w": 51,
+                "h": 53,
+                "sha256": "e41a07f15140a1664c8492fe486217c3f77fac1951976d49ba3319631bc3ba85"
+              }
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            3.75,
+            10.78
+          ],
+          "pivot": [
+            6.12,
+            6.64
+          ],
+          "depth": 51.88,
+          "w": 13,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__head__d01__albedo.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "0eeb78361be0a1e60814476f004528992dc7aa6bf03ae728551bbd3c69ebba00"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__head__d01__normal.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "bbb3babd970aea51894b7f8d2da6da2e294d712edf6f087421ff7a4b9d745f27"
+            },
+            "material": {
+              "file": "sheets/attack-dog__head__d01__material.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "ef0c2d057621027129be6e26debba71e81fdaa59190aecaf548dba902c75953a"
+            }
+          },
+          "filesHi": {
+            "w": 48,
+            "h": 52,
+            "pivot": [
+              22.49,
+              26.56
+            ],
+            "anchor": [
+              13.02,
+              43.13
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__head__d01__albedo@4x.png",
+                "w": 48,
+                "h": 52,
+                "sha256": "6488b714c1c35d735114dd34472c81e17f79d3fe928dfa51c7581bc9ea8039df"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__head__d01__normal@4x.png",
+                "w": 48,
+                "h": 52,
+                "sha256": "243e53c809f98274a837c3ccb41eb49487834090a4c3f27debd9004bc75bda84"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__head__d01__material@4x.png",
+                "w": 48,
+                "h": 52,
+                "sha256": "1bb316775114a4a8f0445f59a200409a8a6e355d03cb72e72188f60edbaa091b"
+              }
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            6.37,
+            10.31
+          ],
+          "pivot": [
+            6.37,
+            6.41
+          ],
+          "depth": 44.6,
+          "w": 13,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__head__d02__albedo.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "e2d90298d63643b8a8f7c520292e95517f0ffa91f033223dab34fb66a79a12f5"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__head__d02__normal.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "b99a082af6ce2a18477d466cd403cc301c058d6f647e9a8178ec39f28b83daf0"
+            },
+            "material": {
+              "file": "sheets/attack-dog__head__d02__material.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "2577ae9fcf9e46db4edaf196d9c8c5e1d112edc66a242d8759ae444a865e5ce7"
+            }
+          },
+          "filesHi": {
+            "w": 47,
+            "h": 50,
+            "pivot": [
+              23.49,
+              25.63
+            ],
+            "anchor": [
+              23.49,
+              41.25
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__head__d02__albedo@4x.png",
+                "w": 47,
+                "h": 50,
+                "sha256": "e7a8310a77f5998f397507b641424473dcc6f7b37719664e44a92d406b0725b5"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__head__d02__normal@4x.png",
+                "w": 47,
+                "h": 50,
+                "sha256": "a6821d3340948bf78555cee44f59dd43917c801938b29d009841459a08cd86da"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__head__d02__material@4x.png",
+                "w": 47,
+                "h": 50,
+                "sha256": "736585fb82d135e51dd952d5614f67602a53f61eb18ce9fb38fcd69acebb7d4c"
+              }
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            9.44,
+            11.12
+          ],
+          "pivot": [
+            7.07,
+            6.98
+          ],
+          "depth": 31.92,
+          "w": 13,
+          "h": 14,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__head__d03__albedo.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "4b8613d30b9063a5c8627415868dd7afedf3c3008931f487d7e0c6efb5cacf99"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__head__d03__normal.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "778740293ca9b3bb11e3cc50da4bd2322694f9137c3641ed03dbbf84b2632b41"
+            },
+            "material": {
+              "file": "sheets/attack-dog__head__d03__material.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "5470d1031725162cfec8b57fd23dd3e5639c70bd5f2969c9aecb92fa5140edb2"
+            }
+          },
+          "filesHi": {
+            "w": 48,
+            "h": 52,
+            "pivot": [
+              25.27,
+              26.92
+            ],
+            "anchor": [
+              34.74,
+              43.49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__head__d03__albedo@4x.png",
+                "w": 48,
+                "h": 52,
+                "sha256": "c0ecf7c7db9d7557019ccbcd320c0c1e87c0b0e3976d2ce75731add47e55db2e"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__head__d03__normal@4x.png",
+                "w": 48,
+                "h": 52,
+                "sha256": "73008703af9898331e2b8b30f43c8c30adbf7273929f63e830139ebce46b667c"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__head__d03__material@4x.png",
+                "w": 48,
+                "h": 52,
+                "sha256": "fd7a722018a4cbbe9f974496bc9057d6b885446a5546efade3f834820991a14c"
+              }
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            12,
+            12
+          ],
+          "pivot": [
+            7.63,
+            7.19
+          ],
+          "depth": 15.77,
+          "w": 13,
+          "h": 14,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__head__d04__albedo.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "b4e5b56444dd582e8ef34d164f055c557e7a38c8e87331d7e1ec72a4439ec9f9"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__head__d04__normal.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "d6b80ccc5635124322530a03d6109fac8d366db9dd9377b3f47fe1d3eb1403e8"
+            },
+            "material": {
+              "file": "sheets/attack-dog__head__d04__material.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "781436f671dab17ff38c94d53ebe6db0d662744da7c3d8800845ab3a0a1bb788"
+            }
+          },
+          "filesHi": {
+            "w": 51,
+            "h": 53,
+            "pivot": [
+              29.5,
+              28.75
+            ],
+            "anchor": [
+              47,
+              48
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__head__d04__albedo@4x.png",
+                "w": 51,
+                "h": 53,
+                "sha256": "ef584ba2af7a01711757ed66f8883843ca1d93c6671d54e030c395e75c644fc5"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__head__d04__normal@4x.png",
+                "w": 51,
+                "h": 53,
+                "sha256": "f88a568692517d9982b4020634c4d84c8f31f6fefe4de1a773a0c91549501fa4"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__head__d04__material@4x.png",
+                "w": 51,
+                "h": 53,
+                "sha256": "beddaf90a72f79104e2990de99465eed25f6a3703180f5f8e1a96d6895c76a45"
+              }
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            14.44,
+            13.88
+          ],
+          "pivot": [
+            8.72,
+            8.06
+          ],
+          "depth": -1.39,
+          "w": 14,
+          "h": 14,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__head__d05__albedo.png",
+              "w": 14,
+              "h": 14,
+              "sha256": "386c8e0d30fc9a2c891725f0451b7ba87a07cdc19fa1e552eda848c0d13d9f64"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__head__d05__normal.png",
+              "w": 14,
+              "h": 14,
+              "sha256": "ea0cbf8b1a1efdb0acc090419e8a9b4b229a4dffc13f05a12e904e1589fbb1a1"
+            },
+            "material": {
+              "file": "sheets/attack-dog__head__d05__material.png",
+              "w": 14,
+              "h": 14,
+              "sha256": "d6ff1e7d9cbd285514ca18000c4e250456a1d462d66df6e16c062d4dd864ae15"
+            }
+          },
+          "filesHi": {
+            "w": 51,
+            "h": 53,
+            "pivot": [
+              31.88,
+              29.24
+            ],
+            "anchor": [
+              54.74,
+              52.51
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__head__d05__albedo@4x.png",
+                "w": 51,
+                "h": 53,
+                "sha256": "bdd90002854fce202f58f8bd449108457e26dae161c2c78bcfc46e35c4919fd3"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__head__d05__normal@4x.png",
+                "w": 51,
+                "h": 53,
+                "sha256": "471c0fef08c85cf87918e66514c3e4b82ff5d87b61405ab27d720866a507bba5"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__head__d05__material@4x.png",
+                "w": 51,
+                "h": 53,
+                "sha256": "ddb7c63cb92aad524a95af42ec9918aa0f6e87892e8e6a73c06a62d525332b0c"
+              }
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            14.37,
+            14.69
+          ],
+          "pivot": [
+            8.19,
+            7.69
+          ],
+          "depth": -16.95,
+          "w": 13,
+          "h": 14,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__head__d06__albedo.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "609c03cfdf26eb9e6c817fdf5d1e20f024abff1a5292603e66532e5a1ef1b566"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__head__d06__normal.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "2be16c2a695ee58397fe8675a52f7b190ed375cd786edefc3b042128f8f35e04"
+            },
+            "material": {
+              "file": "sheets/attack-dog__head__d06__material.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "5252df629867a402220fc3b8880e417c7a9f2e69acfc27971b1665cf5be27784"
+            }
+          },
+          "filesHi": {
+            "w": 50,
+            "h": 52,
+            "pivot": [
+              32.74,
+              29.75
+            ],
+            "anchor": [
+              57.49,
+              57.75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__head__d06__albedo@4x.png",
+                "w": 50,
+                "h": 52,
+                "sha256": "db376499abe0179655f1c892b4d89563bf5f1c7791488e87b4ad04acb2e209ea"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__head__d06__normal@4x.png",
+                "w": 50,
+                "h": 52,
+                "sha256": "350981f7f49f3d7fb52b24d90f28afe0555f1bb296e7ffa25a64ca40f573e2d0"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__head__d06__material@4x.png",
+                "w": 50,
+                "h": 52,
+                "sha256": "9ddbdbe272216c95626d560d029b32ffa3f61787a6c70455f17913752bc9a7ad"
+              }
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            13.75,
+            16.22
+          ],
+          "pivot": [
+            8.04,
+            8.03
+          ],
+          "depth": -28.53,
+          "w": 13,
+          "h": 14,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__head__d07__albedo.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "6d839e70cf3502d977d45784a6ca8528580b3c528edb9de1477da6a3051c066e"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__head__d07__normal.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "1be19bf4c8b141892ecd95b208523ef80af148fbde0439f1274c534f22d2784e"
+            },
+            "material": {
+              "file": "sheets/attack-dog__head__d07__material.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "0fa5c5b57b709fb5fab3807931a9617e0693fd75a4546d56c61087f5b426719a"
+            }
+          },
+          "filesHi": {
+            "w": 52,
+            "h": 53,
+            "pivot": [
+              32.15,
+              31.14
+            ],
+            "anchor": [
+              55.02,
+              63.87
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__head__d07__albedo@4x.png",
+                "w": 52,
+                "h": 53,
+                "sha256": "317b0ef3c13c3739883823d4ea4f06a7d1c7a702ddc71382553e27fef0af0f3d"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__head__d07__normal@4x.png",
+                "w": 52,
+                "h": 53,
+                "sha256": "02a2e20694455fa7eeecd727f35d601cb3ff09f530dc627c79468070c045bcd0"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__head__d07__material@4x.png",
+                "w": 52,
+                "h": 53,
+                "sha256": "21ddf7e54ab191d70530a612a46b0fdb8ae9cdb012181d10004c3c6a2e20c8fd"
+              }
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            12,
+            17
+          ],
+          "pivot": [
+            7.62,
+            7.81
+          ],
+          "depth": -34.39,
+          "w": 13,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__head__d08__albedo.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "946603a9283bd8d082459d5e43752d1a9b9b86e4b299f2e4a572fdf7ca6fddb1"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__head__d08__normal.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "458aa363de62fc6153110eca66e802d639ae04b8a7f3ce1c28427a1a824397e6"
+            },
+            "material": {
+              "file": "sheets/attack-dog__head__d08__material.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "d26340ed4ad28be8657355b2ddacdc370733b7dd0c205aaabf9da1f7a2d0b457"
+            }
+          },
+          "filesHi": {
+            "w": 51,
+            "h": 52,
+            "pivot": [
+              29.5,
+              31.25
+            ],
+            "anchor": [
+              47,
+              68
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__head__d08__albedo@4x.png",
+                "w": 51,
+                "h": 52,
+                "sha256": "7133bc1ed715ff2695177d7714ed375bb22fc1970fb982978cb5c120dfdb680c"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__head__d08__normal@4x.png",
+                "w": 51,
+                "h": 52,
+                "sha256": "5b812056fe413ee429fbbd8fd0dee033f7116c2d145ae205f4a2c7effd5fca13"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__head__d08__material@4x.png",
+                "w": 51,
+                "h": 52,
+                "sha256": "132e59b6b203d71c5fc8fb4ffebd31ee25015ecf3f2e886c70dad41fb8b807af"
+              }
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            9.25,
+            18.22
+          ],
+          "pivot": [
+            6.88,
+            8.36
+          ],
+          "depth": -33.62,
+          "w": 13,
+          "h": 14,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__head__d09__albedo.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "49b255e43db4b6e768b393b0c8b47f4fcda69167d3e5b791049ebbe7012b1fd6"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__head__d09__normal.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "c10cfc9cf0703939f7bc14a80ecc1e2ab874405902ae29c302883053deca94a7"
+            },
+            "material": {
+              "file": "sheets/attack-dog__head__d09__material.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "468260b7e7bb36488d17bb424c5941566fd6688fe530c83035a1d97efd4321a1"
+            }
+          },
+          "filesHi": {
+            "w": 48,
+            "h": 51,
+            "pivot": [
+              25.51,
+              30.44
+            ],
+            "anchor": [
+              34.98,
+              69.87
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__head__d09__albedo@4x.png",
+                "w": 48,
+                "h": 51,
+                "sha256": "d8ad3adffdf09c37e59924355fbc1d1bae4ed35c3caad76879936ee5f50133c7"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__head__d09__normal@4x.png",
+                "w": 48,
+                "h": 51,
+                "sha256": "07255371702d7333ae0ef71c7dccddec517920f61dfc67f506dc83afbd76bb5f"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__head__d09__material@4x.png",
+                "w": 48,
+                "h": 51,
+                "sha256": "bfc2a4c0a97af4d6d14e5a4229fd0c07a1527842be401d8d60086272c8a759b0"
+              }
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            6.63,
+            17.69
+          ],
+          "pivot": [
+            6.63,
+            7.59
+          ],
+          "depth": -26.34,
+          "w": 13,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__head__d10__albedo.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "e3e844497e402b987a86183d6ec234faa0131ad7813cfea02269abdf95a6477d"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__head__d10__normal.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "5225c21d85f941c7e37ab54fbfa77314354ec2f7405e9c00d9611bc2669a54b1"
+            },
+            "material": {
+              "file": "sheets/attack-dog__head__d10__material.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "33c28b7bc54ed52c491e21a6e11a1f8dc28a17045f4550e057949d02a1b56b5f"
+            }
+          },
+          "filesHi": {
+            "w": 47,
+            "h": 49,
+            "pivot": [
+              23.51,
+              29.37
+            ],
+            "anchor": [
+              23.51,
+              69.75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__head__d10__albedo@4x.png",
+                "w": 47,
+                "h": 49,
+                "sha256": "48c3e72b7968b3d23e7e18e717614e6c0a9cf5b393e2e8d8e5a03cf90e4dbf63"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__head__d10__normal@4x.png",
+                "w": 47,
+                "h": 49,
+                "sha256": "47c065ed60b377da2925cbf130f1a86da733171ff701f4b34dfbf9a6cb56ca86"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__head__d10__material@4x.png",
+                "w": 47,
+                "h": 49,
+                "sha256": "5404ebd01a45d66dfe74af18db74b32d74753673f7ae9eeef62ec9380d406aec"
+              }
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            3.56,
+            17.88
+          ],
+          "pivot": [
+            5.93,
+            8.02
+          ],
+          "depth": -13.66,
+          "w": 13,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__head__d11__albedo.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "66f1a7678e6bbb635260bcb77e63adcf01bcdeebb7a24423d2aa0e1d9328ae86"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__head__d11__normal.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "3dacc5868c4edceb75f8069e1305cc8521dd433694080a4d6ae35e6183e120a8"
+            },
+            "material": {
+              "file": "sheets/attack-dog__head__d11__material.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "9f88b3e1aab47a0ec2c31202f1e0b3f1a63fef30a5c7e0f6c6ccbf480236622e"
+            }
+          },
+          "filesHi": {
+            "w": 48,
+            "h": 51,
+            "pivot": [
+              22.73,
+              31.08
+            ],
+            "anchor": [
+              13.26,
+              70.51
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__head__d11__albedo@4x.png",
+                "w": 48,
+                "h": 51,
+                "sha256": "39b70a10227b73d9d93c41332a3291a71a0cd25d65058df8d6fbe2134882a0dc"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__head__d11__normal@4x.png",
+                "w": 48,
+                "h": 51,
+                "sha256": "eac1a8d84756693e4df26e16ead1bcf8ae84634278e02f393a20e58c5112908c"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__head__d11__material@4x.png",
+                "w": 48,
+                "h": 51,
+                "sha256": "b38b5fc4dacee5f161375cfb0c1e906d47e63a6db40d7a6213c5532d3488592a"
+              }
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            1,
+            17
+          ],
+          "pivot": [
+            5.38,
+            7.81
+          ],
+          "depth": 2.49,
+          "w": 13,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__head__d12__albedo.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "cf5f2c8ae75433f7eaa04e15fb0f6d335042f47786838984951b193f298ef4bf"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__head__d12__normal.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "9683da042c1785ff4b2a179de2adee2d5c385b28dfee97b179f2d0d89ef75088"
+            },
+            "material": {
+              "file": "sheets/attack-dog__head__d12__material.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "0cb56171a808584c5c0bb10ac90106424c87406a49f9a95d961fcb136c447fa7"
+            }
+          },
+          "filesHi": {
+            "w": 51,
+            "h": 52,
+            "pivot": [
+              21.5,
+              31.25
+            ],
+            "anchor": [
+              4,
+              68
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__head__d12__albedo@4x.png",
+                "w": 51,
+                "h": 52,
+                "sha256": "e417c1d998fd5497ec4e9497c73e5996c1a0c758ffdce07c465253eaf3b8b5b4"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__head__d12__normal@4x.png",
+                "w": 51,
+                "h": 52,
+                "sha256": "18c8c4f879919597044ca48eb92f070a667b509e07dcf815622bf12718a52236"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__head__d12__material@4x.png",
+                "w": 51,
+                "h": 52,
+                "sha256": "5a5cdb75bc841020f6deaeb3558ecf3f551eaeba50e4222da54a49715919c91a"
+              }
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            -0.44,
+            16.12
+          ],
+          "pivot": [
+            5.28,
+            7.94
+          ],
+          "depth": 19.65,
+          "w": 14,
+          "h": 14,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__head__d13__albedo.png",
+              "w": 14,
+              "h": 14,
+              "sha256": "d3fe3b99ccc493bfa285ca3468df1bab769dfc913894c8e77d521284f3c8a212"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__head__d13__normal.png",
+              "w": 14,
+              "h": 14,
+              "sha256": "ddbe9d6444bdbde0ef10300988f4417a74315147d16a82bf3e3c64f542e56aee"
+            },
+            "material": {
+              "file": "sheets/attack-dog__head__d13__material.png",
+              "w": 14,
+              "h": 14,
+              "sha256": "7bc26c12e66b90a8a6f28cddf7d63fc8c137dfc5a945df7b1b44e6cf822c7af6"
+            }
+          },
+          "filesHi": {
+            "w": 51,
+            "h": 53,
+            "pivot": [
+              19.12,
+              30.76
+            ],
+            "anchor": [
+              -3.74,
+              63.49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__head__d13__albedo@4x.png",
+                "w": 51,
+                "h": 53,
+                "sha256": "41301520a5433462295264e4fa300431e246409e48214aac4a74d15065e45ac2"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__head__d13__normal@4x.png",
+                "w": 51,
+                "h": 53,
+                "sha256": "4cb8cc381cf2ea9eeac6d723d25dc2a6bd5907c083eb0074df5d701332bfee2c"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__head__d13__material@4x.png",
+                "w": 51,
+                "h": 53,
+                "sha256": "5a6a92e5a8fea4e76da98c5c4d30a36a108d4c4cfb1f21fd58fe790e06322556"
+              }
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            -1.37,
+            15.31
+          ],
+          "pivot": [
+            4.81,
+            8.31
+          ],
+          "depth": 35.21,
+          "w": 13,
+          "h": 14,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__head__d14__albedo.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "571464bbf1bc2e1c5ae7275f4d4b146672dfc9940c59cfc2af14a82d98507fd5"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__head__d14__normal.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "b651652d038bc9053dfbd714256e2ecd8f5e2c5056f19e9f5b5952dba056c117"
+            },
+            "material": {
+              "file": "sheets/attack-dog__head__d14__material.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "bfc641761c29d3862f8a5114e7472988e311bf81ed3cf9713af9a16d51ee9739"
+            }
+          },
+          "filesHi": {
+            "w": 50,
+            "h": 52,
+            "pivot": [
+              17.26,
+              30.25
+            ],
+            "anchor": [
+              -7.49,
+              58.25
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__head__d14__albedo@4x.png",
+                "w": 50,
+                "h": 52,
+                "sha256": "3f297d76a6837e54a731942115cae5de4f88e2fb7e3c9f13e4ed28793fb46bcf"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__head__d14__normal@4x.png",
+                "w": 50,
+                "h": 52,
+                "sha256": "3bbf09fa668108028f3b5cf911f7bca99d9f20f40c39f6d7ce8851c2e56440e2"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__head__d14__material@4x.png",
+                "w": 50,
+                "h": 52,
+                "sha256": "b7bfbf2ddffed47b367aca103f76760d1634528b008acac26fd3bcca1aacc341"
+              }
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            -0.75,
+            13.78
+          ],
+          "pivot": [
+            4.96,
+            7.97
+          ],
+          "depth": 46.79,
+          "w": 13,
+          "h": 14,
+          "files": {
+            "albedo": {
+              "file": "sheets/attack-dog__head__d15__albedo.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "7ae2da7096578da5982a80b5d674676b5f64a53ffc0af099f8a65683d29b3ca9"
+            },
+            "normal": {
+              "file": "sheets/attack-dog__head__d15__normal.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "c2a4cb358918771653e56699f3a76c8079f149b2e6b75a05ae0a1c27f04cc230"
+            },
+            "material": {
+              "file": "sheets/attack-dog__head__d15__material.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "9304f790349e842aec031a47ebc83fe6897bb99564c8b640c088a0c7cc7df94d"
+            }
+          },
+          "filesHi": {
+            "w": 52,
+            "h": 53,
+            "pivot": [
+              19.85,
+              29.86
+            ],
+            "anchor": [
+              -3.02,
+              53.13
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/attack-dog__head__d15__albedo@4x.png",
+                "w": 52,
+                "h": 53,
+                "sha256": "6137edbbbec666ecfa8c7b51ba2ddb2528e3a02988535811804bc3337049c670"
+              },
+              "normal": {
+                "file": "sheets-hi/attack-dog__head__d15__normal@4x.png",
+                "w": 52,
+                "h": 53,
+                "sha256": "d22ceabf7e8634cd1aaf02c635d9e5aae03e4e9666217d1ed341ecaa186ba0ff"
+              },
+              "material": {
+                "file": "sheets-hi/attack-dog__head__d15__material@4x.png",
+                "w": 52,
+                "h": 53,
+                "sha256": "8cde8b1743fb12778abe3f30cfd169787b79b0252678fb86ef322a101ef20674"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "clips": {
+    "idle": 1
+  },
+  "sourceGeometry": {
+    "parts": [
+      {
+        "name": "body",
+        "dynamic": false,
+        "traverse": false,
+        "parent": null,
+        "voxels": 52155,
+        "pivotDesign": [
+          256,
+          256,
+          0
+        ],
+        "bounds": {
+          "minX": 184,
+          "minY": 224,
+          "minZ": 0,
+          "maxX": 327,
+          "maxY": 294,
+          "maxZ": 137
+        }
+      },
+      {
+        "name": "head",
+        "dynamic": true,
+        "traverse": false,
+        "parent": null,
+        "voxels": 8192,
+        "pivotDesign": [
+          326,
+          256,
+          112
+        ],
+        "bounds": {
+          "minX": 324,
+          "minY": 235,
+          "minZ": 102,
+          "maxX": 371,
+          "maxY": 276,
+          "maxZ": 151
+        }
+      }
+    ],
+    "totalVoxels": 60347
+  },
+  "composite": {
+    "note": "every part of one facing pre-composited through the shared ground anchor",
+    "facings": {
+      "d00": {
+        "w": 25,
+        "h": 25,
+        "files": {
+          "albedo": {
+            "file": "sheets/attack-dog__composite__d00__albedo.png",
+            "sha256": "a282f2b699b3d63d817323215710f89ddf9f6847b38b829c6e33b99158868100"
+          },
+          "normal": {
+            "file": "sheets/attack-dog__composite__d00__normal.png",
+            "sha256": "e7f2faa8e7608dbbf863ad2b1f68ce2d608653b8f22d4ed16f6e4920fe78f7fc"
+          },
+          "material": {
+            "file": "sheets/attack-dog__composite__d00__material.png",
+            "sha256": "5779f8291f916fe2c53ea27d0a995a5024a24f4cd6d6df8d3ce3340be6250a93"
+          }
+        }
+      },
+      "d01": {
+        "w": 22,
+        "h": 24,
+        "files": {
+          "albedo": {
+            "file": "sheets/attack-dog__composite__d01__albedo.png",
+            "sha256": "bca50d45b62ce7c1b0bcbd8fe983c3717be1d61c188367a44733b3f3256836f2"
+          },
+          "normal": {
+            "file": "sheets/attack-dog__composite__d01__normal.png",
+            "sha256": "b646cd9d66ee4fcc9377878e716ba443fa2bd98a693772ae3e91d1382f441531"
+          },
+          "material": {
+            "file": "sheets/attack-dog__composite__d01__material.png",
+            "sha256": "3e8d8184d62273aa1f528ca76c0b6206d175fb2855fdb11b0afd7ed5256777ed"
+          }
+        }
+      },
+      "d02": {
+        "w": 20,
+        "h": 24,
+        "files": {
+          "albedo": {
+            "file": "sheets/attack-dog__composite__d02__albedo.png",
+            "sha256": "8c809fb1f8045bd14c83c4cad9f89a86af7c05cf74ba060d8ec1cf0552519f81"
+          },
+          "normal": {
+            "file": "sheets/attack-dog__composite__d02__normal.png",
+            "sha256": "b45892d3093ed6bcc6bcaaa5417db0e1ab1b59924014c4084f81b0c913a32a81"
+          },
+          "material": {
+            "file": "sheets/attack-dog__composite__d02__material.png",
+            "sha256": "f3512e61013e0eb860ae0d1a0861a92ee511a4687ac2d17f7a69502eca90ba2f"
+          }
+        }
+      },
+      "d03": {
+        "w": 21,
+        "h": 25,
+        "files": {
+          "albedo": {
+            "file": "sheets/attack-dog__composite__d03__albedo.png",
+            "sha256": "71f915494ff17ffa9bc3287ed8fda9833c12f247394a8cc20acb83228c3dfd87"
+          },
+          "normal": {
+            "file": "sheets/attack-dog__composite__d03__normal.png",
+            "sha256": "57fef1a3b37cc00eb5f3774672655f54fb0b30eb8d644a03cf8f8ac6ba324e66"
+          },
+          "material": {
+            "file": "sheets/attack-dog__composite__d03__material.png",
+            "sha256": "97d838809b2e8255525984c41890650437450db874d81197e4c347de6af03dcf"
+          }
+        }
+      },
+      "d04": {
+        "w": 25,
+        "h": 25,
+        "files": {
+          "albedo": {
+            "file": "sheets/attack-dog__composite__d04__albedo.png",
+            "sha256": "9ff9fa4c96b83ac76ce4c36bb978daeedf7bcffd70a429f2a87fe5edce483829"
+          },
+          "normal": {
+            "file": "sheets/attack-dog__composite__d04__normal.png",
+            "sha256": "783c5bffbad0e47ab1d6d0e988bfa5db0ce09a3bc84f538e4547f0defda56fbb"
+          },
+          "material": {
+            "file": "sheets/attack-dog__composite__d04__material.png",
+            "sha256": "cef7ca2824e2a59e3ed4ad753f786a5a78bb90fd6e483ad44688d7a63b38baea"
+          }
+        }
+      },
+      "d05": {
+        "w": 29,
+        "h": 24,
+        "files": {
+          "albedo": {
+            "file": "sheets/attack-dog__composite__d05__albedo.png",
+            "sha256": "c447a328f7fd68a2db2042ef82c70d09c0810b10462ac950661e21982cf1d11c"
+          },
+          "normal": {
+            "file": "sheets/attack-dog__composite__d05__normal.png",
+            "sha256": "92e9a6cfb749032e6bcfe764ad06be92b18b0a9e88c4bc15b39d257ba7b6e3f6"
+          },
+          "material": {
+            "file": "sheets/attack-dog__composite__d05__material.png",
+            "sha256": "6fefc2fc963ef2de3e21d5c2bff9e88d2e2b1346ba2a00c47c9f6d75d6e626b3"
+          }
+        }
+      },
+      "d06": {
+        "w": 29,
+        "h": 25,
+        "files": {
+          "albedo": {
+            "file": "sheets/attack-dog__composite__d06__albedo.png",
+            "sha256": "4ee9aaf3a63cfe03d65e6de4d636232b6db5632028b73491a64381170d8bce78"
+          },
+          "normal": {
+            "file": "sheets/attack-dog__composite__d06__normal.png",
+            "sha256": "f04c680068357bdb7af374f57df6b681fd904784e8a84fb38588d8af889672a2"
+          },
+          "material": {
+            "file": "sheets/attack-dog__composite__d06__material.png",
+            "sha256": "de5252f72a4a3018e5b3435bf5c74fee03e0290dfd351081d67e55224d067726"
+          }
+        }
+      },
+      "d07": {
+        "w": 28,
+        "h": 26,
+        "files": {
+          "albedo": {
+            "file": "sheets/attack-dog__composite__d07__albedo.png",
+            "sha256": "f16da3f695e55f75e1649df5f4be74b0714c894aef9b1804c94f143d02a65304"
+          },
+          "normal": {
+            "file": "sheets/attack-dog__composite__d07__normal.png",
+            "sha256": "2edda5b29de041ed877a401e97fd5dcadbb30e9315d6c833fd82b9ab1cb89f1e"
+          },
+          "material": {
+            "file": "sheets/attack-dog__composite__d07__material.png",
+            "sha256": "507b7318b6abc94be9f522d389782a38c58c826d96cc7b333a5625bdd9cf2979"
+          }
+        }
+      },
+      "d08": {
+        "w": 25,
+        "h": 27,
+        "files": {
+          "albedo": {
+            "file": "sheets/attack-dog__composite__d08__albedo.png",
+            "sha256": "d25e2c63f7e7c5e719b3309676c80c2c1d8e61f887d4da542e987818fca015df"
+          },
+          "normal": {
+            "file": "sheets/attack-dog__composite__d08__normal.png",
+            "sha256": "c6157562a267e621428dbe11e1fb76e3c5c714325de71e50f1e04f5ae1d86af8"
+          },
+          "material": {
+            "file": "sheets/attack-dog__composite__d08__material.png",
+            "sha256": "6da52069bc649abb7c47300748844e8d2684eddc23f485e06d386593464c1510"
+          }
+        }
+      },
+      "d09": {
+        "w": 22,
+        "h": 28,
+        "files": {
+          "albedo": {
+            "file": "sheets/attack-dog__composite__d09__albedo.png",
+            "sha256": "88f56307e964857ae8def2b42f34076bc1fd2b721f242e32915c880113f58325"
+          },
+          "normal": {
+            "file": "sheets/attack-dog__composite__d09__normal.png",
+            "sha256": "a4d9c53ba82699ac424943ca499f78a6866d78bcdc60b5bf80318cbb33dfdfba"
+          },
+          "material": {
+            "file": "sheets/attack-dog__composite__d09__material.png",
+            "sha256": "15e743fa0a42eb792f3a801481b5cba8ac94e4f74a58fa9d041fb7dbc2ff6d4b"
+          }
+        }
+      },
+      "d10": {
+        "w": 20,
+        "h": 27,
+        "files": {
+          "albedo": {
+            "file": "sheets/attack-dog__composite__d10__albedo.png",
+            "sha256": "92751916b60d0ce919ed6d6141e499dfbd5701a4d3d0931fa7664e367d7dd163"
+          },
+          "normal": {
+            "file": "sheets/attack-dog__composite__d10__normal.png",
+            "sha256": "89b5277a9ee0e676ae1384358d3e7e94a4432ebbba1a1aa96e053bc3ace9f210"
+          },
+          "material": {
+            "file": "sheets/attack-dog__composite__d10__material.png",
+            "sha256": "7574c3325c77ab15b0b4ee3f856abdcaf04b6f82d40ec2de863e6593f1782623"
+          }
+        }
+      },
+      "d11": {
+        "w": 21,
+        "h": 28,
+        "files": {
+          "albedo": {
+            "file": "sheets/attack-dog__composite__d11__albedo.png",
+            "sha256": "c0f894047553e237d8ba46a09858f1c2e306440f0b21cf2d25465e3c9973f212"
+          },
+          "normal": {
+            "file": "sheets/attack-dog__composite__d11__normal.png",
+            "sha256": "9329bdce00f8b78c3a475cb9407a8b29e5e5725b07610aed48ef41b90a301a17"
+          },
+          "material": {
+            "file": "sheets/attack-dog__composite__d11__material.png",
+            "sha256": "5df01d5161ef373994c072a014e641fe494c95a1208fd99b8fb19dbcde5b4f95"
+          }
+        }
+      },
+      "d12": {
+        "w": 25,
+        "h": 27,
+        "files": {
+          "albedo": {
+            "file": "sheets/attack-dog__composite__d12__albedo.png",
+            "sha256": "a523460cba9fc0580bc1cfad63178bcd83b1e720391275522820939339ce9ebf"
+          },
+          "normal": {
+            "file": "sheets/attack-dog__composite__d12__normal.png",
+            "sha256": "88e6b46ca85f2e36ca9cfa5b2e9e3c62ce1108c108b3081974b2ed60ce9b5a97"
+          },
+          "material": {
+            "file": "sheets/attack-dog__composite__d12__material.png",
+            "sha256": "1c31864f9a729c78f2b960d1adc9d1994b65a45118953786dd21bd92e70018dc"
+          }
+        }
+      },
+      "d13": {
+        "w": 29,
+        "h": 26,
+        "files": {
+          "albedo": {
+            "file": "sheets/attack-dog__composite__d13__albedo.png",
+            "sha256": "d09d783b0034bc0f2f6b9e26ed59f09e5e3651b9f2343488d68f4eb89284ad57"
+          },
+          "normal": {
+            "file": "sheets/attack-dog__composite__d13__normal.png",
+            "sha256": "617981f4b4aad8e124ed60b9e73831a4251b6df737f500dac51b2252962f29db"
+          },
+          "material": {
+            "file": "sheets/attack-dog__composite__d13__material.png",
+            "sha256": "dbdfdd8ab1ac464ee842d65d190ce9fc5ac9e6c9becaa677fa6da107cc65febb"
+          }
+        }
+      },
+      "d14": {
+        "w": 29,
+        "h": 25,
+        "files": {
+          "albedo": {
+            "file": "sheets/attack-dog__composite__d14__albedo.png",
+            "sha256": "dfb4bad3ca369ffd1acaaea1b72c4ab86b7ad4565bac5d6d8d52e3a332652d30"
+          },
+          "normal": {
+            "file": "sheets/attack-dog__composite__d14__normal.png",
+            "sha256": "42f7ea67750fead41a263843c48697da8f3063fd99f82cce7ced9be21f4af186"
+          },
+          "material": {
+            "file": "sheets/attack-dog__composite__d14__material.png",
+            "sha256": "61d32d054d5f7fc44ec0aed413b8b9439651f36e26bb5d4c7d08e8ed5bd81310"
+          }
+        }
+      },
+      "d15": {
+        "w": 28,
+        "h": 24,
+        "files": {
+          "albedo": {
+            "file": "sheets/attack-dog__composite__d15__albedo.png",
+            "sha256": "b0d44b17662971f9df3a43c4cbeeff3be5d4750888366872c56e93306f67536b"
+          },
+          "normal": {
+            "file": "sheets/attack-dog__composite__d15__normal.png",
+            "sha256": "2c93c28d8a95c521be24153433a01e052f3f4f51f52add09e920fced58ae71ce"
+          },
+          "material": {
+            "file": "sheets/attack-dog__composite__d15__material.png",
+            "sha256": "d55a8b55f6c93418deb36440c60a167565c37cd2928c5da1b2bd3963c3660a2a"
+          }
+        }
+      }
+    }
+  },
+  "lit": {
+    "note": "the composite re-shaded through a virtual three-point rig using the normal and material maps (key/fill/rim). If normals or PBR channels are wrong, this is where it shows.",
+    "rig": "three-point",
+    "facings": {
+      "d00": {
+        "file": "sheets/attack-dog__lit__d00__albedo.png",
+        "w": 25,
+        "h": 25,
+        "sha256": "090cc4f55241616ac242879fcdfe5b1ac7b2f9f2bc0fe0d07d4089a115f843cc"
+      },
+      "d01": {
+        "file": "sheets/attack-dog__lit__d01__albedo.png",
+        "w": 22,
+        "h": 24,
+        "sha256": "836eaf23d95852bd3cfcf0c9bbebd9fb87d6d233e38c478afc8c4dbd9a54d9ed"
+      },
+      "d02": {
+        "file": "sheets/attack-dog__lit__d02__albedo.png",
+        "w": 20,
+        "h": 24,
+        "sha256": "7ac465f251ba8ea4f4e715e69ac7f626ab065aaf5e88cbbd9b0c06a39270db85"
+      },
+      "d03": {
+        "file": "sheets/attack-dog__lit__d03__albedo.png",
+        "w": 21,
+        "h": 25,
+        "sha256": "4bcd48a91ac8fb622789025478c7fdf93d49a772436fbbc3b7cbccea3e09e407"
+      },
+      "d04": {
+        "file": "sheets/attack-dog__lit__d04__albedo.png",
+        "w": 25,
+        "h": 25,
+        "sha256": "1b0423fc6c40d62fbfbe6c3831aa5832839b0e2557003d498111d3e9a2e2b9c4"
+      },
+      "d05": {
+        "file": "sheets/attack-dog__lit__d05__albedo.png",
+        "w": 29,
+        "h": 24,
+        "sha256": "d780d54fa2dee09ef16c8397f273871bb363eac518dfa8868040b406ed6b5e79"
+      },
+      "d06": {
+        "file": "sheets/attack-dog__lit__d06__albedo.png",
+        "w": 29,
+        "h": 25,
+        "sha256": "f91c23870787f3ab80e8cd3df2ab0376ae773da4e136f78bd91c25ea4b20e10d"
+      },
+      "d07": {
+        "file": "sheets/attack-dog__lit__d07__albedo.png",
+        "w": 28,
+        "h": 26,
+        "sha256": "83d9262ff4a93575e9afdd4f069cfafdf86ab8655c879015cf94613abd2612f3"
+      },
+      "d08": {
+        "file": "sheets/attack-dog__lit__d08__albedo.png",
+        "w": 25,
+        "h": 27,
+        "sha256": "2190d41941557b8a7d95935a86e3626d45b8d2de3e9ecb2a54cddaa062349d53"
+      },
+      "d09": {
+        "file": "sheets/attack-dog__lit__d09__albedo.png",
+        "w": 22,
+        "h": 28,
+        "sha256": "e2048a9f6cd2544f0a431e77b8512d6354c18f6b7262e0c4c4181eac96712b8c"
+      },
+      "d10": {
+        "file": "sheets/attack-dog__lit__d10__albedo.png",
+        "w": 20,
+        "h": 27,
+        "sha256": "cdede8b0a3d40e8b4d9e00f9460d866f537f7d77b7542444b17cf85ebd2911b2"
+      },
+      "d11": {
+        "file": "sheets/attack-dog__lit__d11__albedo.png",
+        "w": 21,
+        "h": 28,
+        "sha256": "11ede66f91da8cae832fd1f05deecdf7ffc565beb5ff10d11eeac167c043113d"
+      },
+      "d12": {
+        "file": "sheets/attack-dog__lit__d12__albedo.png",
+        "w": 25,
+        "h": 27,
+        "sha256": "624e37a97b7b45d6c8c95975883f78e2f97c989bcad0e9db70b5faa751112e1e"
+      },
+      "d13": {
+        "file": "sheets/attack-dog__lit__d13__albedo.png",
+        "w": 29,
+        "h": 26,
+        "sha256": "b17e276459f64dc14203f67bf52cb33dabc3acc951918dd8ca72a397268e33d4"
+      },
+      "d14": {
+        "file": "sheets/attack-dog__lit__d14__albedo.png",
+        "w": 29,
+        "h": 25,
+        "sha256": "10dd62c4e7bd3249ceb5893c2d8785fec67a7032786ea4d80b23c892e3e8061d"
+      },
+      "d15": {
+        "file": "sheets/attack-dog__lit__d15__albedo.png",
+        "w": 28,
+        "h": 24,
+        "sha256": "fee99149d713f8599e746368764c7636d945976b0fcba7d7dc5e51b783540687"
+      }
+    }
+  },
+  "previewLit": {
+    "file": "preview-lit.png",
+    "facing": "d00",
+    "rig": "three-point",
+    "note": "relit from the normal + material maps"
+  },
+  "previewLights": {
+    "file": "preview-lights.png",
+    "facing": "d00",
+    "order": [
+      "azimuth 0deg / elevation 40deg",
+      "azimuth 45deg / elevation 40deg",
+      "azimuth 90deg / elevation 40deg",
+      "azimuth 135deg / elevation 40deg",
+      "azimuth 180deg / elevation 40deg",
+      "azimuth 225deg / elevation 40deg",
+      "azimuth 270deg / elevation 40deg",
+      "azimuth 315deg / elevation 40deg"
+    ],
+    "note": "one virtual light per panel, proving the normal map is directionally correct"
+  },
+  "previewMaps": {
+    "file": "preview-maps.png",
+    "facing": "d00",
+    "panels": [
+      "albedo",
+      "normal",
+      "material-id",
+      "metalness",
+      "roughness",
+      "emissive"
+    ]
+  },
+  "preview": {
+    "file": "preview.png",
+    "facing": "d00",
+    "w": 165,
+    "h": 157,
+    "mode": "single-pass"
+  },
+  "previewParts": {
+    "file": "preview-parts.png",
+    "facing": "d00",
+    "w": 169,
+    "h": 161,
+    "mode": "composited-from-part-sheets"
+  }
+}
