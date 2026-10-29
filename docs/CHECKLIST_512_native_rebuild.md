@@ -4,7 +4,7 @@ Companion to `docs/PLAN_512_native_16dir_segmented_pipeline.md`. Work proceeds *
 a batch closes only when its gate passes. Legend: `[x]` done · `[~]` written but not green · `[ ]` todo ·
 `[!]` blocked.
 
-Status as of this commit — **B0–B3 done, B4a/B4b/B4c done (36 units), B5a done (air, rotor), B5b done (8/8 jets)**.
+Status as of this commit — **B0–B3 done, B4a/B4b/B4c done (36 units), B5a done (air, rotor), B5b done (8/8 jets), B5c started (2/11 ships)**.
 Every unit and both buildings bake end-to-end at 512³ with the full part set: albedo, normal, material
 **and depth** per part per facing, plus a 4× review set. **Occlusion is resolved per pixel by a z-test**
 (see *Depth sheets* below), so draw order no longer affects any composite.
@@ -324,8 +324,19 @@ open transom with the screws visible from behind, would settle it.
       voxels back to `body` — `spy-plane`'s `nozzles` came out at 5 voxels until `part: 'nozzles'` was passed.
 - [x] `propDisc` takes `cy` — it hard-coded `256` in Y, so a prop on a wing nacelle was drawn on the
       fuselage centre line. The default is unchanged, so the already-baked rotor sheets stay valid.
-- [ ] **B5c naval** — `submarine`, `gunboat`, `cruiser`, `battleship`, `lander`, `uhac`, `destroyer`,
-      `missile-boat`, `carrier`, `naval-repair`, `mine-layer-ship`.
+- [ ] **B5c naval** — done: `gunboat` (98,379, `body`/`gun` + `barrel` = a traversing deck mount on water/
+      `launcher` = aft missile rack), `submarine` (107,354, `sail`/`planes`/`prop`). Open: `cruiser`,
+      `battleship`, `destroyer`, `missile-boat`, `carrier`, `lander`, `uhac`, `naval-repair`,
+      `mine-layer-ship`.
+
+**Naval kit (`kit-naval.mjs`)** — `hull` (stations of `[x, halfWidth, keelZ, deckZ]`, section narrowing to
+the keel, boot stripe banded at the waterline), `deckHouse` (window band one voxel proud), `funnel` (raked,
+dark uptake mouth), `mast` (lattice + yardarms + radar bar), `gunMount` (barbette, sloped face, barrel on
+`dir`), `vls` (cell grid), `rail` (posts + top rail along the deck edge), `anchor`. The kit exists because
+ships read through *deck furniture in profile*, not through hull volume: a bare hull is a barge at 8×.
+
+**Ships are legitimately narrow.** A 360-voxel patrol boat is 84 voxels in the beam — the 150-voxel gate is a
+64³ detector, so naval units carry `minSpan: { x: 200, y: 75, z: 90 }` like the flat airframes do.
 - [x] Rotor/jet part sets per §5 of the plan; naval still open.
 
 **Preview correctness (reported twice, fixed here)** — both were compositing bugs, not bake bugs:

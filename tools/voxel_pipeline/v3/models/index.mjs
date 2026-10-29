@@ -46,6 +46,8 @@ import { buildScout } from './scout.mjs';
 import { buildAttackDog } from './attack-dog.mjs';
 import { buildMech } from './mech.mjs';
 import { buildBomber } from './bomber.mjs';
+import { buildGunboat } from './gunboat.mjs';
+import { buildSubmarine } from './submarine.mjs';
 import { buildGroundAttackJet } from './ground-attack-jet.mjs';
 import { buildStealthFighter } from './stealth-fighter.mjs';
 import { buildSpyPlane } from './spy-plane.mjs';
@@ -285,6 +287,17 @@ export const MODELS = {
     kind: 'unit', folder: 'units', group: 'air.jet', label: 'Recon Aircraft',
     build: buildSpyPlane, requiredParts: ['body', 'fin', 'sensor'],
     minSpan: { x: 200, y: 200, z: 55 },
+  },
+  gunboat: {
+    kind: 'unit', folder: 'units', group: 'naval', label: 'Patrol Boat',
+    build: buildGunboat, requiredParts: ['body', 'gun', 'barrel'],
+    // Ships are long and narrow: 360 × 84 is a patrol boat, not a 64³ model.
+    minSpan: { x: 200, y: 75, z: 90 },
+  },
+  submarine: {
+    kind: 'unit', folder: 'units', group: 'naval', label: 'Submarine',
+    build: buildSubmarine, requiredParts: ['body', 'sail', 'planes', 'prop'],
+    minSpan: { x: 200, y: 75, z: 90 },
   },
   specter: {
     kind: 'unit', folder: 'units', group: 'air.jet', label: 'Gunship',
