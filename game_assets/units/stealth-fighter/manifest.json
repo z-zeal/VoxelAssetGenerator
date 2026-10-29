@@ -1,0 +1,6224 @@
+{
+  "format": "field-command-voxel-sheet-4",
+  "hiSheetScale": 4,
+  "asset": "stealth-fighter",
+  "kind": "unit",
+  "group": "air.jet",
+  "canvas": 512,
+  "designVoxelsPerTileUnit": 8,
+  "renderScale": 1,
+  "previewScale": 8,
+  "superSample": 4,
+  "pxPerVoxel": 0.125,
+  "tileDiamond": [
+    64,
+    32
+  ],
+  "facings": [
+    "d00",
+    "d01",
+    "d02",
+    "d03",
+    "d04",
+    "d05",
+    "d06",
+    "d07",
+    "d08",
+    "d09",
+    "d10",
+    "d11",
+    "d12",
+    "d13",
+    "d14",
+    "d15"
+  ],
+  "facingMeta": [
+    {
+      "id": "d00",
+      "angle": 0,
+      "screenAngle": 45,
+      "label": "SE",
+      "unitIndex": 0,
+      "viewDir": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.0625,
+        -0.0625,
+        0,
+        0.03125,
+        0.03125,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d01",
+      "angle": 22.5,
+      "screenAngle": 67.5,
+      "label": "SSE",
+      "unitIndex": 1,
+      "viewDir": [
+        0.7543444794845715,
+        0.3124597141037824,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        0.03382475625913983,
+        -0.08166018530477004,
+        0,
+        0.040830092652386796,
+        0.01691237812956814,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d02",
+      "angle": 45,
+      "screenAngle": 90,
+      "label": "S",
+      "unitIndex": 2,
+      "viewDir": [
+        0.8164965809277261,
+        6.409875621278547e-17,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0,
+        -0.08838834764831915,
+        0,
+        0.04419417382415958,
+        0,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d03",
+      "angle": 67.5,
+      "screenAngle": 112.5,
+      "label": "SSW",
+      "unitIndex": 3,
+      "viewDir": [
+        0.7543444794845715,
+        -0.3124597141037824,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.03382475625913628,
+        -0.08166018530477004,
+        0,
+        0.04083009265238502,
+        -0.016912378129569028,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d04",
+      "angle": 90,
+      "screenAngle": 135,
+      "label": "SW",
+      "unitIndex": 4,
+      "viewDir": [
+        0.5773502691896258,
+        -0.5773502691896257,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        -0.0625,
+        -0.0625,
+        0,
+        0.03125,
+        -0.03125000000000089,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d05",
+      "angle": 112.5,
+      "screenAngle": 157.5,
+      "label": "WSW",
+      "unitIndex": 5,
+      "viewDir": [
+        0.3124597141037825,
+        -0.7543444794845715,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.08166018530477359,
+        -0.03382475625913628,
+        0,
+        0.016912378129569028,
+        -0.04083009265238591,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d06",
+      "angle": 135,
+      "screenAngle": 180,
+      "label": "W",
+      "unitIndex": 6,
+      "viewDir": [
+        6.409875621278547e-17,
+        -0.8164965809277261,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        -0.08838834764831915,
+        0,
+        0,
+        0,
+        -0.04419417382415958,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d07",
+      "angle": 157.5,
+      "screenAngle": 202.5,
+      "label": "WNW",
+      "unitIndex": 7,
+      "viewDir": [
+        -0.3124597141037824,
+        -0.7543444794845715,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.08166018530477537,
+        0.03382475625913628,
+        0,
+        -0.01691237812956814,
+        -0.04083009265238502,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d08",
+      "angle": 180,
+      "screenAngle": 225,
+      "label": "NW",
+      "unitIndex": 8,
+      "viewDir": [
+        -0.5773502691896256,
+        -0.5773502691896258,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.0625,
+        0.062499999999998224,
+        0,
+        -0.03125,
+        -0.03125,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d09",
+      "angle": 202.5,
+      "screenAngle": 247.5,
+      "label": "NNW",
+      "unitIndex": 9,
+      "viewDir": [
+        -0.7543444794845713,
+        -0.3124597141037829,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.03382475625913628,
+        0.08166018530477537,
+        0,
+        -0.04083009265238502,
+        -0.01691237812956814,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d10",
+      "angle": 225,
+      "screenAngle": 270,
+      "label": "N",
+      "unitIndex": 10,
+      "viewDir": [
+        -0.8164965809277261,
+        -1.2819751242557095e-16,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0,
+        0.08838834764831915,
+        0,
+        -0.04419417382415958,
+        0,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d11",
+      "angle": 247.5,
+      "screenAngle": 292.5,
+      "label": "NNE",
+      "unitIndex": 11,
+      "viewDir": [
+        -0.7543444794845715,
+        0.3124597141037827,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.03382475625913983,
+        0.08166018530477359,
+        0,
+        -0.040830092652386796,
+        0.016912378129569028,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d12",
+      "angle": 270,
+      "screenAngle": 315,
+      "label": "NE",
+      "unitIndex": 12,
+      "viewDir": [
+        -0.5773502691896258,
+        0.5773502691896256,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        0.0625,
+        0.0625,
+        0,
+        -0.03125,
+        0.03125,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d13",
+      "angle": 292.5,
+      "screenAngle": 337.5,
+      "label": "ENE",
+      "unitIndex": 13,
+      "viewDir": [
+        -0.3124597141037823,
+        0.7543444794845715,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        0.08166018530477004,
+        0.03382475625913983,
+        0,
+        -0.01691237812956814,
+        0.040830092652387684,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d14",
+      "angle": 315,
+      "screenAngle": 0,
+      "label": "E",
+      "unitIndex": 14,
+      "viewDir": [
+        -1.9229626863835643e-16,
+        0.8164965809277261,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.08838834764831915,
+        0,
+        0,
+        0,
+        0.04419417382415958,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d15",
+      "angle": 337.5,
+      "screenAngle": 22.5,
+      "label": "ESE",
+      "unitIndex": 15,
+      "viewDir": [
+        0.3124597141037827,
+        0.7543444794845715,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.08166018530477537,
+        -0.03382475625913273,
+        0,
+        0.016912378129569916,
+        0.040830092652386796,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    }
+  ],
+  "teamTint": {
+    "note": "Albedo is baked in the standard livery. Recolour pixels whose material map red channel matches these ids to apply an army livery.",
+    "materialIds": [
+      {
+        "name": "team.hull",
+        "id": 0,
+        "role": "hull"
+      },
+      {
+        "name": "team.light",
+        "id": 1,
+        "role": "light"
+      },
+      {
+        "name": "team.dark",
+        "id": 2,
+        "role": "dark"
+      },
+      {
+        "name": "team.accent",
+        "id": 3,
+        "role": "accent"
+      },
+      {
+        "name": "roof",
+        "id": 37,
+        "role": "hull"
+      },
+      {
+        "name": "roof.light",
+        "id": 38,
+        "role": "light"
+      },
+      {
+        "name": "roof.dark",
+        "id": 39,
+        "role": "dark"
+      }
+    ],
+    "liveries": {
+      "_note": "Army liveries for runtime tinting of team materials. Mirrors src/renderer.js TEAM_COLORS and tools/voxel_pipeline/v3/materials.mjs ARMY_LIVERY.",
+      "standard": {
+        "hull": "#df794b",
+        "light": "#ffc68b",
+        "dark": "#934b32",
+        "accent": "#ece7bc"
+      },
+      "allies": {
+        "hull": "#639bc3",
+        "light": "#a9d0e1",
+        "dark": "#345f78",
+        "accent": "#e8f1f4"
+      },
+      "soviets": {
+        "hull": "#7eb06a",
+        "light": "#b8e0a8",
+        "dark": "#2d4a2d",
+        "accent": "#dfe8c8"
+      },
+      "empire": {
+        "hull": "#d9b44e",
+        "light": "#ffe79a",
+        "dark": "#8a6a1a",
+        "accent": "#f6eecd"
+      },
+      "legion": {
+        "hull": "#c65a54",
+        "light": "#ffb0a8",
+        "dark": "#7a2a2a",
+        "accent": "#f3d9d4"
+      },
+      "neutral": {
+        "hull": "#aaa78b",
+        "light": "#cfcdb6",
+        "dark": "#6c6a55",
+        "accent": "#e2e0cf"
+      }
+    }
+  },
+  "normalMap": {
+    "space": "view",
+    "channelOrder": "rgb",
+    "range": "0..255 maps -1..1",
+    "up": "+g means screen up"
+  },
+  "materialMap": {
+    "channelOrder": "rgba",
+    "meaning": [
+      "materialId",
+      "metalness",
+      "roughness",
+      "emissive"
+    ],
+    "table": [
+      {
+        "id": 0,
+        "name": "team.hull",
+        "metalness": 0.35,
+        "roughness": 0.62,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "hull"
+      },
+      {
+        "id": 1,
+        "name": "team.light",
+        "metalness": 0.35,
+        "roughness": 0.58,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "light"
+      },
+      {
+        "id": 2,
+        "name": "team.dark",
+        "metalness": 0.4,
+        "roughness": 0.66,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "dark"
+      },
+      {
+        "id": 3,
+        "name": "team.accent",
+        "metalness": 0.2,
+        "roughness": 0.7,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "accent"
+      },
+      {
+        "id": 4,
+        "name": "steel",
+        "metalness": 0.85,
+        "roughness": 0.42,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 5,
+        "name": "steel.dark",
+        "metalness": 0.85,
+        "roughness": 0.5,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 6,
+        "name": "steel.bright",
+        "metalness": 0.95,
+        "roughness": 0.24,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 7,
+        "name": "gunmetal",
+        "metalness": 0.9,
+        "roughness": 0.38,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 8,
+        "name": "gunmetal.lit",
+        "metalness": 0.9,
+        "roughness": 0.32,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 9,
+        "name": "iron",
+        "metalness": 0.8,
+        "roughness": 0.62,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 10,
+        "name": "brass",
+        "metalness": 0.95,
+        "roughness": 0.3,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 11,
+        "name": "copper",
+        "metalness": 0.95,
+        "roughness": 0.34,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 12,
+        "name": "chrome",
+        "metalness": 1,
+        "roughness": 0.12,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 13,
+        "name": "rubber",
+        "metalness": 0.05,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 14,
+        "name": "track",
+        "metalness": 0.7,
+        "roughness": 0.68,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 15,
+        "name": "track.worn",
+        "metalness": 0.85,
+        "roughness": 0.44,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 16,
+        "name": "tyre",
+        "metalness": 0.03,
+        "roughness": 0.95,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 17,
+        "name": "plate",
+        "metalness": 0.55,
+        "roughness": 0.66,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 18,
+        "name": "plate.lit",
+        "metalness": 0.55,
+        "roughness": 0.6,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 19,
+        "name": "plate.dark",
+        "metalness": 0.55,
+        "roughness": 0.72,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 20,
+        "name": "glass",
+        "metalness": 0.3,
+        "roughness": 0.08,
+        "emissive": 0,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 21,
+        "name": "glass.dark",
+        "metalness": 0.4,
+        "roughness": 0.12,
+        "emissive": 0,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 22,
+        "name": "optic",
+        "metalness": 0.6,
+        "roughness": 0.05,
+        "emissive": 0.55,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 23,
+        "name": "lamp.warm",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.85,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 24,
+        "name": "lamp.red",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.8,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 25,
+        "name": "lamp.cyan",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.8,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 26,
+        "name": "skin",
+        "metalness": 0,
+        "roughness": 0.78,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 27,
+        "name": "skin.dark",
+        "metalness": 0,
+        "roughness": 0.8,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 28,
+        "name": "cloth",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 29,
+        "name": "cloth.dark",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 30,
+        "name": "webbing",
+        "metalness": 0.05,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 31,
+        "name": "boot",
+        "metalness": 0.1,
+        "roughness": 0.85,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 32,
+        "name": "hair",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 33,
+        "name": "concrete",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 34,
+        "name": "concrete.lit",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 35,
+        "name": "concrete.dark",
+        "metalness": 0,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 36,
+        "name": "brick",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 37,
+        "name": "roof",
+        "metalness": 0.1,
+        "roughness": 0.82,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "hull"
+      },
+      {
+        "id": 38,
+        "name": "roof.light",
+        "metalness": 0.1,
+        "roughness": 0.8,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "light"
+      },
+      {
+        "id": 39,
+        "name": "roof.dark",
+        "metalness": 0.1,
+        "roughness": 0.84,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "dark"
+      },
+      {
+        "id": 40,
+        "name": "asphalt",
+        "metalness": 0,
+        "roughness": 0.96,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 41,
+        "name": "paint.line",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 42,
+        "name": "wood",
+        "metalness": 0,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 43,
+        "name": "wood.dark",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 44,
+        "name": "canvas",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 45,
+        "name": "sandbag",
+        "metalness": 0,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 46,
+        "name": "solar",
+        "metalness": 0.6,
+        "roughness": 0.22,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 47,
+        "name": "rust",
+        "metalness": 0.3,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 48,
+        "name": "scorch",
+        "metalness": 0.2,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 49,
+        "name": "smoke",
+        "metalness": 0,
+        "roughness": 1,
+        "emissive": 0.1,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 50,
+        "name": "water",
+        "metalness": 0.2,
+        "roughness": 0.15,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 51,
+        "name": "foam",
+        "metalness": 0,
+        "roughness": 0.6,
+        "emissive": 0.1,
+        "blend": "opaque",
+        "team": null
+      }
+    ]
+  },
+  "depthMap": {
+    "note": "Per-part view depth, one PNG per part per facing. Composite by z-test on this; do NOT try to order segments by a single depth per part.",
+    "channelOrder": "rgba",
+    "meaning": [
+      "depthHi",
+      "depthLo",
+      "unused",
+      "covered"
+    ],
+    "encoding": "q = depthHi * 256 + depthLo; depth = q / scale - bias  (tile units = design voxels / 8)",
+    "scale": 256,
+    "bias": 128,
+    "coveredAlpha": 255,
+    "largerIsCloser": true
+  },
+  "parts": {
+    "body": {
+      "name": "body",
+      "dynamic": false,
+      "parent": null,
+      "pivotDesign": [
+        256,
+        256,
+        0
+      ],
+      "traverse": false,
+      "traverseRoot": null,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            24,
+            33
+          ],
+          "pivot": [
+            24,
+            33
+          ],
+          "depth": 61.78,
+          "w": 43,
+          "h": 26,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__body__d00__albedo.png",
+              "w": 43,
+              "h": 26,
+              "sha256": "25dc415fcf8937644cfba42c3ad79c09ef9b2dd4485924d514440d161eebce63"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__body__d00__normal.png",
+              "w": 43,
+              "h": 26,
+              "sha256": "1d3a137e8787a1f3a2b7a1a2908fc9b9f7cf2437ba8321baed59c21969f27641"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__body__d00__material.png",
+              "w": 43,
+              "h": 26,
+              "sha256": "9e355bdaae9dc46b0eeae5b5af7b92f221cc8ec86b6040f935fb2121d80dd84e"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__body__d00__depth.png",
+              "w": 43,
+              "h": 26,
+              "sha256": "b25671243ecfbc8d32f11e81c51140ebaaf8745048bd03b169563a7f9a6683e1"
+            }
+          },
+          "filesHi": {
+            "w": 169,
+            "h": 103,
+            "pivot": [
+              93,
+              132
+            ],
+            "anchor": [
+              93,
+              132
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__body__d00__albedo@4x.png",
+                "w": 169,
+                "h": 103,
+                "sha256": "b96268b8e5642706d5f669ed414f756dfe484ecc7285542fecb3b8c1f2c2f289"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__body__d00__normal@4x.png",
+                "w": 169,
+                "h": 103,
+                "sha256": "124d32dd995e4ccd129adc553fb313c607acdab291a304325b1e3d6946eeabfe"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__body__d00__material@4x.png",
+                "w": 169,
+                "h": 103,
+                "sha256": "cb7345bd09de79604b271fa0db916c6175388a47c0911f339de76cf9fd234c32"
+              }
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            24.75,
+            31.78
+          ],
+          "pivot": [
+            24.75,
+            31.78
+          ],
+          "depth": 59.74,
+          "w": 45,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__body__d01__albedo.png",
+              "w": 45,
+              "h": 27,
+              "sha256": "f9f6b1ba2711d9715ccd966e4d856ca51e39b7e595926501768bae75c588e2f8"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__body__d01__normal.png",
+              "w": 45,
+              "h": 27,
+              "sha256": "3c87d205efc2141bd3dbf7cd9242e0283cf7fc40ca432737884f44c43ca3c7e3"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__body__d01__material.png",
+              "w": 45,
+              "h": 27,
+              "sha256": "a9cb294e70797e2ffd812695a057393fc4ad6c10b04df13f4cc36317864f1680"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__body__d01__depth.png",
+              "w": 45,
+              "h": 27,
+              "sha256": "a889a4333e7f544b5dac5aaa40755f29fec560545447b1aa740ba646d14a5634"
+            }
+          },
+          "filesHi": {
+            "w": 178,
+            "h": 104,
+            "pivot": [
+              97.02,
+              125.13
+            ],
+            "anchor": [
+              97.02,
+              125.13
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__body__d01__albedo@4x.png",
+                "w": 178,
+                "h": 104,
+                "sha256": "5227ae8f13e9bba9768d6e119a2ff304a854546b15a636da9f782554df54c674"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__body__d01__normal@4x.png",
+                "w": 178,
+                "h": 104,
+                "sha256": "5972e9732552de26edda11dbc41782173034bc83814e1443ce64447635d0e19d"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__body__d01__material@4x.png",
+                "w": 178,
+                "h": 104,
+                "sha256": "8a063f822d632731db8b265ae03b469b2b6bdb3841d701b0e8b315aba372ce18"
+              }
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            22.37,
+            31.31
+          ],
+          "pivot": [
+            22.37,
+            31.31
+          ],
+          "depth": 52.02,
+          "w": 45,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__body__d02__albedo.png",
+              "w": 45,
+              "h": 27,
+              "sha256": "82b5e425cef689f9d1d1ca100db25f093fc21037f968a1bdcb8a67731bdfaee4"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__body__d02__normal.png",
+              "w": 45,
+              "h": 27,
+              "sha256": "54faea7c7663f7c685a80797fd948b9fec81b39fbe9db9cabf3de3c9dddd15d9"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__body__d02__material.png",
+              "w": 45,
+              "h": 27,
+              "sha256": "06b2b84197cb072c9c9479f43049a544dd882e0ade234179eb39e8e7d0373256"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__body__d02__depth.png",
+              "w": 45,
+              "h": 27,
+              "sha256": "5fd5fbbf374c589404d06fc3ad91d0c779d1d00c0663e77020b6e2dcf15bba21"
+            }
+          },
+          "filesHi": {
+            "w": 177,
+            "h": 107,
+            "pivot": [
+              88.49,
+              125.25
+            ],
+            "anchor": [
+              88.49,
+              125.25
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__body__d02__albedo@4x.png",
+                "w": 177,
+                "h": 107,
+                "sha256": "12b1e883982061658168b8969d165cb3a7c105f5939bce7fc637531ac483c80c"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__body__d02__normal@4x.png",
+                "w": 177,
+                "h": 107,
+                "sha256": "fa8b72a8849cf97ee82c3cd60abadfd378ea81fb75bc0c37dc4483d9e0de2ecd"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__body__d02__material@4x.png",
+                "w": 177,
+                "h": 107,
+                "sha256": "bdfa1639bf2fa7608dd73c0f4103126e352dc8489a53e5094903ef50f87673d7"
+              }
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            20.44,
+            32.12
+          ],
+          "pivot": [
+            20.44,
+            32.12
+          ],
+          "depth": 39.79,
+          "w": 45,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__body__d03__albedo.png",
+              "w": 45,
+              "h": 27,
+              "sha256": "089954508aae6a11f44609fdc6bf98334cbd9346fb22827bb716672a14d98e58"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__body__d03__normal.png",
+              "w": 45,
+              "h": 27,
+              "sha256": "a9a24059c82c453b570fa1b0f526e9bc5eea56e3131ce0cf9c9b5965e016ade3"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__body__d03__material.png",
+              "w": 45,
+              "h": 27,
+              "sha256": "28ed8034b852161d9aee060c3ffdcd020b58d54b7bb91fdd80d78a0781967875"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__body__d03__depth.png",
+              "w": 45,
+              "h": 27,
+              "sha256": "ab5c2965114abd602639b280a69abf1503730329477870291f16fe3907c64311"
+            }
+          },
+          "filesHi": {
+            "w": 178,
+            "h": 104,
+            "pivot": [
+              80.74,
+              125.49
+            ],
+            "anchor": [
+              80.74,
+              125.49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__body__d03__albedo@4x.png",
+                "w": 178,
+                "h": 104,
+                "sha256": "64ff1cb8db1693fc9e71f8899997760eabe638d017b79f08e961713353358a86"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__body__d03__normal@4x.png",
+                "w": 178,
+                "h": 104,
+                "sha256": "b3350888dcb079ae3a86cff618768991713cafbf7643ddb6f9010b0e127c2318"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__body__d03__material@4x.png",
+                "w": 178,
+                "h": 104,
+                "sha256": "9bebba2db209c64bc4b817c7e69ec5da7926a3dd9a81f0827d384852e11889d8"
+              }
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            19,
+            33
+          ],
+          "pivot": [
+            19,
+            33
+          ],
+          "depth": 24.9,
+          "w": 43,
+          "h": 26,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__body__d04__albedo.png",
+              "w": 43,
+              "h": 26,
+              "sha256": "3c689d6d9f8cde3aff5f0902a76ab05d8533b30359406d0e6d5a406906d19ea9"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__body__d04__normal.png",
+              "w": 43,
+              "h": 26,
+              "sha256": "495536df622b9b6366921b95d263767857802cde9f595ed961216ae5215a2819"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__body__d04__material.png",
+              "w": 43,
+              "h": 26,
+              "sha256": "db703497afb41c29c3d2d04f5cee368b79ae024ac2ebdf2c4b2bae1f23a7df52"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__body__d04__depth.png",
+              "w": 43,
+              "h": 26,
+              "sha256": "c58ce8ce158a83d7bd31906d67e656f8fc0f7af2a428d9dd7900abaecb52d351"
+            }
+          },
+          "filesHi": {
+            "w": 169,
+            "h": 103,
+            "pivot": [
+              76,
+              132
+            ],
+            "anchor": [
+              76,
+              132
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__body__d04__albedo@4x.png",
+                "w": 169,
+                "h": 103,
+                "sha256": "33a45e78f94d7a6b163fea7fa3ce7544fc2ca0da7652ebae002f4bbc4a25361d"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__body__d04__normal@4x.png",
+                "w": 169,
+                "h": 103,
+                "sha256": "57412e7ed201f34b16df7ea15212a8c03edf1b0205f50bc2e64cc5d726539c9e"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__body__d04__material@4x.png",
+                "w": 169,
+                "h": 103,
+                "sha256": "8bb22931444927753502a806e4635e16c627d2d409c14b40eac610ac13ec5bde"
+              }
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            23.44,
+            33.88
+          ],
+          "pivot": [
+            23.44,
+            33.88
+          ],
+          "depth": 9.63,
+          "w": 43,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__body__d05__albedo.png",
+              "w": 43,
+              "h": 27,
+              "sha256": "7f89d548a8e7923c443ff8827cceae4010aa0b11928636f50978d8cc13b58105"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__body__d05__normal.png",
+              "w": 43,
+              "h": 27,
+              "sha256": "d83c2f79d1854f7fd33a64af71a035554bbc128b8de399163a5574697266bf8e"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__body__d05__material.png",
+              "w": 43,
+              "h": 27,
+              "sha256": "24fdb73b080e4f8b175a35e3b84d622173b2888e4036616ab20840f97ad45165"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__body__d05__depth.png",
+              "w": 43,
+              "h": 27,
+              "sha256": "1e2299897fa4334ca2a4749d7fdc1870159221068c62e152f7de69490e562f26"
+            }
+          },
+          "filesHi": {
+            "w": 170,
+            "h": 107,
+            "pivot": [
+              91.74,
+              134.51
+            ],
+            "anchor": [
+              91.74,
+              134.51
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__body__d05__albedo@4x.png",
+                "w": 170,
+                "h": 107,
+                "sha256": "8edd3b2b780e761527bf9377d8debacf266f575306a3c44a9e7c04bb7db1fb33"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__body__d05__normal@4x.png",
+                "w": 170,
+                "h": 107,
+                "sha256": "fd843da2620cbba25ccb07cc138388fc14f67d55f48438cf6d71d62754f0d9a5"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__body__d05__material@4x.png",
+                "w": 170,
+                "h": 107,
+                "sha256": "3e4a2d7b44769316af5bd73edf284feac361e8b2225562226128b3843b22ba8e"
+              }
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            24.37,
+            32.69
+          ],
+          "pivot": [
+            24.37,
+            32.69
+          ],
+          "depth": -3.7,
+          "w": 43,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__body__d06__albedo.png",
+              "w": 43,
+              "h": 27,
+              "sha256": "28ecbdec55ba3ecbdbb81ce1f6924294d6f40c10f8f6828bbf1c2f868c954898"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__body__d06__normal.png",
+              "w": 43,
+              "h": 27,
+              "sha256": "25c6c12ebbd2a19840c75a8b9e0e6ce64d91035a1bc81eb1be244401cd7d9811"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__body__d06__material.png",
+              "w": 43,
+              "h": 27,
+              "sha256": "0121e2bd0a5611ec7041426f35024b57099a5d108c4c6fe1129c64d237030beb"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__body__d06__depth.png",
+              "w": 43,
+              "h": 27,
+              "sha256": "c87f085940b2be5c7cca4df700bf0ab08a633347e0108b95369c4f333f53ec16"
+            }
+          },
+          "filesHi": {
+            "w": 170,
+            "h": 106,
+            "pivot": [
+              97.49,
+              129.75
+            ],
+            "anchor": [
+              97.49,
+              129.75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__body__d06__albedo@4x.png",
+                "w": 170,
+                "h": 106,
+                "sha256": "0e3e3a4c622dec0c293cda54bffe5cbd25a8e994378caeaeae27f00952a25c6e"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__body__d06__normal@4x.png",
+                "w": 170,
+                "h": 106,
+                "sha256": "d26f14f67c2b4bbdd75f386ab05e95d24564a4b028a40d74e795ddd85e94f4d6"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__body__d06__material@4x.png",
+                "w": 170,
+                "h": 106,
+                "sha256": "fe760de3dca66377c8c509c08eb110d633f0e0db0ac848a3587ee8d24570c0aa"
+              }
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            23.75,
+            32.22
+          ],
+          "pivot": [
+            23.75,
+            32.22
+          ],
+          "depth": -13.07,
+          "w": 44,
+          "h": 28,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__body__d07__albedo.png",
+              "w": 44,
+              "h": 28,
+              "sha256": "ae2f41b908c61ad03f5f74f3000ccb1c146d751283d50bd1f39879b017a0ddc4"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__body__d07__normal.png",
+              "w": 44,
+              "h": 28,
+              "sha256": "bfbc7017c37418327ad0c4e92fdcc76896a7cdc6665f01e6228247557bac3b9e"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__body__d07__material.png",
+              "w": 44,
+              "h": 28,
+              "sha256": "e52302941ed3e7534a7459c0ebddbb85ec14c84cc2dd493d1ac1f124dc549a2b"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__body__d07__depth.png",
+              "w": 44,
+              "h": 28,
+              "sha256": "7ba3c3752f49f594ef6e49ab930017032c842b00239d6d81dbb805a7a073c865"
+            }
+          },
+          "filesHi": {
+            "w": 170,
+            "h": 106,
+            "pivot": [
+              92.02,
+              125.87
+            ],
+            "anchor": [
+              92.02,
+              125.87
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__body__d07__albedo@4x.png",
+                "w": 170,
+                "h": 106,
+                "sha256": "e5f9b59a19c8fae13bf1bcfa35e296ac3ddef46824baa57e22094801fc4a3488"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__body__d07__normal@4x.png",
+                "w": 170,
+                "h": 106,
+                "sha256": "449354103a4e1feb9ae0653b4e01680159d6b0202b0c5e0e67e0f0100a157559"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__body__d07__material@4x.png",
+                "w": 170,
+                "h": 106,
+                "sha256": "cb9ed114844a2139123d8d0e0d4852a66038a1c650566890901b6be36d1e9264"
+              }
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            19,
+            31
+          ],
+          "pivot": [
+            19,
+            31
+          ],
+          "depth": -17.03,
+          "w": 43,
+          "h": 26,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__body__d08__albedo.png",
+              "w": 43,
+              "h": 26,
+              "sha256": "a62794065e3c3b835e7099602e859bb7110949a3e982f1616ea7ec3901b368d6"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__body__d08__normal.png",
+              "w": 43,
+              "h": 26,
+              "sha256": "1490ee6fb34df13064f545114b23c713fabbfcefaa80f15e7ff1e8327bdfb2ee"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__body__d08__material.png",
+              "w": 43,
+              "h": 26,
+              "sha256": "c46a8ae9b50327a5bf83d67bb10eef8dd5ecf0c0f1801d9321d9c50118fe4418"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__body__d08__depth.png",
+              "w": 43,
+              "h": 26,
+              "sha256": "2394313a16622af0b25e2319f22bcdfd20660240ae0b3f09853baa753bb93f17"
+            }
+          },
+          "filesHi": {
+            "w": 169,
+            "h": 103,
+            "pivot": [
+              76,
+              124
+            ],
+            "anchor": [
+              76,
+              124
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__body__d08__albedo@4x.png",
+                "w": 169,
+                "h": 103,
+                "sha256": "7e42619e29fff6241961fc1ebaf4aa3d145b9de8eed5536ceec2df7c3a0fcab3"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__body__d08__normal@4x.png",
+                "w": 169,
+                "h": 103,
+                "sha256": "d9e767effd401dfb524ca6686db5adb82bbb213b98d21cbe86be8c76c3b75f8f"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__body__d08__material@4x.png",
+                "w": 169,
+                "h": 103,
+                "sha256": "3a2f82e5b51ee2e85ee013028b1447021c52e4a866258ff42dceab173fae9b5c"
+              }
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            20.25,
+            33.22
+          ],
+          "pivot": [
+            20.25,
+            33.22
+          ],
+          "depth": -15,
+          "w": 45,
+          "h": 26,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__body__d09__albedo.png",
+              "w": 45,
+              "h": 26,
+              "sha256": "39b57c349732febabfbfd5d5f07845d55c8b6d0420486c9f30682e5696d25052"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__body__d09__normal.png",
+              "w": 45,
+              "h": 26,
+              "sha256": "2f3ec7e484678319dd7932da55701e10e5fb9446798a876d88bc32c606573090"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__body__d09__material.png",
+              "w": 45,
+              "h": 26,
+              "sha256": "beea27447aa6a4c54483027fecde9d7440d6c9293df19323c64898260e57ceca"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__body__d09__depth.png",
+              "w": 45,
+              "h": 26,
+              "sha256": "f5b54961a488fa5e387ad32a510aa88abce6464319f425ea70289e2211ccbd19"
+            }
+          },
+          "filesHi": {
+            "w": 178,
+            "h": 102,
+            "pivot": [
+              80.98,
+              130.87
+            ],
+            "anchor": [
+              80.98,
+              130.87
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__body__d09__albedo@4x.png",
+                "w": 178,
+                "h": 102,
+                "sha256": "0a64583322f689c24c19cd081e2a920ae9bfb61742499a98739baf419c8c2632"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__body__d09__normal@4x.png",
+                "w": 178,
+                "h": 102,
+                "sha256": "76c5912667560bb11ccafb8c827a30bc9983b7992278d5615848ea56ab1fd5a6"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__body__d09__material@4x.png",
+                "w": 178,
+                "h": 102,
+                "sha256": "2fa5ace3d7922ab02ca46d36a5b6a899f2405f5cb72c2481180de2b84c34d96c"
+              }
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            22.63,
+            33.69
+          ],
+          "pivot": [
+            22.63,
+            33.69
+          ],
+          "depth": -7.28,
+          "w": 45,
+          "h": 26,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__body__d10__albedo.png",
+              "w": 45,
+              "h": 26,
+              "sha256": "bddc791a70b2e991612fd032ac1335704918bbe5bfde8d9ff39ba9b127131248"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__body__d10__normal.png",
+              "w": 45,
+              "h": 26,
+              "sha256": "9842514aa53ee106faaeeb6b805a1a9ae28f65b68aa4d354eabedf9c72afcd71"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__body__d10__material.png",
+              "w": 45,
+              "h": 26,
+              "sha256": "d01f5927e31ccc2320c42da3fff2e44e5d46536c07612388e231be0e1923a58e"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__body__d10__depth.png",
+              "w": 45,
+              "h": 26,
+              "sha256": "561dc7895d83b757001e2d984382a6c45b4035cdf2a0890b2a5edd97ced163c5"
+            }
+          },
+          "filesHi": {
+            "w": 177,
+            "h": 103,
+            "pivot": [
+              88.51,
+              133.75
+            ],
+            "anchor": [
+              88.51,
+              133.75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__body__d10__albedo@4x.png",
+                "w": 177,
+                "h": 103,
+                "sha256": "ce8d21e83796dc65f5d3210c9d46fc607915a51f2533c2b3c2f3ca49221af5cf"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__body__d10__normal@4x.png",
+                "w": 177,
+                "h": 103,
+                "sha256": "583893394e87f234d1ee6e3738d8369ce498a1171410f6f79a21fddb32f41da3"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__body__d10__material@4x.png",
+                "w": 177,
+                "h": 103,
+                "sha256": "83e8209f7e13b2509e8330f2501dd725766d7e3fcd67876c5025d6e57a894b78"
+              }
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            24.56,
+            32.88
+          ],
+          "pivot": [
+            24.56,
+            32.88
+          ],
+          "depth": 4.96,
+          "w": 45,
+          "h": 26,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__body__d11__albedo.png",
+              "w": 45,
+              "h": 26,
+              "sha256": "7718fe06caf955cc11e8b6b0d439cb07f64911a9d310cb3c47c7cd634152c263"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__body__d11__normal.png",
+              "w": 45,
+              "h": 26,
+              "sha256": "16e01b794788de02df66a6689234b285d1b19e372dc6766554d572dbff8baec3"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__body__d11__material.png",
+              "w": 45,
+              "h": 26,
+              "sha256": "087342a12b0f9a783dba3bde9377e279f627db7e30fa044a8df1b3431706412a"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__body__d11__depth.png",
+              "w": 45,
+              "h": 26,
+              "sha256": "bc0e1a15b019b70627e970fa254b29242b1a0c26494be66013a018afdc8f6f71"
+            }
+          },
+          "filesHi": {
+            "w": 178,
+            "h": 102,
+            "pivot": [
+              97.26,
+              130.51
+            ],
+            "anchor": [
+              97.26,
+              130.51
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__body__d11__albedo@4x.png",
+                "w": 178,
+                "h": 102,
+                "sha256": "d76ce02188b41dcf427462751115908a7711badbae316ce59e307c65509ee36c"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__body__d11__normal@4x.png",
+                "w": 178,
+                "h": 102,
+                "sha256": "b9c6df75950a2e6abc7ce33562db2f6cf8a5a2fb12123f51c1cb052d9081cc29"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__body__d11__material@4x.png",
+                "w": 178,
+                "h": 102,
+                "sha256": "8da9bf2deb090993b385caeedac9a44dc1898761f768d5e6abf27e8f810934e1"
+              }
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            24,
+            32
+          ],
+          "pivot": [
+            24,
+            32
+          ],
+          "depth": 19.85,
+          "w": 43,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__body__d12__albedo.png",
+              "w": 43,
+              "h": 27,
+              "sha256": "ac5d01202be73f6b62ba4efc970e4b79ab1faf429902e8ca513d9115d48e2ffa"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__body__d12__normal.png",
+              "w": 43,
+              "h": 27,
+              "sha256": "fae0fd6f2840dc22f32c4185b117cd73c363734c3274fd320c6e0af7f5e3562c"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__body__d12__material.png",
+              "w": 43,
+              "h": 27,
+              "sha256": "e4ce51d749854643fd5689f397323b4d95ff7a66ac9af44686c16af0d08b3e70"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__body__d12__depth.png",
+              "w": 43,
+              "h": 27,
+              "sha256": "08c39015c8b7450dacbbfb214bbe1316ea7bf62283f0c2fdd47a15710ad15e9a"
+            }
+          },
+          "filesHi": {
+            "w": 170,
+            "h": 104,
+            "pivot": [
+              94,
+              125
+            ],
+            "anchor": [
+              94,
+              125
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__body__d12__albedo@4x.png",
+                "w": 170,
+                "h": 104,
+                "sha256": "2176fe0532b66483c4be83a42e8e72a4d0b631a1e55eb91d8312bb6ef325dbe0"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__body__d12__normal@4x.png",
+                "w": 170,
+                "h": 104,
+                "sha256": "f595253b544addcd18d41fd9998225600d2c8cf312a5a5124fb0002f4d4e4ffc"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__body__d12__material@4x.png",
+                "w": 170,
+                "h": 104,
+                "sha256": "971c116a4f6f22ca09875cc21a588dd1956c8daf7dfbb6d2d99c530fdc379e98"
+              }
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            19.56,
+            32.12
+          ],
+          "pivot": [
+            19.56,
+            32.12
+          ],
+          "depth": 35.12,
+          "w": 43,
+          "h": 28,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__body__d13__albedo.png",
+              "w": 43,
+              "h": 28,
+              "sha256": "55e969f0f3fb866f78a9868b9e4abb7b43ea738cdd3460a1923ac99050c259f9"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__body__d13__normal.png",
+              "w": 43,
+              "h": 28,
+              "sha256": "9ce7befe2f4bd63c3c40fe4bfa626b22d010141210e9efc5781599373e01fe92"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__body__d13__material.png",
+              "w": 43,
+              "h": 28,
+              "sha256": "fc3225a1a99a881c18c31ab6cb6061b53359d8612a851d8bc84acbf8efd7c5be"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__body__d13__depth.png",
+              "w": 43,
+              "h": 28,
+              "sha256": "00fd97abe9e0d94c33967ace6d969aa8030a47c087033b340be2f2150c85235c"
+            }
+          },
+          "filesHi": {
+            "w": 170,
+            "h": 107,
+            "pivot": [
+              78.26,
+              126.49
+            ],
+            "anchor": [
+              78.26,
+              126.49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__body__d13__albedo@4x.png",
+                "w": 170,
+                "h": 107,
+                "sha256": "56ac8cb4fc4ae755b5593e350385abb5c8b7274a697a7fd45d50f51cf7b13316"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__body__d13__normal@4x.png",
+                "w": 170,
+                "h": 107,
+                "sha256": "45ac4ffc8f7c2f713f349aa0081b648005d0ef89e35f518e3c9866a5ad90c2f2"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__body__d13__material@4x.png",
+                "w": 170,
+                "h": 107,
+                "sha256": "86d1309cfe048fff655e8667bf1d1f950a3e4ac82e7cbae51d639198526ca1df"
+              }
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            18.63,
+            32.31
+          ],
+          "pivot": [
+            18.63,
+            32.31
+          ],
+          "depth": 48.45,
+          "w": 43,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__body__d14__albedo.png",
+              "w": 43,
+              "h": 27,
+              "sha256": "28317856ae986af2c1adc6f1124f08a140559a431719acf84c348393eb684f83"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__body__d14__normal.png",
+              "w": 43,
+              "h": 27,
+              "sha256": "d6f629f5bc8a08bcfd538638d5ea09eb2613bb796ff2117b8eaab6874a24a71c"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__body__d14__material.png",
+              "w": 43,
+              "h": 27,
+              "sha256": "a2d1fcc7b6a593007da804edaea92ab2aeebf919db93cb64c2307c69af706a27"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__body__d14__depth.png",
+              "w": 43,
+              "h": 27,
+              "sha256": "5c65625e345f54e621d63973774aae93fb8a4f8ce03fda544c255e03377eb501"
+            }
+          },
+          "filesHi": {
+            "w": 170,
+            "h": 105,
+            "pivot": [
+              72.51,
+              129.25
+            ],
+            "anchor": [
+              72.51,
+              129.25
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__body__d14__albedo@4x.png",
+                "w": 170,
+                "h": 105,
+                "sha256": "7f223fdc6165d71ced7950fab60c56acd9314804b0623c82813a95461872e82d"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__body__d14__normal@4x.png",
+                "w": 170,
+                "h": 105,
+                "sha256": "9c53d1977b72a6650a4bcebac34eb33f7de1e9d282a41e6babcf6bc6c74a5f53"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__body__d14__material@4x.png",
+                "w": 170,
+                "h": 105,
+                "sha256": "61140e5e55ea4d50ba71e45404767858907066aaf52f358cdfd66d2518f53637"
+              }
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            20.25,
+            33.78
+          ],
+          "pivot": [
+            20.25,
+            33.78
+          ],
+          "depth": 57.81,
+          "w": 44,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__body__d15__albedo.png",
+              "w": 44,
+              "h": 27,
+              "sha256": "e2fd16f9aeda45ff00428ee8477fe17f5503027aeaf5990de97e8db62a6221f9"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__body__d15__normal.png",
+              "w": 44,
+              "h": 27,
+              "sha256": "83296e362309ef8cb784a99ba36d903e14ea4ac2c2569bb2ff68dc507953d48e"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__body__d15__material.png",
+              "w": 44,
+              "h": 27,
+              "sha256": "827d50f3b4bda9423b5dbd1cab293e83ca4a36a01c62042e21a5be6c420d3e93"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__body__d15__depth.png",
+              "w": 44,
+              "h": 27,
+              "sha256": "4b2ea407bfa99e1024b8f65f2d190bb0f0ec5e5d671e3e742d8db12aa4e11e8e"
+            }
+          },
+          "filesHi": {
+            "w": 170,
+            "h": 107,
+            "pivot": [
+              77.98,
+              134.13
+            ],
+            "anchor": [
+              77.98,
+              134.13
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__body__d15__albedo@4x.png",
+                "w": 170,
+                "h": 107,
+                "sha256": "01be0859b4bfc064d82bd54f8bff6a0e4b120184e684cc5519e3625c46c35df5"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__body__d15__normal@4x.png",
+                "w": 170,
+                "h": 107,
+                "sha256": "d607e340d789e2296da4632658e8229bb394d611ac6af4e693f26088f7093bb6"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__body__d15__material@4x.png",
+                "w": 170,
+                "h": 107,
+                "sha256": "f9db57843d9e478a4c5eb3cbd07b62ec0ab8aef0fe629fb2d77c5ea1ec980d30"
+              }
+            }
+          }
+        }
+      }
+    },
+    "fin": {
+      "name": "fin",
+      "dynamic": true,
+      "parent": "body",
+      "pivotDesign": [
+        150,
+        256,
+        314
+      ],
+      "traverse": false,
+      "traverseRoot": null,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            18,
+            32
+          ],
+          "pivot": [
+            11.38,
+            9.06
+          ],
+          "depth": 53.91,
+          "w": 25,
+          "h": 16,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__fin__d00__albedo.png",
+              "w": 25,
+              "h": 16,
+              "sha256": "b5f89a27462a87f3a68bc65a4d5aec53a2f185623fc9ceeb7e8c318b98a7b753"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__fin__d00__normal.png",
+              "w": 25,
+              "h": 16,
+              "sha256": "91f27d71cf6f8b4623153d6966a4db6ed48628c18a8ba12ec248e4da66e39693"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__fin__d00__material.png",
+              "w": 25,
+              "h": 16,
+              "sha256": "3027a126d0a1f754d1dd4ce670924ffe5334ddc2fce37d6c8149872fc7fa920d"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__fin__d00__depth.png",
+              "w": 25,
+              "h": 16,
+              "sha256": "327ce2293378c37caf70ef72ee3ecbc766fbc1ce94b0ece5d62d713f8d399a85"
+            }
+          },
+          "filesHi": {
+            "w": 97,
+            "h": 60,
+            "pivot": [
+              43.5,
+              35.25
+            ],
+            "anchor": [
+              70,
+              127
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__fin__d00__albedo@4x.png",
+                "w": 97,
+                "h": 60,
+                "sha256": "1b32dd27b4b2465d84f04888da9491a5f6800bf75288a6b7d54391fa77bbfff0"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__fin__d00__normal@4x.png",
+                "w": 97,
+                "h": 60,
+                "sha256": "ce378a5732f866102918cf389a0881cd9043e213edb2360a21d19a07aa14a232"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__fin__d00__material@4x.png",
+                "w": 97,
+                "h": 60,
+                "sha256": "a6f550f826278fd64c6a4a0346054c2fbd5f3e12cb00256e47206796447b1422"
+              }
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            14.75,
+            31.78
+          ],
+          "pivot": [
+            11.17,
+            7.83
+          ],
+          "depth": 48.95,
+          "w": 25,
+          "h": 14,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__fin__d01__albedo.png",
+              "w": 25,
+              "h": 14,
+              "sha256": "a7aaa7ebd73cb2f0d297c787184bb3a0c18bef7aca92e377f4b59f63e1602b4f"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__fin__d01__normal.png",
+              "w": 25,
+              "h": 14,
+              "sha256": "f7fc7b3078a7c2e4ff80e143332b11451c0b371f42713fd3e5a85b905659c7b4"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__fin__d01__material.png",
+              "w": 25,
+              "h": 14,
+              "sha256": "043a69144cc1341d6bf5a4383f760e9a06cce041e25cdb9e963e1d30c270d4ed"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__fin__d01__depth.png",
+              "w": 25,
+              "h": 14,
+              "sha256": "83356d413d845164693f95d4abb8c9f7cf36a9445f86fad01a6dd7560edb806c"
+            }
+          },
+          "filesHi": {
+            "w": 99,
+            "h": 51,
+            "pivot": [
+              44.67,
+              29.32
+            ],
+            "anchor": [
+              59.02,
+              125.13
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__fin__d01__albedo@4x.png",
+                "w": 99,
+                "h": 51,
+                "sha256": "bc822f8059e99bc35da12d9bde1392c6cb97b692d5034b3ee2b9d4ffe1435a0d"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__fin__d01__normal@4x.png",
+                "w": 99,
+                "h": 51,
+                "sha256": "162ee6096045d35287574c00116dbde657b2f5ef12c4995aedebd09cba1186ff"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__fin__d01__material@4x.png",
+                "w": 99,
+                "h": 51,
+                "sha256": "872b9ddc31edefba158e9093bb335579043ab9329aa91b72d369782220b223de"
+              }
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            12.37,
+            30.31
+          ],
+          "pivot": [
+            12.37,
+            6
+          ],
+          "depth": 40.19,
+          "w": 25,
+          "h": 10,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__fin__d02__albedo.png",
+              "w": 25,
+              "h": 10,
+              "sha256": "3b14666e6d463b33bb49e331d194fc67be57307dcd4a1dece6318e4fb932b648"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__fin__d02__normal.png",
+              "w": 25,
+              "h": 10,
+              "sha256": "8b586f0041e97219d32cfc26a08c0768adb3c4e4024978b0d2f36b143a1d51c5"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__fin__d02__material.png",
+              "w": 25,
+              "h": 10,
+              "sha256": "ca06473c48f13933993504c297a3ce65e8bccd899933106137936c3ea069c85c"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__fin__d02__depth.png",
+              "w": 25,
+              "h": 10,
+              "sha256": "72d54d454b583b204300c95655ef239e521202402b3385bee71a23071d3ecb32"
+            }
+          },
+          "filesHi": {
+            "w": 99,
+            "h": 39,
+            "pivot": [
+              49.49,
+              23.02
+            ],
+            "anchor": [
+              49.49,
+              120.25
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__fin__d02__albedo@4x.png",
+                "w": 99,
+                "h": 39,
+                "sha256": "39207df2ba2780b684521776530c8a5c15a553b15b599077c55ed8b1d82aacbc"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__fin__d02__normal@4x.png",
+                "w": 99,
+                "h": 39,
+                "sha256": "5d28fae0693bcc357a8f2570c902cec24930fd7eddca8d936fb33d8797d94373"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__fin__d02__material@4x.png",
+                "w": 99,
+                "h": 39,
+                "sha256": "9389f778418fb35d73a3a08f4744b2cf25ef4a4c55f56c08d4f2a475e8253f7c"
+              }
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            10.44,
+            32.12
+          ],
+          "pivot": [
+            14.02,
+            8.17
+          ],
+          "depth": 28.99,
+          "w": 26,
+          "h": 14,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__fin__d03__albedo.png",
+              "w": 26,
+              "h": 14,
+              "sha256": "d0be35cc0911701fd7d513cf271c0d4fd75427e7e1678eefe909d1134d130d02"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__fin__d03__normal.png",
+              "w": 26,
+              "h": 14,
+              "sha256": "c19351cf039dfbe26895e5cc696e667e990f258370b2b02ac60f6edb4766d889"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__fin__d03__material.png",
+              "w": 26,
+              "h": 14,
+              "sha256": "9120d37098d8badccdcbd14b99d2db76bed369eb32c95240764e3c84431b5aa2"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__fin__d03__depth.png",
+              "w": 26,
+              "h": 14,
+              "sha256": "8d98dc14bf8963008a941a43e59ec66371e28df6785a90af6964f3657cb9e2a3"
+            }
+          },
+          "filesHi": {
+            "w": 99,
+            "h": 51,
+            "pivot": [
+              54.09,
+              29.68
+            ],
+            "anchor": [
+              39.74,
+              125.49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__fin__d03__albedo@4x.png",
+                "w": 99,
+                "h": 51,
+                "sha256": "8f34e49cae518b45bb6b98ffc98a56dc4f5a5d27ce587084757c5154aff32ed4"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__fin__d03__normal@4x.png",
+                "w": 99,
+                "h": 51,
+                "sha256": "6fe55237018ee2f6bd3931b28d99ccf80f049e08f9ae494bf827d48fc45196fc"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__fin__d03__material@4x.png",
+                "w": 99,
+                "h": 51,
+                "sha256": "4c7129b6d0646c692de217cc6947944daae58782f2de116ba7d90871cd630b21"
+              }
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            7,
+            32
+          ],
+          "pivot": [
+            13.63,
+            9.06
+          ],
+          "depth": 17.03,
+          "w": 25,
+          "h": 16,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__fin__d04__albedo.png",
+              "w": 25,
+              "h": 16,
+              "sha256": "46a1642dd2ad167e23bbafab0cbd15157617479aafd8c9f69113eaeeef59d50d"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__fin__d04__normal.png",
+              "w": 25,
+              "h": 16,
+              "sha256": "a159faa129484d980cd72659c5f1d71b5a4b50886a1d2c866a01f990700ebcad"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__fin__d04__material.png",
+              "w": 25,
+              "h": 16,
+              "sha256": "054c246f941ed5ff8dddf1aee44be4232a1cf0013a1bfd090717e0405cc51433"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__fin__d04__depth.png",
+              "w": 25,
+              "h": 16,
+              "sha256": "a628be4630e9b894e1867646a93001d0071abfef3144ff2f735c40870076d858"
+            }
+          },
+          "filesHi": {
+            "w": 97,
+            "h": 60,
+            "pivot": [
+              53.5,
+              35.25
+            ],
+            "anchor": [
+              27,
+              127
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__fin__d04__albedo@4x.png",
+                "w": 97,
+                "h": 60,
+                "sha256": "849acc17210a70c012851ca8a3b06e68aa2bdc9b123c7c99a566fce5edf41a11"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__fin__d04__normal@4x.png",
+                "w": 97,
+                "h": 60,
+                "sha256": "d0b626fa52229ef5b9432fc0cb0165be131d3abee458f6e4efc88b593d953365"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__fin__d04__material@4x.png",
+                "w": 97,
+                "h": 60,
+                "sha256": "3c04dcf7026b417bc534ff70bec2f6876f6dc4c86eaa7d7ef1dc640bd787b1c2"
+              }
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            3.44,
+            31.88
+          ],
+          "pivot": [
+            12.09,
+            10.46
+          ],
+          "depth": 6.15,
+          "w": 22,
+          "h": 18,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__fin__d05__albedo.png",
+              "w": 22,
+              "h": 18,
+              "sha256": "d3653d15ebcce8bc4fb0ef9c227ef15bb4ebc9b9aa7d7da0f581542784334a0a"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__fin__d05__normal.png",
+              "w": 22,
+              "h": 18,
+              "sha256": "da28fb6730c074e2f543e962ffeb9a220b86a07ab1f2449d2971a73172d64bf4"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__fin__d05__material.png",
+              "w": 22,
+              "h": 18,
+              "sha256": "5f76568a9835a8bb2462f1b361f5ddf118ee7c9be5abeb0d56acd4d06bad92b9"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__fin__d05__depth.png",
+              "w": 22,
+              "h": 18,
+              "sha256": "f184c0addb1d85123ffc29e71fa05f6df314a52434b0f3b3afaf1e22dc0742d8"
+            }
+          },
+          "filesHi": {
+            "w": 85,
+            "h": 68,
+            "pivot": [
+              46.37,
+              39.84
+            ],
+            "anchor": [
+              11.74,
+              125.51
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__fin__d05__albedo@4x.png",
+                "w": 85,
+                "h": 68,
+                "sha256": "4ae6a949ae0caa0dcb211d7b24b14627486c42a109328accee0114abef4a4375"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__fin__d05__normal@4x.png",
+                "w": 85,
+                "h": 68,
+                "sha256": "913c1ee80e40e3f3e72aae5dde4260a7050b47c8d6462f3fe63eda0e6f3d7a2d"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__fin__d05__material@4x.png",
+                "w": 85,
+                "h": 68,
+                "sha256": "f7efc7b93d5a220073cd756fd0533a32b65d3c7783c96664d9ed99876b24e11a"
+              }
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            0.37,
+            30.69
+          ],
+          "pivot": [
+            9.74,
+            11.06
+          ],
+          "depth": -2.01,
+          "w": 18,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__fin__d06__albedo.png",
+              "w": 18,
+              "h": 19,
+              "sha256": "512ee85e977e6586e0bc2c652c152f0e0ced2975427937a89db1829d4063de7e"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__fin__d06__normal.png",
+              "w": 18,
+              "h": 19,
+              "sha256": "0fe2f1f19b1e7cb89bf93c107ba307fdb9234a0c8892a38596e64007e696c372"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__fin__d06__material.png",
+              "w": 18,
+              "h": 19,
+              "sha256": "9ef93b3f9d57053abbf21e9d347163cc60ebba86bc10d90d32b88aa86b494ae9"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__fin__d06__depth.png",
+              "w": 18,
+              "h": 19,
+              "sha256": "a07e0d023e0caa8b4f4d37b480c18e583bb3f73f81cb377fdfe2468a7d6e8022"
+            }
+          },
+          "filesHi": {
+            "w": 66,
+            "h": 71,
+            "pivot": [
+              35.97,
+              42.25
+            ],
+            "anchor": [
+              -1.51,
+              120.75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__fin__d06__albedo@4x.png",
+                "w": 66,
+                "h": 71,
+                "sha256": "9c6314e3be8a98b2bcdb24171ff37e7b655ca444d9fbe9c05da1651fab634e91"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__fin__d06__normal@4x.png",
+                "w": 66,
+                "h": 71,
+                "sha256": "7d08c183e49b2f28abcf4f7d7923b303a7976f85c0fc0df988662fa96a0d82bd"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__fin__d06__material@4x.png",
+                "w": 66,
+                "h": 71,
+                "sha256": "60e84bb0b5454962509e75de51d5ac3e37fa4866acc5ff930dda66b430a57759"
+              }
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            3.75,
+            29.22
+          ],
+          "pivot": [
+            12.41,
+            11.39
+          ],
+          "depth": -6.19,
+          "w": 22,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__fin__d07__albedo.png",
+              "w": 22,
+              "h": 19,
+              "sha256": "dabb906503161856046e163e4db906f30dc44bf9a0e43c07efb40f744881e5ea"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__fin__d07__normal.png",
+              "w": 22,
+              "h": 19,
+              "sha256": "1a222ef021956ae62f23b3636651cecc510ed9fdf854b91c595ae2c0ac655713"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__fin__d07__material.png",
+              "w": 22,
+              "h": 19,
+              "sha256": "f8df4382b193dc69ec707ffb15be6aa7770e3a00fb312f844c2b07d83f0c9e96"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__fin__d07__depth.png",
+              "w": 22,
+              "h": 19,
+              "sha256": "7b2bf4e0744e65c5ff1303308faf772cb210e26bc14d0643bb084ac64c9a2bb3"
+            }
+          },
+          "filesHi": {
+            "w": 85,
+            "h": 76,
+            "pivot": [
+              46.64,
+              45.54
+            ],
+            "anchor": [
+              12.02,
+              116.87
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__fin__d07__albedo@4x.png",
+                "w": 85,
+                "h": 76,
+                "sha256": "00a1cb5a28f752dae4258dc06a8439a62a3a60c1ca3036bd2cd097b186691b57"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__fin__d07__normal@4x.png",
+                "w": 85,
+                "h": 76,
+                "sha256": "29943e69efe9b8539e08c6621807f304eb259697c8247a5e9005713e4007f2a8"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__fin__d07__material@4x.png",
+                "w": 85,
+                "h": 76,
+                "sha256": "57d474ec25474797b0a5a79c9b265b987fe6af79995d455508db9d5aba262e22"
+              }
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            7,
+            28
+          ],
+          "pivot": [
+            13.62,
+            11.69
+          ],
+          "depth": -5.77,
+          "w": 25,
+          "h": 20,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__fin__d08__albedo.png",
+              "w": 25,
+              "h": 20,
+              "sha256": "f6c6104d136f3ea65cbcf7e4e99dd58ac9c5353056f2a3233ca90aade61c6822"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__fin__d08__normal.png",
+              "w": 25,
+              "h": 20,
+              "sha256": "86c22730ea82195da61517325f2cb06a7fe3b2cc658ef1eb3182b73f3bbd1959"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__fin__d08__material.png",
+              "w": 25,
+              "h": 20,
+              "sha256": "03172ceedf16ebb7b13e13e18faf2d41a6fad81dfafd8a7bf21702e54e6b04cc"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__fin__d08__depth.png",
+              "w": 25,
+              "h": 20,
+              "sha256": "de49d5daf24983f53d3ec55e43732a18e798ae722a6d2575eea4f44215434c5f"
+            }
+          },
+          "filesHi": {
+            "w": 97,
+            "h": 75,
+            "pivot": [
+              53.5,
+              44.75
+            ],
+            "anchor": [
+              27,
+              110
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__fin__d08__albedo@4x.png",
+                "w": 97,
+                "h": 75,
+                "sha256": "fd09a81ba20c64da1eaac36296b622edfd97aae564a145b4d7a3b7b9f240b2aa"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__fin__d08__normal@4x.png",
+                "w": 97,
+                "h": 75,
+                "sha256": "0eb64baa23bbf328e07904e8da7c14cdf181f94584e4ff122061b80301fc6806"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__fin__d08__material@4x.png",
+                "w": 97,
+                "h": 75,
+                "sha256": "1a57a7c9853aa5b020be28c248b0575ea203e7fec7554a456a92a6ac816baae4"
+              }
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            10.25,
+            26.22
+          ],
+          "pivot": [
+            13.83,
+            10.92
+          ],
+          "depth": -0.81,
+          "w": 25,
+          "h": 18,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__fin__d09__albedo.png",
+              "w": 25,
+              "h": 18,
+              "sha256": "17d1b2a662b458dcb8ca4f5670df92f2b9d22842a1124e90ef3aa371c0dbff5c"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__fin__d09__normal.png",
+              "w": 25,
+              "h": 18,
+              "sha256": "44b2feb888418c9019ae7e5764bc3c1bc04498477a4a4490a7c86af3c73ee9bf"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__fin__d09__material.png",
+              "w": 25,
+              "h": 18,
+              "sha256": "eec7ab63a2aa080d9bb88ddfb1217f7415d845ea9501deb630cb1e3b30b8b337"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__fin__d09__depth.png",
+              "w": 25,
+              "h": 18,
+              "sha256": "bad3479714b0a5e4ced1c886d02ea789e5353185690d41ad1028636c75b7e13d"
+            }
+          },
+          "filesHi": {
+            "w": 99,
+            "h": 69,
+            "pivot": [
+              54.33,
+              41.68
+            ],
+            "anchor": [
+              39.98,
+              102.87
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__fin__d09__albedo@4x.png",
+                "w": 99,
+                "h": 69,
+                "sha256": "eb9d43b64327734c2c647123f8b460a20c69750355173746d79aac865ab2bffb"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__fin__d09__normal@4x.png",
+                "w": 99,
+                "h": 69,
+                "sha256": "97c4e0fa0522377ddecde244e93408018f987bbcd0b86c4c5395ffc4fe178956"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__fin__d09__material@4x.png",
+                "w": 99,
+                "h": 69,
+                "sha256": "918e89bea9058d3f06c63bc4f72679ca9c5a32d997e6e6febac567c11d05d177"
+              }
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            12.63,
+            24.69
+          ],
+          "pivot": [
+            12.63,
+            9.75
+          ],
+          "depth": 7.94,
+          "w": 25,
+          "h": 16,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__fin__d10__albedo.png",
+              "w": 25,
+              "h": 16,
+              "sha256": "2484e2ff7535754452e2fb33bcc848a2e75fd097fccfa516de1cbb2d5f8e04a5"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__fin__d10__normal.png",
+              "w": 25,
+              "h": 16,
+              "sha256": "799cf3433e949516f728579bec18ceee4712903693d2086f0790077fabc82a60"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__fin__d10__material.png",
+              "w": 25,
+              "h": 16,
+              "sha256": "f71ae8da382192f4db989d385f36c0330fe8b579e302970fd10a2a07bbbc9aae"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__fin__d10__depth.png",
+              "w": 25,
+              "h": 16,
+              "sha256": "b36fca8b48c9114b57eb366d5802b0d701b0403afc7da154ae364eb4c90d1c7b"
+            }
+          },
+          "filesHi": {
+            "w": 99,
+            "h": 59,
+            "pivot": [
+              49.51,
+              35.98
+            ],
+            "anchor": [
+              49.51,
+              95.75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__fin__d10__albedo@4x.png",
+                "w": 99,
+                "h": 59,
+                "sha256": "4f5b5661283239509dc9147ca7677bf449085c4021b9bda0815ed38f4777fe0f"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__fin__d10__normal@4x.png",
+                "w": 99,
+                "h": 59,
+                "sha256": "fbee7c2807b07bbb9da39dcbb51c3932cd1508f4d494041030653093b3799188"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__fin__d10__material@4x.png",
+                "w": 99,
+                "h": 59,
+                "sha256": "e4995e2c7ae9c3dd87611c1afa1c9a4f9189303c174e88a3e2e6549264b1ea25"
+              }
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            15.56,
+            25.88
+          ],
+          "pivot": [
+            11.98,
+            10.58
+          ],
+          "depth": 19.15,
+          "w": 26,
+          "h": 18,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__fin__d11__albedo.png",
+              "w": 26,
+              "h": 18,
+              "sha256": "45c1dfc45be747bc26317f6492a91fc401a98457ca30b3f0d49601c5878cc3d0"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__fin__d11__normal.png",
+              "w": 26,
+              "h": 18,
+              "sha256": "907d23a399862f8775f9aa8c2f15c5168c8b55a7a93ecccb7e1358912a7a156e"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__fin__d11__material.png",
+              "w": 26,
+              "h": 18,
+              "sha256": "771fafd243b7845633959b84619b3083f9fdff09d76e91571e0241d6cfe66d19"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__fin__d11__depth.png",
+              "w": 26,
+              "h": 18,
+              "sha256": "f9e13ae66210a870b36f5119358c49eaadfa97c6f434e1c5eb6f7e0edff6fd46"
+            }
+          },
+          "filesHi": {
+            "w": 99,
+            "h": 69,
+            "pivot": [
+              44.91,
+              41.32
+            ],
+            "anchor": [
+              59.26,
+              102.51
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__fin__d11__albedo@4x.png",
+                "w": 99,
+                "h": 69,
+                "sha256": "5a039995beaa45f96ab279bedba819d926e3e496e97ff4ee42c52ef4f5e03d31"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__fin__d11__normal@4x.png",
+                "w": 99,
+                "h": 69,
+                "sha256": "40ec4a6b401261939b2e30a97168dd30189b4eef507ed5cb197b8f5b0ed710eb"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__fin__d11__material@4x.png",
+                "w": 99,
+                "h": 69,
+                "sha256": "8c46d0a1a24488a20cc0aad95ad0ddf293aae569780bce6aae610eba371b94e1"
+              }
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            18,
+            28
+          ],
+          "pivot": [
+            11.38,
+            11.69
+          ],
+          "depth": 31.1,
+          "w": 25,
+          "h": 20,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__fin__d12__albedo.png",
+              "w": 25,
+              "h": 20,
+              "sha256": "8dbd1b03bc6a95b44bc2ea5ed985a26b6a143f0e33c62d863b592ef3f9b79d9d"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__fin__d12__normal.png",
+              "w": 25,
+              "h": 20,
+              "sha256": "cc72949c3d2033340b5344fda3b70000056d3a4e423b93d4e6df10347f5cce42"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__fin__d12__material.png",
+              "w": 25,
+              "h": 20,
+              "sha256": "fe46d994a474d7c04cb29e7b4d5eae8e30355f1ea7f8ecde567bcdbb6a0b3627"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__fin__d12__depth.png",
+              "w": 25,
+              "h": 20,
+              "sha256": "3317be0ebeae8625b5cbaa3be0424e87fd797f1a8844ff9f01fcf73d226292fd"
+            }
+          },
+          "filesHi": {
+            "w": 97,
+            "h": 75,
+            "pivot": [
+              43.5,
+              44.75
+            ],
+            "anchor": [
+              70,
+              110
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__fin__d12__albedo@4x.png",
+                "w": 97,
+                "h": 75,
+                "sha256": "d3942e1882d0231f401d9e4080a0edc64619924ed83ca6a03e27f342a5427563"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__fin__d12__normal@4x.png",
+                "w": 97,
+                "h": 75,
+                "sha256": "dc86d7d64760a09a03888d4563aedb96ba470b4fd8c0b9cf44459be595a0a4a0"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__fin__d12__material@4x.png",
+                "w": 97,
+                "h": 75,
+                "sha256": "ef436943ddeda5b62350e7cc25f428216f1da1d80bd8a1a952c8d08fe95b9fd9"
+              }
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            18.56,
+            29.12
+          ],
+          "pivot": [
+            9.91,
+            11.29
+          ],
+          "depth": 41.99,
+          "w": 22,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__fin__d13__albedo.png",
+              "w": 22,
+              "h": 19,
+              "sha256": "8b2dfac0725549ddd2aee111169ae1b97452075f4b4877f1e95c9963f001f5f1"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__fin__d13__normal.png",
+              "w": 22,
+              "h": 19,
+              "sha256": "95aa0c4efef947775c410cbe4a68e7d089385b72b421658d29f79978595c26bf"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__fin__d13__material.png",
+              "w": 22,
+              "h": 19,
+              "sha256": "245f33ec848585c3e0f80ab6555a488c1db1a4ef82ecbcad4dab2a4e5b774e6e"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__fin__d13__depth.png",
+              "w": 22,
+              "h": 19,
+              "sha256": "d1cce4650ccc3829e064076ca12fe9a13bf628205f3037eb5716cb0c95472676"
+            }
+          },
+          "filesHi": {
+            "w": 85,
+            "h": 76,
+            "pivot": [
+              38.63,
+              45.16
+            ],
+            "anchor": [
+              73.26,
+              116.49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__fin__d13__albedo@4x.png",
+                "w": 85,
+                "h": 76,
+                "sha256": "a0f13655e5ae0724d86f8e29a315e70864c0aec9ae8ae7c3dfb8249bb18b5052"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__fin__d13__normal@4x.png",
+                "w": 85,
+                "h": 76,
+                "sha256": "2cbe30efab5d52e526d88dac9a5683588c178e3bf2271a9b62ce6ee15778f5b3"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__fin__d13__material@4x.png",
+                "w": 85,
+                "h": 76,
+                "sha256": "76baa42caf54236f0dd94b522c4940ed48d059a35042131e823e9b798308a4a3"
+              }
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            17.63,
+            30.31
+          ],
+          "pivot": [
+            8.26,
+            10.69
+          ],
+          "depth": 50.15,
+          "w": 18,
+          "h": 18,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__fin__d14__albedo.png",
+              "w": 18,
+              "h": 18,
+              "sha256": "60711a38c5e8f026bad95c601a4feae4b60585859009b926c3676dbbf6750bfb"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__fin__d14__normal.png",
+              "w": 18,
+              "h": 18,
+              "sha256": "15c42f22ca0a5e57d8e8aebffb6e2228cc9f68f7ae56b4deb9bd1aa7de05e802"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__fin__d14__material.png",
+              "w": 18,
+              "h": 18,
+              "sha256": "b0bd459df6512fbc8590da54b7e1dd610d0203588f01b29f13a087c9d0dd4ecc"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__fin__d14__depth.png",
+              "w": 18,
+              "h": 18,
+              "sha256": "4c0d58cd7fb381955e0d63fb7d0ebf558b5014b329fe17180040b1e3ec26f516"
+            }
+          },
+          "filesHi": {
+            "w": 66,
+            "h": 72,
+            "pivot": [
+              30.03,
+              42.75
+            ],
+            "anchor": [
+              67.51,
+              121.25
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__fin__d14__albedo@4x.png",
+                "w": 66,
+                "h": 72,
+                "sha256": "00666af2b0cc5fd1be1562818ab7c01c79805077f0c0966349a06bd85f09bb73"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__fin__d14__normal@4x.png",
+                "w": 66,
+                "h": 72,
+                "sha256": "d1f57ed5d021708f13858a32a68815c358c771f8cc7a2df19a0cc70876019202"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__fin__d14__material@4x.png",
+                "w": 66,
+                "h": 72,
+                "sha256": "c855bfbd235eea5943f44fde4543159accd9ab15aae8a9ef38fc135021cea1d9"
+              }
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            18.25,
+            31.78
+          ],
+          "pivot": [
+            9.59,
+            10.36
+          ],
+          "depth": 54.33,
+          "w": 22,
+          "h": 18,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__fin__d15__albedo.png",
+              "w": 22,
+              "h": 18,
+              "sha256": "b7fe6dde9caf7a85bc83a84ee15016e83d0bfdbc82dccce5d60429dc7bb399d7"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__fin__d15__normal.png",
+              "w": 22,
+              "h": 18,
+              "sha256": "9647d9990fcb0c13ebcca0fb7e4c8b9b8abcf7d2012132a1dd81871e0c15bba0"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__fin__d15__material.png",
+              "w": 22,
+              "h": 18,
+              "sha256": "567bf41c2b0e0b64aee04457a600bdd5fc681f41a8802a99e73855b268f1a62f"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__fin__d15__depth.png",
+              "w": 22,
+              "h": 18,
+              "sha256": "7068cdb5877271ab0b86a7a133028a23c8b8172e3cba6ba2cf40b920ff9659ab"
+            }
+          },
+          "filesHi": {
+            "w": 85,
+            "h": 68,
+            "pivot": [
+              38.36,
+              40.46
+            ],
+            "anchor": [
+              72.98,
+              126.13
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__fin__d15__albedo@4x.png",
+                "w": 85,
+                "h": 68,
+                "sha256": "7f66de34f55ae11d6e8b251a5376c343c585210ba54bd1acc63789040e8cfed0"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__fin__d15__normal@4x.png",
+                "w": 85,
+                "h": 68,
+                "sha256": "c689f01886c6a7995d6a7907e70146a64863204f664564e4b0d3b12109d9bc18"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__fin__d15__material@4x.png",
+                "w": 85,
+                "h": 68,
+                "sha256": "ddc4f26ddd041319cea2ce0e7911317c23ed9538c337136ddae006dfe80d5e21"
+              }
+            }
+          }
+        }
+      }
+    },
+    "bay": {
+      "name": "bay",
+      "dynamic": true,
+      "parent": "body",
+      "pivotDesign": [
+        283,
+        256,
+        300
+      ],
+      "traverse": false,
+      "traverseRoot": null,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            8,
+            25
+          ],
+          "pivot": [
+            9.69,
+            7.09
+          ],
+          "depth": 60.51,
+          "w": 19,
+          "h": 14,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__bay__d00__albedo.png",
+              "w": 19,
+              "h": 14,
+              "sha256": "909db796a791b2fc67764dbfb024afc4c39746670f480a0ee66330dda3531e69"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__bay__d00__normal.png",
+              "w": 19,
+              "h": 14,
+              "sha256": "bec76c430dcaad88797de5f08ba79e100129b65d9509cdd7e0da9c5b744bf35a"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__bay__d00__material.png",
+              "w": 19,
+              "h": 14,
+              "sha256": "244018941c161df9850d2a079ca6332eaf93e9a7c882a0ceac1f991a01b0bff6"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__bay__d00__depth.png",
+              "w": 19,
+              "h": 14,
+              "sha256": "c6c09daf55bc22362223dcdd158997b700dbaf50ac025359c54ca395f025bf22"
+            }
+          },
+          "filesHi": {
+            "w": 71,
+            "h": 52,
+            "pivot": [
+              35.75,
+              26.38
+            ],
+            "anchor": [
+              29,
+              98
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__bay__d00__albedo@4x.png",
+                "w": 71,
+                "h": 52,
+                "sha256": "8aa008d904530ce3e5eb09c2dc798917f752afad861b276380c581159586e6e3"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__bay__d00__normal@4x.png",
+                "w": 71,
+                "h": 52,
+                "sha256": "1a9d28d2b30ea1416ac3428bc472eaef57be1572ce9bb46a690857feef0c49a5"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__bay__d00__material@4x.png",
+                "w": 71,
+                "h": 52,
+                "sha256": "b66d66292c9f1531d7cdb5aa3de520076fb99238dfb03cb85bb853132f930c03"
+              }
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            7.75,
+            24.78
+          ],
+          "pivot": [
+            8.67,
+            7.13
+          ],
+          "depth": 58.3,
+          "w": 17,
+          "h": 14,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__bay__d01__albedo.png",
+              "w": 17,
+              "h": 14,
+              "sha256": "cb0839618e8d8e547e8dda51b17096f19910f53829eff58d71bfebcf8af7c3c1"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__bay__d01__normal.png",
+              "w": 17,
+              "h": 14,
+              "sha256": "9605dd5e2c7326522c94e77957387c48bb15ab16676fe45d3c2c15969dcda0b4"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__bay__d01__material.png",
+              "w": 17,
+              "h": 14,
+              "sha256": "3f929516d0b717a36ce486a49bf6fe89f5404d2c487fdb58adf2905bf5ddf977"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__bay__d01__depth.png",
+              "w": 17,
+              "h": 14,
+              "sha256": "6000946550a1005832348193e6a26fac45867636b4bf631a97bff4e56876dd24"
+            }
+          },
+          "filesHi": {
+            "w": 65,
+            "h": 53,
+            "pivot": [
+              32.67,
+              26.54
+            ],
+            "anchor": [
+              29.02,
+              97.13
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__bay__d01__albedo@4x.png",
+                "w": 65,
+                "h": 53,
+                "sha256": "80cd83f3cb440e979ccd4927ed9a4177d7d7215867535bc236d624d0232a2e5e"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__bay__d01__normal@4x.png",
+                "w": 65,
+                "h": 53,
+                "sha256": "fda163376c4fd2be51dbe3d60390bc445f2d930dac6c63ccc41b8294c5a9f23e"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__bay__d01__material@4x.png",
+                "w": 65,
+                "h": 53,
+                "sha256": "e69893a2b01beceeba34223bdbbc03050f78b8720e455310f3d81d9c87a0a216"
+              }
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            7.37,
+            24.31
+          ],
+          "pivot": [
+            7.37,
+            6.76
+          ],
+          "depth": 50.52,
+          "w": 14,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__bay__d02__albedo.png",
+              "w": 14,
+              "h": 13,
+              "sha256": "5bb48d9218ef10470c752d8778cbdbbf7967c57085518382b13d7ba3e637c8dd"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__bay__d02__normal.png",
+              "w": 14,
+              "h": 13,
+              "sha256": "ef9efad8661f38e3a3e4ed3f8d31deb0d8f5a36d8cec7d65ec67aff32e4ba2c2"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__bay__d02__material.png",
+              "w": 14,
+              "h": 13,
+              "sha256": "ec6d02ad8661302a7e47a15b2254643b006a88abc63b418bf26a293b9d5cce87"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__bay__d02__depth.png",
+              "w": 14,
+              "h": 13,
+              "sha256": "ecebf7c7eaf9c361cb011637842b3a4a0d99c6b35226e39816707a34ca365c4c"
+            }
+          },
+          "filesHi": {
+            "w": 53,
+            "h": 50,
+            "pivot": [
+              26.49,
+              25.03
+            ],
+            "anchor": [
+              26.49,
+              95.25
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__bay__d02__albedo@4x.png",
+                "w": 53,
+                "h": 50,
+                "sha256": "e2fe12d874648a092d47fdd6f8ca0d959d6e77492491f5e93ab1998231ef66a5"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__bay__d02__normal@4x.png",
+                "w": 53,
+                "h": 50,
+                "sha256": "06a2c827bcc38506665886e0abe46da9e6302f78244b0022f9cbc02f34d9502d"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__bay__d02__material@4x.png",
+                "w": 53,
+                "h": 50,
+                "sha256": "7ae0b275ff00dc91ece88d35f9363f1f8eaf06a7015f5bed93a13e8b94570be7"
+              }
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            9.44,
+            24.12
+          ],
+          "pivot": [
+            8.52,
+            6.48
+          ],
+          "depth": 38.35,
+          "w": 17,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__bay__d03__albedo.png",
+              "w": 17,
+              "h": 13,
+              "sha256": "7e8f7c8ab23339ad701659da411d51865effd8cf0911eb0ad2ccfa40b49246d5"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__bay__d03__normal.png",
+              "w": 17,
+              "h": 13,
+              "sha256": "b84f04553c5b0b11f7ba01273d7607784438612357d186aa09e05c0abab221bf"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__bay__d03__material.png",
+              "w": 17,
+              "h": 13,
+              "sha256": "9749ede0ed88c35ceb838cb75d6d6c09b964f944ee53d6213b928efecfd060ad"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__bay__d03__depth.png",
+              "w": 17,
+              "h": 13,
+              "sha256": "8f492adc7f16b7a62a4d3c241ca9265c7f7e0537b899c5f7e7ac346206ca551a"
+            }
+          },
+          "filesHi": {
+            "w": 65,
+            "h": 52,
+            "pivot": [
+              32.09,
+              25.9
+            ],
+            "anchor": [
+              35.74,
+              96.49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__bay__d03__albedo@4x.png",
+                "w": 65,
+                "h": 52,
+                "sha256": "ad76914ea891e1bd68da4704009013fdb6b36db2f504983c166fe4471ec0ede8"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__bay__d03__normal@4x.png",
+                "w": 65,
+                "h": 52,
+                "sha256": "7d8ff685cd10ce4d3045c31e897d3c93ba53d138290fd9524551c31247a9c52d"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__bay__d03__material@4x.png",
+                "w": 65,
+                "h": 52,
+                "sha256": "14637124e2c09bc6ea96f4945b69de19f3c5289d57dc8a1e8db9fa9692c252ba"
+              }
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            11,
+            25
+          ],
+          "pivot": [
+            9.31,
+            7.09
+          ],
+          "depth": 23.64,
+          "w": 19,
+          "h": 14,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__bay__d04__albedo.png",
+              "w": 19,
+              "h": 14,
+              "sha256": "488ff84c6fbbd7612086d3969a57d8618eead06d5695c738c387360bec26badb"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__bay__d04__normal.png",
+              "w": 19,
+              "h": 14,
+              "sha256": "817019777e8d3d4125443afb19f84d6d8ef4407bae71fa06cbf59c3e9777af36"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__bay__d04__material.png",
+              "w": 19,
+              "h": 14,
+              "sha256": "4c48abcb0513f349597d1bd46eab72852a56f89788cb6bc180616dfb404c07ab"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__bay__d04__depth.png",
+              "w": 19,
+              "h": 14,
+              "sha256": "2c167dd5f21f410ce89fae9482413235de79eb955adf57f51c80b447521c6d37"
+            }
+          },
+          "filesHi": {
+            "w": 71,
+            "h": 52,
+            "pivot": [
+              35.25,
+              26.38
+            ],
+            "anchor": [
+              42,
+              98
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__bay__d04__albedo@4x.png",
+                "w": 71,
+                "h": 52,
+                "sha256": "e456a260f2fd96e4206544a53d935f89cbd0205c77b3d142eec1cbe751441ccd"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__bay__d04__normal@4x.png",
+                "w": 71,
+                "h": 52,
+                "sha256": "d2d966b44175441bab4e82fc7d305955d32e51c37ef13fce57c135fdf860ed35"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__bay__d04__material@4x.png",
+                "w": 71,
+                "h": 52,
+                "sha256": "08304195381eaed78eb71a49b147790c46b2552017bf157bcf06151fada9e0a4"
+              }
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            11.44,
+            24.88
+          ],
+          "pivot": [
+            9.23,
+            6.58
+          ],
+          "depth": 8.63,
+          "w": 19,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__bay__d05__albedo.png",
+              "w": 19,
+              "h": 13,
+              "sha256": "2c6c5811ee0abdcac6ee8c6d3575b58c5fc0b3cfda50783630aeaed212501141"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__bay__d05__normal.png",
+              "w": 19,
+              "h": 13,
+              "sha256": "65a134e5e9732292606eaa58ee069a17c867acd1dd8e1139a383fc1bca669565"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__bay__d05__material.png",
+              "w": 19,
+              "h": 13,
+              "sha256": "eaba31359b673df92c24e099321fce217985f27409ad847886cad85c5110f80f"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__bay__d05__depth.png",
+              "w": 19,
+              "h": 13,
+              "sha256": "2f599ba7087c17bd7ab6f377c105999899ae07f84fb735c681007b94360e30b9"
+            }
+          },
+          "filesHi": {
+            "w": 72,
+            "h": 49,
+            "pivot": [
+              35.92,
+              24.33
+            ],
+            "anchor": [
+              44.74,
+              97.51
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__bay__d05__albedo@4x.png",
+                "w": 72,
+                "h": 49,
+                "sha256": "020c0b545a28c8f15b59b3b43e6dc40302ae5e13e85e79aa6990444cf3adaa41"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__bay__d05__normal@4x.png",
+                "w": 72,
+                "h": 49,
+                "sha256": "265f12f59ddef86224e4f699e749183472d19663c380c2b7e20867635cbf0c5d"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__bay__d05__material@4x.png",
+                "w": 72,
+                "h": 49,
+                "sha256": "376e316f4efa8a3f958691e122822bc356100d2d5d1e531d469907d7ad81efc1"
+              }
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            11.37,
+            24.69
+          ],
+          "pivot": [
+            8.99,
+            5.94
+          ],
+          "depth": -4.39,
+          "w": 18,
+          "h": 12,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__bay__d06__albedo.png",
+              "w": 18,
+              "h": 12,
+              "sha256": "7d9b968b4e994caf3f7b778eebc2a21b2a43124acb608508e1c336e06841cc31"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__bay__d06__normal.png",
+              "w": 18,
+              "h": 12,
+              "sha256": "1c73ac7103d2b45fdb26e66ec75c29cf0fd6fde83fd520ed9caee6f0639f4cea"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__bay__d06__material.png",
+              "w": 18,
+              "h": 12,
+              "sha256": "a90a35b153610b42decea30dbffb4151f02ffe0bfea59836ca459da6cfb3aa8f"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__bay__d06__depth.png",
+              "w": 18,
+              "h": 12,
+              "sha256": "961304e61542ced5476ce347cebc12bea334e2c0d4b9195bd7c24aabb421f70c"
+            }
+          },
+          "filesHi": {
+            "w": 66,
+            "h": 44,
+            "pivot": [
+              32.94,
+              22.75
+            ],
+            "anchor": [
+              42.49,
+              97.75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__bay__d06__albedo@4x.png",
+                "w": 66,
+                "h": 44,
+                "sha256": "a28abcaf3268d98808f81254357875024a5c445d1a33dd8dec81bc610c8fd471"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__bay__d06__normal@4x.png",
+                "w": 66,
+                "h": 44,
+                "sha256": "98c45bd93313308718c2153fa09087180d909394f2ae66435f94276c43cc5f33"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__bay__d06__material@4x.png",
+                "w": 66,
+                "h": 44,
+                "sha256": "dbe0f0ab638c84bf776a87570381203fdde2876b87c70343b85d06ebaec9ae5d"
+              }
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            11.75,
+            26.22
+          ],
+          "pivot": [
+            9.55,
+            7.01
+          ],
+          "depth": -13.44,
+          "w": 19,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__bay__d07__albedo.png",
+              "w": 19,
+              "h": 13,
+              "sha256": "b6b5fb1bfdb95374de05cb53ff4559f8d1a4c71c09ac324886e4ef4d75275ab3"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__bay__d07__normal.png",
+              "w": 19,
+              "h": 13,
+              "sha256": "d56354fed66e62edefcd5cf39c19f6c18c6a19a38c179ed2a3513b1ed1b7c5da"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__bay__d07__material.png",
+              "w": 19,
+              "h": 13,
+              "sha256": "6f840fd52142e96d5d4c68e2fafca0b193b16fa277cf7dc4d58053888b509339"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__bay__d07__depth.png",
+              "w": 19,
+              "h": 13,
+              "sha256": "11a2870c88c7dd7adb4e17cce732ec8dad10cf500267ff2284a32fb060b1efdd"
+            }
+          },
+          "filesHi": {
+            "w": 71,
+            "h": 49,
+            "pivot": [
+              35.2,
+              25.05
+            ],
+            "anchor": [
+              44.02,
+              101.87
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__bay__d07__albedo@4x.png",
+                "w": 71,
+                "h": 49,
+                "sha256": "160c4767c73f28ce8c3cc77f4fc293bec77bfe776cbf4a30d67030a8ac96c9bd"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__bay__d07__normal@4x.png",
+                "w": 71,
+                "h": 49,
+                "sha256": "8c3a650a55967e758d6e4683d45e9336c84fcc63da2dfb7f960a703edbc5f12f"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__bay__d07__material@4x.png",
+                "w": 71,
+                "h": 49,
+                "sha256": "d83876a4cdbea050126c3da7c07869afb0bb6af19f1b8affeeaf4cdfa6acd399"
+              }
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            11,
+            26
+          ],
+          "pivot": [
+            9.31,
+            6.41
+          ],
+          "depth": -17.14,
+          "w": 19,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__bay__d08__albedo.png",
+              "w": 19,
+              "h": 13,
+              "sha256": "d0206400c62f2a17b318926eb8cb15700443f5cc2cb06ee1d8de541632dab487"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__bay__d08__normal.png",
+              "w": 19,
+              "h": 13,
+              "sha256": "7a9f765dd0e440e0dd30fbaa7ddad924db0a33d33f5a80b98cf773775ecfeb82"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__bay__d08__material.png",
+              "w": 19,
+              "h": 13,
+              "sha256": "6b473c56a0f618da16ac6c2476b66fc202d0b166a993076aa3c546662853ea18"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__bay__d08__depth.png",
+              "w": 19,
+              "h": 13,
+              "sha256": "48fb459dc710c5cbb44a87779fbcc170b0216102fd135b39a8943b5a222e1d85"
+            }
+          },
+          "filesHi": {
+            "w": 71,
+            "h": 51,
+            "pivot": [
+              35.25,
+              25.63
+            ],
+            "anchor": [
+              42,
+              104
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__bay__d08__albedo@4x.png",
+                "w": 71,
+                "h": 51,
+                "sha256": "d6d46ac2b7d4ef13e388dee38a8c669a785e284dca3e1b297eb48f98a572bd75"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__bay__d08__normal@4x.png",
+                "w": 71,
+                "h": 51,
+                "sha256": "64253a8b309acf4492c8eae5beb0598e392b821498c3cd622740b52d32d71a53"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__bay__d08__material@4x.png",
+                "w": 71,
+                "h": 51,
+                "sha256": "1b3def59df880f3d4c08437f363ce86951514e20ed819ef1d744308812c6efc9"
+              }
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            9.25,
+            27.22
+          ],
+          "pivot": [
+            8.33,
+            7.37
+          ],
+          "depth": -14.93,
+          "w": 17,
+          "h": 14,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__bay__d09__albedo.png",
+              "w": 17,
+              "h": 14,
+              "sha256": "c031b6f6341559b56a8d52a112726a402612c4e9b639df72e09502f04bf488ca"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__bay__d09__normal.png",
+              "w": 17,
+              "h": 14,
+              "sha256": "a9dce6e9e1582001803c2332e5939c6a432ff1399056132d7c30d8287607e5fc"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__bay__d09__material.png",
+              "w": 17,
+              "h": 14,
+              "sha256": "d58dbfbdccf75d59f61abc90fe245f47f92da2c968828150c91953c46d12cd0b"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__bay__d09__depth.png",
+              "w": 17,
+              "h": 14,
+              "sha256": "e7f7ee171209aa9a84186acbd9c727fd3a5caf67cd4c68c0194bed89f891fed4"
+            }
+          },
+          "filesHi": {
+            "w": 65,
+            "h": 52,
+            "pivot": [
+              32.33,
+              26.46
+            ],
+            "anchor": [
+              35.98,
+              105.87
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__bay__d09__albedo@4x.png",
+                "w": 65,
+                "h": 52,
+                "sha256": "b1b5fa60fe6321ab6f5d431967d8fa582f16f5981c87ca9e7b6a762fb1dc9133"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__bay__d09__normal@4x.png",
+                "w": 65,
+                "h": 52,
+                "sha256": "9e9505564a03b5dcc711d54609286c2cc9ebab8575e5cb0f3fc88e259e9b5af7"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__bay__d09__material@4x.png",
+                "w": 65,
+                "h": 52,
+                "sha256": "5724ca550860c2dbb244121b30893c0dfb49f14f01f4cdb1d998abb249076d95"
+              }
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            6.63,
+            26.69
+          ],
+          "pivot": [
+            6.63,
+            6.74
+          ],
+          "depth": -7.15,
+          "w": 14,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__bay__d10__albedo.png",
+              "w": 14,
+              "h": 13,
+              "sha256": "c03395159c1be44bffcadfa5b8398011871e48684680d856ed267f134133106e"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__bay__d10__normal.png",
+              "w": 14,
+              "h": 13,
+              "sha256": "284fe3eb2970251ecda2e57da081b7b24e7384b4b50ddd56ea06e40f47ce6a13"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__bay__d10__material.png",
+              "w": 14,
+              "h": 13,
+              "sha256": "6ded456bd82ed1f0370bb13a985cca30a73a273e883063e9f7a2e4794d3f0b01"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__bay__d10__depth.png",
+              "w": 14,
+              "h": 13,
+              "sha256": "c80ded6a565b29414693ab958e850e29002061dac454f11e430191fe4fd34a03"
+            }
+          },
+          "filesHi": {
+            "w": 53,
+            "h": 50,
+            "pivot": [
+              26.51,
+              24.97
+            ],
+            "anchor": [
+              26.51,
+              104.75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__bay__d10__albedo@4x.png",
+                "w": 53,
+                "h": 50,
+                "sha256": "d1e46f4234f3499432c54ddfdc3df898e548dd7bd1853763b1a3047076f56d18"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__bay__d10__normal@4x.png",
+                "w": 53,
+                "h": 50,
+                "sha256": "c7355715c70b11db4350e3bc8a85100b0884cae629e6fca51feb89297ee0e161"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__bay__d10__material@4x.png",
+                "w": 53,
+                "h": 50,
+                "sha256": "0fc4699b421e0976655b49e4e00e8802d4274ee9712e02c11df815cbbbed848b"
+              }
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            7.56,
+            26.88
+          ],
+          "pivot": [
+            8.48,
+            7.02
+          ],
+          "depth": 5.03,
+          "w": 17,
+          "h": 14,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__bay__d11__albedo.png",
+              "w": 17,
+              "h": 14,
+              "sha256": "0e75a00e5d9a21075aeb3303e9fcc2e2f4e66fa4a59009d58a4441facc6da32a"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__bay__d11__normal.png",
+              "w": 17,
+              "h": 14,
+              "sha256": "e45f92a79182dde9020eb4a323ff4185064c60cb41be666f1bbceddbb8cc9644"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__bay__d11__material.png",
+              "w": 17,
+              "h": 14,
+              "sha256": "69f833bea0bfd1f5eddda36f6326114666f55b889877a68e0df9a2d29a32dbd8"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__bay__d11__depth.png",
+              "w": 17,
+              "h": 14,
+              "sha256": "06b65bf6eb833a0a9db4f74fc6f2d6a51ff94a75fb569b1033dee335b80a8833"
+            }
+          },
+          "filesHi": {
+            "w": 65,
+            "h": 52,
+            "pivot": [
+              32.91,
+              26.1
+            ],
+            "anchor": [
+              29.26,
+              105.51
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__bay__d11__albedo@4x.png",
+                "w": 65,
+                "h": 52,
+                "sha256": "d5a3ba0ebfa4736bdaeb38dd5148117f6b4fdb88135fb10a298d8ebc4f92e67d"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__bay__d11__normal@4x.png",
+                "w": 65,
+                "h": 52,
+                "sha256": "f117de5797f808d6023b7ceea57ed1d831b07d53ca6439fab8e1e9635167e6d4"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__bay__d11__material@4x.png",
+                "w": 65,
+                "h": 52,
+                "sha256": "5697afcd66dc00929d8b188a6f064a4a5158b217d259d00f232709fd3cbbad90"
+              }
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            8,
+            27
+          ],
+          "pivot": [
+            9.69,
+            7.41
+          ],
+          "depth": 19.74,
+          "w": 19,
+          "h": 14,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__bay__d12__albedo.png",
+              "w": 19,
+              "h": 14,
+              "sha256": "67d2919225f68682a7bc0cb9c2073d50c2a68e73c6aa730b9f6e30855d39b234"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__bay__d12__normal.png",
+              "w": 19,
+              "h": 14,
+              "sha256": "5d742cf53ca2a695890836ee00d015d0681bd12404588081a3122602b89f24b6"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__bay__d12__material.png",
+              "w": 19,
+              "h": 14,
+              "sha256": "26bb4823479f8d85c9e3b56b5d31c9e5e89dedc517dc9e671fb2732b56b9a130"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__bay__d12__depth.png",
+              "w": 19,
+              "h": 14,
+              "sha256": "30ebeb8c47114018cdc69cbee4da7a6b9fecd1d332ce4e09f930a3f6ddf9ec68"
+            }
+          },
+          "filesHi": {
+            "w": 71,
+            "h": 52,
+            "pivot": [
+              35.75,
+              26.62
+            ],
+            "anchor": [
+              29,
+              105
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__bay__d12__albedo@4x.png",
+                "w": 71,
+                "h": 52,
+                "sha256": "20ae8090a2f5deabd5372c107e442cb22bbe9d6daef7348e5c8e82e4e59fe899"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__bay__d12__normal@4x.png",
+                "w": 71,
+                "h": 52,
+                "sha256": "c143f1edd1f68b6b7e4ee36493b1417092ddce8ecf82f98f324fd87d29e5cc5a"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__bay__d12__material@4x.png",
+                "w": 71,
+                "h": 52,
+                "sha256": "10a26065bb596e1ad0afa35f332949c4b8ec3e109a3a4e745e33c00e552ebeb4"
+              }
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            7.56,
+            26.12
+          ],
+          "pivot": [
+            9.77,
+            6.92
+          ],
+          "depth": 34.74,
+          "w": 19,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__bay__d13__albedo.png",
+              "w": 19,
+              "h": 13,
+              "sha256": "bfc1e2ad70c2febbf2ad8c0e96da7d63e12f475c5e717c954e0a86663620222c"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__bay__d13__normal.png",
+              "w": 19,
+              "h": 13,
+              "sha256": "0bfecd710a1bcc7814c8798ea5417f3dbe6198f7cb35d53ea9b2f72df79b58d1"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__bay__d13__material.png",
+              "w": 19,
+              "h": 13,
+              "sha256": "2fb4904578bf7f06b3aad24fd68c73aabb12456fc1b7847949874e9a397fc556"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__bay__d13__depth.png",
+              "w": 19,
+              "h": 13,
+              "sha256": "36d009ceac8bd95e5a911798900a40f35c5741a68fcdd0947aa3cf707fc76802"
+            }
+          },
+          "filesHi": {
+            "w": 72,
+            "h": 49,
+            "pivot": [
+              36.08,
+              24.67
+            ],
+            "anchor": [
+              27.26,
+              101.49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__bay__d13__albedo@4x.png",
+                "w": 72,
+                "h": 49,
+                "sha256": "c837fdfbc406a98866a20628d3ca4aa96ab091bbcd256367821d21d5cc6c4871"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__bay__d13__normal@4x.png",
+                "w": 72,
+                "h": 49,
+                "sha256": "4c65106c8721266dc8367d41e1189000092cc46e7b6752b6c06ff1aa00d9a01b"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__bay__d13__material@4x.png",
+                "w": 72,
+                "h": 49,
+                "sha256": "9431a40c00b04f5f879e88615340bc6b710945d1159ee41fb8394416472b46f4"
+              }
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            6.63,
+            24.31
+          ],
+          "pivot": [
+            9.01,
+            5.56
+          ],
+          "depth": 47.76,
+          "w": 18,
+          "h": 11,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__bay__d14__albedo.png",
+              "w": 18,
+              "h": 11,
+              "sha256": "ed7245059fb931c919d41681909c8ab007a94cd0977d0aa8e8d7cfdd0c56c19f"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__bay__d14__normal.png",
+              "w": 18,
+              "h": 11,
+              "sha256": "cfbc5b54542d50e28c5ce0946dcefec882d0a58771ed93d858c2780138610673"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__bay__d14__material.png",
+              "w": 18,
+              "h": 11,
+              "sha256": "6fd72919e8f0c1b3e48f30cd4078998417c122398b53494905cb00517cfbbb7d"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__bay__d14__depth.png",
+              "w": 18,
+              "h": 11,
+              "sha256": "3d0725bd2c2c9d4be36c100a432c35d24b48a0ed5d8ff88c9007aa8aedc64328"
+            }
+          },
+          "filesHi": {
+            "w": 66,
+            "h": 44,
+            "pivot": [
+              33.06,
+              22.25
+            ],
+            "anchor": [
+              23.51,
+              97.25
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__bay__d14__albedo@4x.png",
+                "w": 66,
+                "h": 44,
+                "sha256": "0855dabda2759276271a1eefe94793bba49df22c6f2889e90ea38cd64eae23a4"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__bay__d14__normal@4x.png",
+                "w": 66,
+                "h": 44,
+                "sha256": "8cf50bc254fae1a482b715209832484b62c83dc4b31eb70a8ca78f70e64f78cb"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__bay__d14__material@4x.png",
+                "w": 66,
+                "h": 44,
+                "sha256": "88c66e23a10fc92a404fce18856b1cc3e68a1ef5bf8e219a5dc60efa60a0aea3"
+              }
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            7.25,
+            24.78
+          ],
+          "pivot": [
+            9.45,
+            6.49
+          ],
+          "depth": 56.81,
+          "w": 19,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__bay__d15__albedo.png",
+              "w": 19,
+              "h": 13,
+              "sha256": "12f1b8e43624d97d5edc587a93c8d42466ff9ff90ecbd8a28c53dee5688e6280"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__bay__d15__normal.png",
+              "w": 19,
+              "h": 13,
+              "sha256": "6572098315bb5dd6298faef84c1b3cd8fc601cb5085557bab591752fcd089824"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__bay__d15__material.png",
+              "w": 19,
+              "h": 13,
+              "sha256": "cabd77fbcc67eb117725a0a1e7179a60936cf1a60e14116083a1d21f4bc9874e"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__bay__d15__depth.png",
+              "w": 19,
+              "h": 13,
+              "sha256": "299e02737787c871e9edd1d154f1731b5777605f267edcffcef4402668ca68eb"
+            }
+          },
+          "filesHi": {
+            "w": 71,
+            "h": 49,
+            "pivot": [
+              35.8,
+              24.95
+            ],
+            "anchor": [
+              26.98,
+              98.13
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__bay__d15__albedo@4x.png",
+                "w": 71,
+                "h": 49,
+                "sha256": "c7f7e766ab719a4c9ad10ecf8fd1be762da9d9b87aa012534d1a19badff5ed2d"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__bay__d15__normal@4x.png",
+                "w": 71,
+                "h": 49,
+                "sha256": "3bdf132c6514ab2c796509cc2ecbf03cd1f80803dd4db2d8ff00651a69ff9dca"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__bay__d15__material@4x.png",
+                "w": 71,
+                "h": 49,
+                "sha256": "ec04b1f4158eb8d655ece328a3fc88f7a78c9c7d2039abafb7a4c8fe6987aced"
+              }
+            }
+          }
+        }
+      }
+    },
+    "stores": {
+      "name": "stores",
+      "dynamic": true,
+      "parent": "body",
+      "pivotDesign": [
+        250,
+        256,
+        296
+      ],
+      "traverse": false,
+      "traverseRoot": null,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            6,
+            25
+          ],
+          "pivot": [
+            5.63,
+            6.31
+          ],
+          "depth": 60.55,
+          "w": 16,
+          "h": 14,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__stores__d00__albedo.png",
+              "w": 16,
+              "h": 14,
+              "sha256": "2e47c0cb600acab053a1adc12f2d81bca7af3ed9a6bac9399d00d90af307eec8"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__stores__d00__normal.png",
+              "w": 16,
+              "h": 14,
+              "sha256": "3a32d974f44d5be81c129c600c8f30499cb1e1d8ab6430b4766f8763f366ec1b"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__stores__d00__material.png",
+              "w": 16,
+              "h": 14,
+              "sha256": "df540331ec7dc67d3923d3ad76d65f1ff90524a68147e51773e9107159e66aeb"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__stores__d00__depth.png",
+              "w": 16,
+              "h": 14,
+              "sha256": "1435c0e93cbc29af7c9a33e4de20ae3f4016c48b3d0250b4c15675b4a9e24fc2"
+            }
+          },
+          "filesHi": {
+            "w": 61,
+            "h": 52,
+            "pivot": [
+              22.5,
+              24.25
+            ],
+            "anchor": [
+              24,
+              99
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__stores__d00__albedo@4x.png",
+                "w": 61,
+                "h": 52,
+                "sha256": "0ff24bccafb01ef0df606c63bdfb6d96bb4296035d3ac47edde7f712ab0307b1"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__stores__d00__normal@4x.png",
+                "w": 61,
+                "h": 52,
+                "sha256": "35512f3e14e15ce82bbe1c2ab69d7b7ca1c013d1b98ec8b93504ff6a5f58302c"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__stores__d00__material@4x.png",
+                "w": 61,
+                "h": 52,
+                "sha256": "5f97d5f59e53497ed0c4353674017a147079012db6c4eb9cdf068d5d29a955eb"
+              }
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            6.75,
+            24.78
+          ],
+          "pivot": [
+            6.55,
+            6.04
+          ],
+          "depth": 58.32,
+          "w": 15,
+          "h": 14,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__stores__d01__albedo.png",
+              "w": 15,
+              "h": 14,
+              "sha256": "67db63128f0e5a22d3de6c9d11cd2c4c75314055887e1770923fc17750df4e26"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__stores__d01__normal.png",
+              "w": 15,
+              "h": 14,
+              "sha256": "b55b2057cc81dfe1cf4dd06da383f95b14492df64bc0ab281cd0959b0c07079c"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__stores__d01__material.png",
+              "w": 15,
+              "h": 14,
+              "sha256": "54b8d482b06064622574b5e2472fd5062ab6a29e2b450f36e31fdc0f6662783b"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__stores__d01__depth.png",
+              "w": 15,
+              "h": 14,
+              "sha256": "d4b486ab6dc4414f10c5696e0131933911ed6f0b9a1a6c71c763bcf127ba59a1"
+            }
+          },
+          "filesHi": {
+            "w": 58,
+            "h": 53,
+            "pivot": [
+              25.2,
+              23.15
+            ],
+            "anchor": [
+              26.02,
+              98.13
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__stores__d01__albedo@4x.png",
+                "w": 58,
+                "h": 53,
+                "sha256": "b671a5a331bee8f8fc80c86048138cb3669694f5ba750708ab65cf6a8121d4ac"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__stores__d01__normal@4x.png",
+                "w": 58,
+                "h": 53,
+                "sha256": "fc36ff9a3d33686b6d23992e445437f208fa755e599af769784ad6dfba23039c"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__stores__d01__material@4x.png",
+                "w": 58,
+                "h": 53,
+                "sha256": "94509f08113031d30b9a078ac63c458b82561071df0fccd012faccd540b344b6"
+              }
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            6.37,
+            24.31
+          ],
+          "pivot": [
+            6.37,
+            5.55
+          ],
+          "depth": 50.52,
+          "w": 13,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__stores__d02__albedo.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "6cab6a3d62d76dea8c929410fc638ea7337ca28d875c788569d0f960b40f3ef7"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__stores__d02__normal.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "b9399c97caaaa75a87b02034de82fc06a9218840ce7935542ffdbf542c18694f"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__stores__d02__material.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "de8fa155e7f6975735617c11f532fbad7e84fbb2d646faaffd1b310bf871b7fd"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__stores__d02__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "d1a6bf3647b98182a1d9558f1bd89cbca31cb3c48ead486e6fda89ad31fabff5"
+            }
+          },
+          "filesHi": {
+            "w": 51,
+            "h": 51,
+            "pivot": [
+              25.49,
+              22.19
+            ],
+            "anchor": [
+              25.49,
+              97.25
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__stores__d02__albedo@4x.png",
+                "w": 51,
+                "h": 51,
+                "sha256": "38f23c8e2bca9e861f264a263fd725b74179c67993e8164f980918dca02a0cc7"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__stores__d02__normal@4x.png",
+                "w": 51,
+                "h": 51,
+                "sha256": "d9606a803b45f2554f684317640d851c67b14985ab171991b4c310e5be740d52"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__stores__d02__material@4x.png",
+                "w": 51,
+                "h": 51,
+                "sha256": "6eb182fc1a54282afc5190f03b8bf9181f7164e4c4be48697af2927b62e45966"
+              }
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            8.44,
+            25.12
+          ],
+          "pivot": [
+            8.64,
+            6.38
+          ],
+          "depth": 38.33,
+          "w": 15,
+          "h": 14,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__stores__d03__albedo.png",
+              "w": 15,
+              "h": 14,
+              "sha256": "24080278472ed5dcce3890c714063482ca31f4bf545faae1625851288618224d"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__stores__d03__normal.png",
+              "w": 15,
+              "h": 14,
+              "sha256": "317eec4d5e78334b628770659178bdbcc14fbd41d180689effe7bff4041f0c9b"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__stores__d03__material.png",
+              "w": 15,
+              "h": 14,
+              "sha256": "d5f79671498747bf27600a94d91e4d3b44c80c56dcc241805e04a97bae64a0e8"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__stores__d03__depth.png",
+              "w": 15,
+              "h": 14,
+              "sha256": "7fdb88d2e921c13b0650bea16c3be7d41e110ce7379629adcd534bd632afa4a8"
+            }
+          },
+          "filesHi": {
+            "w": 57,
+            "h": 53,
+            "pivot": [
+              32.56,
+              23.51
+            ],
+            "anchor": [
+              31.74,
+              98.49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__stores__d03__albedo@4x.png",
+                "w": 57,
+                "h": 53,
+                "sha256": "4b9b90a4c7ca0572f8901c452ab0f5ce71339cc34218bb49fd815a6d9fb59c67"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__stores__d03__normal@4x.png",
+                "w": 57,
+                "h": 53,
+                "sha256": "00587ec213a96050c57b055622c75c08b025eb683b299fc60b654af60d7d2913"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__stores__d03__material@4x.png",
+                "w": 57,
+                "h": 53,
+                "sha256": "8ce216bde26eac6d63e50626e147d6c348f4822440299599ffd73ffe36127d3e"
+              }
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            10,
+            25
+          ],
+          "pivot": [
+            10.38,
+            6.31
+          ],
+          "depth": 23.6,
+          "w": 16,
+          "h": 14,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__stores__d04__albedo.png",
+              "w": 16,
+              "h": 14,
+              "sha256": "aace76423ecf1b2493e621e1e39f0e202f484453d4d66b51af70c08246d5d194"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__stores__d04__normal.png",
+              "w": 16,
+              "h": 14,
+              "sha256": "ba8ec3705e4a585ccdc270c36c4ca0049a05a56c618a09e806f5d678aa35873f"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__stores__d04__material.png",
+              "w": 16,
+              "h": 14,
+              "sha256": "fd11ff3d46d0cf6791f036b0f90f44fd96353e0826fca3bbb1b36439a7bb57b6"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__stores__d04__depth.png",
+              "w": 16,
+              "h": 14,
+              "sha256": "c556ffef0bd612b2bdb9767b0dbfa54f30648be50017675bf5e60cb563ee40ed"
+            }
+          },
+          "filesHi": {
+            "w": 62,
+            "h": 52,
+            "pivot": [
+              39.5,
+              24.25
+            ],
+            "anchor": [
+              38,
+              99
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__stores__d04__albedo@4x.png",
+                "w": 62,
+                "h": 52,
+                "sha256": "0456c0a7f93aa86190d1685be44eee65be5455965a135379f558f613cee1a3ae"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__stores__d04__normal@4x.png",
+                "w": 62,
+                "h": 52,
+                "sha256": "1c0cbbe3a29f2315d1ddbeda4954f18e6af7ea9128a191d379f88444cb14c49e"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__stores__d04__material@4x.png",
+                "w": 62,
+                "h": 52,
+                "sha256": "fc1df75a4dea861bf22b9ee8aa376d4694cad1e79bdd18178c69716d0cdbc340"
+              }
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            10.44,
+            24.88
+          ],
+          "pivot": [
+            10.93,
+            6.28
+          ],
+          "depth": 8.58,
+          "w": 17,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__stores__d05__albedo.png",
+              "w": 17,
+              "h": 13,
+              "sha256": "a1f74741a465f4f88b896d58469181898d90667ffe974661c6f22b693e5d013a"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__stores__d05__normal.png",
+              "w": 17,
+              "h": 13,
+              "sha256": "11f8b0d4105c743484f502e946f4b7cafcdadaff62facc8acfd2b2f3370f0605"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__stores__d05__material.png",
+              "w": 17,
+              "h": 13,
+              "sha256": "2a1eebe41cf5a68b42e694e9816291ea6752e086d3a9af3d311fdd63ee72ab10"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__stores__d05__depth.png",
+              "w": 17,
+              "h": 13,
+              "sha256": "dc0e56213e35e65f4b08464ce3b821c86ba60e864e5b945ca8b48e3d94b65a83"
+            }
+          },
+          "filesHi": {
+            "w": 64,
+            "h": 50,
+            "pivot": [
+              42.7,
+              24.1
+            ],
+            "anchor": [
+              40.74,
+              98.51
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__stores__d05__albedo@4x.png",
+                "w": 64,
+                "h": 50,
+                "sha256": "a89dbd7cbbd01a5a9309e3a6d14e84a2f986b0b1c016201777b8ef3814d9b87b"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__stores__d05__normal@4x.png",
+                "w": 64,
+                "h": 50,
+                "sha256": "2de86c53ad6556f30d53daad46c23690632caffdd5624ea9196d496926d8c74d"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__stores__d05__material@4x.png",
+                "w": 64,
+                "h": 50,
+                "sha256": "03ce3b149c05f8e42b19bb44e73fd71d2715cfcd4f7dd665bb95b4ffa5f20686"
+              }
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            10.37,
+            24.69
+          ],
+          "pivot": [
+            10.9,
+            6.19
+          ],
+          "depth": -4.44,
+          "w": 16,
+          "h": 12,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__stores__d06__albedo.png",
+              "w": 16,
+              "h": 12,
+              "sha256": "b760569f6c77e04ca06c83fc41330da272eb52f0186e45780c7e8e993724e823"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__stores__d06__normal.png",
+              "w": 16,
+              "h": 12,
+              "sha256": "453c9a6fb7c66bc1af6a047f8a3d516d90d11bfd4d656c4bef9b72a77f01fb75"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__stores__d06__material.png",
+              "w": 16,
+              "h": 12,
+              "sha256": "e0427cbf3f0ed7a18e94f6cced57d9719168358a80794a05f84a23ff726bec20"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__stores__d06__depth.png",
+              "w": 16,
+              "h": 12,
+              "sha256": "0b954304fa7dc36d3a57639d7b496ff31c2afb14b543fc9788b151798af11bd3"
+            }
+          },
+          "filesHi": {
+            "w": 60,
+            "h": 47,
+            "pivot": [
+              41.61,
+              24.75
+            ],
+            "anchor": [
+              39.49,
+              98.75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__stores__d06__albedo@4x.png",
+                "w": 60,
+                "h": 47,
+                "sha256": "fba03812049a263d27935952737a06dc08ef734fec5eebc0fe79cd3e152d5f94"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__stores__d06__normal@4x.png",
+                "w": 60,
+                "h": 47,
+                "sha256": "31f65a156e4ed01b5d9ec9474bb38380ed5b0a2c8c69f74b5e47e728dc01f19e"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__stores__d06__material@4x.png",
+                "w": 60,
+                "h": 47,
+                "sha256": "f1124abaf13333ea44f11a526b79f0607cdd45053c690c53df440751890476c8"
+              }
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            10.75,
+            25.22
+          ],
+          "pivot": [
+            11.24,
+            6.82
+          ],
+          "depth": -13.49,
+          "w": 17,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__stores__d07__albedo.png",
+              "w": 17,
+              "h": 13,
+              "sha256": "f9e5503b9cc1102ad7dd2c78fd9090ddcc865ab72472a8fb58ac665a183d7856"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__stores__d07__normal.png",
+              "w": 17,
+              "h": 13,
+              "sha256": "1823feb0b2bb67907ba6ba6e325f70c21ada2449150132e24a692b1de161a467"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__stores__d07__material.png",
+              "w": 17,
+              "h": 13,
+              "sha256": "d1f9bbcd8ab27c481df346856b0949386d8642780f1499bd8bba8547856de226"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__stores__d07__depth.png",
+              "w": 17,
+              "h": 13,
+              "sha256": "0a402c9a168a5c0c65757beafb4555cc22e35183eb3038ac4d1a145f7e932c61"
+            }
+          },
+          "filesHi": {
+            "w": 63,
+            "h": 47,
+            "pivot": [
+              41.98,
+              25.28
+            ],
+            "anchor": [
+              40.02,
+              98.87
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__stores__d07__albedo@4x.png",
+                "w": 63,
+                "h": 47,
+                "sha256": "e48802f272f84dccffe7fb44101b36bc651abb7fda958a575236b0841a4531ea"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__stores__d07__normal@4x.png",
+                "w": 63,
+                "h": 47,
+                "sha256": "9f1883c2a801c1eba2ef58d7e497a3f740bd0d8da9f3c7c17eb4c156a5340882"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__stores__d07__material@4x.png",
+                "w": 63,
+                "h": 47,
+                "sha256": "03be19c48741e8ebb91855103a89fcc900215bd41c28f41625091f20ff94beab"
+              }
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            10,
+            26
+          ],
+          "pivot": [
+            10.37,
+            7.69
+          ],
+          "depth": -17.18,
+          "w": 16,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__stores__d08__albedo.png",
+              "w": 16,
+              "h": 13,
+              "sha256": "01bf4714b10ac51e350218703a37fcc5dd47b9eb2d063865eb51c4e86525a4d4"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__stores__d08__normal.png",
+              "w": 16,
+              "h": 13,
+              "sha256": "66467a59b85f41665646dc8d64d35009f9f5584276798992421aef2c1dc62051"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__stores__d08__material.png",
+              "w": 16,
+              "h": 13,
+              "sha256": "b09f7e6300b6f302b65c611c897f66e655998f3ddc1101f0407aed2faac81460"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__stores__d08__depth.png",
+              "w": 16,
+              "h": 13,
+              "sha256": "a8f7222b9207e33fdb5df00e27e135b75e86db64926b8adfc3f5cecc162a12c0"
+            }
+          },
+          "filesHi": {
+            "w": 62,
+            "h": 48,
+            "pivot": [
+              39.5,
+              27.75
+            ],
+            "anchor": [
+              38,
+              101
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__stores__d08__albedo@4x.png",
+                "w": 62,
+                "h": 48,
+                "sha256": "7df771a400a4511ae6d261bc59531a7f9897aa19c68183dcb384a463eb4ba1fe"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__stores__d08__normal@4x.png",
+                "w": 62,
+                "h": 48,
+                "sha256": "5ea75bb2d532075af99605f45cc421fd509dcc86a9a6f95da52ad74462b4d66d"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__stores__d08__material@4x.png",
+                "w": 62,
+                "h": 48,
+                "sha256": "afeaded3c067cf2838dfb871832915d0fe02afc51ca5788b6c1a0ee95515e8a6"
+              }
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            8.25,
+            26.22
+          ],
+          "pivot": [
+            8.45,
+            7.96
+          ],
+          "depth": -14.95,
+          "w": 15,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__stores__d09__albedo.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "9cd3547fa278e2042ce0bf16f69ccc59495ccfcb0c032a254b03253cf2c60091"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__stores__d09__normal.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "7237bc850ea4b0d550284350d13f845805f00631847a31ce493ae92a3c8a2be2"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__stores__d09__material.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "3282b20e31b6de6177537fcb5b751794c43a1a89a71e6f82883339140d876082"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__stores__d09__depth.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "2fd1b7c75ea127f86fbbc399a2914325cdd86409185d7c47e4992a13af221cce"
+            }
+          },
+          "filesHi": {
+            "w": 58,
+            "h": 49,
+            "pivot": [
+              32.8,
+              29.85
+            ],
+            "anchor": [
+              31.98,
+              102.87
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__stores__d09__albedo@4x.png",
+                "w": 58,
+                "h": 49,
+                "sha256": "61325e97d4fae9006eb90adf1bc7a49991194849da24339657ecd80d8018edb5"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__stores__d09__normal@4x.png",
+                "w": 58,
+                "h": 49,
+                "sha256": "3b6c5eaf0e5068fc9bf0cd1fae447c801118406345987c7a3e1a04ec2ce59b9d"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__stores__d09__material@4x.png",
+                "w": 58,
+                "h": 49,
+                "sha256": "363e1dac0235e16d89b50f415874f445899f9c0b15984b8f823493332831f61b"
+              }
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            6.63,
+            25.69
+          ],
+          "pivot": [
+            6.63,
+            7.45
+          ],
+          "depth": -7.15,
+          "w": 13,
+          "h": 12,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__stores__d10__albedo.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "296e60a3d9ab1a64a7bb044a82032b20c554a5b7d25b0246cb89cde425a5d44b"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__stores__d10__normal.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "ea77761573de9715a08f9184e043eddad7383cf4500e874d2704dc7ce0593ae4"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__stores__d10__material.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "e39efec0ab990720111120c4b7c49fdb33de9212e55b85def9bb7f14bf8ada10"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__stores__d10__depth.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "68e763b44137be4795ea945f03de697efb3998dde0bde930aaddeac294897356"
+            }
+          },
+          "filesHi": {
+            "w": 51,
+            "h": 48,
+            "pivot": [
+              25.51,
+              29.81
+            ],
+            "anchor": [
+              25.51,
+              102.75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__stores__d10__albedo@4x.png",
+                "w": 51,
+                "h": 48,
+                "sha256": "61281727c6b6132fad7a4bc4c3e3ac0859f509ca356955e2a6aec607ed8efc1b"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__stores__d10__normal@4x.png",
+                "w": 51,
+                "h": 48,
+                "sha256": "d9e29c685d704791210afc3ffaa59c0bcb50a64e5509767e7992012f663b8576"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__stores__d10__material@4x.png",
+                "w": 51,
+                "h": 48,
+                "sha256": "b319dd9af4f86929996a88f59b463dc966c4202844dd1b99f3c43ee1a8f500b1"
+              }
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            6.56,
+            25.88
+          ],
+          "pivot": [
+            6.36,
+            7.62
+          ],
+          "depth": 5.05,
+          "w": 15,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__stores__d11__albedo.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "e288455c1ff665c5c218f91f4ad161d15b9d57e2b97fc3598d4b23da16f2481a"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__stores__d11__normal.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "264488c38f6907547c179d5079eeac285db4563233ed054540d31db9f92b211a"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__stores__d11__material.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "8c9fbff37b8fc5f585a9898e349442253102995b6a42f82174c99d3822c173c0"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__stores__d11__depth.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "18ff35f423f5787282e2ee2dd78a4b8d602516a07a65b78295612aa57fb06635"
+            }
+          },
+          "filesHi": {
+            "w": 57,
+            "h": 49,
+            "pivot": [
+              24.44,
+              29.49
+            ],
+            "anchor": [
+              25.26,
+              102.51
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__stores__d11__albedo@4x.png",
+                "w": 57,
+                "h": 49,
+                "sha256": "4445e0cb6eb1d4ff5f5420595562a3bb05b3edc32f5abba6c9dafe136f763a94"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__stores__d11__normal@4x.png",
+                "w": 57,
+                "h": 49,
+                "sha256": "f3eebbbef449f9746f8681c8093f308e9bdd2af876e9ddefc988dce73a7318df"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__stores__d11__material@4x.png",
+                "w": 57,
+                "h": 49,
+                "sha256": "4adaad28d339c5468752eff5455d09e37fc4e8ab62075a0d8b840735d4e12a2f"
+              }
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            6,
+            26
+          ],
+          "pivot": [
+            5.63,
+            7.69
+          ],
+          "depth": 19.77,
+          "w": 16,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__stores__d12__albedo.png",
+              "w": 16,
+              "h": 13,
+              "sha256": "e46c18685f7bea9a817878f523136a08930f734b907c5fc98cc9ab5d734e7d67"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__stores__d12__normal.png",
+              "w": 16,
+              "h": 13,
+              "sha256": "3da66a790ef3c37dbc261bdcd7b4369612cbc0cbbb6a0f145e686963609e64a3"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__stores__d12__material.png",
+              "w": 16,
+              "h": 13,
+              "sha256": "dc1f88749afc69b7058e8ca752f983a18260f600cc29c29e041d84c29b4e1dca"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__stores__d12__depth.png",
+              "w": 16,
+              "h": 13,
+              "sha256": "53a3aa509ef51897c95402d26afe6a81985b9afce4d16fb6036cf9491f9207b7"
+            }
+          },
+          "filesHi": {
+            "w": 62,
+            "h": 48,
+            "pivot": [
+              22.5,
+              27.75
+            ],
+            "anchor": [
+              24,
+              101
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__stores__d12__albedo@4x.png",
+                "w": 62,
+                "h": 48,
+                "sha256": "5e5099c39a414540e4c6e2049ce4e6b9581c3733111ccd405502cef4278b4cb0"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__stores__d12__normal@4x.png",
+                "w": 62,
+                "h": 48,
+                "sha256": "70369fae799ff2099a8e2a9b98d33fa6f9d9fe3f0679a2d8dadfc1279db19815"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__stores__d12__material@4x.png",
+                "w": 62,
+                "h": 48,
+                "sha256": "eaebd11b402032cb586c0f6eadf579b3bf3ca0a2a349f510a5f38b1e35191e9e"
+              }
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            6.56,
+            25.12
+          ],
+          "pivot": [
+            6.07,
+            6.72
+          ],
+          "depth": 34.79,
+          "w": 17,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__stores__d13__albedo.png",
+              "w": 17,
+              "h": 13,
+              "sha256": "d74d0beb9fdb799b3c9a08545f09f412d757e441abdd9663f332e17f7e9f1735"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__stores__d13__normal.png",
+              "w": 17,
+              "h": 13,
+              "sha256": "182aef524c316424b6bc4acda6a0ecaf93ea3a9090d1c8424b78a0889f6caadd"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__stores__d13__material.png",
+              "w": 17,
+              "h": 13,
+              "sha256": "0b946cbbfffda979b5b8c4bf1f0da6569739a67ccbe27b27604f04f2368dff82"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__stores__d13__depth.png",
+              "w": 17,
+              "h": 13,
+              "sha256": "1a67ebde7ce4fb3d5eba8d25ded1a3d2c414d9f1bf1941612a01caff9fe707e1"
+            }
+          },
+          "filesHi": {
+            "w": 64,
+            "h": 47,
+            "pivot": [
+              21.3,
+              24.9
+            ],
+            "anchor": [
+              23.26,
+              98.49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__stores__d13__albedo@4x.png",
+                "w": 64,
+                "h": 47,
+                "sha256": "746daeb0f4700b8b663f2730ec55ba504963dc8636045ff6b5e8084f9b98061a"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__stores__d13__normal@4x.png",
+                "w": 64,
+                "h": 47,
+                "sha256": "e04d8cbd66b88f5bca93bd20a9355acab017ac6d458b61e5d192f7bff07d765c"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__stores__d13__material@4x.png",
+                "w": 64,
+                "h": 47,
+                "sha256": "8f09c6c527d7faa7400437db79c9d7e3c06003e2249272d69b879607c20a3dd1"
+              }
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            5.63,
+            25.31
+          ],
+          "pivot": [
+            5.1,
+            6.81
+          ],
+          "depth": 47.81,
+          "w": 16,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__stores__d14__albedo.png",
+              "w": 16,
+              "h": 13,
+              "sha256": "0c627c70b305a74bc2434c7acc1ca509bc992f70b0e1d73baeb0b58cadb7487a"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__stores__d14__normal.png",
+              "w": 16,
+              "h": 13,
+              "sha256": "9b52caf35f0bc8a06276a2f22083d2889244d675e2b3989f9f393402b775c5e4"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__stores__d14__material.png",
+              "w": 16,
+              "h": 13,
+              "sha256": "8afb518a05e060d094d05194ffa5898cce9a0e787412f36a7e781a375d367ea3"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__stores__d14__depth.png",
+              "w": 16,
+              "h": 13,
+              "sha256": "4dab4afbf6fe2b0f0685ae95ab0c65b50e5a716fa189968a52941d3d5edfa009"
+            }
+          },
+          "filesHi": {
+            "w": 60,
+            "h": 47,
+            "pivot": [
+              18.39,
+              24.25
+            ],
+            "anchor": [
+              20.51,
+              98.25
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__stores__d14__albedo@4x.png",
+                "w": 60,
+                "h": 47,
+                "sha256": "ea66761c74041ea4e5acbd450fe739c60941aabc9aad263544b7297bf0cf82dc"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__stores__d14__normal@4x.png",
+                "w": 60,
+                "h": 47,
+                "sha256": "fac4d2a735cef349d3471652f3694363d35a7a082b3aa0f8e597dc6891eaa735"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__stores__d14__material@4x.png",
+                "w": 60,
+                "h": 47,
+                "sha256": "7ab9a81cf8524a1a2bd1a905fa8abcd837cf8b409a8b0e9e3d1c0395dce5c875"
+              }
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            6.25,
+            24.78
+          ],
+          "pivot": [
+            5.76,
+            6.18
+          ],
+          "depth": 56.86,
+          "w": 17,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/stealth-fighter__stores__d15__albedo.png",
+              "w": 17,
+              "h": 13,
+              "sha256": "354c042b76bd2cfe5947cc943fece2c13cd63384b841a3a15041bd3383477fa0"
+            },
+            "normal": {
+              "file": "sheets/stealth-fighter__stores__d15__normal.png",
+              "w": 17,
+              "h": 13,
+              "sha256": "ad626e5af8429c327ed9a2a9e4d33c18caeac572efa255a7a3fb079c58bad596"
+            },
+            "material": {
+              "file": "sheets/stealth-fighter__stores__d15__material.png",
+              "w": 17,
+              "h": 13,
+              "sha256": "8068e6418e127a1c3613c561f2d82791eeeee30f675e72bbc96475cc828b1fba"
+            },
+            "depth": {
+              "file": "sheets/stealth-fighter__stores__d15__depth.png",
+              "w": 17,
+              "h": 13,
+              "sha256": "f36769f656527c4d804b288f46c38db1a50534815780157ec6e4817593d75001"
+            }
+          },
+          "filesHi": {
+            "w": 63,
+            "h": 50,
+            "pivot": [
+              21.02,
+              24.72
+            ],
+            "anchor": [
+              22.98,
+              99.13
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/stealth-fighter__stores__d15__albedo@4x.png",
+                "w": 63,
+                "h": 50,
+                "sha256": "f8f643f0f71202545791e1f7c696bf397eb718cbfb5220b4565d29e7646fabcc"
+              },
+              "normal": {
+                "file": "sheets-hi/stealth-fighter__stores__d15__normal@4x.png",
+                "w": 63,
+                "h": 50,
+                "sha256": "3f03c2c26eec046ea340268a497fc71280319d2cc3730e030d754274e06f1ddf"
+              },
+              "material": {
+                "file": "sheets-hi/stealth-fighter__stores__d15__material@4x.png",
+                "w": 63,
+                "h": 50,
+                "sha256": "5f83c345aa58ee915964bd8bb6ae36bca684b5025bc96cacc4f14953a3607748"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "clips": {
+    "idle": 1
+  },
+  "sourceGeometry": {
+    "parts": [
+      {
+        "name": "body",
+        "dynamic": false,
+        "traverse": false,
+        "parent": null,
+        "voxels": 133755,
+        "pivotDesign": [
+          256,
+          256,
+          0
+        ],
+        "bounds": {
+          "minX": 96,
+          "minY": 53,
+          "minZ": 293,
+          "maxX": 485,
+          "maxY": 458,
+          "maxZ": 327
+        }
+      },
+      {
+        "name": "fin",
+        "dynamic": true,
+        "traverse": false,
+        "parent": "body",
+        "voxels": 6168,
+        "pivotDesign": [
+          150,
+          256,
+          314
+        ],
+        "bounds": {
+          "minX": 112,
+          "minY": 163,
+          "minZ": 314,
+          "maxX": 204,
+          "maxY": 348,
+          "maxZ": 353
+        }
+      },
+      {
+        "name": "bay",
+        "dynamic": true,
+        "traverse": false,
+        "parent": "body",
+        "voxels": 1420,
+        "pivotDesign": [
+          283,
+          256,
+          300
+        ],
+        "bounds": {
+          "minX": 236,
+          "minY": 226,
+          "minZ": 299,
+          "maxX": 329,
+          "maxY": 285,
+          "maxZ": 302
+        }
+      },
+      {
+        "name": "stores",
+        "dynamic": true,
+        "traverse": false,
+        "parent": "body",
+        "voxels": 3787,
+        "pivotDesign": [
+          250,
+          256,
+          296
+        ],
+        "bounds": {
+          "minX": 244,
+          "minY": 230,
+          "minZ": 288,
+          "maxX": 321,
+          "maxY": 282,
+          "maxZ": 313
+        }
+      }
+    ],
+    "totalVoxels": 145130
+  },
+  "composite": {
+    "note": "every part of one facing pre-composited through the shared ground anchor",
+    "facings": {
+      "d00": {
+        "w": 47,
+        "h": 30,
+        "files": {
+          "albedo": {
+            "file": "sheets/stealth-fighter__composite__d00__albedo.png",
+            "sha256": "c23632403e46e5f8441546831e51fe70c45e4ffe2bc5020b03ee63758ef0cf16"
+          },
+          "normal": {
+            "file": "sheets/stealth-fighter__composite__d00__normal.png",
+            "sha256": "5853c7790cf0b6ddc595e0cf120b3adaeabf5731cec3907f03bb7684469457a4"
+          },
+          "material": {
+            "file": "sheets/stealth-fighter__composite__d00__material.png",
+            "sha256": "f858161799e5981fd935abbdc9df16aee3a49cf6a5387b9421d35d27f6eae0c6"
+          }
+        }
+      },
+      "d01": {
+        "w": 49,
+        "h": 31,
+        "files": {
+          "albedo": {
+            "file": "sheets/stealth-fighter__composite__d01__albedo.png",
+            "sha256": "3f744479e31f6c3306464f79e51b26821379c3ce838a762762a6f10e656da1e5"
+          },
+          "normal": {
+            "file": "sheets/stealth-fighter__composite__d01__normal.png",
+            "sha256": "5d230e9b885c228b8379982619a1695390e42edcacd453070d602c090fb77f2b"
+          },
+          "material": {
+            "file": "sheets/stealth-fighter__composite__d01__material.png",
+            "sha256": "434729bf626ccab52a64210434e6f801a34517049c1127f00f53e9378353bf4e"
+          }
+        }
+      },
+      "d02": {
+        "w": 49,
+        "h": 31,
+        "files": {
+          "albedo": {
+            "file": "sheets/stealth-fighter__composite__d02__albedo.png",
+            "sha256": "985bca2a1134473f69e5a9d7634dbc474bd7838c96cd21eb8b2280ff4fb1b391"
+          },
+          "normal": {
+            "file": "sheets/stealth-fighter__composite__d02__normal.png",
+            "sha256": "10e1f91b0e0ece40c735143945cf36521a1e69d0132684c25d14de6decfcdde6"
+          },
+          "material": {
+            "file": "sheets/stealth-fighter__composite__d02__material.png",
+            "sha256": "9c9fff386acd3d01f4cbbce716f2a5cbd459b2edba247f6f402304e86f2dcb97"
+          }
+        }
+      },
+      "d03": {
+        "w": 49,
+        "h": 31,
+        "files": {
+          "albedo": {
+            "file": "sheets/stealth-fighter__composite__d03__albedo.png",
+            "sha256": "cf9ed58dd1390d0090f01ac4f59ce7c403833c083492248c976dcf65b7e3b1e7"
+          },
+          "normal": {
+            "file": "sheets/stealth-fighter__composite__d03__normal.png",
+            "sha256": "79c783d8fd63f1a4abd069040ddd0dbadd480fa61cc1522983c694c285a03843"
+          },
+          "material": {
+            "file": "sheets/stealth-fighter__composite__d03__material.png",
+            "sha256": "c343467cac0b640d6d5c93c79262c4bfdaf7b76af8ace97afa4d23a9f2e22992"
+          }
+        }
+      },
+      "d04": {
+        "w": 47,
+        "h": 30,
+        "files": {
+          "albedo": {
+            "file": "sheets/stealth-fighter__composite__d04__albedo.png",
+            "sha256": "59bcac774732840511661c4ab30b786696c256c3871db038c97f86b0cd57ea42"
+          },
+          "normal": {
+            "file": "sheets/stealth-fighter__composite__d04__normal.png",
+            "sha256": "a2e2d6c1ae8edb29418590c277814577238f6cf212c451a8ae026f64007bd3aa"
+          },
+          "material": {
+            "file": "sheets/stealth-fighter__composite__d04__material.png",
+            "sha256": "b24a0565ff40bad498e0c2302e3616e3aeb11a21a239bbac8d9108ddb5f3f358"
+          }
+        }
+      },
+      "d05": {
+        "w": 47,
+        "h": 31,
+        "files": {
+          "albedo": {
+            "file": "sheets/stealth-fighter__composite__d05__albedo.png",
+            "sha256": "4210c7eaeb91148649a11cb6197003f3248009cfdfabe5159273c0cd59cb1282"
+          },
+          "normal": {
+            "file": "sheets/stealth-fighter__composite__d05__normal.png",
+            "sha256": "442c7b963c432624d401dfc156bee8f4eb429a2ab78e655856578bee351fe74a"
+          },
+          "material": {
+            "file": "sheets/stealth-fighter__composite__d05__material.png",
+            "sha256": "1a82d4cc36672406de8a7074c594d4ba7e8adcea63fc2f5541b62619c6d8498d"
+          }
+        }
+      },
+      "d06": {
+        "w": 47,
+        "h": 31,
+        "files": {
+          "albedo": {
+            "file": "sheets/stealth-fighter__composite__d06__albedo.png",
+            "sha256": "0c4d157fa9dabf28deda73d653de3ea66242be2d30a468006fd3cfcc8b6afe85"
+          },
+          "normal": {
+            "file": "sheets/stealth-fighter__composite__d06__normal.png",
+            "sha256": "3691294db2073428bae54d3dae7afb8c4f38eade48224d412860151cceb5be05"
+          },
+          "material": {
+            "file": "sheets/stealth-fighter__composite__d06__material.png",
+            "sha256": "c189c63e20e2cf2080c79502ea8043cd7de464776836009d9bea0b65b140eb8e"
+          }
+        }
+      },
+      "d07": {
+        "w": 48,
+        "h": 32,
+        "files": {
+          "albedo": {
+            "file": "sheets/stealth-fighter__composite__d07__albedo.png",
+            "sha256": "6037bbf844c481ab799964af271ffd126cdaf2e094d369b0a66504ca5dfe2ee2"
+          },
+          "normal": {
+            "file": "sheets/stealth-fighter__composite__d07__normal.png",
+            "sha256": "42347dd050818b945f4e3a3e1fe31113555d0ad29df1932da35ae02f5e2dcf71"
+          },
+          "material": {
+            "file": "sheets/stealth-fighter__composite__d07__material.png",
+            "sha256": "f6982fba99fc47d8fec5a6bcaffad42259a22fe89e1ea397c471be2bd2532c6f"
+          }
+        }
+      },
+      "d08": {
+        "w": 47,
+        "h": 30,
+        "files": {
+          "albedo": {
+            "file": "sheets/stealth-fighter__composite__d08__albedo.png",
+            "sha256": "8bbb4067d27fc2d50b5baf88aca2b25f99359dd8a908d478479b00644d584a47"
+          },
+          "normal": {
+            "file": "sheets/stealth-fighter__composite__d08__normal.png",
+            "sha256": "a6790a83731206b2b85822a6ab0c1d172f3071fe7f86a438496b4423076d4c97"
+          },
+          "material": {
+            "file": "sheets/stealth-fighter__composite__d08__material.png",
+            "sha256": "446694eb6a919b82a17e5222af4a92da9ceef44729df660e1e62031cce092c05"
+          }
+        }
+      },
+      "d09": {
+        "w": 49,
+        "h": 30,
+        "files": {
+          "albedo": {
+            "file": "sheets/stealth-fighter__composite__d09__albedo.png",
+            "sha256": "920f8cc9c9ae603cf02d1bfb0393caa114a8bf15574974fd8cc35820b546fe72"
+          },
+          "normal": {
+            "file": "sheets/stealth-fighter__composite__d09__normal.png",
+            "sha256": "f3eb12a42d3a5e48de51b93557008ccb009143505bbe1694c48f36e7fb817404"
+          },
+          "material": {
+            "file": "sheets/stealth-fighter__composite__d09__material.png",
+            "sha256": "a3312815a606113d6c4f3d1ba6b49f2d6d93196a34bb55d552eb1d7a80cb3f3e"
+          }
+        }
+      },
+      "d10": {
+        "w": 49,
+        "h": 30,
+        "files": {
+          "albedo": {
+            "file": "sheets/stealth-fighter__composite__d10__albedo.png",
+            "sha256": "e3effdaa14df88d763e7386337f9b341b333a2f5024f52cd8ccc00ac88d39263"
+          },
+          "normal": {
+            "file": "sheets/stealth-fighter__composite__d10__normal.png",
+            "sha256": "7a48ccad28ffb96206c3084d84b92e68e58476f58d5d821c1adc3c70e8ff7b30"
+          },
+          "material": {
+            "file": "sheets/stealth-fighter__composite__d10__material.png",
+            "sha256": "edd3a04da45ace4598b8160c952d62ef0ab42933a22ea9c4f26cef5b18d793a8"
+          }
+        }
+      },
+      "d11": {
+        "w": 49,
+        "h": 30,
+        "files": {
+          "albedo": {
+            "file": "sheets/stealth-fighter__composite__d11__albedo.png",
+            "sha256": "83cd6b83faaf381990f97d9a42d5385747dc703bce9cf8016591983cf9511fdc"
+          },
+          "normal": {
+            "file": "sheets/stealth-fighter__composite__d11__normal.png",
+            "sha256": "b546c8f0ea265156e8f07598ed26731b9217484c104515ea0864d473750a44cf"
+          },
+          "material": {
+            "file": "sheets/stealth-fighter__composite__d11__material.png",
+            "sha256": "db6624b009bab4552784b3489339fd6903e6c610eda323a73257d3275f0ca0b0"
+          }
+        }
+      },
+      "d12": {
+        "w": 47,
+        "h": 31,
+        "files": {
+          "albedo": {
+            "file": "sheets/stealth-fighter__composite__d12__albedo.png",
+            "sha256": "0fe144813aebc71220e765000bead33f1a859f20babc274a42a2e9a1cbc8a9e7"
+          },
+          "normal": {
+            "file": "sheets/stealth-fighter__composite__d12__normal.png",
+            "sha256": "ea967b849d7fb899308ad43af88da64b2eeb53182e75e2522f5014257a23e05d"
+          },
+          "material": {
+            "file": "sheets/stealth-fighter__composite__d12__material.png",
+            "sha256": "70a4d5bbe2b26a80ba6a2a40faa202036991141280be39a64e70a7cea206c3a9"
+          }
+        }
+      },
+      "d13": {
+        "w": 47,
+        "h": 32,
+        "files": {
+          "albedo": {
+            "file": "sheets/stealth-fighter__composite__d13__albedo.png",
+            "sha256": "cfc4d87958cecd4cdce1039ec18f5b85bf2174bf5297d52991359c865cd88a96"
+          },
+          "normal": {
+            "file": "sheets/stealth-fighter__composite__d13__normal.png",
+            "sha256": "09e03705268e83484f1e023943c1a11bea0e16baec839b635ed49b38eb2473b2"
+          },
+          "material": {
+            "file": "sheets/stealth-fighter__composite__d13__material.png",
+            "sha256": "a9101d4135b41ace0697c73d134fd20650fe243839d80afa2fee5e897a189d12"
+          }
+        }
+      },
+      "d14": {
+        "w": 47,
+        "h": 31,
+        "files": {
+          "albedo": {
+            "file": "sheets/stealth-fighter__composite__d14__albedo.png",
+            "sha256": "021925bf121d5bcb0a6fdc225df7bc27c5e226c79501af7f1cce49d6dff2f0af"
+          },
+          "normal": {
+            "file": "sheets/stealth-fighter__composite__d14__normal.png",
+            "sha256": "28b8d75ad1df6dc882b5f2427b4056ef012a201b54d2216d56ada91eb5275793"
+          },
+          "material": {
+            "file": "sheets/stealth-fighter__composite__d14__material.png",
+            "sha256": "3f8f9c2430a2c76d23e9f12a5c024505670fe6a10b9cd8a11adc37660fdf5aae"
+          }
+        }
+      },
+      "d15": {
+        "w": 48,
+        "h": 31,
+        "files": {
+          "albedo": {
+            "file": "sheets/stealth-fighter__composite__d15__albedo.png",
+            "sha256": "065d17b8fe70ccb6a69a0c397467698ab3c8ebefec1263408f726297d34a8b52"
+          },
+          "normal": {
+            "file": "sheets/stealth-fighter__composite__d15__normal.png",
+            "sha256": "e608b235c4080ff82dbb35f02b68895dc39bdc55bca987e54d166bb884641c24"
+          },
+          "material": {
+            "file": "sheets/stealth-fighter__composite__d15__material.png",
+            "sha256": "f429caa9e25fb05e25ba22a995bf9993947c0e92b65cb25dd2c86e0aafd8046a"
+          }
+        }
+      }
+    }
+  },
+  "lit": {
+    "note": "the composite re-shaded through a virtual three-point rig using the normal and material maps (key/fill/rim). If normals or PBR channels are wrong, this is where it shows.",
+    "rig": "three-point",
+    "facings": {
+      "d00": {
+        "file": "sheets/stealth-fighter__lit__d00__albedo.png",
+        "w": 47,
+        "h": 30,
+        "sha256": "f2c93e4a322c567608103744f863eddd95ac43b119e90d975b13ba1b68c9a5ed"
+      },
+      "d01": {
+        "file": "sheets/stealth-fighter__lit__d01__albedo.png",
+        "w": 49,
+        "h": 31,
+        "sha256": "46f782a7ccad48f64b83b7b09bc635465a25352c043016dada6d90a8410eeceb"
+      },
+      "d02": {
+        "file": "sheets/stealth-fighter__lit__d02__albedo.png",
+        "w": 49,
+        "h": 31,
+        "sha256": "305e3f0a7f3ecdc6941218379328d676433aff5c3997363ee4d63f678920e996"
+      },
+      "d03": {
+        "file": "sheets/stealth-fighter__lit__d03__albedo.png",
+        "w": 49,
+        "h": 31,
+        "sha256": "1f96abbd23e7352f0ac73adb78661bcecc18afbb979475ddb69ff63540883b77"
+      },
+      "d04": {
+        "file": "sheets/stealth-fighter__lit__d04__albedo.png",
+        "w": 47,
+        "h": 30,
+        "sha256": "62c7d6cfb8cf269a5d866768c5c546fead03b8f4027570fd4cf3cdeb1c075f2a"
+      },
+      "d05": {
+        "file": "sheets/stealth-fighter__lit__d05__albedo.png",
+        "w": 47,
+        "h": 31,
+        "sha256": "f7e550faa4b29cef9dcc394bb85a63247cad45997cbd8fa41125b45b9c917772"
+      },
+      "d06": {
+        "file": "sheets/stealth-fighter__lit__d06__albedo.png",
+        "w": 47,
+        "h": 31,
+        "sha256": "40d49123f2f15d06a5b81ba430fcb0247cbcccaa94d78fb9df8e8e28722611d6"
+      },
+      "d07": {
+        "file": "sheets/stealth-fighter__lit__d07__albedo.png",
+        "w": 48,
+        "h": 32,
+        "sha256": "638605ce318f310d5aac2a480a2796eaa95635089e579282583fcbf7fcfc754c"
+      },
+      "d08": {
+        "file": "sheets/stealth-fighter__lit__d08__albedo.png",
+        "w": 47,
+        "h": 30,
+        "sha256": "7bd516ff4fabadbbead6e571be0537b2a2526e19305b582c8ea8dae83d284ad0"
+      },
+      "d09": {
+        "file": "sheets/stealth-fighter__lit__d09__albedo.png",
+        "w": 49,
+        "h": 30,
+        "sha256": "e64666b565a27f925c288ce5c430f0ea739ac4019533c2948f3fb490245423e4"
+      },
+      "d10": {
+        "file": "sheets/stealth-fighter__lit__d10__albedo.png",
+        "w": 49,
+        "h": 30,
+        "sha256": "c1a18945a68b908875fa41e2b2a4d786789f9ebaa22dc51da94b05dcad921017"
+      },
+      "d11": {
+        "file": "sheets/stealth-fighter__lit__d11__albedo.png",
+        "w": 49,
+        "h": 30,
+        "sha256": "0519acbffd23aa75eb76685d657a38c81848a69d6377fd070932831ff67e0ba2"
+      },
+      "d12": {
+        "file": "sheets/stealth-fighter__lit__d12__albedo.png",
+        "w": 47,
+        "h": 31,
+        "sha256": "9ae3759f43da92ce4a3eb49a8a3a09c4498e02978d56fad61502815340a3e8e1"
+      },
+      "d13": {
+        "file": "sheets/stealth-fighter__lit__d13__albedo.png",
+        "w": 47,
+        "h": 32,
+        "sha256": "8339040613841318946480c8bcfdd392075cbb738bdbb3fed59c78b2cda56ca6"
+      },
+      "d14": {
+        "file": "sheets/stealth-fighter__lit__d14__albedo.png",
+        "w": 47,
+        "h": 31,
+        "sha256": "c5fad9f64a254cbf9256adc6fdb15c5ad2c366f59057bbec5073f8adcffc0cdd"
+      },
+      "d15": {
+        "file": "sheets/stealth-fighter__lit__d15__albedo.png",
+        "w": 48,
+        "h": 31,
+        "sha256": "2699c50f9f1bba9fcb4f3fb130558f16082a5e1bbd2c6dd4608a82e8afd49625"
+      }
+    }
+  },
+  "previewLit": {
+    "file": "preview-lit.png",
+    "facing": "d00",
+    "rig": "three-point",
+    "note": "relit from the normal + material maps"
+  },
+  "previewLights": {
+    "file": "preview-lights.png",
+    "facing": "d00",
+    "order": [
+      "azimuth 0deg / elevation 40deg",
+      "azimuth 45deg / elevation 40deg",
+      "azimuth 90deg / elevation 40deg",
+      "azimuth 135deg / elevation 40deg",
+      "azimuth 180deg / elevation 40deg",
+      "azimuth 225deg / elevation 40deg",
+      "azimuth 270deg / elevation 40deg",
+      "azimuth 315deg / elevation 40deg"
+    ],
+    "note": "one virtual light per panel, proving the normal map is directionally correct"
+  },
+  "previewMaps": {
+    "file": "preview-maps.png",
+    "facing": "d00",
+    "panels": [
+      "albedo",
+      "normal",
+      "material-id",
+      "metalness",
+      "roughness",
+      "emissive"
+    ]
+  },
+  "preview": {
+    "file": "preview.png",
+    "facing": "d00",
+    "w": 338,
+    "h": 206,
+    "mode": "single-pass"
+  },
+  "previewParts": {
+    "file": "preview-parts.png",
+    "facing": "d00",
+    "w": 342,
+    "h": 210,
+    "mode": "composited-from-part-sheets"
+  }
+}

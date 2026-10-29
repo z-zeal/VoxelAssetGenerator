@@ -46,6 +46,9 @@ import { buildScout } from './scout.mjs';
 import { buildAttackDog } from './attack-dog.mjs';
 import { buildMech } from './mech.mjs';
 import { buildBomber } from './bomber.mjs';
+import { buildGroundAttackJet } from './ground-attack-jet.mjs';
+import { buildStealthFighter } from './stealth-fighter.mjs';
+import { buildSpyPlane } from './spy-plane.mjs';
 import { buildSpecter } from './specter.mjs';
 import { buildTransportPlane } from './transport-plane.mjs';
 import { buildMpa } from './mpa.mjs';
@@ -265,6 +268,23 @@ export const MODELS = {
     kind: 'unit', folder: 'units', group: 'air.jet', label: 'Maritime Patrol Aircraft',
     build: buildMpa, requiredParts: ['body', 'fin', 'stores', 'boom'],
     minSpan: 150,
+  },
+  'ground-attack-jet': {
+    kind: 'unit', folder: 'units', group: 'air.jet', label: 'Ground Attack Jet',
+    build: buildGroundAttackJet, requiredParts: ['body', 'fin', 'gun'],
+    // Flat on purpose: a ground-attack airframe is wide and low.
+    minSpan: { x: 180, y: 180, z: 70 },
+  },
+  'stealth-fighter': {
+    kind: 'unit', folder: 'units', group: 'air.jet', label: 'Stealth Fighter',
+    build: buildStealthFighter, requiredParts: ['body', 'fin', 'bay'],
+    // A blended lifting body is a plate: 65 voxels thick against a 400 planform.
+    minSpan: { x: 200, y: 200, z: 40 },
+  },
+  'spy-plane': {
+    kind: 'unit', folder: 'units', group: 'air.jet', label: 'Recon Aircraft',
+    build: buildSpyPlane, requiredParts: ['body', 'fin', 'sensor'],
+    minSpan: { x: 200, y: 200, z: 55 },
   },
   specter: {
     kind: 'unit', folder: 'units', group: 'air.jet', label: 'Gunship',

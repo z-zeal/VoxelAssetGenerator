@@ -4,7 +4,7 @@ Companion to `docs/PLAN_512_native_16dir_segmented_pipeline.md`. Work proceeds *
 a batch closes only when its gate passes. Legend: `[x]` done · `[~]` written but not green · `[ ]` todo ·
 `[!]` blocked.
 
-Status as of this commit — **B0–B3 done, B4a/B4b/B4c done (36 units), B5a done (air, rotor), B5b 5/8 (fighter, bomber, specter, mpa, transport-plane)**.
+Status as of this commit — **B0–B3 done, B4a/B4b/B4c done (36 units), B5a done (air, rotor), B5b done (8/8 jets)**.
 Every unit and both buildings bake end-to-end at 512³ with the full part set: albedo, normal, material
 **and depth** per part per facing, plus a 4× review set. **Occlusion is resolved per pixel by a z-test**
 (see *Depth sheets* below), so draw order no longer affects any composite.
@@ -307,16 +307,26 @@ open transom with the screws visible from behind, would settle it.
       `wingPair`/`tailPlane`/`fin`, `jetPipe`, `nacelle`, `store`, `sensorBall`, `propDisc`, `bellyHook`.
 - [x] Aircraft carry `minSpan: 150`: the default 180 exists to catch a 64³-authored model, and an airframe
       is legitimately thin. 150 still fails a 64³ model by 2×.
-- [ ] **B5b jet** — done: `fighter` (174,567, `body`/`fin` = rudder pair/`stores`), `bomber` (242,713,
+- [x] **B5b jet** — `fighter` (174,567, `body`/`fin` = rudder pair/`stores`), `bomber` (242,713,
       `body`/`fin`/`stores`/`tail-turret` + `guns` — the first **airborne** traverse, a real traverse chain on a
       moving airframe), `specter` (228,674, gunship: `props` = four discs on their own part, `guns` = side
-      battery), `mpa` (193,366, `boom` = retractable MAD sting), `transport-plane` (237,737, `ramp`). Open:
-      `ground-attack-jet`, `stealth-fighter`, `spy-plane`.
+      battery), `mpa` (193,366, `boom` = retractable MAD sting), `transport-plane` (237,737, `ramp`),
+      `ground-attack-jet` (166,388, twin-boom `fin` pair + oversize `gun`), `stealth-fighter` (145,130,
+      faceted lifting body, `bay` doors + `stores`), `spy-plane` (89,847, high-aspect wing, tip `fin` pair,
+      `sensor` pallet, `nozzles`).
+- [x] `minSpan` accepts a per-axis object. Three of the jets are legitimately *flat* (a blended lifting body is
+      60 voxels thick against a 400 planform) and failed the 150-voxel gate on Z, which exists to catch a model
+      authored for 64³ — that still fails the planform axes by 3×. `{ x: 200, y: 200, z: 40 }` keeps the gate
+      meaningful instead of lowering it for everything.
+- [x] Two helper traps worth recording, because both produce an *empty or tiny* part rather than an error:
+      `propDisc` hard-coded `256` in Y (fixed, takes `cy` now), and `jetPipe`/`sensorBall`/`store`/`nacelle`
+      switch the active part themselves (`part:` argument), so a part declared around them silently loses its
+      voxels back to `body` — `spy-plane`'s `nozzles` came out at 5 voxels until `part: 'nozzles'` was passed.
 - [x] `propDisc` takes `cy` — it hard-coded `256` in Y, so a prop on a wing nacelle was drawn on the
       fuselage centre line. The default is unchanged, so the already-baked rotor sheets stay valid.
 - [ ] **B5c naval** — `submarine`, `gunboat`, `cruiser`, `battleship`, `lander`, `uhac`, `destroyer`,
       `missile-boat`, `carrier`, `naval-repair`, `mine-layer-ship`.
-- [ ] Rotor/jet/naval part sets per §5 of the plan.
+- [x] Rotor/jet part sets per §5 of the plan; naval still open.
 
 **Preview correctness (reported twice, fixed here)** — both were compositing bugs, not bake bugs:
 
