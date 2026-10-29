@@ -190,8 +190,22 @@ while the structure stays put. ✅ (Gate met; art detail iterates with the rest 
       riding with it; 957,002 / 192), `mine-clearing` (heavy armour built around a transverse **flail
       drum** on braced arms with chains and weights, behind a stepped blast shield over the driver;
       small RWS turret rather than a gun tank; 1,039,226 / 288).
-- [ ] **B4a remaining** — none. All 13 tracked units are baked.
-- [ ] **B4b wheeled** — `recon`, `rockets`, `missiles`, `supply-truck`, `command-vehicle`.
+- [x] **B4a remaining** — none. All 13 tracked units are baked.
+- [x] **B4b wheeled — complete (6/6)** — a new sub-assembly kit, `kit-wheeled.mjs`, had to exist first:
+      tracked gear paints the wheel into the track band, so a wheeled vehicle needs the opposite rule —
+      tyres outboard and exposed, hull stopping at a sill line above the wheel tops, a narrower chassis
+      between the wheels so the arches appear with no boolean cutting, and mudguards that arc (not a
+      flat fender, which reads as a lorry with square arches). `recon` (HUMVEE: exposed tyres, bonnet
+      with a winch and grille on the slope, open cargo bay, lattice roll cage, rear ring mount;
+      568,488 / 240), `rockets` (MLRS: armoured cassette of 6 tube mouths with retaining rings and dark
+      bores on a turntable, cab-over body, deck lockers; 620,154 / 240), `missiles` (SAM: four canisters
+      in a 2x2 grid standing nearly upright, each banded and railed, on an A-frame, with a solid radar
+      dish on its own post; 860,600 / 288), `supply-truck` (no turret and no barrel at all, flat bed with
+      a ribbed olive canvas tilt over arched hoops, hinged `tailgate` part; 816,436 / 192),
+      `command-vehicle` (tall ribbed box body, open side hatch with a map table, telescoping `mast` part
+      carrying yagi heads and a dish; 685,806 / 192), `aegis` (eight wheels, appliqué flanks, low stepped
+      turret with a **flat phased array** — a tilted plate of emissive elements, nothing like the SAM's
+      canisters; 668,860 / 240).
 - [ ] **B4c foot** — `infantry`, `mech`, `engineer`, `medic`, `rocket-infantry`, `aa-infantry`, `sniper`,
       `grenadier`, `flamethrower`, `demolitionist`, `commando`, `officer`, `spy`, `elite-hero`,
       `attack-dog`, `scout`.
@@ -199,7 +213,17 @@ while the structure stays put. ✅ (Gate met; art detail iterates with the rest 
 
 **Gate per sub-batch:** every asset bakes, budget met, parts present, previews reviewed.
 
-**Rejected approaches, recorded so they are not retried:** `mine-clearing`'s flail was first built as
+**Rejected approaches, recorded so they are not retried:** `wheeledHull` originally painted the top of
+the swept nose with a **deferred `c.paint(predicate)`** on `(x, z)` alone — which also matched everything
+*above* the bonnet, so at finish time it silently overpainted the cab, the windscreen and the mirrors of
+five vehicles with flat body colour. Deferred paint on a two-axis predicate is unusable near a body
+edge; the deck skin is now written as explicit voxels per column. `windscreen` first stepped the glass
+*forward* with height, building a forward-leaning visor, and used the pale `glass` material, whose
+transparency dither reads as **wire mesh** at sprite scale — a large pane needs a solid dark tint
+(`solar`) with a bright reflection streak. The SAM's canisters were first four cylinders at
+`256 ± 46 ± 8`, i.e. 16 voxels apart with radius 34, which merged into two oil drums; they only read as
+four tubes when the grid is spread on **both** axes. The MLRS cassette's six mouths were first stacked
+flush at 12-voxel pitch, which merged into vertical stripes. In B4a, `mine-clearing`'s flail was first built as
 a cylinder along **X** with chains radiating in every direction — it read as a spiked ball bolted to the
 nose; a flail drum's axis is **transverse (Y)**, with chains hanging round its circumference and the
 drum standing *ahead of the tracks*, not over the idler. Its blast shield was also one 8-voxel slab,

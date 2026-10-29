@@ -1,0 +1,5821 @@
+{
+  "format": "field-command-voxel-sheet-4",
+  "hiSheetScale": 4,
+  "asset": "supply-truck",
+  "kind": "unit",
+  "group": "vehicles.wheeled",
+  "canvas": 512,
+  "designVoxelsPerTileUnit": 8,
+  "renderScale": 1,
+  "previewScale": 8,
+  "superSample": 4,
+  "pxPerVoxel": 0.125,
+  "tileDiamond": [
+    64,
+    32
+  ],
+  "facings": [
+    "d00",
+    "d01",
+    "d02",
+    "d03",
+    "d04",
+    "d05",
+    "d06",
+    "d07",
+    "d08",
+    "d09",
+    "d10",
+    "d11",
+    "d12",
+    "d13",
+    "d14",
+    "d15"
+  ],
+  "facingMeta": [
+    {
+      "id": "d00",
+      "angle": 0,
+      "screenAngle": 45,
+      "label": "SE",
+      "unitIndex": 0,
+      "viewDir": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.0625,
+        -0.0625,
+        0,
+        0.03125,
+        0.03125,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d01",
+      "angle": 22.5,
+      "screenAngle": 67.5,
+      "label": "SSE",
+      "unitIndex": 1,
+      "viewDir": [
+        0.7543444794845715,
+        0.3124597141037824,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        0.03382475625913983,
+        -0.08166018530477004,
+        0,
+        0.040830092652386796,
+        0.01691237812956814,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d02",
+      "angle": 45,
+      "screenAngle": 90,
+      "label": "S",
+      "unitIndex": 2,
+      "viewDir": [
+        0.8164965809277261,
+        6.409875621278547e-17,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0,
+        -0.08838834764831915,
+        0,
+        0.04419417382415958,
+        0,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d03",
+      "angle": 67.5,
+      "screenAngle": 112.5,
+      "label": "SSW",
+      "unitIndex": 3,
+      "viewDir": [
+        0.7543444794845715,
+        -0.3124597141037824,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.03382475625913628,
+        -0.08166018530477004,
+        0,
+        0.04083009265238502,
+        -0.016912378129569028,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d04",
+      "angle": 90,
+      "screenAngle": 135,
+      "label": "SW",
+      "unitIndex": 4,
+      "viewDir": [
+        0.5773502691896258,
+        -0.5773502691896257,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        -0.0625,
+        -0.0625,
+        0,
+        0.03125,
+        -0.03125000000000089,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d05",
+      "angle": 112.5,
+      "screenAngle": 157.5,
+      "label": "WSW",
+      "unitIndex": 5,
+      "viewDir": [
+        0.3124597141037825,
+        -0.7543444794845715,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.08166018530477359,
+        -0.03382475625913628,
+        0,
+        0.016912378129569028,
+        -0.04083009265238591,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d06",
+      "angle": 135,
+      "screenAngle": 180,
+      "label": "W",
+      "unitIndex": 6,
+      "viewDir": [
+        6.409875621278547e-17,
+        -0.8164965809277261,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        -0.08838834764831915,
+        0,
+        0,
+        0,
+        -0.04419417382415958,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d07",
+      "angle": 157.5,
+      "screenAngle": 202.5,
+      "label": "WNW",
+      "unitIndex": 7,
+      "viewDir": [
+        -0.3124597141037824,
+        -0.7543444794845715,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.08166018530477537,
+        0.03382475625913628,
+        0,
+        -0.01691237812956814,
+        -0.04083009265238502,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d08",
+      "angle": 180,
+      "screenAngle": 225,
+      "label": "NW",
+      "unitIndex": 8,
+      "viewDir": [
+        -0.5773502691896256,
+        -0.5773502691896258,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.0625,
+        0.062499999999998224,
+        0,
+        -0.03125,
+        -0.03125,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d09",
+      "angle": 202.5,
+      "screenAngle": 247.5,
+      "label": "NNW",
+      "unitIndex": 9,
+      "viewDir": [
+        -0.7543444794845713,
+        -0.3124597141037829,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.03382475625913628,
+        0.08166018530477537,
+        0,
+        -0.04083009265238502,
+        -0.01691237812956814,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d10",
+      "angle": 225,
+      "screenAngle": 270,
+      "label": "N",
+      "unitIndex": 10,
+      "viewDir": [
+        -0.8164965809277261,
+        -1.2819751242557095e-16,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0,
+        0.08838834764831915,
+        0,
+        -0.04419417382415958,
+        0,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d11",
+      "angle": 247.5,
+      "screenAngle": 292.5,
+      "label": "NNE",
+      "unitIndex": 11,
+      "viewDir": [
+        -0.7543444794845715,
+        0.3124597141037827,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.03382475625913983,
+        0.08166018530477359,
+        0,
+        -0.040830092652386796,
+        0.016912378129569028,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d12",
+      "angle": 270,
+      "screenAngle": 315,
+      "label": "NE",
+      "unitIndex": 12,
+      "viewDir": [
+        -0.5773502691896258,
+        0.5773502691896256,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        0.0625,
+        0.0625,
+        0,
+        -0.03125,
+        0.03125,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d13",
+      "angle": 292.5,
+      "screenAngle": 337.5,
+      "label": "ENE",
+      "unitIndex": 13,
+      "viewDir": [
+        -0.3124597141037823,
+        0.7543444794845715,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        0.08166018530477004,
+        0.03382475625913983,
+        0,
+        -0.01691237812956814,
+        0.040830092652387684,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d14",
+      "angle": 315,
+      "screenAngle": 0,
+      "label": "E",
+      "unitIndex": 14,
+      "viewDir": [
+        -1.9229626863835643e-16,
+        0.8164965809277261,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.08838834764831915,
+        0,
+        0,
+        0,
+        0.04419417382415958,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d15",
+      "angle": 337.5,
+      "screenAngle": 22.5,
+      "label": "ESE",
+      "unitIndex": 15,
+      "viewDir": [
+        0.3124597141037827,
+        0.7543444794845715,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.08166018530477537,
+        -0.03382475625913273,
+        0,
+        0.016912378129569916,
+        0.040830092652386796,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    }
+  ],
+  "teamTint": {
+    "note": "Albedo is baked in the standard livery. Recolour pixels whose material map red channel matches these ids to apply an army livery.",
+    "materialIds": [
+      {
+        "name": "team.hull",
+        "id": 0,
+        "role": "hull"
+      },
+      {
+        "name": "team.light",
+        "id": 1,
+        "role": "light"
+      },
+      {
+        "name": "team.dark",
+        "id": 2,
+        "role": "dark"
+      },
+      {
+        "name": "team.accent",
+        "id": 3,
+        "role": "accent"
+      },
+      {
+        "name": "roof",
+        "id": 37,
+        "role": "hull"
+      },
+      {
+        "name": "roof.light",
+        "id": 38,
+        "role": "light"
+      },
+      {
+        "name": "roof.dark",
+        "id": 39,
+        "role": "dark"
+      }
+    ],
+    "liveries": {
+      "_note": "Army liveries for runtime tinting of team materials. Mirrors src/renderer.js TEAM_COLORS and tools/voxel_pipeline/v3/materials.mjs ARMY_LIVERY.",
+      "standard": {
+        "hull": "#df794b",
+        "light": "#ffc68b",
+        "dark": "#934b32",
+        "accent": "#ece7bc"
+      },
+      "allies": {
+        "hull": "#639bc3",
+        "light": "#a9d0e1",
+        "dark": "#345f78",
+        "accent": "#e8f1f4"
+      },
+      "soviets": {
+        "hull": "#7eb06a",
+        "light": "#b8e0a8",
+        "dark": "#2d4a2d",
+        "accent": "#dfe8c8"
+      },
+      "empire": {
+        "hull": "#d9b44e",
+        "light": "#ffe79a",
+        "dark": "#8a6a1a",
+        "accent": "#f6eecd"
+      },
+      "legion": {
+        "hull": "#c65a54",
+        "light": "#ffb0a8",
+        "dark": "#7a2a2a",
+        "accent": "#f3d9d4"
+      },
+      "neutral": {
+        "hull": "#aaa78b",
+        "light": "#cfcdb6",
+        "dark": "#6c6a55",
+        "accent": "#e2e0cf"
+      }
+    }
+  },
+  "normalMap": {
+    "space": "view",
+    "channelOrder": "rgb",
+    "range": "0..255 maps -1..1",
+    "up": "+g means screen up"
+  },
+  "materialMap": {
+    "channelOrder": "rgba",
+    "meaning": [
+      "materialId",
+      "metalness",
+      "roughness",
+      "emissive"
+    ],
+    "table": [
+      {
+        "id": 0,
+        "name": "team.hull",
+        "metalness": 0.35,
+        "roughness": 0.62,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "hull"
+      },
+      {
+        "id": 1,
+        "name": "team.light",
+        "metalness": 0.35,
+        "roughness": 0.58,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "light"
+      },
+      {
+        "id": 2,
+        "name": "team.dark",
+        "metalness": 0.4,
+        "roughness": 0.66,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "dark"
+      },
+      {
+        "id": 3,
+        "name": "team.accent",
+        "metalness": 0.2,
+        "roughness": 0.7,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "accent"
+      },
+      {
+        "id": 4,
+        "name": "steel",
+        "metalness": 0.85,
+        "roughness": 0.42,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 5,
+        "name": "steel.dark",
+        "metalness": 0.85,
+        "roughness": 0.5,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 6,
+        "name": "steel.bright",
+        "metalness": 0.95,
+        "roughness": 0.24,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 7,
+        "name": "gunmetal",
+        "metalness": 0.9,
+        "roughness": 0.38,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 8,
+        "name": "gunmetal.lit",
+        "metalness": 0.9,
+        "roughness": 0.32,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 9,
+        "name": "iron",
+        "metalness": 0.8,
+        "roughness": 0.62,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 10,
+        "name": "brass",
+        "metalness": 0.95,
+        "roughness": 0.3,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 11,
+        "name": "copper",
+        "metalness": 0.95,
+        "roughness": 0.34,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 12,
+        "name": "chrome",
+        "metalness": 1,
+        "roughness": 0.12,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 13,
+        "name": "rubber",
+        "metalness": 0.05,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 14,
+        "name": "track",
+        "metalness": 0.7,
+        "roughness": 0.68,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 15,
+        "name": "track.worn",
+        "metalness": 0.85,
+        "roughness": 0.44,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 16,
+        "name": "tyre",
+        "metalness": 0.03,
+        "roughness": 0.95,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 17,
+        "name": "plate",
+        "metalness": 0.55,
+        "roughness": 0.66,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 18,
+        "name": "plate.lit",
+        "metalness": 0.55,
+        "roughness": 0.6,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 19,
+        "name": "plate.dark",
+        "metalness": 0.55,
+        "roughness": 0.72,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 20,
+        "name": "glass",
+        "metalness": 0.3,
+        "roughness": 0.08,
+        "emissive": 0,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 21,
+        "name": "glass.dark",
+        "metalness": 0.4,
+        "roughness": 0.12,
+        "emissive": 0,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 22,
+        "name": "optic",
+        "metalness": 0.6,
+        "roughness": 0.05,
+        "emissive": 0.55,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 23,
+        "name": "lamp.warm",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.85,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 24,
+        "name": "lamp.red",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.8,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 25,
+        "name": "lamp.cyan",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.8,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 26,
+        "name": "skin",
+        "metalness": 0,
+        "roughness": 0.78,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 27,
+        "name": "skin.dark",
+        "metalness": 0,
+        "roughness": 0.8,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 28,
+        "name": "cloth",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 29,
+        "name": "cloth.dark",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 30,
+        "name": "webbing",
+        "metalness": 0.05,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 31,
+        "name": "boot",
+        "metalness": 0.1,
+        "roughness": 0.85,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 32,
+        "name": "hair",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 33,
+        "name": "concrete",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 34,
+        "name": "concrete.lit",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 35,
+        "name": "concrete.dark",
+        "metalness": 0,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 36,
+        "name": "brick",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 37,
+        "name": "roof",
+        "metalness": 0.1,
+        "roughness": 0.82,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "hull"
+      },
+      {
+        "id": 38,
+        "name": "roof.light",
+        "metalness": 0.1,
+        "roughness": 0.8,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "light"
+      },
+      {
+        "id": 39,
+        "name": "roof.dark",
+        "metalness": 0.1,
+        "roughness": 0.84,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "dark"
+      },
+      {
+        "id": 40,
+        "name": "asphalt",
+        "metalness": 0,
+        "roughness": 0.96,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 41,
+        "name": "paint.line",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 42,
+        "name": "wood",
+        "metalness": 0,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 43,
+        "name": "wood.dark",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 44,
+        "name": "canvas",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 45,
+        "name": "sandbag",
+        "metalness": 0,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 46,
+        "name": "solar",
+        "metalness": 0.6,
+        "roughness": 0.22,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 47,
+        "name": "rust",
+        "metalness": 0.3,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 48,
+        "name": "scorch",
+        "metalness": 0.2,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 49,
+        "name": "smoke",
+        "metalness": 0,
+        "roughness": 1,
+        "emissive": 0.1,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 50,
+        "name": "water",
+        "metalness": 0.2,
+        "roughness": 0.15,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 51,
+        "name": "foam",
+        "metalness": 0,
+        "roughness": 0.6,
+        "emissive": 0.1,
+        "blend": "opaque",
+        "team": null
+      }
+    ]
+  },
+  "parts": {
+    "body": {
+      "name": "body",
+      "dynamic": false,
+      "parent": null,
+      "pivotDesign": [
+        256,
+        256,
+        0
+      ],
+      "traverse": false,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            24,
+            24
+          ],
+          "pivot": [
+            24,
+            24
+          ],
+          "depth": 50.77,
+          "w": 50,
+          "h": 35,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__body__d00__albedo.png",
+              "w": 50,
+              "h": 35,
+              "sha256": "aa294b1ae9a6b4fd83ca3bd1b22a000c1ae53e69c46034b6e9077a9cdc68f6c6"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__body__d00__normal.png",
+              "w": 50,
+              "h": 35,
+              "sha256": "8e91f24bf59f4a5e3327e6c0d9aabf591e6a939af82bb8d008f0b4d5994f6122"
+            },
+            "material": {
+              "file": "sheets/supply-truck__body__d00__material.png",
+              "w": 50,
+              "h": 35,
+              "sha256": "5be52527f62f25441448470b79338f2c310f6e961f7309ba059d39941b7b6a19"
+            }
+          },
+          "filesHi": {
+            "w": 198,
+            "h": 136,
+            "pivot": [
+              94,
+              95
+            ],
+            "anchor": [
+              94,
+              95
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__body__d00__albedo@4x.png",
+                "w": 198,
+                "h": 136,
+                "sha256": "c5bffcd697c723bb91f59e2d8e4db2b3aece42fd8b1a6aa1b853fb4ba7904db9"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__body__d00__normal@4x.png",
+                "w": 198,
+                "h": 136,
+                "sha256": "415a52be68e1e26f675b24e40f3e6b4d2fb3702a3537ffe6baab4c3b4f805f25"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__body__d00__material@4x.png",
+                "w": 198,
+                "h": 136,
+                "sha256": "c9998b7ae1979956f8c627df7270f8abf9ad09b6fababe90f3566de3b07ae55a"
+              }
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            20.75,
+            23.78
+          ],
+          "pivot": [
+            20.75,
+            23.78
+          ],
+          "depth": 48.54,
+          "w": 43,
+          "h": 35,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__body__d01__albedo.png",
+              "w": 43,
+              "h": 35,
+              "sha256": "2d3b957afd553611bc474b3d54f9434915e6f6db0acebeae2df2cf33c8538ad6"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__body__d01__normal.png",
+              "w": 43,
+              "h": 35,
+              "sha256": "1a0eb45382c96b600e478357697d228a7e6d985b458c3fec7dd03c7e3ecf3528"
+            },
+            "material": {
+              "file": "sheets/supply-truck__body__d01__material.png",
+              "w": 43,
+              "h": 35,
+              "sha256": "1bb3bba8d95720e1b5412c332c2c216346824cad59f6aa82a9cfd998d54b6e39"
+            }
+          },
+          "filesHi": {
+            "w": 171,
+            "h": 136,
+            "pivot": [
+              83.02,
+              93.13
+            ],
+            "anchor": [
+              83.02,
+              93.13
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__body__d01__albedo@4x.png",
+                "w": 171,
+                "h": 136,
+                "sha256": "371f931e1519f320c8707acf90161f0bf61ee6c05ec32bbdce806b25a92dff12"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__body__d01__normal@4x.png",
+                "w": 171,
+                "h": 136,
+                "sha256": "0d807efc719d753621b3891857fa85e005d12eee1dd54e18b80dccad980f242c"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__body__d01__material@4x.png",
+                "w": 171,
+                "h": 136,
+                "sha256": "5a736ac956c8825f5c2fbd4ff84571e8db71a6c821be1fff1b1cf939393b9dba"
+              }
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            16.37,
+            22.31
+          ],
+          "pivot": [
+            16.37,
+            22.31
+          ],
+          "depth": 40.75,
+          "w": 33,
+          "h": 32,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__body__d02__albedo.png",
+              "w": 33,
+              "h": 32,
+              "sha256": "d2fce701300d57c52529bdab2c31ba4fc39fdf019fec3b30cd1dfd460ace9b6e"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__body__d02__normal.png",
+              "w": 33,
+              "h": 32,
+              "sha256": "4f70891be058c71731d68913ec0af9918f19f75d15b07579e61ca660edbe678b"
+            },
+            "material": {
+              "file": "sheets/supply-truck__body__d02__material.png",
+              "w": 33,
+              "h": 32,
+              "sha256": "ab88910e11a1bdb8e228191ccf198a6dbc4e7aa004df621c751b3fbffa96f38d"
+            }
+          },
+          "filesHi": {
+            "w": 131,
+            "h": 126,
+            "pivot": [
+              65.49,
+              87.25
+            ],
+            "anchor": [
+              65.49,
+              87.25
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__body__d02__albedo@4x.png",
+                "w": 131,
+                "h": 126,
+                "sha256": "6886dad616cf2e5cd1cfdf8461b4d924d00db40050c5c725b451b144465effb5"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__body__d02__normal@4x.png",
+                "w": 131,
+                "h": 126,
+                "sha256": "13c313602aa215632bc452fad17b836f6dc3e67d3bade4ab2d2eba401ab1ea77"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__body__d02__material@4x.png",
+                "w": 131,
+                "h": 126,
+                "sha256": "69abc87f85c459287b8445063003e3cfd327fcd7710964e471cc92da8c637b3b"
+              }
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            22.44,
+            24.12
+          ],
+          "pivot": [
+            22.44,
+            24.12
+          ],
+          "depth": 28.58,
+          "w": 44,
+          "h": 35,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__body__d03__albedo.png",
+              "w": 44,
+              "h": 35,
+              "sha256": "765eaf1a4024b6e8e0f807610a6815183898573a50d1321129a30ed2c9d7d01d"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__body__d03__normal.png",
+              "w": 44,
+              "h": 35,
+              "sha256": "f8f1e73207c347b8f5419463d402de01faf9607894c8c63dd9c45a7b6a3044ce"
+            },
+            "material": {
+              "file": "sheets/supply-truck__body__d03__material.png",
+              "w": 44,
+              "h": 35,
+              "sha256": "0731b5d17d9df7563401fe078b389a536f40320b8601930f242f997ef992c312"
+            }
+          },
+          "filesHi": {
+            "w": 171,
+            "h": 136,
+            "pivot": [
+              87.74,
+              93.49
+            ],
+            "anchor": [
+              87.74,
+              93.49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__body__d03__albedo@4x.png",
+                "w": 171,
+                "h": 136,
+                "sha256": "bfdc0efdbf99a6c017692135aa424d9fe6d05d8767f5e67639cf7daa5c32040f"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__body__d03__normal@4x.png",
+                "w": 171,
+                "h": 136,
+                "sha256": "76f8e8eacabfb40f45e802b9ba3469f40ef9f8db23cdb44fa1976ccc1bb54bab"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__body__d03__material@4x.png",
+                "w": 171,
+                "h": 136,
+                "sha256": "dd6b7f82ab35505cd7f74a13fa1a624f90c014350e690fc630f4275aa0f67c88"
+              }
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            26,
+            24
+          ],
+          "pivot": [
+            26,
+            24
+          ],
+          "depth": 13.89,
+          "w": 50,
+          "h": 35,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__body__d04__albedo.png",
+              "w": 50,
+              "h": 35,
+              "sha256": "30a29610aa0c801d584977ecad89614d29a8382e0ae6e2a1dbd1a00e8a3964c0"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__body__d04__normal.png",
+              "w": 50,
+              "h": 35,
+              "sha256": "0682a77c67deb59ea5b080551465fa108b48cfa3a74424bca07028083a7a2401"
+            },
+            "material": {
+              "file": "sheets/supply-truck__body__d04__material.png",
+              "w": 50,
+              "h": 35,
+              "sha256": "d874258870539692e74903e4e3a34d8baa603aa6b43d0e7eee10971449ffe21f"
+            }
+          },
+          "filesHi": {
+            "w": 198,
+            "h": 137,
+            "pivot": [
+              104,
+              96
+            ],
+            "anchor": [
+              104,
+              96
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__body__d04__albedo@4x.png",
+                "w": 198,
+                "h": 137,
+                "sha256": "708cb4493ef152bec92bd1236271975aa42b9389223dac860a64fdaf7d48a242"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__body__d04__normal@4x.png",
+                "w": 198,
+                "h": 137,
+                "sha256": "74fe46478a81ed62219aafc580392a725f4ccd6852855dd510083ae6923fa06e"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__body__d04__material@4x.png",
+                "w": 198,
+                "h": 137,
+                "sha256": "70d295aec363be2a063670168eee8f78c70b81a25098e80106ca3b49a0ee489c"
+              }
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            27.44,
+            24.88
+          ],
+          "pivot": [
+            27.44,
+            24.88
+          ],
+          "depth": -1.08,
+          "w": 51,
+          "h": 34,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__body__d05__albedo.png",
+              "w": 51,
+              "h": 34,
+              "sha256": "584d0ce4c87bba055f1ccda956c92352ffb9c1562138bd1851ea2190dfdc00b4"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__body__d05__normal.png",
+              "w": 51,
+              "h": 34,
+              "sha256": "a74ce0fd0680d46d1838e93108834e7d15b7f36fec8a9476263e3daa76d55892"
+            },
+            "material": {
+              "file": "sheets/supply-truck__body__d05__material.png",
+              "w": 51,
+              "h": 34,
+              "sha256": "3152682c766230768d1eaef815843da675404a36e967d7c685c65ab71494d0df"
+            }
+          },
+          "filesHi": {
+            "w": 199,
+            "h": 134,
+            "pivot": [
+              106.74,
+              99.51
+            ],
+            "anchor": [
+              106.74,
+              99.51
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__body__d05__albedo@4x.png",
+                "w": 199,
+                "h": 134,
+                "sha256": "9e316cd30cb293c430e7efecc9129b5b48885662ef461fc27da25ffbbf336284"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__body__d05__normal@4x.png",
+                "w": 199,
+                "h": 134,
+                "sha256": "cb5efcd8d2038d052faf994f427f794b63f808b1be6e8d4a98a33bca9ed2cdbf"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__body__d05__material@4x.png",
+                "w": 199,
+                "h": 134,
+                "sha256": "e56f26772d2c4f4947d289cc7d11d691217fa1bfb53fca3b589d3cfd0a51bf01"
+              }
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            24.37,
+            27.69
+          ],
+          "pivot": [
+            24.37,
+            27.69
+          ],
+          "depth": -14.06,
+          "w": 45,
+          "h": 34,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__body__d06__albedo.png",
+              "w": 45,
+              "h": 34,
+              "sha256": "42e4f228c424d0e4d6db6a5c044b8b3c422ec34df87b0408aced5e1983f377b0"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__body__d06__normal.png",
+              "w": 45,
+              "h": 34,
+              "sha256": "ca762845cfd4bc39ade3bcab1d1e7c645ffc7e945df55e24adbc0bca8c759b59"
+            },
+            "material": {
+              "file": "sheets/supply-truck__body__d06__material.png",
+              "w": 45,
+              "h": 34,
+              "sha256": "14ecc48f06b7ef9fe37724c2916a65d1784b62609bd4cc4520e31fcf18fca22e"
+            }
+          },
+          "filesHi": {
+            "w": 177,
+            "h": 135,
+            "pivot": [
+              97.49,
+              110.75
+            ],
+            "anchor": [
+              97.49,
+              110.75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__body__d06__albedo@4x.png",
+                "w": 177,
+                "h": 135,
+                "sha256": "e04ae355ff23e0b97d8c526ca1e9f88be9dc837543daed2b10be54b880d44e70"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__body__d06__normal@4x.png",
+                "w": 177,
+                "h": 135,
+                "sha256": "ad698501a99deb501573345ecd8015081cf3073e5597decbeef8e17f654e8e63"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__body__d06__material@4x.png",
+                "w": 177,
+                "h": 135,
+                "sha256": "4283b66d01a2b9e29aeab3e0f16c92a066db6dfb836001dd87bc1320f56f5072"
+              }
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            26.75,
+            30.22
+          ],
+          "pivot": [
+            26.75,
+            30.22
+          ],
+          "depth": -23.07,
+          "w": 50,
+          "h": 38,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__body__d07__albedo.png",
+              "w": 50,
+              "h": 38,
+              "sha256": "3cbf94767880cb4380653f68510087d8b6de7f3c284781783e0d712af0259119"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__body__d07__normal.png",
+              "w": 50,
+              "h": 38,
+              "sha256": "f2e85637b6ba8f9bf4a678a34cb466b1a9af6e7aa57dc265c339a68c1e191e22"
+            },
+            "material": {
+              "file": "sheets/supply-truck__body__d07__material.png",
+              "w": 50,
+              "h": 38,
+              "sha256": "fa218fcf01df6e774c3e6b2fde5c4678c96e0302eb47c4f64e15ca62d5783e27"
+            }
+          },
+          "filesHi": {
+            "w": 199,
+            "h": 150,
+            "pivot": [
+              107.02,
+              118.87
+            ],
+            "anchor": [
+              107.02,
+              118.87
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__body__d07__albedo@4x.png",
+                "w": 199,
+                "h": 150,
+                "sha256": "c93befab8a2613cc03211e31223f4d15b5cf39896004ebbff9ab4bd8a4f27119"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__body__d07__normal@4x.png",
+                "w": 199,
+                "h": 150,
+                "sha256": "e6abb859073f1f345ac440eb91aa7a7980b52b2d19dbc22e25792eadf7f10f8e"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__body__d07__material@4x.png",
+                "w": 199,
+                "h": 150,
+                "sha256": "a322fbbe1c1111569f345889ff236ab89832a9ffa6fc357e0ab876f1d31c4912"
+              }
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            26,
+            31
+          ],
+          "pivot": [
+            26,
+            31
+          ],
+          "depth": -26.74,
+          "w": 50,
+          "h": 40,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__body__d08__albedo.png",
+              "w": 50,
+              "h": 40,
+              "sha256": "5e3d6fa2ee493de8096361c18b7eb59fbdba96504f80b785c60494a63a8c04b2"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__body__d08__normal.png",
+              "w": 50,
+              "h": 40,
+              "sha256": "0118e420de6bfe80bafd39408bd7039d1dd027ab29bf16d3a466b15cdce65e7c"
+            },
+            "material": {
+              "file": "sheets/supply-truck__body__d08__material.png",
+              "w": 50,
+              "h": 40,
+              "sha256": "1e521f5105573b1970c77a4b4f0a9c71a53569c82121821aa8644460ba41e9a8"
+            }
+          },
+          "filesHi": {
+            "w": 198,
+            "h": 160,
+            "pivot": [
+              104,
+              124
+            ],
+            "anchor": [
+              104,
+              124
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__body__d08__albedo@4x.png",
+                "w": 198,
+                "h": 160,
+                "sha256": "a8a054aff0fdcaa371abb7a4a4e2ce7129ebc53149f9631c973010842a6ca99d"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__body__d08__normal@4x.png",
+                "w": 198,
+                "h": 160,
+                "sha256": "c0401ca7b6f786d8f582c3fe2d0b3393209a1e10c91ebd2fa0e0327640731ebb"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__body__d08__material@4x.png",
+                "w": 198,
+                "h": 160,
+                "sha256": "d037e8d149993c115754205c2305123e894defec50de24c8d94b8d1c69b5ae6a"
+              }
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            22.25,
+            31.22
+          ],
+          "pivot": [
+            22.25,
+            31.22
+          ],
+          "depth": -24.51,
+          "w": 43,
+          "h": 41,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__body__d09__albedo.png",
+              "w": 43,
+              "h": 41,
+              "sha256": "15ca8f4e7c5b4b03485d8f9945a73dcd0bf194ddee98d535e63f1cb1a8142314"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__body__d09__normal.png",
+              "w": 43,
+              "h": 41,
+              "sha256": "05c86f6dedae1f477027806ea95a088ecea4f1e54bc8cec19800bc79ec55b5c9"
+            },
+            "material": {
+              "file": "sheets/supply-truck__body__d09__material.png",
+              "w": 43,
+              "h": 41,
+              "sha256": "6fae23685e65e2967f2da774b58611ed60410a69478cb26233ab194b2c56d3b5"
+            }
+          },
+          "filesHi": {
+            "w": 171,
+            "h": 162,
+            "pivot": [
+              87.98,
+              123.87
+            ],
+            "anchor": [
+              87.98,
+              123.87
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__body__d09__albedo@4x.png",
+                "w": 171,
+                "h": 162,
+                "sha256": "a7d2e3fff48392969332e55f961a03796ad139c0bf8b97c23cad336d5d06814b"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__body__d09__normal@4x.png",
+                "w": 171,
+                "h": 162,
+                "sha256": "c7b33466472292f999fe087f4ba611fd399ace46a0b672bce5b38a26b02ad7f0"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__body__d09__material@4x.png",
+                "w": 171,
+                "h": 162,
+                "sha256": "d9040c256909a5be58dfd3566ec3d28cebd00697c27198db09385e877dedd910"
+              }
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            16.63,
+            29.69
+          ],
+          "pivot": [
+            16.63,
+            29.69
+          ],
+          "depth": -16.71,
+          "w": 33,
+          "h": 39,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__body__d10__albedo.png",
+              "w": 33,
+              "h": 39,
+              "sha256": "f33d66d26e4425d8766e7e71f443163caab32e876cbe86cf25bf4fa0bce8e4fe"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__body__d10__normal.png",
+              "w": 33,
+              "h": 39,
+              "sha256": "340e9ca041c2da4b81e763f4807d0e453ef769b884e8cc17333285cbb7ab6aa8"
+            },
+            "material": {
+              "file": "sheets/supply-truck__body__d10__material.png",
+              "w": 33,
+              "h": 39,
+              "sha256": "61734d513c55d98f81ad2cc1ea6c319dba9d3e43765cb5661f07b892488c3b54"
+            }
+          },
+          "filesHi": {
+            "w": 131,
+            "h": 153,
+            "pivot": [
+              65.51,
+              118.75
+            ],
+            "anchor": [
+              65.51,
+              118.75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__body__d10__albedo@4x.png",
+                "w": 131,
+                "h": 153,
+                "sha256": "5f3a893bab201d3f636468f93aa681de220b33e9d9f38f8bebeb4780900218d6"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__body__d10__normal@4x.png",
+                "w": 131,
+                "h": 153,
+                "sha256": "e03c9a3dcbf6e645d26cc6c0a8f955227e6ac15226d254cf2106bcbceb5fce8a"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__body__d10__material@4x.png",
+                "w": 131,
+                "h": 153,
+                "sha256": "df9d179fed20bcbb42cad59fec556cf9aa08facbfe0c3e6d4bd4ce6ca256d5c1"
+              }
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            21.56,
+            27.88
+          ],
+          "pivot": [
+            21.56,
+            27.88
+          ],
+          "depth": -4.55,
+          "w": 44,
+          "h": 38,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__body__d11__albedo.png",
+              "w": 44,
+              "h": 38,
+              "sha256": "c4d35b6e0bb6099a6d3ec007ae05fa88c6b1d153b9d6095ef388282a429b8363"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__body__d11__normal.png",
+              "w": 44,
+              "h": 38,
+              "sha256": "ca9c852cf7d25720b290cc7ad671b6b04b92027982523157d4d2680ff23023d7"
+            },
+            "material": {
+              "file": "sheets/supply-truck__body__d11__material.png",
+              "w": 44,
+              "h": 38,
+              "sha256": "f64ca4ddea7c82dff485da2d08455950087fed9f6df1aa760f7f3955fd9130bf"
+            }
+          },
+          "filesHi": {
+            "w": 171,
+            "h": 148,
+            "pivot": [
+              83.26,
+              110.51
+            ],
+            "anchor": [
+              83.26,
+              110.51
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__body__d11__albedo@4x.png",
+                "w": 171,
+                "h": 148,
+                "sha256": "8310efb9b5b14d6a2577b75ea936bd6f9e31a1bb00f0b3f8018ef3733549f5c5"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__body__d11__normal@4x.png",
+                "w": 171,
+                "h": 148,
+                "sha256": "2ebdcff4c6570534862b1a728052e2551120256839f4120451d0056ce7ac1525"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__body__d11__material@4x.png",
+                "w": 171,
+                "h": 148,
+                "sha256": "ff399795ee789c2de8b462a2cce2b9f405c86f7dc82c259b31da49ac4d381378"
+              }
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            24,
+            27
+          ],
+          "pivot": [
+            24,
+            27
+          ],
+          "depth": 10.14,
+          "w": 50,
+          "h": 36,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__body__d12__albedo.png",
+              "w": 50,
+              "h": 36,
+              "sha256": "f4d9e3267fd7caf362ad9fbfaa9518280877f76a90731f2fc87ae834307ef6fb"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__body__d12__normal.png",
+              "w": 50,
+              "h": 36,
+              "sha256": "577dd6b81631d0aa3fa2e5697fcb7f98b7d740647bd8fba338e06accd56dde3d"
+            },
+            "material": {
+              "file": "sheets/supply-truck__body__d12__material.png",
+              "w": 50,
+              "h": 36,
+              "sha256": "499e24cf20d586dabb51868d7b7a27a09860912499fc2aaffb797048adee250d"
+            }
+          },
+          "filesHi": {
+            "w": 198,
+            "h": 144,
+            "pivot": [
+              94,
+              108
+            ],
+            "anchor": [
+              94,
+              108
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__body__d12__albedo@4x.png",
+                "w": 198,
+                "h": 144,
+                "sha256": "c8a06f1bc157b00b0d92961cd6b2ea513c597ef008b45731885098616c81b5c6"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__body__d12__normal@4x.png",
+                "w": 198,
+                "h": 144,
+                "sha256": "a03d1d647f1e13e44b4f56ced39d414848f8ad1cf5e4dab52bf93d68a325a5e5"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__body__d12__material@4x.png",
+                "w": 198,
+                "h": 144,
+                "sha256": "b4079e53861f680f39c6a6fdf22c7ab5cb270040e854057ced28f870724e6c01"
+              }
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            23.56,
+            26.12
+          ],
+          "pivot": [
+            23.56,
+            26.12
+          ],
+          "depth": 25.11,
+          "w": 51,
+          "h": 34,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__body__d13__albedo.png",
+              "w": 51,
+              "h": 34,
+              "sha256": "6d623674e27ee8a3bd09d43fe5a3d01a28ba7eae9f111a91cdfb8745260fcf98"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__body__d13__normal.png",
+              "w": 51,
+              "h": 34,
+              "sha256": "d91d15b1cddcb92f9d4ccf1143ca49c2899dece5de50a06acbbc7c8057176564"
+            },
+            "material": {
+              "file": "sheets/supply-truck__body__d13__material.png",
+              "w": 51,
+              "h": 34,
+              "sha256": "16404078b1feae05cee37ae0567f15edcb33376404a65d9726d68a38314710ed"
+            }
+          },
+          "filesHi": {
+            "w": 199,
+            "h": 132,
+            "pivot": [
+              92.26,
+              101.49
+            ],
+            "anchor": [
+              92.26,
+              101.49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__body__d13__albedo@4x.png",
+                "w": 199,
+                "h": 132,
+                "sha256": "8d078042032f7c2b195c45032325e88d26455cd58e436f9ce4bb28a3468aaf06"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__body__d13__normal@4x.png",
+                "w": 199,
+                "h": 132,
+                "sha256": "33a6e4475b27dab09ad870d985c8b0091d0f1dddb7e4272021742a00e438c97f"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__body__d13__material@4x.png",
+                "w": 199,
+                "h": 132,
+                "sha256": "d89c53b7b58580c3d7b4068a0d8b08e8da805e1c50d0b23090e8902544cbc719"
+              }
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            20.63,
+            23.31
+          ],
+          "pivot": [
+            20.63,
+            23.31
+          ],
+          "depth": 38.09,
+          "w": 45,
+          "h": 30,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__body__d14__albedo.png",
+              "w": 45,
+              "h": 30,
+              "sha256": "cd86c572b141b35174c45abb053ef7eb256c6c078928a26a8c48f91565255a24"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__body__d14__normal.png",
+              "w": 45,
+              "h": 30,
+              "sha256": "fab6035c3e00c5db2697e13e6a0b3746a9751c2588269083de8513dc1ef99b6c"
+            },
+            "material": {
+              "file": "sheets/supply-truck__body__d14__material.png",
+              "w": 45,
+              "h": 30,
+              "sha256": "7e4aeab89451b2b0d8d6c77a429c50d222a48f2d5017279be89eb73fb5534450"
+            }
+          },
+          "filesHi": {
+            "w": 177,
+            "h": 114,
+            "pivot": [
+              79.51,
+              90.25
+            ],
+            "anchor": [
+              79.51,
+              90.25
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__body__d14__albedo@4x.png",
+                "w": 177,
+                "h": 114,
+                "sha256": "beb9e37497a22bf8b3ae53062253862018040cf53e504d0f92bddcb1e683d7ea"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__body__d14__normal@4x.png",
+                "w": 177,
+                "h": 114,
+                "sha256": "8d0cc44b7dd0da340f899abc860b5f4cd3b68b5405774bf86a21b6e2bf4c738f"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__body__d14__material@4x.png",
+                "w": 177,
+                "h": 114,
+                "sha256": "1693a47477be64bc950cf2a37b96b638f63b49dac72daf9039dd87b8fe5914af"
+              }
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            23.25,
+            23.78
+          ],
+          "pivot": [
+            23.25,
+            23.78
+          ],
+          "depth": 47.1,
+          "w": 50,
+          "h": 33,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__body__d15__albedo.png",
+              "w": 50,
+              "h": 33,
+              "sha256": "64181fb37d420ee69ee37479630615883fa307675d07793d959a6fd81967f88f"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__body__d15__normal.png",
+              "w": 50,
+              "h": 33,
+              "sha256": "3f1fb9ca25f6de00d359eacdbddc0c8b473e792528f1f970caad91ecb4b45822"
+            },
+            "material": {
+              "file": "sheets/supply-truck__body__d15__material.png",
+              "w": 50,
+              "h": 33,
+              "sha256": "b6c5a62f1cfdc2943bb3a2444723dc9b722a10a4dfd9cda07d6821ca88716919"
+            }
+          },
+          "filesHi": {
+            "w": 199,
+            "h": 129,
+            "pivot": [
+              91.98,
+              94.13
+            ],
+            "anchor": [
+              91.98,
+              94.13
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__body__d15__albedo@4x.png",
+                "w": 199,
+                "h": 129,
+                "sha256": "f68eea81d53c2cabb1bbd6decf63285cc64bb1bec96c3a0433bdda4ecbd5d285"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__body__d15__normal@4x.png",
+                "w": 199,
+                "h": 129,
+                "sha256": "48b994995cfdc8cafdba8dcbda8dca3dd1a21f2ad7c704120cb91836957bfd6e"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__body__d15__material@4x.png",
+                "w": 199,
+                "h": 129,
+                "sha256": "7c8eb3e8f4f8af236e5e468aefc6f4d8d6d68702c430ae48f8f627d5485ef9a4"
+              }
+            }
+          }
+        }
+      }
+    },
+    "wheels.L": {
+      "name": "wheels.L",
+      "dynamic": false,
+      "parent": null,
+      "pivotDesign": [
+        256,
+        256,
+        0
+      ],
+      "traverse": false,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            11,
+            19
+          ],
+          "pivot": [
+            11,
+            19
+          ],
+          "depth": 32.01,
+          "w": 34,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.L__d00__albedo.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "9e859b3b2601e9d765c7ea655e9d824862ae2415566d4c9db4ae9a872d4c3307"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.L__d00__normal.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "8f60309a6a2d2f2c0ef4a5166bfb63cf47b81b05cd631408163cd7b9fa935843"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.L__d00__material.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "cd8176faab39f60461b9c94cf8c11ce54c12a300d4a53c50d654fd5fe7f7fbd4"
+            }
+          },
+          "filesHi": {
+            "w": 132,
+            "h": 98,
+            "pivot": [
+              42,
+              75
+            ],
+            "anchor": [
+              42,
+              75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.L__d00__albedo@4x.png",
+                "w": 132,
+                "h": 98,
+                "sha256": "95a40790eb79ab7600af9a1f5ea810177a14733732879b17e24874092977b9ec"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.L__d00__normal@4x.png",
+                "w": 132,
+                "h": 98,
+                "sha256": "3149aa5032044e3ad86b0de1dd2c23327326581fa8b6e629dd34b638b841b9ac"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.L__d00__material@4x.png",
+                "w": 132,
+                "h": 98,
+                "sha256": "98992ca078a0511f86724ae54c369c16f30cca8bc26e769544f056791f4e902a"
+              }
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            4.75,
+            18.78
+          ],
+          "pivot": [
+            4.75,
+            18.78
+          ],
+          "depth": 32.79,
+          "w": 26,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.L__d01__albedo.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "123c3ac8d71922e57e16e884c0b8da814abd8bd322f2c20636a9b36935753b29"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.L__d01__normal.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "1bee927b53bbaea97dd340b069d8615eca4ce4d52ca40ab5a1619e8ef826d60b"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.L__d01__material.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "8b9c68b7eb615410b14532b21283c5396eec6036ed7c8de91074209114c82042"
+            }
+          },
+          "filesHi": {
+            "w": 99,
+            "h": 105,
+            "pivot": [
+              16.02,
+              73.13
+            ],
+            "anchor": [
+              16.02,
+              73.13
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.L__d01__albedo@4x.png",
+                "w": 99,
+                "h": 105,
+                "sha256": "8eceed256e0929af01ec31f9b94b2e5938ddfecfcf1057b0dc75a5b67b2f3afd"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.L__d01__normal@4x.png",
+                "w": 99,
+                "h": 105,
+                "sha256": "766737a11786f235be480bab7a2ade73eea899b7f6f7649746a316e562b73f98"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.L__d01__material@4x.png",
+                "w": 99,
+                "h": 105,
+                "sha256": "0fd4b66fef990f2598e1b4a78e3795eea896388242b755a6dc87a6763095794a"
+              }
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            -1.63,
+            17.31
+          ],
+          "pivot": [
+            -1.63,
+            17.31
+          ],
+          "depth": 29.12,
+          "w": 16,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.L__d02__albedo.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "e9baffd9cecadb4b77f9c0754f59be03fbf5c04c10418552fc3e37e11f4605d1"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.L__d02__normal.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "bd8aae2694313ae9d73b0d4e5c76cfb1fab198e19aae6619fa782fefeb65374d"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.L__d02__material.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "028f15ab66d7d8df214c24f2674bd1fdcc1a9bb23da619788247a6dd342bc3a5"
+            }
+          },
+          "filesHi": {
+            "w": 61,
+            "h": 105,
+            "pivot": [
+              -9.51,
+              66.25
+            ],
+            "anchor": [
+              -9.51,
+              66.25
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.L__d02__albedo@4x.png",
+                "w": 61,
+                "h": 105,
+                "sha256": "398f46519165e7e57b133172c5b79f67454ce59cfde625c3520b44d56411ad72"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.L__d02__normal@4x.png",
+                "w": 61,
+                "h": 105,
+                "sha256": "38f0adb1f12453886e855189b492ac4804d9c41caeb9e1e69cd95dacf848c266"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.L__d02__material@4x.png",
+                "w": 61,
+                "h": 105,
+                "sha256": "f20111c476d0797ee3080184e2bdb42e77ece6eb64599104e8b4cd1d4b1a4f03"
+              }
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            3.44,
+            15.12
+          ],
+          "pivot": [
+            3.44,
+            15.12
+          ],
+          "depth": 21.58,
+          "w": 25,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.L__d03__albedo.png",
+              "w": 25,
+              "h": 27,
+              "sha256": "eb4cd1a540dc533262f8917d96b501bc295acf149b1fba1100686378bc510270"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.L__d03__normal.png",
+              "w": 25,
+              "h": 27,
+              "sha256": "7f52d0e4b3e6aee9f61bf44d46200c3c8f13609f4efab2f903adb055cb820c34"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.L__d03__material.png",
+              "w": 25,
+              "h": 27,
+              "sha256": "eaa3ea65b04244c0b74747e57ff1ad6996e839c246c0f564b84fea295f479d93"
+            }
+          },
+          "filesHi": {
+            "w": 98,
+            "h": 106,
+            "pivot": [
+              13.74,
+              59.49
+            ],
+            "anchor": [
+              13.74,
+              59.49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.L__d03__albedo@4x.png",
+                "w": 98,
+                "h": 106,
+                "sha256": "60eacc6a5a76e254a88d9d2651f9cc2f6c16fdc05a3459447ba4c7c11e8d2ce1"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.L__d03__normal@4x.png",
+                "w": 98,
+                "h": 106,
+                "sha256": "229a7e185b82104b0a8375a372cacd2bea14dc0f7863ae78d46ff01f2100a4aa"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.L__d03__material@4x.png",
+                "w": 98,
+                "h": 106,
+                "sha256": "7bdd537bd9fd6fc45ce7f676f68e4efd9283b6ed83fb454a1efef337bca0c036"
+              }
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            10,
+            13
+          ],
+          "pivot": [
+            10,
+            13
+          ],
+          "depth": 11.29,
+          "w": 34,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.L__d04__albedo.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "f76fe7db248d83d864f6114216c0c743634177f8694e538a810bc910dccf15fa"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.L__d04__normal.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "1edb91911e5df599796e5d696f77a9a92d93c1866fecfcabe3bea4d96af7df15"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.L__d04__material.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "691f76f821abbcb0a8ed67a8e00978c4fde4c2d8df70a69359fc7fcf3913b005"
+            }
+          },
+          "filesHi": {
+            "w": 130,
+            "h": 97,
+            "pivot": [
+              37,
+              49
+            ],
+            "anchor": [
+              37,
+              49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.L__d04__albedo@4x.png",
+                "w": 130,
+                "h": 97,
+                "sha256": "550f1bdf81465a60e47a3b35583c8a1769116bdb6b9a41b2a58d8f25cddef7c8"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.L__d04__normal@4x.png",
+                "w": 130,
+                "h": 97,
+                "sha256": "b29e51ab66f7534fdee9179e8b4e6491bf81e6f9ce334e07efd149ec5aaa6768"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.L__d04__material@4x.png",
+                "w": 130,
+                "h": 97,
+                "sha256": "ead20173620a84656e906a895347e04903d912fd2004c991947593bbf2cac235"
+              }
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            14.44,
+            9.88
+          ],
+          "pivot": [
+            14.44,
+            9.88
+          ],
+          "depth": -0.16,
+          "w": 38,
+          "h": 22,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.L__d05__albedo.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "f28ca3f6a33d9be128064956a79b7391939ee680b0bc6c735fb7c710c36d0909"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.L__d05__normal.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "7107d59105c5a1002d71fe47308f1f2343db5cebf5f720be78b92ebfb6d8c0d5"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.L__d05__material.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "0ff32581fed694171ad7fedd65a3cd87e1c385198607d8d6bd0b8aa5eb9c08b0"
+            }
+          },
+          "filesHi": {
+            "w": 149,
+            "h": 83,
+            "pivot": [
+              57.74,
+              37.51
+            ],
+            "anchor": [
+              57.74,
+              37.51
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.L__d05__albedo@4x.png",
+                "w": 149,
+                "h": 83,
+                "sha256": "c9356a0182c544808d51f92fd4b2599cb5b1c2fe8481a375782466c95fbbae31"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.L__d05__normal@4x.png",
+                "w": 149,
+                "h": 83,
+                "sha256": "343822981727443cf501c0be797e256b54870866cb648a60dc804cc044d5ab6a"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.L__d05__material@4x.png",
+                "w": 149,
+                "h": 83,
+                "sha256": "43e555f16917619d7ca04874ec1132a16e37f6239687722da1f975891938706e"
+              }
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            18.37,
+            6.69
+          ],
+          "pivot": [
+            18.37,
+            6.69
+          ],
+          "depth": -11.04,
+          "w": 38,
+          "h": 17,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.L__d06__albedo.png",
+              "w": 38,
+              "h": 17,
+              "sha256": "cb314c6a16c8e7416e7a0b078f4f3369291075575f7e2b7d56ef3c303f766208"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.L__d06__normal.png",
+              "w": 38,
+              "h": 17,
+              "sha256": "be4db8a3817041c328cab4705c2614454242d995d2a7fa65e7815b349aec1f70"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.L__d06__material.png",
+              "w": 38,
+              "h": 17,
+              "sha256": "934cfbe7d0c3a767e40d863011c6d29a8f4b260a2ad50d5963fdfb1c1e9c0d4e"
+            }
+          },
+          "filesHi": {
+            "w": 151,
+            "h": 66,
+            "pivot": [
+              73.49,
+              26.75
+            ],
+            "anchor": [
+              73.49,
+              26.75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.L__d06__albedo@4x.png",
+                "w": 151,
+                "h": 66,
+                "sha256": "1f08ee1225f045027fd4c41403badde78f49ba3abf3626a55aad45ac3a99a537"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.L__d06__normal@4x.png",
+                "w": 151,
+                "h": 66,
+                "sha256": "f1edc749af54acb44a9e70a571135d4c5dcc48c80aa0b94f525b72750f78ee24"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.L__d06__material@4x.png",
+                "w": 151,
+                "h": 66,
+                "sha256": "4d129bad45d63ba0bfa04d545609d7e1301c1b3f3db17514359247071ccaec4b"
+              }
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            21.75,
+            9.22
+          ],
+          "pivot": [
+            21.75,
+            9.22
+          ],
+          "depth": -19.69,
+          "w": 38,
+          "h": 21,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.L__d07__albedo.png",
+              "w": 38,
+              "h": 21,
+              "sha256": "3bbc648e275188844b79f340eefaec4049ed7c290dd7041acf2fe2df06dc1fa1"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.L__d07__normal.png",
+              "w": 38,
+              "h": 21,
+              "sha256": "42d54042e1da8109edd81a7eb123c9ee1985e5a1f741411413d45a2046131429"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.L__d07__material.png",
+              "w": 38,
+              "h": 21,
+              "sha256": "2872b5baf317530249fa67387101fa2ff0ef96004f367ec1e27c1602a3367a7f"
+            }
+          },
+          "filesHi": {
+            "w": 150,
+            "h": 82,
+            "pivot": [
+              87.02,
+              34.87
+            ],
+            "anchor": [
+              87.02,
+              34.87
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.L__d07__albedo@4x.png",
+                "w": 150,
+                "h": 82,
+                "sha256": "992450b72a496a2d2332abb9cd5cf0a1b8731ea42ef55a46bbbdd8e4b952e347"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.L__d07__normal@4x.png",
+                "w": 150,
+                "h": 82,
+                "sha256": "934a220b106bd472b2ecfb7c4f5496a644b9d24f13c718930931ee39c94188be"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.L__d07__material@4x.png",
+                "w": 150,
+                "h": 82,
+                "sha256": "033be490897c7a45ab28512649794cc2e71f5fa918369ed305f514ca6676b064"
+              }
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            23,
+            12
+          ],
+          "pivot": [
+            23,
+            12
+          ],
+          "depth": -24.79,
+          "w": 34,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.L__d08__albedo.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "3d87bb3b17abe6ffe382aa571fbb3dd6e0fdb66902a0be5132847b9f6339a7aa"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.L__d08__normal.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "bddae98dadbe075f9e19d548f3bf66abace8026aa2101b1637e40ddad3413ed4"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.L__d08__material.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "97e9fe92b259af010919b3426ff0e3938c63cd18de65f10e0f853dca8d07c2ba"
+            }
+          },
+          "filesHi": {
+            "w": 132,
+            "h": 95,
+            "pivot": [
+              90,
+              45
+            ],
+            "anchor": [
+              90,
+              45
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.L__d08__albedo@4x.png",
+                "w": 132,
+                "h": 95,
+                "sha256": "857e573c01dabfe0d47882f9f7c2e27201aa8d78332dca44c892de8cad650184"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.L__d08__normal@4x.png",
+                "w": 132,
+                "h": 95,
+                "sha256": "210d158ad122978af0fb0aad2ada4a058c40e3d2098a7861113a6e14b3a47f0f"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.L__d08__material@4x.png",
+                "w": 132,
+                "h": 95,
+                "sha256": "2cb7b9323e683975ccf2e45805b5e05d82e6c2a1eb04aed6294c847897aaf348"
+              }
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            21.25,
+            14.22
+          ],
+          "pivot": [
+            21.25,
+            14.22
+          ],
+          "depth": -25.57,
+          "w": 26,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.L__d09__albedo.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "3e161563743983da49694a6a838a68740af9e9968a0e99717fa8cacd9d76718a"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.L__d09__normal.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "9405c5b7f4fc91555bd60099849eb416da48e536a2b4b368683e7c9e3ca80b5b"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.L__d09__material.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "dc39f10be9f4ef2bdf4bd85445084c256d5c00c0b4c0eb3322882676e4cbe6de"
+            }
+          },
+          "filesHi": {
+            "w": 99,
+            "h": 104,
+            "pivot": [
+              82.98,
+              55.87
+            ],
+            "anchor": [
+              82.98,
+              55.87
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.L__d09__albedo@4x.png",
+                "w": 99,
+                "h": 104,
+                "sha256": "bd5064a1790ffa087634a52d0b278519787aa5833754810376794b9c3c83f8e3"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.L__d09__normal@4x.png",
+                "w": 99,
+                "h": 104,
+                "sha256": "5c321af81d873e172523f9fdeba3a9d2f6c8a8f8b081ad62be1b73e203939467"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.L__d09__material@4x.png",
+                "w": 99,
+                "h": 104,
+                "sha256": "a47d06cb1eb17c855353a4cdc5049f77d92b264d4ee1feaa744ff733c33955a3"
+              }
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            17.63,
+            16.69
+          ],
+          "pivot": [
+            17.63,
+            16.69
+          ],
+          "depth": -21.91,
+          "w": 16,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.L__d10__albedo.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "4188f54f9a0d1a378b24f1df8785556dfd9d7fd8d770fb44e4d5c8cacc659f1a"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.L__d10__normal.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "65205498478ed652a844150739b2d810629a0b0a9a64929534a2d3edfc0ca931"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.L__d10__material.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "d78721017bdd765d1931d4a70dd77d604857db2108524aa4924a5b6c0d7760db"
+            }
+          },
+          "filesHi": {
+            "w": 61,
+            "h": 106,
+            "pivot": [
+              70.51,
+              64.75
+            ],
+            "anchor": [
+              70.51,
+              64.75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.L__d10__albedo@4x.png",
+                "w": 61,
+                "h": 106,
+                "sha256": "2934b8b1da2fc31d4e8fa9fbc03a500b2ed575f64c8f6929761bd173d492e117"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.L__d10__normal@4x.png",
+                "w": 61,
+                "h": 106,
+                "sha256": "7991d30a59a1b2f8b5517fd94fef349460c9ca547ae54ce8d199a02b407d41cd"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.L__d10__material@4x.png",
+                "w": 61,
+                "h": 106,
+                "sha256": "121e774b50fcc7d6c35676b6d01137b194afe8afe9fe67cf4e2e10e1351be257"
+              }
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            21.56,
+            17.88
+          ],
+          "pivot": [
+            21.56,
+            17.88
+          ],
+          "depth": -14.36,
+          "w": 25,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.L__d11__albedo.png",
+              "w": 25,
+              "h": 27,
+              "sha256": "fb5a47d4e3f1e3be2544eee390958299fc700e1cbe76ab64e391f52717913931"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.L__d11__normal.png",
+              "w": 25,
+              "h": 27,
+              "sha256": "deeb33a999204a635c456358cffb1fb795790c16acdaccaaa41815efaa90d04d"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.L__d11__material.png",
+              "w": 25,
+              "h": 27,
+              "sha256": "10b57fd0e8fb59fd28d4093790143ad899af9f7576f79dfeb8c4f2a133838a48"
+            }
+          },
+          "filesHi": {
+            "w": 98,
+            "h": 106,
+            "pivot": [
+              84.26,
+              71.51
+            ],
+            "anchor": [
+              84.26,
+              71.51
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.L__d11__albedo@4x.png",
+                "w": 98,
+                "h": 106,
+                "sha256": "b3dff2de450ed74c6466c953a557750c34fa693b66500420879ab6ceab09aa16"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.L__d11__normal@4x.png",
+                "w": 98,
+                "h": 106,
+                "sha256": "d9aefb062a3e10297c645eb5873c0e3eee6ce7c98a674200e2624cc9ff358cda"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.L__d11__material@4x.png",
+                "w": 98,
+                "h": 106,
+                "sha256": "bc3deb32675a2b988a25257793bd49989d96abf572cc5f9ed94c2e577038448b"
+              }
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            24,
+            19
+          ],
+          "pivot": [
+            24,
+            19
+          ],
+          "depth": -4.08,
+          "w": 34,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.L__d12__albedo.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "61e442ac5f56d628f59d9530ab5bee1b0b561c6219156b405b2fabd5b7a7dd4b"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.L__d12__normal.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "2916a6c21679d029d08867f008188a844b35908a57bc5897ba3b6b17938c3979"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.L__d12__material.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "43797ddbb531fe6a3c8f7b583ef66289efc1cb449277fe3a31990e23699c33a7"
+            }
+          },
+          "filesHi": {
+            "w": 130,
+            "h": 97,
+            "pivot": [
+              93,
+              73
+            ],
+            "anchor": [
+              93,
+              73
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.L__d12__albedo@4x.png",
+                "w": 130,
+                "h": 97,
+                "sha256": "7238b77a46063b9d6cbe8ace1ce2dfaf70bf7777638d8baeaa5cf78a5cc92046"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.L__d12__normal@4x.png",
+                "w": 130,
+                "h": 97,
+                "sha256": "f11d1579622cdbb1180b6d461c294afd826786f2bc1cf67baccbcb7bfa3772d2"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.L__d12__material@4x.png",
+                "w": 130,
+                "h": 97,
+                "sha256": "6e99a3618dabb1a6633c4e60e73d5e374dd0afda6759c6ba760284e3a365acdf"
+              }
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            23.56,
+            18.12
+          ],
+          "pivot": [
+            23.56,
+            18.12
+          ],
+          "depth": 7.38,
+          "w": 38,
+          "h": 22,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.L__d13__albedo.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "cd76bab861cbe113f6567d5063c4293ece49a0948d11ae893b3196cba7c00ff0"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.L__d13__normal.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "adc860b381022b285148614b37ab7971a90184a6fd99a58ecb76f52f88545d9b"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.L__d13__material.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "1e0e1c4574c4ffbe514192b7b3678606514b206e9bf75f8536b2667fe2bb7ad4"
+            }
+          },
+          "filesHi": {
+            "w": 149,
+            "h": 85,
+            "pivot": [
+              91.26,
+              71.49
+            ],
+            "anchor": [
+              91.26,
+              71.49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.L__d13__albedo@4x.png",
+                "w": 149,
+                "h": 85,
+                "sha256": "e26d1b2aa3bbce88fadb7e6489541d72b405c60d1465e3140ce4b40a8fd1cade"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.L__d13__normal@4x.png",
+                "w": 149,
+                "h": 85,
+                "sha256": "85ad94c8674d3ae3dea22e52ba31abf49223c784f3cebe5292ce303d2f458452"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.L__d13__material@4x.png",
+                "w": 149,
+                "h": 85,
+                "sha256": "e80bea9b98ae66540293dece3c70713b41363cbe2de91f1b16df3ac00128fe40"
+              }
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            19.63,
+            16.31
+          ],
+          "pivot": [
+            19.63,
+            16.31
+          ],
+          "depth": 18.25,
+          "w": 38,
+          "h": 18,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.L__d14__albedo.png",
+              "w": 38,
+              "h": 18,
+              "sha256": "7913ac6b00cac2f2333d7235d37dff428a3007a50fce0f393af9d815a6105df8"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.L__d14__normal.png",
+              "w": 38,
+              "h": 18,
+              "sha256": "0149fab3968d1a71272db68cf255a92c2e5809014f6e37e88b3ac093d4ff440f"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.L__d14__material.png",
+              "w": 38,
+              "h": 18,
+              "sha256": "ff01a4fc71e4216e7cb152d6bee5f98b03b7af696516f60eb09565afe07e03d0"
+            }
+          },
+          "filesHi": {
+            "w": 151,
+            "h": 69,
+            "pivot": [
+              77.51,
+              65.25
+            ],
+            "anchor": [
+              77.51,
+              65.25
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.L__d14__albedo@4x.png",
+                "w": 151,
+                "h": 69,
+                "sha256": "d47b64430d124fc324ff0ee5852b9dce43bfde414fe232c3a2ac65166efb8a6c"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.L__d14__normal@4x.png",
+                "w": 151,
+                "h": 69,
+                "sha256": "d846d97a1667fc78f3298aff84fc222bfb2fd31ae3b7e427217826bcff8cddf8"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.L__d14__material@4x.png",
+                "w": 151,
+                "h": 69,
+                "sha256": "a84f11c1b12ab5a26ef410e2718f6fe3c4c67d011cb885c2e0930e8fd660e761"
+              }
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            16.25,
+            18.78
+          ],
+          "pivot": [
+            16.25,
+            18.78
+          ],
+          "depth": 26.9,
+          "w": 38,
+          "h": 22,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.L__d15__albedo.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "a531f5d0ab501e6a3b9072054046edd2208c9eea6838b33cf87faf0667665328"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.L__d15__normal.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "24a82b40fbfa92eb55c48b1428adafc79c5f992dd91e141b30b1aa376b3ec6d0"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.L__d15__material.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "ec42152d07aea8975611d27cc3824c98b7088f645d4a94e4f1ea5b6a50cce086"
+            }
+          },
+          "filesHi": {
+            "w": 150,
+            "h": 85,
+            "pivot": [
+              62.98,
+              72.13
+            ],
+            "anchor": [
+              62.98,
+              72.13
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.L__d15__albedo@4x.png",
+                "w": 150,
+                "h": 85,
+                "sha256": "9bb0ed0134a047d5e70d9edf7c5b7c9abe260dd209739014dec999ecb00687bb"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.L__d15__normal@4x.png",
+                "w": 150,
+                "h": 85,
+                "sha256": "7039242777d998bf6c985274fe15acd61000d9c07e6ae4ed241e6be7f4a882d8"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.L__d15__material@4x.png",
+                "w": 150,
+                "h": 85,
+                "sha256": "393d1e29275335a67a2433d142c5ef35b9fae2593fae69cf03ee9773396a465f"
+              }
+            }
+          }
+        }
+      }
+    },
+    "wheels.R": {
+      "name": "wheels.R",
+      "dynamic": false,
+      "parent": null,
+      "pivotDesign": [
+        256,
+        256,
+        0
+      ],
+      "traverse": false,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            24,
+            13
+          ],
+          "pivot": [
+            24,
+            13
+          ],
+          "depth": 48.24,
+          "w": 34,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.R__d00__albedo.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "a34d14626b57efcb4de8194a01dc924cd3cf6cd1716d42d847971f33a0ee437c"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.R__d00__normal.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "2e80addc0dc581bb3006070c86db1259e3bad1178bf9c43eba2622ba8f517692"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.R__d00__material.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "182108b628b3d02322d3cd5207660c624e0e7e343c2ff8ec065b42d3f9aa4c18"
+            }
+          },
+          "filesHi": {
+            "w": 130,
+            "h": 97,
+            "pivot": [
+              93,
+              49
+            ],
+            "anchor": [
+              93,
+              49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.R__d00__albedo@4x.png",
+                "w": 130,
+                "h": 97,
+                "sha256": "448d4bc959c6893d3c4b2850e14539e3297f228467c214090abfa7b98df9d147"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.R__d00__normal@4x.png",
+                "w": 130,
+                "h": 97,
+                "sha256": "2faece5cf961f14c02c692a436bf4a1274c7af45cdd516adbbd139853e5c33a7"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.R__d00__material@4x.png",
+                "w": 130,
+                "h": 97,
+                "sha256": "aa48b1cc473c65a6b99c67b6d54e61b68eeb1c2e94dcaa1edfa0be0ee2e504e5"
+              }
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            21.75,
+            14.78
+          ],
+          "pivot": [
+            21.75,
+            14.78
+          ],
+          "depth": 41.57,
+          "w": 26,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.R__d01__albedo.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "53aaa2343cefb675a140170171dbe386c9190a98fc65439f9d26e29ca5481ba7"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.R__d01__normal.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "14c89a86e3657cf140743924b51f11236c16755c616745bc85086bb0f449f89c"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.R__d01__material.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "3c05bc831fea0d2cf3ce0b284e413b4644f9301f3ae8887270aa957dbd7ec8ae"
+            }
+          },
+          "filesHi": {
+            "w": 99,
+            "h": 105,
+            "pivot": [
+              85.02,
+              59.13
+            ],
+            "anchor": [
+              85.02,
+              59.13
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.R__d01__albedo@4x.png",
+                "w": 99,
+                "h": 105,
+                "sha256": "c4e33254dd4c24520e5f0b518539e417fdf10af4d60f49f6ab3b9732e3d85a78"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.R__d01__normal@4x.png",
+                "w": 99,
+                "h": 105,
+                "sha256": "5830f2d5721001c2245bdc9e1466a65a594ef63637c86a946750a5207dce262e"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.R__d01__material@4x.png",
+                "w": 99,
+                "h": 105,
+                "sha256": "aaae3057ff5bb934b3c61a52789864b826621dd6b38955e0a52a392d66fddfd7"
+              }
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            18.37,
+            17.31
+          ],
+          "pivot": [
+            18.37,
+            17.31
+          ],
+          "depth": 29.12,
+          "w": 16,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.R__d02__albedo.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "6b02ed2daaf4b90203707eee0a39ea4a2a35d63c266cd52bd186a3ada69091f9"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.R__d02__normal.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "a175b28ba9417f97fff2df14e33840c71e7f1f591f2eeff1aa51d96eeb9b5acb"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.R__d02__material.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "f3e2ff6cfd2d855e7db703f0d1b03a606fe70f0619373d09ccf1833053f63d57"
+            }
+          },
+          "filesHi": {
+            "w": 61,
+            "h": 105,
+            "pivot": [
+              70.49,
+              66.25
+            ],
+            "anchor": [
+              70.49,
+              66.25
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.R__d02__albedo@4x.png",
+                "w": 61,
+                "h": 105,
+                "sha256": "a284af4e1ca1f2a25dc0e57e3a67505fcebc48d73adca18cc8493f08d5c6080b"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.R__d02__normal@4x.png",
+                "w": 61,
+                "h": 105,
+                "sha256": "125b52fb8328064826eb88ddc2d7fb14ea5c5118b041b5640a4e2204e16517d6"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.R__d02__material@4x.png",
+                "w": 61,
+                "h": 105,
+                "sha256": "2d01092d7bcd8ae1720b2761950890c9ed838508de0238e8208cb67407a69a9e"
+              }
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            21.44,
+            19.12
+          ],
+          "pivot": [
+            21.44,
+            19.12
+          ],
+          "depth": 12.79,
+          "w": 26,
+          "h": 28,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.R__d03__albedo.png",
+              "w": 26,
+              "h": 28,
+              "sha256": "3dc8d5e8efab27f0ae476620a0a0db4b325eee5cdbd437bf0bc64faad57e5fe5"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.R__d03__normal.png",
+              "w": 26,
+              "h": 28,
+              "sha256": "cac97155aa39d8e693443223cbf0041e122891e15b3d55d4aaa342cb909f48a1"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.R__d03__material.png",
+              "w": 26,
+              "h": 28,
+              "sha256": "45369dddcc6172f70d6106dc5af6bd39caa904a2db66dbba8e952e4fb504e707"
+            }
+          },
+          "filesHi": {
+            "w": 100,
+            "h": 106,
+            "pivot": [
+              83.74,
+              73.49
+            ],
+            "anchor": [
+              83.74,
+              73.49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.R__d03__albedo@4x.png",
+                "w": 100,
+                "h": 106,
+                "sha256": "1dc3fe6974696dd4996cb60e06efc972e968961cd8b4862c9cf9021b26997942"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.R__d03__normal@4x.png",
+                "w": 100,
+                "h": 106,
+                "sha256": "5d72592890ab2d2e0eab705d57e8a41218fafef3b4c61d54b5f5e12e2a480399"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.R__d03__material@4x.png",
+                "w": 100,
+                "h": 106,
+                "sha256": "50b7c9799bb3fb9080f279a18800881fc2d425d9eead73e575b43212fe42d9c7"
+              }
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            23,
+            19
+          ],
+          "pivot": [
+            23,
+            19
+          ],
+          "depth": -4.94,
+          "w": 34,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.R__d04__albedo.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "1edc9415357479857a0746655144c779ac75aa344fb57fc63c4169cf938098bf"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.R__d04__normal.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "62947697fe8d42c57644ddff8db72fc0e3c9717688bf2c678a4e2e9a0afa0e4a"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.R__d04__material.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "81333f68df6cdfafbe5703dc59a804563f090f7fd7837147f1919090a1b0dc50"
+            }
+          },
+          "filesHi": {
+            "w": 132,
+            "h": 98,
+            "pivot": [
+              90,
+              75
+            ],
+            "anchor": [
+              90,
+              75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.R__d04__albedo@4x.png",
+                "w": 132,
+                "h": 98,
+                "sha256": "5ae6c279a57d4f36b506dabb008e81aabdf0ec0fbf136a01369b22b92dc3787b"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.R__d04__normal@4x.png",
+                "w": 132,
+                "h": 98,
+                "sha256": "72fe59016abf9f169ad696c6b3cd054a87a5033fcfd7d7027f9ff43c12b090eb"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.R__d04__material@4x.png",
+                "w": 132,
+                "h": 98,
+                "sha256": "2d742689bfed0382f4265481f67f460aaf01eb4c0aadfd54bd667ea7f0a6375a"
+              }
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            22.44,
+            17.88
+          ],
+          "pivot": [
+            22.44,
+            17.88
+          ],
+          "depth": -21.37,
+          "w": 39,
+          "h": 21,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.R__d05__albedo.png",
+              "w": 39,
+              "h": 21,
+              "sha256": "6edd3c89c730b93faf07335c0d4199239222f17f40f3bfcb2f09461f10e22461"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.R__d05__normal.png",
+              "w": 39,
+              "h": 21,
+              "sha256": "c48f4677aa73d14acf557f3fe6fa4958875925362267d222df57f945aca4e26b"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.R__d05__material.png",
+              "w": 39,
+              "h": 21,
+              "sha256": "4590d847ac919178a89c52034a51073c9b5f59c85f99aef78164697f1d4a0122"
+            }
+          },
+          "filesHi": {
+            "w": 151,
+            "h": 84,
+            "pivot": [
+              87.74,
+              71.51
+            ],
+            "anchor": [
+              87.74,
+              71.51
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.R__d05__albedo@4x.png",
+                "w": 151,
+                "h": 84,
+                "sha256": "b7059e69e9c1932962faf34e56acfd595f15d8a37b0cb58960ef0dff28a5bf20"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.R__d05__normal@4x.png",
+                "w": 151,
+                "h": 84,
+                "sha256": "2f0acb9fc4855ca7032f966bba0a520f88f24a5b53683fb00ef3c390e050fbe8"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.R__d05__material@4x.png",
+                "w": 151,
+                "h": 84,
+                "sha256": "edd3c0032426b1134cb4aa93e99a4398e176725e1283b33ca5966f65d3f068b4"
+              }
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            18.37,
+            16.69
+          ],
+          "pivot": [
+            18.37,
+            16.69
+          ],
+          "depth": -34,
+          "w": 38,
+          "h": 18,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.R__d06__albedo.png",
+              "w": 38,
+              "h": 18,
+              "sha256": "987de4f8f4bdc3c0c88502da69711624a1f9e9f812e714b9088d4f905d1ddc2a"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.R__d06__normal.png",
+              "w": 38,
+              "h": 18,
+              "sha256": "5de48510812d72c4033053c247807871ac2f3b716ecf540569e2b32384828f93"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.R__d06__material.png",
+              "w": 38,
+              "h": 18,
+              "sha256": "1935aa19586b5870176f49b9dc0fb0607d2eebef64805194fbda1d3d331629ab"
+            }
+          },
+          "filesHi": {
+            "w": 151,
+            "h": 68,
+            "pivot": [
+              73.49,
+              64.75
+            ],
+            "anchor": [
+              73.49,
+              64.75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.R__d06__albedo@4x.png",
+                "w": 151,
+                "h": 68,
+                "sha256": "a9a960c0d21af2fc378eb7d47e18a82a0954599394ee6f5287efaabf09093a54"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.R__d06__normal@4x.png",
+                "w": 151,
+                "h": 68,
+                "sha256": "6ac4aefaf3ff63255cc1843e972a4220fdeaa782f77c25dc5f8a63e5c9bbad20"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.R__d06__material@4x.png",
+                "w": 151,
+                "h": 68,
+                "sha256": "bcd886ff2d3fa3bd5348117ee2924169b7fc14210cd2391e359537d374b75d29"
+              }
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            14.75,
+            18.22
+          ],
+          "pivot": [
+            14.75,
+            18.22
+          ],
+          "depth": -40.9,
+          "w": 38,
+          "h": 22,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.R__d07__albedo.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "6bbd058d3b6de1549d1d44d915e196c396b679726b3857c90b58c03ac61585fd"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.R__d07__normal.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "84352ceb0f048dd8fd9895d17d3e03f0196a1f79df7a66525dbbdf1f0774b37d"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.R__d07__material.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "1957bfe987e32ff9a8f2ded05792545101f5d15b3ec17fad408ee746878125b6"
+            }
+          },
+          "filesHi": {
+            "w": 149,
+            "h": 84,
+            "pivot": [
+              58.02,
+              70.87
+            ],
+            "anchor": [
+              58.02,
+              70.87
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.R__d07__albedo@4x.png",
+                "w": 149,
+                "h": 84,
+                "sha256": "e756b7fcb26bfbc86b2e02b4871db09a159e16022d17b553e4fcb778aa1674db"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.R__d07__normal@4x.png",
+                "w": 149,
+                "h": 84,
+                "sha256": "42285ca142533834826feea0352bca5bfa7b24d33bce7270893ca1100f726f97"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.R__d07__material@4x.png",
+                "w": 149,
+                "h": 84,
+                "sha256": "51eef93632d8509269421a46ce61024180aa671c77c0bb3bdf5dec9d0f358a4b"
+              }
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            10,
+            19
+          ],
+          "pivot": [
+            10,
+            19
+          ],
+          "depth": -41.03,
+          "w": 34,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.R__d08__albedo.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "aec333309702450a92e4d8ac971c0e1e776d6e356bcdb99ec0d82c4256248300"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.R__d08__normal.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "2e7099164474edce3d6c489feb5da56bebde22e48606e5f36eff8bf9a05d8ca8"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.R__d08__material.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "a8a59f167f4dfc6411a79e112942ba006460453981894cc69f6f3a28dedc8dd9"
+            }
+          },
+          "filesHi": {
+            "w": 131,
+            "h": 97,
+            "pivot": [
+              38,
+              73
+            ],
+            "anchor": [
+              38,
+              73
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.R__d08__albedo@4x.png",
+                "w": 131,
+                "h": 97,
+                "sha256": "5f632ba6be5b98aaf2ad573a86e95c76064e86c0a48ba9bd5dc5db45f8e7311c"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.R__d08__normal@4x.png",
+                "w": 131,
+                "h": 97,
+                "sha256": "ddd3d88ce0c86161229cd7ae1158eed0240899bb97fecd7a15c26c1db56b47f3"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.R__d08__material@4x.png",
+                "w": 131,
+                "h": 97,
+                "sha256": "9f7b02d4497c1b7f61ef9a94881f4dba8cb100f4eb64c37325bf72ce571b1e22"
+              }
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            4.25,
+            18.22
+          ],
+          "pivot": [
+            4.25,
+            18.22
+          ],
+          "depth": -34.36,
+          "w": 26,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.R__d09__albedo.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "39f7c92ce15ed3367b3100d687f6b0eec8dce070ae867b07b521619861323c0f"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.R__d09__normal.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "84cee0ceb115d1eaeeca96fd8c70c94a23b27da8d33805e246f065d0157f708f"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.R__d09__material.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "00ec6c249e724521deb3170bf89c4855ec80d72aa23389db2e6f743f7933f65a"
+            }
+          },
+          "filesHi": {
+            "w": 99,
+            "h": 105,
+            "pivot": [
+              13.98,
+              70.87
+            ],
+            "anchor": [
+              13.98,
+              70.87
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.R__d09__albedo@4x.png",
+                "w": 99,
+                "h": 105,
+                "sha256": "3a64c4f79119ee098a8d781a9a3f74b7399cda8bf42d819e5a059338df87e3bc"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.R__d09__normal@4x.png",
+                "w": 99,
+                "h": 105,
+                "sha256": "10c33302052ff5b060d399efc3eaf0ac1848337d20309500c3ee2b8eaae9da52"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.R__d09__material@4x.png",
+                "w": 99,
+                "h": 105,
+                "sha256": "0656a6e37be9dfdc8cb69bf93f7882fb07d78cdb7b51a3b5b87f9464c4702fec"
+              }
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            -2.37,
+            16.69
+          ],
+          "pivot": [
+            -2.37,
+            16.69
+          ],
+          "depth": -21.91,
+          "w": 16,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.R__d10__albedo.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "077e6174ea795fe0675a4fc8ace9b6bc40f83eaaf412bac652e6ca6c6670e1ee"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.R__d10__normal.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "ede24648121b64d8f364d1b1f6cda62a87eaffd738efec38932bb8ef2ef8068c"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.R__d10__material.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "1cb5d31959fd9611d47658e64d171a15a7356f5bd0bcde98dad3118f2e61dd2d"
+            }
+          },
+          "filesHi": {
+            "w": 61,
+            "h": 106,
+            "pivot": [
+              -9.49,
+              64.75
+            ],
+            "anchor": [
+              -9.49,
+              64.75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.R__d10__albedo@4x.png",
+                "w": 61,
+                "h": 106,
+                "sha256": "8eda1c104cbe94366422538a8a94586fd5a8636db63a7e114d949561ae088879"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.R__d10__normal@4x.png",
+                "w": 61,
+                "h": 106,
+                "sha256": "e6474aa9aa8fe823acbefe9249d92ff383edfe0540aec87a1bc963e548d0c784"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.R__d10__material@4x.png",
+                "w": 61,
+                "h": 106,
+                "sha256": "e7552748077e1efb0bfdbf267c4a1a15c671f2c47ae71aa914f530b0cd969523"
+              }
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            4.56,
+            14.88
+          ],
+          "pivot": [
+            4.56,
+            14.88
+          ],
+          "depth": -5.57,
+          "w": 26,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.R__d11__albedo.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "2f848ede845d913c05c8fd9d9a215cb2c1a6b7cf63fd51eac01cf257c5df7162"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.R__d11__normal.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "838db166f3c74f718fe22cf5fbfd3688081a19f7e75f213184f92389e353ce87"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.R__d11__material.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "da2ade0bf2262f812c1de2809bba2c8053ee50021516ad70606b9a810de27c01"
+            }
+          },
+          "filesHi": {
+            "w": 100,
+            "h": 105,
+            "pivot": [
+              16.26,
+              56.51
+            ],
+            "anchor": [
+              16.26,
+              56.51
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.R__d11__albedo@4x.png",
+                "w": 100,
+                "h": 105,
+                "sha256": "6b3436352a4b01487741d210bf6a89b62a407b9971dd0b11bb62be329bd85e86"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.R__d11__normal@4x.png",
+                "w": 100,
+                "h": 105,
+                "sha256": "0292266c7a50c71c1f945c8ee7fad831af270a73c51f87342fe753d2ad72ec2f"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.R__d11__material@4x.png",
+                "w": 100,
+                "h": 105,
+                "sha256": "94ccdfce0dda078dc268b093d25d56e36f49e78a1e31d88424d7b10de283d67f"
+              }
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            11,
+            12
+          ],
+          "pivot": [
+            11,
+            12
+          ],
+          "depth": 12.16,
+          "w": 34,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.R__d12__albedo.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "dfb48eb37c18e92bbc6c19c3ade359c26fa8beae67dbf741cc939c03b44fcab7"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.R__d12__normal.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "d035ed5ead69b60cc10c4168ad375b12417dc557dd2700ed94022e2c80550f1b"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.R__d12__material.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "f15399d371a51af8d1dbba83626bf15a8baf19d1747a8e451356cd41f27adabb"
+            }
+          },
+          "filesHi": {
+            "w": 132,
+            "h": 96,
+            "pivot": [
+              42,
+              46
+            ],
+            "anchor": [
+              42,
+              46
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.R__d12__albedo@4x.png",
+                "w": 132,
+                "h": 96,
+                "sha256": "57d4cdff12fde016cd88523350bc30be54b1ca3ba72ad044dab1f5a5e5b582f6"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.R__d12__normal@4x.png",
+                "w": 132,
+                "h": 96,
+                "sha256": "d43d760f201994c504dc2dc7e7f7a429baf89d22cc9a70977fe9506faffe43cf"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.R__d12__material@4x.png",
+                "w": 132,
+                "h": 96,
+                "sha256": "d36352e880e565e0a609006f8252adb2a2b10bf97e683240f20e395c3646d76f"
+              }
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            16.56,
+            9.12
+          ],
+          "pivot": [
+            16.56,
+            9.12
+          ],
+          "depth": 28.59,
+          "w": 39,
+          "h": 21,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.R__d13__albedo.png",
+              "w": 39,
+              "h": 21,
+              "sha256": "6c7060c92ed230f8ba34f6f6ed7adff6f4ff725b035816af86794e5020a7d823"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.R__d13__normal.png",
+              "w": 39,
+              "h": 21,
+              "sha256": "a3f47aceadc9b00aa33144593098a684b08701cb23cfc3ca4072001b28ae40cb"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.R__d13__material.png",
+              "w": 39,
+              "h": 21,
+              "sha256": "0a14d8cf85b5563997b6e406655692433a3aa616f05468b7b643553fd1329d1b"
+            }
+          },
+          "filesHi": {
+            "w": 151,
+            "h": 81,
+            "pivot": [
+              63.26,
+              34.49
+            ],
+            "anchor": [
+              63.26,
+              34.49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.R__d13__albedo@4x.png",
+                "w": 151,
+                "h": 81,
+                "sha256": "c75478b72895d552cea80b9e5e7ff94622b039c4038b957bbdf298af4d0f7eea"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.R__d13__normal@4x.png",
+                "w": 151,
+                "h": 81,
+                "sha256": "5d1db4dfe7c7b1311c11ab92aa2dabfbe6505bd56b564c0ed9090dc9ef3286df"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.R__d13__material@4x.png",
+                "w": 151,
+                "h": 81,
+                "sha256": "6182ecf107fe8e8b7b6526305113b3ff2822520ceada4d60082f12979d5fca68"
+              }
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            19.63,
+            7.31
+          ],
+          "pivot": [
+            19.63,
+            7.31
+          ],
+          "depth": 41.22,
+          "w": 38,
+          "h": 18,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.R__d14__albedo.png",
+              "w": 38,
+              "h": 18,
+              "sha256": "742033e51d897341a12de66426f6e20407c91aad530dcc9318e1bcfe98dd4232"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.R__d14__normal.png",
+              "w": 38,
+              "h": 18,
+              "sha256": "2cbab79e864aab780e8db042acc1a38b7172a014d02f0eff118c76538d42e8ac"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.R__d14__material.png",
+              "w": 38,
+              "h": 18,
+              "sha256": "d1f5955e99a83c51fbd7d1bc70d3e14575816dd04315d82c2ec15722db9094c8"
+            }
+          },
+          "filesHi": {
+            "w": 151,
+            "h": 67,
+            "pivot": [
+              77.51,
+              27.25
+            ],
+            "anchor": [
+              77.51,
+              27.25
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.R__d14__albedo@4x.png",
+                "w": 151,
+                "h": 67,
+                "sha256": "436883c8899a52f2f6563b59c1e7ca21b43b360354798c465a501a80e5502685"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.R__d14__normal@4x.png",
+                "w": 151,
+                "h": 67,
+                "sha256": "04cfba7213a329bb24fef81816f8cb780e4d5507b96b11b5646009c0bd93bd9e"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.R__d14__material@4x.png",
+                "w": 151,
+                "h": 67,
+                "sha256": "a640f93d8e1addd62e70a9d75a42b356194077166447b43eac7c3175126a2611"
+              }
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            23.25,
+            9.78
+          ],
+          "pivot": [
+            23.25,
+            9.78
+          ],
+          "depth": 48.12,
+          "w": 38,
+          "h": 22,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__wheels.R__d15__albedo.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "2d9da865abc12f8f03cc0cba127f4f492ac458f46daa8d737888ec4c04708671"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__wheels.R__d15__normal.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "b0fb321194918844a21b29408887e1d764b041aa7b65753b03198de591fb7803"
+            },
+            "material": {
+              "file": "sheets/supply-truck__wheels.R__d15__material.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "9920751d71aba96176d8819f53f93074573232574d413ea6bf252c93de7c7a48"
+            }
+          },
+          "filesHi": {
+            "w": 149,
+            "h": 84,
+            "pivot": [
+              90.98,
+              38.13
+            ],
+            "anchor": [
+              90.98,
+              38.13
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__wheels.R__d15__albedo@4x.png",
+                "w": 149,
+                "h": 84,
+                "sha256": "bb544b0474ec357d5f79245256447fabab3dc749169b51f72330e059b9d93f97"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__wheels.R__d15__normal@4x.png",
+                "w": 149,
+                "h": 84,
+                "sha256": "3cefe77d1f674c9a6ca9400bf15d6c19164baa83241e33ce339151be4f16395e"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__wheels.R__d15__material@4x.png",
+                "w": 149,
+                "h": 84,
+                "sha256": "2a86036f8470548d9e1b466cc7ba1655a9082fc00b1d6a1c8ee423067cf4336d"
+              }
+            }
+          }
+        }
+      }
+    },
+    "tailgate": {
+      "name": "tailgate",
+      "dynamic": true,
+      "parent": null,
+      "pivotDesign": [
+        148,
+        256,
+        146
+      ],
+      "traverse": false,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            19,
+            23
+          ],
+          "pivot": [
+            12.25,
+            10.5
+          ],
+          "depth": 41.1,
+          "w": 24,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__tailgate__d00__albedo.png",
+              "w": 24,
+              "h": 19,
+              "sha256": "d6dea6da6c920c999fe1746f727ae386ab4a29f6b94aa3de7426c1b3dbbcd4b2"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__tailgate__d00__normal.png",
+              "w": 24,
+              "h": 19,
+              "sha256": "397e6e1b772b0fd5f331d74a7f998fdd72c0b6319f561dcd5c9d435eec16738e"
+            },
+            "material": {
+              "file": "sheets/supply-truck__tailgate__d00__material.png",
+              "w": 24,
+              "h": 19,
+              "sha256": "8253e3f9941f9839bbdba744e56fb7f1ee64750212e7e722d856eb57328a188d"
+            }
+          },
+          "filesHi": {
+            "w": 93,
+            "h": 71,
+            "pivot": [
+              47,
+              40
+            ],
+            "anchor": [
+              74,
+              90
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__tailgate__d00__albedo@4x.png",
+                "w": 93,
+                "h": 71,
+                "sha256": "6d1a464ff71be6f4adfbe8edc461cced5a52b43fca1dde85d9b8691167e64c39"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__tailgate__d00__normal@4x.png",
+                "w": 93,
+                "h": 71,
+                "sha256": "39ffeeeebe18a2b5b0549aa2b7d540a9fe0b8a7f00371a556db076f7288a4da0"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__tailgate__d00__material@4x.png",
+                "w": 93,
+                "h": 71,
+                "sha256": "800407a8ecceb80f2a742fc517af862491023edc3849624408b6003f960e121b"
+              }
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            17.75,
+            22.78
+          ],
+          "pivot": [
+            14.1,
+            9.25
+          ],
+          "depth": 35.79,
+          "w": 28,
+          "h": 16,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__tailgate__d01__albedo.png",
+              "w": 28,
+              "h": 16,
+              "sha256": "1270b108c67e6e22f0dd1030e20300826dec54dd79ae8d775a63f1a881200766"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__tailgate__d01__normal.png",
+              "w": 28,
+              "h": 16,
+              "sha256": "44e9a7c1a2c25ad7bc337abe888a3c2f506d88be27f2ff633cbce22a58176af7"
+            },
+            "material": {
+              "file": "sheets/supply-truck__tailgate__d01__material.png",
+              "w": 28,
+              "h": 16,
+              "sha256": "b8fd343f4e8694af3922b324cb4acefa1a007c9d95b1d8617350b0668eb4c858"
+            }
+          },
+          "filesHi": {
+            "w": 110,
+            "h": 58,
+            "pivot": [
+              55.4,
+              33.99
+            ],
+            "anchor": [
+              70.02,
+              88.13
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__tailgate__d01__albedo@4x.png",
+                "w": 110,
+                "h": 58,
+                "sha256": "f7feecfd275705ed46d81aba556d5cfc6ec197fbb3628bdc8aff7a49bf9649c5"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__tailgate__d01__normal@4x.png",
+                "w": 110,
+                "h": 58,
+                "sha256": "879d0772c48a2ad9638479cd5fc843c544cd7cd1643862c5af290deca569c191"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__tailgate__d01__material@4x.png",
+                "w": 110,
+                "h": 58,
+                "sha256": "52e01f56a742199af737491ad3a38fcc2dab41b3fe9b3e13271206fe74bdd512"
+              }
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            14.37,
+            22.31
+          ],
+          "pivot": [
+            14.37,
+            8.42
+          ],
+          "depth": 26.92,
+          "w": 29,
+          "h": 13,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__tailgate__d02__albedo.png",
+              "w": 29,
+              "h": 13,
+              "sha256": "a516f9e62f13a22a3dfca010b97b5db01ef3f7f493283d7f5fd182ebd11f426f"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__tailgate__d02__normal.png",
+              "w": 29,
+              "h": 13,
+              "sha256": "e3e04a4f409ea0bd06f45631cae3180f6e16ef7ca78f6cbce6f42638139e0937"
+            },
+            "material": {
+              "file": "sheets/supply-truck__tailgate__d02__material.png",
+              "w": 29,
+              "h": 13,
+              "sha256": "668afd87116173453519ae938ce7a709e6748fe2080ce5e954f46045a83b1ec7"
+            }
+          },
+          "filesHi": {
+            "w": 115,
+            "h": 48,
+            "pivot": [
+              57.49,
+              31.66
+            ],
+            "anchor": [
+              57.49,
+              87.25
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__tailgate__d02__albedo@4x.png",
+                "w": 115,
+                "h": 48,
+                "sha256": "5bdaa0038727e670cc46dca053260659bd139f58ccbe4874ddb8981830fa477f"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__tailgate__d02__normal@4x.png",
+                "w": 115,
+                "h": 48,
+                "sha256": "1c4b94222eb913828f7d8354914f9b0cd3819f04c689a0ae4c80d8f8b6e2d580"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__tailgate__d02__material@4x.png",
+                "w": 115,
+                "h": 48,
+                "sha256": "1b5520e915d79a7e190d70a97d4ee344c2396c889593290e4cecb0ce4fe38c7f"
+              }
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            10.44,
+            22.12
+          ],
+          "pivot": [
+            14.09,
+            8.59
+          ],
+          "depth": 15.83,
+          "w": 28,
+          "h": 15,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__tailgate__d03__albedo.png",
+              "w": 28,
+              "h": 15,
+              "sha256": "82c0c2530ea689b05c4de23a54d941a188876d61799f85ddc0354841716c397b"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__tailgate__d03__normal.png",
+              "w": 28,
+              "h": 15,
+              "sha256": "6d7a38f16322592a94a3ce9cedf15c61a992b1a19cc1a3cb061999b51dbe7c18"
+            },
+            "material": {
+              "file": "sheets/supply-truck__tailgate__d03__material.png",
+              "w": 28,
+              "h": 15,
+              "sha256": "013117933ff29053150d5f84f2d3d69319796c7f61a0fde19cd28482c29e18c7"
+            }
+          },
+          "filesHi": {
+            "w": 110,
+            "h": 59,
+            "pivot": [
+              54.36,
+              34.35
+            ],
+            "anchor": [
+              39.74,
+              88.49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__tailgate__d03__albedo@4x.png",
+                "w": 110,
+                "h": 59,
+                "sha256": "44b5ecfd4bb22bc90576e95a7b5b2ca13f8af51af3124f29642751aa4a67f0e7"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__tailgate__d03__normal@4x.png",
+                "w": 110,
+                "h": 59,
+                "sha256": "47334556ec9d24184e06b1cf7c8f5fa748e3abb19f25ae584111faed4407ba79"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__tailgate__d03__material@4x.png",
+                "w": 110,
+                "h": 59,
+                "sha256": "85454ddb69cc4bc02c26e4260825c8e45b9e495c289ae12ec693d206afac7775"
+              }
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            5,
+            23
+          ],
+          "pivot": [
+            11.75,
+            10.5
+          ],
+          "depth": 4.22,
+          "w": 24,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__tailgate__d04__albedo.png",
+              "w": 24,
+              "h": 19,
+              "sha256": "783ef21a27d189c9acb8d0b091c6523c93247df7e83ba7ff106ab306625d8f11"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__tailgate__d04__normal.png",
+              "w": 24,
+              "h": 19,
+              "sha256": "f5b8a965c22142a8877f1044dcce486050c8cf3ab5bc13bb4de8769ae22e90d0"
+            },
+            "material": {
+              "file": "sheets/supply-truck__tailgate__d04__material.png",
+              "w": 24,
+              "h": 19,
+              "sha256": "b670aa2da7124b58cb63c10803ac0ddc1c134162f56ea9502961ddabd76d1999"
+            }
+          },
+          "filesHi": {
+            "w": 93,
+            "h": 71,
+            "pivot": [
+              46,
+              40
+            ],
+            "anchor": [
+              19,
+              90
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__tailgate__d04__albedo@4x.png",
+                "w": 93,
+                "h": 71,
+                "sha256": "1f1f51341e45e9206986e8be3dc66037ab23ade11d78fb67592ea2645c05d5a6"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__tailgate__d04__normal@4x.png",
+                "w": 93,
+                "h": 71,
+                "sha256": "bb073abba6fe4f61ec62ce25107755a24bbd8998f2f660aaeed3757855198219"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__tailgate__d04__material@4x.png",
+                "w": 93,
+                "h": 71,
+                "sha256": "220215cc0b53d3a5c2e9717ced2326c90f59846bf0b75839153ad5a777323bcc"
+              }
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            -0.56,
+            22.88
+          ],
+          "pivot": [
+            8.26,
+            11.93
+          ],
+          "depth": -6.15,
+          "w": 17,
+          "h": 21,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__tailgate__d05__albedo.png",
+              "w": 17,
+              "h": 21,
+              "sha256": "245beb27c6d1c9c866a50844bc53436c08bfe125db3d05bb686d599ec85ef2e6"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__tailgate__d05__normal.png",
+              "w": 17,
+              "h": 21,
+              "sha256": "29078ab02893a25351b77c28570aea9c105cc86f92d942e599327d208c27ba5b"
+            },
+            "material": {
+              "file": "sheets/supply-truck__tailgate__d05__material.png",
+              "w": 17,
+              "h": 21,
+              "sha256": "74f841076d68dcbf25553a96b40b674db62026497429fddd11f117bb3cdc99f6"
+            }
+          },
+          "filesHi": {
+            "w": 68,
+            "h": 80,
+            "pivot": [
+              33.02,
+              44.7
+            ],
+            "anchor": [
+              -2.26,
+              88.51
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__tailgate__d05__albedo@4x.png",
+                "w": 68,
+                "h": 80,
+                "sha256": "7f0db10fe80cf0c64c4ebbf5aafffdf781fbfdf545486006ed16db374d493eda"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__tailgate__d05__normal@4x.png",
+                "w": 68,
+                "h": 80,
+                "sha256": "f8558d7860228052c9f79f8441e1ea097126b406e587cd56c16e1cb9efd1e286"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__tailgate__d05__material@4x.png",
+                "w": 68,
+                "h": 80,
+                "sha256": "026d8d28a2a6b98a7fc25edcbe19e259b85e5adeb8f22ab684a32ce09424efd4"
+              }
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            -4.63,
+            20.69
+          ],
+          "pivot": [
+            4.92,
+            11.56
+          ],
+          "depth": -13.7,
+          "w": 11,
+          "h": 21,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__tailgate__d06__albedo.png",
+              "w": 11,
+              "h": 21,
+              "sha256": "76a0ba1ff643c1764a529c0e23b167451849cc61f28e938f64826e7c5c02a58d"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__tailgate__d06__normal.png",
+              "w": 11,
+              "h": 21,
+              "sha256": "ebf90f549b5315c502adda06e05e589a93f34def25fe243c62ce73e07e92b86f"
+            },
+            "material": {
+              "file": "sheets/supply-truck__tailgate__d06__material.png",
+              "w": 11,
+              "h": 21,
+              "sha256": "83712b7cbe1b00d0f9fdf70d7fcc94271ab2e587e7e748bb048d87272e711709"
+            }
+          },
+          "filesHi": {
+            "w": 39,
+            "h": 82,
+            "pivot": [
+              17.67,
+              45.25
+            ],
+            "anchor": [
+              -20.51,
+              81.75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__tailgate__d06__albedo@4x.png",
+                "w": 39,
+                "h": 82,
+                "sha256": "41545c5f858219644d7d42aac07341b231d2e94c7364e23268627fa071699a47"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__tailgate__d06__normal@4x.png",
+                "w": 39,
+                "h": 82,
+                "sha256": "8c0f2c91ae6055b144f3a5189d24da2d65992dd235fd4a588072066f67c106f4"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__tailgate__d06__material@4x.png",
+                "w": 39,
+                "h": 82,
+                "sha256": "d86a2a185f3243ce3257457677345f0947dd8bd9a2a000edd24374764f6fcd83"
+              }
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            -0.25,
+            18.22
+          ],
+          "pivot": [
+            8.57,
+            10.92
+          ],
+          "depth": -17.28,
+          "w": 18,
+          "h": 20,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__tailgate__d07__albedo.png",
+              "w": 18,
+              "h": 20,
+              "sha256": "cca908c2c7ba4102ef9d8c477affd2939da4ec1ef992bd285c1c22fdf0beb552"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__tailgate__d07__normal.png",
+              "w": 18,
+              "h": 20,
+              "sha256": "bbd6c5082b2faae19ad0a677f66ac0bd021f43a4571ef1ef576c2aea018ae14b"
+            },
+            "material": {
+              "file": "sheets/supply-truck__tailgate__d07__material.png",
+              "w": 18,
+              "h": 20,
+              "sha256": "e5f6b22429ee6e991fd18a2e45496e35798fe52fe58c0bc25df2ba122ecf8867"
+            }
+          },
+          "filesHi": {
+            "w": 68,
+            "h": 79,
+            "pivot": [
+              33.29,
+              43.68
+            ],
+            "anchor": [
+              -1.98,
+              72.87
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__tailgate__d07__albedo@4x.png",
+                "w": 68,
+                "h": 79,
+                "sha256": "48bfd8ab1e5c5cf6e46c00e562327d692e2a64221375c8c65ed5099dfec81ce7"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__tailgate__d07__normal@4x.png",
+                "w": 68,
+                "h": 79,
+                "sha256": "5b8d8f1d5e648dfb4ff51b5bcb25a440f0fb3a81168e9f50bc9338091efaf9f6"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__tailgate__d07__material@4x.png",
+                "w": 68,
+                "h": 79,
+                "sha256": "453ba22c74925db49ca49c8a00001497075fef10ddfe30f4d23f88641d9ab10d"
+              }
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            5,
+            16
+          ],
+          "pivot": [
+            11.75,
+            10.25
+          ],
+          "depth": -16.35,
+          "w": 24,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__tailgate__d08__albedo.png",
+              "w": 24,
+              "h": 19,
+              "sha256": "df0776760e82887fc4ef2aac648cf9b2442de506c288608f68fb620b67c9b7e1"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__tailgate__d08__normal.png",
+              "w": 24,
+              "h": 19,
+              "sha256": "6e76c4a720b059ebbd2aa7094a3ae8298f8f03ac66fefca47a242ce46ac6e1ad"
+            },
+            "material": {
+              "file": "sheets/supply-truck__tailgate__d08__material.png",
+              "w": 24,
+              "h": 19,
+              "sha256": "f102e3c19b89ddaa668501501a4ecf9c63d1d34e3848c128c00928c1ab7d752c"
+            }
+          },
+          "filesHi": {
+            "w": 93,
+            "h": 72,
+            "pivot": [
+              46,
+              40
+            ],
+            "anchor": [
+              19,
+              63
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__tailgate__d08__albedo@4x.png",
+                "w": 93,
+                "h": 72,
+                "sha256": "0553210b4340d4793a672626f49f1791b3d8b9b8e138f0086f5b300fb16aca22"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__tailgate__d08__normal@4x.png",
+                "w": 93,
+                "h": 72,
+                "sha256": "9562d7d0e29c151bd3bd74215d14595b8dfa96da9fc343d70402aaffb414c3c0"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__tailgate__d08__material@4x.png",
+                "w": 93,
+                "h": 72,
+                "sha256": "7c4a9db90553e7db89220dbdcd2135ad02e40a4b6fda14de21ebfcf6f172447e"
+              }
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            10.25,
+            13.22
+          ],
+          "pivot": [
+            13.9,
+            8.5
+          ],
+          "depth": -11.04,
+          "w": 28,
+          "h": 15,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__tailgate__d09__albedo.png",
+              "w": 28,
+              "h": 15,
+              "sha256": "3fd89dc173a3893c4bd1f65e58f0638f2879598c0867c6b1e07e0d7f6413ea05"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__tailgate__d09__normal.png",
+              "w": 28,
+              "h": 15,
+              "sha256": "7424ce55014eb4e302d5c79c515939f0a50d1b6f694b970649bc06fae7541083"
+            },
+            "material": {
+              "file": "sheets/supply-truck__tailgate__d09__material.png",
+              "w": 28,
+              "h": 15,
+              "sha256": "bb10b22b8dada18e3d2e81146a9c9aa0193c5af260fe2212f3b635954d94a200"
+            }
+          },
+          "filesHi": {
+            "w": 110,
+            "h": 58,
+            "pivot": [
+              54.6,
+              33.01
+            ],
+            "anchor": [
+              39.98,
+              51.87
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__tailgate__d09__albedo@4x.png",
+                "w": 110,
+                "h": 58,
+                "sha256": "803f93bc31704d7347958db626e492e4c39831337a00d9f8754465ef6a8ff88b"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__tailgate__d09__normal@4x.png",
+                "w": 110,
+                "h": 58,
+                "sha256": "78222ed8a857f0236b6cb039d92d4c2fc7e78b74a81302f63b172bb8cab0b1a7"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__tailgate__d09__material@4x.png",
+                "w": 110,
+                "h": 58,
+                "sha256": "df88a001a274f158d0360dd72f8fcc1f63b2ee460d357d67e250a87153f070b7"
+              }
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            14.63,
+            11.69
+          ],
+          "pivot": [
+            14.63,
+            7.33
+          ],
+          "depth": -2.17,
+          "w": 29,
+          "h": 12,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__tailgate__d10__albedo.png",
+              "w": 29,
+              "h": 12,
+              "sha256": "acf849913c9d50288f0823f74b17112f31923f9c04234635900ee6889237e24f"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__tailgate__d10__normal.png",
+              "w": 29,
+              "h": 12,
+              "sha256": "63b492f2553e7851e7c604657b357035254e33b147406b6a8ace8a07988e8a73"
+            },
+            "material": {
+              "file": "sheets/supply-truck__tailgate__d10__material.png",
+              "w": 29,
+              "h": 12,
+              "sha256": "9e6ce61eef90ca38319d3e8ef813317418e84879b3336628804f7e58ea22b06b"
+            }
+          },
+          "filesHi": {
+            "w": 115,
+            "h": 46,
+            "pivot": [
+              57.51,
+              28.34
+            ],
+            "anchor": [
+              57.51,
+              45.75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__tailgate__d10__albedo@4x.png",
+                "w": 115,
+                "h": 46,
+                "sha256": "c10c24d028e4dff8e270e406d6317a3a435ad9f3a2878708a829ddbc81c058e4"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__tailgate__d10__normal@4x.png",
+                "w": 115,
+                "h": 46,
+                "sha256": "74173ce33b6013edb0d9e7bd3162d181cf6d089b62a2bc10bdb00e74a92efc01"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__tailgate__d10__material@4x.png",
+                "w": 115,
+                "h": 46,
+                "sha256": "d1ea79a3e98ef9b4e26d817e397baa7356daee461352a2150f37ec22979da63b"
+              }
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            17.56,
+            13.88
+          ],
+          "pivot": [
+            13.91,
+            9.16
+          ],
+          "depth": 8.92,
+          "w": 28,
+          "h": 16,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__tailgate__d11__albedo.png",
+              "w": 28,
+              "h": 16,
+              "sha256": "636c9ee073cddfb649328446ce1be9cb094ffb7d826dbb33f3c446a45b8aa47f"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__tailgate__d11__normal.png",
+              "w": 28,
+              "h": 16,
+              "sha256": "81a0950cd670e7a8569b2e775bb172f18578f2167866df6469260dadd4539688"
+            },
+            "material": {
+              "file": "sheets/supply-truck__tailgate__d11__material.png",
+              "w": 28,
+              "h": 16,
+              "sha256": "41c9cf314a83bf4bdb7cbac314ceb85939c6959735647cd98b190c16f981ed6a"
+            }
+          },
+          "filesHi": {
+            "w": 110,
+            "h": 59,
+            "pivot": [
+              55.64,
+              33.65
+            ],
+            "anchor": [
+              70.26,
+              52.51
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__tailgate__d11__albedo@4x.png",
+                "w": 110,
+                "h": 59,
+                "sha256": "c3feb8037b6d621f7f51c6349c968f289165a99782220911b87e7274f65a24f5"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__tailgate__d11__normal@4x.png",
+                "w": 110,
+                "h": 59,
+                "sha256": "eeac30fdb327035a8d2617f05773b5a0036b673f5fc23ac7017dc773b5d122a7"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__tailgate__d11__material@4x.png",
+                "w": 110,
+                "h": 59,
+                "sha256": "bce606ae6adeb25210c90c7326242382c3bd224c5317b1a74439cc61a3481154"
+              }
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            19,
+            16
+          ],
+          "pivot": [
+            12.25,
+            10.25
+          ],
+          "depth": 20.53,
+          "w": 24,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__tailgate__d12__albedo.png",
+              "w": 24,
+              "h": 19,
+              "sha256": "5406b2cf9bdfc51952102f097b93042128bd81e732d02423c7f2a227b4dac015"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__tailgate__d12__normal.png",
+              "w": 24,
+              "h": 19,
+              "sha256": "08fc411691428683a42e6bcfbd3dfd3d776573fc581ae95251365f0828aba5ed"
+            },
+            "material": {
+              "file": "sheets/supply-truck__tailgate__d12__material.png",
+              "w": 24,
+              "h": 19,
+              "sha256": "59e4be27e80dbfc6864da4b11303d4b037d69c8781810c2530d2b46f409ff213"
+            }
+          },
+          "filesHi": {
+            "w": 93,
+            "h": 72,
+            "pivot": [
+              47,
+              40
+            ],
+            "anchor": [
+              74,
+              63
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__tailgate__d12__albedo@4x.png",
+                "w": 93,
+                "h": 72,
+                "sha256": "fff96aa47f71f4617766f988852df57015922fa6127272b984c4a8f3e7f6988f"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__tailgate__d12__normal@4x.png",
+                "w": 93,
+                "h": 72,
+                "sha256": "7d57a3a24e7424ca6e6f2b96eefd0c5105b74b4cfc71f98eefe44ca9e9c02a62"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__tailgate__d12__material@4x.png",
+                "w": 93,
+                "h": 72,
+                "sha256": "ae01be77ef63263932fb83cf3e5a1ad60e6b073957d0afb760ab9c0ca2d2f764"
+              }
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            17.56,
+            19.12
+          ],
+          "pivot": [
+            8.74,
+            11.82
+          ],
+          "depth": 30.9,
+          "w": 17,
+          "h": 21,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__tailgate__d13__albedo.png",
+              "w": 17,
+              "h": 21,
+              "sha256": "935d5aad84c79dd16aa4bafa648caa814447962ce21a7ad8e0ed3d82cef3080e"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__tailgate__d13__normal.png",
+              "w": 17,
+              "h": 21,
+              "sha256": "00062cad8f90e6647c519185e1ee586ccff59e4e0a2af75b44c0fddcfc564b42"
+            },
+            "material": {
+              "file": "sheets/supply-truck__tailgate__d13__material.png",
+              "w": 17,
+              "h": 21,
+              "sha256": "ae8e7a1c59105d3e8790e5fcb1012a891730eb60b78774efbe7045cb9c4f6c3a"
+            }
+          },
+          "filesHi": {
+            "w": 68,
+            "h": 80,
+            "pivot": [
+              34.98,
+              44.3
+            ],
+            "anchor": [
+              70.26,
+              73.49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__tailgate__d13__albedo@4x.png",
+                "w": 68,
+                "h": 80,
+                "sha256": "f287a4bd8d1fd4e9d62cb6669dbe751f4df8ebce5845dea8d42cacb66aa93244"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__tailgate__d13__normal@4x.png",
+                "w": 68,
+                "h": 80,
+                "sha256": "5538a99a5d83114b6c4381ae56abcd29bf1ceefb62ceb3c984dcc52e8647c636"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__tailgate__d13__material@4x.png",
+                "w": 68,
+                "h": 80,
+                "sha256": "13a3a110fa1c45dfe448284c98d0c010b91331fdf7dc620ca81d4dba494641c5"
+              }
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            15.63,
+            21.31
+          ],
+          "pivot": [
+            6.08,
+            12.19
+          ],
+          "depth": 38.45,
+          "w": 11,
+          "h": 22,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__tailgate__d14__albedo.png",
+              "w": 11,
+              "h": 22,
+              "sha256": "f7ca574fe9dafc0a240bb6720a580f4c4a010827a120abd25336b29e0ba13390"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__tailgate__d14__normal.png",
+              "w": 11,
+              "h": 22,
+              "sha256": "8b84f35fece7999a10130bc1fd4c74f3a6c90c9e9c1d1158204834c457e24b04"
+            },
+            "material": {
+              "file": "sheets/supply-truck__tailgate__d14__material.png",
+              "w": 11,
+              "h": 22,
+              "sha256": "402ff2d59a2be841a8ba40e9954988e2b50aa400edc7be830af1d12c2fc0bf92"
+            }
+          },
+          "filesHi": {
+            "w": 39,
+            "h": 83,
+            "pivot": [
+              21.33,
+              45.75
+            ],
+            "anchor": [
+              59.51,
+              82.25
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__tailgate__d14__albedo@4x.png",
+                "w": 39,
+                "h": 83,
+                "sha256": "b8b7387e234ef6a05c9c5caeac463eafbf7e929c3d99b4689f91263a91ef8224"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__tailgate__d14__normal@4x.png",
+                "w": 39,
+                "h": 83,
+                "sha256": "1be88da153950b5e35ae210fbc56d6f7bb9cd70b3b5bcc3c2e5fcc360e6b30a3"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__tailgate__d14__material@4x.png",
+                "w": 39,
+                "h": 83,
+                "sha256": "d4302f061e2ff48baaf8edcd79354c4680585205112399f8ceab5c6f5ff6fe64"
+              }
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            18.25,
+            22.78
+          ],
+          "pivot": [
+            9.43,
+            11.83
+          ],
+          "depth": 42.03,
+          "w": 18,
+          "h": 21,
+          "files": {
+            "albedo": {
+              "file": "sheets/supply-truck__tailgate__d15__albedo.png",
+              "w": 18,
+              "h": 21,
+              "sha256": "fb04ca7f6418112caa3a1293afc0706a0d422befbcd9ba1fe8ff38436b4ba00f"
+            },
+            "normal": {
+              "file": "sheets/supply-truck__tailgate__d15__normal.png",
+              "w": 18,
+              "h": 21,
+              "sha256": "3584af0da369c22b4d2b9e2cac015c50efd4b866ab5040f44fddb0c2dc7aeb3e"
+            },
+            "material": {
+              "file": "sheets/supply-truck__tailgate__d15__material.png",
+              "w": 18,
+              "h": 21,
+              "sha256": "47c6cbf662375ed387f3756ab7027bba2ccd2a858cc45ba761de0a34616cac23"
+            }
+          },
+          "filesHi": {
+            "w": 68,
+            "h": 80,
+            "pivot": [
+              34.71,
+              44.32
+            ],
+            "anchor": [
+              69.98,
+              88.13
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/supply-truck__tailgate__d15__albedo@4x.png",
+                "w": 68,
+                "h": 80,
+                "sha256": "010addc7e16f9e7c9196646682e45952d4d02d401e43e73bcae539a3809cb33a"
+              },
+              "normal": {
+                "file": "sheets-hi/supply-truck__tailgate__d15__normal@4x.png",
+                "w": 68,
+                "h": 80,
+                "sha256": "e0e163789a009bfb370d96022b1c354fa1c68e51d01cd0b9b60f6b2be5f3f012"
+              },
+              "material": {
+                "file": "sheets-hi/supply-truck__tailgate__d15__material@4x.png",
+                "w": 68,
+                "h": 80,
+                "sha256": "cc0df05b67487b7af5627e74b3d8339a5044e0e1f7d5462df4b9d009f11fc594"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "clips": {
+    "idle": 1
+  },
+  "sourceGeometry": {
+    "parts": [
+      {
+        "name": "body",
+        "dynamic": false,
+        "traverse": false,
+        "parent": null,
+        "voxels": 659208,
+        "pivotDesign": [
+          256,
+          256,
+          0
+        ],
+        "bounds": {
+          "minX": 78,
+          "minY": 118,
+          "minZ": 28,
+          "maxX": 485,
+          "maxY": 393,
+          "maxZ": 305
+        }
+      },
+      {
+        "name": "wheels.L",
+        "dynamic": false,
+        "traverse": false,
+        "parent": null,
+        "voxels": 71079,
+        "pivotDesign": [
+          256,
+          256,
+          0
+        ],
+        "bounds": {
+          "minX": 82,
+          "minY": 104,
+          "minZ": 0,
+          "maxX": 418,
+          "maxY": 183,
+          "maxZ": 100
+        }
+      },
+      {
+        "name": "wheels.R",
+        "dynamic": false,
+        "traverse": false,
+        "parent": null,
+        "voxels": 71127,
+        "pivotDesign": [
+          256,
+          256,
+          0
+        ],
+        "bounds": {
+          "minX": 82,
+          "minY": 328,
+          "minZ": 0,
+          "maxX": 418,
+          "maxY": 409,
+          "maxZ": 100
+        }
+      },
+      {
+        "name": "tailgate",
+        "dynamic": true,
+        "traverse": false,
+        "parent": null,
+        "voxels": 15022,
+        "pivotDesign": [
+          148,
+          256,
+          146
+        ],
+        "bounds": {
+          "minX": 134,
+          "minY": 140,
+          "minZ": 146,
+          "maxX": 151,
+          "maxY": 371,
+          "maxZ": 197
+        }
+      }
+    ],
+    "totalVoxels": 816436
+  },
+  "composite": {
+    "note": "every part of one facing pre-composited through the shared ground anchor",
+    "facings": {
+      "d00": {
+        "w": 54,
+        "h": 40,
+        "files": {
+          "albedo": {
+            "file": "sheets/supply-truck__composite__d00__albedo.png",
+            "sha256": "f0e660c362cb814518d7b20d28277d43a3b4b0351c9ee837914512f27898cadc"
+          },
+          "normal": {
+            "file": "sheets/supply-truck__composite__d00__normal.png",
+            "sha256": "a6012cf088ed80910a356c7f96108150177474a556fdc8759b9bc8ba41f87e53"
+          },
+          "material": {
+            "file": "sheets/supply-truck__composite__d00__material.png",
+            "sha256": "de313671bff9d2de24252c9c3270a24d821fc84a1c35b3f20c6ce31489491103"
+          }
+        }
+      },
+      "d01": {
+        "w": 48,
+        "h": 40,
+        "files": {
+          "albedo": {
+            "file": "sheets/supply-truck__composite__d01__albedo.png",
+            "sha256": "9e05b67044590371556871d073788ec999d1fdc3facf83ad0d47ee91dca134e7"
+          },
+          "normal": {
+            "file": "sheets/supply-truck__composite__d01__normal.png",
+            "sha256": "84de60adb4728126b9984f96e1d1f2667eb37bd39e55b6c2e9fb01b2d57f50eb"
+          },
+          "material": {
+            "file": "sheets/supply-truck__composite__d01__material.png",
+            "sha256": "31c295a1284439babd0db02ddb32e5e9acb036b0e2ec2850132c3da84f35f8aa"
+          }
+        }
+      },
+      "d02": {
+        "w": 40,
+        "h": 36,
+        "files": {
+          "albedo": {
+            "file": "sheets/supply-truck__composite__d02__albedo.png",
+            "sha256": "196251d150543df57027539d3529c02ba18019e2211844bcbc008d9d11dba3af"
+          },
+          "normal": {
+            "file": "sheets/supply-truck__composite__d02__normal.png",
+            "sha256": "c3f3864f048e4c8a1b2744022da2522a60b87b5d6e43d9fdf87a211863169f7f"
+          },
+          "material": {
+            "file": "sheets/supply-truck__composite__d02__material.png",
+            "sha256": "8e5649957ee14235fbd41a5ef2acd0fa739529b062bb96f5497ef615dcf051d7"
+          }
+        }
+      },
+      "d03": {
+        "w": 48,
+        "h": 40,
+        "files": {
+          "albedo": {
+            "file": "sheets/supply-truck__composite__d03__albedo.png",
+            "sha256": "d26057f264d87ab54a484b63a3ea1c1f7f243a06dd876e12793202d2cf44385c"
+          },
+          "normal": {
+            "file": "sheets/supply-truck__composite__d03__normal.png",
+            "sha256": "021644179432335eec4c7e0b6a663a979e5e0c7cd4a658eddcf6870f97f84e9e"
+          },
+          "material": {
+            "file": "sheets/supply-truck__composite__d03__material.png",
+            "sha256": "8932b74713238e4da19f892d7311dea08090943b2c649876b49a2af5da4b8f9e"
+          }
+        }
+      },
+      "d04": {
+        "w": 54,
+        "h": 40,
+        "files": {
+          "albedo": {
+            "file": "sheets/supply-truck__composite__d04__albedo.png",
+            "sha256": "b5d6bfa8858022de607cb2c69c107c9b033e67cca82d8d5bb97ac77d522ec3d0"
+          },
+          "normal": {
+            "file": "sheets/supply-truck__composite__d04__normal.png",
+            "sha256": "b6303ae92ded8ee8bdb6b06e3ab5ad41fed83930da27b796a5c32116bb50a195"
+          },
+          "material": {
+            "file": "sheets/supply-truck__composite__d04__material.png",
+            "sha256": "addfdaca8ee939ea739fd500dbf41903af90e5ad72a575e81cbaa772c570be07"
+          }
+        }
+      },
+      "d05": {
+        "w": 55,
+        "h": 41,
+        "files": {
+          "albedo": {
+            "file": "sheets/supply-truck__composite__d05__albedo.png",
+            "sha256": "e66916988231af7be2eec7a2166d7b07330657eacda527538b7a235764db1d92"
+          },
+          "normal": {
+            "file": "sheets/supply-truck__composite__d05__normal.png",
+            "sha256": "50695e3c429f083d14db24e393f0b4c53258b8daab19b5a91a5e71a2b8cc7a25"
+          },
+          "material": {
+            "file": "sheets/supply-truck__composite__d05__material.png",
+            "sha256": "8aba75da3f51d56be4daec4156b3f82515bbeae2427e9c23c8328cbd561fcc02"
+          }
+        }
+      },
+      "d06": {
+        "w": 49,
+        "h": 42,
+        "files": {
+          "albedo": {
+            "file": "sheets/supply-truck__composite__d06__albedo.png",
+            "sha256": "8ab26766e8993f33a56d40d8d4370694e0d53627385a182cb138db6f5598ca2f"
+          },
+          "normal": {
+            "file": "sheets/supply-truck__composite__d06__normal.png",
+            "sha256": "1aac84efff4953b1d4f3264fb73cba2e0744245badffe8f6419058dd45847856"
+          },
+          "material": {
+            "file": "sheets/supply-truck__composite__d06__material.png",
+            "sha256": "13f7f15d53df3f80faf0506b2e8f02b5f4a4086da12114206e6b76d52f4dd72b"
+          }
+        }
+      },
+      "d07": {
+        "w": 54,
+        "h": 46,
+        "files": {
+          "albedo": {
+            "file": "sheets/supply-truck__composite__d07__albedo.png",
+            "sha256": "56460f3e928ec60b3a50299196aa3d896e7fc27c325dd5b6e090fec7b628a18e"
+          },
+          "normal": {
+            "file": "sheets/supply-truck__composite__d07__normal.png",
+            "sha256": "b362256e76bf1c0ff6fc2ea8b96aac2f34a5bab8bb49ba811bfcf29b93708070"
+          },
+          "material": {
+            "file": "sheets/supply-truck__composite__d07__material.png",
+            "sha256": "d0e4fbf209cc485949010b4f15cbdfa0787b1de20d63ab8dd876048ea46a8cc2"
+          }
+        }
+      },
+      "d08": {
+        "w": 54,
+        "h": 48,
+        "files": {
+          "albedo": {
+            "file": "sheets/supply-truck__composite__d08__albedo.png",
+            "sha256": "4e8b35a1c2cd5169f837996208586f7ae3186e9042e7f629512fbe0ef1999c83"
+          },
+          "normal": {
+            "file": "sheets/supply-truck__composite__d08__normal.png",
+            "sha256": "9524dd35bbb2a6ae9c2d3426882bb946f088aa0e191693885af42532c94d99f9"
+          },
+          "material": {
+            "file": "sheets/supply-truck__composite__d08__material.png",
+            "sha256": "86c0574bbe4c1aeec23a7bda3b5fb1d44a1b31465a923414be3ced0bedf2bcea"
+          }
+        }
+      },
+      "d09": {
+        "w": 48,
+        "h": 48,
+        "files": {
+          "albedo": {
+            "file": "sheets/supply-truck__composite__d09__albedo.png",
+            "sha256": "4f232a351915a7728040c8dcc40aed0f35e185576c6752fc13fb94067791bc50"
+          },
+          "normal": {
+            "file": "sheets/supply-truck__composite__d09__normal.png",
+            "sha256": "472f88235146088a4fe1a7a19e2fdc0062777c3ae9d7e126a29ba07e653aeba2"
+          },
+          "material": {
+            "file": "sheets/supply-truck__composite__d09__material.png",
+            "sha256": "e209191a28c97233645d74773c4c193216bab85108e66a55759c46e0e87fd60e"
+          }
+        }
+      },
+      "d10": {
+        "w": 40,
+        "h": 44,
+        "files": {
+          "albedo": {
+            "file": "sheets/supply-truck__composite__d10__albedo.png",
+            "sha256": "c8ca270fbc99cab29c9ff51b7d0c85c3a15a572ac4295928449139a32663d38e"
+          },
+          "normal": {
+            "file": "sheets/supply-truck__composite__d10__normal.png",
+            "sha256": "bca9269bf5193e295e546a77949a38e14712d0b2025dde12e68ac16ebfb5d4d0"
+          },
+          "material": {
+            "file": "sheets/supply-truck__composite__d10__material.png",
+            "sha256": "f501dbbf7a8ffdcaf78290e729553c2db10caaccdf7bbcbcd199176e8375be71"
+          }
+        }
+      },
+      "d11": {
+        "w": 48,
+        "h": 44,
+        "files": {
+          "albedo": {
+            "file": "sheets/supply-truck__composite__d11__albedo.png",
+            "sha256": "91b14717bd4847687f421a1c2c41fc348845c5ba905d2f2c87a4afa11456fd29"
+          },
+          "normal": {
+            "file": "sheets/supply-truck__composite__d11__normal.png",
+            "sha256": "a3684eb775f86947ef475902656980ff6e3b4bb5c77d4ceb5aed07b72f70ebc4"
+          },
+          "material": {
+            "file": "sheets/supply-truck__composite__d11__material.png",
+            "sha256": "f5e16b4f001af309cfb1ded2aa175c730f99fa29aa64ccf458a762de3616253e"
+          }
+        }
+      },
+      "d12": {
+        "w": 54,
+        "h": 44,
+        "files": {
+          "albedo": {
+            "file": "sheets/supply-truck__composite__d12__albedo.png",
+            "sha256": "f1c8bb86c104ccbadb1dd4057e2b54e10e392d1ff6925a28cef49cbe3d7cfeb9"
+          },
+          "normal": {
+            "file": "sheets/supply-truck__composite__d12__normal.png",
+            "sha256": "67d0d2fe776b5d5c3fa494a83bc7d891f37e7841036373c81c014dba9d51eb1e"
+          },
+          "material": {
+            "file": "sheets/supply-truck__composite__d12__material.png",
+            "sha256": "33c331577d24f554a57c4c4ef285832a29b822f815d64e03272b5c35d1c0d090"
+          }
+        }
+      },
+      "d13": {
+        "w": 55,
+        "h": 42,
+        "files": {
+          "albedo": {
+            "file": "sheets/supply-truck__composite__d13__albedo.png",
+            "sha256": "ffcf14141261d85cffc5ba3434501b049c508d0bf7ed3930f037799949b22356"
+          },
+          "normal": {
+            "file": "sheets/supply-truck__composite__d13__normal.png",
+            "sha256": "e9e7f41383e6d2c286ef8dfa6fd65881b89602ab5899ae7a0e7034d556de9ccd"
+          },
+          "material": {
+            "file": "sheets/supply-truck__composite__d13__material.png",
+            "sha256": "32e3108d254e7c4c71b029155f7d97bb23dc4e9826bdd6de6f150424bf7ab716"
+          }
+        }
+      },
+      "d14": {
+        "w": 49,
+        "h": 38,
+        "files": {
+          "albedo": {
+            "file": "sheets/supply-truck__composite__d14__albedo.png",
+            "sha256": "d404c3ca37979751d077534e0914e7b623f2fb84ef7bb6d80f47cd4367d2c651"
+          },
+          "normal": {
+            "file": "sheets/supply-truck__composite__d14__normal.png",
+            "sha256": "d260507c619dec388b89ab3dd16bf41b19c15a34ba9652a955a3382b03b60880"
+          },
+          "material": {
+            "file": "sheets/supply-truck__composite__d14__material.png",
+            "sha256": "9edcc467c849cdc79bf998883c9bda3970b6a38d278bd27445e0a7474e4d2e5d"
+          }
+        }
+      },
+      "d15": {
+        "w": 54,
+        "h": 40,
+        "files": {
+          "albedo": {
+            "file": "sheets/supply-truck__composite__d15__albedo.png",
+            "sha256": "af65dd9463faee82a99abe3c46d9952e48291cc0dcef4f3b2bc9735048a5ca45"
+          },
+          "normal": {
+            "file": "sheets/supply-truck__composite__d15__normal.png",
+            "sha256": "987e9b30584ad3ba869768003239196ac6e9ed0de18ddb42cf58fae1ac75c251"
+          },
+          "material": {
+            "file": "sheets/supply-truck__composite__d15__material.png",
+            "sha256": "64c449746c4ea7f9b0627bce3912e5c10f5b92a584db675cbacd6f630a750734"
+          }
+        }
+      }
+    }
+  },
+  "lit": {
+    "note": "the composite re-shaded through a virtual three-point rig using the normal and material maps (key/fill/rim). If normals or PBR channels are wrong, this is where it shows.",
+    "rig": "three-point",
+    "facings": {
+      "d00": {
+        "file": "sheets/supply-truck__lit__d00__albedo.png",
+        "w": 54,
+        "h": 40,
+        "sha256": "c52e7d54b942a2347cd9b4db7d9f63a8c61bf8595529ac1191b2f6df5c1510b2"
+      },
+      "d01": {
+        "file": "sheets/supply-truck__lit__d01__albedo.png",
+        "w": 48,
+        "h": 40,
+        "sha256": "3ddb3bfe0c23576a97eb5d950b0a82ca5bb477689e20de8d949b5c297b47584f"
+      },
+      "d02": {
+        "file": "sheets/supply-truck__lit__d02__albedo.png",
+        "w": 40,
+        "h": 36,
+        "sha256": "3d559c3dd6442c5154af16bb3b15389137c7612a6079114926553159bce3b0a4"
+      },
+      "d03": {
+        "file": "sheets/supply-truck__lit__d03__albedo.png",
+        "w": 48,
+        "h": 40,
+        "sha256": "eececf04e8dc55e4d9632c9419cdff007142b6ae15ab2951b93738237b882a4b"
+      },
+      "d04": {
+        "file": "sheets/supply-truck__lit__d04__albedo.png",
+        "w": 54,
+        "h": 40,
+        "sha256": "fd1fb6fd409be95c18770f3c954d120bc6c652abfa89fd328f9509519541dde0"
+      },
+      "d05": {
+        "file": "sheets/supply-truck__lit__d05__albedo.png",
+        "w": 55,
+        "h": 41,
+        "sha256": "a2dc981b5c2846abc456a20d187fb71324346b64ac52d00d3aae9bd19b294078"
+      },
+      "d06": {
+        "file": "sheets/supply-truck__lit__d06__albedo.png",
+        "w": 49,
+        "h": 42,
+        "sha256": "14468e37054bbb2f22635833cec2ac749805e1139a73eec37aeec8dd6be35ada"
+      },
+      "d07": {
+        "file": "sheets/supply-truck__lit__d07__albedo.png",
+        "w": 54,
+        "h": 46,
+        "sha256": "16cf9046b27e782b4da501589e181de1e778100d4725e060e18616a3f145b1e1"
+      },
+      "d08": {
+        "file": "sheets/supply-truck__lit__d08__albedo.png",
+        "w": 54,
+        "h": 48,
+        "sha256": "c34f7725dd456a6a58d9d84eabb61e0731d3deecfd22e23867d22a17d5f3f2db"
+      },
+      "d09": {
+        "file": "sheets/supply-truck__lit__d09__albedo.png",
+        "w": 48,
+        "h": 48,
+        "sha256": "75f2093d7bdfd5f52b1e1d576c256e3e5b49dabde5646f82ecae4e0b816681dc"
+      },
+      "d10": {
+        "file": "sheets/supply-truck__lit__d10__albedo.png",
+        "w": 40,
+        "h": 44,
+        "sha256": "aae6b61a6804ea1f683fe80bf8995cc1a0801b07a8d517445eb11fe1837cf760"
+      },
+      "d11": {
+        "file": "sheets/supply-truck__lit__d11__albedo.png",
+        "w": 48,
+        "h": 44,
+        "sha256": "64a87e1b1b1a23824a317236fc8ef726f69c096b7a6a32fbd545a025c9f0eecb"
+      },
+      "d12": {
+        "file": "sheets/supply-truck__lit__d12__albedo.png",
+        "w": 54,
+        "h": 44,
+        "sha256": "21726ab2c3221929291b507940cad4d88a54f48674c73955dd95e782b6e2a0f0"
+      },
+      "d13": {
+        "file": "sheets/supply-truck__lit__d13__albedo.png",
+        "w": 55,
+        "h": 42,
+        "sha256": "9823576bad2c91455cad58b35c67865bca98d500ff73ea3782a3b6f7e9f9755f"
+      },
+      "d14": {
+        "file": "sheets/supply-truck__lit__d14__albedo.png",
+        "w": 49,
+        "h": 38,
+        "sha256": "c73057fb48f39526fed37f22d38dfbace0e5327c44e03e1cc1609ee56b3d69ed"
+      },
+      "d15": {
+        "file": "sheets/supply-truck__lit__d15__albedo.png",
+        "w": 54,
+        "h": 40,
+        "sha256": "3c3abc074b789213bf80c428a4244a1d08502c8b2a3985485edf454abb9f9b66"
+      }
+    }
+  },
+  "previewLit": {
+    "file": "preview-lit.png",
+    "facing": "d00",
+    "rig": "three-point",
+    "note": "relit from the normal + material maps"
+  },
+  "previewLights": {
+    "file": "preview-lights.png",
+    "facing": "d00",
+    "order": [
+      "azimuth 0deg / elevation 40deg",
+      "azimuth 45deg / elevation 40deg",
+      "azimuth 90deg / elevation 40deg",
+      "azimuth 135deg / elevation 40deg",
+      "azimuth 180deg / elevation 40deg",
+      "azimuth 225deg / elevation 40deg",
+      "azimuth 270deg / elevation 40deg",
+      "azimuth 315deg / elevation 40deg"
+    ],
+    "note": "one virtual light per panel, proving the normal map is directionally correct"
+  },
+  "previewMaps": {
+    "file": "preview-maps.png",
+    "facing": "d00",
+    "panels": [
+      "albedo",
+      "normal",
+      "material-id",
+      "metalness",
+      "roughness",
+      "emissive"
+    ]
+  },
+  "preview": {
+    "file": "preview.png",
+    "facing": "d00",
+    "w": 394,
+    "h": 286,
+    "mode": "single-pass"
+  },
+  "previewParts": {
+    "file": "preview-parts.png",
+    "facing": "d00",
+    "w": 398,
+    "h": 290,
+    "mode": "composited-from-part-sheets"
+  }
+}

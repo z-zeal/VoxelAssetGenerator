@@ -23,6 +23,12 @@ import { buildAmphibiousTank } from './amphibious-tank.mjs';
 import { buildMineLayer } from './mine-layer.mjs';
 import { buildMobileRepair } from './mobile-repair.mjs';
 import { buildMineClearing } from './mine-clearing.mjs';
+import { buildRecon } from './recon.mjs';
+import { buildRockets } from './rockets.mjs';
+import { buildMissiles } from './missiles.mjs';
+import { buildSupplyTruck } from './supply-truck.mjs';
+import { buildCommandVehicle } from './command-vehicle.mjs';
+import { buildAegis } from './aegis.mjs';
 import { buildBarracks } from './barracks.mjs';
 import { buildAtTurret } from './at-turret.mjs';
 
@@ -96,6 +102,30 @@ export const MODELS = {
   'mine-clearing': {
     kind: 'unit', folder: 'units', group: 'vehicles.tracked', label: 'Mine-Clearing Vehicle',
     build: buildMineClearing, requiredParts: ['body', 'turret', 'barrel', 'flail'],
+  },
+  recon: {
+    kind: 'unit', folder: 'units', group: 'vehicles.wheeled', label: 'HUMVEE Recon',
+    build: buildRecon, requiredParts: ['body', 'turret', 'barrel'],
+  },
+  rockets: {
+    kind: 'unit', folder: 'units', group: 'vehicles.wheeled', label: 'MLRS',
+    build: buildRockets, requiredParts: ['body', 'launcher', 'barrel'],
+  },
+  missiles: {
+    kind: 'unit', folder: 'units', group: 'vehicles.wheeled', label: 'SAM Launcher',
+    build: buildMissiles, requiredParts: ['body', 'launcher', 'barrel', 'radar'],
+  },
+  'supply-truck': {
+    kind: 'unit', folder: 'units', group: 'vehicles.wheeled', label: 'Supply Truck',
+    build: buildSupplyTruck, requiredParts: ['body', 'tailgate'],
+  },
+  'command-vehicle': {
+    kind: 'unit', folder: 'units', group: 'vehicles.wheeled', label: 'Mobile Command Vehicle',
+    build: buildCommandVehicle, requiredParts: ['body', 'mast'],
+  },
+  aegis: {
+    kind: 'unit', folder: 'units', group: 'vehicles.wheeled', label: 'Aegis',
+    build: buildAegis, requiredParts: ['body', 'turret', 'barrel'],
   },
   barracks: {
     kind: 'building',
