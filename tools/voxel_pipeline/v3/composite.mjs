@@ -29,6 +29,7 @@ import { decodeDepth } from './depth-map.mjs';
  *   material: {w:number,h:number,data:Uint8ClampedArray},
  *   depth: {w:number,h:number,data:Uint8ClampedArray}|null,
  *   depthFallback?: number,
+ *   depthBias?: number,  added to every decoded depth (see below)
  *   scale?: number,
  *   ox: number, oy: number,
  * }>} layers  parts in any order; `ox`/`oy` place the sheet's top-left corner
@@ -70,6 +71,16 @@ export function compositeParts(layers, { pad = 4 } = {}) {
     const dep = l.depth ? l.depth.data : null;
     const dw = l.depth ? l.depth.w : 0;
     const fallback = l.depthFallback ?? -Infinity;
+    // A traversing part is drawn from a camera rotated by the traverse angle, so
+    // its depth sheet measures depth along THAT camera's axis. The runtime pose,
+    // however, is the part rotated about its pivot, seen from the scene camera.
+    // For a rotation about the pivot `c` the two differ by a constant —
+    //   depth_scene = depth_sheet + (v_scene − v_sheet) · c / 8 —
+    // because the rotation is about `c`, not about the world origin, and the two
+    // view directions disagree on where `c` is (up to ~37 tile units on a 512
+    // model). Without this the turret sinks inside its pit as it swings: the
+    // pit wall is measured along the scene axis and the turret along another.
+    const bias = l.depthBias ?? 0;
     for (let y = 0; y < l.albedo.h; y++) {
       const dy = dy0 + y;
       if (dy < 0 || dy >= H) continue;
@@ -87,7 +98,7 @@ export function compositeParts(layers, { pad = 4 } = {}) {
           const px = Math.min(dw - 1, Math.max(0, (x / scale) | 0));
           const py = Math.min(l.depth.h - 1, Math.max(0, (y / scale) | 0));
           const o = (py * dw + px) * 4;
-          if (dep[o + 3] !== 0) z = decodeDepth(dep[o] * 256 + dep[o + 1]);
+          if (dep[o + 3] !== 0) z = decodeDepth(dep[o] * 256 + dep[o + 1]) + bias;
         }
         const cell = dy * W + dx;
         // Coverage is the best any part offers for this pixel: a sheet pixel

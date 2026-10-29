@@ -74,8 +74,51 @@ function sheetFacing(part, facing, unitIndex, steps = 0) {
   return order[(((base + steps) % n) + n) % n];
 }
 
-/** Place every part of one facing the way the review page does, then composite. */
-function compositeFromSheets(id, facing) {
+/**
+ * Design space -> camera axis for a facing. Mirrors `cameraBasis(angle).dHat`,
+ * the direction the depth sheets are measured along.
+ */
+function viewDirAt(angle) {
+  const p = (angle * Math.PI) / 180;
+  const v = [Math.sin(p) + Math.cos(p), Math.cos(p) - Math.sin(p), 1];
+  const n = Math.hypot(v[0], v[1], v[2]);
+  return [v[0] / n, v[1] / n, v[2] / n];
+}
+
+/** Yaw a design-space point about a pivot, +Z up. */
+function yawAbout(point, pivot, deg) {
+  const r = (deg * Math.PI) / 180, c = Math.cos(r), s = Math.sin(r);
+  const dx = point[0] - pivot[0], dy = point[1] - pivot[1];
+  return [pivot[0] + dx * c - dy * s, pivot[1] + dx * s + dy * c, point[2]];
+}
+
+/** The pivot a traverse chain turns about — the turret ring, not the gun. */
+function traverseRootOf(manifest, part) {
+  if (part.traverseRoot) return part.traverseRoot;
+  let root = part.pivotDesign;
+  let cursor = part;
+  const guard = new Set();
+  while (cursor && cursor.parent && !guard.has(cursor.name)) {
+    guard.add(cursor.name);
+    const parent = manifest.parts[cursor.parent];
+    if (!parent) break;
+    if (parent.traverse) root = parent.pivotDesign;
+    cursor = parent;
+  }
+  return root;
+}
+
+/**
+ * Place every part of one facing the way the review page does, then composite.
+ *
+ * `steps` is a traverse, in 22.5-degree unit facings. A traversing part is drawn
+ * from the sheet baked `steps` cameras round the ring, its pivot is orbited about
+ * its parent's pivot, and its depth is corrected by
+ * `(v_scene − v_sheet) · root / 8` — see the note in composite.mjs and
+ * `depthBias` in the review page. All three have to agree or the gun sinks into
+ * the hull as it swings.
+ */
+function compositeFromSheets(id, facing, steps = 0) {
   const dir = assetDir(id);
   const manifest = manifestOf(id);
   const meta = manifest.facingMeta.find(f => f.id === facing);
@@ -93,18 +136,43 @@ function compositeFromSheets(id, facing) {
 
   const layers = [];
   for (const [name, part] of Object.entries(manifest.parts)) {
-    const entry = part.facings[sheetFacing(part, facing, meta.unitIndex)];
-    assert.ok(entry, `${id}/${name}: no sheet for ${facing}`);
+    const sheetOf = sheetFacing(part, facing, meta.unitIndex, steps);
+    const entry = part.facings[sheetOf];
+    assert.ok(entry, `${id}/${name}: no sheet for ${sheetOf} at step ${steps}`);
     assert.ok(entry.files.depth, `${id}/${name}: sheet has no depth map`);
-    const pv = part.pivotDesign;
+    const traversing = !!part.traverse && steps !== 0;
+    let pv = part.pivotDesign;
+    if (traversing) {
+      let cursor = part;
+      const guard = new Set();
+      while (cursor && cursor.parent && !guard.has(cursor.name)) {
+        guard.add(cursor.name);
+        const parent = manifest.parts[cursor.parent];
+        if (!parent) break;
+        pv = yawAbout(pv, parent.pivotDesign, steps * 22.5);
+        cursor = parent;
+      }
+    }
     const dx = pv[0] - G[0], dy = pv[1] - G[1], dz = (pv[2] ?? 0) - G[2];
     const screen = [M[0] * dx + M[1] * dy + M[2] * dz, M[3] * dx + M[4] * dy + M[5] * dz];
+    let depthBias = 0;
+    if (traversing) {
+      const root = traverseRootOf(manifest, part);
+      const vScene = meta.viewDir;
+      const vSheet = viewDirAt(part.facingSet === 'unit'
+        ? Number(String(sheetOf).slice(1)) * 22.5
+        : meta.angle);
+      depthBias = ((vScene[0] - vSheet[0]) * root[0]
+        + (vScene[1] - vSheet[1]) * root[1]
+        + (vScene[2] - vSheet[2]) * (root[2] ?? 0)) / (manifest.designVoxelsPerTileUnit || 8);
+    }
     layers.push({
       name,
       ox: screen[0] - entry.pivot[0],
       oy: screen[1] - entry.pivot[1],
       pivot: entry.pivot,
       screen,
+      depthBias,
       albedo: read(entry.files.albedo),
       normal: read(entry.files.normal),
       material: read(entry.files.material),
@@ -115,18 +183,31 @@ function compositeFromSheets(id, facing) {
   return { comp: compositeParts(layers), layers, meta };
 }
 
-/** Ground truth: every voxel of the model through one depth buffer. */
-function renderTruth(id, facing, superSample) {
+/**
+ * Ground truth: every voxel of the model through one depth buffer.
+ *
+ * With `steps`, the parts that traverse are yawed rigidly about the ring they
+ * are mounted on — what a voxel engine would actually draw, not what a rotated
+ * sprite would. The rotation lands on the integer grid only at multiples of 90°,
+ * so comparisons at other steps are lossy for reasons that have nothing to do
+ * with the compositor.
+ */
+function renderTruth(id, facing, superSample, steps = 0) {
   const geom = model(id);
   const set = MODELS[id].kind === 'unit' ? UNIT_FACINGS : BUILDING_FACINGS;
   const f = set.find(q => q.id === facing);
   const basis = cameraBasis(f.angle, 1);
   const occluders = new Set();
   const all = [];
+  const manifest = fs.existsSync(path.join(assetDir(id), 'manifest.json')) ? manifestOf(id) : null;
   for (const part of geom.parts) {
+    const pmeta = manifest ? manifest.parts[part.name] : null;
+    const pivot = pmeta && pmeta.traverse && steps ? traverseRootOf(manifest, pmeta) : null;
     for (const v of part.voxels) {
-      occluders.add(`${v[0]},${v[1]},${v[2]}`);
-      all.push(v);
+      const q = pivot ? yawAbout(v, pivot, steps * 22.5) : v;
+      const p = [Math.round(q[0]), Math.round(q[1]), Math.round(q[2]), v[3]];
+      occluders.add(`${p[0]},${p[1]},${p[2]}`);
+      all.push(p);
     }
   }
   const r = renderPart(all, { basis, palette, superSample, occluders });
@@ -138,9 +219,9 @@ function renderTruth(id, facing, superSample) {
  * Compare a composite against the ground truth, aligning on the projected
  * ground centre — the one point every placement is anchored to.
  */
-function compare(id, facing, { superSample = 4 } = {}) {
-  const { comp, layers } = compositeFromSheets(id, facing);
-  const { r: truth, groundPixel } = renderTruth(id, facing, superSample);
+function compare(id, facing, { superSample = 4, steps = 0 } = {}) {
+  const { comp, layers } = compositeFromSheets(id, facing, steps);
+  const { r: truth, groundPixel } = renderTruth(id, facing, superSample, steps);
   const L0 = layers[0];
   const gx = Math.round(L0.ox - comp.minX) + 4 + L0.pivot[0];
   const gy = Math.round(L0.oy - comp.minY) + 4 + L0.pivot[1];
@@ -149,7 +230,7 @@ function compare(id, facing, { superSample = 4 } = {}) {
 
   const W = comp.W, H = comp.H;
   const result = {
-    id, facing, W, H,
+    id, facing, steps, W, H,
     union: 0, coverageMiss: 0,
     pure: 0, colourMiss: 0, worstColour: 0,
     depthPixels: 0, depthBad: 0, depthMax: 0, worstDepthAt: null,
@@ -194,19 +275,19 @@ function compare(id, facing, { superSample = 4 } = {}) {
 }
 
 function assertMatchesGroundTruth(result) {
-  const { id, facing, union, coverageMiss, pure, colourMiss, depthBad, depthPixels } = result;
-  assert.ok(union > 200, `${id}/${facing}: only ${union} pixels have surface — nothing to compare`);
+  const { id, facing, steps, union, coverageMiss, pure, colourMiss, depthBad, depthPixels } = result;
+  assert.ok(union > 200, `${id}/${facing}@${steps}: only ${union} pixels have surface — nothing to compare`);
   // Half a pixel of sample phase on an edge is allowed; a part in the wrong
   // place is not, and it shows up as whole regions rather than a fringe.
-  assert.ok(coverageMiss / union < 0.01, `${id}/${facing}: ${coverageMiss}/${union} pixels disagree on`
+  assert.ok(coverageMiss / union < 0.01, `${id}/${facing}@${steps}: ${coverageMiss}/${union} pixels disagree on`
     + ' silhouette — a part is missing, misplaced, or drawn where the model has nothing');
-  assert.ok(depthBad / depthPixels < 0.01, `${id}/${facing}: ${depthBad}/${depthPixels} pixels disagree on depth`
+  assert.ok(depthBad / depthPixels < 0.01, `${id}/${facing}@${steps}: ${depthBad}/${depthPixels} pixels disagree on depth`
     + ` (worst ${result.depthMax.toFixed(3)} tile units at ${JSON.stringify(result.worstDepthAt)})`
     + ' — the compositor is not showing the nearest part');
-  assert.ok(pure > 100, `${id}/${facing}: only ${pure} single-part pixels to check colour on`);
+  assert.ok(pure > 100, `${id}/${facing}@${steps}: only ${pure} single-part pixels to check colour on`);
   assert.ok(
     colourMiss / pure < 0.01,
-    `${id}/${facing}: ${colourMiss}/${pure} single-part pixels have the wrong colour`
+    `${id}/${facing}@${steps}: ${colourMiss}/${pure} single-part pixels have the wrong colour`
     + ` (worst ${result.worstColour}) — the wrong part won`,
   );
 }
@@ -226,6 +307,19 @@ test('at-turret: turret and barrel compose on the hull from every scene facing',
   // The building bakes 4 facings; the gun rides on the 16-camera unit ring.
   for (const facing of BUILDING_FACINGS.map(f => f.id)) {
     assertMatchesGroundTruth(compare('at-turret', facing));
+  }
+});
+
+test('at-turret: the gun stays on top of the hull while it traverses', () => {
+  // The bug this pins: at a traverse the gun was drawn from another camera's
+  // sheet with no depth correction, so its depth was measured along a different
+  // axis than the hull's. It sat ~37 tile units too far back and the hull
+  // painted over every pixel of the turret that the pit wall was in front of —
+  // 232 wrong pixels of a 1000-pixel silhouette, i.e. the gun vanished into the
+  // roof. Cardinal steps only: a quarter turn re-voxelises exactly, so the
+  // ground truth is exact there.
+  for (const facing of ['right', 'up']) {
+    for (const steps of [4, 8, 12]) assertMatchesGroundTruth(compare('at-turret', facing, { steps }));
   }
 });
 

@@ -45,6 +45,10 @@ import { buildEliteHero } from './elite-hero.mjs';
 import { buildScout } from './scout.mjs';
 import { buildAttackDog } from './attack-dog.mjs';
 import { buildMech } from './mech.mjs';
+import { buildBomber } from './bomber.mjs';
+import { buildSpecter } from './specter.mjs';
+import { buildTransportPlane } from './transport-plane.mjs';
+import { buildMpa } from './mpa.mjs';
 import { buildFighter } from './fighter.mjs';
 import { buildCopter } from './copter.mjs';
 import { buildLiftCopter } from './lift-copter.mjs';
@@ -238,6 +242,11 @@ export const MODELS = {
     requiredParts: ['body', 'door', 'flag'],
     minSpan: 180,
   },
+  bomber: {
+    kind: 'unit', folder: 'units', group: 'air.jet', label: 'Strategic Bomber',
+    build: buildBomber, requiredParts: ['body', 'fin', 'tail-turret'],
+    minSpan: 150,
+  },
   copter: {
     kind: 'unit', folder: 'units', group: 'air.rotor', label: 'Attack Helicopter',
     build: buildCopter, requiredParts: ['body', 'rotor', 'gun'],
@@ -250,6 +259,21 @@ export const MODELS = {
     kind: 'unit', folder: 'units', group: 'air.jet', label: 'Fighter Jet',
     build: buildFighter, requiredParts: ['body', 'fin', 'stores'],
     // Airframes are thin on purpose; see the note on `copter`.
+    minSpan: 150,
+  },
+  mpa: {
+    kind: 'unit', folder: 'units', group: 'air.jet', label: 'Maritime Patrol Aircraft',
+    build: buildMpa, requiredParts: ['body', 'fin', 'stores', 'boom'],
+    minSpan: 150,
+  },
+  specter: {
+    kind: 'unit', folder: 'units', group: 'air.jet', label: 'Gunship',
+    build: buildSpecter, requiredParts: ['body', 'fin', 'guns'],
+    minSpan: 150,
+  },
+  'transport-plane': {
+    kind: 'unit', folder: 'units', group: 'air.jet', label: 'Heavy Transport',
+    build: buildTransportPlane, requiredParts: ['body', 'fin', 'ramp'],
     minSpan: 150,
   },
   'lift-copter': {

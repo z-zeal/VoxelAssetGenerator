@@ -4,7 +4,7 @@ Companion to `docs/PLAN_512_native_16dir_segmented_pipeline.md`. Work proceeds *
 a batch closes only when its gate passes. Legend: `[x]` done · `[~]` written but not green · `[ ]` todo ·
 `[!]` blocked.
 
-Status as of this commit — **B0–B3 done, B4a/B4b/B4c done (36 units), B5a done (air, rotor)**.
+Status as of this commit — **B0–B3 done, B4a/B4b/B4c done (36 units), B5a done (air, rotor), B5b 5/8 (fighter, bomber, specter, mpa, transport-plane)**.
 Every unit and both buildings bake end-to-end at 512³ with the full part set: albedo, normal, material
 **and depth** per part per facing, plus a 4× review set. **Occlusion is resolved per pixel by a z-test**
 (see *Depth sheets* below), so draw order no longer affects any composite.
@@ -307,11 +307,29 @@ open transom with the screws visible from behind, would settle it.
       `wingPair`/`tailPlane`/`fin`, `jetPipe`, `nacelle`, `store`, `sensorBall`, `propDisc`, `bellyHook`.
 - [x] Aircraft carry `minSpan: 150`: the default 180 exists to catch a 64³-authored model, and an airframe
       is legitimately thin. 150 still fails a 64³ model by 2×.
-- [ ] **B5b jet** — `fighter` (174,567, `body`/`fin` = rudder pair/`stores`), `bomber`, `specter`, `mpa`,
-      `ground-attack-jet`, `transport-plane`, `stealth-fighter`, `spy-plane`.
+- [ ] **B5b jet** — done: `fighter` (174,567, `body`/`fin` = rudder pair/`stores`), `bomber` (242,713,
+      `body`/`fin`/`stores`/`tail-turret` + `guns` — the first **airborne** traverse, a real traverse chain on a
+      moving airframe), `specter` (228,674, gunship: `props` = four discs on their own part, `guns` = side
+      battery), `mpa` (193,366, `boom` = retractable MAD sting), `transport-plane` (237,737, `ramp`). Open:
+      `ground-attack-jet`, `stealth-fighter`, `spy-plane`.
+- [x] `propDisc` takes `cy` — it hard-coded `256` in Y, so a prop on a wing nacelle was drawn on the
+      fuselage centre line. The default is unchanged, so the already-baked rotor sheets stay valid.
 - [ ] **B5c naval** — `submarine`, `gunboat`, `cruiser`, `battleship`, `lander`, `uhac`, `destroyer`,
       `missile-boat`, `carrier`, `naval-repair`, `mine-layer-ship`.
 - [ ] Rotor/jet/naval part sets per §5 of the plan.
+
+**Preview correctness (reported twice, fixed here)** — both were compositing bugs, not bake bugs:
+
+* *hi sheets placed by their own crop ratio.* `voxel-sprite-review-v4.html` scaled each hi part by
+  `entry.w / runtimeEntry.w`. Crops are ceil-ed to each scale's own supersample grid, so that ratio is only
+  approximately the sheet scale (measured 3.60–4.00), and using it moved every part by its own error about its
+  own origin. The scale is now the manifest's `hiSheetScale` — one number for all parts of an asset.
+* *a traversing part drawn at the wrong depth.* A turret drawn from another camera's sheet has its depth
+  measured along *that* camera's axis, which differs from the scene camera's by
+  `(v_scene − v_sheet) · traverseRoot / 8`. Missing it put at-turret's gun 37 tile units too far back at a
+  quarter turn: 232 of 998 silhouette pixels wrong, hull over gun. With the correction: ≤ 10/1000. The bias is
+  computed in the page, asserted in `tests/voxel-occlusion.test.js`, and `traverseRoot` is baked into the
+  manifest so a runtime never has to climb the mount chain.
 
 **Open art notes from B5a** — the airframes read, but none of them is finished, and these are shape problems
 rather than pipeline problems:

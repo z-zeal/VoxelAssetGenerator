@@ -203,6 +203,29 @@ export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, sheetK = 
     }
   }
 
+  // The pivot every traversing chain swings about: the pivots of the chain are
+  // not the rotation centre, the ROOT's is. `barrel.parent = turret` means the
+  // barrel orbits the turret ring — re-centring the chain rotates the whole
+  // group rigidly about that one point, so the depth correction below (see
+  // composite.mjs) and any runtime traverse both need the same anchor, and
+  // climbing the chain at runtime is exactly the kind of thing a port gets
+  // subtly wrong. Bake it into the manifest instead.
+  const traverseRoot = new Map();
+  for (const part of geom.parts) {
+    if (!traversing.has(part.name)) continue;
+    let cursor = part, root = part;
+    const guard = new Set();
+    while (cursor && !guard.has(cursor.name)) {
+      guard.add(cursor.name);
+      if (cursor.traverse) root = cursor;             // deepest traversing ancestor wins
+      if (!cursor.parent || !traversing.has(cursor.parent)) break;
+      const parent = geom.parts.find(q => q.name === cursor.parent);
+      if (!parent) break;
+      cursor = parent;
+    }
+    traverseRoot.set(part.name, root.pivot);
+  }
+
   const palette = buildPalette(MATERIAL_NAMES, name => colorFor(name, 'standard'), MATERIALS);
   const occluders = new Set();
   for (const part of geom.parts) for (const [x, y, z] of part.voxels) occluders.add(`${x},${y},${z}`);
@@ -316,6 +339,8 @@ export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, sheetK = 
       parent: part.parent ?? null,
       pivotDesign: part.pivot,
       traverse: traversing.has(part.name),
+      // Only for traversing parts: the pivot the whole chain rotates about.
+      traverseRoot: traverseRoot.has(part.name) ? traverseRoot.get(part.name) : null,
       // Which camera ring this part was baked on, and the order of its facings.
       facingSet: partFacings === UNIT_FACINGS ? 'unit' : 'scene',
       facingOrder: partFacings.map(f => f.id),

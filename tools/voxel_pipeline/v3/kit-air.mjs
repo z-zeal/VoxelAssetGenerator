@@ -295,14 +295,14 @@ export function sensorBall(c, { x, cz, r = 18, part = 'sensor', yokeMat = 'steel
 }
 
 /** Pusher propeller disc at the tail, in the Y–Z plane. */
-export function propDisc(c, { x, cz, radius, blades = 4, part = 'prop', mat = 'steel.dark' }) {
+export function propDisc(c, { x, cy = 256, cz, radius, blades = 4, part = 'prop', mat = 'steel.dark' }) {
   c.part(part);
-  c.cylX(x - 8, x + 8, 256, cz, Math.max(4, Math.round(radius * 0.16)), 'steel.bright');
+  c.cylX(x - 8, x + 8, cy, cz, Math.max(4, Math.round(radius * 0.16)), 'steel.bright');
   for (let b = 0; b < blades; b++) {
     const a = (b / blades) * Math.PI * 2;
     const dy = Math.cos(a), dz = Math.sin(a);
     for (let r = 5; r <= radius; r++) {
-      const py = Math.round(256 + dy * r);
+      const py = Math.round(cy + dy * r);
       const pz = Math.round(cz + dz * r);
       c.box(x - 1, py - 2, pz - 2, x + 2, py + 3, pz + 3, mat);
     }

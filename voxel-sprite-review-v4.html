@@ -280,6 +280,21 @@ function shiftFacing(partMeta, sceneFacing, steps) {
   return order[(((base + steps) % n) + n) % n];
 }
 
+/**
+ * The camera axis of a facing, as a unit vector in design space.
+ *
+ * Mirrors `cameraBasis(angle).dHat` in raster.mjs: the null direction of the
+ * isometric projection, i.e. the direction "towards the viewer". `depth` in the
+ * depth sheets is the dot product of a design point with this.
+ */
+function viewDirFor(angleDeg) {
+  const p = (angleDeg * Math.PI) / 180;
+  const s = Math.sin(p), c = Math.cos(p);
+  const v = [s + c, c - s, 1];
+  const n = Math.hypot(v[0], v[1], v[2]);
+  return [v[0] / n, v[1] / n, v[2] / n];
+}
+
 /** Rotate a design-space point about a pivot by deg (yaw, +Z up). */
 function yawAbout(point, pivot, deg) {
   const rad = (deg * Math.PI) / 180;
@@ -287,6 +302,28 @@ function yawAbout(point, pivot, deg) {
   const dx = point[0] - pivot[0];
   const dy = point[1] - pivot[1];
   return [pivot[0] + dx * c - dy * s, pivot[1] + dx * s + dy * c, point[2]];
+}
+
+/**
+ * The pivot a traverse chain rotates about: the pivot of the topmost traversing
+ * ancestor (the turret ring, not the gun's own trunnion).
+ *
+ * Newer manifests carry it as `traverseRoot`; older ones are resolved by
+ * climbing the mount chain, which is what the bake does too.
+ */
+function traverseRootOf(m, pmeta) {
+  if (pmeta.traverseRoot) return pmeta.traverseRoot;
+  let root = pmeta.pivotDesign;
+  let cursor = pmeta;
+  const guard = new Set();
+  while (cursor && cursor.parent && !guard.has(cursor.name)) {
+    guard.add(cursor.name);
+    const parent = m.parts[cursor.parent];
+    if (!parent) break;
+    if (parent.traverse) root = parent.pivotDesign;
+    cursor = parent;
+  }
+  return root;
 }
 
 /**
@@ -308,6 +345,7 @@ function partTransform(name, sceneFacing, steps) {
   let pivot = pmeta.pivotDesign.slice();
   let facing = sceneFacing;
   let depthOffset = 0;
+  let depthBias = 0;
 
   if (dynamic && traverses) {
     facing = shiftFacing(pmeta, sceneFacing, steps);
@@ -351,7 +389,30 @@ function partTransform(name, sceneFacing, steps) {
     depthOffset = v[0] * (centroid[0] - G[0]) + v[1] * (centroid[1] - G[1]) + v[2] * (centroid[2] - G[2]);
   }
 
-  return { facing, screen, depth: depthOffset, dynamic };
+  if (dynamic && traverses && steps) {
+    // A traversing part is drawn from the sheet baked at the SHIFTED facing, so
+    // its depth sheet measures depth along that camera's axis. The pose the
+    // viewer sees is the part yawed about its ring, seen from the SCENE camera.
+    // Rotating about the ring `c` by α turns the first into the second up to one
+    // constant, because the two view axes disagree about where `c` is:
+    //
+    //   depth_scene = depth_sheet + (v_scene − v_sheet) · c / 8
+    //
+    // (8 design voxels per tile unit — the unit the depth sheets are in.) Drop
+    // it and the turret sinks to the bottom of its own pit as it swings: the pit
+    // wall is measured along the scene axis, the turret along another, and every
+    // pixel of the turret that the wall is in front of flips to the wall.
+    const root = traverseRootOf(m, pmeta);
+    const vs = meta.viewDir ?? viewDirFor(meta.angle);
+    const vh = viewDirFor(pmeta.facingSet === 'unit'
+      ? Number(String(facing).slice(1)) * 22.5
+      : meta.angle);
+    depthBias = ((vs[0] - vh[0]) * root[0]
+      + (vs[1] - vh[1]) * root[1]
+      + (vs[2] - vh[2]) * (root[2] ?? 0)) / (m.designVoxelsPerTileUnit || 8);
+  }
+
+  return { facing, screen, depth: depthOffset, depthBias, dynamic };
 }
 
 async function buildComposite() {
@@ -372,16 +433,8 @@ async function buildComposite() {
   // Hi sheets are all-or-nothing. They are `scale` times the resolution of the
   // runtime sheets, so a composite that mixes one hi layer with one runtime
   // layer is placing its parts in two different coordinate systems. If even one
-  // visible part has no hi sheet — or the ratios are not all the same — build
-  // the whole composite from runtime sheets.
-  let hires = state.sheetHi && pick.every(p => m.parts[p.name].facings[p.xf.facing].filesHi);
-  if (hires) {
-    const ratios = new Set(pick.map(p => {
-      const rec = m.parts[p.name].facings[p.xf.facing];
-      return (rec.filesHi.w / rec.w).toFixed(3);
-    }));
-    hires = ratios.size === 1;
-  }
+  // visible part has no hi sheet, build the whole composite from runtime sheets.
+  const hires = state.sheetHi && pick.every(p => m.parts[p.name].facings[p.xf.facing].filesHi);
   const prevHi = state.sheetHi;
   state.sheetHi = hires;
   let maps;
@@ -399,10 +452,15 @@ async function buildComposite() {
     const { a, n, m: mat, d, entry, runtimeEntry, hi } = maps[i];
     // `xf.screen` is in runtime pixels (it comes from the manifest's screen
     // matrix); a hi sheet's crop and pivot are that many times finer, so the
-    // screen position is scaled up to match before the pivot is subtracted. The
-    // ratio is taken from the two crops rather than assumed, and the same ratio
-    // maps hi pixels back onto the runtime-scale depth sheet.
-    const S = hi ? entry.w / runtimeEntry.w : 1;
+    // screen position is scaled up to match before the pivot is subtracted.
+    //
+    // The scale is the manifest's `hiSheetScale`, NOT the ratio of the two crop
+    // widths: crops are ceil-ed to the supersample grid at their own scale, so
+    // the width ratio is only ever approximately 4 (measured: 3.63–4.00). Using
+    // it placed every part as if the whole scene were scaled by its own ratio,
+    // which smeared the layers apart by up to a few runtime pixels. The same
+    // uniform scale maps hi pixels back onto the runtime-scale depth sheet.
+    const S = hi ? state.sheetScale : 1;
     layers.push({
       name,
       ox: xf.screen[0] * S - entry.pivot[0],
@@ -412,6 +470,7 @@ async function buildComposite() {
       material: { w: mat.width, h: mat.height, data: mat.data },
       depth: d ? { w: d.width, h: d.height, data: d.data } : null,
       depthFallback: xf.depth,
+      depthBias: xf.depthBias,
       scale: S,
     });
   }

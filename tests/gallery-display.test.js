@@ -18,6 +18,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFile } from 'node:fs/promises';
+import { cameraBasis } from '../tools/voxel_pipeline/v3/raster.mjs';
 
 const html = await readFile(new URL('../voxel-sprite-review-v4.html', import.meta.url), 'utf8');
 
@@ -49,15 +50,38 @@ test('the live composite reads the review sheets, not the runtime sheets', () =>
   assert.match(html, /const entry = \(state\.sheetHi && rec\.filesHi\) \? rec\.filesHi : rec;/,
     'loadPartMaps must prefer the hi sheet set');
   assert.match(html, /pickSheetSet\(state\.manifest/, 'the sheet set must be chosen per asset');
-  // The ratio is taken from the two crops rather than from a manifest constant:
-  // a hi crop is ceil-ed to the supersample grid at its own scale, so its width
-  // is not exactly `scale` times the runtime width and assuming one drifts the
-  // part by a growing amount.
-  assert.match(html, /const S = hi \? entry\.w \/ runtimeEntry\.w : 1;/,
-    'hi sheets are in different pixel units — the ratio must come from the crops');
-  assert.match(html, /scale: S,/, 'the same ratio must map hi pixels onto the runtime depth sheet');
-  assert.match(html, /let hires = state\.sheetHi && pick\.every/,
+  // The scale is the manifest's `hiSheetScale`, NOT the ratio of the two crops.
+  // A hi crop is ceil-ed to the supersample grid at its own scale, so the width
+  // ratio is only ever approximately the scale (measured: 3.60–4.00); using it
+  // scaled every part by its own error about its own origin and smeared the
+  // layers apart by a few pixels.
+  assert.match(html, /const S = hi \? state\.sheetScale : 1;/,
+    'hi pixels must be scaled by the manifest scale, not by a measured crop ratio');
+  assert.match(html, /scale: S,/, 'the same scale must map hi pixels onto the runtime depth sheet');
+  assert.match(html, /const hires = state\.sheetHi && pick\.every/,
     'a composite must not mix hi and runtime layers: that is two coordinate systems');
+});
+
+test('a traversing part keeps its depth when drawn from another facing', () => {
+  // A traversing part is composited from the sheet baked `steps` cameras round
+  // the ring, so its depth sheet measures depth along THAT camera's axis. The
+  // pose on screen is the part yawed about its ring, seen from the scene
+  // camera; the two differ by `(v_scene − v_sheet) · root / 8`, a constant.
+  // Without it the gun sat ~37 tile units too far back and the hull painted
+  // over it as soon as the traverse left zero.
+  assert.match(html, /depthBias: xf\.depthBias,/, 'the layer must carry the traverse depth correction');
+  assert.match(html, /function traverseRootOf\(m, pmeta\)/, 'the rotation centre must be the ring, not the gun');
+  const m = html.match(/function viewDirFor\(angleDeg\) \{([\s\S]*?)\n\}/);
+  assert.ok(m, 'viewDirFor() is missing');
+  const viewDirFor = new Function('angleDeg', m[1]);
+  for (const angle of [0, 22.5, 45, 90, 180, 270]) {
+    const dHat = cameraBasis(angle, 1).dHat;
+    const got = viewDirFor(angle);
+    for (let i = 0; i < 3; i++) {
+      assert.ok(Math.abs(got[i] - dHat[i]) < 1e-12,
+        `viewDirFor(${angle})[${i}] = ${got[i]}, camera axis is ${dHat[i]}`);
+    }
+  }
 });
 
 test('crisp pixels is the default for the live view', () => {
