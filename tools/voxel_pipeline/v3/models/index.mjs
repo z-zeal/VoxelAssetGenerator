@@ -23,6 +23,28 @@ import { buildAmphibiousTank } from './amphibious-tank.mjs';
 import { buildMineLayer } from './mine-layer.mjs';
 import { buildMobileRepair } from './mobile-repair.mjs';
 import { buildMineClearing } from './mine-clearing.mjs';
+import { buildRecon } from './recon.mjs';
+import { buildRockets } from './rockets.mjs';
+import { buildMissiles } from './missiles.mjs';
+import { buildSupplyTruck } from './supply-truck.mjs';
+import { buildCommandVehicle } from './command-vehicle.mjs';
+import { buildAegis } from './aegis.mjs';
+import { buildInfantry } from './infantry.mjs';
+import { buildEngineer } from './engineer.mjs';
+import { buildMedic } from './medic.mjs';
+import { buildRocketInfantry } from './rocket-infantry.mjs';
+import { buildAaInfantry } from './aa-infantry.mjs';
+import { buildSniper } from './sniper.mjs';
+import { buildGrenadier } from './grenadier.mjs';
+import { buildFlamethrower } from './flamethrower.mjs';
+import { buildDemolitionist } from './demolitionist.mjs';
+import { buildCommando } from './commando.mjs';
+import { buildOfficer } from './officer.mjs';
+import { buildSpy } from './spy.mjs';
+import { buildEliteHero } from './elite-hero.mjs';
+import { buildScout } from './scout.mjs';
+import { buildAttackDog } from './attack-dog.mjs';
+import { buildMech } from './mech.mjs';
 import { buildBarracks } from './barracks.mjs';
 import { buildAtTurret } from './at-turret.mjs';
 
@@ -96,6 +118,112 @@ export const MODELS = {
   'mine-clearing': {
     kind: 'unit', folder: 'units', group: 'vehicles.tracked', label: 'Mine-Clearing Vehicle',
     build: buildMineClearing, requiredParts: ['body', 'turret', 'barrel', 'flail'],
+  },
+  recon: {
+    kind: 'unit', folder: 'units', group: 'vehicles.wheeled', label: 'HUMVEE Recon',
+    build: buildRecon, requiredParts: ['body', 'turret', 'barrel'],
+  },
+  rockets: {
+    kind: 'unit', folder: 'units', group: 'vehicles.wheeled', label: 'MLRS',
+    build: buildRockets, requiredParts: ['body', 'launcher', 'barrel'],
+  },
+  missiles: {
+    kind: 'unit', folder: 'units', group: 'vehicles.wheeled', label: 'SAM Launcher',
+    build: buildMissiles, requiredParts: ['body', 'launcher', 'barrel', 'radar'],
+  },
+  'supply-truck': {
+    kind: 'unit', folder: 'units', group: 'vehicles.wheeled', label: 'Supply Truck',
+    build: buildSupplyTruck, requiredParts: ['body', 'tailgate'],
+  },
+  'command-vehicle': {
+    kind: 'unit', folder: 'units', group: 'vehicles.wheeled', label: 'Mobile Command Vehicle',
+    build: buildCommandVehicle, requiredParts: ['body', 'mast'],
+  },
+  aegis: {
+    kind: 'unit', folder: 'units', group: 'vehicles.wheeled', label: 'Aegis',
+    build: buildAegis, requiredParts: ['body', 'turret', 'barrel'],
+  },
+  infantry: {
+    kind: 'unit', folder: 'units', group: 'infantry', label: 'Infantry',
+    build: buildInfantry, requiredParts: ['body', 'head', 'arm.R'],
+    // A man is ~200 voxels tall at the scale the vehicles are authored on, so the
+    // 180-voxel footprint gate that catches 64³-scale mistakes does not apply.
+    minSpan: 60,
+  },
+  'engineer': {
+    kind: 'unit', folder: 'units', group: 'infantry.support', label: 'Engineer',
+    build: buildEngineer, requiredParts: ['body', 'head', 'arm.R'],
+    minSpan: 60,
+  },
+  'medic': {
+    kind: 'unit', folder: 'units', group: 'infantry.support', label: 'Field Medic',
+    build: buildMedic, requiredParts: ['body', 'head', 'arm.R'],
+    minSpan: 60,
+  },
+  'rocket-infantry': {
+    kind: 'unit', folder: 'units', group: 'infantry', label: 'Rocket Infantry',
+    build: buildRocketInfantry, requiredParts: ['body', 'head', 'arm.R'],
+    minSpan: 60,
+  },
+  'aa-infantry': {
+    kind: 'unit', folder: 'units', group: 'infantry', label: 'Anti-Air Infantry',
+    build: buildAaInfantry, requiredParts: ['body', 'head', 'arm.R'],
+    minSpan: 60,
+  },
+  'sniper': {
+    kind: 'unit', folder: 'units', group: 'infantry', label: 'Sniper',
+    build: buildSniper, requiredParts: ['body', 'head', 'arm.R'],
+    minSpan: 60,
+  },
+  'grenadier': {
+    kind: 'unit', folder: 'units', group: 'infantry', label: 'Grenadier',
+    build: buildGrenadier, requiredParts: ['body', 'head', 'arm.R'],
+    minSpan: 60,
+  },
+  'flamethrower': {
+    kind: 'unit', folder: 'units', group: 'infantry', label: 'Flamethrower Trooper',
+    build: buildFlamethrower, requiredParts: ['body', 'head', 'arm.R'],
+    minSpan: 60,
+  },
+  'demolitionist': {
+    kind: 'unit', folder: 'units', group: 'infantry', label: 'Demolitionist',
+    build: buildDemolitionist, requiredParts: ['body', 'head', 'arm.R'],
+    minSpan: 60,
+  },
+  'commando': {
+    kind: 'unit', folder: 'units', group: 'infantry', label: 'Commando',
+    build: buildCommando, requiredParts: ['body', 'head', 'arm.R'],
+    minSpan: 60,
+  },
+  'officer': {
+    kind: 'unit', folder: 'units', group: 'infantry', label: 'Officer',
+    build: buildOfficer, requiredParts: ['body', 'head', 'arm.R'],
+    minSpan: 60,
+  },
+  'spy': {
+    kind: 'unit', folder: 'units', group: 'infantry', label: 'Spy',
+    build: buildSpy, requiredParts: ['body', 'head', 'arm.R'],
+    minSpan: 60,
+  },
+  'elite-hero': {
+    kind: 'unit', folder: 'units', group: 'infantry', label: 'Elite Hero',
+    build: buildEliteHero, requiredParts: ['body', 'head', 'arm.R'],
+    minSpan: 60,
+  },
+  'scout': {
+    kind: 'unit', folder: 'units', group: 'infantry', label: 'Foot Recon Scout',
+    build: buildScout, requiredParts: ['body', 'head', 'arm.R'],
+    minSpan: 60,
+  },
+  'attack-dog': {
+    kind: 'unit', folder: 'units', group: 'infantry.beasts', label: 'Attack Dog',
+    build: buildAttackDog, requiredParts: ['body', 'head'],
+    minSpan: 60,
+  },
+  'mech': {
+    kind: 'unit', folder: 'units', group: 'infantry.walkers', label: 'Mech Infantry',
+    build: buildMech, requiredParts: ['body', 'turret'],
+    minSpan: 60,
   },
   barracks: {
     kind: 'building',

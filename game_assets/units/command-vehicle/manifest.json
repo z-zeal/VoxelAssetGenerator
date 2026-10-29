@@ -1,0 +1,5821 @@
+{
+  "format": "field-command-voxel-sheet-4",
+  "hiSheetScale": 4,
+  "asset": "command-vehicle",
+  "kind": "unit",
+  "group": "vehicles.wheeled",
+  "canvas": 512,
+  "designVoxelsPerTileUnit": 8,
+  "renderScale": 1,
+  "previewScale": 8,
+  "superSample": 4,
+  "pxPerVoxel": 0.125,
+  "tileDiamond": [
+    64,
+    32
+  ],
+  "facings": [
+    "d00",
+    "d01",
+    "d02",
+    "d03",
+    "d04",
+    "d05",
+    "d06",
+    "d07",
+    "d08",
+    "d09",
+    "d10",
+    "d11",
+    "d12",
+    "d13",
+    "d14",
+    "d15"
+  ],
+  "facingMeta": [
+    {
+      "id": "d00",
+      "angle": 0,
+      "screenAngle": 45,
+      "label": "SE",
+      "unitIndex": 0,
+      "viewDir": [
+        0.5773502691896258,
+        0.5773502691896258,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.0625,
+        -0.0625,
+        0,
+        0.03125,
+        0.03125,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d01",
+      "angle": 22.5,
+      "screenAngle": 67.5,
+      "label": "SSE",
+      "unitIndex": 1,
+      "viewDir": [
+        0.7543444794845715,
+        0.3124597141037824,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        0.03382475625913983,
+        -0.08166018530477004,
+        0,
+        0.040830092652386796,
+        0.01691237812956814,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d02",
+      "angle": 45,
+      "screenAngle": 90,
+      "label": "S",
+      "unitIndex": 2,
+      "viewDir": [
+        0.8164965809277261,
+        6.409875621278547e-17,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0,
+        -0.08838834764831915,
+        0,
+        0.04419417382415958,
+        0,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d03",
+      "angle": 67.5,
+      "screenAngle": 112.5,
+      "label": "SSW",
+      "unitIndex": 3,
+      "viewDir": [
+        0.7543444794845715,
+        -0.3124597141037824,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.03382475625913628,
+        -0.08166018530477004,
+        0,
+        0.04083009265238502,
+        -0.016912378129569028,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d04",
+      "angle": 90,
+      "screenAngle": 135,
+      "label": "SW",
+      "unitIndex": 4,
+      "viewDir": [
+        0.5773502691896258,
+        -0.5773502691896257,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        -0.0625,
+        -0.0625,
+        0,
+        0.03125,
+        -0.03125000000000089,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d05",
+      "angle": 112.5,
+      "screenAngle": 157.5,
+      "label": "WSW",
+      "unitIndex": 5,
+      "viewDir": [
+        0.3124597141037825,
+        -0.7543444794845715,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.08166018530477359,
+        -0.03382475625913628,
+        0,
+        0.016912378129569028,
+        -0.04083009265238591,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d06",
+      "angle": 135,
+      "screenAngle": 180,
+      "label": "W",
+      "unitIndex": 6,
+      "viewDir": [
+        6.409875621278547e-17,
+        -0.8164965809277261,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        -0.08838834764831915,
+        0,
+        0,
+        0,
+        -0.04419417382415958,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d07",
+      "angle": 157.5,
+      "screenAngle": 202.5,
+      "label": "WNW",
+      "unitIndex": 7,
+      "viewDir": [
+        -0.3124597141037824,
+        -0.7543444794845715,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.08166018530477537,
+        0.03382475625913628,
+        0,
+        -0.01691237812956814,
+        -0.04083009265238502,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d08",
+      "angle": 180,
+      "screenAngle": 225,
+      "label": "NW",
+      "unitIndex": 8,
+      "viewDir": [
+        -0.5773502691896256,
+        -0.5773502691896258,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.0625,
+        0.062499999999998224,
+        0,
+        -0.03125,
+        -0.03125,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d09",
+      "angle": 202.5,
+      "screenAngle": 247.5,
+      "label": "NNW",
+      "unitIndex": 9,
+      "viewDir": [
+        -0.7543444794845713,
+        -0.3124597141037829,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        -0.03382475625913628,
+        0.08166018530477537,
+        0,
+        -0.04083009265238502,
+        -0.01691237812956814,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d10",
+      "angle": 225,
+      "screenAngle": 270,
+      "label": "N",
+      "unitIndex": 10,
+      "viewDir": [
+        -0.8164965809277261,
+        -1.2819751242557095e-16,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0,
+        0.08838834764831915,
+        0,
+        -0.04419417382415958,
+        0,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d11",
+      "angle": 247.5,
+      "screenAngle": 292.5,
+      "label": "NNE",
+      "unitIndex": 11,
+      "viewDir": [
+        -0.7543444794845715,
+        0.3124597141037827,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.03382475625913983,
+        0.08166018530477359,
+        0,
+        -0.040830092652386796,
+        0.016912378129569028,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d12",
+      "angle": 270,
+      "screenAngle": 315,
+      "label": "NE",
+      "unitIndex": 12,
+      "viewDir": [
+        -0.5773502691896258,
+        0.5773502691896256,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        0.0625,
+        0.0625,
+        0,
+        -0.03125,
+        0.03125,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d13",
+      "angle": 292.5,
+      "screenAngle": 337.5,
+      "label": "ENE",
+      "unitIndex": 13,
+      "viewDir": [
+        -0.3124597141037823,
+        0.7543444794845715,
+        0.5773502691896257
+      ],
+      "screenMatrix": [
+        0.08166018530477004,
+        0.03382475625913983,
+        0,
+        -0.01691237812956814,
+        0.040830092652387684,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d14",
+      "angle": 315,
+      "screenAngle": 0,
+      "label": "E",
+      "unitIndex": 14,
+      "viewDir": [
+        -1.9229626863835643e-16,
+        0.8164965809277261,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.08838834764831915,
+        0,
+        0,
+        0,
+        0.04419417382415958,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    },
+    {
+      "id": "d15",
+      "angle": 337.5,
+      "screenAngle": 22.5,
+      "label": "ESE",
+      "unitIndex": 15,
+      "viewDir": [
+        0.3124597141037827,
+        0.7543444794845715,
+        0.5773502691896258
+      ],
+      "screenMatrix": [
+        0.08166018530477537,
+        -0.03382475625913273,
+        0,
+        0.016912378129569916,
+        0.040830092652386796,
+        -0.0625
+      ],
+      "groundCentre": [
+        256,
+        256,
+        0
+      ]
+    }
+  ],
+  "teamTint": {
+    "note": "Albedo is baked in the standard livery. Recolour pixels whose material map red channel matches these ids to apply an army livery.",
+    "materialIds": [
+      {
+        "name": "team.hull",
+        "id": 0,
+        "role": "hull"
+      },
+      {
+        "name": "team.light",
+        "id": 1,
+        "role": "light"
+      },
+      {
+        "name": "team.dark",
+        "id": 2,
+        "role": "dark"
+      },
+      {
+        "name": "team.accent",
+        "id": 3,
+        "role": "accent"
+      },
+      {
+        "name": "roof",
+        "id": 37,
+        "role": "hull"
+      },
+      {
+        "name": "roof.light",
+        "id": 38,
+        "role": "light"
+      },
+      {
+        "name": "roof.dark",
+        "id": 39,
+        "role": "dark"
+      }
+    ],
+    "liveries": {
+      "_note": "Army liveries for runtime tinting of team materials. Mirrors src/renderer.js TEAM_COLORS and tools/voxel_pipeline/v3/materials.mjs ARMY_LIVERY.",
+      "standard": {
+        "hull": "#df794b",
+        "light": "#ffc68b",
+        "dark": "#934b32",
+        "accent": "#ece7bc"
+      },
+      "allies": {
+        "hull": "#639bc3",
+        "light": "#a9d0e1",
+        "dark": "#345f78",
+        "accent": "#e8f1f4"
+      },
+      "soviets": {
+        "hull": "#7eb06a",
+        "light": "#b8e0a8",
+        "dark": "#2d4a2d",
+        "accent": "#dfe8c8"
+      },
+      "empire": {
+        "hull": "#d9b44e",
+        "light": "#ffe79a",
+        "dark": "#8a6a1a",
+        "accent": "#f6eecd"
+      },
+      "legion": {
+        "hull": "#c65a54",
+        "light": "#ffb0a8",
+        "dark": "#7a2a2a",
+        "accent": "#f3d9d4"
+      },
+      "neutral": {
+        "hull": "#aaa78b",
+        "light": "#cfcdb6",
+        "dark": "#6c6a55",
+        "accent": "#e2e0cf"
+      }
+    }
+  },
+  "normalMap": {
+    "space": "view",
+    "channelOrder": "rgb",
+    "range": "0..255 maps -1..1",
+    "up": "+g means screen up"
+  },
+  "materialMap": {
+    "channelOrder": "rgba",
+    "meaning": [
+      "materialId",
+      "metalness",
+      "roughness",
+      "emissive"
+    ],
+    "table": [
+      {
+        "id": 0,
+        "name": "team.hull",
+        "metalness": 0.35,
+        "roughness": 0.62,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "hull"
+      },
+      {
+        "id": 1,
+        "name": "team.light",
+        "metalness": 0.35,
+        "roughness": 0.58,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "light"
+      },
+      {
+        "id": 2,
+        "name": "team.dark",
+        "metalness": 0.4,
+        "roughness": 0.66,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "dark"
+      },
+      {
+        "id": 3,
+        "name": "team.accent",
+        "metalness": 0.2,
+        "roughness": 0.7,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "accent"
+      },
+      {
+        "id": 4,
+        "name": "steel",
+        "metalness": 0.85,
+        "roughness": 0.42,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 5,
+        "name": "steel.dark",
+        "metalness": 0.85,
+        "roughness": 0.5,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 6,
+        "name": "steel.bright",
+        "metalness": 0.95,
+        "roughness": 0.24,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 7,
+        "name": "gunmetal",
+        "metalness": 0.9,
+        "roughness": 0.38,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 8,
+        "name": "gunmetal.lit",
+        "metalness": 0.9,
+        "roughness": 0.32,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 9,
+        "name": "iron",
+        "metalness": 0.8,
+        "roughness": 0.62,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 10,
+        "name": "brass",
+        "metalness": 0.95,
+        "roughness": 0.3,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 11,
+        "name": "copper",
+        "metalness": 0.95,
+        "roughness": 0.34,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 12,
+        "name": "chrome",
+        "metalness": 1,
+        "roughness": 0.12,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 13,
+        "name": "rubber",
+        "metalness": 0.05,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 14,
+        "name": "track",
+        "metalness": 0.7,
+        "roughness": 0.68,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 15,
+        "name": "track.worn",
+        "metalness": 0.85,
+        "roughness": 0.44,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 16,
+        "name": "tyre",
+        "metalness": 0.03,
+        "roughness": 0.95,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 17,
+        "name": "plate",
+        "metalness": 0.55,
+        "roughness": 0.66,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 18,
+        "name": "plate.lit",
+        "metalness": 0.55,
+        "roughness": 0.6,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 19,
+        "name": "plate.dark",
+        "metalness": 0.55,
+        "roughness": 0.72,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 20,
+        "name": "glass",
+        "metalness": 0.3,
+        "roughness": 0.08,
+        "emissive": 0,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 21,
+        "name": "glass.dark",
+        "metalness": 0.4,
+        "roughness": 0.12,
+        "emissive": 0,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 22,
+        "name": "optic",
+        "metalness": 0.6,
+        "roughness": 0.05,
+        "emissive": 0.55,
+        "blend": "glass",
+        "team": null
+      },
+      {
+        "id": 23,
+        "name": "lamp.warm",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.85,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 24,
+        "name": "lamp.red",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.8,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 25,
+        "name": "lamp.cyan",
+        "metalness": 0,
+        "roughness": 0.35,
+        "emissive": 0.8,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 26,
+        "name": "skin",
+        "metalness": 0,
+        "roughness": 0.78,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 27,
+        "name": "skin.dark",
+        "metalness": 0,
+        "roughness": 0.8,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 28,
+        "name": "cloth",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 29,
+        "name": "cloth.dark",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 30,
+        "name": "webbing",
+        "metalness": 0.05,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 31,
+        "name": "boot",
+        "metalness": 0.1,
+        "roughness": 0.85,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 32,
+        "name": "hair",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 33,
+        "name": "concrete",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 34,
+        "name": "concrete.lit",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 35,
+        "name": "concrete.dark",
+        "metalness": 0,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 36,
+        "name": "brick",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 37,
+        "name": "roof",
+        "metalness": 0.1,
+        "roughness": 0.82,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "hull"
+      },
+      {
+        "id": 38,
+        "name": "roof.light",
+        "metalness": 0.1,
+        "roughness": 0.8,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "light"
+      },
+      {
+        "id": 39,
+        "name": "roof.dark",
+        "metalness": 0.1,
+        "roughness": 0.84,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": "dark"
+      },
+      {
+        "id": 40,
+        "name": "asphalt",
+        "metalness": 0,
+        "roughness": 0.96,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 41,
+        "name": "paint.line",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 42,
+        "name": "wood",
+        "metalness": 0,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 43,
+        "name": "wood.dark",
+        "metalness": 0,
+        "roughness": 0.9,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 44,
+        "name": "canvas",
+        "metalness": 0,
+        "roughness": 0.92,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 45,
+        "name": "sandbag",
+        "metalness": 0,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 46,
+        "name": "solar",
+        "metalness": 0.6,
+        "roughness": 0.22,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 47,
+        "name": "rust",
+        "metalness": 0.3,
+        "roughness": 0.88,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 48,
+        "name": "scorch",
+        "metalness": 0.2,
+        "roughness": 0.94,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 49,
+        "name": "smoke",
+        "metalness": 0,
+        "roughness": 1,
+        "emissive": 0.1,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 50,
+        "name": "water",
+        "metalness": 0.2,
+        "roughness": 0.15,
+        "emissive": 0,
+        "blend": "opaque",
+        "team": null
+      },
+      {
+        "id": 51,
+        "name": "foam",
+        "metalness": 0,
+        "roughness": 0.6,
+        "emissive": 0.1,
+        "blend": "opaque",
+        "team": null
+      }
+    ]
+  },
+  "parts": {
+    "body": {
+      "name": "body",
+      "dynamic": false,
+      "parent": null,
+      "pivotDesign": [
+        256,
+        256,
+        0
+      ],
+      "traverse": false,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            24,
+            27
+          ],
+          "pivot": [
+            24,
+            27
+          ],
+          "depth": 50.34,
+          "w": 50,
+          "h": 37,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__body__d00__albedo.png",
+              "w": 50,
+              "h": 37,
+              "sha256": "38551f25fcd2ad5e25825fc75aded94d37e399741eaaeebdd23e9758606aa026"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__body__d00__normal.png",
+              "w": 50,
+              "h": 37,
+              "sha256": "93ba2fff9076a41e55e7221e0f6e3d99a543551da5f09d9291e8ec909d1c608b"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__body__d00__material.png",
+              "w": 50,
+              "h": 37,
+              "sha256": "13c7183433aa6a60f41c5478b5120f874da06cd7e59e6110b088e3c23a8e3387"
+            }
+          },
+          "filesHi": {
+            "w": 197,
+            "h": 147,
+            "pivot": [
+              94,
+              107
+            ],
+            "anchor": [
+              94,
+              107
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__body__d00__albedo@4x.png",
+                "w": 197,
+                "h": 147,
+                "sha256": "7b10316927035ce1a3f87b496069e3b3d9f9dbccefc5703e1884b7f27b91ee15"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__body__d00__normal@4x.png",
+                "w": 197,
+                "h": 147,
+                "sha256": "1cbe8e76699d8132dfcaf8b3e8f53e1abe8c73c11bb4c11c24919f7d54240977"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__body__d00__material@4x.png",
+                "w": 197,
+                "h": 147,
+                "sha256": "dd1366747f9991d2a984f2139c4f97433538791c70b84d1be1cfd0d9d8591ea0"
+              }
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            21.75,
+            25.78
+          ],
+          "pivot": [
+            21.75,
+            25.78
+          ],
+          "depth": 48.08,
+          "w": 44,
+          "h": 37,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__body__d01__albedo.png",
+              "w": 44,
+              "h": 37,
+              "sha256": "54e177a46a9edc5180f148f56f31cbb2d1d0b953542ea223c6b9afe6bb38ca14"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__body__d01__normal.png",
+              "w": 44,
+              "h": 37,
+              "sha256": "f8b1b6ad3e2439a3e6f6b3b067f945f44343a5c78ff84bbe327eda63e611f6de"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__body__d01__material.png",
+              "w": 44,
+              "h": 37,
+              "sha256": "998ad7ab25db8d7b29d025f7531267a748c80c9f17f4021dcbaef8a7e44cfd39"
+            }
+          },
+          "filesHi": {
+            "w": 171,
+            "h": 145,
+            "pivot": [
+              84.02,
+              103.13
+            ],
+            "anchor": [
+              84.02,
+              103.13
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__body__d01__albedo@4x.png",
+                "w": 171,
+                "h": 145,
+                "sha256": "41718b9318c2a43e5ecb5853e711bbb0e51ee90abc2203d131f3e838b592705a"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__body__d01__normal@4x.png",
+                "w": 171,
+                "h": 145,
+                "sha256": "e8409a3faf9c5f807fb046c10ccd08cad94f4bacdc1e0a58b52b32af36a3f9d8"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__body__d01__material@4x.png",
+                "w": 171,
+                "h": 145,
+                "sha256": "b6e24e73898aa9cb4e8ade2c176945a7c164a00bb12faf78c4145f17ceb2d5e1"
+              }
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            16.37,
+            26.31
+          ],
+          "pivot": [
+            16.37,
+            26.31
+          ],
+          "depth": 40.28,
+          "w": 33,
+          "h": 36,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__body__d02__albedo.png",
+              "w": 33,
+              "h": 36,
+              "sha256": "4c334c51fb7ef236540e480bd543ce479f2f370b227c6a6973ee58e04c3c18ac"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__body__d02__normal.png",
+              "w": 33,
+              "h": 36,
+              "sha256": "886fe16f702274049a8e3605550a11ef5ab5fb027e8304f5051f828dcb10b976"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__body__d02__material.png",
+              "w": 33,
+              "h": 36,
+              "sha256": "611e268d9f2411d71d0e61135b3279c76e5e1fc7895c46d91abaddbaf1ae1145"
+            }
+          },
+          "filesHi": {
+            "w": 129,
+            "h": 141,
+            "pivot": [
+              64.49,
+              103.25
+            ],
+            "anchor": [
+              64.49,
+              103.25
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__body__d02__albedo@4x.png",
+                "w": 129,
+                "h": 141,
+                "sha256": "1920c4a29330fd8098870da28758d1bd1e461d4a92fe6d2d3a7ed17fe9f56bd8"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__body__d02__normal@4x.png",
+                "w": 129,
+                "h": 141,
+                "sha256": "0e89ba90407eb760abd1766f0584d6c9c71aa9e7c87b9667fae5cb9b8e19725b"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__body__d02__material@4x.png",
+                "w": 129,
+                "h": 141,
+                "sha256": "631afd09ce264250c0d4f1a697fef961ed67953e00c84138ef00abd1939ce4f1"
+              }
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            22.44,
+            27.12
+          ],
+          "pivot": [
+            22.44,
+            27.12
+          ],
+          "depth": 28.13,
+          "w": 44,
+          "h": 38,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__body__d03__albedo.png",
+              "w": 44,
+              "h": 38,
+              "sha256": "3ead60b8e08a54f483e58d6eb61c6424f4951dd6ab5723346f4ef545267b9073"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__body__d03__normal.png",
+              "w": 44,
+              "h": 38,
+              "sha256": "dfe5df4d2a89d96eef082972e2269de0546e0938e0a1a8ef8ac632d9227e5fec"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__body__d03__material.png",
+              "w": 44,
+              "h": 38,
+              "sha256": "299a9fdbcd9fa61fb282368514f766d2ceb1a1d4b099685472296f6bef5f9c79"
+            }
+          },
+          "filesHi": {
+            "w": 172,
+            "h": 147,
+            "pivot": [
+              87.74,
+              105.49
+            ],
+            "anchor": [
+              87.74,
+              105.49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__body__d03__albedo@4x.png",
+                "w": 172,
+                "h": 147,
+                "sha256": "223a3810b568dd16f121b35ae937089220871b444eb56ad98e42d510b13f0928"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__body__d03__normal@4x.png",
+                "w": 172,
+                "h": 147,
+                "sha256": "a6abb75f68ad6097b03524e2b3bbff9ca1cd7e70ca6fa13f20875ab5193bc7bb"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__body__d03__material@4x.png",
+                "w": 172,
+                "h": 147,
+                "sha256": "9a5f5db4d5d13b3009d02974b8d6e08f6d6dc15e52907b9dcade73eed50cdd4b"
+              }
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            26,
+            27
+          ],
+          "pivot": [
+            26,
+            27
+          ],
+          "depth": 13.46,
+          "w": 50,
+          "h": 37,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__body__d04__albedo.png",
+              "w": 50,
+              "h": 37,
+              "sha256": "7bccea746c436eef54256839176f7225a3e28f585409adfd268d5304c8a41df0"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__body__d04__normal.png",
+              "w": 50,
+              "h": 37,
+              "sha256": "b30aec6e68bf5fe77b609d5141b4337206f9592f8cc4b0e55b2738586a4d624e"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__body__d04__material.png",
+              "w": 50,
+              "h": 37,
+              "sha256": "b2739d0a5bff1332dccffc98e3918186d564a37ea2b9a92c4137f40af736122b"
+            }
+          },
+          "filesHi": {
+            "w": 197,
+            "h": 147,
+            "pivot": [
+              103,
+              107
+            ],
+            "anchor": [
+              103,
+              107
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__body__d04__albedo@4x.png",
+                "w": 197,
+                "h": 147,
+                "sha256": "0858b311a114b575111127f49ea7efaf93f65d62d005f5262f45ee9e0484dbde"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__body__d04__normal@4x.png",
+                "w": 197,
+                "h": 147,
+                "sha256": "12c561f803743a276451cd954d96735b3293b1f2a477926f39824c344eb2b940"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__body__d04__material@4x.png",
+                "w": 197,
+                "h": 147,
+                "sha256": "0c79ae1df582f59abf4bef9d07e486b8671d25d7ee6e175622d80ac219a0676b"
+              }
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            26.44,
+            27.88
+          ],
+          "pivot": [
+            26.44,
+            27.88
+          ],
+          "depth": -1.48,
+          "w": 50,
+          "h": 37,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__body__d05__albedo.png",
+              "w": 50,
+              "h": 37,
+              "sha256": "0674810d26eb8a3150ee850bbc8e6d7cb8cf9176f0cb163530a9abf6bf51d745"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__body__d05__normal.png",
+              "w": 50,
+              "h": 37,
+              "sha256": "e16f69db2d132483ae25e09ede016db02c2eb0e449bfe7c6ac537f6e75fca4b7"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__body__d05__material.png",
+              "w": 50,
+              "h": 37,
+              "sha256": "fdff1fd214b6f74fea400f9f71a42b633025e209408cbb083e43d4c5c8aa3f90"
+            }
+          },
+          "filesHi": {
+            "w": 198,
+            "h": 142,
+            "pivot": [
+              105.74,
+              108.51
+            ],
+            "anchor": [
+              105.74,
+              108.51
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__body__d05__albedo@4x.png",
+                "w": 198,
+                "h": 142,
+                "sha256": "f4e7792e241e3cbb4dc69b9500a040c3676054272af4f6327fd80d9b00f05c2f"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__body__d05__normal@4x.png",
+                "w": 198,
+                "h": 142,
+                "sha256": "6ee27c68bfb5422d6091611654fda6363a37b1482f8adb4c3466ce54647bf318"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__body__d05__material@4x.png",
+                "w": 198,
+                "h": 142,
+                "sha256": "3fe3705999515739e6650e90855621c1878661d9215013c2f233383986ec554b"
+              }
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            24.37,
+            26.69
+          ],
+          "pivot": [
+            24.37,
+            26.69
+          ],
+          "depth": -14.42,
+          "w": 45,
+          "h": 33,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__body__d06__albedo.png",
+              "w": 45,
+              "h": 33,
+              "sha256": "14c7421535233dde0491d1a9c255369667b5964e28c2ce6896caa9437fb8aabd"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__body__d06__normal.png",
+              "w": 45,
+              "h": 33,
+              "sha256": "c5b19c6b53b225f68747cca8431659f0034a51a04a7bdfec6d9d202d99cf2947"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__body__d06__material.png",
+              "w": 45,
+              "h": 33,
+              "sha256": "a45b5e892bdd8a098235b3cc01259b840fb7ea48d1d3e463e932ce7d68202a14"
+            }
+          },
+          "filesHi": {
+            "w": 176,
+            "h": 130,
+            "pivot": [
+              96.49,
+              106.75
+            ],
+            "anchor": [
+              96.49,
+              106.75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__body__d06__albedo@4x.png",
+                "w": 176,
+                "h": 130,
+                "sha256": "8fef8502835d25b5623dcbb56b27ea17d17cd13e9e2e3c506eeff4e6863539a8"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__body__d06__normal@4x.png",
+                "w": 176,
+                "h": 130,
+                "sha256": "8caaf5e3b56ed5cc59c1cfbf70a318e2fbb0da942e47fa89f3ec819f5895f9cd"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__body__d06__material@4x.png",
+                "w": 176,
+                "h": 130,
+                "sha256": "08b3fd302c812e1adc276d866eaff3ca6be1ed467c08d8e80a8830db4b3a70b2"
+              }
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            26.75,
+            29.22
+          ],
+          "pivot": [
+            26.75,
+            29.22
+          ],
+          "depth": -23.39,
+          "w": 50,
+          "h": 37,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__body__d07__albedo.png",
+              "w": 50,
+              "h": 37,
+              "sha256": "c930b6aa8487aa614550ffc0e2739118c2a818def4bff437ae051d01eff6b38d"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__body__d07__normal.png",
+              "w": 50,
+              "h": 37,
+              "sha256": "936a8f3afff2a8d125b103ca2bc89e559a92d5cbadab46c87ee5ce4f1e65fe2d"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__body__d07__material.png",
+              "w": 50,
+              "h": 37,
+              "sha256": "a8731fd47282a786598873f3afc57554881224005823946a9e5d82ff05e7c9ce"
+            }
+          },
+          "filesHi": {
+            "w": 199,
+            "h": 146,
+            "pivot": [
+              106.02,
+              115.87
+            ],
+            "anchor": [
+              106.02,
+              115.87
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__body__d07__albedo@4x.png",
+                "w": 199,
+                "h": 146,
+                "sha256": "692a7cf43bfe7c6216afd2cca69a5815ead65f5141de8ea91ca7ea959989ce88"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__body__d07__normal@4x.png",
+                "w": 199,
+                "h": 146,
+                "sha256": "52aa115d23e35f0c0fdae82c7f642db2e1532b00be19b4ca27a509ec32d8b3fa"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__body__d07__material@4x.png",
+                "w": 199,
+                "h": 146,
+                "sha256": "8e3817023581ff43047222a9a0a5d63ec82816f72a0b62796bc0c27806d830c0"
+              }
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            26,
+            30
+          ],
+          "pivot": [
+            26,
+            30
+          ],
+          "depth": -27.03,
+          "w": 50,
+          "h": 39,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__body__d08__albedo.png",
+              "w": 50,
+              "h": 39,
+              "sha256": "891a763c0b8922e031acb95e86cdd95683f06c77d07cb2e8f8111ba12adf7842"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__body__d08__normal.png",
+              "w": 50,
+              "h": 39,
+              "sha256": "9a4a197bb176efc49b4b97cc83ce00ba9776e98a2bd9b1ea275074e0d7a6a509"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__body__d08__material.png",
+              "w": 50,
+              "h": 39,
+              "sha256": "2ab32fdf9e3dc03d4e54201ab220f251f224e78b777908efe447951bebfbb380"
+            }
+          },
+          "filesHi": {
+            "w": 197,
+            "h": 155,
+            "pivot": [
+              103,
+              120
+            ],
+            "anchor": [
+              103,
+              120
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__body__d08__albedo@4x.png",
+                "w": 197,
+                "h": 155,
+                "sha256": "69a931f519e70b03bebb1d1c01d8d37562d7a1be25eea05a030dc662eab76235"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__body__d08__normal@4x.png",
+                "w": 197,
+                "h": 155,
+                "sha256": "a1c1658cec7e9184ab1158313e264eff752b2d2b724e6476af2c766c3758348d"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__body__d08__material@4x.png",
+                "w": 197,
+                "h": 155,
+                "sha256": "f6d5c303e89de11c5c955d593400d592f1e5ac7e6ce105e21f5f3262dc57f702"
+              }
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            22.25,
+            30.22
+          ],
+          "pivot": [
+            22.25,
+            30.22
+          ],
+          "depth": -24.77,
+          "w": 44,
+          "h": 40,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__body__d09__albedo.png",
+              "w": 44,
+              "h": 40,
+              "sha256": "f708d170965c685897077ab78c98416c3aadaf7bfc6f035f3b49801b8778d2c9"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__body__d09__normal.png",
+              "w": 44,
+              "h": 40,
+              "sha256": "ba1010b683a78a2179fbbc84a4f358cd648f7983eddfa6be4ca63301166cd629"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__body__d09__material.png",
+              "w": 44,
+              "h": 40,
+              "sha256": "7e1b689ca72c64cd85a60e0165a78f526d477df5d2f721c79bb98241597f22da"
+            }
+          },
+          "filesHi": {
+            "w": 171,
+            "h": 157,
+            "pivot": [
+              86.98,
+              119.87
+            ],
+            "anchor": [
+              86.98,
+              119.87
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__body__d09__albedo@4x.png",
+                "w": 171,
+                "h": 157,
+                "sha256": "7014fc5344d1eb24a4fe6d316c00cfd7320a9b107da5dbbc0d3ac0f6e23bb985"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__body__d09__normal@4x.png",
+                "w": 171,
+                "h": 157,
+                "sha256": "8eb8f725a9ca1f709e744f3a8ded564c8e31d52c0f310fe31029a619b6ed4fa6"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__body__d09__material@4x.png",
+                "w": 171,
+                "h": 157,
+                "sha256": "574bc95ce28ef72fc9be9a81ceab3fd09fbd3dcfe111aee30545f646db70d210"
+              }
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            16.63,
+            28.69
+          ],
+          "pivot": [
+            16.63,
+            28.69
+          ],
+          "depth": -16.97,
+          "w": 33,
+          "h": 37,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__body__d10__albedo.png",
+              "w": 33,
+              "h": 37,
+              "sha256": "3f6c0faa84dc7e834f937105e66db4f3f9ee0d217bec53c865a3cb513c2c21af"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__body__d10__normal.png",
+              "w": 33,
+              "h": 37,
+              "sha256": "48c86a98910b382918d2b006f0031127e5efd594891f208b569005741266180a"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__body__d10__material.png",
+              "w": 33,
+              "h": 37,
+              "sha256": "2fec876e13632029d7a3c578e312d411edd7134af7d031669b884359e2bde0e1"
+            }
+          },
+          "filesHi": {
+            "w": 129,
+            "h": 148,
+            "pivot": [
+              64.51,
+              114.75
+            ],
+            "anchor": [
+              64.51,
+              114.75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__body__d10__albedo@4x.png",
+                "w": 129,
+                "h": 148,
+                "sha256": "825359287da72af9b010affb36fb004d4ee07bc3ee516bbad20ec60aa1cfec4d"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__body__d10__normal@4x.png",
+                "w": 129,
+                "h": 148,
+                "sha256": "a57901d0133671dfb1ac5787fbf94cf999774511890b8bc135ec1857470fca1d"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__body__d10__material@4x.png",
+                "w": 129,
+                "h": 148,
+                "sha256": "25013b31cd3d2bd6e3baeac37f46a494928873170f9d4b1b7472be4a34db4017"
+              }
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            21.56,
+            27.88
+          ],
+          "pivot": [
+            21.56,
+            27.88
+          ],
+          "depth": -4.81,
+          "w": 44,
+          "h": 37,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__body__d11__albedo.png",
+              "w": 44,
+              "h": 37,
+              "sha256": "10f495631793b7b9912234c4aa72fed324c32461558abed6be976dae5ec1b1d5"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__body__d11__normal.png",
+              "w": 44,
+              "h": 37,
+              "sha256": "a63632b040431aa8371891a1aa6dff5da7bad6893e6b3cdf14e1c79f1e113766"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__body__d11__material.png",
+              "w": 44,
+              "h": 37,
+              "sha256": "5b6c48ceb0f4539056f911e86851e8eddb77ced439b13839f0a4d6d895e3aacc"
+            }
+          },
+          "filesHi": {
+            "w": 172,
+            "h": 148,
+            "pivot": [
+              84.26,
+              111.51
+            ],
+            "anchor": [
+              84.26,
+              111.51
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__body__d11__albedo@4x.png",
+                "w": 172,
+                "h": 148,
+                "sha256": "98e44b035853246e26291c07aa0f544c05f0c3651bf5a2c4ff5aca53f5b46672"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__body__d11__normal@4x.png",
+                "w": 172,
+                "h": 148,
+                "sha256": "1a17bed0cfcca3e72b8bf98f5033912aa7af805ab8943c18779b16d3d48e2590"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__body__d11__material@4x.png",
+                "w": 172,
+                "h": 148,
+                "sha256": "4ad3ad87320db9a3d2020421e5c57fcc810780c01cd9b3397402ad6dd748946e"
+              }
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            24,
+            29
+          ],
+          "pivot": [
+            24,
+            29
+          ],
+          "depth": 9.85,
+          "w": 50,
+          "h": 38,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__body__d12__albedo.png",
+              "w": 50,
+              "h": 38,
+              "sha256": "2aad28fa2c0b7650532f036e2746008781b9c512c4d5e6029ef2d0fa66a60d80"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__body__d12__normal.png",
+              "w": 50,
+              "h": 38,
+              "sha256": "a4c93b3b6d567706039b37d0775d0d2250a3f74b58b68acc19efe0920f0d0a9e"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__body__d12__material.png",
+              "w": 50,
+              "h": 38,
+              "sha256": "b640fe47722589fcdeb1dc66e21e0f9e52b5bada25485c3f341e528480b51b2b"
+            }
+          },
+          "filesHi": {
+            "w": 197,
+            "h": 149,
+            "pivot": [
+              94,
+              114
+            ],
+            "anchor": [
+              94,
+              114
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__body__d12__albedo@4x.png",
+                "w": 197,
+                "h": 149,
+                "sha256": "642c205b690b7134509e9314095d28facb77c115044dad5b6169b589b819281b"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__body__d12__normal@4x.png",
+                "w": 197,
+                "h": 149,
+                "sha256": "2ad5cb554f7e7c61d20cda921fa7ec040ea0c97bb2e080aba698e1274b135a33"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__body__d12__material@4x.png",
+                "w": 197,
+                "h": 149,
+                "sha256": "6babf841c61472b10fc3ddebd0ce2436c5543e22bac3b4bde86590fc771fc46a"
+              }
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            23.56,
+            28.12
+          ],
+          "pivot": [
+            23.56,
+            28.12
+          ],
+          "depth": 24.79,
+          "w": 50,
+          "h": 36,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__body__d13__albedo.png",
+              "w": 50,
+              "h": 36,
+              "sha256": "33975440614692754cc03cae071e5af776248b0f7f28fccff111bd1bef0f8c0f"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__body__d13__normal.png",
+              "w": 50,
+              "h": 36,
+              "sha256": "4a042821360395fa797ff1123b6c058c0db92102096f9d8b7152637731171b22"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__body__d13__material.png",
+              "w": 50,
+              "h": 36,
+              "sha256": "bdee33bc842263c39d30ba0f7388090ea10e25317ec91e9b03e6ed5beb9e70dc"
+            }
+          },
+          "filesHi": {
+            "w": 198,
+            "h": 142,
+            "pivot": [
+              92.26,
+              111.49
+            ],
+            "anchor": [
+              92.26,
+              111.49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__body__d13__albedo@4x.png",
+                "w": 198,
+                "h": 142,
+                "sha256": "6b0c505489aab3401d611d5e61a97b4ee4464da279d487ed7a893b9d55d7b373"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__body__d13__normal@4x.png",
+                "w": 198,
+                "h": 142,
+                "sha256": "f26ae1c2f02ecf07789d243290212e92cd7025c71063b65269eb3a7faff2470a"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__body__d13__material@4x.png",
+                "w": 198,
+                "h": 142,
+                "sha256": "3ef72785af5b34468b170e3ae38004734d90c4778242f0643d698f5666cb7ec7"
+              }
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            20.63,
+            26.31
+          ],
+          "pivot": [
+            20.63,
+            26.31
+          ],
+          "depth": 37.73,
+          "w": 45,
+          "h": 33,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__body__d14__albedo.png",
+              "w": 45,
+              "h": 33,
+              "sha256": "b03647ae4018feaba2074a78380222f37cd66a5cbc7fccb27f5c02a41dbce9c3"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__body__d14__normal.png",
+              "w": 45,
+              "h": 33,
+              "sha256": "799454a80633987609baa6ca616dd8313f9dd23739bf0a159980f3c45492df7d"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__body__d14__material.png",
+              "w": 45,
+              "h": 33,
+              "sha256": "3a110006a2a33694c3a0efa41e578397e0a56d27079eeb219a6515c82b11b2ff"
+            }
+          },
+          "filesHi": {
+            "w": 176,
+            "h": 129,
+            "pivot": [
+              79.51,
+              105.25
+            ],
+            "anchor": [
+              79.51,
+              105.25
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__body__d14__albedo@4x.png",
+                "w": 176,
+                "h": 129,
+                "sha256": "ce0ee5d3232e261db8957c1a070cd66ab64f3293a252f031b33334a42ec922ed"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__body__d14__normal@4x.png",
+                "w": 176,
+                "h": 129,
+                "sha256": "aecf5ae01c51884173624c928cf91f72730867c707a460218ccb8aa41eb1f089"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__body__d14__material@4x.png",
+                "w": 176,
+                "h": 129,
+                "sha256": "108458185bc8fd8507d17c9669bf1171768b2d274e6a66cb0366317847bc0194"
+              }
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            23.25,
+            27.78
+          ],
+          "pivot": [
+            23.25,
+            27.78
+          ],
+          "depth": 46.7,
+          "w": 50,
+          "h": 37,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__body__d15__albedo.png",
+              "w": 50,
+              "h": 37,
+              "sha256": "12d915717ce381dcc9c4655778dc0d4fb7e73048ce35495c80445b73579e4f0d"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__body__d15__normal.png",
+              "w": 50,
+              "h": 37,
+              "sha256": "9640dcf49ec9613cb0de3a0ab17e84a76e554f7341cbd777a550e08cbf0c82fc"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__body__d15__material.png",
+              "w": 50,
+              "h": 37,
+              "sha256": "85050fc04f6640734afefc2b703cf33e44b2ab85372b6a61117b819139dd6900"
+            }
+          },
+          "filesHi": {
+            "w": 199,
+            "h": 142,
+            "pivot": [
+              92.98,
+              108.13
+            ],
+            "anchor": [
+              92.98,
+              108.13
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__body__d15__albedo@4x.png",
+                "w": 199,
+                "h": 142,
+                "sha256": "d412f10fffd0ac52d7aef2ce35b10dda05bf7239a633414b36d8b48a2ed489ef"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__body__d15__normal@4x.png",
+                "w": 199,
+                "h": 142,
+                "sha256": "bfb55714badecbd46d4bcb913c6b1d2450b7a47febd5e9a1f9ef6418398ff4b0"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__body__d15__material@4x.png",
+                "w": 199,
+                "h": 142,
+                "sha256": "2f442611b222c3db54afa79ccde3c9aa26794f460f290771c57b299f9009e8a3"
+              }
+            }
+          }
+        }
+      }
+    },
+    "wheels.L": {
+      "name": "wheels.L",
+      "dynamic": false,
+      "parent": null,
+      "pivotDesign": [
+        256,
+        256,
+        0
+      ],
+      "traverse": false,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            11,
+            19
+          ],
+          "pivot": [
+            11,
+            19
+          ],
+          "depth": 31.86,
+          "w": 34,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.L__d00__albedo.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "fec4d91d001ff108916b128e189ed8148ba96ee074c2a5a77ef0d1b9cb618bb9"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.L__d00__normal.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "c2ad4b8ae58a7982819db86a90830f0e350d4da18c14ab696f399a0c24cb4f07"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.L__d00__material.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "9fb0bfe6aad92f8a86ef81a7d95fa0d00e5f89a69dbf9f41e67db252722d2a11"
+            }
+          },
+          "filesHi": {
+            "w": 131,
+            "h": 97,
+            "pivot": [
+              41,
+              75
+            ],
+            "anchor": [
+              41,
+              75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d00__albedo@4x.png",
+                "w": 131,
+                "h": 97,
+                "sha256": "2cd2367bbaa5643b7719711f99f4c8d39b5be47706b592895eed3088e1c4e012"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d00__normal@4x.png",
+                "w": 131,
+                "h": 97,
+                "sha256": "fc79f4c53b7fa811ccafd9f6c1ecdcafd2dc3ccf8808be3d6955e4cbb8e14d15"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d00__material@4x.png",
+                "w": 131,
+                "h": 97,
+                "sha256": "f53905b196350c1352b054159c603ce2cae7d6109dda20f418c9b6ec4cd6714b"
+              }
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            4.75,
+            18.78
+          ],
+          "pivot": [
+            4.75,
+            18.78
+          ],
+          "depth": 32.71,
+          "w": 26,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.L__d01__albedo.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "233140a3b2f34e06d1d841183f1c400d3e758cd58590a7afddffe0b8126343a1"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.L__d01__normal.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "7d2d2a92cb17ae140e37de61dfcd3ec3e6687b4fc938168272e2f9ee9c66fbdb"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.L__d01__material.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "23a85b43b76552daf19b9c51c4ae05d799738a98dee00fa4cd3bec04bb337b0e"
+            }
+          },
+          "filesHi": {
+            "w": 100,
+            "h": 105,
+            "pivot": [
+              16.02,
+              73.13
+            ],
+            "anchor": [
+              16.02,
+              73.13
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d01__albedo@4x.png",
+                "w": 100,
+                "h": 105,
+                "sha256": "d07ff80744d9f6d0288b5d212273ca8299ae69fef79029a314de0448f986bfd2"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d01__normal@4x.png",
+                "w": 100,
+                "h": 105,
+                "sha256": "9401bd2c88fd26934cfbd20a713a46a27bee80f64a82fd44e7622c56aafcfb7b"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d01__material@4x.png",
+                "w": 100,
+                "h": 105,
+                "sha256": "4ad7bdd63f6e2e2c1bf730c249fd9da111d064497a3bb699bb2de43ed66fd82f"
+              }
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            -1.63,
+            17.31
+          ],
+          "pivot": [
+            -1.63,
+            17.31
+          ],
+          "depth": 29.12,
+          "w": 16,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.L__d02__albedo.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "2c46695ead08b4a533615c21046f7c0684a10c1e06ef8c59ee83decdd677e15e"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.L__d02__normal.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "383a5da89284a7be8edbb9e3bcba2376a11b18e5a9a03e585d99bee2de7d16f3"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.L__d02__material.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "196768c245fd9f6120f7165d8d766703cd6c4f12db086c38c36fa9c1e57f5123"
+            }
+          },
+          "filesHi": {
+            "w": 61,
+            "h": 105,
+            "pivot": [
+              -9.51,
+              66.25
+            ],
+            "anchor": [
+              -9.51,
+              66.25
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d02__albedo@4x.png",
+                "w": 61,
+                "h": 105,
+                "sha256": "2dacadf4037148210f12c6a6694d12d18eabd5e1dbd9b4c9fdbe5f711b1ac540"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d02__normal@4x.png",
+                "w": 61,
+                "h": 105,
+                "sha256": "543258f3dbbcdf3e519d5fec9a63a98899bdac8d4c5980b37bc333bdc1f840b9"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d02__material@4x.png",
+                "w": 61,
+                "h": 105,
+                "sha256": "cbb77d401ae1d9d0557cb62ccc1096325b4c1ae65dd2f2d039b9b7715da0cc05"
+              }
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            3.44,
+            15.12
+          ],
+          "pivot": [
+            3.44,
+            15.12
+          ],
+          "depth": 21.66,
+          "w": 25,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.L__d03__albedo.png",
+              "w": 25,
+              "h": 27,
+              "sha256": "06d660ce67801ec3ee2c4ac3ee6a6a7f5d979ce5b6f0d9b85e62ad9d93c1e51e"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.L__d03__normal.png",
+              "w": 25,
+              "h": 27,
+              "sha256": "ff0f6fb5217cea9c9552d7d3aa110487b7e5e4931e5c8189ec376005fdded84c"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.L__d03__material.png",
+              "w": 25,
+              "h": 27,
+              "sha256": "dbebe3a813a4ca8f2b5b5f5671496169f4dbad0c07d06c0c150f825835e44a2d"
+            }
+          },
+          "filesHi": {
+            "w": 99,
+            "h": 106,
+            "pivot": [
+              13.74,
+              59.49
+            ],
+            "anchor": [
+              13.74,
+              59.49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d03__albedo@4x.png",
+                "w": 99,
+                "h": 106,
+                "sha256": "70b097bf553156a9d2e3968a2dc23cdefb7624d7daba6dd6a0e956aa909c52fb"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d03__normal@4x.png",
+                "w": 99,
+                "h": 106,
+                "sha256": "e5657eddf66d055bf9cab6794640ef17a9e9cee482fbadb37b10fba00c58e006"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d03__material@4x.png",
+                "w": 99,
+                "h": 106,
+                "sha256": "083276f4fcf7135a54b63a9956e5bfc4caa786f08e54d40503de357049bab417"
+              }
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            10,
+            13
+          ],
+          "pivot": [
+            10,
+            13
+          ],
+          "depth": 11.44,
+          "w": 34,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.L__d04__albedo.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "5691de9a50c0022f8264c92128cedbf28cf45634426be8dcd608ffd00b6c1158"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.L__d04__normal.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "8a243b04e3c05fdc077259f88decb32ba821f80b3b15d26fb28d0899c203a990"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.L__d04__material.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "43c52c7d1e702888d422d66b50f3b4a056a1792b151e326a2830511b7aac1227"
+            }
+          },
+          "filesHi": {
+            "w": 130,
+            "h": 97,
+            "pivot": [
+              37,
+              49
+            ],
+            "anchor": [
+              37,
+              49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d04__albedo@4x.png",
+                "w": 130,
+                "h": 97,
+                "sha256": "e28ce50b1718800fe3084e166527d1d9b2675b5e35fb83d418fef46e6793ef85"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d04__normal@4x.png",
+                "w": 130,
+                "h": 97,
+                "sha256": "175ce8b3dffd2480053fd19ae2bc06115a2522e72bdb0a915899fd79e6a78c48"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d04__material@4x.png",
+                "w": 130,
+                "h": 97,
+                "sha256": "3e91d137f5d7e7f0b6b0925183eeba9128bdfae4b2a30c98dc8153163b1f2918"
+              }
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            14.44,
+            9.88
+          ],
+          "pivot": [
+            14.44,
+            9.88
+          ],
+          "depth": 0.03,
+          "w": 38,
+          "h": 22,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.L__d05__albedo.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "d966d39bf18b748ad553940d84e0522df198d6ca0c40869fbc98610e83801427"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.L__d05__normal.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "d2556567bf8208c626fccc93bc201c4ddaf71795ecf755933e2786acceeca3e8"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.L__d05__material.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "32ed8db4a188700a3c5eff267a14dff178752160c65270f2df6c46d7332a3672"
+            }
+          },
+          "filesHi": {
+            "w": 149,
+            "h": 84,
+            "pivot": [
+              57.74,
+              37.51
+            ],
+            "anchor": [
+              57.74,
+              37.51
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d05__albedo@4x.png",
+                "w": 149,
+                "h": 84,
+                "sha256": "56c7beafd1ab47186fc468b47194d76a54d0e5d6c40b414f495389809c00caee"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d05__normal@4x.png",
+                "w": 149,
+                "h": 84,
+                "sha256": "0d03277e5ecab3063702725d5e8b3eb7d91e29d880f933bb69a8e32e814b1516"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d05__material@4x.png",
+                "w": 149,
+                "h": 84,
+                "sha256": "2d190d6da35bb7b8e6ae2220a350f2b90157e198904b8db49159f6f4fd5ee1c4"
+              }
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            18.37,
+            6.69
+          ],
+          "pivot": [
+            18.37,
+            6.69
+          ],
+          "depth": -10.83,
+          "w": 38,
+          "h": 17,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.L__d06__albedo.png",
+              "w": 38,
+              "h": 17,
+              "sha256": "6ccb549166d3c2f11145477185a71eb0be9c0a9f0622690489e14e0e966f5f5f"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.L__d06__normal.png",
+              "w": 38,
+              "h": 17,
+              "sha256": "e2fd7090c68ae1d993195f7783900a450090251c0063c0495920121a573d73ad"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.L__d06__material.png",
+              "w": 38,
+              "h": 17,
+              "sha256": "cbd892e6bff7e312236c0a470b9b4d94067fa0a13e4c5ac9d701703475ba0750"
+            }
+          },
+          "filesHi": {
+            "w": 151,
+            "h": 67,
+            "pivot": [
+              73.49,
+              26.75
+            ],
+            "anchor": [
+              73.49,
+              26.75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d06__albedo@4x.png",
+                "w": 151,
+                "h": 67,
+                "sha256": "614be6cbfb2dde954e40599ce250b7ead78a7dacecc35cdc5ad611b1780f2daa"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d06__normal@4x.png",
+                "w": 151,
+                "h": 67,
+                "sha256": "ad2b2eef0f790859e9deb3a7bf5040c96037ce7822a8bdc17a5df9cf423cb0a1"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d06__material@4x.png",
+                "w": 151,
+                "h": 67,
+                "sha256": "852c8a68452ff035885576588f83d6a9448990487646fb44a25ad5bacd4e3df6"
+              }
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            22.75,
+            9.22
+          ],
+          "pivot": [
+            22.75,
+            9.22
+          ],
+          "depth": -19.5,
+          "w": 39,
+          "h": 21,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.L__d07__albedo.png",
+              "w": 39,
+              "h": 21,
+              "sha256": "d28804865e4650dd845f09c3f7751edd9b3d21b9c6cb9fad922040cd5ee24ce8"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.L__d07__normal.png",
+              "w": 39,
+              "h": 21,
+              "sha256": "9f1a2d9ed1cce4e34133d3ff321e1142c5f8561d7f917471b7f9ecd5e7f6c888"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.L__d07__material.png",
+              "w": 39,
+              "h": 21,
+              "sha256": "153c7ea92bfe2e2978ba3ef3f615c9ef6439c9182af87e7685a8ac7897fc1c7b"
+            }
+          },
+          "filesHi": {
+            "w": 151,
+            "h": 82,
+            "pivot": [
+              88.02,
+              34.87
+            ],
+            "anchor": [
+              88.02,
+              34.87
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d07__albedo@4x.png",
+                "w": 151,
+                "h": 82,
+                "sha256": "2ffd1ba0477aa4b1ff290879068bfbb94a8ac43fe27224497af04853939a3933"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d07__normal@4x.png",
+                "w": 151,
+                "h": 82,
+                "sha256": "004bb96baa8e9198527572f64fc27e71557ce04023ae5f63dfa600d0504f37dd"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d07__material@4x.png",
+                "w": 151,
+                "h": 82,
+                "sha256": "0199795019a3b3cdc6c13cf2c0bfcfc5ef7a6c8cdce8d648b43d04365dfc485c"
+              }
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            23,
+            12
+          ],
+          "pivot": [
+            23,
+            12
+          ],
+          "depth": -24.65,
+          "w": 34,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.L__d08__albedo.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "f966ad5ddf4293112f17728dc5c3f07f2aa38bc7bab9993fe4c9e9aa8637073b"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.L__d08__normal.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "47d5f260c557fc3cd3b2bce7fbc6c7d937547762db245a6eb0ae39daa83abe5f"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.L__d08__material.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "c4a046f69e70af448cd18cf92b70d7b819a267c8526668aae08af0b8a940b560"
+            }
+          },
+          "filesHi": {
+            "w": 132,
+            "h": 96,
+            "pivot": [
+              91,
+              46
+            ],
+            "anchor": [
+              91,
+              46
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d08__albedo@4x.png",
+                "w": 132,
+                "h": 96,
+                "sha256": "59e8b1fd95d11d660012ed92e91c3daa4b1e70989ac0719bc1ff11e219db3a6f"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d08__normal@4x.png",
+                "w": 132,
+                "h": 96,
+                "sha256": "0fc2411e29b98761d542965f82ab8784b545d38795f030d02ce5c86d69641cfb"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d08__material@4x.png",
+                "w": 132,
+                "h": 96,
+                "sha256": "12183d2b388f5bf8eb9be166c8c8c4d7d90407776d35690bdb631f5cb55289f9"
+              }
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            21.25,
+            14.22
+          ],
+          "pivot": [
+            21.25,
+            14.22
+          ],
+          "depth": -25.49,
+          "w": 26,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.L__d09__albedo.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "73364207be19df6f0ca7bccb152f5de7a17d84429a225af962a5d98b13755e71"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.L__d09__normal.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "da6714c12a8428281f1c8a79f1a4c0d08ca80c7a8abcd92c32387bf566f320e6"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.L__d09__material.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "b5a2e111d6aa23c2088b23a24b2c5aaf9147404c596831dd8063c7cc1821dac5"
+            }
+          },
+          "filesHi": {
+            "w": 100,
+            "h": 104,
+            "pivot": [
+              83.98,
+              55.87
+            ],
+            "anchor": [
+              83.98,
+              55.87
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d09__albedo@4x.png",
+                "w": 100,
+                "h": 104,
+                "sha256": "c4a53020853f93990f84fc4b932a233eba1665204fe2f29136516f43c27eac52"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d09__normal@4x.png",
+                "w": 100,
+                "h": 104,
+                "sha256": "7c7195376f87e554dcf9a12392a0ebffaff689f68989a0106309480caefd23ac"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d09__material@4x.png",
+                "w": 100,
+                "h": 104,
+                "sha256": "a8c37275592b4fb9842eaabb1bbcb563f4ed94f8373c66e0a16e3b132453aea6"
+              }
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            17.63,
+            16.69
+          ],
+          "pivot": [
+            17.63,
+            16.69
+          ],
+          "depth": -21.91,
+          "w": 16,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.L__d10__albedo.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "29901805d7167ff7a86fb76aefc783616d99d760a498e1ba8de2cab2d126972f"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.L__d10__normal.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "e443f5c0df44d82c60b31d9d6793658d047327e27cb5c484deb26555d64efe4a"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.L__d10__material.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "db7f85ebdb4f4e0191b5e6cf665b9f367f80f3da554d885d96b2688823c677b4"
+            }
+          },
+          "filesHi": {
+            "w": 61,
+            "h": 106,
+            "pivot": [
+              70.51,
+              64.75
+            ],
+            "anchor": [
+              70.51,
+              64.75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d10__albedo@4x.png",
+                "w": 61,
+                "h": 106,
+                "sha256": "4175775630a3f442169424ac7b1c436f586a421acdb20c92e470e2bb846d95b5"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d10__normal@4x.png",
+                "w": 61,
+                "h": 106,
+                "sha256": "6412dffabb46ec55f7a085c3e175c9c58d2791147d9ca5cb50457f358a6eb00f"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d10__material@4x.png",
+                "w": 61,
+                "h": 106,
+                "sha256": "ff5a677d3030b0aa6745ac09f0857a408b70fd509d3185adae29cce951f5b6b9"
+              }
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            21.56,
+            17.88
+          ],
+          "pivot": [
+            21.56,
+            17.88
+          ],
+          "depth": -14.44,
+          "w": 25,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.L__d11__albedo.png",
+              "w": 25,
+              "h": 27,
+              "sha256": "9f379c27e38bd8c321e31f8573584b5de755aba08d9367cce7f4fecf164e1cb6"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.L__d11__normal.png",
+              "w": 25,
+              "h": 27,
+              "sha256": "6ee208357af6457854463bade85b3552a7f51f339342dbe82ec09be3845e792d"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.L__d11__material.png",
+              "w": 25,
+              "h": 27,
+              "sha256": "680f3510ddbaf56dc8b56828d2529d92a45e82f8e6728f6c3965f1698be866c6"
+            }
+          },
+          "filesHi": {
+            "w": 99,
+            "h": 106,
+            "pivot": [
+              85.26,
+              71.51
+            ],
+            "anchor": [
+              85.26,
+              71.51
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d11__albedo@4x.png",
+                "w": 99,
+                "h": 106,
+                "sha256": "20c8624093a978916d9615bcf3567ce0eca5287874041737b883739c017d0cf9"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d11__normal@4x.png",
+                "w": 99,
+                "h": 106,
+                "sha256": "97f040624ad98eda614a038b6b3d7cdad0896de129e8856ed59bd94db51c7dcf"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d11__material@4x.png",
+                "w": 99,
+                "h": 106,
+                "sha256": "3b2dca5404988fea4be19e801d3ba01e99482c152bc6e3bc946e16f8eaa9a82c"
+              }
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            24,
+            19
+          ],
+          "pivot": [
+            24,
+            19
+          ],
+          "depth": -4.22,
+          "w": 34,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.L__d12__albedo.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "9759d0d9181150aa6365cdd2e3280da94a339ea0a97df633f8d5add09d06590a"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.L__d12__normal.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "67d240b59ad5a76036fd59b394deed5f39419c0b862208b35f65fccf5b423e69"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.L__d12__material.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "14a5c06ab35625577a4ab77f4e8b1c480f163b15f18a15205df0c7c34c6fecf7"
+            }
+          },
+          "filesHi": {
+            "w": 130,
+            "h": 98,
+            "pivot": [
+              93,
+              74
+            ],
+            "anchor": [
+              93,
+              74
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d12__albedo@4x.png",
+                "w": 130,
+                "h": 98,
+                "sha256": "37664e2315df1b61a0ecef8f0d94aa0f64ca427315678dbd1f16e23270ede932"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d12__normal@4x.png",
+                "w": 130,
+                "h": 98,
+                "sha256": "e95b2fe1f98cab89e8d89e6533213e698596f1c826932626bd782f58c50968ce"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d12__material@4x.png",
+                "w": 130,
+                "h": 98,
+                "sha256": "fc93605a568c895ce1490754b01ba7abdbae2778a417c56f2f47f23a65421444"
+              }
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            23.56,
+            18.12
+          ],
+          "pivot": [
+            23.56,
+            18.12
+          ],
+          "depth": 7.19,
+          "w": 38,
+          "h": 22,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.L__d13__albedo.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "a0eae544f316bfde9d05403e5f083d64ce37510b3c3d67abc743c37f8d3764cc"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.L__d13__normal.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "0b11d49c0effe5fec49a2f604bacb151f1e45ecd8c05c86b8cd6601c5d952441"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.L__d13__material.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "21209a6a92cb3abfed0c8f7743576cea591c7ebc66eaeba10c1a6bf316d15714"
+            }
+          },
+          "filesHi": {
+            "w": 149,
+            "h": 85,
+            "pivot": [
+              91.26,
+              71.49
+            ],
+            "anchor": [
+              91.26,
+              71.49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d13__albedo@4x.png",
+                "w": 149,
+                "h": 85,
+                "sha256": "de043aaab330180d78f2ee78f47038afcf41ae6c472f0e92222e3c4cd7902f43"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d13__normal@4x.png",
+                "w": 149,
+                "h": 85,
+                "sha256": "fbb0976bd44a0986c505b9c7799f4ad5102d0b3dc84da98c5bd157d22dfb24e3"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d13__material@4x.png",
+                "w": 149,
+                "h": 85,
+                "sha256": "03299997ce7875df2f9b91967228e94030d1d78eb6211102831777f6f7026eca"
+              }
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            19.63,
+            16.31
+          ],
+          "pivot": [
+            19.63,
+            16.31
+          ],
+          "depth": 18.05,
+          "w": 38,
+          "h": 17,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.L__d14__albedo.png",
+              "w": 38,
+              "h": 17,
+              "sha256": "ea03ebf3455e3a3cf2c0306011f6ae3b06b0222d50aba5a38849b9455d7fa6b2"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.L__d14__normal.png",
+              "w": 38,
+              "h": 17,
+              "sha256": "7b62060e1b4b5f206ce7ceec906fa2f046c9ba70cf090b6312b8ba145927f929"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.L__d14__material.png",
+              "w": 38,
+              "h": 17,
+              "sha256": "2b41f4483f57440996ce8b960df39a1a62dff74e8c301a77aafda798ce7627a7"
+            }
+          },
+          "filesHi": {
+            "w": 151,
+            "h": 68,
+            "pivot": [
+              77.51,
+              65.25
+            ],
+            "anchor": [
+              77.51,
+              65.25
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d14__albedo@4x.png",
+                "w": 151,
+                "h": 68,
+                "sha256": "7491048b613af2fa9fc5a0f52205398cf9807fe65d3538abb5eab393a752533a"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d14__normal@4x.png",
+                "w": 151,
+                "h": 68,
+                "sha256": "82080afb78ac5beb57c1c100f97d322eb63915cf5be65752f1ee3a4cbde6e247"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d14__material@4x.png",
+                "w": 151,
+                "h": 68,
+                "sha256": "3f58a7b4ef2933a6e2919588c869a4d076038d5c77b7eb95975f02f72e8ef051"
+              }
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            16.25,
+            18.78
+          ],
+          "pivot": [
+            16.25,
+            18.78
+          ],
+          "depth": 26.72,
+          "w": 39,
+          "h": 22,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.L__d15__albedo.png",
+              "w": 39,
+              "h": 22,
+              "sha256": "6366103a89d22132546472767fdb959089e37954c2bf6233ad28d2586c1ccae1"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.L__d15__normal.png",
+              "w": 39,
+              "h": 22,
+              "sha256": "ee6f836dc2eaacab24c584a8fef7dd5f42b2b609819e797d51dc59352d366477"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.L__d15__material.png",
+              "w": 39,
+              "h": 22,
+              "sha256": "4c6f6d9077f7a6230e403625d5bc36e8b975de52bc7725db1ed6276dc0af757c"
+            }
+          },
+          "filesHi": {
+            "w": 151,
+            "h": 84,
+            "pivot": [
+              62.98,
+              72.13
+            ],
+            "anchor": [
+              62.98,
+              72.13
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d15__albedo@4x.png",
+                "w": 151,
+                "h": 84,
+                "sha256": "c8626b43872589f4b53a865385792a04ee2e8b67970f68effc8a03c270ac0c80"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d15__normal@4x.png",
+                "w": 151,
+                "h": 84,
+                "sha256": "3dd3b4b690d887ea3ca84160b65374a0e9cffcc6573d56f5b50099c6ad21aead"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.L__d15__material@4x.png",
+                "w": 151,
+                "h": 84,
+                "sha256": "178280da436cc5be45741ddc3671cc802484ed221712202596f7d05dc0145d38"
+              }
+            }
+          }
+        }
+      }
+    },
+    "wheels.R": {
+      "name": "wheels.R",
+      "dynamic": false,
+      "parent": null,
+      "pivotDesign": [
+        256,
+        256,
+        0
+      ],
+      "traverse": false,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            24,
+            13
+          ],
+          "pivot": [
+            24,
+            13
+          ],
+          "depth": 48.39,
+          "w": 34,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.R__d00__albedo.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "bdcf23b8f6516b0ba07f8814ecdb53bd825a26344cb1c817537be0183769bdb0"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.R__d00__normal.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "2b0cd57f2ba4cd8d7bf0bff4ef175f60c6f0c0f30707c95cb3d8e503399f1a8f"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.R__d00__material.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "a07195a474f5afef222180ea6fa3d79b0a9d312d284623dda9c85faf201da698"
+            }
+          },
+          "filesHi": {
+            "w": 130,
+            "h": 97,
+            "pivot": [
+              93,
+              49
+            ],
+            "anchor": [
+              93,
+              49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d00__albedo@4x.png",
+                "w": 130,
+                "h": 97,
+                "sha256": "8639e71109055c93c835cde971ce1ff4f856492122a4614b2b4a7aa4446ef251"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d00__normal@4x.png",
+                "w": 130,
+                "h": 97,
+                "sha256": "3d78140f099c1f17aa62da02eec57c67049ae8c5e168f3bb2b02bddf037e94fa"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d00__material@4x.png",
+                "w": 130,
+                "h": 97,
+                "sha256": "610af7f4054c8e76e84267fa566d2a9d5caa466965d4eefbffe97f022b44c9db"
+              }
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            21.75,
+            14.78
+          ],
+          "pivot": [
+            21.75,
+            14.78
+          ],
+          "depth": 41.65,
+          "w": 25,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.R__d01__albedo.png",
+              "w": 25,
+              "h": 27,
+              "sha256": "f5cb78321bdd29ca948f0a8f36062cfee32f74d975717f85370bbd08e03a201f"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.R__d01__normal.png",
+              "w": 25,
+              "h": 27,
+              "sha256": "b22f28ec8d83de38ecc991facb121bab746ca5e65b6fe1d2abfbf711d5d3c2bd"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.R__d01__material.png",
+              "w": 25,
+              "h": 27,
+              "sha256": "94dcb16e935b3736ae7d05d57feac0cc7bc31a46c53dfffe4ae843af1fa1718a"
+            }
+          },
+          "filesHi": {
+            "w": 98,
+            "h": 105,
+            "pivot": [
+              85.02,
+              59.13
+            ],
+            "anchor": [
+              85.02,
+              59.13
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d01__albedo@4x.png",
+                "w": 98,
+                "h": 105,
+                "sha256": "53918742d52b89be4c74edb333418cc0ed0a410f6428abf2f493f916ea86ffa8"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d01__normal@4x.png",
+                "w": 98,
+                "h": 105,
+                "sha256": "8273ea1dc8ce510a720ba9c5e3c3c6bcc0c1225d17b5c5632e3f6c7902e3abb6"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d01__material@4x.png",
+                "w": 98,
+                "h": 105,
+                "sha256": "c414c39b85f962e7140967a9f7c54b4247a3cd6e58ec5a98895aa2135a69264b"
+              }
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            18.37,
+            17.31
+          ],
+          "pivot": [
+            18.37,
+            17.31
+          ],
+          "depth": 29.12,
+          "w": 16,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.R__d02__albedo.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "4c1707ec54f3d8f2d48dc8b26a673367d388584aeffc808fbd0be8fa32a0da64"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.R__d02__normal.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "3d727208dc050bafb2b303228432e2fa3b7b5d579ee5fbfbdef4c2c3021088f6"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.R__d02__material.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "893450d9449bcde707690a2e931d46733cda4356ce1932354e998bc0ab285a48"
+            }
+          },
+          "filesHi": {
+            "w": 62,
+            "h": 105,
+            "pivot": [
+              71.49,
+              66.25
+            ],
+            "anchor": [
+              71.49,
+              66.25
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d02__albedo@4x.png",
+                "w": 62,
+                "h": 105,
+                "sha256": "ad9a02c4aa2c01c31f9ce761cf639d21183a58f70c4f811ecd0071fcd7788136"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d02__normal@4x.png",
+                "w": 62,
+                "h": 105,
+                "sha256": "ef539ccc96beac2e096a34cb85eb3ab1eb295672ca50e89ddca1598f54453b5c"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d02__material@4x.png",
+                "w": 62,
+                "h": 105,
+                "sha256": "743606df042808c0f2f1021e0acc4fbb8250a131f226248d2d7b922eccbe387d"
+              }
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            21.44,
+            19.12
+          ],
+          "pivot": [
+            21.44,
+            19.12
+          ],
+          "depth": 12.71,
+          "w": 26,
+          "h": 28,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.R__d03__albedo.png",
+              "w": 26,
+              "h": 28,
+              "sha256": "b3baf53f52faab0ce4429804afc57c120570ab429af51d47b191f01b941ca60d"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.R__d03__normal.png",
+              "w": 26,
+              "h": 28,
+              "sha256": "0223ba4d93dfc50e8c8fe2a2a363a728d36fa1c59f8711ada0d051fdd8ed7a8e"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.R__d03__material.png",
+              "w": 26,
+              "h": 28,
+              "sha256": "6fcbc6d84624f54e39086cd88e3c46fa3182c16fb3363ee9c27ae90c50e0aa0c"
+            }
+          },
+          "filesHi": {
+            "w": 99,
+            "h": 106,
+            "pivot": [
+              83.74,
+              73.49
+            ],
+            "anchor": [
+              83.74,
+              73.49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d03__albedo@4x.png",
+                "w": 99,
+                "h": 106,
+                "sha256": "71a202fd6c0a4756a6bb31c4845147fe8be7d595b2d130362bf7afd68a4f3c2d"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d03__normal@4x.png",
+                "w": 99,
+                "h": 106,
+                "sha256": "f1f9a3f25bed5362ab66cfed4be3850240711b9d6bfd90dee37aea98dbc13be3"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d03__material@4x.png",
+                "w": 99,
+                "h": 106,
+                "sha256": "f6c87027e7a072d2e122770a0221ed381883be2a2d810c7ffc45dee4b94524b7"
+              }
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            23,
+            19
+          ],
+          "pivot": [
+            23,
+            19
+          ],
+          "depth": -5.09,
+          "w": 34,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.R__d04__albedo.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "b5ccb9e949696cb6144cf3d6f283aea571d5e45111aa2d4e2b0577beec039e68"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.R__d04__normal.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "6f06cef479b36d97062fdbebee6ee705ec0480fba13834269b4a5e0f03bfc955"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.R__d04__material.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "aecd1105db3fbc9aa45a850012f7c83a0d8ec908e5b7f02ed1ac697f178c6d54"
+            }
+          },
+          "filesHi": {
+            "w": 131,
+            "h": 97,
+            "pivot": [
+              90,
+              75
+            ],
+            "anchor": [
+              90,
+              75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d04__albedo@4x.png",
+                "w": 131,
+                "h": 97,
+                "sha256": "ba69f3bc5a72e9fc7ca57c3883bdc9281b24ef613b9e37133b1bc93a20e635f1"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d04__normal@4x.png",
+                "w": 131,
+                "h": 97,
+                "sha256": "e7a604ebdf18cf07425771c5d48d1ae2925afce2ff37535046cfca3071e12153"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d04__material@4x.png",
+                "w": 131,
+                "h": 97,
+                "sha256": "61c8a00cb5908e2eaa8eb78b7b98af21c8b8f4b99bd66edcbace3b5b64c6738f"
+              }
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            22.44,
+            18.88
+          ],
+          "pivot": [
+            22.44,
+            18.88
+          ],
+          "depth": -21.56,
+          "w": 39,
+          "h": 22,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.R__d05__albedo.png",
+              "w": 39,
+              "h": 22,
+              "sha256": "c8be4fea9a986a1cef67ffed9d037a380ead7e8b0e599174465c8b81f28a51ac"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.R__d05__normal.png",
+              "w": 39,
+              "h": 22,
+              "sha256": "fda40539a70c60b5e891229cefc441451f80b907adfa99b331621ff390290889"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.R__d05__material.png",
+              "w": 39,
+              "h": 22,
+              "sha256": "a6ec38b6df4d33e8aa794596d2b26b2db99386f6f1cc65f2eb4bc68fc394b3c0"
+            }
+          },
+          "filesHi": {
+            "w": 151,
+            "h": 85,
+            "pivot": [
+              87.74,
+              72.51
+            ],
+            "anchor": [
+              87.74,
+              72.51
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d05__albedo@4x.png",
+                "w": 151,
+                "h": 85,
+                "sha256": "b2c90645386d73de3a5af59cee701657d2eaae2a6d439590257a36d0e8c9c718"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d05__normal@4x.png",
+                "w": 151,
+                "h": 85,
+                "sha256": "5fb85617c8737d2787435ea8d611106e66a970982371be4760476a11a7941573"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d05__material@4x.png",
+                "w": 151,
+                "h": 85,
+                "sha256": "e0dcf89c4f548b3ac47eb2e57af708c45a838570730cb6a5c577c0d75c3431b8"
+              }
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            18.37,
+            16.69
+          ],
+          "pivot": [
+            18.37,
+            16.69
+          ],
+          "depth": -34.21,
+          "w": 38,
+          "h": 18,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.R__d06__albedo.png",
+              "w": 38,
+              "h": 18,
+              "sha256": "76165fe684177360b565411dc1c0f4b820f1e2423d1728b98e248abce3ec95d9"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.R__d06__normal.png",
+              "w": 38,
+              "h": 18,
+              "sha256": "028246905ff0a09c406913124ad2f26a4b8de4819edf6bfe13a59b11df4206a5"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.R__d06__material.png",
+              "w": 38,
+              "h": 18,
+              "sha256": "543358beee4e33daf4383978bd90368e8980f7fa8af9d2be878c1ba2b2a3eb29"
+            }
+          },
+          "filesHi": {
+            "w": 151,
+            "h": 68,
+            "pivot": [
+              73.49,
+              64.75
+            ],
+            "anchor": [
+              73.49,
+              64.75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d06__albedo@4x.png",
+                "w": 151,
+                "h": 68,
+                "sha256": "f7509cae97e6d053f5e43f9038efe32b592ed2363d12301e7367d66dd08b76f2"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d06__normal@4x.png",
+                "w": 151,
+                "h": 68,
+                "sha256": "987a61d6d0ac6dc7b76d8a92b70dc5cb4a180939864c59924e430d95998e04a9"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d06__material@4x.png",
+                "w": 151,
+                "h": 68,
+                "sha256": "a15b25955efe069880293686118321817863e491abe6b1334b02b08438142b5e"
+              }
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            14.75,
+            18.22
+          ],
+          "pivot": [
+            14.75,
+            18.22
+          ],
+          "depth": -41.09,
+          "w": 38,
+          "h": 22,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.R__d07__albedo.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "8358a7e8f62b078e1fc973f0a2cea1032f60251fd2f20b2e6f31967c8e47934b"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.R__d07__normal.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "290add5c0866574f3d236df1785ece15b0dd57547723708b1cf950e0c4ed2daa"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.R__d07__material.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "0f662490cebdb7e026fe9bb221bc282eecc525c75f667ac204e70c311ec17aad"
+            }
+          },
+          "filesHi": {
+            "w": 149,
+            "h": 85,
+            "pivot": [
+              58.02,
+              71.87
+            ],
+            "anchor": [
+              58.02,
+              71.87
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d07__albedo@4x.png",
+                "w": 149,
+                "h": 85,
+                "sha256": "520fa9ae073a2f63ca75ddc3812374696d8971828549ff13360a21f7335aa344"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d07__normal@4x.png",
+                "w": 149,
+                "h": 85,
+                "sha256": "80b87310f72d150cd6fea2c8d1e156c983b6b5fb30eab77cbbfd3667dd2b7748"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d07__material@4x.png",
+                "w": 149,
+                "h": 85,
+                "sha256": "16a8ee61d6f557a538024ed5cb1fcfcc11e48b6c573c710ee1bf7c4920a0d888"
+              }
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            10,
+            19
+          ],
+          "pivot": [
+            10,
+            19
+          ],
+          "depth": -41.17,
+          "w": 34,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.R__d08__albedo.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "6955a34f17d098c7525fff2d11ca62d9113b2159c8d1be8236e50aff1b4e08f8"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.R__d08__normal.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "6984f127b546c3ac73bbda986f9923861052de4318a28d60747599a032e14ecc"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.R__d08__material.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "005a32b116d9c0850f08058a474cff27988733d76058e5de563b08126fe87ffc"
+            }
+          },
+          "filesHi": {
+            "w": 130,
+            "h": 98,
+            "pivot": [
+              37,
+              74
+            ],
+            "anchor": [
+              37,
+              74
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d08__albedo@4x.png",
+                "w": 130,
+                "h": 98,
+                "sha256": "71795f1d39cb26dc6e6e816a371a576cb9f1807258be4849ba2d1225be13d187"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d08__normal@4x.png",
+                "w": 130,
+                "h": 98,
+                "sha256": "0e2bfa39acce5993c34e45dffd3b0992562a9b535a28b32d0140acfc9dfca69d"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d08__material@4x.png",
+                "w": 130,
+                "h": 98,
+                "sha256": "c84e329df4ef5fcc017545a8374da2751231c84899fab269a4892e6b889e0c90"
+              }
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            3.25,
+            18.22
+          ],
+          "pivot": [
+            3.25,
+            18.22
+          ],
+          "depth": -34.44,
+          "w": 25,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.R__d09__albedo.png",
+              "w": 25,
+              "h": 27,
+              "sha256": "9e07d71d0fdba2e377e500ab78d86abae35c69d0458e5f7788f48fb6d1b5028f"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.R__d09__normal.png",
+              "w": 25,
+              "h": 27,
+              "sha256": "4668750b64b2ea965c6e3d35c7095ae4d178903bec774722884123784cfd1772"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.R__d09__material.png",
+              "w": 25,
+              "h": 27,
+              "sha256": "710e86dcee63e5804b97dd7f5b0e1f1262b76c6e2e423dc9c4a32fe5746d99bd"
+            }
+          },
+          "filesHi": {
+            "w": 98,
+            "h": 106,
+            "pivot": [
+              12.98,
+              71.87
+            ],
+            "anchor": [
+              12.98,
+              71.87
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d09__albedo@4x.png",
+                "w": 98,
+                "h": 106,
+                "sha256": "fbec320a9a07ca75ca1c227689c009f37d00fb509491a35b26243e26d7585932"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d09__normal@4x.png",
+                "w": 98,
+                "h": 106,
+                "sha256": "2ff0a327c0c29ba49b67bb57a64b2e29f7799bf87784df63664e828e7321913f"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d09__material@4x.png",
+                "w": 98,
+                "h": 106,
+                "sha256": "98142c52a8e44e0e24f88ca5724ea8d36adcce21d0396f5b2075d9c9ccdb0935"
+              }
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            -2.37,
+            16.69
+          ],
+          "pivot": [
+            -2.37,
+            16.69
+          ],
+          "depth": -21.91,
+          "w": 16,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.R__d10__albedo.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "c7744b202f666726597d63a344f7c0d739222787dc9f46df88492c4f85770031"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.R__d10__normal.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "24d849d0330a1a9d3b55d489e3ef74dcab057423663a2031d52d709b5c7fcf4a"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.R__d10__material.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "9d14450fee67deff56f973254274a3a9f005eaf61774a707e6a8c9604296cb0c"
+            }
+          },
+          "filesHi": {
+            "w": 62,
+            "h": 106,
+            "pivot": [
+              -9.49,
+              64.75
+            ],
+            "anchor": [
+              -9.49,
+              64.75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d10__albedo@4x.png",
+                "w": 62,
+                "h": 106,
+                "sha256": "86377fd4262a9db0d48b166192a6dbbf33f84dfb679c644d3dec7505dd5954c0"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d10__normal@4x.png",
+                "w": 62,
+                "h": 106,
+                "sha256": "1f9a7adf8238aece3df1c1e75e6f67b0181b91dc8e51e54da499c04fd5bf1ae8"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d10__material@4x.png",
+                "w": 62,
+                "h": 106,
+                "sha256": "245b30317b0d879e8df35863d1a8ac4bdbc42243cd0db5371a8d5495526f499b"
+              }
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            4.56,
+            14.88
+          ],
+          "pivot": [
+            4.56,
+            14.88
+          ],
+          "depth": -5.49,
+          "w": 26,
+          "h": 27,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.R__d11__albedo.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "97782899b671d7ace95a5c05445dfab299ff89a6a865b57880be1e99f06dc7de"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.R__d11__normal.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "d0fa63e0d4a031da79ed2df343ee36c5fb44661e1bc1bcc4bf85d1bd7bb8fe5a"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.R__d11__material.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "3c59f7c5154cb0b0b84b422a577805b1610a68cc06389c6bfc777f2c30c8486e"
+            }
+          },
+          "filesHi": {
+            "w": 99,
+            "h": 105,
+            "pivot": [
+              15.26,
+              56.51
+            ],
+            "anchor": [
+              15.26,
+              56.51
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d11__albedo@4x.png",
+                "w": 99,
+                "h": 105,
+                "sha256": "257ffbfe35a2997066f019f570ee253bb8ea01e9d6a0cec4807f44710e08a737"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d11__normal@4x.png",
+                "w": 99,
+                "h": 105,
+                "sha256": "a5da47cafabbc5ba29ec10b5cb35ec509cda1170285d48e416f94d59a9e983f8"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d11__material@4x.png",
+                "w": 99,
+                "h": 105,
+                "sha256": "384329009defdc67344802df6f19a467a8dc6753d53c64b35076e26bcf07afe9"
+              }
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            11,
+            12
+          ],
+          "pivot": [
+            11,
+            12
+          ],
+          "depth": 12.3,
+          "w": 34,
+          "h": 25,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.R__d12__albedo.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "c245155340037ba46d33ae0251f1152ad8fdb048c33518c46f8026fa1a917397"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.R__d12__normal.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "018641c3e48b5a0321f310f1bf557cde617819db14032330cca8ff3b0ad04758"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.R__d12__material.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "df4abe606bb65baef31d4fd44a491b7eeed0789c46409a96dab670daa898aabb"
+            }
+          },
+          "filesHi": {
+            "w": 131,
+            "h": 96,
+            "pivot": [
+              41,
+              46
+            ],
+            "anchor": [
+              41,
+              46
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d12__albedo@4x.png",
+                "w": 131,
+                "h": 96,
+                "sha256": "b88d838ae9809a5ac07e10e5e6a6dec9ea19f9e6893acc59d7c04d3da36d184c"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d12__normal@4x.png",
+                "w": 131,
+                "h": 96,
+                "sha256": "96467b4cc5d6f8892621d52c6216a21ef08cf9c09887b2b474736be3fe988fd9"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d12__material@4x.png",
+                "w": 131,
+                "h": 96,
+                "sha256": "5c3806fa568210740ab2e743c7907b8179c7d87616dfe0535683121f0bfc379d"
+              }
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            16.56,
+            9.12
+          ],
+          "pivot": [
+            16.56,
+            9.12
+          ],
+          "depth": 28.78,
+          "w": 39,
+          "h": 21,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.R__d13__albedo.png",
+              "w": 39,
+              "h": 21,
+              "sha256": "e4b3ffa8f041fd4db187ba904470d2a4c4de1b8413e87d820b0b2e4dc24607ff"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.R__d13__normal.png",
+              "w": 39,
+              "h": 21,
+              "sha256": "17f9edb3e04bad0edfe4e7ac36b9e8c63824cbec63241682a441e81c8d04c723"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.R__d13__material.png",
+              "w": 39,
+              "h": 21,
+              "sha256": "aaa19b14821cc8d34dbd7cd64b04f756e6f23a3dfe64770f260c777810b713b6"
+            }
+          },
+          "filesHi": {
+            "w": 151,
+            "h": 82,
+            "pivot": [
+              63.26,
+              34.49
+            ],
+            "anchor": [
+              63.26,
+              34.49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d13__albedo@4x.png",
+                "w": 151,
+                "h": 82,
+                "sha256": "c2cf6cd6ddf622f2c17c1136a1c8f3dadef887754b78b6ca28cec4569515dccc"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d13__normal@4x.png",
+                "w": 151,
+                "h": 82,
+                "sha256": "e625924862eeb37ad2309d4aa38bf63145f845d7093903cd93a4c90cf387c36e"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d13__material@4x.png",
+                "w": 151,
+                "h": 82,
+                "sha256": "48cc30db48e58b5c25a016fa3331fea9588f08199527cba443785f1de2b8ca65"
+              }
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            19.63,
+            7.31
+          ],
+          "pivot": [
+            19.63,
+            7.31
+          ],
+          "depth": 41.42,
+          "w": 38,
+          "h": 18,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.R__d14__albedo.png",
+              "w": 38,
+              "h": 18,
+              "sha256": "39006e2c4776404c83d93f18cc887a2ce5039dff4c3d9ae7f72c22b59e9800a6"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.R__d14__normal.png",
+              "w": 38,
+              "h": 18,
+              "sha256": "2a9a175dace26dbf823918dd4fcabd5e879850b0b13079595ab6339a2bd48d73"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.R__d14__material.png",
+              "w": 38,
+              "h": 18,
+              "sha256": "aa63655e30a0f6da916aa4595962c952f6add852f0ec49f2d0b715bfc1e7045b"
+            }
+          },
+          "filesHi": {
+            "w": 151,
+            "h": 67,
+            "pivot": [
+              77.51,
+              27.25
+            ],
+            "anchor": [
+              77.51,
+              27.25
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d14__albedo@4x.png",
+                "w": 151,
+                "h": 67,
+                "sha256": "1c2d95172b4ef082c5f58c46371c75db56580f407be338ed57eed441183033c7"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d14__normal@4x.png",
+                "w": 151,
+                "h": 67,
+                "sha256": "7c76f5416079a322cc8e2a9718f9b7ac747c4ae7fc5f13cc6c3e7ab1e340a836"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d14__material@4x.png",
+                "w": 151,
+                "h": 67,
+                "sha256": "66031094ecab87c54dff61e0f5082bd583670539c902da42f93c1bb7f9607505"
+              }
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            23.25,
+            9.78
+          ],
+          "pivot": [
+            23.25,
+            9.78
+          ],
+          "depth": 48.31,
+          "w": 38,
+          "h": 22,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__wheels.R__d15__albedo.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "7c37eacb34f2006cdc57fe3bba001e826ace2651fe69aabfd1901846b1306e37"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__wheels.R__d15__normal.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "4463a5b9a78ee49ed77d49cacc6810723b8773ea29f713402af14660102bea01"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__wheels.R__d15__material.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "973d15174ccfc843cec1258613c9607f68a488a62b2ad3199f48325c5ca8f1c9"
+            }
+          },
+          "filesHi": {
+            "w": 149,
+            "h": 84,
+            "pivot": [
+              90.98,
+              38.13
+            ],
+            "anchor": [
+              90.98,
+              38.13
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d15__albedo@4x.png",
+                "w": 149,
+                "h": 84,
+                "sha256": "568eb9a085996aecf26d5a8950c85b9265cea2c60cfdf0c8d717b05fff8137e6"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d15__normal@4x.png",
+                "w": 149,
+                "h": 84,
+                "sha256": "7cd742886a310965648b5ea638503bc694fdc8a4281f1f13353911e6aed1c433"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__wheels.R__d15__material@4x.png",
+                "w": 149,
+                "h": 84,
+                "sha256": "c39d5cfbd82f5ed29237b9354d3a286dd33806ad736df0be37fce05b6697b2c5"
+              }
+            }
+          }
+        }
+      }
+    },
+    "mast": {
+      "name": "mast",
+      "dynamic": true,
+      "parent": null,
+      "pivotDesign": [
+        250,
+        190,
+        258
+      ],
+      "traverse": false,
+      "facingSet": "unit",
+      "facingOrder": [
+        "d00",
+        "d01",
+        "d02",
+        "d03",
+        "d04",
+        "d05",
+        "d06",
+        "d07",
+        "d08",
+        "d09",
+        "d10",
+        "d11",
+        "d12",
+        "d13",
+        "d14",
+        "d15"
+      ],
+      "facings": {
+        "d00": {
+          "anchor": [
+            4,
+            32
+          ],
+          "pivot": [
+            7.75,
+            13.63
+          ],
+          "depth": 54.74,
+          "w": 16,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__mast__d00__albedo.png",
+              "w": 16,
+              "h": 19,
+              "sha256": "195204ff1dbeadafcfbac460fe50e2cedc68a7c7929b2747c5f5bb53038df0e2"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__mast__d00__normal.png",
+              "w": 16,
+              "h": 19,
+              "sha256": "d7f72a4b8e59257704433f96dbefc255f2920d6c7f31c25ca8b2fd7ffa08908c"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__mast__d00__material.png",
+              "w": 16,
+              "h": 19,
+              "sha256": "4e44642156f2143b37f0ba2a35c1027160c8fc72c3fe56a7838725d03d89304d"
+            }
+          },
+          "filesHi": {
+            "w": 61,
+            "h": 73,
+            "pivot": [
+              31,
+              54.5
+            ],
+            "anchor": [
+              16,
+              128
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__mast__d00__albedo@4x.png",
+                "w": 61,
+                "h": 73,
+                "sha256": "6504e99375e0f7476ec27e9e461b16f678938f2bf78dc6064cf7a849652c9500"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__mast__d00__normal@4x.png",
+                "w": 61,
+                "h": 73,
+                "sha256": "3ba79733a50625ffa7cc64767d77532e58b978ec77baba8d0b8fd160765eec04"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__mast__d00__material@4x.png",
+                "w": 61,
+                "h": 73,
+                "sha256": "d2e4cf2c5fd2bd4e4f510ebae7258b08161b3679dbcdd584e8693f5f47412bc0"
+              }
+            }
+          }
+        },
+        "d01": {
+          "anchor": [
+            3.75,
+            31.78
+          ],
+          "pivot": [
+            8.94,
+            14.3
+          ],
+          "depth": 53.8,
+          "w": 18,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__mast__d01__albedo.png",
+              "w": 18,
+              "h": 19,
+              "sha256": "7bd0324d0d84fb6a5f77cfdc5385f4508f7ae8e23cecc6ecdaed49ff48ca43fd"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__mast__d01__normal.png",
+              "w": 18,
+              "h": 19,
+              "sha256": "b64f596059c29010a1271debf3cdff0f4a19f657099a7c422e6dc2cd3add4f8e"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__mast__d01__material.png",
+              "w": 18,
+              "h": 19,
+              "sha256": "b7c2c44515cfe14b8783b3b0a88f3d8e44c73ed8df5fcd46a63515f6269e150a"
+            }
+          },
+          "filesHi": {
+            "w": 67,
+            "h": 72,
+            "pivot": [
+              33.76,
+              54.18
+            ],
+            "anchor": [
+              13.02,
+              124.13
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__mast__d01__albedo@4x.png",
+                "w": 67,
+                "h": 72,
+                "sha256": "b44e7e164507832a408a6376c9e157af7b0de77815b98f5de3e93d123e91ec99"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__mast__d01__normal@4x.png",
+                "w": 67,
+                "h": 72,
+                "sha256": "3c4bb7b565336b0e36b805a76e6ef6e066068e2fbe36f480663f87ce07ff837c"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__mast__d01__material@4x.png",
+                "w": 67,
+                "h": 72,
+                "sha256": "d8831a3f27ba83631c50debf68a436ccb3df4b38efb3f46c5d80b6a1c1a4f539"
+              }
+            }
+          }
+        },
+        "d02": {
+          "anchor": [
+            3.37,
+            30.31
+          ],
+          "pivot": [
+            9.21,
+            13.92
+          ],
+          "depth": 48.24,
+          "w": 18,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__mast__d02__albedo.png",
+              "w": 18,
+              "h": 19,
+              "sha256": "74b40d1e1d1c328c85cae8a714d2725630b22f2c572270d1f06f7f824b77048e"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__mast__d02__normal.png",
+              "w": 18,
+              "h": 19,
+              "sha256": "e3147c7bcd7b7702ac410b8f90b32a8f94d757c935e6ff8803ef6ac1a98e732e"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__mast__d02__material.png",
+              "w": 18,
+              "h": 19,
+              "sha256": "e465f4fdf01d16320cb6efed4e14b6afd821d3214bc6e1dc0836c829c82431fd"
+            }
+          },
+          "filesHi": {
+            "w": 69,
+            "h": 71,
+            "pivot": [
+              34.82,
+              53.69
+            ],
+            "anchor": [
+              11.49,
+              119.25
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__mast__d02__albedo@4x.png",
+                "w": 69,
+                "h": 71,
+                "sha256": "ac43753127d65ea09503a735f2a9cb707db7de80f4232765a71f8805085f47ff"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__mast__d02__normal@4x.png",
+                "w": 69,
+                "h": 71,
+                "sha256": "65dd200edd557d7cac87cc6f3f6a396a7f66050e6fda1f98f0421ae0f2abd958"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__mast__d02__material@4x.png",
+                "w": 69,
+                "h": 71,
+                "sha256": "c10521e3fa115b9d8950c730c3645808e998eb7bb83fff31aca0a9a80078b941"
+              }
+            }
+          }
+        },
+        "d03": {
+          "anchor": [
+            3.44,
+            29.12
+          ],
+          "pivot": [
+            9.03,
+            13.87
+          ],
+          "depth": 38.92,
+          "w": 18,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__mast__d03__albedo.png",
+              "w": 18,
+              "h": 19,
+              "sha256": "9dc1163d918a340585f3564f7981eb4a8c16f033e953f3800cbf270ea6b45d94"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__mast__d03__normal.png",
+              "w": 18,
+              "h": 19,
+              "sha256": "243f9f4dcd9f3e85441ebf5de63ff54602938d98b045b94604ef346f13ef8927"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__mast__d03__material.png",
+              "w": 18,
+              "h": 19,
+              "sha256": "238924344265bbf860c04fc5d4bb4e767d7e33d7947c1e05f97a84fb14d13c8b"
+            }
+          },
+          "filesHi": {
+            "w": 68,
+            "h": 72,
+            "pivot": [
+              34.11,
+              53.48
+            ],
+            "anchor": [
+              11.74,
+              114.49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__mast__d03__albedo@4x.png",
+                "w": 68,
+                "h": 72,
+                "sha256": "bc6c3923dcbf62d7b20faba87e2ee6d33e0fb25c74d90cac1a29ee1c3953403b"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__mast__d03__normal@4x.png",
+                "w": 68,
+                "h": 72,
+                "sha256": "b5914340bf9ead3648b95074e7af7ec346f69fb991f58dd34b2f3f8e374511fc"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__mast__d03__material@4x.png",
+                "w": 68,
+                "h": 72,
+                "sha256": "2617ed5d19879950d0281eb66efb97e660f7c21354cf982ec566966b972fbd15"
+              }
+            }
+          }
+        },
+        "d04": {
+          "anchor": [
+            4,
+            28
+          ],
+          "pivot": [
+            8.5,
+            13.75
+          ],
+          "depth": 27.24,
+          "w": 16,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__mast__d04__albedo.png",
+              "w": 16,
+              "h": 19,
+              "sha256": "9a58eeb9b5adbd37743ce122f235e3b057f7f6c36e5fd9c4a12ae6bbb20ae137"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__mast__d04__normal.png",
+              "w": 16,
+              "h": 19,
+              "sha256": "e8f3010e13e3dd2ecd3128857934df44d9844cc787a958c4eda08b763b36a7c9"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__mast__d04__material.png",
+              "w": 16,
+              "h": 19,
+              "sha256": "21731e7444209e6f516f621598839335dc4ccad5fbc8e7e8d1d79ab40caa15cc"
+            }
+          },
+          "filesHi": {
+            "w": 61,
+            "h": 73,
+            "pivot": [
+              31,
+              55
+            ],
+            "anchor": [
+              13,
+              112
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__mast__d04__albedo@4x.png",
+                "w": 61,
+                "h": 73,
+                "sha256": "2d241b02a4383f74ce31eb3d33ccde1d2fd3ee50ee147f5ca3b7d23a68ede12c"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__mast__d04__normal@4x.png",
+                "w": 61,
+                "h": 73,
+                "sha256": "9cdd4ba0ba979d2dc144ba01a75f0c75214205ea66d09c3be7c198356e8d40ac"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__mast__d04__material@4x.png",
+                "w": 61,
+                "h": 73,
+                "sha256": "500fd830c359a80dcec20ce7c168720707174700b509fcfe10538c531fd5fac4"
+              }
+            }
+          }
+        },
+        "d05": {
+          "anchor": [
+            4.44,
+            27.88
+          ],
+          "pivot": [
+            7.16,
+            14.35
+          ],
+          "depth": 15,
+          "w": 15,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__mast__d05__albedo.png",
+              "w": 15,
+              "h": 19,
+              "sha256": "205365c22804b5d5ebe6c3c5d8233fbb2a27edea4d1535ac22509e3b1959b020"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__mast__d05__normal.png",
+              "w": 15,
+              "h": 19,
+              "sha256": "1ae85fd3b4d675210d930080ce83a26be6dec2cdfad7f01c79b4f16c35d15fee"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__mast__d05__material.png",
+              "w": 15,
+              "h": 19,
+              "sha256": "65f39cfc6ba9086c32934f4529671b8d90722f25ea4b8ab444f7c27816317bb9"
+            }
+          },
+          "filesHi": {
+            "w": 54,
+            "h": 74,
+            "pivot": [
+              25.63,
+              56.38
+            ],
+            "anchor": [
+              14.74,
+              110.51
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__mast__d05__albedo@4x.png",
+                "w": 54,
+                "h": 74,
+                "sha256": "ae103210cba34389a3d3d25b9be5f64880da368bebd8e9b15f6d1799f3e3d2b6"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__mast__d05__normal@4x.png",
+                "w": 54,
+                "h": 74,
+                "sha256": "aa029aad428e4e9d0bcc6ec24ffa74475af906533f6569a141d3839ca1aa69f9"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__mast__d05__material@4x.png",
+                "w": 54,
+                "h": 74,
+                "sha256": "e25aad85e2997be169dee23afa883e106677c2a43bddbf62e3734edc5979fea0"
+              }
+            }
+          }
+        },
+        "d06": {
+          "anchor": [
+            5.37,
+            27.69
+          ],
+          "pivot": [
+            5.9,
+            14.48
+          ],
+          "depth": 4.05,
+          "w": 13,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__mast__d06__albedo.png",
+              "w": 13,
+              "h": 19,
+              "sha256": "fcb5fa36a3357ae401020f35e27b30dbecd104bee91c20ee5b69f5102eb972cf"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__mast__d06__normal.png",
+              "w": 13,
+              "h": 19,
+              "sha256": "bbf856c5ceda38a2d8b08a4fa41d85d5084efddce20b4a2b8cceba7588d291bd"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__mast__d06__material.png",
+              "w": 13,
+              "h": 19,
+              "sha256": "f4f6a2f6d09e3b170d16abe163475d6c24bb09992563eb219d3cb197e0d5e8a2"
+            }
+          },
+          "filesHi": {
+            "w": 49,
+            "h": 75,
+            "pivot": [
+              21.61,
+              56.91
+            ],
+            "anchor": [
+              19.49,
+              109.75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__mast__d06__albedo@4x.png",
+                "w": 49,
+                "h": 75,
+                "sha256": "e102fe860de02cf6af7c61e3a4f0e7363de5cb8b1d17e6794d8b93e35cded856"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__mast__d06__normal@4x.png",
+                "w": 49,
+                "h": 75,
+                "sha256": "ed85696946e3aab1bc0864e21e08ae1c74b37bf3edec1df50add034291f12a6d"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__mast__d06__material@4x.png",
+                "w": 49,
+                "h": 75,
+                "sha256": "4444dda081b76cd2569159055901474498593aaffd0f2ff6becbbf6865181e4b"
+              }
+            }
+          }
+        },
+        "d07": {
+          "anchor": [
+            8.75,
+            28.22
+          ],
+          "pivot": [
+            7.01,
+            14.89
+          ],
+          "depth": -3.94,
+          "w": 14,
+          "h": 20,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__mast__d07__albedo.png",
+              "w": 14,
+              "h": 20,
+              "sha256": "027a11f78c672964ec4ec108755e22116e3218e417e6644860949a0b9636c469"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__mast__d07__normal.png",
+              "w": 14,
+              "h": 20,
+              "sha256": "0b4a03af4833bddeb6c284ed87792d988428495c34ceacca64919ad452cd1d67"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__mast__d07__material.png",
+              "w": 14,
+              "h": 20,
+              "sha256": "93a1af5e3db07ec889ea3b42577a1d9f33b07368c08417fb209525284f9054c6"
+            }
+          },
+          "filesHi": {
+            "w": 53,
+            "h": 75,
+            "pivot": [
+              25.05,
+              56.56
+            ],
+            "anchor": [
+              32.02,
+              109.87
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__mast__d07__albedo@4x.png",
+                "w": 53,
+                "h": 75,
+                "sha256": "0c99e02276930f3c20cc2a2e748c67858e2f1b678974c23e4b63009219e200be"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__mast__d07__normal@4x.png",
+                "w": 53,
+                "h": 75,
+                "sha256": "945c1458287cfb1a7a136700fff86fd48b4656714114f9804e829cd8383abf03"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__mast__d07__material@4x.png",
+                "w": 53,
+                "h": 75,
+                "sha256": "0ae9b9e484ebf8ef7af2031d6dc5888cc8c7b585a5f46a3788083aebaef28e41"
+              }
+            }
+          }
+        },
+        "d08": {
+          "anchor": [
+            12,
+            28
+          ],
+          "pivot": [
+            8.25,
+            14.13
+          ],
+          "depth": -7.76,
+          "w": 16,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__mast__d08__albedo.png",
+              "w": 16,
+              "h": 19,
+              "sha256": "35609bf071e3c7bb55a779f41d5a8ed6171af9d6eca69c8ed68d6aa35ced1674"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__mast__d08__normal.png",
+              "w": 16,
+              "h": 19,
+              "sha256": "5ffc23448dbba0a6c546b3261e890c9902cd38ffaa7f1a26950acd2d09d85737"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__mast__d08__material.png",
+              "w": 16,
+              "h": 19,
+              "sha256": "53e10d3a1f0573deceaf0f4e457d1de659d4b05402c1a5e5b0a5358c89462cdf"
+            }
+          },
+          "filesHi": {
+            "w": 61,
+            "h": 72,
+            "pivot": [
+              30,
+              54.5
+            ],
+            "anchor": [
+              45,
+              110
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__mast__d08__albedo@4x.png",
+                "w": 61,
+                "h": 72,
+                "sha256": "0b5c9bba4fc4e91b4145e13ade35c323b0d506703e372c376b0a40b4d63f4a82"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__mast__d08__normal@4x.png",
+                "w": 61,
+                "h": 72,
+                "sha256": "cacebe84ac1e4f537a89aff42e7a52e7928dd743947c2a89e47a36aa9ec7c8a4"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__mast__d08__material@4x.png",
+                "w": 61,
+                "h": 72,
+                "sha256": "be56d113236e2b16276779ecc819f2a7b9b48920c5e2a1ee2220d9c5ce7b1772"
+              }
+            }
+          }
+        },
+        "d09": {
+          "anchor": [
+            14.25,
+            28.22
+          ],
+          "pivot": [
+            9.06,
+            13.45
+          ],
+          "depth": -6.82,
+          "w": 18,
+          "h": 18,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__mast__d09__albedo.png",
+              "w": 18,
+              "h": 18,
+              "sha256": "d576e9f24c588267b486f9c51827246a82e0da257d0df5ab0a960981136b1c5f"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__mast__d09__normal.png",
+              "w": 18,
+              "h": 18,
+              "sha256": "8693943a92d5bf261341ca972e0fe7dd8f81c7a3026cdcfd5aeacb58b6c701c1"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__mast__d09__material.png",
+              "w": 18,
+              "h": 18,
+              "sha256": "9a64db3334048880683527c8f0f6da0b0730b1641c8f85dd11b9aa0196952b88"
+            }
+          },
+          "filesHi": {
+            "w": 67,
+            "h": 72,
+            "pivot": [
+              33.24,
+              53.82
+            ],
+            "anchor": [
+              53.98,
+              112.87
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__mast__d09__albedo@4x.png",
+                "w": 67,
+                "h": 72,
+                "sha256": "84362de3113b7eec3947b3679afa38a95f4ab006cd7d71d6a091a0949e6db27f"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__mast__d09__normal@4x.png",
+                "w": 67,
+                "h": 72,
+                "sha256": "e5b74f7b7bc6eb50fac3177518ae301d3c1b42b49059331a127aa834be9f7607"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__mast__d09__material@4x.png",
+                "w": 67,
+                "h": 72,
+                "sha256": "c3e09e01fb3fd3a4b9ce5740eeb1f1fef4dfa0b8ff22737bbd8bdaf67ae3e8db"
+              }
+            }
+          }
+        },
+        "d10": {
+          "anchor": [
+            14.63,
+            29.69
+          ],
+          "pivot": [
+            8.79,
+            13.83
+          ],
+          "depth": -1.26,
+          "w": 18,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__mast__d10__albedo.png",
+              "w": 18,
+              "h": 19,
+              "sha256": "3b075a929d22f4b767b0290ab095039a17c6ed918479d8f3782685b5d15e8cc1"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__mast__d10__normal.png",
+              "w": 18,
+              "h": 19,
+              "sha256": "5c2640eb6dda9d6e8304ca029cf7db9b1b0d3413eedf99def462a00eab54ee5b"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__mast__d10__material.png",
+              "w": 18,
+              "h": 19,
+              "sha256": "40232d33014a2e85363fb6507560eb23092d522e1b8f2c87811513a9852d49b7"
+            }
+          },
+          "filesHi": {
+            "w": 69,
+            "h": 71,
+            "pivot": [
+              34.18,
+              53.31
+            ],
+            "anchor": [
+              57.51,
+              116.75
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__mast__d10__albedo@4x.png",
+                "w": 69,
+                "h": 71,
+                "sha256": "ebd2ee81199354aee4dd1108d4c1345b1a38ae887f9cc9d208a124945b253a87"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__mast__d10__normal@4x.png",
+                "w": 69,
+                "h": 71,
+                "sha256": "0df570fc03f919385f9633c1dee5d41edd174fac3f7d1341f1f301148e6b8977"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__mast__d10__material@4x.png",
+                "w": 69,
+                "h": 71,
+                "sha256": "a79be4ad4ae77cc11be9ab0d00acbdfe182e1b38bde78b060518ae7150c1081f"
+              }
+            }
+          }
+        },
+        "d11": {
+          "anchor": [
+            14.56,
+            30.88
+          ],
+          "pivot": [
+            8.97,
+            13.88
+          ],
+          "depth": 8.07,
+          "w": 18,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__mast__d11__albedo.png",
+              "w": 18,
+              "h": 19,
+              "sha256": "778514734e4780b89d1357f87ffe175357d8120738e7eb92bdb752145ebd6ed5"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__mast__d11__normal.png",
+              "w": 18,
+              "h": 19,
+              "sha256": "30825c7f3a3f02bfbc0a91738c7121c24d4b3402a8c6fcf0afc455e109f61641"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__mast__d11__material.png",
+              "w": 18,
+              "h": 19,
+              "sha256": "62b8da5dab5f60bb51d66239b564bd56057916685a8ea8bdf8ae40f18733ee74"
+            }
+          },
+          "filesHi": {
+            "w": 68,
+            "h": 72,
+            "pivot": [
+              33.89,
+              53.52
+            ],
+            "anchor": [
+              56.26,
+              121.51
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__mast__d11__albedo@4x.png",
+                "w": 68,
+                "h": 72,
+                "sha256": "6c3d2ee0334d696bf47405b2da6e786eaca16166f80463bf648667659095666b"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__mast__d11__normal@4x.png",
+                "w": 68,
+                "h": 72,
+                "sha256": "9ad8981aec408bc28ba488348b981c0cf1c4eb4de0e19901996a16823cbf6851"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__mast__d11__material@4x.png",
+                "w": 68,
+                "h": 72,
+                "sha256": "348b9bc7cd7c5a23d48deb1466c64fa9c156d90e43d7a7a643cba8ac9518fb7a"
+              }
+            }
+          }
+        },
+        "d12": {
+          "anchor": [
+            12,
+            32
+          ],
+          "pivot": [
+            7.5,
+            14
+          ],
+          "depth": 19.74,
+          "w": 16,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__mast__d12__albedo.png",
+              "w": 16,
+              "h": 19,
+              "sha256": "4edca0467da1d36d3cf2bc31fb374e337d791a65f6b77af05d74dc93d41e4a0f"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__mast__d12__normal.png",
+              "w": 16,
+              "h": 19,
+              "sha256": "226d5ff7808647218d71fb336a3a2052c637458b431ea1a4232b08cf05843b0b"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__mast__d12__material.png",
+              "w": 16,
+              "h": 19,
+              "sha256": "4320edab32333b268f2cd67b051fa675a5c7aec2c2653c3161cb81e0ed46c0ec"
+            }
+          },
+          "filesHi": {
+            "w": 61,
+            "h": 73,
+            "pivot": [
+              30,
+              55
+            ],
+            "anchor": [
+              48,
+              127
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__mast__d12__albedo@4x.png",
+                "w": 61,
+                "h": 73,
+                "sha256": "5c2a39e9d920df0f60de26e742068ff44e1ec3ff32f85b8cdff7b7969cd8e71a"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__mast__d12__normal@4x.png",
+                "w": 61,
+                "h": 73,
+                "sha256": "62ce3778111d1c59822624c5a25536e8e8ada4238c3f876c6fc898dc3e5036cc"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__mast__d12__material@4x.png",
+                "w": 61,
+                "h": 73,
+                "sha256": "5283f4f08bfc93d8ef9ff41fe871fc9dabb5f3603c3dabd77d8b68b3b01fbdfe"
+              }
+            }
+          }
+        },
+        "d13": {
+          "anchor": [
+            10.56,
+            33.12
+          ],
+          "pivot": [
+            7.84,
+            14.4
+          ],
+          "depth": 31.98,
+          "w": 15,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__mast__d13__albedo.png",
+              "w": 15,
+              "h": 19,
+              "sha256": "2a8708944037af07d54443cd420a3eacb9fb1d7471b08e7c0f7ebd9555f91629"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__mast__d13__normal.png",
+              "w": 15,
+              "h": 19,
+              "sha256": "66ac9f5ddcbcc16df7c07490504e6cee704456fda3529f686252452cdf0e0b9f"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__mast__d13__material.png",
+              "w": 15,
+              "h": 19,
+              "sha256": "8dee368988350a7452c1adcc18a9979994528e372b39acc20b1e3e2ecd376bed"
+            }
+          },
+          "filesHi": {
+            "w": 54,
+            "h": 75,
+            "pivot": [
+              28.37,
+              56.62
+            ],
+            "anchor": [
+              39.26,
+              131.49
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__mast__d13__albedo@4x.png",
+                "w": 54,
+                "h": 75,
+                "sha256": "b9e116544a0f77152dcf8ea5007222931a466cf51bd290bb7746b4f8358800ff"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__mast__d13__normal@4x.png",
+                "w": 54,
+                "h": 75,
+                "sha256": "131842e41f4f956e8761e4ba1a9ef8c6a2f7ba1b8a46dbae4b379fe01c2167e8"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__mast__d13__material@4x.png",
+                "w": 54,
+                "h": 75,
+                "sha256": "2d227d0f6b89d40dd752826a3303c47af3ea2943f1c99c7dc956f105b5604176"
+              }
+            }
+          }
+        },
+        "d14": {
+          "anchor": [
+            7.63,
+            33.31
+          ],
+          "pivot": [
+            7.1,
+            14.27
+          ],
+          "depth": 42.93,
+          "w": 13,
+          "h": 19,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__mast__d14__albedo.png",
+              "w": 13,
+              "h": 19,
+              "sha256": "0acbb544d0355bd70ed646130d24f9b29293d8cb7ec0934971ae96b116dfe678"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__mast__d14__normal.png",
+              "w": 13,
+              "h": 19,
+              "sha256": "909304cf0cbd8dc0dc6af7ad34d7ede229db0525bc36b5980d783deb25a4545f"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__mast__d14__material.png",
+              "w": 13,
+              "h": 19,
+              "sha256": "5f23a69a62070991d5e60d032ca37f8fa6a479847376a7e876306644de09df90"
+            }
+          },
+          "filesHi": {
+            "w": 49,
+            "h": 75,
+            "pivot": [
+              27.39,
+              57.09
+            ],
+            "anchor": [
+              29.51,
+              133.25
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__mast__d14__albedo@4x.png",
+                "w": 49,
+                "h": 75,
+                "sha256": "dac06975cb57413196b76423e04617f342d0be38e4b8abb58763cc4635d16077"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__mast__d14__normal@4x.png",
+                "w": 49,
+                "h": 75,
+                "sha256": "449fa2722dcc0c95bcabe736e751ff7ea5ee6387cec7d2bee983c657303ef5c9"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__mast__d14__material@4x.png",
+                "w": 49,
+                "h": 75,
+                "sha256": "600b95bb1993db0ec56c058d3408e849a5715651b5eefb5f57458a906e2d36ff"
+              }
+            }
+          }
+        },
+        "d15": {
+          "anchor": [
+            5.25,
+            33.78
+          ],
+          "pivot": [
+            6.99,
+            14.86
+          ],
+          "depth": 50.93,
+          "w": 14,
+          "h": 20,
+          "files": {
+            "albedo": {
+              "file": "sheets/command-vehicle__mast__d15__albedo.png",
+              "w": 14,
+              "h": 20,
+              "sha256": "cba0cc552016a51533bedee9a0365ed558c8c9be6d6fbf3afe2b4372aed2aa89"
+            },
+            "normal": {
+              "file": "sheets/command-vehicle__mast__d15__normal.png",
+              "w": 14,
+              "h": 20,
+              "sha256": "c224179514a83fc331e86314079f59bd3360371f45cac5723dfbbe716bb0f195"
+            },
+            "material": {
+              "file": "sheets/command-vehicle__mast__d15__material.png",
+              "w": 14,
+              "h": 20,
+              "sha256": "dfd2717e6bd83ff4cf431a904e2555966437f5f872db0a4a1868b3b70f057dc2"
+            }
+          },
+          "filesHi": {
+            "w": 53,
+            "h": 75,
+            "pivot": [
+              27.95,
+              56.44
+            ],
+            "anchor": [
+              20.98,
+              132.13
+            ],
+            "files": {
+              "albedo": {
+                "file": "sheets-hi/command-vehicle__mast__d15__albedo@4x.png",
+                "w": 53,
+                "h": 75,
+                "sha256": "29297722882f1cd33f3524c3bda5ee745025302a167fed2b7ec73c5969686921"
+              },
+              "normal": {
+                "file": "sheets-hi/command-vehicle__mast__d15__normal@4x.png",
+                "w": 53,
+                "h": 75,
+                "sha256": "76bd6aa1ba599ceca89291e432b220f4c37aa025a029c0abe9d23eb98bfc21c6"
+              },
+              "material": {
+                "file": "sheets-hi/command-vehicle__mast__d15__material@4x.png",
+                "w": 53,
+                "h": 75,
+                "sha256": "9f02f8f3eb709ec98062d508913d86ede37ee170a188b5b92e8a558f05f89059"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "clips": {
+    "idle": 1
+  },
+  "sourceGeometry": {
+    "parts": [
+      {
+        "name": "body",
+        "dynamic": false,
+        "traverse": false,
+        "parent": null,
+        "voxels": 524890,
+        "pivotDesign": [
+          256,
+          256,
+          0
+        ],
+        "bounds": {
+          "minX": 78,
+          "minY": 120,
+          "minZ": 30,
+          "maxX": 483,
+          "maxY": 391,
+          "maxZ": 293
+        }
+      },
+      {
+        "name": "wheels.L",
+        "dynamic": false,
+        "traverse": false,
+        "parent": null,
+        "voxels": 74015,
+        "pivotDesign": [
+          256,
+          256,
+          0
+        ],
+        "bounds": {
+          "minX": 82,
+          "minY": 102,
+          "minZ": 0,
+          "maxX": 418,
+          "maxY": 181,
+          "maxZ": 100
+        }
+      },
+      {
+        "name": "wheels.R",
+        "dynamic": false,
+        "traverse": false,
+        "parent": null,
+        "voxels": 74063,
+        "pivotDesign": [
+          256,
+          256,
+          0
+        ],
+        "bounds": {
+          "minX": 82,
+          "minY": 330,
+          "minZ": 0,
+          "maxX": 418,
+          "maxY": 411,
+          "maxZ": 100
+        }
+      },
+      {
+        "name": "mast",
+        "dynamic": true,
+        "traverse": false,
+        "parent": null,
+        "voxels": 12838,
+        "pivotDesign": [
+          250,
+          190,
+          258
+        ],
+        "bounds": {
+          "minX": 220,
+          "minY": 140,
+          "minZ": 258,
+          "maxX": 265,
+          "maxY": 241,
+          "maxZ": 393
+        }
+      }
+    ],
+    "totalVoxels": 685806
+  },
+  "composite": {
+    "note": "every part of one facing pre-composited through the shared ground anchor",
+    "facings": {
+      "d00": {
+        "w": 54,
+        "h": 48,
+        "files": {
+          "albedo": {
+            "file": "sheets/command-vehicle__composite__d00__albedo.png",
+            "sha256": "e7ec0d6d8974a9a165564021005a30773fdc05d493b17353c4591f14989b139b"
+          },
+          "normal": {
+            "file": "sheets/command-vehicle__composite__d00__normal.png",
+            "sha256": "90de26f02ce5f8f7d042de195f56647253709c77d6dc1143adb4ccab47b7930e"
+          },
+          "material": {
+            "file": "sheets/command-vehicle__composite__d00__material.png",
+            "sha256": "587102ac6214ecd52be657ea26283094b121e7c441f85bee3c5e2e1d7443da1c"
+          }
+        }
+      },
+      "d01": {
+        "w": 48,
+        "h": 48,
+        "files": {
+          "albedo": {
+            "file": "sheets/command-vehicle__composite__d01__albedo.png",
+            "sha256": "44ea7355076d95eef56a8a00846b2bd7486a0492124483f1155d9566f75c40a3"
+          },
+          "normal": {
+            "file": "sheets/command-vehicle__composite__d01__normal.png",
+            "sha256": "d507a63283b8a805089d729a126f8b87cc118515cdfc3e511a59c68dd68d7419"
+          },
+          "material": {
+            "file": "sheets/command-vehicle__composite__d01__material.png",
+            "sha256": "37016599b48efff54b049f57164fe89f30695f00a07c88619adfb6bcc9b4a388"
+          }
+        }
+      },
+      "d02": {
+        "w": 40,
+        "h": 44,
+        "files": {
+          "albedo": {
+            "file": "sheets/command-vehicle__composite__d02__albedo.png",
+            "sha256": "118c56a4218257b4786f46d5678d717e214715d95d409124f231b901a475199c"
+          },
+          "normal": {
+            "file": "sheets/command-vehicle__composite__d02__normal.png",
+            "sha256": "b154c24ab5d3af344756c741406d8c7ccc10c51a47f024ae09b1b63762c13b18"
+          },
+          "material": {
+            "file": "sheets/command-vehicle__composite__d02__material.png",
+            "sha256": "36ef835291ed8c44cddbbe62e21576c759686ec50d1b3b9e3cf0d18a5d9f957e"
+          }
+        }
+      },
+      "d03": {
+        "w": 48,
+        "h": 45,
+        "files": {
+          "albedo": {
+            "file": "sheets/command-vehicle__composite__d03__albedo.png",
+            "sha256": "fc98e5df29fa5846dc022aac63f9a04471176ae54d0e50e77338ef1016bcd060"
+          },
+          "normal": {
+            "file": "sheets/command-vehicle__composite__d03__normal.png",
+            "sha256": "cab6a9b06efe71d2891357227b05d3e08beea9a309ed560b9ffd381815b86373"
+          },
+          "material": {
+            "file": "sheets/command-vehicle__composite__d03__material.png",
+            "sha256": "9384edd3da82ceaaa9259cc5f9642e3a80d8a0d3ee70dbd837d591ca16b20271"
+          }
+        }
+      },
+      "d04": {
+        "w": 54,
+        "h": 44,
+        "files": {
+          "albedo": {
+            "file": "sheets/command-vehicle__composite__d04__albedo.png",
+            "sha256": "c04be928bfcf586389c904f06a24cb9c7b4dac3318e397cfcfcd449d4294da16"
+          },
+          "normal": {
+            "file": "sheets/command-vehicle__composite__d04__normal.png",
+            "sha256": "8560883adff9a3f3de7629dceb98efc6f8a28837c0a57604b286f2e5f95e5577"
+          },
+          "material": {
+            "file": "sheets/command-vehicle__composite__d04__material.png",
+            "sha256": "f012e52490594924e52513f31fb6487b502cebecdfd806443b84f29b6d533ea8"
+          }
+        }
+      },
+      "d05": {
+        "w": 54,
+        "h": 44,
+        "files": {
+          "albedo": {
+            "file": "sheets/command-vehicle__composite__d05__albedo.png",
+            "sha256": "9cfaa868d8e3866f3ef5dcc98a5069f8f8bba875f53b05f71a4e1bf7bbadfae7"
+          },
+          "normal": {
+            "file": "sheets/command-vehicle__composite__d05__normal.png",
+            "sha256": "26a32c00b793982531b824765133281c729e6b386d566fb350279f1e126ae8c8"
+          },
+          "material": {
+            "file": "sheets/command-vehicle__composite__d05__material.png",
+            "sha256": "0110fc3a76fca73d083e2b953c34df3a4829ba2be22d58cfefe678c8f7821b06"
+          }
+        }
+      },
+      "d06": {
+        "w": 49,
+        "h": 42,
+        "files": {
+          "albedo": {
+            "file": "sheets/command-vehicle__composite__d06__albedo.png",
+            "sha256": "4ded9211d1343a07c4e03366990139a3d683d36e2d136cf8a6346febfe7a5a1f"
+          },
+          "normal": {
+            "file": "sheets/command-vehicle__composite__d06__normal.png",
+            "sha256": "232133a45464ef77b7d119343c835ae3c35494d0f52650cbbfecce38884d1b82"
+          },
+          "material": {
+            "file": "sheets/command-vehicle__composite__d06__material.png",
+            "sha256": "744ab9d069fcfc2f550523cc012af09ecca6f18dd41848fc17aa7707245d2c9d"
+          }
+        }
+      },
+      "d07": {
+        "w": 54,
+        "h": 45,
+        "files": {
+          "albedo": {
+            "file": "sheets/command-vehicle__composite__d07__albedo.png",
+            "sha256": "568fdc96bde300d56dfff9cb276f8d7bc1ed7b6c1e834d57a2b4d1f7b1094e4a"
+          },
+          "normal": {
+            "file": "sheets/command-vehicle__composite__d07__normal.png",
+            "sha256": "c81541ea5f328b92527136d5eba923db6723d89e45c740993c19d431635d5bd1"
+          },
+          "material": {
+            "file": "sheets/command-vehicle__composite__d07__material.png",
+            "sha256": "97c2d51332a3bf6323393a1c533c3bd1f13e8340311a6befb63b17ffdceb62bc"
+          }
+        }
+      },
+      "d08": {
+        "w": 54,
+        "h": 47,
+        "files": {
+          "albedo": {
+            "file": "sheets/command-vehicle__composite__d08__albedo.png",
+            "sha256": "cd5163dd06ee0e5352864a5116148e903a1339c8ccc45d56d7a450bd7320f402"
+          },
+          "normal": {
+            "file": "sheets/command-vehicle__composite__d08__normal.png",
+            "sha256": "8d216d67d217d4f8897473633e8803f52f2930e92086a2c30e888f13478cd2af"
+          },
+          "material": {
+            "file": "sheets/command-vehicle__composite__d08__material.png",
+            "sha256": "3213adc269a45a80a6a6f3c0517a9b4d1a63bc92cc2c21ccda5e566ed4fd5dd0"
+          }
+        }
+      },
+      "d09": {
+        "w": 48,
+        "h": 47,
+        "files": {
+          "albedo": {
+            "file": "sheets/command-vehicle__composite__d09__albedo.png",
+            "sha256": "894a1d6a7ac17748fed2fda0fd7f463b3707f0a9b13355f5a0baef8899d885c3"
+          },
+          "normal": {
+            "file": "sheets/command-vehicle__composite__d09__normal.png",
+            "sha256": "315bac6c7d95715cfe1287067e5093f3f0743fb8f95155830431bf3c2d6c8aeb"
+          },
+          "material": {
+            "file": "sheets/command-vehicle__composite__d09__material.png",
+            "sha256": "b39087efde88a33737546c950b91320374766667102851fbe96805bf88e9796c"
+          }
+        }
+      },
+      "d10": {
+        "w": 40,
+        "h": 44,
+        "files": {
+          "albedo": {
+            "file": "sheets/command-vehicle__composite__d10__albedo.png",
+            "sha256": "2818c0ca11194e6e28b0f04db7ce7a9a999292b1e0e0a9865120f43f12c7c7b8"
+          },
+          "normal": {
+            "file": "sheets/command-vehicle__composite__d10__normal.png",
+            "sha256": "1ef24b7f05dab63462e2a11ebecd0e15ff8fde94e8429cfe0134890b74cbddc0"
+          },
+          "material": {
+            "file": "sheets/command-vehicle__composite__d10__material.png",
+            "sha256": "e2db830a05cf37fa0eaabf3b89170fadc290625af945795b1bf2c1827360f57e"
+          }
+        }
+      },
+      "d11": {
+        "w": 48,
+        "h": 47,
+        "files": {
+          "albedo": {
+            "file": "sheets/command-vehicle__composite__d11__albedo.png",
+            "sha256": "6157dee7270c338990f6b6de85bd0ae4793a661f10e1ea4cdb027ecef0cff84e"
+          },
+          "normal": {
+            "file": "sheets/command-vehicle__composite__d11__normal.png",
+            "sha256": "f87c4bfa4ae8045dea2e9e113b7d8f8a64d0fd7ff40465975e47a32dd7b10085"
+          },
+          "material": {
+            "file": "sheets/command-vehicle__composite__d11__material.png",
+            "sha256": "566aed852081d01bf33f056090a76f591d71dcb20eaca98ea1bb20187ad3e322"
+          }
+        }
+      },
+      "d12": {
+        "w": 54,
+        "h": 49,
+        "files": {
+          "albedo": {
+            "file": "sheets/command-vehicle__composite__d12__albedo.png",
+            "sha256": "e469de98f469654469d148b3bbfa400d5a2c238e68fabbc1abbd2cc887c595aa"
+          },
+          "normal": {
+            "file": "sheets/command-vehicle__composite__d12__normal.png",
+            "sha256": "87796d69544f3f252cce643d2b72052a30c5cee8f370882e1554858c9593a655"
+          },
+          "material": {
+            "file": "sheets/command-vehicle__composite__d12__material.png",
+            "sha256": "c4fedd9afa3b96b1f7d18276650eefe87bd7864b216d2b6d064968024fee5eb8"
+          }
+        }
+      },
+      "d13": {
+        "w": 54,
+        "h": 49,
+        "files": {
+          "albedo": {
+            "file": "sheets/command-vehicle__composite__d13__albedo.png",
+            "sha256": "39d06a296a23286380489706e26a3cc95be4ef8e8c40a45b97c1ceaf9a093d25"
+          },
+          "normal": {
+            "file": "sheets/command-vehicle__composite__d13__normal.png",
+            "sha256": "6ab9b544477ff3caad4d15b6b0cf6803d3de30917a5a62b471f76a7b351f4a0d"
+          },
+          "material": {
+            "file": "sheets/command-vehicle__composite__d13__material.png",
+            "sha256": "599327e9d7623b25f4aef51a603ed94655519232316748016e724a1f5f537449"
+          }
+        }
+      },
+      "d14": {
+        "w": 49,
+        "h": 48,
+        "files": {
+          "albedo": {
+            "file": "sheets/command-vehicle__composite__d14__albedo.png",
+            "sha256": "021c49868687a0f732cd5cf680abd6a93eda76113a071b06022017123161ab80"
+          },
+          "normal": {
+            "file": "sheets/command-vehicle__composite__d14__normal.png",
+            "sha256": "1ea81f31b15844ae91d53df8605593f231b43c525e36065817f73d4cd09023d1"
+          },
+          "material": {
+            "file": "sheets/command-vehicle__composite__d14__material.png",
+            "sha256": "c01ddfbe63cb9756b935fae9a23d3c27d518e67c1c303dc0f57040c7134b8794"
+          }
+        }
+      },
+      "d15": {
+        "w": 54,
+        "h": 50,
+        "files": {
+          "albedo": {
+            "file": "sheets/command-vehicle__composite__d15__albedo.png",
+            "sha256": "0f0c700492a431b65247b4a3180e64f7238134a8a7cdaf18acc0f8b23d06b64b"
+          },
+          "normal": {
+            "file": "sheets/command-vehicle__composite__d15__normal.png",
+            "sha256": "d1374a171ec7197ff702032532c6579f7ee0d53697b8ac3d7845437c13abef40"
+          },
+          "material": {
+            "file": "sheets/command-vehicle__composite__d15__material.png",
+            "sha256": "9a1d617170a0110522bb02b8039d08124b455be8822ef726e827751d2b69e6f1"
+          }
+        }
+      }
+    }
+  },
+  "lit": {
+    "note": "the composite re-shaded through a virtual three-point rig using the normal and material maps (key/fill/rim). If normals or PBR channels are wrong, this is where it shows.",
+    "rig": "three-point",
+    "facings": {
+      "d00": {
+        "file": "sheets/command-vehicle__lit__d00__albedo.png",
+        "w": 54,
+        "h": 48,
+        "sha256": "fae0a0bf274fd99a5f3d689560f785fbc632835cc7bb7cdade8cae57d5219dd5"
+      },
+      "d01": {
+        "file": "sheets/command-vehicle__lit__d01__albedo.png",
+        "w": 48,
+        "h": 48,
+        "sha256": "4d22b1186bb711ea6f86c0364a240604d336820cdb401465da5604f224acd116"
+      },
+      "d02": {
+        "file": "sheets/command-vehicle__lit__d02__albedo.png",
+        "w": 40,
+        "h": 44,
+        "sha256": "d96a4b72cab099c4896b6a8e104b28fffad0a31fd66878f5ea764841ec7b3341"
+      },
+      "d03": {
+        "file": "sheets/command-vehicle__lit__d03__albedo.png",
+        "w": 48,
+        "h": 45,
+        "sha256": "516c55406734c10533bfba059f8e7ff89761614ac31ca24f33cf22e485aa0cb0"
+      },
+      "d04": {
+        "file": "sheets/command-vehicle__lit__d04__albedo.png",
+        "w": 54,
+        "h": 44,
+        "sha256": "1cb9d75c1029a1e9537965d8f6918725b6ad45648cb5ce13edd0f3b4ac6dde6d"
+      },
+      "d05": {
+        "file": "sheets/command-vehicle__lit__d05__albedo.png",
+        "w": 54,
+        "h": 44,
+        "sha256": "841de605a6c557bb80425d1e61c738d4b2727b062636e0d501672e631c7b390e"
+      },
+      "d06": {
+        "file": "sheets/command-vehicle__lit__d06__albedo.png",
+        "w": 49,
+        "h": 42,
+        "sha256": "0e05ba5b66168ea6d70af1ef177c1c00a7e56900236f98d7abfafd131ddd8ef1"
+      },
+      "d07": {
+        "file": "sheets/command-vehicle__lit__d07__albedo.png",
+        "w": 54,
+        "h": 45,
+        "sha256": "82349a306cb72571417895c39f071316a048938c89f97ecbe3dee4e0f328b747"
+      },
+      "d08": {
+        "file": "sheets/command-vehicle__lit__d08__albedo.png",
+        "w": 54,
+        "h": 47,
+        "sha256": "f5bf5cfd846d4953d6f3a4ea180d1b39f11e301f7a9d741b106938b87c40aef2"
+      },
+      "d09": {
+        "file": "sheets/command-vehicle__lit__d09__albedo.png",
+        "w": 48,
+        "h": 47,
+        "sha256": "aae659cd915a0f0af3a545e1a4c96bf2016b8e95020b04014cb08250b26035cd"
+      },
+      "d10": {
+        "file": "sheets/command-vehicle__lit__d10__albedo.png",
+        "w": 40,
+        "h": 44,
+        "sha256": "14c47dc18f50b37f36e83f2a97ebeba3acc6030af18d582d851e050fe7a21afc"
+      },
+      "d11": {
+        "file": "sheets/command-vehicle__lit__d11__albedo.png",
+        "w": 48,
+        "h": 47,
+        "sha256": "7f3aae1c5c7cdd76ae17ecdb9ed9122aced846176a4720a5400b0c2e02b16fbe"
+      },
+      "d12": {
+        "file": "sheets/command-vehicle__lit__d12__albedo.png",
+        "w": 54,
+        "h": 49,
+        "sha256": "384760340dceb69521e5cfc55956931d21a97c71ed3268a525c7e54ff219b283"
+      },
+      "d13": {
+        "file": "sheets/command-vehicle__lit__d13__albedo.png",
+        "w": 54,
+        "h": 49,
+        "sha256": "3b985c8fff96a3f0f5a648d1dcb8a94a910e217f303e8798327b1167b2e6e252"
+      },
+      "d14": {
+        "file": "sheets/command-vehicle__lit__d14__albedo.png",
+        "w": 49,
+        "h": 48,
+        "sha256": "a23713115e10e21ae0d568aec97e4a6fd0c04558ed3521b4e6c2ae83bc90ed58"
+      },
+      "d15": {
+        "file": "sheets/command-vehicle__lit__d15__albedo.png",
+        "w": 54,
+        "h": 50,
+        "sha256": "add00e62812bc3c2abcd9e8653c175c78d5fcfa18518a1ac260d153fc28c23ba"
+      }
+    }
+  },
+  "previewLit": {
+    "file": "preview-lit.png",
+    "facing": "d00",
+    "rig": "three-point",
+    "note": "relit from the normal + material maps"
+  },
+  "previewLights": {
+    "file": "preview-lights.png",
+    "facing": "d00",
+    "order": [
+      "azimuth 0deg / elevation 40deg",
+      "azimuth 45deg / elevation 40deg",
+      "azimuth 90deg / elevation 40deg",
+      "azimuth 135deg / elevation 40deg",
+      "azimuth 180deg / elevation 40deg",
+      "azimuth 225deg / elevation 40deg",
+      "azimuth 270deg / elevation 40deg",
+      "azimuth 315deg / elevation 40deg"
+    ],
+    "note": "one virtual light per panel, proving the normal map is directionally correct"
+  },
+  "previewMaps": {
+    "file": "preview-maps.png",
+    "facing": "d00",
+    "panels": [
+      "albedo",
+      "normal",
+      "material-id",
+      "metalness",
+      "roughness",
+      "emissive"
+    ]
+  },
+  "preview": {
+    "file": "preview.png",
+    "facing": "d00",
+    "w": 393,
+    "h": 352,
+    "mode": "single-pass"
+  },
+  "previewParts": {
+    "file": "preview-parts.png",
+    "facing": "d00",
+    "w": 397,
+    "h": 356,
+    "mode": "composited-from-part-sheets"
+  }
+}
