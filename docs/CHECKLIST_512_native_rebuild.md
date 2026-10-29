@@ -313,6 +313,17 @@ open transom with the screws visible from behind, would settle it.
       `missile-boat`, `carrier`, `naval-repair`, `mine-layer-ship`.
 - [ ] Rotor/jet/naval part sets per §5 of the plan.
 
+**Open art notes from B5a** — the airframes read, but none of them is finished, and these are shape problems
+rather than pipeline problems:
+
+* `copter` — the nose is still rounder than a gunship's. It wants a narrower forward fuselage with the
+  tandem canopies closer together, and the stub wings are now so short they read as pylons.
+* `lift-copter` — the discs sit high on long masts; lowering the hubs ~30 voxels and widening the blades
+  would settle it. The rear ramp is invisible from every scene facing and needs a raised hinge line.
+* `uav` — the wing is a plank: it needs visible taper and a thinner tip cap.
+* `fighter` — the twin fins read as plates at 8×; taper their tip chord harder, and the canopy is a stripe
+  rather than a bubble from the quarter views.
+
 **Gate:** as B4.
 
 ---
