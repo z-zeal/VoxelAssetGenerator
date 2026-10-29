@@ -20,6 +20,9 @@ import { buildMega } from './mega.mjs';
 import { buildBastion } from './bastion.mjs';
 import { buildFlameTank } from './flame-tank.mjs';
 import { buildAmphibiousTank } from './amphibious-tank.mjs';
+import { buildMineLayer } from './mine-layer.mjs';
+import { buildMobileRepair } from './mobile-repair.mjs';
+import { buildMineClearing } from './mine-clearing.mjs';
 import { buildBarracks } from './barracks.mjs';
 import { buildAtTurret } from './at-turret.mjs';
 
@@ -81,6 +84,18 @@ export const MODELS = {
   'amphibious-tank': {
     kind: 'unit', folder: 'units', group: 'vehicles.tracked', label: 'Amphibious Tank',
     build: buildAmphibiousTank, requiredParts: ['body', 'turret', 'barrel'],
+  },
+  'mine-layer': {
+    kind: 'unit', folder: 'units', group: 'vehicles.tracked', label: 'Mine-Laying Vehicle',
+    build: buildMineLayer, requiredParts: ['body', 'dispenser'],
+  },
+  'mobile-repair': {
+    kind: 'unit', folder: 'units', group: 'vehicles.tracked', label: 'Mobile Repair Vehicle',
+    build: buildMobileRepair, requiredParts: ['body', 'crane'],
+  },
+  'mine-clearing': {
+    kind: 'unit', folder: 'units', group: 'vehicles.tracked', label: 'Mine-Clearing Vehicle',
+    build: buildMineClearing, requiredParts: ['body', 'turret', 'barrel', 'flail'],
   },
   barracks: {
     kind: 'building',

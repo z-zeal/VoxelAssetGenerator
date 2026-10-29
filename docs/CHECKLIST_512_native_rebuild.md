@@ -183,9 +183,14 @@ while the structure stays put. ✅ (Gate met; art detail iterates with the rest 
       not a gun; 1,041,888 vox / 240 PNG) and `amphibious-tank` (boat hull: gunwale, belt strake,
       splash rails, tapered prow, twin shrouded propellers behind a notched transom, caged snorkel,
       no skirts so the run drains; light thin gun; 1,134,390 / 240).
-- [ ] **B4a remaining** — `mine-layer`, `mobile-repair`, `mine-clearing` (+ `tank`, `apc`, `heavy`,
-      `artillery`, `antiair`, `tank-destroyer`, `ifv`, `mega`, `bastion`, `flame-tank`,
-      `amphibious-tank` done).
+- [x] **B4a batch 5 — B4a complete** — `mine-layer` (long flat deck under two rows of mine
+      canisters, boxy cab with a vision slit and no turret at all, hinged `dispenser` chute over the
+      tail; 1,100,777 vox / 192 PNG), `mobile-repair` (workshop box with an open servicing bay and a
+      rolled shutter, **lattice crane boom** on an A-frame as its own pivoted part with the hook block
+      riding with it; 957,002 / 192), `mine-clearing` (heavy armour built around a transverse **flail
+      drum** on braced arms with chains and weights, behind a stepped blast shield over the driver;
+      small RWS turret rather than a gun tank; 1,039,226 / 288).
+- [ ] **B4a remaining** — none. All 13 tracked units are baked.
 - [ ] **B4b wheeled** — `recon`, `rockets`, `missiles`, `supply-truck`, `command-vehicle`.
 - [ ] **B4c foot** — `infantry`, `mech`, `engineer`, `medic`, `rocket-infantry`, `aa-infantry`, `sniper`,
       `grenadier`, `flamethrower`, `demolitionist`, `commando`, `officer`, `spy`, `elite-hero`,
@@ -193,6 +198,14 @@ while the structure stays put. ✅ (Gate met; art detail iterates with the rest 
 - [ ] Each asset: sculpt → `validate.mjs` → bake → preview → review.
 
 **Gate per sub-batch:** every asset bakes, budget met, parts present, previews reviewed.
+
+**Rejected approaches, recorded so they are not retried:** `mine-clearing`'s flail was first built as
+a cylinder along **X** with chains radiating in every direction — it read as a spiked ball bolted to the
+nose; a flail drum's axis is **transverse (Y)**, with chains hanging round its circumference and the
+drum standing *ahead of the tracks*, not over the idler. Its blast shield was also one 8-voxel slab,
+which read as a black billboard from every facing, and its engine deck was one dark plate that flattened
+the whole vehicle. `mobile-repair`'s boom first held a constant height above its heel, so it floated
+detached in mid-air — the chords have to start at the heel and climb aft.
 
 **Open art notes for B4a** — the turret/hull balance is close but not settled: the tank's deck still reads
 as a large flat plane at preview scale, and the APC's MG ring is heavy. Both are shape problems, not
