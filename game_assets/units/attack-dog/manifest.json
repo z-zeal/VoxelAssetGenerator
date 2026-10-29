@@ -998,6 +998,21 @@
       }
     ]
   },
+  "depthMap": {
+    "note": "Per-part view depth, one PNG per part per facing. Composite by z-test on this; do NOT try to order segments by a single depth per part.",
+    "channelOrder": "rgba",
+    "meaning": [
+      "depthHi",
+      "depthLo",
+      "unused",
+      "covered"
+    ],
+    "encoding": "q = depthHi * 256 + depthLo; depth = q / scale - bias  (tile units = design voxels / 8)",
+    "scale": 256,
+    "bias": 128,
+    "coveredAlpha": 255,
+    "largerIsCloser": true
+  },
   "parts": {
     "body": {
       "name": "body",
@@ -1059,6 +1074,12 @@
               "w": 19,
               "h": 21,
               "sha256": "29d08787575e262e877f0fd3c90c836ba686644615eff5cd38bbc06681e5738c"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__body__d00__depth.png",
+              "w": 19,
+              "h": 21,
+              "sha256": "47960844c991f152f3d6d09f2bd67c8608912eae50ad0b682d6d98e16b2335b2"
             }
           },
           "filesHi": {
@@ -1124,6 +1145,12 @@
               "w": 17,
               "h": 20,
               "sha256": "e2d3e84d71a330a04575177d3e16549b5b051db2ec87dda14ba9fb06e2f0bd2f"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__body__d01__depth.png",
+              "w": 17,
+              "h": 20,
+              "sha256": "cb4656cbaac8220084b89813ca152a46e96c55e849b14b18a05eb9c07f44e076"
             }
           },
           "filesHi": {
@@ -1189,6 +1216,12 @@
               "w": 16,
               "h": 20,
               "sha256": "b226941e4036230c3dc5b199aff3e208260095894e0e51e85817291b2502ad3c"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__body__d02__depth.png",
+              "w": 16,
+              "h": 20,
+              "sha256": "ec207f58e66d984f21807057d04c2583485c751b13a853412ae3ac0fa24cdae5"
             }
           },
           "filesHi": {
@@ -1254,6 +1287,12 @@
               "w": 17,
               "h": 21,
               "sha256": "3262f72d7a11661c2c3e1e29d65b593e9c50364d152b736f84f0a49cb80ffc80"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__body__d03__depth.png",
+              "w": 17,
+              "h": 21,
+              "sha256": "e0c2ba16d508ca41b0d7d00e5baec6ee3c0a1b7e574d48733be79a085f3882dd"
             }
           },
           "filesHi": {
@@ -1319,6 +1358,12 @@
               "w": 20,
               "h": 21,
               "sha256": "f62491be5a52406cd3b259f26617f954f91f23ae63d3ae7e5aa510b46da9918a"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__body__d04__depth.png",
+              "w": 20,
+              "h": 21,
+              "sha256": "84dbee79a8e113f675e01406cad5d15f5456bc33187ad3b37fd72b5dc255f4d6"
             }
           },
           "filesHi": {
@@ -1384,6 +1429,12 @@
               "w": 21,
               "h": 20,
               "sha256": "fbe533aaf986d8c6e7744c0e647ed1d0080d054461dfff5f8bac386a00e31134"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__body__d05__depth.png",
+              "w": 21,
+              "h": 20,
+              "sha256": "3d049f377c6c8d4666d5309232aef9731335c46869bd5b4b8c810cd98ee6e8db"
             }
           },
           "filesHi": {
@@ -1449,6 +1500,12 @@
               "w": 21,
               "h": 20,
               "sha256": "ae8c3e3d6cab466443372fc20826d8d6714c225539acd8cd5b07b8935fd774ea"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__body__d06__depth.png",
+              "w": 21,
+              "h": 20,
+              "sha256": "38d1529c39f98dff95220acc13473d43f9fe4528dd9b0e59f242cca007396869"
             }
           },
           "filesHi": {
@@ -1514,6 +1571,12 @@
               "w": 21,
               "h": 19,
               "sha256": "64a126dedd59dccd1f4e7c3dda32fe572ea3ea209ec9301c9fff0c99d49e8377"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__body__d07__depth.png",
+              "w": 21,
+              "h": 19,
+              "sha256": "ebed54590b83618410e39b5ad4c72a6d2c1c5dd8cb4a74f59ed6d3b264e141d9"
             }
           },
           "filesHi": {
@@ -1579,6 +1642,12 @@
               "w": 19,
               "h": 20,
               "sha256": "6bcae9137fa950b5a2bbae7ff3c282b0337d2ab9b95b5fc62ba091e87053a810"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__body__d08__depth.png",
+              "w": 19,
+              "h": 20,
+              "sha256": "46fb311d37c7d3e57cf86c0b9d7c0957117cdd2a56b9a450f613c38590cab26b"
             }
           },
           "filesHi": {
@@ -1644,6 +1713,12 @@
               "w": 17,
               "h": 20,
               "sha256": "cad179041f369149dd95dfb1ca2e6cfd4e16021168476f8a1f6e5e574e961d34"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__body__d09__depth.png",
+              "w": 17,
+              "h": 20,
+              "sha256": "b9b22b8d32e086004b7cd35851bf678c18618d883b54bbd95c83cdf472dbf2bb"
             }
           },
           "filesHi": {
@@ -1709,6 +1784,12 @@
               "w": 16,
               "h": 20,
               "sha256": "a1c0f3e4477c79e641089ed72d65b12357c68f29a578687941f3177c6c6418f6"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__body__d10__depth.png",
+              "w": 16,
+              "h": 20,
+              "sha256": "129a80eace842c7c1e1b64c5cae209879ff373575c69b4b69f6f1847c6728878"
             }
           },
           "filesHi": {
@@ -1774,6 +1855,12 @@
               "w": 17,
               "h": 21,
               "sha256": "b865dbf1ad5b915757a6fd5486e8385fd1618bc625ac5fd485454298472e9ac3"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__body__d11__depth.png",
+              "w": 17,
+              "h": 21,
+              "sha256": "6a471c06ab1064ca3acc66c0e03214ee15224ae186a62a4d637fb4f1024a9f72"
             }
           },
           "filesHi": {
@@ -1839,6 +1926,12 @@
               "w": 20,
               "h": 20,
               "sha256": "f6fbff590a1e20cbdfc9f5ff87594c1ba0b3a69d9ff20de2721fad3ea236e5af"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__body__d12__depth.png",
+              "w": 20,
+              "h": 20,
+              "sha256": "c17446cd23dbe56f316b4c2c96bb8a7d762407dda7ab166db0864f6a19248c97"
             }
           },
           "filesHi": {
@@ -1904,6 +1997,12 @@
               "w": 21,
               "h": 19,
               "sha256": "01721afd904308baa23726b79c017041688ec920694f12907cd48f690c304225"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__body__d13__depth.png",
+              "w": 21,
+              "h": 19,
+              "sha256": "a2da66101a4a8ba0d6f2cd25fe56bfe2b8faabf74759311701d06ced7791aa76"
             }
           },
           "filesHi": {
@@ -1969,6 +2068,12 @@
               "w": 21,
               "h": 19,
               "sha256": "c562d6e1625ad6dcb7e7e68e07f3bca8897d0deddc8fdf9490b61140fff76504"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__body__d14__depth.png",
+              "w": 21,
+              "h": 19,
+              "sha256": "a9d6fabcdf0bae1ed55488354cc96311df1848ceb4b59eafb8706fe200299ccc"
             }
           },
           "filesHi": {
@@ -2034,6 +2139,12 @@
               "w": 21,
               "h": 20,
               "sha256": "48408c6d6303e6a60b13e202b6f398df87878d5872c42eeb2c3c829ccc4e617c"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__body__d15__depth.png",
+              "w": 21,
+              "h": 20,
+              "sha256": "8e3356e4357204333d41ab1b5ef0358c84a78831e3efe72d1d4d61c94f98eeb8"
             }
           },
           "filesHi": {
@@ -2131,6 +2242,12 @@
               "w": 13,
               "h": 14,
               "sha256": "d03a57b33de4d4e0964b5e0b27563bb480c908e4c62eefde0efaa322af54e479"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__head__d00__depth.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "71647533e83c2bbbc7473a6fe513c8557c31159c5d3e284dbbd888db9fdffe51"
             }
           },
           "filesHi": {
@@ -2196,6 +2313,12 @@
               "w": 13,
               "h": 13,
               "sha256": "ef0c2d057621027129be6e26debba71e81fdaa59190aecaf548dba902c75953a"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__head__d01__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "8ea8e3f0845c56ada02f512fb9141ec4c5d112fc815fd51a7a5e4e4ca6da2059"
             }
           },
           "filesHi": {
@@ -2261,6 +2384,12 @@
               "w": 13,
               "h": 13,
               "sha256": "2577ae9fcf9e46db4edaf196d9c8c5e1d112edc66a242d8759ae444a865e5ce7"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__head__d02__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "76c0700e8537c973aa004ade487b57f513b23e129549e4ae89e9a3400b1d724d"
             }
           },
           "filesHi": {
@@ -2326,6 +2455,12 @@
               "w": 13,
               "h": 14,
               "sha256": "5470d1031725162cfec8b57fd23dd3e5639c70bd5f2969c9aecb92fa5140edb2"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__head__d03__depth.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "08ed75838de129ad32db67f4bda4383bd59eca4a76e1b14c4c092a035d511576"
             }
           },
           "filesHi": {
@@ -2391,6 +2526,12 @@
               "w": 13,
               "h": 14,
               "sha256": "781436f671dab17ff38c94d53ebe6db0d662744da7c3d8800845ab3a0a1bb788"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__head__d04__depth.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "fecd309257e5b04dc9ef973a354b5bd23d67fb3decb79d3896c29e514fbd506d"
             }
           },
           "filesHi": {
@@ -2456,6 +2597,12 @@
               "w": 14,
               "h": 14,
               "sha256": "d6ff1e7d9cbd285514ca18000c4e250456a1d462d66df6e16c062d4dd864ae15"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__head__d05__depth.png",
+              "w": 14,
+              "h": 14,
+              "sha256": "23bc8f29fa0418fe7d4ad9418f127d2e248e1d696803ac0ba0dd3fc7a3c1d623"
             }
           },
           "filesHi": {
@@ -2521,6 +2668,12 @@
               "w": 13,
               "h": 14,
               "sha256": "5252df629867a402220fc3b8880e417c7a9f2e69acfc27971b1665cf5be27784"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__head__d06__depth.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "0a57b683beed6ddb18abb11275f76400573f2af7f62e2bb47481406faf4d19e5"
             }
           },
           "filesHi": {
@@ -2586,6 +2739,12 @@
               "w": 13,
               "h": 14,
               "sha256": "0fa5c5b57b709fb5fab3807931a9617e0693fd75a4546d56c61087f5b426719a"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__head__d07__depth.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "7019ff5ff946cb5088ab20247b9c8d5087c0588b05ad0d87e587a3d8047c1e61"
             }
           },
           "filesHi": {
@@ -2651,6 +2810,12 @@
               "w": 13,
               "h": 13,
               "sha256": "d26340ed4ad28be8657355b2ddacdc370733b7dd0c205aaabf9da1f7a2d0b457"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__head__d08__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "c1424c8500ad94145d4486874dd3ecef0ba9144f09cab803b7f381999ea4e44b"
             }
           },
           "filesHi": {
@@ -2716,6 +2881,12 @@
               "w": 13,
               "h": 14,
               "sha256": "468260b7e7bb36488d17bb424c5941566fd6688fe530c83035a1d97efd4321a1"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__head__d09__depth.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "7aca208caf800515c0e6244f42655239b53df1eca2e83c8f826d069c8b955693"
             }
           },
           "filesHi": {
@@ -2781,6 +2952,12 @@
               "w": 13,
               "h": 13,
               "sha256": "33c28b7bc54ed52c491e21a6e11a1f8dc28a17045f4550e057949d02a1b56b5f"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__head__d10__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "f764bb240589e39709b8de4624aca1e02152323a5a95bac459c3df903a3d80ac"
             }
           },
           "filesHi": {
@@ -2846,6 +3023,12 @@
               "w": 13,
               "h": 13,
               "sha256": "9f88b3e1aab47a0ec2c31202f1e0b3f1a63fef30a5c7e0f6c6ccbf480236622e"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__head__d11__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "adefabf02bc9d536cc485a84fb84ced38f8966da64a2b61b52dc102a51424103"
             }
           },
           "filesHi": {
@@ -2911,6 +3094,12 @@
               "w": 13,
               "h": 13,
               "sha256": "0cb56171a808584c5c0bb10ac90106424c87406a49f9a95d961fcb136c447fa7"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__head__d12__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "8cb835eab6f6b870a663098166474438b3a6bbb303dded9c544abeea07376f14"
             }
           },
           "filesHi": {
@@ -2976,6 +3165,12 @@
               "w": 14,
               "h": 14,
               "sha256": "7bc26c12e66b90a8a6f28cddf7d63fc8c137dfc5a945df7b1b44e6cf822c7af6"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__head__d13__depth.png",
+              "w": 14,
+              "h": 14,
+              "sha256": "1229f42f6af1d5d7bf9a663669affc7ae186e7c73f6d78d86aad20b13c77cc8c"
             }
           },
           "filesHi": {
@@ -3041,6 +3236,12 @@
               "w": 13,
               "h": 14,
               "sha256": "bfc641761c29d3862f8a5114e7472988e311bf81ed3cf9713af9a16d51ee9739"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__head__d14__depth.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "78a0ad6a7a0ce9fa82ec04476a2b0bee6fa826321678beb5483c8258fb4e20fa"
             }
           },
           "filesHi": {
@@ -3106,6 +3307,12 @@
               "w": 13,
               "h": 14,
               "sha256": "9304f790349e842aec031a47ebc83fe6897bb99564c8b640c088a0c7cc7df94d"
+            },
+            "depth": {
+              "file": "sheets/attack-dog__head__d15__depth.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "c29c98c400cd5334fba9eadac0a05446bb227e0fb6063c0a19926d0ab00449f1"
             }
           },
           "filesHi": {
@@ -3201,11 +3408,11 @@
         "files": {
           "albedo": {
             "file": "sheets/attack-dog__composite__d00__albedo.png",
-            "sha256": "a282f2b699b3d63d817323215710f89ddf9f6847b38b829c6e33b99158868100"
+            "sha256": "5b9a51efc688cf2abef3fafde3f4325adb13f0c93f83802b9680e698aea80a89"
           },
           "normal": {
             "file": "sheets/attack-dog__composite__d00__normal.png",
-            "sha256": "e7f2faa8e7608dbbf863ad2b1f68ce2d608653b8f22d4ed16f6e4920fe78f7fc"
+            "sha256": "ba6ac01152edf0e7af6c1016f0abfbb12e4e078add9a564f66c9fdfbc3dc40cd"
           },
           "material": {
             "file": "sheets/attack-dog__composite__d00__material.png",
@@ -3219,11 +3426,11 @@
         "files": {
           "albedo": {
             "file": "sheets/attack-dog__composite__d01__albedo.png",
-            "sha256": "bca50d45b62ce7c1b0bcbd8fe983c3717be1d61c188367a44733b3f3256836f2"
+            "sha256": "58de27951e5c81fa72822587530fbf0c81a539300bd865769a2282bdf2f5b936"
           },
           "normal": {
             "file": "sheets/attack-dog__composite__d01__normal.png",
-            "sha256": "b646cd9d66ee4fcc9377878e716ba443fa2bd98a693772ae3e91d1382f441531"
+            "sha256": "2e6462bbcc480ba9aeca52e1dcd06010193da8b31245433cc6d10b01223538e5"
           },
           "material": {
             "file": "sheets/attack-dog__composite__d01__material.png",
@@ -3237,11 +3444,11 @@
         "files": {
           "albedo": {
             "file": "sheets/attack-dog__composite__d02__albedo.png",
-            "sha256": "8c809fb1f8045bd14c83c4cad9f89a86af7c05cf74ba060d8ec1cf0552519f81"
+            "sha256": "a50b34ce773322aaa60938084ef6b37cb94fd7a117a1556c11e6636438cf2362"
           },
           "normal": {
             "file": "sheets/attack-dog__composite__d02__normal.png",
-            "sha256": "b45892d3093ed6bcc6bcaaa5417db0e1ab1b59924014c4084f81b0c913a32a81"
+            "sha256": "f35778651a3263ff575393501e7fe801cd45cf8f86e8d7d237a109cf236ef901"
           },
           "material": {
             "file": "sheets/attack-dog__composite__d02__material.png",
@@ -3255,11 +3462,11 @@
         "files": {
           "albedo": {
             "file": "sheets/attack-dog__composite__d03__albedo.png",
-            "sha256": "71f915494ff17ffa9bc3287ed8fda9833c12f247394a8cc20acb83228c3dfd87"
+            "sha256": "cb0fef3a127914f60b7cb2d1b89fa4d070877b4c726af4acc656e39594b3b5d5"
           },
           "normal": {
             "file": "sheets/attack-dog__composite__d03__normal.png",
-            "sha256": "57fef1a3b37cc00eb5f3774672655f54fb0b30eb8d644a03cf8f8ac6ba324e66"
+            "sha256": "f4be18ad5668136f4e8c6046c7b8cc2fbf99c7118be5616a449f0309e3892946"
           },
           "material": {
             "file": "sheets/attack-dog__composite__d03__material.png",
@@ -3273,11 +3480,11 @@
         "files": {
           "albedo": {
             "file": "sheets/attack-dog__composite__d04__albedo.png",
-            "sha256": "9ff9fa4c96b83ac76ce4c36bb978daeedf7bcffd70a429f2a87fe5edce483829"
+            "sha256": "cae976b34586735e8eeae9e615f4fa933a78ea33013e06022fb857e9485f3d57"
           },
           "normal": {
             "file": "sheets/attack-dog__composite__d04__normal.png",
-            "sha256": "783c5bffbad0e47ab1d6d0e988bfa5db0ce09a3bc84f538e4547f0defda56fbb"
+            "sha256": "30dcafea868139fd7775481c1781ffef525577e7487441bf0ef0c4632ffed2f0"
           },
           "material": {
             "file": "sheets/attack-dog__composite__d04__material.png",
@@ -3291,11 +3498,11 @@
         "files": {
           "albedo": {
             "file": "sheets/attack-dog__composite__d05__albedo.png",
-            "sha256": "c447a328f7fd68a2db2042ef82c70d09c0810b10462ac950661e21982cf1d11c"
+            "sha256": "b05c0eb3a1f33972876694cc1499ce7d15dc213d63e9052e58bac847b1340611"
           },
           "normal": {
             "file": "sheets/attack-dog__composite__d05__normal.png",
-            "sha256": "92e9a6cfb749032e6bcfe764ad06be92b18b0a9e88c4bc15b39d257ba7b6e3f6"
+            "sha256": "9c6c7198ba64a864bb7254cdbfd79e85931c1c82539132ffc039c616a5b2a135"
           },
           "material": {
             "file": "sheets/attack-dog__composite__d05__material.png",
@@ -3309,11 +3516,11 @@
         "files": {
           "albedo": {
             "file": "sheets/attack-dog__composite__d06__albedo.png",
-            "sha256": "4ee9aaf3a63cfe03d65e6de4d636232b6db5632028b73491a64381170d8bce78"
+            "sha256": "abfcdcea5f6f083e1a13391ff07495e71aba75e746b2084bf963d59520e0d265"
           },
           "normal": {
             "file": "sheets/attack-dog__composite__d06__normal.png",
-            "sha256": "f04c680068357bdb7af374f57df6b681fd904784e8a84fb38588d8af889672a2"
+            "sha256": "94422a251d87baf724c5ff852ab08fa5c326f40e76d9b10f3c939a256d6c4d06"
           },
           "material": {
             "file": "sheets/attack-dog__composite__d06__material.png",
@@ -3327,11 +3534,11 @@
         "files": {
           "albedo": {
             "file": "sheets/attack-dog__composite__d07__albedo.png",
-            "sha256": "f16da3f695e55f75e1649df5f4be74b0714c894aef9b1804c94f143d02a65304"
+            "sha256": "d3d8444b656d72a9c3623bbba29fc7ea6d80a20ed71952c268dd54449f27dac3"
           },
           "normal": {
             "file": "sheets/attack-dog__composite__d07__normal.png",
-            "sha256": "2edda5b29de041ed877a401e97fd5dcadbb30e9315d6c833fd82b9ab1cb89f1e"
+            "sha256": "9d70f7d40bdb854868636083a55e42a844f16b4dbdf0496df2fdf54139b3d9c2"
           },
           "material": {
             "file": "sheets/attack-dog__composite__d07__material.png",
@@ -3345,11 +3552,11 @@
         "files": {
           "albedo": {
             "file": "sheets/attack-dog__composite__d08__albedo.png",
-            "sha256": "d25e2c63f7e7c5e719b3309676c80c2c1d8e61f887d4da542e987818fca015df"
+            "sha256": "e633cdd257106123579fc7e8d11cc70ba639e5b4f625160211eb5bcff8b9c496"
           },
           "normal": {
             "file": "sheets/attack-dog__composite__d08__normal.png",
-            "sha256": "c6157562a267e621428dbe11e1fb76e3c5c714325de71e50f1e04f5ae1d86af8"
+            "sha256": "2015cee7028d9c70437a9ccdbde518a8d956ec2008cff16f66a8d07c0d86a637"
           },
           "material": {
             "file": "sheets/attack-dog__composite__d08__material.png",
@@ -3363,11 +3570,11 @@
         "files": {
           "albedo": {
             "file": "sheets/attack-dog__composite__d09__albedo.png",
-            "sha256": "88f56307e964857ae8def2b42f34076bc1fd2b721f242e32915c880113f58325"
+            "sha256": "a42ad940de35a943b275ab1590b6007ac9431dece47ef55de75591e8d17c4bcf"
           },
           "normal": {
             "file": "sheets/attack-dog__composite__d09__normal.png",
-            "sha256": "a4d9c53ba82699ac424943ca499f78a6866d78bcdc60b5bf80318cbb33dfdfba"
+            "sha256": "081a6ebf3333982fb9dddde03dfa79285941f587067c63bf55d9c1fed1cead6a"
           },
           "material": {
             "file": "sheets/attack-dog__composite__d09__material.png",
@@ -3381,11 +3588,11 @@
         "files": {
           "albedo": {
             "file": "sheets/attack-dog__composite__d10__albedo.png",
-            "sha256": "92751916b60d0ce919ed6d6141e499dfbd5701a4d3d0931fa7664e367d7dd163"
+            "sha256": "ec12f5d8472849e984671794c5d4d11739f40bb1672cc63960e560ff1c88820c"
           },
           "normal": {
             "file": "sheets/attack-dog__composite__d10__normal.png",
-            "sha256": "89b5277a9ee0e676ae1384358d3e7e94a4432ebbba1a1aa96e053bc3ace9f210"
+            "sha256": "bcda6705da0b26ae62e77bd1ce3e0eb39ee71d514dfa952204e0c0ce74a3fddf"
           },
           "material": {
             "file": "sheets/attack-dog__composite__d10__material.png",
@@ -3399,11 +3606,11 @@
         "files": {
           "albedo": {
             "file": "sheets/attack-dog__composite__d11__albedo.png",
-            "sha256": "c0f894047553e237d8ba46a09858f1c2e306440f0b21cf2d25465e3c9973f212"
+            "sha256": "b6cc41703eb61dd2c6cbb7d8373ec31fd81e9070d1daee3eed920f6c048489ec"
           },
           "normal": {
             "file": "sheets/attack-dog__composite__d11__normal.png",
-            "sha256": "9329bdce00f8b78c3a475cb9407a8b29e5e5725b07610aed48ef41b90a301a17"
+            "sha256": "bf60291e6a9bba125dcde438cfcf870d346617ed384843024c944ba7ed043cce"
           },
           "material": {
             "file": "sheets/attack-dog__composite__d11__material.png",
@@ -3417,11 +3624,11 @@
         "files": {
           "albedo": {
             "file": "sheets/attack-dog__composite__d12__albedo.png",
-            "sha256": "a523460cba9fc0580bc1cfad63178bcd83b1e720391275522820939339ce9ebf"
+            "sha256": "79cfcda3be72780dc396964b5a23f613575a10554f380def6b052dfcbe496805"
           },
           "normal": {
             "file": "sheets/attack-dog__composite__d12__normal.png",
-            "sha256": "88e6b46ca85f2e36ca9cfa5b2e9e3c62ce1108c108b3081974b2ed60ce9b5a97"
+            "sha256": "fea89e512f499f778cb2a724874eaac7a50c4bef7a2fc2cb7f6861a9257a8e25"
           },
           "material": {
             "file": "sheets/attack-dog__composite__d12__material.png",
@@ -3435,11 +3642,11 @@
         "files": {
           "albedo": {
             "file": "sheets/attack-dog__composite__d13__albedo.png",
-            "sha256": "d09d783b0034bc0f2f6b9e26ed59f09e5e3651b9f2343488d68f4eb89284ad57"
+            "sha256": "636efdfd1881b9f87064fd17b40a8a1d30b5e8a80043cd0e418f4321cf767d86"
           },
           "normal": {
             "file": "sheets/attack-dog__composite__d13__normal.png",
-            "sha256": "617981f4b4aad8e124ed60b9e73831a4251b6df737f500dac51b2252962f29db"
+            "sha256": "540b8ecb3c605eeceab483381e61f44fb333db37710553511d2a46692ce6fb99"
           },
           "material": {
             "file": "sheets/attack-dog__composite__d13__material.png",
@@ -3453,11 +3660,11 @@
         "files": {
           "albedo": {
             "file": "sheets/attack-dog__composite__d14__albedo.png",
-            "sha256": "dfb4bad3ca369ffd1acaaea1b72c4ab86b7ad4565bac5d6d8d52e3a332652d30"
+            "sha256": "6834745901fbb1cda577c1e947efe3f4b316ae06964ba5519a0cf91145bc462a"
           },
           "normal": {
             "file": "sheets/attack-dog__composite__d14__normal.png",
-            "sha256": "42f7ea67750fead41a263843c48697da8f3063fd99f82cce7ced9be21f4af186"
+            "sha256": "e97faabe23b4b0c16df540bbdd2b6ffc459f00c4854cbb17b92760bd88aa220a"
           },
           "material": {
             "file": "sheets/attack-dog__composite__d14__material.png",
@@ -3471,11 +3678,11 @@
         "files": {
           "albedo": {
             "file": "sheets/attack-dog__composite__d15__albedo.png",
-            "sha256": "b0d44b17662971f9df3a43c4cbeeff3be5d4750888366872c56e93306f67536b"
+            "sha256": "f8add6f04b97e48d62e78ce084a054ab8a5a47397fb2a75364cf4eeebfe6c6a9"
           },
           "normal": {
             "file": "sheets/attack-dog__composite__d15__normal.png",
-            "sha256": "2c93c28d8a95c521be24153433a01e052f3f4f51f52add09e920fced58ae71ce"
+            "sha256": "8fc3ffb329d8919d0021aced8e315b34a6a1eecab04a21bf6820018d6780d9b4"
           },
           "material": {
             "file": "sheets/attack-dog__composite__d15__material.png",
@@ -3493,97 +3700,97 @@
         "file": "sheets/attack-dog__lit__d00__albedo.png",
         "w": 25,
         "h": 25,
-        "sha256": "090cc4f55241616ac242879fcdfe5b1ac7b2f9f2bc0fe0d07d4089a115f843cc"
+        "sha256": "ad22483f9e22c6accf391baf37e4ebf8a42b96ef8b23170bad14c60eff3106f7"
       },
       "d01": {
         "file": "sheets/attack-dog__lit__d01__albedo.png",
         "w": 22,
         "h": 24,
-        "sha256": "836eaf23d95852bd3cfcf0c9bbebd9fb87d6d233e38c478afc8c4dbd9a54d9ed"
+        "sha256": "949308b4141ddacce2eca566630841f7e198bd15237527895c84e3a834a0f894"
       },
       "d02": {
         "file": "sheets/attack-dog__lit__d02__albedo.png",
         "w": 20,
         "h": 24,
-        "sha256": "7ac465f251ba8ea4f4e715e69ac7f626ab065aaf5e88cbbd9b0c06a39270db85"
+        "sha256": "178e633274663305317ec3513cebdc4407c63d6e93620d0b9d5a4211d8a06b0b"
       },
       "d03": {
         "file": "sheets/attack-dog__lit__d03__albedo.png",
         "w": 21,
         "h": 25,
-        "sha256": "4bcd48a91ac8fb622789025478c7fdf93d49a772436fbbc3b7cbccea3e09e407"
+        "sha256": "42641845c1115aec42fa33b92e9f091bd945dddbd342394158f821d7940b3a46"
       },
       "d04": {
         "file": "sheets/attack-dog__lit__d04__albedo.png",
         "w": 25,
         "h": 25,
-        "sha256": "1b0423fc6c40d62fbfbe6c3831aa5832839b0e2557003d498111d3e9a2e2b9c4"
+        "sha256": "60f14c4886f5f088f799277f20863622bd6e4353e36c5e32f0cf1b87b022b0d7"
       },
       "d05": {
         "file": "sheets/attack-dog__lit__d05__albedo.png",
         "w": 29,
         "h": 24,
-        "sha256": "d780d54fa2dee09ef16c8397f273871bb363eac518dfa8868040b406ed6b5e79"
+        "sha256": "c1011a0fbc775f8918fae0bb5f2cf106b85a3ee354cab96c054e50806481eb3c"
       },
       "d06": {
         "file": "sheets/attack-dog__lit__d06__albedo.png",
         "w": 29,
         "h": 25,
-        "sha256": "f91c23870787f3ab80e8cd3df2ab0376ae773da4e136f78bd91c25ea4b20e10d"
+        "sha256": "f1423bb2509eb897cd54b24831013b255f21e9c8f97478f3672741c01a91eb55"
       },
       "d07": {
         "file": "sheets/attack-dog__lit__d07__albedo.png",
         "w": 28,
         "h": 26,
-        "sha256": "83d9262ff4a93575e9afdd4f069cfafdf86ab8655c879015cf94613abd2612f3"
+        "sha256": "74aff91263ac46a6fd184f9223dffafb9fa7d9d57c2f0743fe1d7f5931a0dc5a"
       },
       "d08": {
         "file": "sheets/attack-dog__lit__d08__albedo.png",
         "w": 25,
         "h": 27,
-        "sha256": "2190d41941557b8a7d95935a86e3626d45b8d2de3e9ecb2a54cddaa062349d53"
+        "sha256": "026ac39a3c7e84d879019c43a9db4d991b417c4ce07bc6f3794e4b6b850af07d"
       },
       "d09": {
         "file": "sheets/attack-dog__lit__d09__albedo.png",
         "w": 22,
         "h": 28,
-        "sha256": "e2048a9f6cd2544f0a431e77b8512d6354c18f6b7262e0c4c4181eac96712b8c"
+        "sha256": "6f3edcb093f689c112bf779f23a7d50ff5eb82980ae19c80c8a20f9d6dd97b79"
       },
       "d10": {
         "file": "sheets/attack-dog__lit__d10__albedo.png",
         "w": 20,
         "h": 27,
-        "sha256": "cdede8b0a3d40e8b4d9e00f9460d866f537f7d77b7542444b17cf85ebd2911b2"
+        "sha256": "9551991fe8fc3aef6db69554f92ece283418a1109b673fc315480e8524db78b2"
       },
       "d11": {
         "file": "sheets/attack-dog__lit__d11__albedo.png",
         "w": 21,
         "h": 28,
-        "sha256": "11ede66f91da8cae832fd1f05deecdf7ffc565beb5ff10d11eeac167c043113d"
+        "sha256": "a10023d3a71efb6b6ad3719c751f645776ac66fe88b53cfd372b472af75ea532"
       },
       "d12": {
         "file": "sheets/attack-dog__lit__d12__albedo.png",
         "w": 25,
         "h": 27,
-        "sha256": "624e37a97b7b45d6c8c95975883f78e2f97c989bcad0e9db70b5faa751112e1e"
+        "sha256": "37f7a1692d5d10d09259a645eb8109fe9fe34285d55a15ff8e9227dd378c47a0"
       },
       "d13": {
         "file": "sheets/attack-dog__lit__d13__albedo.png",
         "w": 29,
         "h": 26,
-        "sha256": "b17e276459f64dc14203f67bf52cb33dabc3acc951918dd8ca72a397268e33d4"
+        "sha256": "e29310c1fee7a8e5a422ddab1433738e4d6f259189f5e3a5ed13fe270300ff33"
       },
       "d14": {
         "file": "sheets/attack-dog__lit__d14__albedo.png",
         "w": 29,
         "h": 25,
-        "sha256": "10dd62c4e7bd3249ceb5893c2d8785fec67a7032786ea4d80b23c892e3e8061d"
+        "sha256": "2a05c46dac698ed835390d0adc627ea24d3188bdb8e8f7118ff1a19bcc6eb456"
       },
       "d15": {
         "file": "sheets/attack-dog__lit__d15__albedo.png",
         "w": 28,
         "h": 24,
-        "sha256": "fee99149d713f8599e746368764c7636d945976b0fcba7d7dc5e51b783540687"
+        "sha256": "fc127e030db67a1c928649913b8e668900400032f0b11595b5429b1b41a20656"
       }
     }
   },

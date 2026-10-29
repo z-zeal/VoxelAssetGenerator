@@ -998,6 +998,21 @@
       }
     ]
   },
+  "depthMap": {
+    "note": "Per-part view depth, one PNG per part per facing. Composite by z-test on this; do NOT try to order segments by a single depth per part.",
+    "channelOrder": "rgba",
+    "meaning": [
+      "depthHi",
+      "depthLo",
+      "unused",
+      "covered"
+    ],
+    "encoding": "q = depthHi * 256 + depthLo; depth = q / scale - bias  (tile units = design voxels / 8)",
+    "scale": 256,
+    "bias": 128,
+    "coveredAlpha": 255,
+    "largerIsCloser": true
+  },
   "parts": {
     "body": {
       "name": "body",
@@ -1009,6 +1024,7 @@
         0
       ],
       "traverse": false,
+      "traverseRoot": null,
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -1059,6 +1075,12 @@
               "w": 21,
               "h": 26,
               "sha256": "793d2f0a80c76a25d697874d130e314c49b43f560339417a75be1b09dcf7148f"
+            },
+            "depth": {
+              "file": "sheets/mech__body__d00__depth.png",
+              "w": 21,
+              "h": 26,
+              "sha256": "c42e812b2b1477267c5bf482f10103208aaa0ee521bf5bdf3658239ee4206a22"
             }
           },
           "filesHi": {
@@ -1124,6 +1146,12 @@
               "w": 20,
               "h": 25,
               "sha256": "3bb9ec7131cb017a95e4fe8c182fba6505acba84a5be6b8793f687e10fd9f3fa"
+            },
+            "depth": {
+              "file": "sheets/mech__body__d01__depth.png",
+              "w": 20,
+              "h": 25,
+              "sha256": "2c094cf3dd052e0be209c210304879e54ba0ffabebf5044a559a39c1f159a485"
             }
           },
           "filesHi": {
@@ -1189,6 +1217,12 @@
               "w": 20,
               "h": 23,
               "sha256": "341ffcc665e7dfb8026e87c9010df18b660447a81ab161e8fb5e222d89fe5334"
+            },
+            "depth": {
+              "file": "sheets/mech__body__d02__depth.png",
+              "w": 20,
+              "h": 23,
+              "sha256": "fa6a49473e71931438f6b67cdd7d86132cca2cd19fe1913afc179b3070084b6b"
             }
           },
           "filesHi": {
@@ -1254,6 +1288,12 @@
               "w": 20,
               "h": 24,
               "sha256": "1cd03deaa5146de84f83f5ce24ec458f862ccfb49035529c4bad0d87727a77bb"
+            },
+            "depth": {
+              "file": "sheets/mech__body__d03__depth.png",
+              "w": 20,
+              "h": 24,
+              "sha256": "51f7e00b7f7c5fdcd768c7291baa914c9803b0e65fe8cfacda736480f0cb84e5"
             }
           },
           "filesHi": {
@@ -1319,6 +1359,12 @@
               "w": 21,
               "h": 26,
               "sha256": "1d2d78cc0c6c8bcdc1810e91d0eeb49a4619bc20ee734031f6965c7bdf788f39"
+            },
+            "depth": {
+              "file": "sheets/mech__body__d04__depth.png",
+              "w": 21,
+              "h": 26,
+              "sha256": "b0a8f16120b7b01f23374279893a92b5f3207dd1998526cf396cacc876e394f0"
             }
           },
           "filesHi": {
@@ -1384,6 +1430,12 @@
               "w": 19,
               "h": 25,
               "sha256": "d5846daa8deb62deda6e2c37b8a9350c71333437f651d46cfb49964d14971ebe"
+            },
+            "depth": {
+              "file": "sheets/mech__body__d05__depth.png",
+              "w": 19,
+              "h": 25,
+              "sha256": "ce0de53db7a36f162c2ec493e4ea9b4f38c002a3bfafb04761546a3c83c37b5a"
             }
           },
           "filesHi": {
@@ -1449,6 +1501,12 @@
               "w": 16,
               "h": 25,
               "sha256": "ff840e20b59d8d313589220bf30ba18714acc565cd99f22f12bfc491672f236a"
+            },
+            "depth": {
+              "file": "sheets/mech__body__d06__depth.png",
+              "w": 16,
+              "h": 25,
+              "sha256": "a6aaf7536c79df653a75a41c0856433f24a8c6bedd7c088acd26627746cee7a5"
             }
           },
           "filesHi": {
@@ -1514,6 +1572,12 @@
               "w": 19,
               "h": 25,
               "sha256": "1fa0393d0f9ecf29bfe73d87e733fd96ea124e9f58c1a3a1bd448533b8baef40"
+            },
+            "depth": {
+              "file": "sheets/mech__body__d07__depth.png",
+              "w": 19,
+              "h": 25,
+              "sha256": "4324cc7fd1be1e59d5e248f366f2e5b8b9773bd426590e3ec568b10d881ceb73"
             }
           },
           "filesHi": {
@@ -1579,6 +1643,12 @@
               "w": 21,
               "h": 25,
               "sha256": "dde995301ed91a192fdcc3a5308309f720beb80fb9220710fff8b4472e12a48c"
+            },
+            "depth": {
+              "file": "sheets/mech__body__d08__depth.png",
+              "w": 21,
+              "h": 25,
+              "sha256": "55e9353df37be819b7c6d5956dda2151fce0826227ecbcafcd3bc362c2f35407"
             }
           },
           "filesHi": {
@@ -1644,6 +1714,12 @@
               "w": 20,
               "h": 24,
               "sha256": "1d6874aa062fc1ac9c5080928a5316cc0babb88f09cc1c7c0238411b9a670c6c"
+            },
+            "depth": {
+              "file": "sheets/mech__body__d09__depth.png",
+              "w": 20,
+              "h": 24,
+              "sha256": "782ee55c42f29d23b347a78d5861c3dea5d3a200a86a60170b23950c32814276"
             }
           },
           "filesHi": {
@@ -1709,6 +1785,12 @@
               "w": 20,
               "h": 22,
               "sha256": "a0d0752444fcb16b5f04cddae6984f52b6be334e93eaea650b8f429deb1bd1d8"
+            },
+            "depth": {
+              "file": "sheets/mech__body__d10__depth.png",
+              "w": 20,
+              "h": 22,
+              "sha256": "a1b320048b5d1c555341689865ba08ce76dd0b5454007eb4f228fdff06c59abf"
             }
           },
           "filesHi": {
@@ -1774,6 +1856,12 @@
               "w": 20,
               "h": 23,
               "sha256": "157f042fb3401747d0f8452728b5dea16602324894d476c52fbb935ea9046748"
+            },
+            "depth": {
+              "file": "sheets/mech__body__d11__depth.png",
+              "w": 20,
+              "h": 23,
+              "sha256": "659d2dfd9bbc7b71009414a101353f24a16fe1a40e0475468351f5cac5bdbe20"
             }
           },
           "filesHi": {
@@ -1839,6 +1927,12 @@
               "w": 21,
               "h": 25,
               "sha256": "22d4b5199da389d6ad0b0debbff41006a14378c2690b6f4c4bddfaf8c04734d6"
+            },
+            "depth": {
+              "file": "sheets/mech__body__d12__depth.png",
+              "w": 21,
+              "h": 25,
+              "sha256": "36967a08b5ec0dd39f5c56ae0b594c0b7809a0a56a32b816c1d4f1d3bc475c1c"
             }
           },
           "filesHi": {
@@ -1904,6 +1998,12 @@
               "w": 19,
               "h": 25,
               "sha256": "1e566a999d5df5ccadeaa900ee898752adeb6b6dc6ccea267d46313c50b048bb"
+            },
+            "depth": {
+              "file": "sheets/mech__body__d13__depth.png",
+              "w": 19,
+              "h": 25,
+              "sha256": "e4cb07d8acf9a9c66317b81855ad685001ef823fea0ef183d7b35ab5881df6d5"
             }
           },
           "filesHi": {
@@ -1969,6 +2069,12 @@
               "w": 16,
               "h": 24,
               "sha256": "9b752f63db6fd92c287ca93817d725ff3836203756a2a86c0e268fd1415c38d9"
+            },
+            "depth": {
+              "file": "sheets/mech__body__d14__depth.png",
+              "w": 16,
+              "h": 24,
+              "sha256": "471b60f10657996b23f94d45ec8620292b29a6545267e950523a971cd1ee4912"
             }
           },
           "filesHi": {
@@ -2034,6 +2140,12 @@
               "w": 19,
               "h": 25,
               "sha256": "54ac22f614aac9ac9d9435422ddb0f8c46577dd05aecb81948cd3ed1f1b88a03"
+            },
+            "depth": {
+              "file": "sheets/mech__body__d15__depth.png",
+              "w": 19,
+              "h": 25,
+              "sha256": "c6d04f07280a31e3420c4e95dd511cae2284926d52121669d929aa0f6fdef15b"
             }
           },
           "filesHi": {
@@ -2081,6 +2193,11 @@
         168
       ],
       "traverse": true,
+      "traverseRoot": [
+        256,
+        256,
+        168
+      ],
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -2131,6 +2248,12 @@
               "w": 27,
               "h": 23,
               "sha256": "ea6022b327189ab81301a62b2e1d21735ce01fd262875780311ac0380e88262e"
+            },
+            "depth": {
+              "file": "sheets/mech__turret__d00__depth.png",
+              "w": 27,
+              "h": 23,
+              "sha256": "fc89f77743643ddc9392a07b4d62a6936d7967a6b92459380667fb9ef9f4bbb4"
             }
           },
           "filesHi": {
@@ -2196,6 +2319,12 @@
               "w": 25,
               "h": 23,
               "sha256": "6e9aaa9f742e8e2b9e1104fff55c1c95d788440a1f46ab5d3de3116f8e3cd1ba"
+            },
+            "depth": {
+              "file": "sheets/mech__turret__d01__depth.png",
+              "w": 25,
+              "h": 23,
+              "sha256": "573cc0d5a611a113e8ddd91971d1fdde7c7f2d7ba8e0e986e3f0a6700f48fd1e"
             }
           },
           "filesHi": {
@@ -2261,6 +2390,12 @@
               "w": 23,
               "h": 23,
               "sha256": "f781a55e4d9fd8b22f5aa4b53d91db590dd90b4bbf9ab5a8b7bc039c248906de"
+            },
+            "depth": {
+              "file": "sheets/mech__turret__d02__depth.png",
+              "w": 23,
+              "h": 23,
+              "sha256": "82eab5162a711af15bddb6fa39b52d4b9e7943da38c0884fdd902d39974f5c93"
             }
           },
           "filesHi": {
@@ -2326,6 +2461,12 @@
               "w": 25,
               "h": 23,
               "sha256": "945ae8a75eddcb59f9345ae2ab76619caab4038bc92c4aa3cc499144827755bc"
+            },
+            "depth": {
+              "file": "sheets/mech__turret__d03__depth.png",
+              "w": 25,
+              "h": 23,
+              "sha256": "0d5d499f7b912343ece82af2979cc6196c6120f3d88d605710ed4b560f3ae7dc"
             }
           },
           "filesHi": {
@@ -2391,6 +2532,12 @@
               "w": 27,
               "h": 23,
               "sha256": "e09ed8ab30203749e5d197c4566bb67f4dc927a7d5304a70f717025cd4649cff"
+            },
+            "depth": {
+              "file": "sheets/mech__turret__d04__depth.png",
+              "w": 27,
+              "h": 23,
+              "sha256": "1b19de3a97c31750f2ac95c054a001566156263a31221be959f9444123b599af"
             }
           },
           "filesHi": {
@@ -2456,6 +2603,12 @@
               "w": 26,
               "h": 22,
               "sha256": "5616bbc27e65f2da7eba33aed96d62b8e99c24fc1684809b76440f7666bd08cd"
+            },
+            "depth": {
+              "file": "sheets/mech__turret__d05__depth.png",
+              "w": 26,
+              "h": 22,
+              "sha256": "a74086712a53762f8ef572511958d0b5e606c30c5290e4babd9350e036bdf572"
             }
           },
           "filesHi": {
@@ -2521,6 +2674,12 @@
               "w": 26,
               "h": 21,
               "sha256": "88bec74f9f3c6e4e4dfa22a478069b5999f3e88276bf29dca96ee36d6505ce24"
+            },
+            "depth": {
+              "file": "sheets/mech__turret__d06__depth.png",
+              "w": 26,
+              "h": 21,
+              "sha256": "92283a23ba64f93ff00fa1a04dc64cb44613290bd0b1e4c8a2bd0d248312b2d6"
             }
           },
           "filesHi": {
@@ -2586,6 +2745,12 @@
               "w": 28,
               "h": 21,
               "sha256": "9fb6b2efbc671c6450ead4e5e26faf9ab6746116f88b8d22b5369ac47f650e31"
+            },
+            "depth": {
+              "file": "sheets/mech__turret__d07__depth.png",
+              "w": 28,
+              "h": 21,
+              "sha256": "9781e370655f2ffcfb249709b98c62d72ac22203ff1fd1cf1d63953b606c21ad"
             }
           },
           "filesHi": {
@@ -2651,6 +2816,12 @@
               "w": 27,
               "h": 19,
               "sha256": "24653439d2f28592616aa1cee2f178ec8041e37a2394dd322bf3e3347ead82da"
+            },
+            "depth": {
+              "file": "sheets/mech__turret__d08__depth.png",
+              "w": 27,
+              "h": 19,
+              "sha256": "304ef51f7522b872c2fa570bc7b72169c1f72dc59f7301727104cfaae4ed3644"
             }
           },
           "filesHi": {
@@ -2716,6 +2887,12 @@
               "w": 25,
               "h": 19,
               "sha256": "e6b288eef497198b2b3ebcf6771d843bc1b0dbb9190372b312861713306e1745"
+            },
+            "depth": {
+              "file": "sheets/mech__turret__d09__depth.png",
+              "w": 25,
+              "h": 19,
+              "sha256": "59739cb0988789ffc12313fb5dc192301a022fada883f90b039499607c9ae8c0"
             }
           },
           "filesHi": {
@@ -2781,6 +2958,12 @@
               "w": 23,
               "h": 17,
               "sha256": "93b30b3d8e48497f81dc28ac4afc716eb1363df2dc7619e2f6671cf6117830e9"
+            },
+            "depth": {
+              "file": "sheets/mech__turret__d10__depth.png",
+              "w": 23,
+              "h": 17,
+              "sha256": "d3d32435a61ff8afb3bf904ab4b0e9be80b804705734ddc460870648d63226a8"
             }
           },
           "filesHi": {
@@ -2846,6 +3029,12 @@
               "w": 25,
               "h": 18,
               "sha256": "0a0e3fa86cefb6f408c8446e64c6dabf91e6d524040402d27ddc213d41aab2e8"
+            },
+            "depth": {
+              "file": "sheets/mech__turret__d11__depth.png",
+              "w": 25,
+              "h": 18,
+              "sha256": "bd142e4479932c0494d8301356054acd8ca506fe5cf50cb03005b6290303b276"
             }
           },
           "filesHi": {
@@ -2911,6 +3100,12 @@
               "w": 27,
               "h": 18,
               "sha256": "3d007b3e80681e1a08ee9f52315d390fff4dc23d9f529c37b09f918a5ca56402"
+            },
+            "depth": {
+              "file": "sheets/mech__turret__d12__depth.png",
+              "w": 27,
+              "h": 18,
+              "sha256": "5130b2e8f2edc7f671fecca0f3ce9261faf855a9c60698ed05212e3adf7e9e29"
             }
           },
           "filesHi": {
@@ -2976,6 +3171,12 @@
               "w": 26,
               "h": 21,
               "sha256": "73469a6842b7881d68dec285ed17a1e9e42df779c3276dd896cd6fa6ab2b618e"
+            },
+            "depth": {
+              "file": "sheets/mech__turret__d13__depth.png",
+              "w": 26,
+              "h": 21,
+              "sha256": "8e6ef69f1e09d76394d2c0d9ea385e1423f8a9fea340d041e4ff9c431e85b7c5"
             }
           },
           "filesHi": {
@@ -3041,6 +3242,12 @@
               "w": 26,
               "h": 21,
               "sha256": "2494c5c1a7c1a019a85109e017e749eb1cc3676e0e263f13aad0e9873149ec68"
+            },
+            "depth": {
+              "file": "sheets/mech__turret__d14__depth.png",
+              "w": 26,
+              "h": 21,
+              "sha256": "b975a1246f0595064d13b05c22c8daa5d213ce7f31ccf02a1463158413bb7b77"
             }
           },
           "filesHi": {
@@ -3106,6 +3313,12 @@
               "w": 28,
               "h": 22,
               "sha256": "58b117fe18b605240e74b6cc9d5d1275d40478248a539ed389d637ac3507fc58"
+            },
+            "depth": {
+              "file": "sheets/mech__turret__d15__depth.png",
+              "w": 28,
+              "h": 22,
+              "sha256": "ffef0d0c37858dcd77791c7e2398cff3f584c03207a3f749194a458c4e997491"
             }
           },
           "filesHi": {
@@ -3201,15 +3414,15 @@
         "files": {
           "albedo": {
             "file": "sheets/mech__composite__d00__albedo.png",
-            "sha256": "f03057f733e6c9c1bf14431e8ee2a8cb419e52858bb350f12aad20ba76bfe252"
+            "sha256": "e5fe8568f9e4c66aefb338fa1de3bf822f6f30c8b526cdd0270eff18d36c54c5"
           },
           "normal": {
             "file": "sheets/mech__composite__d00__normal.png",
-            "sha256": "ad6809c4807e10e04e93eded5de7e1fefb93c3bef37a8475a1b388b8f079a693"
+            "sha256": "af2b57e017c3f6a87ea021c7a616725d1f091a4fec2bfd2e18dc02dc162cd98d"
           },
           "material": {
             "file": "sheets/mech__composite__d00__material.png",
-            "sha256": "eb73627b723f03b0c2b70101b6f6377503f330f31a3ed7de8a96fc004fd3679f"
+            "sha256": "af59e0f30c12c75adea5d883dd79152cc9d867501d9d81de50dbe26d69ac9d7d"
           }
         }
       },
@@ -3219,15 +3432,15 @@
         "files": {
           "albedo": {
             "file": "sheets/mech__composite__d01__albedo.png",
-            "sha256": "ecb09b944f872ac9f1fe0a559d6994f359558e818a05cfd13f63299b04cf23bc"
+            "sha256": "e3406826fdcf6170b90c1494b7307ab9906e6eb9aa177ce0395bf7e74f917662"
           },
           "normal": {
             "file": "sheets/mech__composite__d01__normal.png",
-            "sha256": "1b4dbbc509277edd0c9c8488ccb0bac2f7620ac87f8f826272d7fcd1b0c9d7d9"
+            "sha256": "eed2c97df3d8d7ece7ca5f05243a87c3d7ecb2c217d82562fcf7a6ce7a728799"
           },
           "material": {
             "file": "sheets/mech__composite__d01__material.png",
-            "sha256": "56b38396a2343ab118b17230e239f7272a3d5e6946373f8b83db3d5bf7308194"
+            "sha256": "adec29d8ecde3c094eff95713e579f5ca58262b01af9682b329d0114a71eaa44"
           }
         }
       },
@@ -3237,11 +3450,11 @@
         "files": {
           "albedo": {
             "file": "sheets/mech__composite__d02__albedo.png",
-            "sha256": "cf9eee202bf86a18cb97a14269c7c1bd9629a019c8cd6ac64060f231436d3390"
+            "sha256": "668fc7072d0dad3b1d8d68801238f5ef6a4f95c871c17401080be6d6eb29e2f3"
           },
           "normal": {
             "file": "sheets/mech__composite__d02__normal.png",
-            "sha256": "8048870bbc2a1fb63c7ba3ad8ee8bd675d394306aa3ae29b939361290dbf559d"
+            "sha256": "0163ce50e83b8b4986f73d512fd4d7fd93a658c3b7a1e57f37c3ceebe7dcc37a"
           },
           "material": {
             "file": "sheets/mech__composite__d02__material.png",
@@ -3255,11 +3468,11 @@
         "files": {
           "albedo": {
             "file": "sheets/mech__composite__d03__albedo.png",
-            "sha256": "631d850abae1d3aa22570cf4a269e1a16e0d242c21b529d4349ed4fa997fbc7a"
+            "sha256": "b110ab4e8dfea3da0d5654c2cc836ec184f7704abebdfcdd487b072f3ef4a6d4"
           },
           "normal": {
             "file": "sheets/mech__composite__d03__normal.png",
-            "sha256": "2783196118286d7cb7f125db46e6be01a0349e44abfc6fcd4fb68b73bdeeabe4"
+            "sha256": "0aa08aaf7f2af66eee578edf56455cde20d7115cc3810c4d46bde2538fa2c2e7"
           },
           "material": {
             "file": "sheets/mech__composite__d03__material.png",
@@ -3273,15 +3486,15 @@
         "files": {
           "albedo": {
             "file": "sheets/mech__composite__d04__albedo.png",
-            "sha256": "60fe049faf72192b857f6bfd854f83a37ac26f7c307a06a6cea10213d7abc5b7"
+            "sha256": "eb845e95fa92b041b82a58d42b81a83b830c87c57f875dcac5599c55adfd8934"
           },
           "normal": {
             "file": "sheets/mech__composite__d04__normal.png",
-            "sha256": "3e574d844ae512be9e11ba920e5915ddda4fabf4b3e26aacb850f6b673e467a3"
+            "sha256": "8b2dca3651e21ea5a5f7d39ea06d9ae81659e51f85da9d94ff8ec216edd40dbf"
           },
           "material": {
             "file": "sheets/mech__composite__d04__material.png",
-            "sha256": "49a335aa96fe8bbed747698b9ca149b11c1c0df75b146a0935ae776700ec0550"
+            "sha256": "1a236c4c72221a0498694b53812bd172c95c088ba8069b652f6fae2bb72bcb84"
           }
         }
       },
@@ -3291,11 +3504,11 @@
         "files": {
           "albedo": {
             "file": "sheets/mech__composite__d05__albedo.png",
-            "sha256": "e251e64c12427119ff0372d4c0c5ee457b8009187ce1b89d80762c078a76b0ce"
+            "sha256": "623034bb121840cbc6c53613c04729563fc0b6e2f6d7ef4dfea4c7795ea45ce5"
           },
           "normal": {
             "file": "sheets/mech__composite__d05__normal.png",
-            "sha256": "c89102e74bea51afdd53e4ed9131ad72a5380960280be4bb3333436c02835d42"
+            "sha256": "6356424248eaa856cd14d216dacb378fb85325a91762cbbc6884d02dc432ce34"
           },
           "material": {
             "file": "sheets/mech__composite__d05__material.png",
@@ -3309,15 +3522,15 @@
         "files": {
           "albedo": {
             "file": "sheets/mech__composite__d06__albedo.png",
-            "sha256": "e4b48b10c4cebff46c296b59c27b646977d312d02de588dec0bc31cd01482e26"
+            "sha256": "32673acaa3c51874359dcbb10d39ad68ad15431527bd05c93394ff39539a7e80"
           },
           "normal": {
             "file": "sheets/mech__composite__d06__normal.png",
-            "sha256": "7f7351b484f8bcbd43dbe33ed375e423de2f248240c602865b1b65154b77b766"
+            "sha256": "6cc67ea5fb4f160d79315d4b8c232a093c1e9b78f798a8b26f67d87aada7591f"
           },
           "material": {
             "file": "sheets/mech__composite__d06__material.png",
-            "sha256": "6080dabfb5373a21dfeae0bf3200eb90e9988b5f568276863d164a57250e8ffa"
+            "sha256": "b2c7630b428c9241f29af590fe5a0926472f16402043aad1b502e1c1c1e51887"
           }
         }
       },
@@ -3327,15 +3540,15 @@
         "files": {
           "albedo": {
             "file": "sheets/mech__composite__d07__albedo.png",
-            "sha256": "5f2526bb8395d1a33871214ae130e682884b2b9e30a3306081a793c55f83a739"
+            "sha256": "38cb678563ddf59247aaf3e09598adebf63d5488488ec72b973ee31b32130e1d"
           },
           "normal": {
             "file": "sheets/mech__composite__d07__normal.png",
-            "sha256": "fd4707d2437f728d6fedabba8912a5370042f188a495a5bc2ea70c4d883fe9b3"
+            "sha256": "b815c0f904b3c73dd6cc7e0160e4ef99a70c71fe2c8f085cce832792b14da80f"
           },
           "material": {
             "file": "sheets/mech__composite__d07__material.png",
-            "sha256": "f95cdceb550ab98a194f5db4dbc8afef36a6b8bd184a977fe8172ae81d84ad9e"
+            "sha256": "ef5a80f1ddbc39965f329912ed16b66bab489ffcc0b557def963df3435ef8312"
           }
         }
       },
@@ -3345,15 +3558,15 @@
         "files": {
           "albedo": {
             "file": "sheets/mech__composite__d08__albedo.png",
-            "sha256": "184585c330e84d8f702542279a5d293e4f4ab1f7e976b9d72559752b53d57f46"
+            "sha256": "400f1f403dc6a66e7aa0e218cabebe162bff378f26be0a65ece21addd48bdebe"
           },
           "normal": {
             "file": "sheets/mech__composite__d08__normal.png",
-            "sha256": "2b11ab8e13844e4c56ccca6e12a77139037a44b6c6cb14406b2752ff5d6c505d"
+            "sha256": "bf4d925589aa9725ba341583157cff8c8e3fc9de7b9dba02cf3d0f5dc0b27e1d"
           },
           "material": {
             "file": "sheets/mech__composite__d08__material.png",
-            "sha256": "faf78fa589d628bb12e4297b7c0dee5f58677092279d778c2a29d7e4796b8871"
+            "sha256": "bf322b1649cd6cc971d14a3f9c6c339eb6acc54cb259e4cbc4a526582eaff65e"
           }
         }
       },
@@ -3363,15 +3576,15 @@
         "files": {
           "albedo": {
             "file": "sheets/mech__composite__d09__albedo.png",
-            "sha256": "a74f31c53861a0a165fae3691a34f4da00619274836dfb0391ecc8aadbc7c30f"
+            "sha256": "1b24ab078d46b895f12635a99532261ccccbd059f7a78999fd0c096a40671a23"
           },
           "normal": {
             "file": "sheets/mech__composite__d09__normal.png",
-            "sha256": "1ae52e14f204d7434787fb53853312474ecb9db146a0813265167799e3eaa7f4"
+            "sha256": "9c8d3edae0551b20bc5d6d2faa254f2b0a0f58783c52fcc1613249f80dbb9a85"
           },
           "material": {
             "file": "sheets/mech__composite__d09__material.png",
-            "sha256": "669a31aa90faae2f0442968a8e3959c60d90b295b105bc291535255eb6b55a2a"
+            "sha256": "1e00b8d880ac043b7532bb25c559ae7aba1dda3de97ef3e7d100e8da33997336"
           }
         }
       },
@@ -3381,15 +3594,15 @@
         "files": {
           "albedo": {
             "file": "sheets/mech__composite__d10__albedo.png",
-            "sha256": "e5492fb91516d258b0de8d1b4ba0cd026cd15b1a2073d86f2acb9e8bfd6d9b59"
+            "sha256": "00e83d20eef24837feb9f3bd548f630ed19d62659cbfd081812513ed5c43ef6a"
           },
           "normal": {
             "file": "sheets/mech__composite__d10__normal.png",
-            "sha256": "9d9921aeda7012efe7f4b2427d731cda83a758b8d1396437092a56679410591d"
+            "sha256": "1e8a2e1a87d3f74169008605a27cecc6c33aaad35e9a1e144ad12cdfb2ea4a27"
           },
           "material": {
             "file": "sheets/mech__composite__d10__material.png",
-            "sha256": "032b7f5b33740bdd7cee42ef566510a68b5dc0c8762e3437e7eea0bcc3c7aab7"
+            "sha256": "c702d8aa9c375584c80818eaa7cba4a49f8e37662a14a66adca04b56219bee15"
           }
         }
       },
@@ -3399,15 +3612,15 @@
         "files": {
           "albedo": {
             "file": "sheets/mech__composite__d11__albedo.png",
-            "sha256": "3edf1ab5049e493fcdff23556139c88c5aa3dac9f68ce01838cb71d1d65dfaeb"
+            "sha256": "397dd3cf8cd40960989d18e4d583b6ac79d05ef4e8833052d825c7a0c148eb26"
           },
           "normal": {
             "file": "sheets/mech__composite__d11__normal.png",
-            "sha256": "a8ee1e41aceeb6638c924c58593027505db6c6aaf875cc8516a8765b9704cc85"
+            "sha256": "aa42251cdeee9eb7098bf5b68f2ffab1b3e69a8f780082dd3db16cb6c5383b1f"
           },
           "material": {
             "file": "sheets/mech__composite__d11__material.png",
-            "sha256": "ba7103a53acb6b6d6fea1696e4101e4612c627f610140b0374195d349d5720e5"
+            "sha256": "51d124ac99ec68318cee0e4c1cf06920d8f462835277126b8bd74e4b03927e1a"
           }
         }
       },
@@ -3417,15 +3630,15 @@
         "files": {
           "albedo": {
             "file": "sheets/mech__composite__d12__albedo.png",
-            "sha256": "cfab305696be9bf29f75b102408bec44b48cb663d4208d2a759e1e6239a911ee"
+            "sha256": "ffea89dc39c763c582f196830778970da8f8cc428833012e7b575de7c125706d"
           },
           "normal": {
             "file": "sheets/mech__composite__d12__normal.png",
-            "sha256": "c15bacaf904b20ed50a8f5e42b718acaaf6fb67fea07142d849a6d6b053c067e"
+            "sha256": "b702c101f9933e0c12bce0fbe7479928f0b61d79835ed07ac9313f22d3540051"
           },
           "material": {
             "file": "sheets/mech__composite__d12__material.png",
-            "sha256": "8a35ef8b08a45f785131bc57e9965b9cd7707c187aab5f9c08ce6b7f0d43b4a1"
+            "sha256": "071c716d60f692b0f7dfd310258964e04e0646d49feb95c6ba95d384114b92a1"
           }
         }
       },
@@ -3435,15 +3648,15 @@
         "files": {
           "albedo": {
             "file": "sheets/mech__composite__d13__albedo.png",
-            "sha256": "5975f33dcb6f52979056ebdad76d6e671ce12003e37d57ef5fcbd399310c20b4"
+            "sha256": "3ae58907ea589d1988b9b492b0deec1d794c83ff40014a1c5a79d0be0db81e0c"
           },
           "normal": {
             "file": "sheets/mech__composite__d13__normal.png",
-            "sha256": "45d0b561a530540a1b65b9810e19e9bd71976f8fd657c4d7ee323933d9a998d5"
+            "sha256": "67f9f04ecaa39f481962e3c6db51844a6c669651cc8716ba94589dedde8145f9"
           },
           "material": {
             "file": "sheets/mech__composite__d13__material.png",
-            "sha256": "65caf26044f79824de242913452cceff27e98c6d13c26d3c0de2cfb455338fe7"
+            "sha256": "bb5cc0ed405cebf49f825576f5d2091f1da2fa4c107196bacc9d37685d28dda8"
           }
         }
       },
@@ -3453,15 +3666,15 @@
         "files": {
           "albedo": {
             "file": "sheets/mech__composite__d14__albedo.png",
-            "sha256": "72a334d5b3a221cdce5ab687537b4ffb326f8a03f5f3bb1dfe3d883b2f834063"
+            "sha256": "887b037425be6969a1aa0e65ffc6e0f57bd3689e615dd71ec8277ec7296d8d01"
           },
           "normal": {
             "file": "sheets/mech__composite__d14__normal.png",
-            "sha256": "6e1e4c1bf5777cb5a596ba9033a31170ab795bff7d0b68eec6d54a79c330dfc3"
+            "sha256": "db6402231c5123bc1d777b4435efa72ed41537a798f890bad4cbe6ed57bd1863"
           },
           "material": {
             "file": "sheets/mech__composite__d14__material.png",
-            "sha256": "bdd3965fc419bffca1e6b6d7bb222e3512fcc49f46dd2bb8258b34d1a0838a45"
+            "sha256": "c6802e8aa80df2457c5d587dab7fc1d12341a4c39bec0e97c8988f50a633dfb5"
           }
         }
       },
@@ -3471,15 +3684,15 @@
         "files": {
           "albedo": {
             "file": "sheets/mech__composite__d15__albedo.png",
-            "sha256": "dd5b9f2bd5988af88bf48b0c1178790b1132db9401850c39633aa22916ca71f8"
+            "sha256": "f7e22bf96d10a251b70a8e93f53abfef084e954dc4be12dcacf492bca8c07e1a"
           },
           "normal": {
             "file": "sheets/mech__composite__d15__normal.png",
-            "sha256": "b6e020ab2bd2e10b083cf4b7d732a63d34a27b7455bc3d91b6b792e42f6a486a"
+            "sha256": "a298d172dfce772039a692d361aaa0fe4c129a4fc957e1895c74a9fca95c16da"
           },
           "material": {
             "file": "sheets/mech__composite__d15__material.png",
-            "sha256": "a87cf95fa39c5e8fa10b697b73a35091f3c455587d53f0d70010ad54df63e3ee"
+            "sha256": "e4db91594e70a8a53bf536f11dd0c8480b1e390cf5eefd39efef5e1899ab6b62"
           }
         }
       }
@@ -3493,97 +3706,97 @@
         "file": "sheets/mech__lit__d00__albedo.png",
         "w": 31,
         "h": 34,
-        "sha256": "53cfe331568ac1635995ce34ab91b37a76c0862aa22b49fc091ce5c6bdbaa7af"
+        "sha256": "261a36879fb11e6e0cbbac8e4046de6eb705b4425d3f01ef46008217c3c9167a"
       },
       "d01": {
         "file": "sheets/mech__lit__d01__albedo.png",
         "w": 29,
         "h": 33,
-        "sha256": "d3eb35c048a901c7bedd5d37dc5ecad0358302a1653e35e180bf64edb23e184f"
+        "sha256": "1d5ef3b6dc8b4d0ff48de2d599ead27d95491a64367c7fdc35abea5c79bc5451"
       },
       "d02": {
         "file": "sheets/mech__lit__d02__albedo.png",
         "w": 27,
         "h": 32,
-        "sha256": "6732cc30ce270167359f1f3c29b5feb4eb468b50b2ee1babaf161da1cb03735d"
+        "sha256": "2000cc7cebfce1d87fd2891555b44f55456e4752f1f5d9cf6e25ebaf24962499"
       },
       "d03": {
         "file": "sheets/mech__lit__d03__albedo.png",
         "w": 29,
         "h": 32,
-        "sha256": "afbda819c6aae2f4366291828984d083a4b0f937924a9e3abb5c1bcfae3a1214"
+        "sha256": "e935416016c43f4fac148ede67cddd32f7870d564fd68b589bc8c0ac4face5f5"
       },
       "d04": {
         "file": "sheets/mech__lit__d04__albedo.png",
         "w": 31,
         "h": 33,
-        "sha256": "eb1abce32c25e087fc5a347a1cb7828b8d6ad6a1d3c56d1663fa8cdd0887e0c3"
+        "sha256": "accbdfb00a36ede6bf58211fa894be2cfa0f96157942917cf77a84606ea7d043"
       },
       "d05": {
         "file": "sheets/mech__lit__d05__albedo.png",
         "w": 30,
         "h": 32,
-        "sha256": "a0afe5873f0289f2aad9a6341150f5d98f2d7105f26a275da730ffcd0a4b280e"
+        "sha256": "6a59662b224b40edd026902a10f69894ce3416f36428f34211b53710608877db"
       },
       "d06": {
         "file": "sheets/mech__lit__d06__albedo.png",
         "w": 30,
         "h": 32,
-        "sha256": "e834fd5c36fbb0b3eddf98c7766cc45d936a80bc78df313119a9efa0151bc0d7"
+        "sha256": "f573f88ae343f3c09a6e08d3504e09617384abfaf2c132e3097e02c5bed6ea59"
       },
       "d07": {
         "file": "sheets/mech__lit__d07__albedo.png",
         "w": 32,
         "h": 32,
-        "sha256": "e2084835aa63b000777192fdfc97c9739dd2a80cf24b7801f81b12380056b9fc"
+        "sha256": "852c656dfe58dccd72f328e16025dea74d48610029997d24f8fc7f7f66dc871e"
       },
       "d08": {
         "file": "sheets/mech__lit__d08__albedo.png",
         "w": 31,
         "h": 32,
-        "sha256": "3e648471cdd44946b2cb81a139c7c8b6b959e00de6d8cfe3dea2cdf13a959a56"
+        "sha256": "225c13862525a008c0a494942fe8970b8bd23c77057773dac9ab27c6978d9a96"
       },
       "d09": {
         "file": "sheets/mech__lit__d09__albedo.png",
         "w": 29,
         "h": 32,
-        "sha256": "d5f67f0726b468c7d722abd62120fad7ca06865dcde95154169fdee1fc4bf389"
+        "sha256": "3321a0a8ccf735fd571b08ab3a5599927e6335b69f37f9a8404e12b427b88a44"
       },
       "d10": {
         "file": "sheets/mech__lit__d10__albedo.png",
         "w": 27,
         "h": 29,
-        "sha256": "d4a90bff39a7e833cabda734c59d8d1ba13036abc503551d90579986e0d68bea"
+        "sha256": "f440d1f22babedc3d9c4cff38674463552327f10e1e4b464a8cce43376126dbb"
       },
       "d11": {
         "file": "sheets/mech__lit__d11__albedo.png",
         "w": 29,
         "h": 31,
-        "sha256": "33c9936467249c474c7f188d96b01f76d26fe5e4ca7bfd1b48eb348ebbb47e6c"
+        "sha256": "54e5fbf374bd2be6fa4f1690307423388fb9d045b55fee038ff6e0bfa4cea1e5"
       },
       "d12": {
         "file": "sheets/mech__lit__d12__albedo.png",
         "w": 31,
         "h": 31,
-        "sha256": "e79399c212539f38771a70a9e91d8f7c3c55982309b2b83c82e9dce36a3cef9d"
+        "sha256": "26d3c3a69f19502e012bdae9d49ea59a5425c9c53c3263294a66b69f4e83fb89"
       },
       "d13": {
         "file": "sheets/mech__lit__d13__albedo.png",
         "w": 30,
         "h": 32,
-        "sha256": "2c2a47aad877f88668f56b42db15b5d0e9af54db6d08d890f2ccf5c8359bd90c"
+        "sha256": "3d746501957c812ea11bb37218f71e002702f7b5ed8bfd5007d3d19dba5ac3c8"
       },
       "d14": {
         "file": "sheets/mech__lit__d14__albedo.png",
         "w": 30,
         "h": 32,
-        "sha256": "c0dc84563b056755fed37bca0483e6991a78af8d38c7067611054a4680007225"
+        "sha256": "8031d6354b7e59e19b9def22882857c76e9ca41f2afcedb015c6df6d6c63301e"
       },
       "d15": {
         "file": "sheets/mech__lit__d15__albedo.png",
         "w": 32,
         "h": 33,
-        "sha256": "9560108ec1fc340dfa03a7383c9b45da2aa77f188fb09e6f3ff70aaea4ffd448"
+        "sha256": "05fd4d9bb6f988473332b2449011efdd02ee10ee8651a2b41f58aea029697b7e"
       }
     }
   },

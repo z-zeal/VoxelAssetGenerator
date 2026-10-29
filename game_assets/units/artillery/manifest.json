@@ -998,6 +998,21 @@
       }
     ]
   },
+  "depthMap": {
+    "note": "Per-part view depth, one PNG per part per facing. Composite by z-test on this; do NOT try to order segments by a single depth per part.",
+    "channelOrder": "rgba",
+    "meaning": [
+      "depthHi",
+      "depthLo",
+      "unused",
+      "covered"
+    ],
+    "encoding": "q = depthHi * 256 + depthLo; depth = q / scale - bias  (tile units = design voxels / 8)",
+    "scale": 256,
+    "bias": 128,
+    "coveredAlpha": 255,
+    "largerIsCloser": true
+  },
   "parts": {
     "body": {
       "name": "body",
@@ -1009,6 +1024,7 @@
         0
       ],
       "traverse": false,
+      "traverseRoot": null,
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -1059,6 +1075,12 @@
               "w": 57,
               "h": 43,
               "sha256": "d1b91b83314b56ca6fb1b54349066b819e6ce20dda2a674e109d14d8e7f34737"
+            },
+            "depth": {
+              "file": "sheets/artillery__body__d00__depth.png",
+              "w": 57,
+              "h": 43,
+              "sha256": "8bc3c36fae6af38c25a1d2ba685597ec29183e49209fb410914ea452da95396b"
             }
           },
           "filesHi": {
@@ -1124,6 +1146,12 @@
               "w": 53,
               "h": 44,
               "sha256": "f43458048687cbb4d46523d2ab8981042e51f1b6e86dc53440c06a9a26c4940c"
+            },
+            "depth": {
+              "file": "sheets/artillery__body__d01__depth.png",
+              "w": 53,
+              "h": 44,
+              "sha256": "1933e665b467977e21c3f4b27d66a088815dacc94acfa4500ed1731690573760"
             }
           },
           "filesHi": {
@@ -1189,6 +1217,12 @@
               "w": 43,
               "h": 42,
               "sha256": "b049b059d7c427d407d97503da7f041083b48f83bc6b62dd7ddff093534d830e"
+            },
+            "depth": {
+              "file": "sheets/artillery__body__d02__depth.png",
+              "w": 43,
+              "h": 42,
+              "sha256": "69f067f88d721f804f8b13bde16cd4ddb3b02b4e99e29fca6e358cc370fc1d9c"
             }
           },
           "filesHi": {
@@ -1254,6 +1288,12 @@
               "w": 52,
               "h": 44,
               "sha256": "855c340b164c3d107ddd646336d149522f3bc62cba2c830aee90edc0dc0c8e2c"
+            },
+            "depth": {
+              "file": "sheets/artillery__body__d03__depth.png",
+              "w": 52,
+              "h": 44,
+              "sha256": "1b96943e621afc1a82f69e7e0967a2d5f59d7cc181890ae2c40e6b1b7dd32fa8"
             }
           },
           "filesHi": {
@@ -1319,6 +1359,12 @@
               "w": 58,
               "h": 43,
               "sha256": "196fcb7b0fb7df8743472986f482da91e48a8a361f36d9a0069fc38ebfd6ac51"
+            },
+            "depth": {
+              "file": "sheets/artillery__body__d04__depth.png",
+              "w": 58,
+              "h": 43,
+              "sha256": "0ad9a80e1599b837de0cfd94f0a41b6b79c8e84f1783e61a1e6abebb03b51826"
             }
           },
           "filesHi": {
@@ -1384,6 +1430,12 @@
               "w": 57,
               "h": 39,
               "sha256": "57eb0572636c9fc893be49f1c609410c8c108baa434bebd8bef72bf788b32e2f"
+            },
+            "depth": {
+              "file": "sheets/artillery__body__d05__depth.png",
+              "w": 57,
+              "h": 39,
+              "sha256": "62841abaf2be86b5943e2da69ab9243b45133c88ba62775380bafd1f1b9950dd"
             }
           },
           "filesHi": {
@@ -1449,6 +1501,12 @@
               "w": 50,
               "h": 36,
               "sha256": "eb58848f1d90e5c0d1822003dad81781c12a2d7b4c5df966bcb4f9b58f5b02e3"
+            },
+            "depth": {
+              "file": "sheets/artillery__body__d06__depth.png",
+              "w": 50,
+              "h": 36,
+              "sha256": "82090349103522942b339d0b535c2f0acfd5b5710ca0b8557aebf1d28a811299"
             }
           },
           "filesHi": {
@@ -1514,6 +1572,12 @@
               "w": 56,
               "h": 39,
               "sha256": "ac3a13de4a81939604d816144776dd59d0f028b8e4b95abad510fdb17db73068"
+            },
+            "depth": {
+              "file": "sheets/artillery__body__d07__depth.png",
+              "w": 56,
+              "h": 39,
+              "sha256": "d3eec4b957bcd452dbe9cee0c1f9afa7d571fa0896c851e4cb71c0f06e24200e"
             }
           },
           "filesHi": {
@@ -1579,6 +1643,12 @@
               "w": 57,
               "h": 40,
               "sha256": "5aa6525d3758a7690c0d7f80cd24736133ba55324ef39fb3a69086e9021874ee"
+            },
+            "depth": {
+              "file": "sheets/artillery__body__d08__depth.png",
+              "w": 57,
+              "h": 40,
+              "sha256": "3d0282448eed748752a6f2376ea84ca0a9b9732272f91bf77076452471e3ff97"
             }
           },
           "filesHi": {
@@ -1644,6 +1714,12 @@
               "w": 53,
               "h": 40,
               "sha256": "bf35573394fb775a61b39880f81fdf4568e9793422942e26fe829398f89c7c81"
+            },
+            "depth": {
+              "file": "sheets/artillery__body__d09__depth.png",
+              "w": 53,
+              "h": 40,
+              "sha256": "c02b7e5ea8ed6d49b102cb1633d853192a676bb466a0561bb0be04ec60ccaf90"
             }
           },
           "filesHi": {
@@ -1709,6 +1785,12 @@
               "w": 43,
               "h": 38,
               "sha256": "3f07f175af9879d6c97b1a47f774a66a5a0aedaedf927ce5db7cc06150818933"
+            },
+            "depth": {
+              "file": "sheets/artillery__body__d10__depth.png",
+              "w": 43,
+              "h": 38,
+              "sha256": "260cb816ea89975f59d2b13980743516904a059a15273c8f55a4aa300331ee37"
             }
           },
           "filesHi": {
@@ -1774,6 +1856,12 @@
               "w": 52,
               "h": 39,
               "sha256": "97491f518d09dd0317a896ef549230522835e2b57ffaf777f2e67f5541d3fea8"
+            },
+            "depth": {
+              "file": "sheets/artillery__body__d11__depth.png",
+              "w": 52,
+              "h": 39,
+              "sha256": "03ebffabe7925ed19876b7e241456296ea8cb73f098d858738cd5df5bb7ac098"
             }
           },
           "filesHi": {
@@ -1839,6 +1927,12 @@
               "w": 58,
               "h": 38,
               "sha256": "a2e75779d5b2802887b84d8c543f4eb51549a22da1ec1f0a994b11582771bf8d"
+            },
+            "depth": {
+              "file": "sheets/artillery__body__d12__depth.png",
+              "w": 58,
+              "h": 38,
+              "sha256": "755fd38e75d7ecc18be5f59df2b6a6742235f29630cadcbb77561df872a8f7f7"
             }
           },
           "filesHi": {
@@ -1904,6 +1998,12 @@
               "w": 57,
               "h": 36,
               "sha256": "2460c66f9cba7c0f84b4c590cdc649aece7213097cc889c3235fa572f7f9aa58"
+            },
+            "depth": {
+              "file": "sheets/artillery__body__d13__depth.png",
+              "w": 57,
+              "h": 36,
+              "sha256": "ffb9fce3862804cf2bc92ade4b79455b49fdf460cb18f5f253be59ad15dd7ea8"
             }
           },
           "filesHi": {
@@ -1969,6 +2069,12 @@
               "w": 50,
               "h": 34,
               "sha256": "a600fbb2699aa930e5572cba40e93777dbdb5bd840a5c5c340a9ec701b9987d7"
+            },
+            "depth": {
+              "file": "sheets/artillery__body__d14__depth.png",
+              "w": 50,
+              "h": 34,
+              "sha256": "88d47567bae34ec7b5d4cfd76bb76e00b0e893ee1d3a624580d0c35efd7aaa00"
             }
           },
           "filesHi": {
@@ -2034,6 +2140,12 @@
               "w": 56,
               "h": 39,
               "sha256": "aca048d31561a27e13aa36710547fa5187f007d909ddbb61677edcd225dcc884"
+            },
+            "depth": {
+              "file": "sheets/artillery__body__d15__depth.png",
+              "w": 56,
+              "h": 39,
+              "sha256": "3f0be7f32abea2d1ae82e5525988f2a87cf89fa5e6f96463ad3d17d3ce5fd774"
             }
           },
           "filesHi": {
@@ -2081,6 +2193,7 @@
         0
       ],
       "traverse": false,
+      "traverseRoot": null,
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -2131,6 +2244,12 @@
               "w": 39,
               "h": 29,
               "sha256": "69a2db4a1fdcb01aad9e8d2bdd61109fbf840d8533c20ad15088a97954dc2375"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.L__d00__depth.png",
+              "w": 39,
+              "h": 29,
+              "sha256": "e7f9c94e1142143c01743607243977497a00cfaa0e4dbbf75b39559e08be3f7d"
             }
           },
           "filesHi": {
@@ -2196,6 +2315,12 @@
               "w": 29,
               "h": 32,
               "sha256": "10e02376d21c904ce2a43c1ce1c7d1fb6f202724b9fdba5a1ee152ba3cd603f5"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.L__d01__depth.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "efe6866366a0e68f7e7479f0cb09a220754ac3d79f524143697be9bdc3d76979"
             }
           },
           "filesHi": {
@@ -2261,6 +2386,12 @@
               "w": 15,
               "h": 32,
               "sha256": "a073d1fab999114f48fb5623ce0a5e72e527a0da6b4ee460679f5ea95a3931c3"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.L__d02__depth.png",
+              "w": 15,
+              "h": 32,
+              "sha256": "a118e2f50c23fb17bea44369d20aa2e500996dc6e78507418cdd02e717ce77b5"
             }
           },
           "filesHi": {
@@ -2326,6 +2457,12 @@
               "w": 29,
               "h": 32,
               "sha256": "44d353e6e154389a1c534e20b2941a4e65e0463823200928b6fb17610e6066af"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.L__d03__depth.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "584c140647b491c3b7393f0f61e244ed4cb61a5b23685613ad3314e655301035"
             }
           },
           "filesHi": {
@@ -2391,6 +2528,12 @@
               "w": 39,
               "h": 30,
               "sha256": "17e199cd3a52b43f595d742d3fdbd372a7eed5c9630851b65adb7778c1445cb3"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.L__d04__depth.png",
+              "w": 39,
+              "h": 30,
+              "sha256": "4487ba8a344b36c4eef05c8af23d4e5a075b54d954ac734729b88a2e02d7b602"
             }
           },
           "filesHi": {
@@ -2456,6 +2599,12 @@
               "w": 45,
               "h": 25,
               "sha256": "cf85c200c165d8cac42a49f922a913e2cb1cc0df50bafa4cd65295fa4ca7f4ce"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.L__d05__depth.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "5a5d35efe253b9d8363e334fd153c4326943162e5589d8b75d8e95b082b46ada"
             }
           },
           "filesHi": {
@@ -2521,6 +2670,12 @@
               "w": 45,
               "h": 20,
               "sha256": "6b1b08e6f894270d115b1961c26961b462749bd2e5baa637a807640a998ea86d"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.L__d06__depth.png",
+              "w": 45,
+              "h": 20,
+              "sha256": "8e1bf6d0c5850f507d92a3966cec32f10e1f2540cd5156f33675977f5d6a4e84"
             }
           },
           "filesHi": {
@@ -2586,6 +2741,12 @@
               "w": 45,
               "h": 23,
               "sha256": "bdb5462ffe5d4361d8d166177d81458e0b8af8375745db8dc32a530312d34626"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.L__d07__depth.png",
+              "w": 45,
+              "h": 23,
+              "sha256": "2b67aecd6eb258cc490766229a9352b7a8a4ca878dc0da8fd0adc01091e18eba"
             }
           },
           "filesHi": {
@@ -2651,6 +2812,12 @@
               "w": 39,
               "h": 28,
               "sha256": "f6d376f2cb617d362a6964eeb38b33055383f5358dd5b85584021d9a31969bbb"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.L__d08__depth.png",
+              "w": 39,
+              "h": 28,
+              "sha256": "04d3715713596ba053903c5d0325bf88f022a6a75533e1cc8b4facc8b03fc48d"
             }
           },
           "filesHi": {
@@ -2716,6 +2883,12 @@
               "w": 29,
               "h": 31,
               "sha256": "283c12944566e16086d9cacf3788d9fd69e6affded0164b17f92bbb501accd31"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.L__d09__depth.png",
+              "w": 29,
+              "h": 31,
+              "sha256": "a2e9a6a317638d0e9e5dfae8cc8a68db236e1617a4e3064657ec9f960c380848"
             }
           },
           "filesHi": {
@@ -2781,6 +2954,12 @@
               "w": 15,
               "h": 32,
               "sha256": "b446cca2f378e7c0008feb4898a89bcd72d9ddfb8de0f01d82f0da26618a9687"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.L__d10__depth.png",
+              "w": 15,
+              "h": 32,
+              "sha256": "4508817edf1f5c28726548798df68905ddbd8b8d0a2da89db88f77d23df73d69"
             }
           },
           "filesHi": {
@@ -2846,6 +3025,12 @@
               "w": 29,
               "h": 31,
               "sha256": "0bc59816bb4a8d086a7ca697ee4d17d577bb904dc907be1a2774540c73012cd8"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.L__d11__depth.png",
+              "w": 29,
+              "h": 31,
+              "sha256": "b8ca74c39d13cc54c1ffbfc6505c45355e6752f6d7cf9213e6343f80fdc20406"
             }
           },
           "filesHi": {
@@ -2911,6 +3096,12 @@
               "w": 39,
               "h": 29,
               "sha256": "c4b9cbf6f19687b0ececb4229a05fb51e231d83574558d51dd3070637f981f39"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.L__d12__depth.png",
+              "w": 39,
+              "h": 29,
+              "sha256": "8eac3be8e563aea46234fb4970987449d86793cdd85917d71ac6373e8d8693d1"
             }
           },
           "filesHi": {
@@ -2976,6 +3167,12 @@
               "w": 45,
               "h": 25,
               "sha256": "c9d987ee8446312fe0e7ee44df9e09cbc6c3384c0e2f9f9ba49add883f8ed3ca"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.L__d13__depth.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "fc69ce7f67443cb9dd39055a8b0c6478ccacb7034a9ab7351aaa9b2d627331a5"
             }
           },
           "filesHi": {
@@ -3041,6 +3238,12 @@
               "w": 45,
               "h": 20,
               "sha256": "ef4c1d4717fe97036c3bf886af7b166b0ea181eeee78f9e52dbd9de41db8afc7"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.L__d14__depth.png",
+              "w": 45,
+              "h": 20,
+              "sha256": "4c469078a23f03ba7c156d3516301a0bff6f6093e22e5211226b4abc149e4169"
             }
           },
           "filesHi": {
@@ -3106,6 +3309,12 @@
               "w": 45,
               "h": 26,
               "sha256": "5b163fc052d45b7fbc1d591c607cba39ce4528c773753e2db9ac818eaf95f263"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.L__d15__depth.png",
+              "w": 45,
+              "h": 26,
+              "sha256": "18b9e7535f05fd0195d5137b2fba961bf7470721ec2b051d5e2510fbccc49905"
             }
           },
           "filesHi": {
@@ -3153,6 +3362,7 @@
         0
       ],
       "traverse": false,
+      "traverseRoot": null,
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -3203,6 +3413,12 @@
               "w": 39,
               "h": 30,
               "sha256": "0ea617eee5d01618772f6ddfe6017adf4ad2cab1e9994d634a884354c37ad7da"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.R__d00__depth.png",
+              "w": 39,
+              "h": 30,
+              "sha256": "50c581b1dd627a1f96eb3ddcb9dd6cbe73c2eabec664f67cbe0afa7a1e45e425"
             }
           },
           "filesHi": {
@@ -3268,6 +3484,12 @@
               "w": 29,
               "h": 32,
               "sha256": "75551f740f1d41824c1f4a62509c844aeada140d6de8a49296b194902dc99b6e"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.R__d01__depth.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "5a7277bf7c75a354cc268fd192cbcc076bd44498110535c1c37fa4d931c51509"
             }
           },
           "filesHi": {
@@ -3333,6 +3555,12 @@
               "w": 16,
               "h": 32,
               "sha256": "08014455b07df94e390043128447bf2ffd62a2b5ad1ebc28f9efeb0944d9a183"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.R__d02__depth.png",
+              "w": 16,
+              "h": 32,
+              "sha256": "c19b047668c55759b7e6adbc886fff5fbc0d160c1ad87a9b941955dee61f55e5"
             }
           },
           "filesHi": {
@@ -3398,6 +3626,12 @@
               "w": 29,
               "h": 31,
               "sha256": "9df80a24fa4194c439f12f78b17d48f5dca55c2853c8784c7f7e183fc3715bf4"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.R__d03__depth.png",
+              "w": 29,
+              "h": 31,
+              "sha256": "132b377a78d96bc0b476d7f308abf2ac4a06175c96a8bb89e0de3e1557d1fd0c"
             }
           },
           "filesHi": {
@@ -3463,6 +3697,12 @@
               "w": 39,
               "h": 29,
               "sha256": "a87c83c7db5d7e5c56e1ae1d218c90d51e63bc998f4581a2e1427198982721d5"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.R__d04__depth.png",
+              "w": 39,
+              "h": 29,
+              "sha256": "6a2c6ea5ff65c91c3f12817ab714394802934ea0621ed272e768fd8e137ba87a"
             }
           },
           "filesHi": {
@@ -3528,6 +3768,12 @@
               "w": 44,
               "h": 26,
               "sha256": "3ce37c7275b612e3bb0fb6c156a9f3afc68b17a3c838a380215e8d24a21fcd2f"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.R__d05__depth.png",
+              "w": 44,
+              "h": 26,
+              "sha256": "d84004bb018fe1a4e7cc8760127075edce1c206e5985ac274c89ada315fdb7b6"
             }
           },
           "filesHi": {
@@ -3593,6 +3839,12 @@
               "w": 45,
               "h": 21,
               "sha256": "d58036b8ca52f50f0af4f8abed344603198f5e8ef1564feaccbe78805d966183"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.R__d06__depth.png",
+              "w": 45,
+              "h": 21,
+              "sha256": "3f828b4eaca3791d943ccc967922a05a16f05fc775a9bd75139ec02c845bfeb4"
             }
           },
           "filesHi": {
@@ -3658,6 +3910,12 @@
               "w": 45,
               "h": 25,
               "sha256": "d7c0f53c376a15cdc2affe984659d116584836e858150e26eadfbd2c16139c81"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.R__d07__depth.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "48133a12b92cedec10be139bb77bb689d390758d42d5330de8cadf64f90692ab"
             }
           },
           "filesHi": {
@@ -3723,6 +3981,12 @@
               "w": 39,
               "h": 29,
               "sha256": "2d4f420ea4e0e15ddc0f3c02518ae1f1ab9166a36090ff39e3a07a6a16441ae8"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.R__d08__depth.png",
+              "w": 39,
+              "h": 29,
+              "sha256": "7c543001912486db6ca87701944b81ed78ebaa14088a4f7e0648e7bda58056a0"
             }
           },
           "filesHi": {
@@ -3788,6 +4052,12 @@
               "w": 29,
               "h": 32,
               "sha256": "93896327c6d321808b4688cd1998253af0d466868acdbae3cc2ebe88df3a439a"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.R__d09__depth.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "5c301ff02ed9d24cfb5b7e9b01b081cc5efc0da0ed6e1aa58477f25f0368ce1f"
             }
           },
           "filesHi": {
@@ -3853,6 +4123,12 @@
               "w": 16,
               "h": 32,
               "sha256": "ca4ab5ab40ed2a941edafc676b8f1cb9f4fdc3c37530c0b965067a53de2a5c99"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.R__d10__depth.png",
+              "w": 16,
+              "h": 32,
+              "sha256": "5a7e622fa9be4fdfbaf2a5d5367a6bb89c60d569c2595db0f70d73ed80148330"
             }
           },
           "filesHi": {
@@ -3918,6 +4194,12 @@
               "w": 29,
               "h": 31,
               "sha256": "76b79619dfec584bb5b7e26fcedf62f2145e1c96875bf72373208ff4dcc006b5"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.R__d11__depth.png",
+              "w": 29,
+              "h": 31,
+              "sha256": "ae0e3f81742bdb801b975817c9ca7dfd63474ca237704c77707d6b04b1d2e0bc"
             }
           },
           "filesHi": {
@@ -3983,6 +4265,12 @@
               "w": 39,
               "h": 28,
               "sha256": "e6f0abc888936c8f4ac569bb452ba584d86746246887a51376d80b3cb3901fea"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.R__d12__depth.png",
+              "w": 39,
+              "h": 28,
+              "sha256": "4fcbaad6af0486c72b8cf86d221508cacc3c1e60106cf738fb4d2a923e22ff0f"
             }
           },
           "filesHi": {
@@ -4048,6 +4336,12 @@
               "w": 44,
               "h": 24,
               "sha256": "1a4994a8f8f54a65c74530b2a4182a64021c97420b8dfd7e06b2564ed0eaa97f"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.R__d13__depth.png",
+              "w": 44,
+              "h": 24,
+              "sha256": "a7333b2b6459424e0c5b0849a11fe4454973519ded5b52ebcac5c356aaa88cc5"
             }
           },
           "filesHi": {
@@ -4113,6 +4407,12 @@
               "w": 45,
               "h": 19,
               "sha256": "cab487561b03d17f40a5f0d25690c6714e946199f3f86ad983c3875c835f3a6c"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.R__d14__depth.png",
+              "w": 45,
+              "h": 19,
+              "sha256": "32a01fa60045dd2d39e931a17cd863bb366390aa2f0638cf175d8bffd34b2ce4"
             }
           },
           "filesHi": {
@@ -4178,6 +4478,12 @@
               "w": 45,
               "h": 25,
               "sha256": "234c9f6e977a5f5c23b7d8eedfa9890392bc59a242c6021b5e78cab36afa072d"
+            },
+            "depth": {
+              "file": "sheets/artillery__running.R__d15__depth.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "88356e34c5f20cf3b6ddc8e66b95cfe18ee1859d27f52deed5d2207bf5f2eee7"
             }
           },
           "filesHi": {
@@ -4225,6 +4531,11 @@
         150
       ],
       "traverse": true,
+      "traverseRoot": [
+        268,
+        256,
+        150
+      ],
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -4275,6 +4586,12 @@
               "w": 33,
               "h": 26,
               "sha256": "5d5d614170e2f237423247bc084a687849a1b1cc3f487b218a42c5907cff2cde"
+            },
+            "depth": {
+              "file": "sheets/artillery__turret__d00__depth.png",
+              "w": 33,
+              "h": 26,
+              "sha256": "4150c585818fbc22dbb0581f7af512021eef4fe548416c7db6ca667ffa14bf07"
             }
           },
           "filesHi": {
@@ -4340,6 +4657,12 @@
               "w": 32,
               "h": 26,
               "sha256": "6fae111100cc201138bd35f5639e9f7782ce1728076fcaa81033d6cd019c6e04"
+            },
+            "depth": {
+              "file": "sheets/artillery__turret__d01__depth.png",
+              "w": 32,
+              "h": 26,
+              "sha256": "926670d89e8e7d70d5689beafb174ed0626738c021045d4f7c498c0dc1bc5849"
             }
           },
           "filesHi": {
@@ -4405,6 +4728,12 @@
               "w": 30,
               "h": 27,
               "sha256": "a08f2bd16917dcf25c3ae8184caf53b5e5ca051f46b552f1a9c6018d8605967f"
+            },
+            "depth": {
+              "file": "sheets/artillery__turret__d02__depth.png",
+              "w": 30,
+              "h": 27,
+              "sha256": "f0472342017700a546c68e54ccadb4971f88f7b05d2449898a6e9b40b4f87ef2"
             }
           },
           "filesHi": {
@@ -4470,6 +4799,12 @@
               "w": 32,
               "h": 28,
               "sha256": "4ffa0f74b64b6821c68058876d0d82b6a16c98ac35ba7c3b16d81fc9e9aafe65"
+            },
+            "depth": {
+              "file": "sheets/artillery__turret__d03__depth.png",
+              "w": 32,
+              "h": 28,
+              "sha256": "3daf9150eafcb1f4f05842f3023e85d7856657a62f364dfb7eff8647cbefdb4f"
             }
           },
           "filesHi": {
@@ -4535,6 +4870,12 @@
               "w": 33,
               "h": 28,
               "sha256": "5d7d3abfac78541678dc95b57f82aa44ee63a29351ca1b9061a3d8dbff8ef6f9"
+            },
+            "depth": {
+              "file": "sheets/artillery__turret__d04__depth.png",
+              "w": 33,
+              "h": 28,
+              "sha256": "434598b91b835ae153200b5b7ee0d895834606af0d34d95b5d7e3432691334d1"
             }
           },
           "filesHi": {
@@ -4600,6 +4941,12 @@
               "w": 32,
               "h": 27,
               "sha256": "cba4466f69e2921b49a7535e0b719d580c4e3c46aaf6f3aeeb8f3b09fa9d5068"
+            },
+            "depth": {
+              "file": "sheets/artillery__turret__d05__depth.png",
+              "w": 32,
+              "h": 27,
+              "sha256": "c305336736afd57a83ac3986a14ca927d623fcf7e4e9b9a3ddad1d5725a71eb5"
             }
           },
           "filesHi": {
@@ -4665,6 +5012,12 @@
               "w": 30,
               "h": 27,
               "sha256": "3241f1e717ee23144317f9c9dbe36290d99f783df4888a7c2f55ad5b688b57db"
+            },
+            "depth": {
+              "file": "sheets/artillery__turret__d06__depth.png",
+              "w": 30,
+              "h": 27,
+              "sha256": "456085ffeca143b1753547e1685a4080b1817aa7592b1c4aaed56df30e7bb6ff"
             }
           },
           "filesHi": {
@@ -4730,6 +5083,12 @@
               "w": 33,
               "h": 26,
               "sha256": "5b5011f79c52a039c0f1a0eb888793e966ee1ba3db62337ac531f0900559c1ba"
+            },
+            "depth": {
+              "file": "sheets/artillery__turret__d07__depth.png",
+              "w": 33,
+              "h": 26,
+              "sha256": "5817352adcac440a3ef24e889123bf939f8d467247e172e6384e1e15cb815bc0"
             }
           },
           "filesHi": {
@@ -4795,6 +5154,12 @@
               "w": 33,
               "h": 25,
               "sha256": "f94be14d3fa28bfa65a47fb7b1e463a66b91b5167fdbcf6f044d4827a5f71d45"
+            },
+            "depth": {
+              "file": "sheets/artillery__turret__d08__depth.png",
+              "w": 33,
+              "h": 25,
+              "sha256": "caac6f04425ff141136f6cf7e8d8c991155088f0b9cf8e279cef39aa8116bed4"
             }
           },
           "filesHi": {
@@ -4860,6 +5225,12 @@
               "w": 32,
               "h": 25,
               "sha256": "7d79611a07210bcb996237cc8926835381c7844207a4eae25d493ee933843dd0"
+            },
+            "depth": {
+              "file": "sheets/artillery__turret__d09__depth.png",
+              "w": 32,
+              "h": 25,
+              "sha256": "51e172ee0842408cddae62d7c4a83b44a9fa305a16bee3c7a3292de13935981f"
             }
           },
           "filesHi": {
@@ -4925,6 +5296,12 @@
               "w": 30,
               "h": 24,
               "sha256": "f2b58804313bd944323755f8cd4b82693009b6dba0f1c325c16697c9e1b32b8b"
+            },
+            "depth": {
+              "file": "sheets/artillery__turret__d10__depth.png",
+              "w": 30,
+              "h": 24,
+              "sha256": "e7fa16778d062cbce9ccf8bb2ddbafbdcc9c3f1edfa711a73c2b5d3ffe2b1526"
             }
           },
           "filesHi": {
@@ -4990,6 +5367,12 @@
               "w": 32,
               "h": 26,
               "sha256": "0de90d012a3f743bda913f12c1a8090f374a9a124d0e94bc23a57b43c93a4397"
+            },
+            "depth": {
+              "file": "sheets/artillery__turret__d11__depth.png",
+              "w": 32,
+              "h": 26,
+              "sha256": "ee903b64acbbdecea725e51d087a0ebc3a40c5260123f5258d6b4b03743ffac1"
             }
           },
           "filesHi": {
@@ -5055,6 +5438,12 @@
               "w": 33,
               "h": 25,
               "sha256": "9b550f93c7c2d436976be35517d22a5650ad477ab86b3fb734c4393b15eebd7f"
+            },
+            "depth": {
+              "file": "sheets/artillery__turret__d12__depth.png",
+              "w": 33,
+              "h": 25,
+              "sha256": "997483d02f1ec4f4289ab22941ad9ec549ce943fb91a2f9781e311964303c7a2"
             }
           },
           "filesHi": {
@@ -5120,6 +5509,12 @@
               "w": 32,
               "h": 25,
               "sha256": "605f493b5c7f9b8c21c9b792ec39ff45ef9b8aef325375722667cf430142ddb9"
+            },
+            "depth": {
+              "file": "sheets/artillery__turret__d13__depth.png",
+              "w": 32,
+              "h": 25,
+              "sha256": "7c254ae2a8f041cdedbf8b62c088031fa5d2d242cb46243a0497756e342a9484"
             }
           },
           "filesHi": {
@@ -5185,6 +5580,12 @@
               "w": 30,
               "h": 25,
               "sha256": "6ae85ebedfbde53f157923411c52bd5d060c9a6e8756923d9e50d018acd0a385"
+            },
+            "depth": {
+              "file": "sheets/artillery__turret__d14__depth.png",
+              "w": 30,
+              "h": 25,
+              "sha256": "3cdc94fad95650d8e0f91effe35a89d0fa01193be32c267e0409c59ba4b0320c"
             }
           },
           "filesHi": {
@@ -5250,6 +5651,12 @@
               "w": 33,
               "h": 25,
               "sha256": "1c395f56311c6269b0f6625ba7b35bb8aa20d2bfa12cf5eb3b8b25acb81af3a0"
+            },
+            "depth": {
+              "file": "sheets/artillery__turret__d15__depth.png",
+              "w": 33,
+              "h": 25,
+              "sha256": "a471f835b5cfd36d158a3e37dcc38ecb4c59266cd3a2ef41f6b61bdafd6bcaf5"
             }
           },
           "filesHi": {
@@ -5297,6 +5704,11 @@
         208
       ],
       "traverse": true,
+      "traverseRoot": [
+        268,
+        256,
+        150
+      ],
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -5347,6 +5759,12 @@
               "w": 20,
               "h": 16,
               "sha256": "f19be6ae96677a9aa2c90bb73a80354b54d533a44d9015429eb21dbb86fc431e"
+            },
+            "depth": {
+              "file": "sheets/artillery__barrel__d00__depth.png",
+              "w": 20,
+              "h": 16,
+              "sha256": "f0a58feb195aa896ec45736f50f9430f60379e158cbad2417e57a1501b4d0cd6"
             }
           },
           "filesHi": {
@@ -5412,6 +5830,12 @@
               "w": 18,
               "h": 15,
               "sha256": "43ea777af680019bfc77e97f9a30d81e749bb6ce74a1bfe8064187abc6c7f759"
+            },
+            "depth": {
+              "file": "sheets/artillery__barrel__d01__depth.png",
+              "w": 18,
+              "h": 15,
+              "sha256": "fbe1473e22d957e6358a608271a426d79171dbaee98db70687caa57091750244"
             }
           },
           "filesHi": {
@@ -5477,6 +5901,12 @@
               "w": 15,
               "h": 14,
               "sha256": "7a7da065a1fca5ad226954cfc14f8b1cf5baf370727f8d78910610c36bda1dda"
+            },
+            "depth": {
+              "file": "sheets/artillery__barrel__d02__depth.png",
+              "w": 15,
+              "h": 14,
+              "sha256": "7e43b1c929c0b9f7ccda7f42c1ac2aa914d88e9494f86d8dafbe40277f86a1a9"
             }
           },
           "filesHi": {
@@ -5542,6 +5972,12 @@
               "w": 18,
               "h": 15,
               "sha256": "73b293bbc008ac07a925312c537847f76cd68799f7a2f8a3677b8a3059171ef2"
+            },
+            "depth": {
+              "file": "sheets/artillery__barrel__d03__depth.png",
+              "w": 18,
+              "h": 15,
+              "sha256": "951a10762965c4f5e331a64a424871ae5386fc6b5095a9402a2d098b1c475455"
             }
           },
           "filesHi": {
@@ -5607,6 +6043,12 @@
               "w": 20,
               "h": 16,
               "sha256": "90cddd20a2e09cc057ef664923a7052f806501acb05f636dbf756b5405d8936b"
+            },
+            "depth": {
+              "file": "sheets/artillery__barrel__d04__depth.png",
+              "w": 20,
+              "h": 16,
+              "sha256": "3eac761fe3c98d4c2d646096b7302587e7e855ee6e2f91d4c5cf94a809d9b1b1"
             }
           },
           "filesHi": {
@@ -5672,6 +6114,12 @@
               "w": 22,
               "h": 18,
               "sha256": "89ee85f53cc8ec2b55e531e44abdee31ce92c18b9906d58c5dd26d4484a388b2"
+            },
+            "depth": {
+              "file": "sheets/artillery__barrel__d05__depth.png",
+              "w": 22,
+              "h": 18,
+              "sha256": "1e7e1c58cf64bfcff5c280e4a62b4b9dd784cb58130dc6154fc109b98e15e099"
             }
           },
           "filesHi": {
@@ -5737,6 +6185,12 @@
               "w": 21,
               "h": 19,
               "sha256": "3da8d023b5f612df7420f81f38c2d8ba47f2c9cc1051736234bfdcf09761d501"
+            },
+            "depth": {
+              "file": "sheets/artillery__barrel__d06__depth.png",
+              "w": 21,
+              "h": 19,
+              "sha256": "7155afc88e67d916834f405bd053fad91461c5ef21629544aa2f195c886deb3d"
             }
           },
           "filesHi": {
@@ -5802,6 +6256,12 @@
               "w": 22,
               "h": 21,
               "sha256": "848405d49f869f510238436961392d525bb3d393ed73b7ffa5335e3edcd32cce"
+            },
+            "depth": {
+              "file": "sheets/artillery__barrel__d07__depth.png",
+              "w": 22,
+              "h": 21,
+              "sha256": "36cfbcbc4df449335bf364204dd833baa48faf4203e2a733ae83dee0c396c457"
             }
           },
           "filesHi": {
@@ -5867,6 +6327,12 @@
               "w": 20,
               "h": 22,
               "sha256": "c92a78c10b3e1d67daba9744d3886d4202bbb8908a7f77faecd749bfef037e8e"
+            },
+            "depth": {
+              "file": "sheets/artillery__barrel__d08__depth.png",
+              "w": 20,
+              "h": 22,
+              "sha256": "0d53ade77a08f966cc46723226823d3a90f6a58ff34a56dc52cccb8ff4a85841"
             }
           },
           "filesHi": {
@@ -5932,6 +6398,12 @@
               "w": 18,
               "h": 22,
               "sha256": "27af937b372bf6a8e92072544a972909159054ee8e081aede8f0ab585bcbf699"
+            },
+            "depth": {
+              "file": "sheets/artillery__barrel__d09__depth.png",
+              "w": 18,
+              "h": 22,
+              "sha256": "e21477b155067abd726d57bba7e67035d8d1858d80662bd5d04d10c7167d2639"
             }
           },
           "filesHi": {
@@ -5997,6 +6469,12 @@
               "w": 15,
               "h": 23,
               "sha256": "0f38a41b797f0e69fb7585e78846a2002626b00154681bb2700eff39da8cdcd9"
+            },
+            "depth": {
+              "file": "sheets/artillery__barrel__d10__depth.png",
+              "w": 15,
+              "h": 23,
+              "sha256": "2be4067f8e6525415d73170f3ae48de950806a9dbe054882cd53bdaa67c91526"
             }
           },
           "filesHi": {
@@ -6062,6 +6540,12 @@
               "w": 18,
               "h": 23,
               "sha256": "99a997d58baf01e4963caac7e1b3303fb1d9ec1531e9b3ae8ec65019eb28f5c0"
+            },
+            "depth": {
+              "file": "sheets/artillery__barrel__d11__depth.png",
+              "w": 18,
+              "h": 23,
+              "sha256": "9d2fc8a519c03e1e85b55d55aa0935c8e900d492913b9dce11244526b054616c"
             }
           },
           "filesHi": {
@@ -6127,6 +6611,12 @@
               "w": 20,
               "h": 22,
               "sha256": "a56cbdeadbfbb8690c1339dc82ffaccc04cf5e8cd55278a3870b02f8619d5194"
+            },
+            "depth": {
+              "file": "sheets/artillery__barrel__d12__depth.png",
+              "w": 20,
+              "h": 22,
+              "sha256": "3525c811d8a869b95e6b1c128b18fdc604b10ec939dec30cbe303ecc874d4777"
             }
           },
           "filesHi": {
@@ -6192,6 +6682,12 @@
               "w": 22,
               "h": 21,
               "sha256": "77d3d1fbabe979163f5bd2f94b3ed0994ccdf259211c3890af98547a569101e3"
+            },
+            "depth": {
+              "file": "sheets/artillery__barrel__d13__depth.png",
+              "w": 22,
+              "h": 21,
+              "sha256": "4e4ad05840d10cd7e4f4dd1f5b292f90e0fe06bee04941d29509fba3d2495687"
             }
           },
           "filesHi": {
@@ -6257,6 +6753,12 @@
               "w": 21,
               "h": 19,
               "sha256": "fa2d6f1a364a749739df115c9350ff865015ed09f8b23d68887245a8b80f84b6"
+            },
+            "depth": {
+              "file": "sheets/artillery__barrel__d14__depth.png",
+              "w": 21,
+              "h": 19,
+              "sha256": "1eb4fcb6325a85e50c08a7711e249f71a3bb256c2773edaf46df89da77c8e233"
             }
           },
           "filesHi": {
@@ -6322,6 +6824,12 @@
               "w": 22,
               "h": 18,
               "sha256": "a75e10395034000bce6ce5c79ae10f7457ecb0860d96feac638d4cd1f8fe3f3c"
+            },
+            "depth": {
+              "file": "sheets/artillery__barrel__d15__depth.png",
+              "w": 22,
+              "h": 18,
+              "sha256": "e8f92a2b98677a2c8bbdc046441012798a560cc9679fe548980ebf96b375fe95"
             }
           },
           "filesHi": {
@@ -6477,15 +6985,15 @@
         "files": {
           "albedo": {
             "file": "sheets/artillery__composite__d00__albedo.png",
-            "sha256": "f28b5cbdafa72315434e05dc024670ccc1d5601634d8565351a6172a2fd7f761"
+            "sha256": "ac26eebf98cb0ba1fd317389c12e4250d176c0fc96e4bdd6edd085a158708cbd"
           },
           "normal": {
             "file": "sheets/artillery__composite__d00__normal.png",
-            "sha256": "883bef30ca9d2aa83d63ebd5303ffbd2de8c20cb0a219599f55ac1d1dcbd7512"
+            "sha256": "0ccec915be62e84739d5ddd2d347280a740984ffcf937ee404e7b43e931264bc"
           },
           "material": {
             "file": "sheets/artillery__composite__d00__material.png",
-            "sha256": "b500fe1a41bf339e36485162fb46d8271901727cb9b734e9620bdc45ae208b37"
+            "sha256": "84e56320a899a328d4f2a012e3afd7c276d1c7f7cd292577e09052d6d3b7c2c2"
           }
         }
       },
@@ -6495,15 +7003,15 @@
         "files": {
           "albedo": {
             "file": "sheets/artillery__composite__d01__albedo.png",
-            "sha256": "39a6a05e2ab2345a9f767017f40c6642b04f734baf30d084dcbefd18d048b157"
+            "sha256": "eb8f83ca51c747ae3eddeca1227de1ce226fe1d1fadaa89a3bf788ac1647cf6a"
           },
           "normal": {
             "file": "sheets/artillery__composite__d01__normal.png",
-            "sha256": "c92f7cf0438f236e080d6356e58f0db3c3f9931e8dba4db851282a3543abab1b"
+            "sha256": "d285e6a4203bf840562fbcfcdcd24ab2f779162fa24a3475b275c35f4c13cd06"
           },
           "material": {
             "file": "sheets/artillery__composite__d01__material.png",
-            "sha256": "fd06c8021cb57605ae1ed6800affa7b9d0be43927856f719bc4b4795a73dc1d5"
+            "sha256": "3d2634522e25ac76c1adf843348ceab852a6a56cdd870aba0a3ec3f9625231de"
           }
         }
       },
@@ -6513,15 +7021,15 @@
         "files": {
           "albedo": {
             "file": "sheets/artillery__composite__d02__albedo.png",
-            "sha256": "ada85ce59e26a7effb32828d4efc8c111bd7881e7f5aa8e6fb52c7a186561fc2"
+            "sha256": "570b14bc8c85b54033c7d470f80c966a48f6134b7b26fcdaf096bfba34d22ce6"
           },
           "normal": {
             "file": "sheets/artillery__composite__d02__normal.png",
-            "sha256": "e4484a37f1e8c106e9b9be5ace3e643d576bc824a5d8f134bd346368796ca070"
+            "sha256": "6a8cff5ab2b8b57100ae52817b4aa272843a66890303a38a572addf7a5cd6755"
           },
           "material": {
             "file": "sheets/artillery__composite__d02__material.png",
-            "sha256": "91d4a40590fd74d2d978f35f9eab83e7260485dd121eeab6dc4a3b2000e257d4"
+            "sha256": "66a23e5535fd60b508653e8c82f2029e19e598cca6a2618dc573f86e0143a7f2"
           }
         }
       },
@@ -6531,15 +7039,15 @@
         "files": {
           "albedo": {
             "file": "sheets/artillery__composite__d03__albedo.png",
-            "sha256": "530b24c852b03861bebc5331dabef0169c497063fd21f73dea5fa2ac95706746"
+            "sha256": "ef9d2a25778755efcb43589179d73dffb273ea099e5090953660e51a58d92470"
           },
           "normal": {
             "file": "sheets/artillery__composite__d03__normal.png",
-            "sha256": "4530578aa94892e8dc9d0afc7426fab0836478d62d94efd59ae516a26561ba49"
+            "sha256": "f795004dfffa87f8fdbc302adfd905f7277adfbc28805a85e1c9f3131e836ea1"
           },
           "material": {
             "file": "sheets/artillery__composite__d03__material.png",
-            "sha256": "6f9cfeea9466974692a790d7aa4b4149ddd91bc6e7056a6679488fa91d0d9f3f"
+            "sha256": "2bc6eeb054d87bb40b30d040af74384699136ff57f2efe232294e1a3bf23473b"
           }
         }
       },
@@ -6549,15 +7057,15 @@
         "files": {
           "albedo": {
             "file": "sheets/artillery__composite__d04__albedo.png",
-            "sha256": "7f6099c2d5707c6fa1dc8068c8c9cffcce3589938f35580588bff83788e97fcc"
+            "sha256": "909c01e3b4897afba602094c70e485e3c0e3035f4de6baf06814fc95e056223f"
           },
           "normal": {
             "file": "sheets/artillery__composite__d04__normal.png",
-            "sha256": "c04fe8fefb9135464144a611479eff5affd3ba4e0a354cca36a07146ffe14db4"
+            "sha256": "472addf9a1e6759172cc0f0826f0c3516466c3b36e52c97aa6b5f77456242d9e"
           },
           "material": {
             "file": "sheets/artillery__composite__d04__material.png",
-            "sha256": "9e09f2330747d31dd9a3f2233f714096e7e0090dcefa26827df1c04e6416551c"
+            "sha256": "e74c60c80c706941172d49bbb9790706ad3067e0e917bde830c6738341e6c018"
           }
         }
       },
@@ -6567,15 +7075,15 @@
         "files": {
           "albedo": {
             "file": "sheets/artillery__composite__d05__albedo.png",
-            "sha256": "98fc0d4f321f7288de278ed22b82308dff6f40c946d1a98a3754bc841f0e8def"
+            "sha256": "2175e076a735dff913bc46b551b7269626d5c987b2282c66f5d7890710bea115"
           },
           "normal": {
             "file": "sheets/artillery__composite__d05__normal.png",
-            "sha256": "4874bd65b66390a2484717927a2c6f1f302588bb081aa9993abcfbf431a09f31"
+            "sha256": "32b21e589421970b9269faf95561a9b40f15b696a0071c5cb59d2dc25ec81348"
           },
           "material": {
             "file": "sheets/artillery__composite__d05__material.png",
-            "sha256": "99984d0c0a132895e0e68a3e66c26e00b55457963cd055c7b0c53b8e52665bf4"
+            "sha256": "255c1c1d4a60af63448be03f151e5fe4fd283328ce52cb078cce23ce6b91e345"
           }
         }
       },
@@ -6585,15 +7093,15 @@
         "files": {
           "albedo": {
             "file": "sheets/artillery__composite__d06__albedo.png",
-            "sha256": "aa39f1addfbdd6db34a0395f66d17b886e1ac8a4b34fc38068393660d1d3a850"
+            "sha256": "8efcf02fd648562a1d8fe4bd2d618360e1986ec43425f76742eb668e41aad588"
           },
           "normal": {
             "file": "sheets/artillery__composite__d06__normal.png",
-            "sha256": "6f81de797f2abdcfcce123fbd17ce24cdf02c1b3568d8280ce8d09c4eea425f8"
+            "sha256": "9b73ad3b34a9a1bd2d16c9748927ca8e681cde1871c432c30f5190df5fca894d"
           },
           "material": {
             "file": "sheets/artillery__composite__d06__material.png",
-            "sha256": "086b632ccd45e6ae75b8d55277e945a1ec24d25f065cdb8182546a48770ec733"
+            "sha256": "c215995cedb45c72d34b93f9f3b1e05ff8e5bbc606d3b616f7be0e4515633a68"
           }
         }
       },
@@ -6603,15 +7111,15 @@
         "files": {
           "albedo": {
             "file": "sheets/artillery__composite__d07__albedo.png",
-            "sha256": "5f821d0bf358d3fa89d2d57783a5752aabf5564944fe8e1063a6cf52793abffe"
+            "sha256": "172a134cad21565108b508f02f20f551943922a3ed969a8655d206c55ef20773"
           },
           "normal": {
             "file": "sheets/artillery__composite__d07__normal.png",
-            "sha256": "348acec9d4cabc0403d3e2585088ea8b6601af929e368969bed9d1252a0e87ec"
+            "sha256": "a17896bc064e4d2dc5fe92ddeb5604526faafbb378000707aaac68f43ee3fcb2"
           },
           "material": {
             "file": "sheets/artillery__composite__d07__material.png",
-            "sha256": "c45cac3b85109165e15dc68617bc05e9816761a490062e84b4560e7a873a1b00"
+            "sha256": "190e278b29bf0734103d1a2a6a983a0510c4f583498701810f3ee2efee8854a1"
           }
         }
       },
@@ -6621,15 +7129,15 @@
         "files": {
           "albedo": {
             "file": "sheets/artillery__composite__d08__albedo.png",
-            "sha256": "49bde3aec7a3f03e35a21af257106be97ba2a79d369cccadcc970982479b097e"
+            "sha256": "9357f46fd91267c9a1564af13720dec953e9c436212b2eb11c9aaa2efd4d07cb"
           },
           "normal": {
             "file": "sheets/artillery__composite__d08__normal.png",
-            "sha256": "41141f5853949cf13a6907c344215dd4349c02ac9ea1857dfe9a71ca459e6cc8"
+            "sha256": "e810954385e3ac858b4566c8e98d278753a0041519966738c4c852f9776031dd"
           },
           "material": {
             "file": "sheets/artillery__composite__d08__material.png",
-            "sha256": "50ccf69b2b727c1ba5879a42108b265d0367ff185f2abfea59316151e7705af1"
+            "sha256": "71058e9fe49ea5e325b1aa798ee2e88d8357dbf621c014eb0942e0d32cdb1009"
           }
         }
       },
@@ -6639,15 +7147,15 @@
         "files": {
           "albedo": {
             "file": "sheets/artillery__composite__d09__albedo.png",
-            "sha256": "f3b66559e24c03125b838836954bf2c7a94c663678c4ba44b843e9136f4789a2"
+            "sha256": "fee00e39303e445221cb2fd3a3b6733474c72b90b9fda17be258d23d0293d926"
           },
           "normal": {
             "file": "sheets/artillery__composite__d09__normal.png",
-            "sha256": "072ac0ea2d6fec0d18eda09e425f1388f98bd669b929c280b9cec1bf32df4920"
+            "sha256": "463c98d30183a177b1db0aa8dcdf7d9564d251320c9f756bbce5d98e5a6e35ab"
           },
           "material": {
             "file": "sheets/artillery__composite__d09__material.png",
-            "sha256": "c7c085a4375973764fc33899318f63c716ce38eb2ffa8216110fea37019ec1cd"
+            "sha256": "8426b457ada61e70c6a9a794945f4e8370952641dae812931ba7947b4a845da5"
           }
         }
       },
@@ -6657,15 +7165,15 @@
         "files": {
           "albedo": {
             "file": "sheets/artillery__composite__d10__albedo.png",
-            "sha256": "aa70b288321ae87237a007826bd57ad30c142bcef493c7348ef6c8be586ada0d"
+            "sha256": "840007acdcc7c8fa65c1ed22edc4daf86c97484770532b66f8300ca5ee548a15"
           },
           "normal": {
             "file": "sheets/artillery__composite__d10__normal.png",
-            "sha256": "a2e4284e1841adebb90ce593e61fd8fcdfacdae42372cb88197018a6bd13c1cb"
+            "sha256": "19baef5123baad7325f8fcab0335b7d22fbdb44072491b0b378b45d931ba04e4"
           },
           "material": {
             "file": "sheets/artillery__composite__d10__material.png",
-            "sha256": "affa5aea53990690730a2405f12b277f87acabe183398921dffeb20a1fc21f0c"
+            "sha256": "c8a6fc7fbb4882f2d53b1f05cba0c69309813d0b70cbdaf0fdf4ef126a09a02e"
           }
         }
       },
@@ -6675,15 +7183,15 @@
         "files": {
           "albedo": {
             "file": "sheets/artillery__composite__d11__albedo.png",
-            "sha256": "d0157f3db007fd471f004860b8a30c2472a127a3077bbfaf16efc543011ea295"
+            "sha256": "3fb2f0e51ab9efefce92cbf2416542cd64f98d0e7efff4684b6f9fb76b638bff"
           },
           "normal": {
             "file": "sheets/artillery__composite__d11__normal.png",
-            "sha256": "a4be537085f233a840630a6f71eaf924345c480c76830e1f1ca0781bbf73a1bb"
+            "sha256": "93d1a4b52e01de418f4edc35d82a56695b1a3674111bcf894ac1fda717fea171"
           },
           "material": {
             "file": "sheets/artillery__composite__d11__material.png",
-            "sha256": "253405d2b4a080eaefcc4de60b1d42fd9112a5ee18e3a8384c116d55fac7c7c8"
+            "sha256": "16b54a45faefcad76d8f72107721be1355ac2816a1d99c1ca54b8766dedab681"
           }
         }
       },
@@ -6693,15 +7201,15 @@
         "files": {
           "albedo": {
             "file": "sheets/artillery__composite__d12__albedo.png",
-            "sha256": "00b04010e4b54d0387d04ff8e1e343920121bb99b1d222768f70c2f62844edf7"
+            "sha256": "9033266b4f68b3d99ea1047ab4007f4e6e19ab25046bde7a6a793816ce82616a"
           },
           "normal": {
             "file": "sheets/artillery__composite__d12__normal.png",
-            "sha256": "eda63dc9e877af6f99dca8649066d191d9759005c341cb7d3a99ea01f01471c1"
+            "sha256": "cd6f632bbd41db15bedfb922b0697550de8ca6959296d301947440e0797cc247"
           },
           "material": {
             "file": "sheets/artillery__composite__d12__material.png",
-            "sha256": "3efa816f2c5cb3b48bacbcbfd207b04a6c79c3486e42224aa8bd3c350759ff95"
+            "sha256": "655eb07e7362b4a591131e025538306c28a69df8d9e7b7260d77786594255ba8"
           }
         }
       },
@@ -6711,15 +7219,15 @@
         "files": {
           "albedo": {
             "file": "sheets/artillery__composite__d13__albedo.png",
-            "sha256": "c88516ba3629a0c853417be1b029ef7d380e05c806b1cb5757a781439e188246"
+            "sha256": "f631a3e91a093c39b3ab1e3f03b9f7d5431cfca549b8cc845e719682a6ba4ee4"
           },
           "normal": {
             "file": "sheets/artillery__composite__d13__normal.png",
-            "sha256": "42b15f42702eb077b449b77734f466ea21e59415c85f17482244cab784146187"
+            "sha256": "b0d43f6f4de763e1949adac7996f6585ac9206e25eca296c089ea93f9a43dbc0"
           },
           "material": {
             "file": "sheets/artillery__composite__d13__material.png",
-            "sha256": "90498e5624b5393eb6ae17b79e6ea8e9251648902cad2666d86a730738e5092d"
+            "sha256": "113ecdda4085c4451d7e9477c700dcf29c87198c7cf52481a1d58fe65c075447"
           }
         }
       },
@@ -6729,15 +7237,15 @@
         "files": {
           "albedo": {
             "file": "sheets/artillery__composite__d14__albedo.png",
-            "sha256": "ec8a17d6ef5ded428b8d9209133f2025ff2f245e620dc79f28980062413cc158"
+            "sha256": "bb8fec2277e6667a8eb7e77c99b80a082a201c074371347f7ccd570669d85f7d"
           },
           "normal": {
             "file": "sheets/artillery__composite__d14__normal.png",
-            "sha256": "3799d697324df8afb0415278bc19c69ae5fb1fc6029c2682561210592bf0d018"
+            "sha256": "a0db8816df518e961bf6d6c55b593721fee36e8e1182a88ba93888c10c349151"
           },
           "material": {
             "file": "sheets/artillery__composite__d14__material.png",
-            "sha256": "3d747325c03a5551c8f7d064c811a0e8342f38ef46fa6bad53b61f2baa770899"
+            "sha256": "d849420f0609abd3536db6b3e9aa53aff1a203c3c5c4918f92a2a63cf8da0724"
           }
         }
       },
@@ -6747,15 +7255,15 @@
         "files": {
           "albedo": {
             "file": "sheets/artillery__composite__d15__albedo.png",
-            "sha256": "ec5dae49652852585cc10dc0c37a2903906d34bf6dafe1fe998826b8286511ab"
+            "sha256": "4763a2616d3c6fb5c4afdadcf96bd5ab4281cb1d218b318293c5b86e7a3c1edf"
           },
           "normal": {
             "file": "sheets/artillery__composite__d15__normal.png",
-            "sha256": "a7a5d45e4c2c5337196115960c01df840002162cacf4fb55fd27c2ea57b46da6"
+            "sha256": "5c01178358f8c0f4d00122101668c498f8b8c6d1068b2de7b4e33adbb1601271"
           },
           "material": {
             "file": "sheets/artillery__composite__d15__material.png",
-            "sha256": "81266fe82fc4bb2384754f624a51b4c0479281b6971b7f3b084a60dd259e2451"
+            "sha256": "fd3cc98238f62c3edbceb0bd05d1a1e6b3473c9afd45baf6e798b2c2825b33ca"
           }
         }
       }
@@ -6769,97 +7277,97 @@
         "file": "sheets/artillery__lit__d00__albedo.png",
         "w": 61,
         "h": 47,
-        "sha256": "090932e37c29f1f6d0de2cdf1c40dba3ba7ecc48406d341f772da958bc88dd9d"
+        "sha256": "a6961add68d5157d3f1e5622478df9f4da28a2b37ed1ae69d52db6f36a77aaff"
       },
       "d01": {
         "file": "sheets/artillery__lit__d01__albedo.png",
         "w": 57,
         "h": 48,
-        "sha256": "cd609a8cd65beceecc63de43264f29116ed1697e0aca67687915cdfd40d88f8a"
+        "sha256": "8e4fbc582157f2bed8905b6ccfe203106b819da4853dc0a9eb2e5ad76bede71b"
       },
       "d02": {
         "file": "sheets/artillery__lit__d02__albedo.png",
         "w": 47,
         "h": 46,
-        "sha256": "ec2f765da0d88c506322811db2d7fe96f9086b6c36fe608549f010c41466cacb"
+        "sha256": "ba78091d2e1d7ccb6a5fb6cf30f584dafa52177ab1cb8411ccf40532588ea266"
       },
       "d03": {
         "file": "sheets/artillery__lit__d03__albedo.png",
         "w": 56,
         "h": 48,
-        "sha256": "c14950112e2e308372429f14c1b2497c7dfbc140edde92aeaec3881cb1d8dc33"
+        "sha256": "88d197d06fb816c655882173545eb8e45b82ed0aa542b3e44c28992381ef860f"
       },
       "d04": {
         "file": "sheets/artillery__lit__d04__albedo.png",
         "w": 62,
         "h": 47,
-        "sha256": "96c1d085239101139decea6e1342ccffa71b06d3d508b193967eb057dd0766ff"
+        "sha256": "00156df02daf14f5bf281455580a5970d09156f140c2b736fbb73d31b8d9bd2b"
       },
       "d05": {
         "file": "sheets/artillery__lit__d05__albedo.png",
         "w": 61,
         "h": 45,
-        "sha256": "37cda8055d6bfb92cae63596a814f2e41b678f8097fc5be00258de70e15ab84d"
+        "sha256": "cb10ebe0d0b91175157c4f0c0a14540a59cb1e1d14bf340686e76d217c4f3f54"
       },
       "d06": {
         "file": "sheets/artillery__lit__d06__albedo.png",
         "w": 56,
         "h": 43,
-        "sha256": "b089489a4b1af54a3fcdae0d50be316798cfe5a4889b7457b8e46d234916b059"
+        "sha256": "5fb356fa1c80988894763438f98d393cfc835a74aba39c0804aedd258ca42378"
       },
       "d07": {
         "file": "sheets/artillery__lit__d07__albedo.png",
         "w": 60,
         "h": 47,
-        "sha256": "8914e49159e70bc34111a1da6273ce21dbc2e1d6b0e1e7dd4a7119ff26b83710"
+        "sha256": "ac1ea5b9884663860d8365ac07b580996d83ddbe36191617ca23e7648f877352"
       },
       "d08": {
         "file": "sheets/artillery__lit__d08__albedo.png",
         "w": 61,
         "h": 51,
-        "sha256": "22a9037fa1cb08314611b4596f941fcddba851e15fce1995daa2460302602b21"
+        "sha256": "29baa53d457d22d0e6e73441422fb03199785e2a04852f3e0a7b435ed6214c84"
       },
       "d09": {
         "file": "sheets/artillery__lit__d09__albedo.png",
         "w": 57,
         "h": 52,
-        "sha256": "256c37cd5ef62c0355a97db0a921591da3b4fa41908eec6fabfe2a4c0264b1f8"
+        "sha256": "ddf465eac9d451e203f1960bd72ca96d43bdda7e363f3e44907292d7226fab3f"
       },
       "d10": {
         "file": "sheets/artillery__lit__d10__albedo.png",
         "w": 47,
         "h": 52,
-        "sha256": "0ec21ebd6dcd56c3a997a1df3def054fc7eff24f08729779ba96114379dbbfae"
+        "sha256": "9f71a4f69a55267f3b7b7575450863380b0d8454f83c1033eb428c80896c52d0"
       },
       "d11": {
         "file": "sheets/artillery__lit__d11__albedo.png",
         "w": 56,
         "h": 53,
-        "sha256": "2bb41ce1cf36a9f75d8de783d34726119988e51e0c3a4a6511401f9ac3b95641"
+        "sha256": "cc3528a6282163afb933a45c7a5212492924ab60067ee505306e0f8c77d015ad"
       },
       "d12": {
         "file": "sheets/artillery__lit__d12__albedo.png",
         "w": 62,
         "h": 51,
-        "sha256": "39f8d5884f88de5f4ef5e1542f4a04420eb45ba86b20325689e70d7152bc337f"
+        "sha256": "b6f4fd96bf05335f923dd19a25863ccefaf0f360595892d6028f2974debe50bc"
       },
       "d13": {
         "file": "sheets/artillery__lit__d13__albedo.png",
         "w": 61,
         "h": 47,
-        "sha256": "e01d99db5753cd9c50a48eefe1244382a55b12da6b9c6ebfe00baffa02859a82"
+        "sha256": "966df82a5d28b26dc59ae0c915178c50d856cfbb16012c530a0a1cfc4d34944b"
       },
       "d14": {
         "file": "sheets/artillery__lit__d14__albedo.png",
         "w": 56,
         "h": 40,
-        "sha256": "781f1a4e86610fadd6d92960a3e7f043d484de5d3021e84669ce6db6ff7ca6c7"
+        "sha256": "cdae2e0b984af56790a5be8df6035e6dc2bf5c8b42b3f27bb99f4867a8ddb61e"
       },
       "d15": {
         "file": "sheets/artillery__lit__d15__albedo.png",
         "w": 60,
         "h": 44,
-        "sha256": "143b12dcd8e96d483e091eb7664b6d90b7d42319ec0fedc5e2d9a5582bff7c2a"
+        "sha256": "63286e06eec20a595711ec56969b6efbe6e7a4dad3121209857bea1a24ef6bf3"
       }
     }
   },

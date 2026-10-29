@@ -998,6 +998,21 @@
       }
     ]
   },
+  "depthMap": {
+    "note": "Per-part view depth, one PNG per part per facing. Composite by z-test on this; do NOT try to order segments by a single depth per part.",
+    "channelOrder": "rgba",
+    "meaning": [
+      "depthHi",
+      "depthLo",
+      "unused",
+      "covered"
+    ],
+    "encoding": "q = depthHi * 256 + depthLo; depth = q / scale - bias  (tile units = design voxels / 8)",
+    "scale": 256,
+    "bias": 128,
+    "coveredAlpha": 255,
+    "largerIsCloser": true
+  },
   "parts": {
     "body": {
       "name": "body",
@@ -1009,6 +1024,7 @@
         0
       ],
       "traverse": false,
+      "traverseRoot": null,
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -1059,6 +1075,12 @@
               "w": 49,
               "h": 32,
               "sha256": "1fbb1424445818b3cbecdda263dcafc7957ab23d004a076ea18b8f21ae405913"
+            },
+            "depth": {
+              "file": "sheets/missiles__body__d00__depth.png",
+              "w": 49,
+              "h": 32,
+              "sha256": "62857db3a055e651d0776d40fc48c146883e4433b13face7866bbf8bd93564a4"
             }
           },
           "filesHi": {
@@ -1124,6 +1146,12 @@
               "w": 42,
               "h": 33,
               "sha256": "9f0a282decd5587ce62277c5bdb4763612c8a9704800e3415e91b58b9deae96d"
+            },
+            "depth": {
+              "file": "sheets/missiles__body__d01__depth.png",
+              "w": 42,
+              "h": 33,
+              "sha256": "906c36fee898a3225d091613493bf843bcbb61d385d86b2ead4d45b3d42fce78"
             }
           },
           "filesHi": {
@@ -1189,6 +1217,12 @@
               "w": 32,
               "h": 33,
               "sha256": "e893df5a9e126598fd6577399f3155afecbb5002669c7c2168f9c0d162d6974f"
+            },
+            "depth": {
+              "file": "sheets/missiles__body__d02__depth.png",
+              "w": 32,
+              "h": 33,
+              "sha256": "70803d51e507dac13047f9b0b9e8cc53730588cd16cd95ef19ecdfae3acb7e3e"
             }
           },
           "filesHi": {
@@ -1254,6 +1288,12 @@
               "w": 42,
               "h": 35,
               "sha256": "265b9137f283a22477c5bfd29868b79fbcf543dfd695fd0b810db61ac6288926"
+            },
+            "depth": {
+              "file": "sheets/missiles__body__d03__depth.png",
+              "w": 42,
+              "h": 35,
+              "sha256": "dd1fa9bb73d0d5d728bdbf2fe714c562daa4c95cb69263623163c1d37bde99a7"
             }
           },
           "filesHi": {
@@ -1319,6 +1359,12 @@
               "w": 49,
               "h": 35,
               "sha256": "39255c8979b3d152a9957ede112ce9aa76c35475aadd26b26a891f5dbb24b446"
+            },
+            "depth": {
+              "file": "sheets/missiles__body__d04__depth.png",
+              "w": 49,
+              "h": 35,
+              "sha256": "65667ea24cad5012cf7a0250b78081918385d6851b31d7bbe09dba20b6397f09"
             }
           },
           "filesHi": {
@@ -1384,6 +1430,12 @@
               "w": 50,
               "h": 32,
               "sha256": "8b7288ea8b629ea9d2258a208a67d1443d81bf4e1d48ecbc2fb38fefb9ad170e"
+            },
+            "depth": {
+              "file": "sheets/missiles__body__d05__depth.png",
+              "w": 50,
+              "h": 32,
+              "sha256": "df54ee7b2ee3624f2c66f0b556514adee0cf0c7e3096304e4f2ddb2bc9935ede"
             }
           },
           "filesHi": {
@@ -1449,6 +1501,12 @@
               "w": 45,
               "h": 33,
               "sha256": "385fc16f8571403612794aebe2aa875672b2a48a1849a514cd48f79cc2ac3f0f"
+            },
+            "depth": {
+              "file": "sheets/missiles__body__d06__depth.png",
+              "w": 45,
+              "h": 33,
+              "sha256": "f5a5e072fa264ffc3474229a07006c52c0c0d6b90ad447e1bc13e8ee2915fb26"
             }
           },
           "filesHi": {
@@ -1514,6 +1572,12 @@
               "w": 49,
               "h": 37,
               "sha256": "33f38e605c587714ee563a013ed25df3eec0aa1b092091e184713133a0de6d15"
+            },
+            "depth": {
+              "file": "sheets/missiles__body__d07__depth.png",
+              "w": 49,
+              "h": 37,
+              "sha256": "230a80cc56ecd95d576e998cafc119e80ecb6549e840a93caced00c52557e91d"
             }
           },
           "filesHi": {
@@ -1579,6 +1643,12 @@
               "w": 49,
               "h": 39,
               "sha256": "4a44025bca075bb8997879649caf4c1e09fb79a1ff3481bfa764dcffad4b6962"
+            },
+            "depth": {
+              "file": "sheets/missiles__body__d08__depth.png",
+              "w": 49,
+              "h": 39,
+              "sha256": "85c16890652976539a45b1486687693a841e458584364f2ee8d28be02c97faf5"
             }
           },
           "filesHi": {
@@ -1644,6 +1714,12 @@
               "w": 42,
               "h": 40,
               "sha256": "70cae147d012d385bbf37fb11b58b0f15c8c276243db73d2cd6c24988c47e701"
+            },
+            "depth": {
+              "file": "sheets/missiles__body__d09__depth.png",
+              "w": 42,
+              "h": 40,
+              "sha256": "f819529632480786b5fbbd8b088561a712c10e622bf9a54d69fd0d008e9f8d41"
             }
           },
           "filesHi": {
@@ -1709,6 +1785,12 @@
               "w": 32,
               "h": 38,
               "sha256": "434aaf363e96dd37a07d30cafff423bfd15de63e0372e4783afc956e0fc2082b"
+            },
+            "depth": {
+              "file": "sheets/missiles__body__d10__depth.png",
+              "w": 32,
+              "h": 38,
+              "sha256": "44dd6a5041e23cc7e356af059acd7cf6df18c9ad26e2b50ae124f894a1583128"
             }
           },
           "filesHi": {
@@ -1774,6 +1856,12 @@
               "w": 42,
               "h": 36,
               "sha256": "bab11dfed276eff1c1d6d9fddf3889ee8a0eccb348d09fa5ecbf621e26a6d33a"
+            },
+            "depth": {
+              "file": "sheets/missiles__body__d11__depth.png",
+              "w": 42,
+              "h": 36,
+              "sha256": "5354d0d931e7c27b29676dbd2b485001f5b3fef3434bdbf90595832650b7fdbd"
             }
           },
           "filesHi": {
@@ -1839,6 +1927,12 @@
               "w": 49,
               "h": 35,
               "sha256": "5ae73f5c7d0152e7e8b6b40dccf5bb13fcb3f84d6751add562658995138e3bd4"
+            },
+            "depth": {
+              "file": "sheets/missiles__body__d12__depth.png",
+              "w": 49,
+              "h": 35,
+              "sha256": "1d21033ff93a2cf5854e2b5c095c4fc7d3caa648395d9b06abbd2232087f272d"
             }
           },
           "filesHi": {
@@ -1904,6 +1998,12 @@
               "w": 50,
               "h": 33,
               "sha256": "b756d8e60ff82f8c47b25d3b6cb39e995ba8d7a2397f4ceaa40ff42e6f04e3b9"
+            },
+            "depth": {
+              "file": "sheets/missiles__body__d13__depth.png",
+              "w": 50,
+              "h": 33,
+              "sha256": "156b1aacce2093fdd203d79444480521386a6d1a409beede60f543f5a0c36bdf"
             }
           },
           "filesHi": {
@@ -1969,6 +2069,12 @@
               "w": 45,
               "h": 29,
               "sha256": "20086204bef331533e7db840980e57e08194d110a9212bf90fc3a2f239a3024d"
+            },
+            "depth": {
+              "file": "sheets/missiles__body__d14__depth.png",
+              "w": 45,
+              "h": 29,
+              "sha256": "345e36183ec773c7e0ad0892ffd03ee35066cc84dc2941de7b915aa286e5356f"
             }
           },
           "filesHi": {
@@ -2034,6 +2140,12 @@
               "w": 49,
               "h": 29,
               "sha256": "ce0a7bd1afb3dc0bb9dedbd2e08c2050587614c4911117c4064f82fbd6d05b41"
+            },
+            "depth": {
+              "file": "sheets/missiles__body__d15__depth.png",
+              "w": 49,
+              "h": 29,
+              "sha256": "e9f957dbe80834ef2fe212b41bd38cec031c37840a7d90a03590876057f24277"
             }
           },
           "filesHi": {
@@ -2081,6 +2193,7 @@
         0
       ],
       "traverse": false,
+      "traverseRoot": null,
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -2131,6 +2244,12 @@
               "w": 32,
               "h": 25,
               "sha256": "9e90a07f1f22bc27f430fbe456a8bb77dda64b5848e35ed28819a054826a41f7"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.L__d00__depth.png",
+              "w": 32,
+              "h": 25,
+              "sha256": "9e28fc3c4c350594197bb3c97c63a44cfe51d3d0c2d9fc05f191ee7b430202b8"
             }
           },
           "filesHi": {
@@ -2196,6 +2315,12 @@
               "w": 25,
               "h": 27,
               "sha256": "d7d921f0ed133cd2b5c2c2d69c470c94b0144851ef16dba98b17501b71e765bb"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.L__d01__depth.png",
+              "w": 25,
+              "h": 27,
+              "sha256": "16be8cca66812d03b5cf8a4a776eb463742147fd46d838522141c771f5f6352c"
             }
           },
           "filesHi": {
@@ -2261,6 +2386,12 @@
               "w": 16,
               "h": 27,
               "sha256": "f07a66f8ee38d957250b71328ea451dedbc485717bf5039208350c9629dab942"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.L__d02__depth.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "81d3e182ee473b2b4fb9fe86fc28184002b858c2c0daa8048ca612ab65d31801"
             }
           },
           "filesHi": {
@@ -2326,6 +2457,12 @@
               "w": 25,
               "h": 26,
               "sha256": "1c669fa88200b6a99fe6cba4fc470c5655787cf4a212082ed209ceeed308a8d7"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.L__d03__depth.png",
+              "w": 25,
+              "h": 26,
+              "sha256": "2ab3c92738fd882acadb49f5117755e5d75f24227b02a911f6fc26548b5ebf83"
             }
           },
           "filesHi": {
@@ -2391,6 +2528,12 @@
               "w": 32,
               "h": 25,
               "sha256": "39e40e1a1d9ae9ec89003a9b21443746dac49096e95e028ca56851d46f4e7ea6"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.L__d04__depth.png",
+              "w": 32,
+              "h": 25,
+              "sha256": "ea548e9639e062ce982b9c759dbdabd69e8c5542dbf5d16dbf9919b0dfa2898e"
             }
           },
           "filesHi": {
@@ -2456,6 +2599,12 @@
               "w": 37,
               "h": 21,
               "sha256": "69d6ee2fd98d8b11438d9356ad17f5a11a26ebae1db7a9ad0eccdc6e3127cdc4"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.L__d05__depth.png",
+              "w": 37,
+              "h": 21,
+              "sha256": "d8b3eacfcb37b2afad5d5cfe352d3751333493563f2a393e336a7cc7c7053517"
             }
           },
           "filesHi": {
@@ -2521,6 +2670,12 @@
               "w": 37,
               "h": 18,
               "sha256": "b6c79cf6c8710617b8e4f3175f4c710d6b63510efaaa5741c6be926e3a12dce2"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.L__d06__depth.png",
+              "w": 37,
+              "h": 18,
+              "sha256": "9c753ad9c9ed7670974c6511176b382bffdc158e06737269c33e7dc2e3358084"
             }
           },
           "filesHi": {
@@ -2586,6 +2741,12 @@
               "w": 37,
               "h": 20,
               "sha256": "35cef287c845fd27edf798886a69d9cb74a4530a6164d876f71c229df412bb19"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.L__d07__depth.png",
+              "w": 37,
+              "h": 20,
+              "sha256": "e383db56db1099892cc052a3274645fbc93a0fb546407576288f250299dcda28"
             }
           },
           "filesHi": {
@@ -2651,6 +2812,12 @@
               "w": 33,
               "h": 24,
               "sha256": "af1f7c5deeea01f48930d317fedef3bdabf0eabe0a5a4a63b615192b9a08c448"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.L__d08__depth.png",
+              "w": 33,
+              "h": 24,
+              "sha256": "0f5dd9697d6543eb869d1d9bd525564a8977d6eb56dca63b92b9381fd3d16d7c"
             }
           },
           "filesHi": {
@@ -2716,6 +2883,12 @@
               "w": 25,
               "h": 26,
               "sha256": "9a3b4703e7feeadb849c08275bd4c3298a1745907f27f68912afa8e5b35cc561"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.L__d09__depth.png",
+              "w": 25,
+              "h": 26,
+              "sha256": "484ec75ca3d8037f25d2cdbea35fdbec5ff53b729335df62d9b6d89b735dc6d8"
             }
           },
           "filesHi": {
@@ -2781,6 +2954,12 @@
               "w": 16,
               "h": 27,
               "sha256": "bb8162b3ebdf40ed03a3e6c04039b32d7f2829994319623617ed733de1027e35"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.L__d10__depth.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "0e000464322fc5148f01b8e3078fd5d58956cc1179b3f464fe464b7e22f3ede7"
             }
           },
           "filesHi": {
@@ -2846,6 +3025,12 @@
               "w": 25,
               "h": 26,
               "sha256": "e8c09a34219a99f2d3fda3ab726bea552537f679445c117a82ddddc91550a2a6"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.L__d11__depth.png",
+              "w": 25,
+              "h": 26,
+              "sha256": "4fbc5a15e587f9c04ff862cff51613a7f6fa0427cf83c17e5529c6a348b53a94"
             }
           },
           "filesHi": {
@@ -2911,6 +3096,12 @@
               "w": 32,
               "h": 25,
               "sha256": "0ffaab028ceb3181b0b1b16eed8ef6d8cfc0781dca6e093b36c30946015cc34d"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.L__d12__depth.png",
+              "w": 32,
+              "h": 25,
+              "sha256": "412cc73e61f381f02b49fd82a41aa0a0d5f8a6fd8f1177edd4788a10b005c66b"
             }
           },
           "filesHi": {
@@ -2976,6 +3167,12 @@
               "w": 37,
               "h": 21,
               "sha256": "2a4bdbeb43e144af667fa282b168c7102e6279c9d6a58301cc309d46b9478db0"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.L__d13__depth.png",
+              "w": 37,
+              "h": 21,
+              "sha256": "cd1a7c2b09ac3dd84e4f4acb87d9726b58ddaa206d9b8fff89d8586dec7dfd72"
             }
           },
           "filesHi": {
@@ -3041,6 +3238,12 @@
               "w": 37,
               "h": 18,
               "sha256": "4ffc057fd860d54b6f2005aae8c20438f3731c57eb77518c22e9f77cf4e05250"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.L__d14__depth.png",
+              "w": 37,
+              "h": 18,
+              "sha256": "f30a9b486ccba1c1233cac480b3a217d69ba4d56567b09b19eea388f5c74689d"
             }
           },
           "filesHi": {
@@ -3106,6 +3309,12 @@
               "w": 37,
               "h": 21,
               "sha256": "7710043ec9fdf641c35066dd132a5f8c42858b7240cba0efd70ec3f39f1df0ee"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.L__d15__depth.png",
+              "w": 37,
+              "h": 21,
+              "sha256": "21167e5af7fc0a9ba5fad272483e46dac7468de56ed1e714cd7db69fec3a2ff2"
             }
           },
           "filesHi": {
@@ -3153,6 +3362,7 @@
         0
       ],
       "traverse": false,
+      "traverseRoot": null,
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -3203,6 +3413,12 @@
               "w": 32,
               "h": 25,
               "sha256": "1092f981885ca361f65f7cfd6994097836a5b533df082a4a0c2f646cda1cd13b"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.R__d00__depth.png",
+              "w": 32,
+              "h": 25,
+              "sha256": "049747d5c0230fb4b81fbf8f671ded414737c8c76ad33d727d3b7e5054aa561e"
             }
           },
           "filesHi": {
@@ -3268,6 +3484,12 @@
               "w": 25,
               "h": 26,
               "sha256": "c176580640f08b31215c97226d13676c31f7a5deb10abe41b8de85987ce64dad"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.R__d01__depth.png",
+              "w": 25,
+              "h": 26,
+              "sha256": "ae99cad78ddb6c3bd42fbf51d74dc1197fcba6054a382222e379af7da0977464"
             }
           },
           "filesHi": {
@@ -3333,6 +3555,12 @@
               "w": 16,
               "h": 27,
               "sha256": "5ddbd654166fa9da9b54d4f1d3b79a7425338bfeb632f5a63d11e83d7f07be33"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.R__d02__depth.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "61bc6d7f4fb4b396e546f14b62da8fc1e77311d0737a95d913e225c674b06ea8"
             }
           },
           "filesHi": {
@@ -3398,6 +3626,12 @@
               "w": 25,
               "h": 26,
               "sha256": "5362654797c2be11f7392293ffcb951618ca580fae28c4bac23b23c7b7a41f47"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.R__d03__depth.png",
+              "w": 25,
+              "h": 26,
+              "sha256": "e5e34aeb16b9a680cf60fd0ad570ec09916dee5fa48784f3318d69767ce7e286"
             }
           },
           "filesHi": {
@@ -3463,6 +3697,12 @@
               "w": 32,
               "h": 25,
               "sha256": "84784624dbb45e6d3942a7335e1bb2b1b6243d5cec1351b454e8e735f261b926"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.R__d04__depth.png",
+              "w": 32,
+              "h": 25,
+              "sha256": "570928cb03e1998dd53939413d223d4c1d55e75ccbb684062657a9fed6d1778f"
             }
           },
           "filesHi": {
@@ -3528,6 +3768,12 @@
               "w": 37,
               "h": 21,
               "sha256": "8073290bf22b6ea3c570f526a70396560e7f918781e14b09c269145af9df2d4a"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.R__d05__depth.png",
+              "w": 37,
+              "h": 21,
+              "sha256": "b06b461f6698291ce4aaebf9b87a4890828c68f1df720eb93bf48643dd7c38ee"
             }
           },
           "filesHi": {
@@ -3593,6 +3839,12 @@
               "w": 37,
               "h": 17,
               "sha256": "1eb9170f55115b919ff379ace0cf8435e5670b45a7e96428bc6cf2ad9bad4d45"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.R__d06__depth.png",
+              "w": 37,
+              "h": 17,
+              "sha256": "306a98b67995a04845913a35e823d9f19df5696a7502d5e1bd0d9216ca040aef"
             }
           },
           "filesHi": {
@@ -3658,6 +3910,12 @@
               "w": 37,
               "h": 21,
               "sha256": "c054ec7d4fde8894b65a52c2f9dccabbe53e00c66745ed2cc1740b8ff72b9f4f"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.R__d07__depth.png",
+              "w": 37,
+              "h": 21,
+              "sha256": "80e34e2f40563a4222a44372e2650ca581328d1de44fd410076f95f8f8758bb4"
             }
           },
           "filesHi": {
@@ -3723,6 +3981,12 @@
               "w": 32,
               "h": 25,
               "sha256": "325da681b52f15c0bc9f9b0fc4798d3c9036ed03c726b421596f014bad3b8986"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.R__d08__depth.png",
+              "w": 32,
+              "h": 25,
+              "sha256": "3278cde294c42aa55efa9942886f1e8493c381339c06abf1652314e9e1bab561"
             }
           },
           "filesHi": {
@@ -3788,6 +4052,12 @@
               "w": 25,
               "h": 26,
               "sha256": "6571a53e5b7e87a6252a4ff14b839b6316cde14ff2be1a84aeeeefc0a24423aa"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.R__d09__depth.png",
+              "w": 25,
+              "h": 26,
+              "sha256": "160be40fdc3688c3c3e148d8703e8352b684e3905fc50414337526580ec645be"
             }
           },
           "filesHi": {
@@ -3853,6 +4123,12 @@
               "w": 16,
               "h": 27,
               "sha256": "5ceef2d5d8cbb2d0f088c96592780c6f5ba14cc2fde1f3cb9d5e71866bc2025b"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.R__d10__depth.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "8c7a5f98da76b0ec1d6cdb3844858fd7efca9bc4c89ca45a314b418d13857f3e"
             }
           },
           "filesHi": {
@@ -3918,6 +4194,12 @@
               "w": 25,
               "h": 26,
               "sha256": "45fc62db7fb641ffa9b3e8ef14d9dd21b951c43baec29d9e02ebdf1cd024f09e"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.R__d11__depth.png",
+              "w": 25,
+              "h": 26,
+              "sha256": "d28fe96d8211ef9ee8f3113a2999d05d52b3f61a56d67be681137b15a346983c"
             }
           },
           "filesHi": {
@@ -3983,6 +4265,12 @@
               "w": 32,
               "h": 24,
               "sha256": "4ff652e88482b815167fc684d2b27dce5d4d87aacd42b847b779aad4dec4ad65"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.R__d12__depth.png",
+              "w": 32,
+              "h": 24,
+              "sha256": "6925cc7273b33d54837fffc7dc7120817d1f7fd305d3a336eff826232cf8f357"
             }
           },
           "filesHi": {
@@ -4048,6 +4336,12 @@
               "w": 37,
               "h": 21,
               "sha256": "8cefcf305e986d01e334b7d927a10f0357d6bcceb27c54c57617ed231c8d14c0"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.R__d13__depth.png",
+              "w": 37,
+              "h": 21,
+              "sha256": "af671aa541ea2a101cd61282f9368805425cb2b45a24101e215d98735b73344d"
             }
           },
           "filesHi": {
@@ -4113,6 +4407,12 @@
               "w": 37,
               "h": 17,
               "sha256": "2d93ff76dcbd20a5fcbedf1a9f89c75a3d5f4ad8ffae70677c44973acc7c31eb"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.R__d14__depth.png",
+              "w": 37,
+              "h": 17,
+              "sha256": "15f3356f7c2acdcfc310bd80fecc04a30ef5f1958322f0835b99ad9020a81c55"
             }
           },
           "filesHi": {
@@ -4178,6 +4478,12 @@
               "w": 37,
               "h": 21,
               "sha256": "eff9f77e3c1bf251c53c971f1bfe7148669729d821f0dfe02bce740d9d1e57c9"
+            },
+            "depth": {
+              "file": "sheets/missiles__wheels.R__d15__depth.png",
+              "w": 37,
+              "h": 21,
+              "sha256": "ab00b6e169a5d0284050bf943a350a8d130316c7716258dd4ac161b927e3438f"
             }
           },
           "filesHi": {
@@ -4225,6 +4531,7 @@
         214
       ],
       "traverse": false,
+      "traverseRoot": null,
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -4275,6 +4582,12 @@
               "w": 19,
               "h": 16,
               "sha256": "d33b60afe8e5a9577478974c4c8db506f256d31b06f5a8c7df18b81d48f7e069"
+            },
+            "depth": {
+              "file": "sheets/missiles__radar__d00__depth.png",
+              "w": 19,
+              "h": 16,
+              "sha256": "d2d3d53158f5582618adb7c888941732f8315ba01d6960708bac33066d35061d"
             }
           },
           "filesHi": {
@@ -4340,6 +4653,12 @@
               "w": 21,
               "h": 15,
               "sha256": "32a81872bdfa5f35eea3b319cc62da05bd5d16ed70de5f0d0d5ad7f8a44271ef"
+            },
+            "depth": {
+              "file": "sheets/missiles__radar__d01__depth.png",
+              "w": 21,
+              "h": 15,
+              "sha256": "4c80cfef57de3a2a6690e565694ddfc7aa752ddd174c78c655aa35cd5d467c81"
             }
           },
           "filesHi": {
@@ -4405,6 +4724,12 @@
               "w": 21,
               "h": 14,
               "sha256": "155a1df3e1bd27f6b0ef1d01684c295b5223843a41a1fd5b99c9a136bed748b4"
+            },
+            "depth": {
+              "file": "sheets/missiles__radar__d02__depth.png",
+              "w": 21,
+              "h": 14,
+              "sha256": "63d8cae5183195cb765c05fa97e9b921222912c0651a960a8a6259e72a5d41e1"
             }
           },
           "filesHi": {
@@ -4470,6 +4795,12 @@
               "w": 20,
               "h": 15,
               "sha256": "d5657ee5192f56e14a47661b5c19f98198180da35707d6f5d68d08b46044689a"
+            },
+            "depth": {
+              "file": "sheets/missiles__radar__d03__depth.png",
+              "w": 20,
+              "h": 15,
+              "sha256": "bf09e2fce8b7559333c77384d1d1ef0b38652f1dff21508279523954551bf789"
             }
           },
           "filesHi": {
@@ -4535,6 +4866,12 @@
               "w": 18,
               "h": 18,
               "sha256": "277174633431c952ef6258370439923f077a5d8617bd63f0b1b1579e3b1dc148"
+            },
+            "depth": {
+              "file": "sheets/missiles__radar__d04__depth.png",
+              "w": 18,
+              "h": 18,
+              "sha256": "8fde191a5c0cb1015f25b66e6a7532c8783da7560512e5d93adf8bd9d7b42977"
             }
           },
           "filesHi": {
@@ -4600,6 +4937,12 @@
               "w": 16,
               "h": 18,
               "sha256": "8d753fc5ab6c23af2b1cd41701f01e47cacb106afb8f3489d11c9a63274d8620"
+            },
+            "depth": {
+              "file": "sheets/missiles__radar__d05__depth.png",
+              "w": 16,
+              "h": 18,
+              "sha256": "e8c81fe0371b061dc5983c6d22642cbe4f046016dead2f626f9eac3844c89efb"
             }
           },
           "filesHi": {
@@ -4665,6 +5008,12 @@
               "w": 15,
               "h": 18,
               "sha256": "3bf362e7b30640d2c51149eefe709695cf80727bb8da1bc07d90a69d7884f229"
+            },
+            "depth": {
+              "file": "sheets/missiles__radar__d06__depth.png",
+              "w": 15,
+              "h": 18,
+              "sha256": "f0f4d95e9315205ee57133066449fb58c8f478090effb10364679080c7082161"
             }
           },
           "filesHi": {
@@ -4730,6 +5079,12 @@
               "w": 17,
               "h": 18,
               "sha256": "ca78efed12a47f2cee3f79770918ede38a382138a2fdf0b1a564e3d4bbdd1eb8"
+            },
+            "depth": {
+              "file": "sheets/missiles__radar__d07__depth.png",
+              "w": 17,
+              "h": 18,
+              "sha256": "8c563995c0ffa1fdc70a1f4d8199feaad5bdf0c1975905254587eacdae6646ff"
             }
           },
           "filesHi": {
@@ -4795,6 +5150,12 @@
               "w": 19,
               "h": 17,
               "sha256": "7df8fb6618516c5e2dc5db568ab55fd6c3596c59f747f7f6c91e099e681893dc"
+            },
+            "depth": {
+              "file": "sheets/missiles__radar__d08__depth.png",
+              "w": 19,
+              "h": 17,
+              "sha256": "f3e3ca8ce6e5319c978d1cad299ec7d70ded0c0f6b30df18c1002b77bd6464e5"
             }
           },
           "filesHi": {
@@ -4860,6 +5221,12 @@
               "w": 21,
               "h": 16,
               "sha256": "0d622c01527e4e9e6cd290f4c182f41d3bb56c7c35ddc9baf54d431cd5ab4cf5"
+            },
+            "depth": {
+              "file": "sheets/missiles__radar__d09__depth.png",
+              "w": 21,
+              "h": 16,
+              "sha256": "109da4b470a544cebd8a41ae50084eab4bac8b36509c996d9c7f8dedec23e904"
             }
           },
           "filesHi": {
@@ -4925,6 +5292,12 @@
               "w": 21,
               "h": 15,
               "sha256": "4353f44a7d0c7d92f4f9f7f1760a4a0c0eec4f6c0ee92a7b25c4d037126cab14"
+            },
+            "depth": {
+              "file": "sheets/missiles__radar__d10__depth.png",
+              "w": 21,
+              "h": 15,
+              "sha256": "6e8bf49748f787f1ab8a8470552483072f53af48a3ec8b887d4607bc31b5a922"
             }
           },
           "filesHi": {
@@ -4990,6 +5363,12 @@
               "w": 20,
               "h": 15,
               "sha256": "c21eefbfcefed9e209117bbc721a67e98df4ba6b67339ac8cb6e646378a6bb23"
+            },
+            "depth": {
+              "file": "sheets/missiles__radar__d11__depth.png",
+              "w": 20,
+              "h": 15,
+              "sha256": "a100ef48daa93651b9313786533ab0be4475f3144226d717ea9e92020164c068"
             }
           },
           "filesHi": {
@@ -5055,6 +5434,12 @@
               "w": 18,
               "h": 15,
               "sha256": "736c91948d7ec7e11752262c33a36c5c650f2045a4151855d090c031cab01671"
+            },
+            "depth": {
+              "file": "sheets/missiles__radar__d12__depth.png",
+              "w": 18,
+              "h": 15,
+              "sha256": "8888929998f37b007c52bb356a9d2522a74f7e9ead65e68a4e5ea7dbc06a1293"
             }
           },
           "filesHi": {
@@ -5120,6 +5505,12 @@
               "w": 16,
               "h": 17,
               "sha256": "a31d6186a9f8749ddccbb76ea37e7055c98246f2741190d1f29ebff3da438f2b"
+            },
+            "depth": {
+              "file": "sheets/missiles__radar__d13__depth.png",
+              "w": 16,
+              "h": 17,
+              "sha256": "2198fc331258cff7627bdf2046421b9b14dcb813acb28a1e304ea9b0467c8eb9"
             }
           },
           "filesHi": {
@@ -5185,6 +5576,12 @@
               "w": 15,
               "h": 16,
               "sha256": "1dae88186fa87a28c184a59e24d2cbc8096c9056512411805294a8a0e6a5359e"
+            },
+            "depth": {
+              "file": "sheets/missiles__radar__d14__depth.png",
+              "w": 15,
+              "h": 16,
+              "sha256": "00d199345994e62c02387a68df420cd4adc35ffa650ad095627f699bcf888d94"
             }
           },
           "filesHi": {
@@ -5250,6 +5647,12 @@
               "w": 17,
               "h": 17,
               "sha256": "a161e4f4865883f128fb2269752da1be53759e01e2acb6f9222e7418824ce35c"
+            },
+            "depth": {
+              "file": "sheets/missiles__radar__d15__depth.png",
+              "w": 17,
+              "h": 17,
+              "sha256": "70bc9eb77ac62b7366de6034efcd192098f46d9819a69552296c82b4ae9dc7f7"
             }
           },
           "filesHi": {
@@ -5297,6 +5700,11 @@
         138
       ],
       "traverse": true,
+      "traverseRoot": [
+        268,
+        256,
+        138
+      ],
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -5347,6 +5755,12 @@
               "w": 25,
               "h": 21,
               "sha256": "03f427244fb506e7ef91781c40e05a761e5c55063a9b4b468f1f15aca4ea29cd"
+            },
+            "depth": {
+              "file": "sheets/missiles__launcher__d00__depth.png",
+              "w": 25,
+              "h": 21,
+              "sha256": "3af0fc9c19e7b3b0dad4d5539b753b875b66c3f9dc5264370a7b438ef25d4830"
             }
           },
           "filesHi": {
@@ -5412,6 +5826,12 @@
               "w": 24,
               "h": 21,
               "sha256": "528756b112a4b7fac6997af8681d1d557986a5bed28ee66ac19a3d8954e5f474"
+            },
+            "depth": {
+              "file": "sheets/missiles__launcher__d01__depth.png",
+              "w": 24,
+              "h": 21,
+              "sha256": "8512cfb6d975b1bd9990a87aa1005a9ca20784a8a4cda49b01b2d369029082f1"
             }
           },
           "filesHi": {
@@ -5477,6 +5897,12 @@
               "w": 25,
               "h": 20,
               "sha256": "c2dde9e5d586b9980a3b8302ea8032bde472fa348365fed5f8c49498bc73a104"
+            },
+            "depth": {
+              "file": "sheets/missiles__launcher__d02__depth.png",
+              "w": 25,
+              "h": 20,
+              "sha256": "af1c3a078847df52148deef33865c1307bb1fc3dbc87aa9dcbc4870c6dda770f"
             }
           },
           "filesHi": {
@@ -5542,6 +5968,12 @@
               "w": 25,
               "h": 21,
               "sha256": "5e3fa346b8b33b6eeef63c2e74a801fba20eca8a3c2c62209cc840a7adf25f35"
+            },
+            "depth": {
+              "file": "sheets/missiles__launcher__d03__depth.png",
+              "w": 25,
+              "h": 21,
+              "sha256": "30eb6c9a851833fdaab55d7a216a810d9cc2fb1209bb6cae77a4a46243177fd7"
             }
           },
           "filesHi": {
@@ -5607,6 +6039,12 @@
               "w": 25,
               "h": 21,
               "sha256": "84fb6c4dba2b557b5aa24ec471995ebdb8e2d6716f6d72755ae8bc1a1b507f92"
+            },
+            "depth": {
+              "file": "sheets/missiles__launcher__d04__depth.png",
+              "w": 25,
+              "h": 21,
+              "sha256": "e95b969bfe27692047e61f39070d0c5088832bbd8fa49bcdfc3fef1cada615d4"
             }
           },
           "filesHi": {
@@ -5672,6 +6110,12 @@
               "w": 25,
               "h": 22,
               "sha256": "7da88adff90daa3ea041990f75de0191c719cb1abe0555f2d0919cab70394bda"
+            },
+            "depth": {
+              "file": "sheets/missiles__launcher__d05__depth.png",
+              "w": 25,
+              "h": 22,
+              "sha256": "8e4ee98df752ae982041dea4480f74f4646415f5ec11fa37983a80cb0d5769f6"
             }
           },
           "filesHi": {
@@ -5737,6 +6181,12 @@
               "w": 25,
               "h": 22,
               "sha256": "2a418e846d16f129746eeeb28b4652a292d66a19f8dc4566104f3eeb168021b2"
+            },
+            "depth": {
+              "file": "sheets/missiles__launcher__d06__depth.png",
+              "w": 25,
+              "h": 22,
+              "sha256": "9528ed443791e5c53f4682b8228e58b12ef6794422fbb2ba2b08afc51f00d80d"
             }
           },
           "filesHi": {
@@ -5802,6 +6252,12 @@
               "w": 25,
               "h": 22,
               "sha256": "4f3672606123d34d41d3ed69e78453fe79264efc43623b6ca465307b8e373647"
+            },
+            "depth": {
+              "file": "sheets/missiles__launcher__d07__depth.png",
+              "w": 25,
+              "h": 22,
+              "sha256": "81b032994ed43b1946024d9234c85530ea5fffbda4e18bf0c5f00c92c5e6670c"
             }
           },
           "filesHi": {
@@ -5867,6 +6323,12 @@
               "w": 25,
               "h": 21,
               "sha256": "dd20cd980a922f8ce865cbd3f6fba7fafbf99e66dd2fd37053e54381987164e7"
+            },
+            "depth": {
+              "file": "sheets/missiles__launcher__d08__depth.png",
+              "w": 25,
+              "h": 21,
+              "sha256": "486ed7dd874547a2d8dd97521dfab6efbf5f85124628e39d3ccf2e2ca8f09ab7"
             }
           },
           "filesHi": {
@@ -5932,6 +6394,12 @@
               "w": 24,
               "h": 21,
               "sha256": "ea7ef7a097b4aee4111cd2d30a9d012d107c81532aeb3a28a1a0ba10a0b692cc"
+            },
+            "depth": {
+              "file": "sheets/missiles__launcher__d09__depth.png",
+              "w": 24,
+              "h": 21,
+              "sha256": "c5dddc6a9d203b66025a7650e1876216b0ddc45580648eba1ee36db074cd2aa4"
             }
           },
           "filesHi": {
@@ -5997,6 +6465,12 @@
               "w": 25,
               "h": 19,
               "sha256": "b743b814c0c91523474d78f77b57e6aef6e23b7628aa57471d7e5c65cc3d2c00"
+            },
+            "depth": {
+              "file": "sheets/missiles__launcher__d10__depth.png",
+              "w": 25,
+              "h": 19,
+              "sha256": "116f3739e89c57fabb0a6a5bf657c4cebbd040faf903eb85f71fcd893a2383bc"
             }
           },
           "filesHi": {
@@ -6062,6 +6536,12 @@
               "w": 25,
               "h": 20,
               "sha256": "3cbba53e362fa9846d7e05d926c86a2eb5364ba732a3f53c0947a79a642455b3"
+            },
+            "depth": {
+              "file": "sheets/missiles__launcher__d11__depth.png",
+              "w": 25,
+              "h": 20,
+              "sha256": "3c1a19b01f2871dd2643e93fc86a5e0f0e89e58cb8b8626386a21e1ac472a415"
             }
           },
           "filesHi": {
@@ -6127,6 +6607,12 @@
               "w": 25,
               "h": 22,
               "sha256": "f1d093d7cae53820ae4270822c37b6a829fd58f753a654e6ba743899aa20c1c7"
+            },
+            "depth": {
+              "file": "sheets/missiles__launcher__d12__depth.png",
+              "w": 25,
+              "h": 22,
+              "sha256": "121d99d0eade83d191b1911cd8774a12be9b3880b35b27f4bfa99033f3887c88"
             }
           },
           "filesHi": {
@@ -6192,6 +6678,12 @@
               "w": 25,
               "h": 22,
               "sha256": "e640d152f0064593cb45e1b2b7e9b1807536699ae548d6a671d63075dea40aba"
+            },
+            "depth": {
+              "file": "sheets/missiles__launcher__d13__depth.png",
+              "w": 25,
+              "h": 22,
+              "sha256": "2af2a663ba7ecf486b365fea081403be7443d159e8e7a490374be930541f25d4"
             }
           },
           "filesHi": {
@@ -6257,6 +6749,12 @@
               "w": 25,
               "h": 21,
               "sha256": "984a665c4cfc533425388522d5a30cce3f3c0aee5c379a342e81c62fa13593c0"
+            },
+            "depth": {
+              "file": "sheets/missiles__launcher__d14__depth.png",
+              "w": 25,
+              "h": 21,
+              "sha256": "5154e6166529ab1084eedc47cdfde5d2cca32cfd6207ceeede7f11f0c3c6e895"
             }
           },
           "filesHi": {
@@ -6322,6 +6820,12 @@
               "w": 25,
               "h": 22,
               "sha256": "50973c89d42d51356ec1c342c9197ba0f8bdf878b33a9f096be28f8ded6da19d"
+            },
+            "depth": {
+              "file": "sheets/missiles__launcher__d15__depth.png",
+              "w": 25,
+              "h": 22,
+              "sha256": "b7aaf5eafc287b6d8ceaa9dc0651fde8dae6db9976a89add079c89b0ada81d85"
             }
           },
           "filesHi": {
@@ -6369,6 +6873,11 @@
         168
       ],
       "traverse": true,
+      "traverseRoot": [
+        268,
+        256,
+        138
+      ],
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -6419,6 +6928,12 @@
               "w": 28,
               "h": 26,
               "sha256": "d9e3a8752a39f336fc9127d9a9bc6b745797d45c811934d46f92222fefefcb78"
+            },
+            "depth": {
+              "file": "sheets/missiles__barrel__d00__depth.png",
+              "w": 28,
+              "h": 26,
+              "sha256": "0364236acb6cb8fc958dcaf1b239b04ed462b861f0b05bf9527b293e0c4469c4"
             }
           },
           "filesHi": {
@@ -6484,6 +6999,12 @@
               "w": 27,
               "h": 26,
               "sha256": "f6e47cc0e1b600717bd03886e2bebc005bb8afc73bd209f88a2f2dd298d4d8ea"
+            },
+            "depth": {
+              "file": "sheets/missiles__barrel__d01__depth.png",
+              "w": 27,
+              "h": 26,
+              "sha256": "7ccdcd6a438272ffd980c33747a0452b63ff046da98b53186f54ed1d5efaab76"
             }
           },
           "filesHi": {
@@ -6549,6 +7070,12 @@
               "w": 24,
               "h": 25,
               "sha256": "5c00b0a58dec444173b1a11a880fb93bfb10bb2a9ca0fb243568710358ba631c"
+            },
+            "depth": {
+              "file": "sheets/missiles__barrel__d02__depth.png",
+              "w": 24,
+              "h": 25,
+              "sha256": "c47d7efa41d774bb90a3e9cc7d17f49da7bb5b61c27d5f03f3b5f0ef4da8e072"
             }
           },
           "filesHi": {
@@ -6614,6 +7141,12 @@
               "w": 27,
               "h": 25,
               "sha256": "e539eae10d6e6de915a9b08fb6eeb56ca0bd64f28a1ebbba30f87db5fec13f5c"
+            },
+            "depth": {
+              "file": "sheets/missiles__barrel__d03__depth.png",
+              "w": 27,
+              "h": 25,
+              "sha256": "09559c90ec4c76b83004f45bf7e75d3467ea4de4ce0359391987408ad1584d0c"
             }
           },
           "filesHi": {
@@ -6679,6 +7212,12 @@
               "w": 28,
               "h": 26,
               "sha256": "5da3e52de784de9d1cc9712abe3d8a9098a9b36cf26c25c87dbd6dc0b8b91798"
+            },
+            "depth": {
+              "file": "sheets/missiles__barrel__d04__depth.png",
+              "w": 28,
+              "h": 26,
+              "sha256": "5361f499c9fa3f9aa0980dfa3019e04cfbacf1c5c63a0137bc3dc1c0c5164ff3"
             }
           },
           "filesHi": {
@@ -6744,6 +7283,12 @@
               "w": 26,
               "h": 25,
               "sha256": "5d3039866e6df3378bcd7520717ece3d85da35cc419519a5374ab2c0a9e6a730"
+            },
+            "depth": {
+              "file": "sheets/missiles__barrel__d05__depth.png",
+              "w": 26,
+              "h": 25,
+              "sha256": "71009cb859ad47113960c34514b7cdef664410a3160767f160e89268c521a531"
             }
           },
           "filesHi": {
@@ -6809,6 +7354,12 @@
               "w": 22,
               "h": 25,
               "sha256": "d6ba5ef0e0560e1556e034a17ee70df2a997157f1bc8722533cc4e0450bd3173"
+            },
+            "depth": {
+              "file": "sheets/missiles__barrel__d06__depth.png",
+              "w": 22,
+              "h": 25,
+              "sha256": "16c4685b3506f3d14e8a4c97f1d7792f121d2d0336bfab0d97f9d537310bcbe8"
             }
           },
           "filesHi": {
@@ -6874,6 +7425,12 @@
               "w": 26,
               "h": 27,
               "sha256": "9b36a1e415d6f1048d1eaf5c1c99acbc38953f0a64b4ad97365562fc1c1a3696"
+            },
+            "depth": {
+              "file": "sheets/missiles__barrel__d07__depth.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "590b1363ff23cafd51a6f0e0ebab121f00ee3f51caa411315fac517c84de64c2"
             }
           },
           "filesHi": {
@@ -6939,6 +7496,12 @@
               "w": 28,
               "h": 26,
               "sha256": "12b35f88a437c6b119e80141c639b10a3ac754258958b5fadd1de10acf432eeb"
+            },
+            "depth": {
+              "file": "sheets/missiles__barrel__d08__depth.png",
+              "w": 28,
+              "h": 26,
+              "sha256": "c5366f5f80f33b1703cea5a6d1bdf05e6fd05c879c34a53c1705cae1cbabd608"
             }
           },
           "filesHi": {
@@ -7004,6 +7567,12 @@
               "w": 27,
               "h": 26,
               "sha256": "685f918049d227f97aa2af79498f40e121fa742955bd3f502063db03e5bc9575"
+            },
+            "depth": {
+              "file": "sheets/missiles__barrel__d09__depth.png",
+              "w": 27,
+              "h": 26,
+              "sha256": "feb8889dd297bb62155ff4ca1264bd0e1831e36d551d7c54e11635a17a805ce3"
             }
           },
           "filesHi": {
@@ -7069,6 +7638,12 @@
               "w": 24,
               "h": 24,
               "sha256": "c4a484bb7bcf2dee8b145ad0215c562132ae3b874a1c6773ce425133bb752844"
+            },
+            "depth": {
+              "file": "sheets/missiles__barrel__d10__depth.png",
+              "w": 24,
+              "h": 24,
+              "sha256": "47cc826b336e8ebe192d9cc7556a81b2d7ce71ace24aec5125874f02a177b309"
             }
           },
           "filesHi": {
@@ -7134,6 +7709,12 @@
               "w": 27,
               "h": 26,
               "sha256": "fbb20adba0834eeeb95ae301dbf1cde3495ba3a8ef54af5b79e7dfa2dcce9593"
+            },
+            "depth": {
+              "file": "sheets/missiles__barrel__d11__depth.png",
+              "w": 27,
+              "h": 26,
+              "sha256": "68adeb200ac5b44b0a9d43eb319cd41fdde941a1baa0fcb5e52b55e5911c0dee"
             }
           },
           "filesHi": {
@@ -7199,6 +7780,12 @@
               "w": 28,
               "h": 26,
               "sha256": "e5cc16f6a824d0086ba12af15d5b13e539162e723a841db53cde813c35a77c33"
+            },
+            "depth": {
+              "file": "sheets/missiles__barrel__d12__depth.png",
+              "w": 28,
+              "h": 26,
+              "sha256": "c3834f1d6c39a9d0b523f2da86742a3ba9f6332cbed06d8e3493d667401f3a79"
             }
           },
           "filesHi": {
@@ -7264,6 +7851,12 @@
               "w": 26,
               "h": 27,
               "sha256": "ed678c2a1846e1871a75a13bde575a61923f3dc34eceeadcee9188f5405d0a6f"
+            },
+            "depth": {
+              "file": "sheets/missiles__barrel__d13__depth.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "06a9ca175316be1e1e8c77eefd0417f5b6caa75821335bfe8e16a872c39c2a7c"
             }
           },
           "filesHi": {
@@ -7329,6 +7922,12 @@
               "w": 22,
               "h": 25,
               "sha256": "27c173b84f9fe9158116f33de303baf01529bf2a8c23ec7ade80762795e969af"
+            },
+            "depth": {
+              "file": "sheets/missiles__barrel__d14__depth.png",
+              "w": 22,
+              "h": 25,
+              "sha256": "e2f18dba013a7e6bd0d72b39b1a927a4e1fe55b25e41c865275907d8ee21326a"
             }
           },
           "filesHi": {
@@ -7394,6 +7993,12 @@
               "w": 26,
               "h": 25,
               "sha256": "35e1d72e0e9fe15e3703f9fe07ccd183d1663f16f0c778069071b9ecc24da54f"
+            },
+            "depth": {
+              "file": "sheets/missiles__barrel__d15__depth.png",
+              "w": 26,
+              "h": 25,
+              "sha256": "18d4946fd4481dbffad589de5629634e6fa80a93d99663cf4cf1de664c94c7c2"
             }
           },
           "filesHi": {
@@ -7569,15 +8174,15 @@
         "files": {
           "albedo": {
             "file": "sheets/missiles__composite__d00__albedo.png",
-            "sha256": "d1205f523ea321afd47e276c5138bca0df8222bdbfc123d6e29b6190a8ddc8ab"
+            "sha256": "bf2a7a309394c43b655551faa1ec98aa1796a56d815f5c710c9e6cd3a55ad986"
           },
           "normal": {
             "file": "sheets/missiles__composite__d00__normal.png",
-            "sha256": "fcc4bce7de332778497bf5db9637944c69b5767c6162f61eeb9d506f512d7327"
+            "sha256": "d08620529eb95694751980ab38e7b530ecb4c8f6e282c6b61a1e7105ee51b07f"
           },
           "material": {
             "file": "sheets/missiles__composite__d00__material.png",
-            "sha256": "21487ffd16a0a9e681ebeaf127702d4d239481ca549789fec84d21530402354f"
+            "sha256": "6ec8da0ed940355ead3c38b63a48ed94a437a74e3c329d16e7569b7eb457b877"
           }
         }
       },
@@ -7587,15 +8192,15 @@
         "files": {
           "albedo": {
             "file": "sheets/missiles__composite__d01__albedo.png",
-            "sha256": "71caf91ec9e87c5dddb6ecd3886a94c73665be7f56ebcf1020baa5261a28be75"
+            "sha256": "e9bd3e2c633b700f2ae3dc697c17cf7165667c9c04855fdcf785637fc307dfe8"
           },
           "normal": {
             "file": "sheets/missiles__composite__d01__normal.png",
-            "sha256": "022d47bdca39c850c12e3e70565577109100dc6efbf53cd1383198b362705de9"
+            "sha256": "17e63a339a433b3b579cae78ffaf89a0ae4e3626ded2b9919e644b188f2cf144"
           },
           "material": {
             "file": "sheets/missiles__composite__d01__material.png",
-            "sha256": "8f0821c83e4bc8c0751506a0cfa349dcd85f27156e77fa1f9a64aefa2b340538"
+            "sha256": "edf228f58b044b678ac0c4153214b869e06974e1f6696f7bfcd2546c5c85822a"
           }
         }
       },
@@ -7605,15 +8210,15 @@
         "files": {
           "albedo": {
             "file": "sheets/missiles__composite__d02__albedo.png",
-            "sha256": "1cbffd15aa66f9f3ce5823370e7a7b1c80b318c98300660d4fc6f96fc8311c2c"
+            "sha256": "e7b6b2eae0ba29074f22c2c624656b5b6dfff698d9e372a4532408b4583e47f0"
           },
           "normal": {
             "file": "sheets/missiles__composite__d02__normal.png",
-            "sha256": "f54454c99c91c731432c91909249f90847aebf20b08b64a71ff39db6e092983e"
+            "sha256": "bddd775069f488babaee5ee16b7c8575672e915826abeeeee5f2144baa866940"
           },
           "material": {
             "file": "sheets/missiles__composite__d02__material.png",
-            "sha256": "67122ea5638515556cb9a1edd027cb2d3a9e50f2e0f5feaf231902e07e26c3d7"
+            "sha256": "c8dbe57ac37320c9b9d57696c87bdc678c902e8a877f159b243c7af2295acab7"
           }
         }
       },
@@ -7623,15 +8228,15 @@
         "files": {
           "albedo": {
             "file": "sheets/missiles__composite__d03__albedo.png",
-            "sha256": "772a1079a4bd456cd822de71a21e40fd95d40710ede49948be12bec6b39d22e9"
+            "sha256": "6e591934ee981a8cc15bc0dfc0bb69d54cab05f6a63a8e4e1ba307f52080be2c"
           },
           "normal": {
             "file": "sheets/missiles__composite__d03__normal.png",
-            "sha256": "6144407b8e2f32ca8ac12342e9e56e2e9c11d1f5bc8b8cd4bd24847808a7ecca"
+            "sha256": "03b74c17b2f13d4491a0414dc8a45c7fbb5a4ace86298d880fcd549f2c3f1243"
           },
           "material": {
             "file": "sheets/missiles__composite__d03__material.png",
-            "sha256": "9be284a1c48396881d4fc39ddaec1ff3c16d4ee2382bd290eb1a0ec2ae3c7ffa"
+            "sha256": "01d6deee25b401787754cfa663107a90599c789a612cb4d11bd1cb7cb16c6880"
           }
         }
       },
@@ -7641,15 +8246,15 @@
         "files": {
           "albedo": {
             "file": "sheets/missiles__composite__d04__albedo.png",
-            "sha256": "6f7582fc065d17121fbba0da4f170dc9f31456efbe85c3e1ae0dc8243a91dde8"
+            "sha256": "deadf0e3c4dc8dad4a6519bd66dd10118746877a0acba18776dee28b4d80be43"
           },
           "normal": {
             "file": "sheets/missiles__composite__d04__normal.png",
-            "sha256": "a3c4535cbf2efe68e96bee8bcd263af3449834167a592beff90ae393ba3c64b6"
+            "sha256": "ab3e51b16fbed1d573b899fe69a76451d1db7fda4baef6a2fd363c6f88de52eb"
           },
           "material": {
             "file": "sheets/missiles__composite__d04__material.png",
-            "sha256": "db06852f068409968cfa1ed4dcf8b4ecf6bce3e339477f3fef037cde45bcdbc0"
+            "sha256": "509379619c2fe70776a48265e094be24a1c83caa597631162c1964e7e1fc14c2"
           }
         }
       },
@@ -7659,15 +8264,15 @@
         "files": {
           "albedo": {
             "file": "sheets/missiles__composite__d05__albedo.png",
-            "sha256": "475a56a2e320d5052be6d8b918113c61477f0710dc29eb24a90eb7fbab84e78a"
+            "sha256": "9d24a14b7f91585e1c95eb66d415750211fc6c70e80c95b32c772773788d6d89"
           },
           "normal": {
             "file": "sheets/missiles__composite__d05__normal.png",
-            "sha256": "00a6dd322adf134d7fb6bead685baf4e925fa8c6534a002ee706a33e666f7e02"
+            "sha256": "aca9960a8a4f778519bb6cff97901f3b613bc3b45e9d8605c5e6336ad00961bb"
           },
           "material": {
             "file": "sheets/missiles__composite__d05__material.png",
-            "sha256": "2bb8d8cf63075e5bc8ad0d461c90588aa70c2dc862f81d78e869e324ab1ddd48"
+            "sha256": "06e0bc7750150c30bf75c4b587aecd39694ad2e5c68f8fecfcdab660d73f300b"
           }
         }
       },
@@ -7677,15 +8282,15 @@
         "files": {
           "albedo": {
             "file": "sheets/missiles__composite__d06__albedo.png",
-            "sha256": "1798a6e3bfefd0e919f0579d8bd32f9657e4f66282317b4299b37acc5df2898b"
+            "sha256": "438e707e57e2761d62e2e3ecf09c1c71979be760f6e7303b660f23330a8bc70e"
           },
           "normal": {
             "file": "sheets/missiles__composite__d06__normal.png",
-            "sha256": "7f360cf4337e08f58b2aa3034b9f2d6b51a4ad6dcc3d3463918535a4bacaea7f"
+            "sha256": "e174b8620c9d139fd0da02801e530355f1e0cc6630d7682d49d729fd1ad82088"
           },
           "material": {
             "file": "sheets/missiles__composite__d06__material.png",
-            "sha256": "d89b74d389d36524e0fd0dfe6c665ffdc503be36dacfa1503334fc6dc6223f81"
+            "sha256": "513fd057ff05f181bb657438a99b2b431ad88896e969f73d42eef399b2fb3bf9"
           }
         }
       },
@@ -7695,15 +8300,15 @@
         "files": {
           "albedo": {
             "file": "sheets/missiles__composite__d07__albedo.png",
-            "sha256": "ab24f67fa6725333458cc77e9e8e988102c1ecc3e1e4c325b968f8a0fee77cb2"
+            "sha256": "8e911517111cafd0f0e6d2fcbf751f6c371b2328d6eff486df9a6102a47b4f6d"
           },
           "normal": {
             "file": "sheets/missiles__composite__d07__normal.png",
-            "sha256": "00cc09cf194d8c3fdbfa0442141e955202cfdb0b7e260b8c390542a8d3931238"
+            "sha256": "07500d8a73e043a549264e67e54977f54f755f4df1134ecd38378734464f4b4d"
           },
           "material": {
             "file": "sheets/missiles__composite__d07__material.png",
-            "sha256": "ffa007ef18df893cd617c664bc4eea273c2fd251d3b8570df34361cb5c2a13f2"
+            "sha256": "1bcbe723669caa99985070e498845c167701d4edc5522f1a341f426b6a509d44"
           }
         }
       },
@@ -7713,15 +8318,15 @@
         "files": {
           "albedo": {
             "file": "sheets/missiles__composite__d08__albedo.png",
-            "sha256": "6d5d61cb3662056681045d3e2c1d68a8dbb831bfd0be6506dd6da6550b224d95"
+            "sha256": "cbe344988ab48357212c7d5b3c1874f9101e939c58d0e4afa68db5b38e504c41"
           },
           "normal": {
             "file": "sheets/missiles__composite__d08__normal.png",
-            "sha256": "aecc9dfb2083d0f1289a0ddd3bfe6ed88f67a3b3efca446334d5ae7950253386"
+            "sha256": "51aefe7e4c4ff3a5f0dfbac8e8b36a85cf9ffa783ff10d0fa6761387a9b128c2"
           },
           "material": {
             "file": "sheets/missiles__composite__d08__material.png",
-            "sha256": "19625394b0cda425fc76bfea6b2e03c269a6e2b7fe38d8edefc5193f06922078"
+            "sha256": "0671492a097e491304f05ec227fb01d988e7ba1db4661b2e37e742efb4540bdc"
           }
         }
       },
@@ -7731,15 +8336,15 @@
         "files": {
           "albedo": {
             "file": "sheets/missiles__composite__d09__albedo.png",
-            "sha256": "d771b5c14cb3bd88fd8c543998942b5a6110e3645824195150d11195607549c2"
+            "sha256": "3639ee5de920254e9372fbe035f771db7532a62729208cca8bf54da723efa0d5"
           },
           "normal": {
             "file": "sheets/missiles__composite__d09__normal.png",
-            "sha256": "47cf4f69f6c8838cfbd1edd023638c83573bb431ec5f30a359e6fc5b8bd5888d"
+            "sha256": "1a3bb3891774c8ed649a43e030af711139ca23b8a1a92771516af1b70458a257"
           },
           "material": {
             "file": "sheets/missiles__composite__d09__material.png",
-            "sha256": "89178e9f3f5831210ed9c528227fe0f5643b8ff88e8eb0f6c0123a63188f5201"
+            "sha256": "7f45237eafa14c2ed07e6eb66da3336b440f62d9a2982455dfa60327af965744"
           }
         }
       },
@@ -7749,15 +8354,15 @@
         "files": {
           "albedo": {
             "file": "sheets/missiles__composite__d10__albedo.png",
-            "sha256": "75e7757ef358c1e2d304e95db771c060c579d1d0f515a28d328616b438e313f1"
+            "sha256": "1f8de09fac569685b44f4a64523c041e26ecba6c7d14ad8b039f24f78ff8d00f"
           },
           "normal": {
             "file": "sheets/missiles__composite__d10__normal.png",
-            "sha256": "2be3e4b8a9dc1d0e45ef6b07574b71b06ff7669aadbef056f804e4746984dd9a"
+            "sha256": "0615c0a744ce8150e9da4a589d74861176097fd4add41da36c72a923471ec893"
           },
           "material": {
             "file": "sheets/missiles__composite__d10__material.png",
-            "sha256": "e83e299b4cca0f1943cb17c485517ff092a5d9f760c10b2049ef566e96adee8d"
+            "sha256": "45d78c5d0c5b8f6ac9fd4227262139e46bfb48178de79d148fdbbc2205d5bae6"
           }
         }
       },
@@ -7767,15 +8372,15 @@
         "files": {
           "albedo": {
             "file": "sheets/missiles__composite__d11__albedo.png",
-            "sha256": "ee6c17f6722b3c54bccb87499dc524dbd5d98717eff5e85917a678025c9ed410"
+            "sha256": "5584627919e34fa0f9dc0351d9061da76020aa2a384b317e7065f238c5b229b1"
           },
           "normal": {
             "file": "sheets/missiles__composite__d11__normal.png",
-            "sha256": "3096051c6cf2a3d381a2c69323263758b68e3fb6691f5ef867f1e958ed9661a5"
+            "sha256": "9bb424bfc7ce0a62fb06b88cb6c05d31fcd386bf94a553df2e2f6cd0513a4d1b"
           },
           "material": {
             "file": "sheets/missiles__composite__d11__material.png",
-            "sha256": "f7aa9010f591a651059492cf79548f6e0782d199311990f1c1663f7c1b0666e8"
+            "sha256": "0178217224ef2843bcad8517a24b440951797a81e6499642dbd87894489b9482"
           }
         }
       },
@@ -7785,15 +8390,15 @@
         "files": {
           "albedo": {
             "file": "sheets/missiles__composite__d12__albedo.png",
-            "sha256": "7f7d49bc0b532141b998399f12ea816ef706016ff4ec52baf5ba3ed16930e041"
+            "sha256": "170cffdd4befe27dddc37d7b5c978a8d43a259987a00d6a39f9169d4ea1f6ddf"
           },
           "normal": {
             "file": "sheets/missiles__composite__d12__normal.png",
-            "sha256": "33e5d04203ea61d8f3016ad30060d5621e92e803d385d2ad3e6bc16c28a06760"
+            "sha256": "2c3b4fd8fec9db4be8591b36c33a54a82d7d99f8915a17e66dca68287f7ad2db"
           },
           "material": {
             "file": "sheets/missiles__composite__d12__material.png",
-            "sha256": "c5f713d4d0df6081357d90e848982e78439bd9b032d74c9dd1fd6da1759ed3f2"
+            "sha256": "487fa690434bc14ee16b06a230e377b70a5cf83f08fd711e298c8be396f22348"
           }
         }
       },
@@ -7803,15 +8408,15 @@
         "files": {
           "albedo": {
             "file": "sheets/missiles__composite__d13__albedo.png",
-            "sha256": "1b391f8c5ea77165c51d8a6a4c81373578270f0600fd34ee1c5a723566e582a8"
+            "sha256": "b099a8c939b05de45287febad2088e827cb53d2a2607eeb3e847a1af0919949b"
           },
           "normal": {
             "file": "sheets/missiles__composite__d13__normal.png",
-            "sha256": "2173e2b7f2528246b1d75a7cef4221409a958dd5f651169de82ab925e830ae47"
+            "sha256": "0ce238c759a3ad0a4f1c9722dc53e2ef28cb523be5248f8445ac4099a2667a31"
           },
           "material": {
             "file": "sheets/missiles__composite__d13__material.png",
-            "sha256": "cad3a676ef6fc1087fb2dd867fc1d12e88da93279d08bb78bc4a7f93db507121"
+            "sha256": "e9f98bf3ed97735b0a94e09514cf42ea42dce457789be935da83829027148e61"
           }
         }
       },
@@ -7821,15 +8426,15 @@
         "files": {
           "albedo": {
             "file": "sheets/missiles__composite__d14__albedo.png",
-            "sha256": "9073dda66c6cd3cf2ad59e41fb11a7a3b4a665e9b4b1bfa9b372b948e53a1faa"
+            "sha256": "d4e5067efa4fa83b2da6590aca3d533fd3c8879166c349b973e1275c8d059590"
           },
           "normal": {
             "file": "sheets/missiles__composite__d14__normal.png",
-            "sha256": "54afa83900cbd6e258a98973766078d9eefb1293cce8f3a0deea78293395a4b5"
+            "sha256": "85caa67abe2daebc482dabb5561c32771b4e252720643e5403ab1752383c3c80"
           },
           "material": {
             "file": "sheets/missiles__composite__d14__material.png",
-            "sha256": "2118b094bbe9d818aaf36576278b6a041195c00a59f5859e015705eae3efc256"
+            "sha256": "21455fe146d9a19c1fef0fe2230c7e46581a95b0edc7760297ae83f11ad80ac0"
           }
         }
       },
@@ -7839,15 +8444,15 @@
         "files": {
           "albedo": {
             "file": "sheets/missiles__composite__d15__albedo.png",
-            "sha256": "f02e7ff0aaeb5ab10895afde94cf4f29dcdf752b10b236804c5029a2be5bfed6"
+            "sha256": "ff3bba9a02342216e02aaa69663232428f6d517d7fb1cb56eaeabe8b3d7007f0"
           },
           "normal": {
             "file": "sheets/missiles__composite__d15__normal.png",
-            "sha256": "97fb4cf09cecb80b8ee433149fe3af4bd079a5418666d31a36b2fc4a35573bf0"
+            "sha256": "653ab1c52f85c79ca5acdf075cfff12236ac36c3b44fd8be8e86527cbb092f19"
           },
           "material": {
             "file": "sheets/missiles__composite__d15__material.png",
-            "sha256": "2265957d975a8fbba36dcc31363a57a7aeb42498a2eba8fab1a35752871e078f"
+            "sha256": "a9021d33b4f13391f7c428d535e5bb72db1d2ef72717b58ff1cdbb1b40a022b4"
           }
         }
       }
@@ -7861,97 +8466,97 @@
         "file": "sheets/missiles__lit__d00__albedo.png",
         "w": 53,
         "h": 43,
-        "sha256": "b3ed5dea39a360b2b82464b31e1d53ced91b1d0e3516a0b2947a615340413a4f"
+        "sha256": "68242e77ea1892ede3e23556258b580c8e250f0f3d14864043224fd2d370d0c7"
       },
       "d01": {
         "file": "sheets/missiles__lit__d01__albedo.png",
         "w": 47,
         "h": 42,
-        "sha256": "99427c5ab064e184efaad0eb14d98f8e5db14ae8bdbacc2c66cd93ce7099baab"
+        "sha256": "6f738934a1c9bca4b2ffe974201d3c1a80b69ec0040ac239b9b746509178c4a9"
       },
       "d02": {
         "file": "sheets/missiles__lit__d02__albedo.png",
         "w": 39,
         "h": 40,
-        "sha256": "7aa8588765689b37361fcce981046a373db20f4f9aafca421c2910f2b017aa29"
+        "sha256": "de6e0aaf92d9651dec717ec01f1eeb4bf2f4c14dc1af57d271f02f8690dc4798"
       },
       "d03": {
         "file": "sheets/missiles__lit__d03__albedo.png",
         "w": 47,
         "h": 42,
-        "sha256": "3dac2d9a1df54f2d96a51942560d42e72a19e51bdb85902a317042e31c6d8626"
+        "sha256": "004194c52c247b3bf8b03caa0936831b3550f73978b9983521111503fef1aac7"
       },
       "d04": {
         "file": "sheets/missiles__lit__d04__albedo.png",
         "w": 53,
         "h": 44,
-        "sha256": "d3f649318e665f067b2b7a2a732f269bb3ce71712acea550bbc9d413a8c51032"
+        "sha256": "78dbf815e33338eccfff95117fba70f7c55f99ce2d9f808004e6482bdc27d4f9"
       },
       "d05": {
         "file": "sheets/missiles__lit__d05__albedo.png",
         "w": 54,
         "h": 42,
-        "sha256": "8c25d0c94e048980ca3b48d903eb983fbf84b3af24e83779545934cba235fcb1"
+        "sha256": "e858e41fa1ae129130aeafc9cd05353563aaa9e0021e42342634b91963c2880f"
       },
       "d06": {
         "file": "sheets/missiles__lit__d06__albedo.png",
         "w": 49,
         "h": 41,
-        "sha256": "b99ea0e26aab06393b79befb897e3575f71f9eb82166e5c768984b9e4aced319"
+        "sha256": "ec633d6a310c476ac842e3a50cd26fe53cb6af3d24f18b7706ba26ca3becacaa"
       },
       "d07": {
         "file": "sheets/missiles__lit__d07__albedo.png",
         "w": 53,
         "h": 45,
-        "sha256": "7917117a2296b322186f8942acfba287265fba7948c8048610d6774f41e87e91"
+        "sha256": "348c2d7991a02714a9c21c7818de1aa3a3385e04165e2cbbf9e1d18aeff09ee9"
       },
       "d08": {
         "file": "sheets/missiles__lit__d08__albedo.png",
         "w": 53,
         "h": 47,
-        "sha256": "c5bcadf49d3984ceb02d35dcfafa45151e5a66cc199d214babf7cd9c910f6c7e"
+        "sha256": "026aadceb3bbb52d1729ec5fc6538b28dd9cf6cf7b8ab5e42e1e7e7104dd2e29"
       },
       "d09": {
         "file": "sheets/missiles__lit__d09__albedo.png",
         "w": 47,
         "h": 47,
-        "sha256": "8fe437c5d5674a95e632adb4e9a2f830b116119730eed8e9fecc1c90dfac5a7e"
+        "sha256": "13d7415be6d7ced03968a1bbc2f99225ba66938e803ca64cf0188b804978ff78"
       },
       "d10": {
         "file": "sheets/missiles__lit__d10__albedo.png",
         "w": 39,
         "h": 45,
-        "sha256": "4283f38a2fc8795e0f095df91e6caeb98185a32ac469ed14da84035f6eeb3ec6"
+        "sha256": "23e8152421f3c54a8c0c63bbaebd0148e3088de4090e2a56c0442977d84c57e9"
       },
       "d11": {
         "file": "sheets/missiles__lit__d11__albedo.png",
         "w": 47,
         "h": 44,
-        "sha256": "5aa36bbd7c4a3e0c5982360192dc6d8f736c164cc8baf8281cf6988727366dac"
+        "sha256": "a7b1eeb5899c8fbf29a02662aa994792d99d04b3048bccd445b209eb448249c1"
       },
       "d12": {
         "file": "sheets/missiles__lit__d12__albedo.png",
         "w": 53,
         "h": 45,
-        "sha256": "a3811e7a0febe87a2c8cdbbb467ca1e676b0899d358e5ba6508123d930282f32"
+        "sha256": "7d0c24bf084e78ae8fdc54ff4106a56966660d108028069f388f278b6939fba3"
       },
       "d13": {
         "file": "sheets/missiles__lit__d13__albedo.png",
         "w": 54,
         "h": 44,
-        "sha256": "24dd6c8dab63fa56e30aebd5f289c0ff24c518086d55f89db241d108492ba57e"
+        "sha256": "d7b8c4eeb6a54ac9c82aeaf0d0fe74ba8ee439c985ef4e6ecbd5eb9252238e7f"
       },
       "d14": {
         "file": "sheets/missiles__lit__d14__albedo.png",
         "w": 49,
         "h": 41,
-        "sha256": "143e0641d150bb5462f86d89052a1f7bb2b84de2b76992759b2499fd51c5921a"
+        "sha256": "317b6b39a41f90e60ed7db9b8376db11f66a76757a1608348654f69173b0d23a"
       },
       "d15": {
         "file": "sheets/missiles__lit__d15__albedo.png",
         "w": 53,
         "h": 42,
-        "sha256": "83d9b4654e456b257b1c5d4cd10ec0492d20bc1da2de586accdfb9dcc69d3e3f"
+        "sha256": "ee7e0381a192200f799c8d85015f15603497f2d652cef746fbeddb1991969dee"
       }
     }
   },

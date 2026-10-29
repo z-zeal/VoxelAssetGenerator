@@ -998,6 +998,21 @@
       }
     ]
   },
+  "depthMap": {
+    "note": "Per-part view depth, one PNG per part per facing. Composite by z-test on this; do NOT try to order segments by a single depth per part.",
+    "channelOrder": "rgba",
+    "meaning": [
+      "depthHi",
+      "depthLo",
+      "unused",
+      "covered"
+    ],
+    "encoding": "q = depthHi * 256 + depthLo; depth = q / scale - bias  (tile units = design voxels / 8)",
+    "scale": 256,
+    "bias": 128,
+    "coveredAlpha": 255,
+    "largerIsCloser": true
+  },
   "parts": {
     "body": {
       "name": "body",
@@ -1059,6 +1074,12 @@
               "w": 50,
               "h": 35,
               "sha256": "5be52527f62f25441448470b79338f2c310f6e961f7309ba059d39941b7b6a19"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__body__d00__depth.png",
+              "w": 50,
+              "h": 35,
+              "sha256": "0ff4a062989cac12caac5a57e8b51ead13d482efb7e086063f363bac60faf9fd"
             }
           },
           "filesHi": {
@@ -1124,6 +1145,12 @@
               "w": 43,
               "h": 35,
               "sha256": "1bb3bba8d95720e1b5412c332c2c216346824cad59f6aa82a9cfd998d54b6e39"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__body__d01__depth.png",
+              "w": 43,
+              "h": 35,
+              "sha256": "ee2f51fd1a8b3d7877a45595d2f8b0156e7a5d33eca7cf229ed362d48fc834bc"
             }
           },
           "filesHi": {
@@ -1189,6 +1216,12 @@
               "w": 33,
               "h": 32,
               "sha256": "ab88910e11a1bdb8e228191ccf198a6dbc4e7aa004df621c751b3fbffa96f38d"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__body__d02__depth.png",
+              "w": 33,
+              "h": 32,
+              "sha256": "3e2e6818ad68e5ea07d05322ce8fc1a47c9c10d431904f4cc600cea7ae091306"
             }
           },
           "filesHi": {
@@ -1254,6 +1287,12 @@
               "w": 44,
               "h": 35,
               "sha256": "0731b5d17d9df7563401fe078b389a536f40320b8601930f242f997ef992c312"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__body__d03__depth.png",
+              "w": 44,
+              "h": 35,
+              "sha256": "30d334afe60cedff2b97c052d41939604294c39acb9c0ebb6736061a6edf1af7"
             }
           },
           "filesHi": {
@@ -1319,6 +1358,12 @@
               "w": 50,
               "h": 35,
               "sha256": "d874258870539692e74903e4e3a34d8baa603aa6b43d0e7eee10971449ffe21f"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__body__d04__depth.png",
+              "w": 50,
+              "h": 35,
+              "sha256": "16a1fde1834467fd65c9d804a14ad0c00c50d3b43360b49a03d07b80da63beae"
             }
           },
           "filesHi": {
@@ -1384,6 +1429,12 @@
               "w": 51,
               "h": 34,
               "sha256": "3152682c766230768d1eaef815843da675404a36e967d7c685c65ab71494d0df"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__body__d05__depth.png",
+              "w": 51,
+              "h": 34,
+              "sha256": "c2c71c234ab61bd31c2b986dba09d4f72a9e97e60d3ab5ae643a61854837c29a"
             }
           },
           "filesHi": {
@@ -1449,6 +1500,12 @@
               "w": 45,
               "h": 34,
               "sha256": "14ecc48f06b7ef9fe37724c2916a65d1784b62609bd4cc4520e31fcf18fca22e"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__body__d06__depth.png",
+              "w": 45,
+              "h": 34,
+              "sha256": "ab7d9cd84cb85e2e577e5388c65010886e4c1f1da32601993dc6c8a0c555d315"
             }
           },
           "filesHi": {
@@ -1514,6 +1571,12 @@
               "w": 50,
               "h": 38,
               "sha256": "fa218fcf01df6e774c3e6b2fde5c4678c96e0302eb47c4f64e15ca62d5783e27"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__body__d07__depth.png",
+              "w": 50,
+              "h": 38,
+              "sha256": "c2d95f7bccfbf428465cb6e9c572bdd44c441f7a9208ffb42197a9ee2dc878bb"
             }
           },
           "filesHi": {
@@ -1579,6 +1642,12 @@
               "w": 50,
               "h": 40,
               "sha256": "1e521f5105573b1970c77a4b4f0a9c71a53569c82121821aa8644460ba41e9a8"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__body__d08__depth.png",
+              "w": 50,
+              "h": 40,
+              "sha256": "6486619fe82dc87070eb3edca3d265043f423f98b10440ba011a37968d3d7c33"
             }
           },
           "filesHi": {
@@ -1644,6 +1713,12 @@
               "w": 43,
               "h": 41,
               "sha256": "6fae23685e65e2967f2da774b58611ed60410a69478cb26233ab194b2c56d3b5"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__body__d09__depth.png",
+              "w": 43,
+              "h": 41,
+              "sha256": "670019770cbefe508c3e6314836523f55bd7d5e828d2758124f8152a006b9e92"
             }
           },
           "filesHi": {
@@ -1709,6 +1784,12 @@
               "w": 33,
               "h": 39,
               "sha256": "61734d513c55d98f81ad2cc1ea6c319dba9d3e43765cb5661f07b892488c3b54"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__body__d10__depth.png",
+              "w": 33,
+              "h": 39,
+              "sha256": "e007d4aa8fa0d3751f994ccfee35dbecf4120e8f5da84c143e889653f80d794e"
             }
           },
           "filesHi": {
@@ -1774,6 +1855,12 @@
               "w": 44,
               "h": 38,
               "sha256": "f64ca4ddea7c82dff485da2d08455950087fed9f6df1aa760f7f3955fd9130bf"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__body__d11__depth.png",
+              "w": 44,
+              "h": 38,
+              "sha256": "f49e63237da29a5f2594da9c9a52ece1fb5beaec298cc29e4b4ee629ff991c52"
             }
           },
           "filesHi": {
@@ -1839,6 +1926,12 @@
               "w": 50,
               "h": 36,
               "sha256": "499e24cf20d586dabb51868d7b7a27a09860912499fc2aaffb797048adee250d"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__body__d12__depth.png",
+              "w": 50,
+              "h": 36,
+              "sha256": "cf372bca81cf36a1551118817e6f93906862b4f417f5617179522b3f7230537b"
             }
           },
           "filesHi": {
@@ -1904,6 +1997,12 @@
               "w": 51,
               "h": 34,
               "sha256": "16404078b1feae05cee37ae0567f15edcb33376404a65d9726d68a38314710ed"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__body__d13__depth.png",
+              "w": 51,
+              "h": 34,
+              "sha256": "24ac91c9d7f67a3058e0c7dd81421b825100f3503a99870fca42491abb0e7a37"
             }
           },
           "filesHi": {
@@ -1969,6 +2068,12 @@
               "w": 45,
               "h": 30,
               "sha256": "7e4aeab89451b2b0d8d6c77a429c50d222a48f2d5017279be89eb73fb5534450"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__body__d14__depth.png",
+              "w": 45,
+              "h": 30,
+              "sha256": "bbc8bec0b2104f75eb743cce24f2cdd6e6d277ab1839497d8f096ce7ec2c77bd"
             }
           },
           "filesHi": {
@@ -2034,6 +2139,12 @@
               "w": 50,
               "h": 33,
               "sha256": "b6c5a62f1cfdc2943bb3a2444723dc9b722a10a4dfd9cda07d6821ca88716919"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__body__d15__depth.png",
+              "w": 50,
+              "h": 33,
+              "sha256": "4e69fead4b2ca8e22409aa2d38afe2d09c0565caf86df631fffac2030643aea5"
             }
           },
           "filesHi": {
@@ -2131,6 +2242,12 @@
               "w": 34,
               "h": 25,
               "sha256": "cd8176faab39f60461b9c94cf8c11ce54c12a300d4a53c50d654fd5fe7f7fbd4"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.L__d00__depth.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "4ef2682697e45038ec82125a1034c151a905d8f97ab1c5997631c375b0b1428e"
             }
           },
           "filesHi": {
@@ -2196,6 +2313,12 @@
               "w": 26,
               "h": 27,
               "sha256": "8b9c68b7eb615410b14532b21283c5396eec6036ed7c8de91074209114c82042"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.L__d01__depth.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "666a9efabeadde7b5173c5118a663ad7224d0747b15877c89767ef3ac958d183"
             }
           },
           "filesHi": {
@@ -2261,6 +2384,12 @@
               "w": 16,
               "h": 27,
               "sha256": "028f15ab66d7d8df214c24f2674bd1fdcc1a9bb23da619788247a6dd342bc3a5"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.L__d02__depth.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "0a385ac4b7af71338cc93c97d859bdc7314ba612ffe40f8f7d804e0207ed39e4"
             }
           },
           "filesHi": {
@@ -2326,6 +2455,12 @@
               "w": 25,
               "h": 27,
               "sha256": "eaa3ea65b04244c0b74747e57ff1ad6996e839c246c0f564b84fea295f479d93"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.L__d03__depth.png",
+              "w": 25,
+              "h": 27,
+              "sha256": "7f8ccc2c321212e2e2b6b7fc7c58af2c7e950fde5f574b6d544810b58cb45788"
             }
           },
           "filesHi": {
@@ -2391,6 +2526,12 @@
               "w": 34,
               "h": 25,
               "sha256": "691f76f821abbcb0a8ed67a8e00978c4fde4c2d8df70a69359fc7fcf3913b005"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.L__d04__depth.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "cca7112b10336d857ae372b872baebfd01f2b2a2cee6c25e97f9bc8d192b0af1"
             }
           },
           "filesHi": {
@@ -2456,6 +2597,12 @@
               "w": 38,
               "h": 22,
               "sha256": "0ff32581fed694171ad7fedd65a3cd87e1c385198607d8d6bd0b8aa5eb9c08b0"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.L__d05__depth.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "1516d9f3b896c586217720f17d7004e91e0279d8cf1caba2c54db404416b7604"
             }
           },
           "filesHi": {
@@ -2521,6 +2668,12 @@
               "w": 38,
               "h": 17,
               "sha256": "934cfbe7d0c3a767e40d863011c6d29a8f4b260a2ad50d5963fdfb1c1e9c0d4e"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.L__d06__depth.png",
+              "w": 38,
+              "h": 17,
+              "sha256": "71307170e1db18517188df699b60d1971768cfbf47e67ba68608589c234f4299"
             }
           },
           "filesHi": {
@@ -2586,6 +2739,12 @@
               "w": 38,
               "h": 21,
               "sha256": "2872b5baf317530249fa67387101fa2ff0ef96004f367ec1e27c1602a3367a7f"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.L__d07__depth.png",
+              "w": 38,
+              "h": 21,
+              "sha256": "d5212454086b7186b860b28aab9279b600608ec099220ef8787c71bf84a91650"
             }
           },
           "filesHi": {
@@ -2651,6 +2810,12 @@
               "w": 34,
               "h": 25,
               "sha256": "97e9fe92b259af010919b3426ff0e3938c63cd18de65f10e0f853dca8d07c2ba"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.L__d08__depth.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "f916204a73a2329c878ab027b53c1ad7a965d9228ef960c419639288beb9fb76"
             }
           },
           "filesHi": {
@@ -2716,6 +2881,12 @@
               "w": 26,
               "h": 27,
               "sha256": "dc39f10be9f4ef2bdf4bd85445084c256d5c00c0b4c0eb3322882676e4cbe6de"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.L__d09__depth.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "77013380186cf26a6c4a08fb7bf8063d72b48529d5da4f84aa9714f9a118d67a"
             }
           },
           "filesHi": {
@@ -2781,6 +2952,12 @@
               "w": 16,
               "h": 27,
               "sha256": "d78721017bdd765d1931d4a70dd77d604857db2108524aa4924a5b6c0d7760db"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.L__d10__depth.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "8d0313976a958d87aa07676f27fa35bbe9d9063f6d7819d0d70f34eaf203bb2d"
             }
           },
           "filesHi": {
@@ -2846,6 +3023,12 @@
               "w": 25,
               "h": 27,
               "sha256": "10b57fd0e8fb59fd28d4093790143ad899af9f7576f79dfeb8c4f2a133838a48"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.L__d11__depth.png",
+              "w": 25,
+              "h": 27,
+              "sha256": "0c114411c96d4a7989139579e1de33979208c0ed808fe920c3611c98c3299d63"
             }
           },
           "filesHi": {
@@ -2911,6 +3094,12 @@
               "w": 34,
               "h": 25,
               "sha256": "43797ddbb531fe6a3c8f7b583ef66289efc1cb449277fe3a31990e23699c33a7"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.L__d12__depth.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "5ecc9eb925b6100f85e52a6489cc996209a7e3d95217167abf562d390b9baa06"
             }
           },
           "filesHi": {
@@ -2976,6 +3165,12 @@
               "w": 38,
               "h": 22,
               "sha256": "1e0e1c4574c4ffbe514192b7b3678606514b206e9bf75f8536b2667fe2bb7ad4"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.L__d13__depth.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "2f8fce075eb376151186b1feae0898864d53d76aa09d6928cf49a00ce8e8145a"
             }
           },
           "filesHi": {
@@ -3041,6 +3236,12 @@
               "w": 38,
               "h": 18,
               "sha256": "ff01a4fc71e4216e7cb152d6bee5f98b03b7af696516f60eb09565afe07e03d0"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.L__d14__depth.png",
+              "w": 38,
+              "h": 18,
+              "sha256": "c63d080059eac95691f430239f9104e8dcedcc2faaa4597d456dc3311de30af7"
             }
           },
           "filesHi": {
@@ -3106,6 +3307,12 @@
               "w": 38,
               "h": 22,
               "sha256": "ec42152d07aea8975611d27cc3824c98b7088f645d4a94e4f1ea5b6a50cce086"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.L__d15__depth.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "9123e9f5b789a8f6b3d7858789f628a0d9ce65c7413c23794b4ded71f91cc211"
             }
           },
           "filesHi": {
@@ -3203,6 +3410,12 @@
               "w": 34,
               "h": 25,
               "sha256": "182108b628b3d02322d3cd5207660c624e0e7e343c2ff8ec065b42d3f9aa4c18"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.R__d00__depth.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "b5d666fd9a362c85026ef63c69e38a127f6f9672494076b5e1ff69c34b434111"
             }
           },
           "filesHi": {
@@ -3268,6 +3481,12 @@
               "w": 26,
               "h": 27,
               "sha256": "3c05bc831fea0d2cf3ce0b284e413b4644f9301f3ae8887270aa957dbd7ec8ae"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.R__d01__depth.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "3b356ab1b65d310c17c0c3e82ea99814296d4b5875fce37a33707cc4aca1a2a8"
             }
           },
           "filesHi": {
@@ -3333,6 +3552,12 @@
               "w": 16,
               "h": 27,
               "sha256": "f3e2ff6cfd2d855e7db703f0d1b03a606fe70f0619373d09ccf1833053f63d57"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.R__d02__depth.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "dc614657768389d56d80cd90483d3c8dd61bdf74e97da777f58de3b2982e3a00"
             }
           },
           "filesHi": {
@@ -3398,6 +3623,12 @@
               "w": 26,
               "h": 28,
               "sha256": "45369dddcc6172f70d6106dc5af6bd39caa904a2db66dbba8e952e4fb504e707"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.R__d03__depth.png",
+              "w": 26,
+              "h": 28,
+              "sha256": "8acdbd581c8cebd86ddfa4f79166540e70ec1c79794fbb31af7087352420be2d"
             }
           },
           "filesHi": {
@@ -3463,6 +3694,12 @@
               "w": 34,
               "h": 25,
               "sha256": "81333f68df6cdfafbe5703dc59a804563f090f7fd7837147f1919090a1b0dc50"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.R__d04__depth.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "0aa9a78e7c8dc6cdb5b22b817713d69fa38cf314f7243a53e465345720b10eff"
             }
           },
           "filesHi": {
@@ -3528,6 +3765,12 @@
               "w": 39,
               "h": 21,
               "sha256": "4590d847ac919178a89c52034a51073c9b5f59c85f99aef78164697f1d4a0122"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.R__d05__depth.png",
+              "w": 39,
+              "h": 21,
+              "sha256": "bf1ea6274c48fafb3a10d8ef9d7a4ff9fd2d858ac80168c017435090523ee248"
             }
           },
           "filesHi": {
@@ -3593,6 +3836,12 @@
               "w": 38,
               "h": 18,
               "sha256": "1935aa19586b5870176f49b9dc0fb0607d2eebef64805194fbda1d3d331629ab"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.R__d06__depth.png",
+              "w": 38,
+              "h": 18,
+              "sha256": "607b1d5aa444c7b61a3383118902292d36315383ebd4f47835412411c4e49469"
             }
           },
           "filesHi": {
@@ -3658,6 +3907,12 @@
               "w": 38,
               "h": 22,
               "sha256": "1957bfe987e32ff9a8f2ded05792545101f5d15b3ec17fad408ee746878125b6"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.R__d07__depth.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "495e85b25f527fc6f31112b72e4eeed888766acddd23bb91c09fc5fccaa28390"
             }
           },
           "filesHi": {
@@ -3723,6 +3978,12 @@
               "w": 34,
               "h": 25,
               "sha256": "a8a59f167f4dfc6411a79e112942ba006460453981894cc69f6f3a28dedc8dd9"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.R__d08__depth.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "48fb36c31e14c864121ac324fcdbb18e55c19feb3aa0b6ea558aed6440633f37"
             }
           },
           "filesHi": {
@@ -3788,6 +4049,12 @@
               "w": 26,
               "h": 27,
               "sha256": "00ec6c249e724521deb3170bf89c4855ec80d72aa23389db2e6f743f7933f65a"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.R__d09__depth.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "7f0c4acbf72c3326e2304aead458098ffc497a8ce3c477c56c1746bd6ddef5e2"
             }
           },
           "filesHi": {
@@ -3853,6 +4120,12 @@
               "w": 16,
               "h": 27,
               "sha256": "1cb5d31959fd9611d47658e64d171a15a7356f5bd0bcde98dad3118f2e61dd2d"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.R__d10__depth.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "315c0ca6e2ab0e7a5a00b48765ffa0789f65b845f8669c0ec420096adf04d1c3"
             }
           },
           "filesHi": {
@@ -3918,6 +4191,12 @@
               "w": 26,
               "h": 27,
               "sha256": "da2ade0bf2262f812c1de2809bba2c8053ee50021516ad70606b9a810de27c01"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.R__d11__depth.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "adf4fd047d14e1fa148b26e3dbd5e4595d4bf493a6e5750db611a70d03e629d9"
             }
           },
           "filesHi": {
@@ -3983,6 +4262,12 @@
               "w": 34,
               "h": 25,
               "sha256": "f15399d371a51af8d1dbba83626bf15a8baf19d1747a8e451356cd41f27adabb"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.R__d12__depth.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "0bababe67182c36e4564f09d39f15ca524e30de6d241e9b2e4495f414b577b98"
             }
           },
           "filesHi": {
@@ -4048,6 +4333,12 @@
               "w": 39,
               "h": 21,
               "sha256": "0a14d8cf85b5563997b6e406655692433a3aa616f05468b7b643553fd1329d1b"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.R__d13__depth.png",
+              "w": 39,
+              "h": 21,
+              "sha256": "0613dce689b8aadeafead50926fd3a65d9db3c1e042eb4b622661cf83f5724b8"
             }
           },
           "filesHi": {
@@ -4113,6 +4404,12 @@
               "w": 38,
               "h": 18,
               "sha256": "d1f5955e99a83c51fbd7d1bc70d3e14575816dd04315d82c2ec15722db9094c8"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.R__d14__depth.png",
+              "w": 38,
+              "h": 18,
+              "sha256": "16f33dfee061f607d3f15bd23c407c18bad7323b8ec41dd7297e46deb64c1818"
             }
           },
           "filesHi": {
@@ -4178,6 +4475,12 @@
               "w": 38,
               "h": 22,
               "sha256": "9920751d71aba96176d8819f53f93074573232574d413ea6bf252c93de7c7a48"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__wheels.R__d15__depth.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "7c2a79933238b1dae97328e112870158b452d3e0b24ca3f8ef0e7360ccdc4270"
             }
           },
           "filesHi": {
@@ -4275,6 +4578,12 @@
               "w": 24,
               "h": 19,
               "sha256": "8253e3f9941f9839bbdba744e56fb7f1ee64750212e7e722d856eb57328a188d"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__tailgate__d00__depth.png",
+              "w": 24,
+              "h": 19,
+              "sha256": "c607aa397d2b20c295635dd742967748ca468b78674b9351cf68272d3723e572"
             }
           },
           "filesHi": {
@@ -4340,6 +4649,12 @@
               "w": 28,
               "h": 16,
               "sha256": "b8fd343f4e8694af3922b324cb4acefa1a007c9d95b1d8617350b0668eb4c858"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__tailgate__d01__depth.png",
+              "w": 28,
+              "h": 16,
+              "sha256": "56ee8cf2a3d587a8df6f4063ca61a36407b8de511547ee98ea3ad6521926ee39"
             }
           },
           "filesHi": {
@@ -4405,6 +4720,12 @@
               "w": 29,
               "h": 13,
               "sha256": "668afd87116173453519ae938ce7a709e6748fe2080ce5e954f46045a83b1ec7"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__tailgate__d02__depth.png",
+              "w": 29,
+              "h": 13,
+              "sha256": "8e587386d009226329dee3375eda765ba536c35f69df4482443e81267bad143a"
             }
           },
           "filesHi": {
@@ -4470,6 +4791,12 @@
               "w": 28,
               "h": 15,
               "sha256": "013117933ff29053150d5f84f2d3d69319796c7f61a0fde19cd28482c29e18c7"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__tailgate__d03__depth.png",
+              "w": 28,
+              "h": 15,
+              "sha256": "8b890246349b8c0c2d9c4bf300f02f6ffa04ed38e29439ee0b965f175c64579d"
             }
           },
           "filesHi": {
@@ -4535,6 +4862,12 @@
               "w": 24,
               "h": 19,
               "sha256": "b670aa2da7124b58cb63c10803ac0ddc1c134162f56ea9502961ddabd76d1999"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__tailgate__d04__depth.png",
+              "w": 24,
+              "h": 19,
+              "sha256": "0afbfbf261e0f0bb6850a106e97e49e1ec5d6c58ee79239617f79c54ffe0e7f3"
             }
           },
           "filesHi": {
@@ -4600,6 +4933,12 @@
               "w": 17,
               "h": 21,
               "sha256": "74f841076d68dcbf25553a96b40b674db62026497429fddd11f117bb3cdc99f6"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__tailgate__d05__depth.png",
+              "w": 17,
+              "h": 21,
+              "sha256": "2ae4c1f0373b52f282f4f8fca80edd350e54d196a04c494fb28a2ea86efa17ad"
             }
           },
           "filesHi": {
@@ -4665,6 +5004,12 @@
               "w": 11,
               "h": 21,
               "sha256": "83712b7cbe1b00d0f9fdf70d7fcc94271ab2e587e7e748bb048d87272e711709"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__tailgate__d06__depth.png",
+              "w": 11,
+              "h": 21,
+              "sha256": "5f309b149c9ac5ab14c2496127daf030c18e66271ae8547813e947851c549568"
             }
           },
           "filesHi": {
@@ -4730,6 +5075,12 @@
               "w": 18,
               "h": 20,
               "sha256": "e5f6b22429ee6e991fd18a2e45496e35798fe52fe58c0bc25df2ba122ecf8867"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__tailgate__d07__depth.png",
+              "w": 18,
+              "h": 20,
+              "sha256": "501b51717bea0ef5793b3b17484385ea13ba0b6acb584c454288e73985145c6d"
             }
           },
           "filesHi": {
@@ -4795,6 +5146,12 @@
               "w": 24,
               "h": 19,
               "sha256": "f102e3c19b89ddaa668501501a4ecf9c63d1d34e3848c128c00928c1ab7d752c"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__tailgate__d08__depth.png",
+              "w": 24,
+              "h": 19,
+              "sha256": "ee5b791296bf84fb5040149ab3dcb6d0c4720b2543aea71edc5005ccc1f56def"
             }
           },
           "filesHi": {
@@ -4860,6 +5217,12 @@
               "w": 28,
               "h": 15,
               "sha256": "bb10b22b8dada18e3d2e81146a9c9aa0193c5af260fe2212f3b635954d94a200"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__tailgate__d09__depth.png",
+              "w": 28,
+              "h": 15,
+              "sha256": "de7c8142f6199d0b94f0aa789c524bd7ce24c4dfbb6fd6ef5880ba4a3162cde6"
             }
           },
           "filesHi": {
@@ -4925,6 +5288,12 @@
               "w": 29,
               "h": 12,
               "sha256": "9e6ce61eef90ca38319d3e8ef813317418e84879b3336628804f7e58ea22b06b"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__tailgate__d10__depth.png",
+              "w": 29,
+              "h": 12,
+              "sha256": "9877b49919d37903a5064c2e1f1df8994a91fcff5159674ab0808aadf7c80f80"
             }
           },
           "filesHi": {
@@ -4990,6 +5359,12 @@
               "w": 28,
               "h": 16,
               "sha256": "41c9cf314a83bf4bdb7cbac314ceb85939c6959735647cd98b190c16f981ed6a"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__tailgate__d11__depth.png",
+              "w": 28,
+              "h": 16,
+              "sha256": "f269bd6c1cdc42680c8f52926020c37d074c57560b17decdbebf38a15ea3c0dd"
             }
           },
           "filesHi": {
@@ -5055,6 +5430,12 @@
               "w": 24,
               "h": 19,
               "sha256": "59e4be27e80dbfc6864da4b11303d4b037d69c8781810c2530d2b46f409ff213"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__tailgate__d12__depth.png",
+              "w": 24,
+              "h": 19,
+              "sha256": "d4be4e8f241a44adde39e498de6af6f963244711334b49c934ae433fe909c2ab"
             }
           },
           "filesHi": {
@@ -5120,6 +5501,12 @@
               "w": 17,
               "h": 21,
               "sha256": "ae8e7a1c59105d3e8790e5fcb1012a891730eb60b78774efbe7045cb9c4f6c3a"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__tailgate__d13__depth.png",
+              "w": 17,
+              "h": 21,
+              "sha256": "4d45c75d872cd5f340b930b9eb8a74d86f2a187bda6aa6c20e2f8ba326583ea7"
             }
           },
           "filesHi": {
@@ -5185,6 +5572,12 @@
               "w": 11,
               "h": 22,
               "sha256": "402ff2d59a2be841a8ba40e9954988e2b50aa400edc7be830af1d12c2fc0bf92"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__tailgate__d14__depth.png",
+              "w": 11,
+              "h": 22,
+              "sha256": "76ed4206f0ba71c797e74687d516f4aeff7770515d6d7e1305780e6c8750c2c3"
             }
           },
           "filesHi": {
@@ -5250,6 +5643,12 @@
               "w": 18,
               "h": 21,
               "sha256": "47c6cbf662375ed387f3756ab7027bba2ccd2a858cc45ba761de0a34616cac23"
+            },
+            "depth": {
+              "file": "sheets/supply-truck__tailgate__d15__depth.png",
+              "w": 18,
+              "h": 21,
+              "sha256": "29d0849edbcb569218bfb334e6b59c257376dc0f776bf81f0a2031d63eed44d1"
             }
           },
           "filesHi": {
@@ -5385,15 +5784,15 @@
         "files": {
           "albedo": {
             "file": "sheets/supply-truck__composite__d00__albedo.png",
-            "sha256": "f0e660c362cb814518d7b20d28277d43a3b4b0351c9ee837914512f27898cadc"
+            "sha256": "6b847b8c2146cc293bc0547cdd59b84ea343dc46572fe3eceef0d0e11ffffb41"
           },
           "normal": {
             "file": "sheets/supply-truck__composite__d00__normal.png",
-            "sha256": "a6012cf088ed80910a356c7f96108150177474a556fdc8759b9bc8ba41f87e53"
+            "sha256": "b8ec68ce8ab1b8cffa55c51a7d5ddeded5e3e29eb635aa240274f34172a4c790"
           },
           "material": {
             "file": "sheets/supply-truck__composite__d00__material.png",
-            "sha256": "de313671bff9d2de24252c9c3270a24d821fc84a1c35b3f20c6ce31489491103"
+            "sha256": "e523ab7183d310f75974130c38ae580390cd36ec888ab91550945f3bf3c1144e"
           }
         }
       },
@@ -5403,11 +5802,11 @@
         "files": {
           "albedo": {
             "file": "sheets/supply-truck__composite__d01__albedo.png",
-            "sha256": "9e05b67044590371556871d073788ec999d1fdc3facf83ad0d47ee91dca134e7"
+            "sha256": "eac87623a02f2d328603b513879b4fa2b8d8578067a0f6185c3be396d518e438"
           },
           "normal": {
             "file": "sheets/supply-truck__composite__d01__normal.png",
-            "sha256": "84de60adb4728126b9984f96e1d1f2667eb37bd39e55b6c2e9fb01b2d57f50eb"
+            "sha256": "c7e68dcb0898a3ebce4aa7c0fdc98b27601b0a9af10610ef9ad221f641fdef5c"
           },
           "material": {
             "file": "sheets/supply-truck__composite__d01__material.png",
@@ -5421,11 +5820,11 @@
         "files": {
           "albedo": {
             "file": "sheets/supply-truck__composite__d02__albedo.png",
-            "sha256": "196251d150543df57027539d3529c02ba18019e2211844bcbc008d9d11dba3af"
+            "sha256": "f28771afd2d6593024558ec150619cfcc72332281e5a4f7d79332e5964ec561b"
           },
           "normal": {
             "file": "sheets/supply-truck__composite__d02__normal.png",
-            "sha256": "c3f3864f048e4c8a1b2744022da2522a60b87b5d6e43d9fdf87a211863169f7f"
+            "sha256": "39cb930c3a91f101f0645a46c5d40fdab70c977031f601687c90cff2a2e75695"
           },
           "material": {
             "file": "sheets/supply-truck__composite__d02__material.png",
@@ -5439,11 +5838,11 @@
         "files": {
           "albedo": {
             "file": "sheets/supply-truck__composite__d03__albedo.png",
-            "sha256": "d26057f264d87ab54a484b63a3ea1c1f7f243a06dd876e12793202d2cf44385c"
+            "sha256": "c958c2bc02d31e0b01e12c9d82b521d18a3e74d180150e246ffac33f1b6c0d23"
           },
           "normal": {
             "file": "sheets/supply-truck__composite__d03__normal.png",
-            "sha256": "021644179432335eec4c7e0b6a663a979e5e0c7cd4a658eddcf6870f97f84e9e"
+            "sha256": "755b7a1406a28c8bbe99e216769fd7b5c3eba729705a5299eba0ed21023bcfc6"
           },
           "material": {
             "file": "sheets/supply-truck__composite__d03__material.png",
@@ -5457,15 +5856,15 @@
         "files": {
           "albedo": {
             "file": "sheets/supply-truck__composite__d04__albedo.png",
-            "sha256": "b5d6bfa8858022de607cb2c69c107c9b033e67cca82d8d5bb97ac77d522ec3d0"
+            "sha256": "2fd87434ecac1d8b9ccca970343428d5c64606dc77294da1b39c1379b85fa6c6"
           },
           "normal": {
             "file": "sheets/supply-truck__composite__d04__normal.png",
-            "sha256": "b6303ae92ded8ee8bdb6b06e3ab5ad41fed83930da27b796a5c32116bb50a195"
+            "sha256": "7ecbbfd8ec5e780e98e8e12bb001ace8f988378a3b599d2cf4434daedded4020"
           },
           "material": {
             "file": "sheets/supply-truck__composite__d04__material.png",
-            "sha256": "addfdaca8ee939ea739fd500dbf41903af90e5ad72a575e81cbaa772c570be07"
+            "sha256": "ae0c85d93b9d8979e42d5885c5671c66d48427bc9828ff31ea256d192529d86a"
           }
         }
       },
@@ -5475,15 +5874,15 @@
         "files": {
           "albedo": {
             "file": "sheets/supply-truck__composite__d05__albedo.png",
-            "sha256": "e66916988231af7be2eec7a2166d7b07330657eacda527538b7a235764db1d92"
+            "sha256": "6c1b7a5c9b3157bdc75a1f99ba83988bdb70cf83a3d56cf30c5f7e1083c7cca0"
           },
           "normal": {
             "file": "sheets/supply-truck__composite__d05__normal.png",
-            "sha256": "50695e3c429f083d14db24e393f0b4c53258b8daab19b5a91a5e71a2b8cc7a25"
+            "sha256": "b6921b062bf9c6165061232be7e0b7aac707369fa98f4341b235c7db5c239224"
           },
           "material": {
             "file": "sheets/supply-truck__composite__d05__material.png",
-            "sha256": "8aba75da3f51d56be4daec4156b3f82515bbeae2427e9c23c8328cbd561fcc02"
+            "sha256": "7d5f08fddef789fe245a529a5cc111b7c2fb1583beb2fa10c90a437a52cc436c"
           }
         }
       },
@@ -5493,15 +5892,15 @@
         "files": {
           "albedo": {
             "file": "sheets/supply-truck__composite__d06__albedo.png",
-            "sha256": "8ab26766e8993f33a56d40d8d4370694e0d53627385a182cb138db6f5598ca2f"
+            "sha256": "255170fa81442d79fafe168fb44522dc09e631f572b019f2a042e8353bbbf8ee"
           },
           "normal": {
             "file": "sheets/supply-truck__composite__d06__normal.png",
-            "sha256": "1aac84efff4953b1d4f3264fb73cba2e0744245badffe8f6419058dd45847856"
+            "sha256": "b2bfb759feaec869a5a428a03732b2989f44b174613c131d4cfb7b1a3071954f"
           },
           "material": {
             "file": "sheets/supply-truck__composite__d06__material.png",
-            "sha256": "13f7f15d53df3f80faf0506b2e8f02b5f4a4086da12114206e6b76d52f4dd72b"
+            "sha256": "4e4d61342d5fe1a5d1bd591d692eb938ce609a6e5e18b502368daca855f7202a"
           }
         }
       },
@@ -5511,15 +5910,15 @@
         "files": {
           "albedo": {
             "file": "sheets/supply-truck__composite__d07__albedo.png",
-            "sha256": "56460f3e928ec60b3a50299196aa3d896e7fc27c325dd5b6e090fec7b628a18e"
+            "sha256": "c165b7aed9112d0404528eb962dd272423f4460502278a738d0c007849336457"
           },
           "normal": {
             "file": "sheets/supply-truck__composite__d07__normal.png",
-            "sha256": "b362256e76bf1c0ff6fc2ea8b96aac2f34a5bab8bb49ba811bfcf29b93708070"
+            "sha256": "b06a8902819a87b9987524be771d3c3b37e607727136b9c24dd50f982296a7b5"
           },
           "material": {
             "file": "sheets/supply-truck__composite__d07__material.png",
-            "sha256": "d0e4fbf209cc485949010b4f15cbdfa0787b1de20d63ab8dd876048ea46a8cc2"
+            "sha256": "963a64d028acd9caf023f3259dc0f77ccc39e830796bd9e970ee7d103db726d8"
           }
         }
       },
@@ -5529,15 +5928,15 @@
         "files": {
           "albedo": {
             "file": "sheets/supply-truck__composite__d08__albedo.png",
-            "sha256": "4e8b35a1c2cd5169f837996208586f7ae3186e9042e7f629512fbe0ef1999c83"
+            "sha256": "c2a63d6e191b44124ba0f002c8770fd1b9f77712ed9773ca3f74160a3248958b"
           },
           "normal": {
             "file": "sheets/supply-truck__composite__d08__normal.png",
-            "sha256": "9524dd35bbb2a6ae9c2d3426882bb946f088aa0e191693885af42532c94d99f9"
+            "sha256": "970624582aed676c87515d202833f7558436608d87174532b372a00e3bc17c96"
           },
           "material": {
             "file": "sheets/supply-truck__composite__d08__material.png",
-            "sha256": "86c0574bbe4c1aeec23a7bda3b5fb1d44a1b31465a923414be3ced0bedf2bcea"
+            "sha256": "a7d88e5e8a8e9f504d02d2c7b5a91bec8ba90801661e861eec102f046a4929a0"
           }
         }
       },
@@ -5547,15 +5946,15 @@
         "files": {
           "albedo": {
             "file": "sheets/supply-truck__composite__d09__albedo.png",
-            "sha256": "4f232a351915a7728040c8dcc40aed0f35e185576c6752fc13fb94067791bc50"
+            "sha256": "d77b34f88daa4439ee0c7000063776ef1dcc78fe77971cd7618d0517a83b58fe"
           },
           "normal": {
             "file": "sheets/supply-truck__composite__d09__normal.png",
-            "sha256": "472f88235146088a4fe1a7a19e2fdc0062777c3ae9d7e126a29ba07e653aeba2"
+            "sha256": "78ad11fa30e1fcef503eeb4ee31b89f6460601b7d62eddecb9212d201f64b712"
           },
           "material": {
             "file": "sheets/supply-truck__composite__d09__material.png",
-            "sha256": "e209191a28c97233645d74773c4c193216bab85108e66a55759c46e0e87fd60e"
+            "sha256": "433a2f06ab927ce4b5f818879a34dc4ea1a5e579285e747f0dbdfbfcee15ec8d"
           }
         }
       },
@@ -5565,15 +5964,15 @@
         "files": {
           "albedo": {
             "file": "sheets/supply-truck__composite__d10__albedo.png",
-            "sha256": "c8ca270fbc99cab29c9ff51b7d0c85c3a15a572ac4295928449139a32663d38e"
+            "sha256": "13778f3507dc098a6996aa871d515f75d0c82b975f8556886308aaacf3d28689"
           },
           "normal": {
             "file": "sheets/supply-truck__composite__d10__normal.png",
-            "sha256": "bca9269bf5193e295e546a77949a38e14712d0b2025dde12e68ac16ebfb5d4d0"
+            "sha256": "ad05fa607b118fdce91fa8675b8494e24d5b7e21a759a45c296e7d3df2cf7e7d"
           },
           "material": {
             "file": "sheets/supply-truck__composite__d10__material.png",
-            "sha256": "f501dbbf7a8ffdcaf78290e729553c2db10caaccdf7bbcbcd199176e8375be71"
+            "sha256": "7ddf4aaa4baa486c8c07ad1b36cbc7ac9f0ad819dd4ceb0b124a9a5d9476d556"
           }
         }
       },
@@ -5583,15 +5982,15 @@
         "files": {
           "albedo": {
             "file": "sheets/supply-truck__composite__d11__albedo.png",
-            "sha256": "91b14717bd4847687f421a1c2c41fc348845c5ba905d2f2c87a4afa11456fd29"
+            "sha256": "0c0b1b361a612abc50213e2f86f6d438fda51694fa10e6499802e542367c0c33"
           },
           "normal": {
             "file": "sheets/supply-truck__composite__d11__normal.png",
-            "sha256": "a3684eb775f86947ef475902656980ff6e3b4bb5c77d4ceb5aed07b72f70ebc4"
+            "sha256": "c94e1fbaf4a4fb5f82a44d1657671d930d5e048c85d2c6e0736f6c74fe51842e"
           },
           "material": {
             "file": "sheets/supply-truck__composite__d11__material.png",
-            "sha256": "f5e16b4f001af309cfb1ded2aa175c730f99fa29aa64ccf458a762de3616253e"
+            "sha256": "515b7bf10919be60e8a6ce46e44e73206faaebdbb0413505899296db4b6f4555"
           }
         }
       },
@@ -5601,15 +6000,15 @@
         "files": {
           "albedo": {
             "file": "sheets/supply-truck__composite__d12__albedo.png",
-            "sha256": "f1c8bb86c104ccbadb1dd4057e2b54e10e392d1ff6925a28cef49cbe3d7cfeb9"
+            "sha256": "44ebd5facf7c9b4b8b87db08f775e49e0c467931f3d0e3029ef3960e5d6c9934"
           },
           "normal": {
             "file": "sheets/supply-truck__composite__d12__normal.png",
-            "sha256": "67d0d2fe776b5d5c3fa494a83bc7d891f37e7841036373c81c014dba9d51eb1e"
+            "sha256": "5602e830a14ce4d742238388eae97709e00172692017211a534f92cdf9445b6b"
           },
           "material": {
             "file": "sheets/supply-truck__composite__d12__material.png",
-            "sha256": "33c331577d24f554a57c4c4ef285832a29b822f815d64e03272b5c35d1c0d090"
+            "sha256": "9b9df817a147fd60b90acc5774c53282e23de3df6a13370dc4daebf263ef795e"
           }
         }
       },
@@ -5619,15 +6018,15 @@
         "files": {
           "albedo": {
             "file": "sheets/supply-truck__composite__d13__albedo.png",
-            "sha256": "ffcf14141261d85cffc5ba3434501b049c508d0bf7ed3930f037799949b22356"
+            "sha256": "41225816367967ae8889bf74ad4b37d03ca290ea3ad638b276ff70e4acf6a110"
           },
           "normal": {
             "file": "sheets/supply-truck__composite__d13__normal.png",
-            "sha256": "e9e7f41383e6d2c286ef8dfa6fd65881b89602ab5899ae7a0e7034d556de9ccd"
+            "sha256": "2719559a69c8913576cc0c8ea227da0bbaecab0856702ef3b83f13f332fae982"
           },
           "material": {
             "file": "sheets/supply-truck__composite__d13__material.png",
-            "sha256": "32e3108d254e7c4c71b029155f7d97bb23dc4e9826bdd6de6f150424bf7ab716"
+            "sha256": "d0c07263d6da2c7c4c769f3c3d42853fa67ce0bd256b057e9f786c435b26205a"
           }
         }
       },
@@ -5637,15 +6036,15 @@
         "files": {
           "albedo": {
             "file": "sheets/supply-truck__composite__d14__albedo.png",
-            "sha256": "d404c3ca37979751d077534e0914e7b623f2fb84ef7bb6d80f47cd4367d2c651"
+            "sha256": "5c2f35081e0dddf9b5ff9aa50470750928b57425e8ccdeb2de81f5a7af5685f2"
           },
           "normal": {
             "file": "sheets/supply-truck__composite__d14__normal.png",
-            "sha256": "d260507c619dec388b89ab3dd16bf41b19c15a34ba9652a955a3382b03b60880"
+            "sha256": "0bb0adf824e717a3d446e7661d76a7d3f3efc355ebb53414220d9883c192fc55"
           },
           "material": {
             "file": "sheets/supply-truck__composite__d14__material.png",
-            "sha256": "9edcc467c849cdc79bf998883c9bda3970b6a38d278bd27445e0a7474e4d2e5d"
+            "sha256": "be2d27eac0d2b9fc98c49b4193b9d915d93626ecd7d11c497c243a22d8d090fb"
           }
         }
       },
@@ -5655,15 +6054,15 @@
         "files": {
           "albedo": {
             "file": "sheets/supply-truck__composite__d15__albedo.png",
-            "sha256": "af65dd9463faee82a99abe3c46d9952e48291cc0dcef4f3b2bc9735048a5ca45"
+            "sha256": "0f1842ae18ef2e67c7c2e213b18b8fcbec29a01f9b43b9fe64d23f9dce3b5c04"
           },
           "normal": {
             "file": "sheets/supply-truck__composite__d15__normal.png",
-            "sha256": "987e9b30584ad3ba869768003239196ac6e9ed0de18ddb42cf58fae1ac75c251"
+            "sha256": "5093d874c5883db2efa0dd37a0d519f395c269803ef2b5389aacbf82623a04da"
           },
           "material": {
             "file": "sheets/supply-truck__composite__d15__material.png",
-            "sha256": "64c449746c4ea7f9b0627bce3912e5c10f5b92a584db675cbacd6f630a750734"
+            "sha256": "08185361386cae5cb0bdf9c541ae0ecf0693142c60d1394e913f80d2de30f48c"
           }
         }
       }
@@ -5677,97 +6076,97 @@
         "file": "sheets/supply-truck__lit__d00__albedo.png",
         "w": 54,
         "h": 40,
-        "sha256": "c52e7d54b942a2347cd9b4db7d9f63a8c61bf8595529ac1191b2f6df5c1510b2"
+        "sha256": "5c91e39673ebb4ee03d3780e734ab0c4c6153f5c7de7afc210079b4a88d4824a"
       },
       "d01": {
         "file": "sheets/supply-truck__lit__d01__albedo.png",
         "w": 48,
         "h": 40,
-        "sha256": "3ddb3bfe0c23576a97eb5d950b0a82ca5bb477689e20de8d949b5c297b47584f"
+        "sha256": "78e30931059e4f290ae2ce72b5a7713e11ee7412f0334fdc3a68452a6ab71032"
       },
       "d02": {
         "file": "sheets/supply-truck__lit__d02__albedo.png",
         "w": 40,
         "h": 36,
-        "sha256": "3d559c3dd6442c5154af16bb3b15389137c7612a6079114926553159bce3b0a4"
+        "sha256": "a939ab042714f0015532b36e1e8b158b686062b6992f0062a632dd9a9b6d0ec7"
       },
       "d03": {
         "file": "sheets/supply-truck__lit__d03__albedo.png",
         "w": 48,
         "h": 40,
-        "sha256": "eececf04e8dc55e4d9632c9419cdff007142b6ae15ab2951b93738237b882a4b"
+        "sha256": "518a11138a583bf9eba9bb7bd25429e73174191b89c0789cf3c25e03d278ab7a"
       },
       "d04": {
         "file": "sheets/supply-truck__lit__d04__albedo.png",
         "w": 54,
         "h": 40,
-        "sha256": "fd1fb6fd409be95c18770f3c954d120bc6c652abfa89fd328f9509519541dde0"
+        "sha256": "f562c4e43d5bab8062f06040eae76aaa4b61f8faa33a5b9bb86a186fc706b562"
       },
       "d05": {
         "file": "sheets/supply-truck__lit__d05__albedo.png",
         "w": 55,
         "h": 41,
-        "sha256": "a2dc981b5c2846abc456a20d187fb71324346b64ac52d00d3aae9bd19b294078"
+        "sha256": "8b06f56f3e4d8af07ad05f124ff346777d64fcb2d85e9f1bf0866da755ec470f"
       },
       "d06": {
         "file": "sheets/supply-truck__lit__d06__albedo.png",
         "w": 49,
         "h": 42,
-        "sha256": "14468e37054bbb2f22635833cec2ac749805e1139a73eec37aeec8dd6be35ada"
+        "sha256": "21f5d5445220d04023533bed936653eba6c6e163b71c6115759f7d14dcde4297"
       },
       "d07": {
         "file": "sheets/supply-truck__lit__d07__albedo.png",
         "w": 54,
         "h": 46,
-        "sha256": "16cf9046b27e782b4da501589e181de1e778100d4725e060e18616a3f145b1e1"
+        "sha256": "6d687a165d7e1e09b2eb10ffcffa2ead3663144f171147cd0d80991b6a2b53ac"
       },
       "d08": {
         "file": "sheets/supply-truck__lit__d08__albedo.png",
         "w": 54,
         "h": 48,
-        "sha256": "c34f7725dd456a6a58d9d84eabb61e0731d3deecfd22e23867d22a17d5f3f2db"
+        "sha256": "480b783405daa998182c6fd526e5a91453e3accb64a8051ae493b9c9a7d12241"
       },
       "d09": {
         "file": "sheets/supply-truck__lit__d09__albedo.png",
         "w": 48,
         "h": 48,
-        "sha256": "75f2093d7bdfd5f52b1e1d576c256e3e5b49dabde5646f82ecae4e0b816681dc"
+        "sha256": "40f20be78e16bec8316e3c177350f50711fe85e8c7d2b919b1e1e8576eff6f32"
       },
       "d10": {
         "file": "sheets/supply-truck__lit__d10__albedo.png",
         "w": 40,
         "h": 44,
-        "sha256": "aae6b61a6804ea1f683fe80bf8995cc1a0801b07a8d517445eb11fe1837cf760"
+        "sha256": "0a6a4b8191bb85ec85e358d720366ea11193cb970536532a09649a10cdf7698b"
       },
       "d11": {
         "file": "sheets/supply-truck__lit__d11__albedo.png",
         "w": 48,
         "h": 44,
-        "sha256": "64a87e1b1b1a23824a317236fc8ef726f69c096b7a6a32fbd545a025c9f0eecb"
+        "sha256": "4e8cccece21ddaeab88ad74c28fa9b02f17d21cc7446dc2e32deafd3fdc2f6c2"
       },
       "d12": {
         "file": "sheets/supply-truck__lit__d12__albedo.png",
         "w": 54,
         "h": 44,
-        "sha256": "21726ab2c3221929291b507940cad4d88a54f48674c73955dd95e782b6e2a0f0"
+        "sha256": "7d334e7dd544e0d837dd16c33cd55aaccd23a5a7ae9006f6d3b9cfb62a09e164"
       },
       "d13": {
         "file": "sheets/supply-truck__lit__d13__albedo.png",
         "w": 55,
         "h": 42,
-        "sha256": "9823576bad2c91455cad58b35c67865bca98d500ff73ea3782a3b6f7e9f9755f"
+        "sha256": "c224efb1a2522145135536b93a2ea30381dc6c35df231e37600e6f83e0f996a8"
       },
       "d14": {
         "file": "sheets/supply-truck__lit__d14__albedo.png",
         "w": 49,
         "h": 38,
-        "sha256": "c73057fb48f39526fed37f22d38dfbace0e5327c44e03e1cc1609ee56b3d69ed"
+        "sha256": "39aa28739c22599d65f1a011070b6207ce1d253cb58ac12a1b4d647f489719f0"
       },
       "d15": {
         "file": "sheets/supply-truck__lit__d15__albedo.png",
         "w": 54,
         "h": 40,
-        "sha256": "3c3abc074b789213bf80c428a4244a1d08502c8b2a3985485edf454abb9f9b66"
+        "sha256": "6dbf1736f279566383bca1a2bd8b609ffa5eb1a7e4e170c5f78bfb56c73a7206"
       }
     }
   },

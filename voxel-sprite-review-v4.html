@@ -175,6 +175,7 @@
 
 <script type="module">
 import { computeLayout, pickSheetSet } from './tools/voxel_pipeline/v3/gallery-zoom.mjs';
+import { compositeParts } from './tools/voxel_pipeline/v3/composite.mjs';
 
 // ---------------------------------------------------------------------------
 // State
@@ -248,27 +249,17 @@ async function loadPartMaps(partName, facing) {
   const rec = state.manifest.parts[partName].facings[facing];
   const entry = (state.sheetHi && rec.filesHi) ? rec.filesHi : rec;
   const base = `${state.dir}/`;
-  const [a, n, m] = await Promise.all([
+  // The depth sheet is only baked at runtime scale. A hi sheet is exactly the
+  // same crop at `sheetScale` times the resolution, so its depth is sampled from
+  // this one with nearest-neighbour — a quarter-pixel of slack, which is finer
+  // than anything the compositor can show.
+  const [a, n, m, d] = await Promise.all([
     imageData(base + entry.files.albedo.file),
     imageData(base + entry.files.normal.file),
     imageData(base + entry.files.material.file),
+    rec.files.depth ? imageData(base + rec.files.depth.file) : Promise.resolve(null),
   ]);
-  return { a, n, m, entry, hi: entry === rec.filesHi };
-}
-
-function blitPart(dst, dstW, dstH, src, ox, oy) {
-  const sw = src.width, sh = src.height, sx = src.data;
-  for (let y = 0; y < sh; y++) {
-    const dy = Math.round(y + oy);
-    if (dy < 0 || dy >= dstH) continue;
-    for (let x = 0; x < sw; x++) {
-      const dx = Math.round(x + ox);
-      if (dx < 0 || dx >= dstW) continue;
-      const s = (y * sw + x) * 4;
-      if (sx[s + 3] === 0) continue;
-      dst(dx, dy, s);
-    }
-  }
+  return { a, n, m, d, entry, runtimeEntry: rec, hi: entry === rec.filesHi };
 }
 
 /**
@@ -289,6 +280,21 @@ function shiftFacing(partMeta, sceneFacing, steps) {
   return order[(((base + steps) % n) + n) % n];
 }
 
+/**
+ * The camera axis of a facing, as a unit vector in design space.
+ *
+ * Mirrors `cameraBasis(angle).dHat` in raster.mjs: the null direction of the
+ * isometric projection, i.e. the direction "towards the viewer". `depth` in the
+ * depth sheets is the dot product of a design point with this.
+ */
+function viewDirFor(angleDeg) {
+  const p = (angleDeg * Math.PI) / 180;
+  const s = Math.sin(p), c = Math.cos(p);
+  const v = [s + c, c - s, 1];
+  const n = Math.hypot(v[0], v[1], v[2]);
+  return [v[0] / n, v[1] / n, v[2] / n];
+}
+
 /** Rotate a design-space point about a pivot by deg (yaw, +Z up). */
 function yawAbout(point, pivot, deg) {
   const rad = (deg * Math.PI) / 180;
@@ -296,6 +302,28 @@ function yawAbout(point, pivot, deg) {
   const dx = point[0] - pivot[0];
   const dy = point[1] - pivot[1];
   return [pivot[0] + dx * c - dy * s, pivot[1] + dx * s + dy * c, point[2]];
+}
+
+/**
+ * The pivot a traverse chain rotates about: the pivot of the topmost traversing
+ * ancestor (the turret ring, not the gun's own trunnion).
+ *
+ * Newer manifests carry it as `traverseRoot`; older ones are resolved by
+ * climbing the mount chain, which is what the bake does too.
+ */
+function traverseRootOf(m, pmeta) {
+  if (pmeta.traverseRoot) return pmeta.traverseRoot;
+  let root = pmeta.pivotDesign;
+  let cursor = pmeta;
+  const guard = new Set();
+  while (cursor && cursor.parent && !guard.has(cursor.name)) {
+    guard.add(cursor.name);
+    const parent = m.parts[cursor.parent];
+    if (!parent) break;
+    if (parent.traverse) root = parent.pivotDesign;
+    cursor = parent;
+  }
+  return root;
 }
 
 /**
@@ -317,6 +345,7 @@ function partTransform(name, sceneFacing, steps) {
   let pivot = pmeta.pivotDesign.slice();
   let facing = sceneFacing;
   let depthOffset = 0;
+  let depthBias = 0;
 
   if (dynamic && traverses) {
     facing = shiftFacing(pmeta, sceneFacing, steps);
@@ -360,7 +389,30 @@ function partTransform(name, sceneFacing, steps) {
     depthOffset = v[0] * (centroid[0] - G[0]) + v[1] * (centroid[1] - G[1]) + v[2] * (centroid[2] - G[2]);
   }
 
-  return { facing, screen, depth: depthOffset, dynamic };
+  if (dynamic && traverses && steps) {
+    // A traversing part is drawn from the sheet baked at the SHIFTED facing, so
+    // its depth sheet measures depth along that camera's axis. The pose the
+    // viewer sees is the part yawed about its ring, seen from the SCENE camera.
+    // Rotating about the ring `c` by α turns the first into the second up to one
+    // constant, because the two view axes disagree about where `c` is:
+    //
+    //   depth_scene = depth_sheet + (v_scene − v_sheet) · c / 8
+    //
+    // (8 design voxels per tile unit — the unit the depth sheets are in.) Drop
+    // it and the turret sinks to the bottom of its own pit as it swings: the pit
+    // wall is measured along the scene axis, the turret along another, and every
+    // pixel of the turret that the wall is in front of flips to the wall.
+    const root = traverseRootOf(m, pmeta);
+    const vs = meta.viewDir ?? viewDirFor(meta.angle);
+    const vh = viewDirFor(pmeta.facingSet === 'unit'
+      ? Number(String(facing).slice(1)) * 22.5
+      : meta.angle);
+    depthBias = ((vs[0] - vh[0]) * root[0]
+      + (vs[1] - vh[1]) * root[1]
+      + (vs[2] - vh[2]) * (root[2] ?? 0)) / (m.designVoxelsPerTileUnit || 8);
+  }
+
+  return { facing, screen, depth: depthOffset, depthBias, dynamic };
 }
 
 async function buildComposite() {
@@ -377,64 +429,55 @@ async function buildComposite() {
   const steps = Math.round(state.traverse / 22.5) % 16;
 
   const pick = visible.map(name => ({ name, xf: partTransform(name, sceneFacing, steps) }));
-  const maps = await Promise.all(pick.map(p => loadPartMaps(p.name, p.xf.facing)));
 
-  let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
-  const placed = [];
+  // Hi sheets are all-or-nothing. They are `scale` times the resolution of the
+  // runtime sheets, so a composite that mixes one hi layer with one runtime
+  // layer is placing its parts in two different coordinate systems. If even one
+  // visible part has no hi sheet, build the whole composite from runtime sheets.
+  const hires = state.sheetHi && pick.every(p => m.parts[p.name].facings[p.xf.facing].filesHi);
+  const prevHi = state.sheetHi;
+  state.sheetHi = hires;
+  let maps;
+  try {
+    maps = await Promise.all(pick.map(p => loadPartMaps(p.name, p.xf.facing)));
+  } finally {
+    state.sheetHi = prevHi;
+  }
+
+  // Everything below is the placement maths; the occlusion itself lives in
+  // composite.mjs so it can be tested (see tests/voxel-occlusion.test.js).
+  const layers = [];
   for (let i = 0; i < pick.length; i++) {
     const { name, xf } = pick[i];
-    const { a, entry, hi } = maps[i];
+    const { a, n, m: mat, d, entry, runtimeEntry, hi } = maps[i];
     // `xf.screen` is in runtime pixels (it comes from the manifest's screen
-    // matrix); a hi sheet's crop and pivot are `sheetScale` times finer, so the
+    // matrix); a hi sheet's crop and pivot are that many times finer, so the
     // screen position is scaled up to match before the pivot is subtracted.
+    //
+    // The scale is the manifest's `hiSheetScale`, NOT the ratio of the two crop
+    // widths: crops are ceil-ed to the supersample grid at their own scale, so
+    // the width ratio is only ever approximately 4 (measured: 3.63–4.00). Using
+    // it placed every part as if the whole scene were scaled by its own ratio,
+    // which smeared the layers apart by up to a few runtime pixels. The same
+    // uniform scale maps hi pixels back onto the runtime-scale depth sheet.
     const S = hi ? state.sheetScale : 1;
-    const ox = xf.screen[0] * S - entry.pivot[0];
-    const oy = xf.screen[1] * S - entry.pivot[1];
-    placed.push({ name, ox, oy, w: a.width, h: a.height, depth: xf.depth, dynamic: xf.dynamic });
-    minX = Math.min(minX, ox); minY = Math.min(minY, oy);
-    maxX = Math.max(maxX, ox + a.width); maxY = Math.max(maxY, oy + a.height);
-  }
-  const pad = 4;
-  const W = Math.ceil(maxX - minX) + pad * 2;
-  const H = Math.ceil(maxY - minY) + pad * 2;
-
-  const A = new Uint8ClampedArray(W * H * 4);
-  const N = new Uint8ClampedArray(W * H * 4);
-  const M = new Uint8ClampedArray(W * H * 4);
-  const cov = new Uint8Array(W * H);
-
-  // Painter order: static structure first, then dynamic parts far-to-near.
-  // A per-part centroid depth alone is not enough — once a turret swings to a
-  // facing where its centroid is deeper than the hull's, the hull would paint
-  // straight over it. Dynamic parts are mounted above their host, so they must
-  // draw after it; among themselves they still sort by depth (barrel in front
-  // of turret when it points forward, behind it when it points back).
-  placed.sort((p, q) => (p.dynamic - q.dynamic) || (p.depth - q.depth));
-
-  for (const p of placed) {
-    const idx = visible.indexOf(p.name);
-    const a = maps[idx].a, n = maps[idx].n, mat = maps[idx].m;
-    const ox = Math.round(p.ox - minX) + pad;
-    const oy = Math.round(p.oy - minY) + pad;
-
-    // Parts are drawn far-to-near, so a later write is a nearer surface.
-    blitPart((dx, dy, s) => {
-      const alpha = a.data[s + 3];
-      if (alpha === 0) return;
-      const d = (dy * W + dx) * 4;
-      if (alpha > cov[dy * W + dx]) cov[dy * W + dx] = alpha;
-      // Albedo and normals are stored flat: the painter order already resolved
-      // which surface is on top, and the sheets are hard-edged voxels, so
-      // alpha-blending two parts only produces halos.
-      A[d] = a.data[s];     A[d + 1] = a.data[s + 1]; A[d + 2] = a.data[s + 2]; A[d + 3] = 255;
-      N[d] = n.data[s];     N[d + 1] = n.data[s + 1]; N[d + 2] = n.data[s + 2]; N[d + 3] = 255;
-      // Material ids must never blend: an average of two ids is a third id.
-      M[d] = mat.data[s];   M[d + 1] = mat.data[s + 1];
-      M[d + 2] = mat.data[s + 2]; M[d + 3] = mat.data[s + 3];
-    }, W, H, a, ox, oy);
+    layers.push({
+      name,
+      ox: xf.screen[0] * S - entry.pivot[0],
+      oy: xf.screen[1] * S - entry.pivot[1],
+      albedo: { w: a.width, h: a.height, data: a.data },
+      normal: { w: n.width, h: n.height, data: n.data },
+      material: { w: mat.width, h: mat.height, data: mat.data },
+      depth: d ? { w: d.width, h: d.height, data: d.data } : null,
+      depthFallback: xf.depth,
+      depthBias: xf.depthBias,
+      scale: S,
+    });
   }
 
-  state.composite = { W, H, A, N, M, cov };
+  const comp = compositeParts(layers);
+  if (!comp) { state.composite = null; return; }
+  state.composite = { W: comp.W, H: comp.H, A: comp.A, N: comp.N, M: comp.M, cov: comp.cov };
 }
 
 

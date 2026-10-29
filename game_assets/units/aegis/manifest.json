@@ -998,6 +998,21 @@
       }
     ]
   },
+  "depthMap": {
+    "note": "Per-part view depth, one PNG per part per facing. Composite by z-test on this; do NOT try to order segments by a single depth per part.",
+    "channelOrder": "rgba",
+    "meaning": [
+      "depthHi",
+      "depthLo",
+      "unused",
+      "covered"
+    ],
+    "encoding": "q = depthHi * 256 + depthLo; depth = q / scale - bias  (tile units = design voxels / 8)",
+    "scale": 256,
+    "bias": 128,
+    "coveredAlpha": 255,
+    "largerIsCloser": true
+  },
   "parts": {
     "body": {
       "name": "body",
@@ -1009,6 +1024,7 @@
         0
       ],
       "traverse": false,
+      "traverseRoot": null,
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -1059,6 +1075,12 @@
               "w": 50,
               "h": 34,
               "sha256": "8f8a400024d424de3e69c3b062316ddca58be708cc647ed2817b29158953c5d5"
+            },
+            "depth": {
+              "file": "sheets/aegis__body__d00__depth.png",
+              "w": 50,
+              "h": 34,
+              "sha256": "2312398b9a6f214f8ae35199d5982f243e4a77a1dc9ae850c9765ceaf7b46107"
             }
           },
           "filesHi": {
@@ -1124,6 +1146,12 @@
               "w": 46,
               "h": 35,
               "sha256": "5095a094c35fab5de8c06035a9402de2e9dcd1570034c265330d4cfff34d032e"
+            },
+            "depth": {
+              "file": "sheets/aegis__body__d01__depth.png",
+              "w": 46,
+              "h": 35,
+              "sha256": "a3c3f97432563d4c818edb921deda3b9503d66a1ee82253db042ace07fd6c96f"
             }
           },
           "filesHi": {
@@ -1189,6 +1217,12 @@
               "w": 40,
               "h": 36,
               "sha256": "663cd5e7e87499371f6eca18410fc9fdd91c5a8f4e9ed3fe9ce58ed3b5d30d5c"
+            },
+            "depth": {
+              "file": "sheets/aegis__body__d02__depth.png",
+              "w": 40,
+              "h": 36,
+              "sha256": "0edf01e5dd5ac20ab594ae04960080407d7beb515361b77c1820e0b281904236"
             }
           },
           "filesHi": {
@@ -1254,6 +1288,12 @@
               "w": 46,
               "h": 37,
               "sha256": "5e07ed879c200976ad294f9c03bcccf6d766a88b0be3bd8bd1b8b91e7227d619"
+            },
+            "depth": {
+              "file": "sheets/aegis__body__d03__depth.png",
+              "w": 46,
+              "h": 37,
+              "sha256": "fd6ee01b235ea0ffa9047fbc237ab0c54be7d97eb124f11dd639db290b5c0ce0"
             }
           },
           "filesHi": {
@@ -1319,6 +1359,12 @@
               "w": 50,
               "h": 37,
               "sha256": "d37d12b95dfb68849cd64c82dd37050f19f60e5c84a686fd8975b4b5504b365b"
+            },
+            "depth": {
+              "file": "sheets/aegis__body__d04__depth.png",
+              "w": 50,
+              "h": 37,
+              "sha256": "c47466f4b911e7dee40db3c9d4c8ef2de0fbc7f8c9dad54ba304a7e656b224ea"
             }
           },
           "filesHi": {
@@ -1384,6 +1430,12 @@
               "w": 48,
               "h": 36,
               "sha256": "2bf5bb9186be26a5922de745f597c2f1fe96045f49bf5a2f7993e097d3ae61c0"
+            },
+            "depth": {
+              "file": "sheets/aegis__body__d05__depth.png",
+              "w": 48,
+              "h": 36,
+              "sha256": "8a66a4fd97f2eaa708953dc166250c0e68ec9f6adc68e025bc127531667bba8e"
             }
           },
           "filesHi": {
@@ -1449,6 +1501,12 @@
               "w": 43,
               "h": 33,
               "sha256": "71dc20186221741a5438182b77836697a1ef35767a0b6bafa8887fdf146e3834"
+            },
+            "depth": {
+              "file": "sheets/aegis__body__d06__depth.png",
+              "w": 43,
+              "h": 33,
+              "sha256": "c54eca920195dfe934a904e80c7ba130ad07ef4d1589ea38aa3ee7e7bd3f8786"
             }
           },
           "filesHi": {
@@ -1514,6 +1572,12 @@
               "w": 49,
               "h": 33,
               "sha256": "a6af7e38a0915daa7a357ef518eed71f2b0e3615d9f2ef229533819d7f156c7f"
+            },
+            "depth": {
+              "file": "sheets/aegis__body__d07__depth.png",
+              "w": 49,
+              "h": 33,
+              "sha256": "f87879e8f78410119aab1987fb482710db6636aea186f0e3fd491cb6c131e4b4"
             }
           },
           "filesHi": {
@@ -1579,6 +1643,12 @@
               "w": 50,
               "h": 33,
               "sha256": "5e2622248599ae7f7aa30b21d7a080a6e3493854555d1a59c61a27d9a53bb1b0"
+            },
+            "depth": {
+              "file": "sheets/aegis__body__d08__depth.png",
+              "w": 50,
+              "h": 33,
+              "sha256": "3f4fb0e80d7c7503da90ee9dc951163bcd64351a9367c3cbc88cdbb78a4436a2"
             }
           },
           "filesHi": {
@@ -1644,6 +1714,12 @@
               "w": 46,
               "h": 34,
               "sha256": "70123f72a6af92b1933c8949d82e111cf231b550415c29ad94e356cc11381b62"
+            },
+            "depth": {
+              "file": "sheets/aegis__body__d09__depth.png",
+              "w": 46,
+              "h": 34,
+              "sha256": "eb19b05c3fe14352159710434053e68445da54b3f3514e7f1f14f9fdc075a587"
             }
           },
           "filesHi": {
@@ -1709,6 +1785,12 @@
               "w": 40,
               "h": 32,
               "sha256": "a522c8ab1ddd23711d4bf0476927ec5d9892a16e0f306475e4f3d2c9b9740a82"
+            },
+            "depth": {
+              "file": "sheets/aegis__body__d10__depth.png",
+              "w": 40,
+              "h": 32,
+              "sha256": "295a354d3d4122d12cd8e4d1d99ed283885ce95ae06cce2d7b3c061cee234edb"
             }
           },
           "filesHi": {
@@ -1774,6 +1856,12 @@
               "w": 46,
               "h": 33,
               "sha256": "744dfc2d030cb5b5ec4d503799beb45b35fd9a3947abf6ca0c8498e6cca8167f"
+            },
+            "depth": {
+              "file": "sheets/aegis__body__d11__depth.png",
+              "w": 46,
+              "h": 33,
+              "sha256": "6fccca42300561215dfc93770d83edace781afd033e4e78982872ecfc7285376"
             }
           },
           "filesHi": {
@@ -1839,6 +1927,12 @@
               "w": 50,
               "h": 33,
               "sha256": "17f5236e3fc46d68e1403540152e183456fafc6ed9e5a20e4b06ec81d6116a87"
+            },
+            "depth": {
+              "file": "sheets/aegis__body__d12__depth.png",
+              "w": 50,
+              "h": 33,
+              "sha256": "f9471af4ff4888e2b3014e51c2a62c8a63fc2c606ccbbc7b8338b9eb59ebbd37"
             }
           },
           "filesHi": {
@@ -1904,6 +1998,12 @@
               "w": 48,
               "h": 31,
               "sha256": "da4a767b7241cab11452e9c6383e1f6cf0256e64bc5e9e3a056ae67c7c4691ec"
+            },
+            "depth": {
+              "file": "sheets/aegis__body__d13__depth.png",
+              "w": 48,
+              "h": 31,
+              "sha256": "d8e90f09373d12073ebcf777dd6843a84f80e330d40907bec812ae1d49d71ae9"
             }
           },
           "filesHi": {
@@ -1969,6 +2069,12 @@
               "w": 43,
               "h": 29,
               "sha256": "d795fb2d03b9290d4a79d8adb0baf75c1c4547e76688be2413591932473dc41f"
+            },
+            "depth": {
+              "file": "sheets/aegis__body__d14__depth.png",
+              "w": 43,
+              "h": 29,
+              "sha256": "439b3ada65b3dc32ee7fba55b985bec1d5021c9c99ff42f900c3496ceee16291"
             }
           },
           "filesHi": {
@@ -2034,6 +2140,12 @@
               "w": 49,
               "h": 32,
               "sha256": "c66123587f13315deac9da5f59ca0c8effbcfb953d0b6f6063c6a86e679ddb0e"
+            },
+            "depth": {
+              "file": "sheets/aegis__body__d15__depth.png",
+              "w": 49,
+              "h": 32,
+              "sha256": "764ba4fdeaf51ec67427d451ebc7b4b30a2fb139b10816af4d1768969e8bb6d9"
             }
           },
           "filesHi": {
@@ -2081,6 +2193,7 @@
         0
       ],
       "traverse": false,
+      "traverseRoot": null,
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -2131,6 +2244,12 @@
               "w": 34,
               "h": 25,
               "sha256": "66606a7aa65a7d36228bcd47c700d59494e6c0c51745d501dceab23178821933"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.L__d00__depth.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "07cc9179427cfd4ef7556d5ddb7f32be72b0488dd6c6f8001d5c3fb44b56299d"
             }
           },
           "filesHi": {
@@ -2196,6 +2315,12 @@
               "w": 26,
               "h": 27,
               "sha256": "a7456fe10649ee8d4d5c5c23fc28e91941833c623da1ad4541c4b4136a243364"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.L__d01__depth.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "5e01671ec694385d2049f67a080713ab6a7d2bfc6682af0cd37696dd4e349e4e"
             }
           },
           "filesHi": {
@@ -2261,6 +2386,12 @@
               "w": 16,
               "h": 27,
               "sha256": "a9bfae366d5e9d881d70be2df293befbef4527f121519f235553a8d94c5f3e00"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.L__d02__depth.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "fb1bd6c9eb9f4f76b1d04ae06bd9e083fcf9a08f0550e2f91e7b694f27cc62b0"
             }
           },
           "filesHi": {
@@ -2326,6 +2457,12 @@
               "w": 25,
               "h": 27,
               "sha256": "f3f138a3d61931b3a012585fee817159c5f2edffb1bd73ef5215f866b0851c6c"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.L__d03__depth.png",
+              "w": 25,
+              "h": 27,
+              "sha256": "9570105d267f082040729c1517755bb21c56945c8e9178fa21b841a20d5b2578"
             }
           },
           "filesHi": {
@@ -2391,6 +2528,12 @@
               "w": 33,
               "h": 25,
               "sha256": "65afb74aad3062490b47220c318a710cf3d2fa344848b568b7e0aaa6826d40d1"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.L__d04__depth.png",
+              "w": 33,
+              "h": 25,
+              "sha256": "d3748b2ef324260453e4204dd323f93f5556d37e6118b187a2f7ef13224d91cd"
             }
           },
           "filesHi": {
@@ -2456,6 +2599,12 @@
               "w": 38,
               "h": 21,
               "sha256": "3cb26c7c57cfed0b2c38af771d25a3865fc89619b26d003c11ef62bef054c385"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.L__d05__depth.png",
+              "w": 38,
+              "h": 21,
+              "sha256": "48d497e60eeb05530a397a10b51f97220a9f23eb0e9a8ab3ec77ce1ec06ea56d"
             }
           },
           "filesHi": {
@@ -2521,6 +2670,12 @@
               "w": 38,
               "h": 17,
               "sha256": "13851ffff388aaf71e2e669108d18a9cb7a0bb8c2cfa3e36b37ad9f03edf23b4"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.L__d06__depth.png",
+              "w": 38,
+              "h": 17,
+              "sha256": "61d6fd0e971d00bd1e98bc36248d3bdad956eefa0c402e4d8407d18bc33fda44"
             }
           },
           "filesHi": {
@@ -2586,6 +2741,12 @@
               "w": 38,
               "h": 21,
               "sha256": "2dd8b9e2bec57c88a1b862e9a72674a127bb4cc771fca0ec226a961924fa2dcd"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.L__d07__depth.png",
+              "w": 38,
+              "h": 21,
+              "sha256": "1eb260bb1275bf171cbde6fff30ccaa02e4390e6c4b9b8530964a3448edd5567"
             }
           },
           "filesHi": {
@@ -2651,6 +2812,12 @@
               "w": 34,
               "h": 25,
               "sha256": "0c0c4062bd2e36b9ec50c52115db3611c8403471feb13de86e59c0326cc678cd"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.L__d08__depth.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "46002214a3e0bf98111f35d8ae530a6e236abdc4c2daf8225e3e7b4f978865b1"
             }
           },
           "filesHi": {
@@ -2716,6 +2883,12 @@
               "w": 26,
               "h": 27,
               "sha256": "191e3f99f8aaf367192e826616fd42c9db9084186c04bcc80a9a9f4fb4a4f97c"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.L__d09__depth.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "bd69f153c5999d9e6379ccd79e2c531cc5569874aa289388cee5e569f3fc590f"
             }
           },
           "filesHi": {
@@ -2781,6 +2954,12 @@
               "w": 16,
               "h": 27,
               "sha256": "d8948c2125dc63c85cfd732ac74896d7c9f6b668e408ca57ec8b5ede68175782"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.L__d10__depth.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "cce7ab51aa2ebf73e247b6388a071f56a232f3e749e478341100eea8637ac5a5"
             }
           },
           "filesHi": {
@@ -2846,6 +3025,12 @@
               "w": 25,
               "h": 27,
               "sha256": "94dc17aa504cd1bb62ab7dee0553d4b5fd84de26a401491b78ba2ce863a3b198"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.L__d11__depth.png",
+              "w": 25,
+              "h": 27,
+              "sha256": "b318ae6dc368594135873a03d15dc2bfb02b9cb04bffe284664801a87b1867cd"
             }
           },
           "filesHi": {
@@ -2911,6 +3096,12 @@
               "w": 33,
               "h": 25,
               "sha256": "a51d6d81995787b48c66fd5c65801d5ed6468ee4404a1d2d812f2455148fbba0"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.L__d12__depth.png",
+              "w": 33,
+              "h": 25,
+              "sha256": "f046d3661358db9b447cf292b0137811b6646d3e1f5df157783ccb4eab77965f"
             }
           },
           "filesHi": {
@@ -2976,6 +3167,12 @@
               "w": 38,
               "h": 22,
               "sha256": "5d68ebc4914f4d24a738414bcd40dc24e205e81b31704caf2064d204971e7cb8"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.L__d13__depth.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "791897de087580329c0c51a6cafefa7ae8a6e9b3ed96114ac3562b533cc13a4c"
             }
           },
           "filesHi": {
@@ -3041,6 +3238,12 @@
               "w": 38,
               "h": 18,
               "sha256": "69c66c9fe494c217668743f66de659700c8823e1bfbd85a8bb3b9996f3086f3d"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.L__d14__depth.png",
+              "w": 38,
+              "h": 18,
+              "sha256": "d4a29298f4737cd8683edf9156d289eecf5a225350c2e7d8984e10841f9548ac"
             }
           },
           "filesHi": {
@@ -3106,6 +3309,12 @@
               "w": 38,
               "h": 22,
               "sha256": "01fbe39bfbdb5f8e3aafed9ce3f9efd062a49c01b59bc2fd182adc3b447336d6"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.L__d15__depth.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "62983cbecdb83482cba194e32817af3c3d37fc89a111f3106b52283807ff3ee7"
             }
           },
           "filesHi": {
@@ -3153,6 +3362,7 @@
         0
       ],
       "traverse": false,
+      "traverseRoot": null,
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -3203,6 +3413,12 @@
               "w": 33,
               "h": 25,
               "sha256": "d5d7584428b367b7e5712d07f46b3be8434a9a804baf2c7b9d3076e361c9b1c3"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.R__d00__depth.png",
+              "w": 33,
+              "h": 25,
+              "sha256": "e26361b054a7860cb89a8713f5dc5fb84f89268d9ceda24bd09e1a81bec60cb4"
             }
           },
           "filesHi": {
@@ -3268,6 +3484,12 @@
               "w": 26,
               "h": 27,
               "sha256": "1a807a82a55318120bf02a1022bb9e62b46f600189eb0a2a4dcbf1893b153df8"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.R__d01__depth.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "8309662eaeb747e16b726df5e699fbce55a4ef37277025ef27832bf6aa9198fe"
             }
           },
           "filesHi": {
@@ -3333,6 +3555,12 @@
               "w": 16,
               "h": 27,
               "sha256": "2dd93b53a4ce9f4d2f1be6f5e0146ad88220e1c681c79b3df21f80c3b1359685"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.R__d02__depth.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "db8d975c6c333fff81c0f97ac16a0f166eb1d9e1d485d82dfd8e5d6f15ecd0b9"
             }
           },
           "filesHi": {
@@ -3398,6 +3626,12 @@
               "w": 26,
               "h": 27,
               "sha256": "979f0df9e5d993ecbdeca02937ad41d120bfddf1b44f1550645f08cd6d97c40d"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.R__d03__depth.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "93c93b8cee6723deeb6b0fb4bb1e706c2eecd9222e2d5f43c026d42ac5ef4134"
             }
           },
           "filesHi": {
@@ -3463,6 +3697,12 @@
               "w": 34,
               "h": 25,
               "sha256": "700d172652c7421837b034e3778aeb384c54995bd309f830006498274c800ae8"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.R__d04__depth.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "88ddb0db98bb0b68d222b2f6918c2594e666d4bd8b2fe4bbf1787dc4832def30"
             }
           },
           "filesHi": {
@@ -3528,6 +3768,12 @@
               "w": 38,
               "h": 22,
               "sha256": "6e78c95a1df1b42e8bab9e8d34ed3aae04a8952ddf8a689a9b3cabedbedb6dff"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.R__d05__depth.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "616290654a65a362baa23f589602ced7c34075fbd74917f0d00ec3a2fabeff48"
             }
           },
           "filesHi": {
@@ -3593,6 +3839,12 @@
               "w": 38,
               "h": 18,
               "sha256": "882b63226e8cc20ecda5236973ee8e3dec05d2b7762ac55bde96632ae4113568"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.R__d06__depth.png",
+              "w": 38,
+              "h": 18,
+              "sha256": "42812d4545fbb014d6588a15bf64d46a9b6c8e96fea8c602e295633c6e5e7e99"
             }
           },
           "filesHi": {
@@ -3658,6 +3910,12 @@
               "w": 38,
               "h": 23,
               "sha256": "d238aca37d02747962953699e18aebcede8eb3bb9a150bfb0141afa2285caba5"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.R__d07__depth.png",
+              "w": 38,
+              "h": 23,
+              "sha256": "cd2de168a01ad7de7d0ebf6818c57ce39c67e0f06837d67e496849db69bd4f02"
             }
           },
           "filesHi": {
@@ -3723,6 +3981,12 @@
               "w": 33,
               "h": 25,
               "sha256": "b814b869198e582707b889f60cb759bbd1d358f3f0c1bbef93f70410801182e1"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.R__d08__depth.png",
+              "w": 33,
+              "h": 25,
+              "sha256": "3970310da9aee391452a84ca47b9b7365ad0ad4182cf43545ce761790aa48aeb"
             }
           },
           "filesHi": {
@@ -3788,6 +4052,12 @@
               "w": 26,
               "h": 28,
               "sha256": "3df440bfd4702744573522fdb02e4dd8c85f53e9306a83aae01e706bfaf3ed6c"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.R__d09__depth.png",
+              "w": 26,
+              "h": 28,
+              "sha256": "3a63ffdcdf54b60763bcc90c95f0e0e98522a8f703a72afdcb3bf6cf4e34161f"
             }
           },
           "filesHi": {
@@ -3853,6 +4123,12 @@
               "w": 16,
               "h": 27,
               "sha256": "cd15eae08fc76dd8fe4a836ef265fb845845f4439d234e0c5d860997a4149f0e"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.R__d10__depth.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "baa50506d9b635b8ba997feeaea7532992d9c89d6878c0d2ab8c4443863c2c68"
             }
           },
           "filesHi": {
@@ -3918,6 +4194,12 @@
               "w": 26,
               "h": 27,
               "sha256": "2b8dbbf5899a6a3571bca68f378c6c0487a3dc8bcff97a32e2b7f020d0822b0d"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.R__d11__depth.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "9bb2dceef5680ff91748bae0400f5e2685d1552da8533ce9af5f9bb6825b63e9"
             }
           },
           "filesHi": {
@@ -3983,6 +4265,12 @@
               "w": 34,
               "h": 25,
               "sha256": "00cfe2ff108e5deff645df89c2bb87dd3ee914fead94dcc791cd1941ab90d128"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.R__d12__depth.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "a3da2239e7f96bfbaf9d255c527a7344981b6ca61f05554d65ea96855acd57a2"
             }
           },
           "filesHi": {
@@ -4048,6 +4336,12 @@
               "w": 38,
               "h": 21,
               "sha256": "92e7de5c90082eceb04eb649f65aefb6665bd6e0e24d8e9b9ffd44f87128eba8"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.R__d13__depth.png",
+              "w": 38,
+              "h": 21,
+              "sha256": "94807dba127567c90b1bef6bb49cc05d5d60570e4945154f74d911a36a6add50"
             }
           },
           "filesHi": {
@@ -4113,6 +4407,12 @@
               "w": 38,
               "h": 17,
               "sha256": "a6918fd5eefffa50c4350732fc6969b853782820dded62f73c28940604fcc1d6"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.R__d14__depth.png",
+              "w": 38,
+              "h": 17,
+              "sha256": "fcd3cccde6bc106f1a9ef5da221e0f17cea998123856ee80f503105b92b381d0"
             }
           },
           "filesHi": {
@@ -4178,6 +4478,12 @@
               "w": 38,
               "h": 21,
               "sha256": "1b50f8ec399236ed175559e0dad149b33a1e6697f49a2d3ec664b851bb36b1ff"
+            },
+            "depth": {
+              "file": "sheets/aegis__wheels.R__d15__depth.png",
+              "w": 38,
+              "h": 21,
+              "sha256": "80aa7933b931bbf030adbf1ceade889854b078fd94f2a69ada06b85d3f2a0709"
             }
           },
           "filesHi": {
@@ -4225,6 +4531,11 @@
         150
       ],
       "traverse": true,
+      "traverseRoot": [
+        268,
+        256,
+        150
+      ],
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -4275,6 +4586,12 @@
               "w": 31,
               "h": 23,
               "sha256": "84e1842642b552d15cea4885c39fec0f82ff71680a1ceee60c2002aa4e6b1353"
+            },
+            "depth": {
+              "file": "sheets/aegis__turret__d00__depth.png",
+              "w": 31,
+              "h": 23,
+              "sha256": "ba3811c76f9c98e74c3217e1564a328c203156ebc122db33a23e39cac397456e"
             }
           },
           "filesHi": {
@@ -4340,6 +4657,12 @@
               "w": 29,
               "h": 23,
               "sha256": "a0fc1e354dbe10c5f5ae2fe469621e6c60b2ace85b72883bc58b599a10b19eae"
+            },
+            "depth": {
+              "file": "sheets/aegis__turret__d01__depth.png",
+              "w": 29,
+              "h": 23,
+              "sha256": "2875174e0b5b10cf75da1ac92c115c207f75b45345ea7eae426a824f020f3962"
             }
           },
           "filesHi": {
@@ -4405,6 +4728,12 @@
               "w": 28,
               "h": 23,
               "sha256": "95ecfdd7377f0f155b9d5c0e3c81508c16b738a552e0d0da76904e540fdaf52d"
+            },
+            "depth": {
+              "file": "sheets/aegis__turret__d02__depth.png",
+              "w": 28,
+              "h": 23,
+              "sha256": "cff6f20a8fce636420e9442d12901c4a6d1f120e2bd1a4dfef9abc56a5abbff0"
             }
           },
           "filesHi": {
@@ -4470,6 +4799,12 @@
               "w": 28,
               "h": 22,
               "sha256": "a1456ded79ca527adf725d9416836aa4e2317c9463d11b0721c3121f08264528"
+            },
+            "depth": {
+              "file": "sheets/aegis__turret__d03__depth.png",
+              "w": 28,
+              "h": 22,
+              "sha256": "42a3948aaabe21a4922857742cce734298536f430c56fc6beed121af6079d398"
             }
           },
           "filesHi": {
@@ -4535,6 +4870,12 @@
               "w": 31,
               "h": 23,
               "sha256": "75025c86de4b90e2087f9d3005e5dd25acb8545556dbad557b73c96863458ea4"
+            },
+            "depth": {
+              "file": "sheets/aegis__turret__d04__depth.png",
+              "w": 31,
+              "h": 23,
+              "sha256": "e07cd97e4b4b1346517bef784e67474c4c5100326e435d95d420e3984979ce7b"
             }
           },
           "filesHi": {
@@ -4600,6 +4941,12 @@
               "w": 29,
               "h": 23,
               "sha256": "e1cde1aa121b107aef5d183246dce5f6dc44550744c2d175f7dbc7475f2265b6"
+            },
+            "depth": {
+              "file": "sheets/aegis__turret__d05__depth.png",
+              "w": 29,
+              "h": 23,
+              "sha256": "69dff34ca2d76fce1bb74b606c99a6de6cfc8ce559a6f776a281ea4a62d9316c"
             }
           },
           "filesHi": {
@@ -4665,6 +5012,12 @@
               "w": 27,
               "h": 22,
               "sha256": "8e899be98325eb6ee9b4ab2dd88f1a981e019aab71a581e78090325a4442f106"
+            },
+            "depth": {
+              "file": "sheets/aegis__turret__d06__depth.png",
+              "w": 27,
+              "h": 22,
+              "sha256": "0df484fa1a57c45dd95bf1d7dfefc7f3e42946673e3ee7551eb8f6278790c73b"
             }
           },
           "filesHi": {
@@ -4730,6 +5083,12 @@
               "w": 30,
               "h": 23,
               "sha256": "4f710947c7717b9d4f476556b4040a4671c9026fb39bb016b90f187954e03280"
+            },
+            "depth": {
+              "file": "sheets/aegis__turret__d07__depth.png",
+              "w": 30,
+              "h": 23,
+              "sha256": "4dbbb0e9545b5b8f16ef9516a1a5135e5a868bb3f0b076a837299f9e68786bac"
             }
           },
           "filesHi": {
@@ -4795,6 +5154,12 @@
               "w": 31,
               "h": 22,
               "sha256": "c4edf71f64aa7fefdc885feccd339f2b1c309f6189e75d9afdada284fdc6d3e4"
+            },
+            "depth": {
+              "file": "sheets/aegis__turret__d08__depth.png",
+              "w": 31,
+              "h": 22,
+              "sha256": "f1461ac06990e5d4b0373558fafea58b201e6b379079dae9fbc54309ed3d249e"
             }
           },
           "filesHi": {
@@ -4860,6 +5225,12 @@
               "w": 29,
               "h": 23,
               "sha256": "4e31cfbc4994b19f47a62af65fe799be0561a31afde8f636b4d88780759a9477"
+            },
+            "depth": {
+              "file": "sheets/aegis__turret__d09__depth.png",
+              "w": 29,
+              "h": 23,
+              "sha256": "aebd29678ea3b88e8df5d33c114b734a82f5e1ed5d895d1504ec419959735a8e"
             }
           },
           "filesHi": {
@@ -4925,6 +5296,12 @@
               "w": 28,
               "h": 21,
               "sha256": "df20fdc09821712db3ffcca848fccfb3fe11b751a2df3be98268bdfb620a36e3"
+            },
+            "depth": {
+              "file": "sheets/aegis__turret__d10__depth.png",
+              "w": 28,
+              "h": 21,
+              "sha256": "b8654271ba45ae2f40366d442855d01754c59f135077bccf18dc66d89884ba3e"
             }
           },
           "filesHi": {
@@ -4990,6 +5367,12 @@
               "w": 28,
               "h": 22,
               "sha256": "8b982cedd56fb36671548cff83e144ae14b04d6d3994af11fa84f6356e1bae18"
+            },
+            "depth": {
+              "file": "sheets/aegis__turret__d11__depth.png",
+              "w": 28,
+              "h": 22,
+              "sha256": "2c4e8693166887560f0d5e0772bf3a9d2eac211e2595da1655e0acd9d4f521b0"
             }
           },
           "filesHi": {
@@ -5055,6 +5438,12 @@
               "w": 31,
               "h": 22,
               "sha256": "17ea843bda0bbb28b3332005ec9f49ecc9ae207203b9b855880041aeb741165a"
+            },
+            "depth": {
+              "file": "sheets/aegis__turret__d12__depth.png",
+              "w": 31,
+              "h": 22,
+              "sha256": "43e4ec1b9a5299f3100629710310d5870f7ef0654b0c03bbd6658b2acf136d52"
             }
           },
           "filesHi": {
@@ -5120,6 +5509,12 @@
               "w": 29,
               "h": 23,
               "sha256": "10acf6905fa1ff00aafe61cb6adfbb02e7c22c075e928d244ce8205c020300cd"
+            },
+            "depth": {
+              "file": "sheets/aegis__turret__d13__depth.png",
+              "w": 29,
+              "h": 23,
+              "sha256": "7f2820f998f8e9656d5fa8d93f2a4ae9611f36344d2e58b8ae52bf9ccf22a17f"
             }
           },
           "filesHi": {
@@ -5185,6 +5580,12 @@
               "w": 27,
               "h": 21,
               "sha256": "a5528f4afff9240e955889ae2ef7ddc10cd3e96a84599ea5fcabfea82fb3ed75"
+            },
+            "depth": {
+              "file": "sheets/aegis__turret__d14__depth.png",
+              "w": 27,
+              "h": 21,
+              "sha256": "66b21cfa70ce20fb87e697f2a6e3928bd5cf1c5b70c08915d6f6f4ab2bf52961"
             }
           },
           "filesHi": {
@@ -5250,6 +5651,12 @@
               "w": 30,
               "h": 23,
               "sha256": "2ce4ebb706a64db7a5deabf2def41ddb0511ba075a4d5bc2ebedd9ede7a7bd27"
+            },
+            "depth": {
+              "file": "sheets/aegis__turret__d15__depth.png",
+              "w": 30,
+              "h": 23,
+              "sha256": "ccaaea9509e3c49a6c1d69c8f98682c390baffbd591b1b6837f76e6782a3cd8a"
             }
           },
           "filesHi": {
@@ -5297,6 +5704,11 @@
         208
       ],
       "traverse": true,
+      "traverseRoot": [
+        268,
+        256,
+        150
+      ],
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -5347,6 +5759,12 @@
               "w": 21,
               "h": 18,
               "sha256": "81987e56a8d066d71ddbe6412f48e29cfab855965f203e1848f3f1150dfa5ce9"
+            },
+            "depth": {
+              "file": "sheets/aegis__barrel__d00__depth.png",
+              "w": 21,
+              "h": 18,
+              "sha256": "ea17a33fc5e5924ee19de074062f7ca8118229013911fa2ec89aff905a982f62"
             }
           },
           "filesHi": {
@@ -5412,6 +5830,12 @@
               "w": 22,
               "h": 17,
               "sha256": "f4c476b2cf5d23f34fb8c1ed06ff312b77439c6c430fe3a4abd1e6fbaf2262c5"
+            },
+            "depth": {
+              "file": "sheets/aegis__barrel__d01__depth.png",
+              "w": 22,
+              "h": 17,
+              "sha256": "5e5379e656d9073b0efee3f48d42125954e95d923e1637c3d0ee9210ee460e68"
             }
           },
           "filesHi": {
@@ -5477,6 +5901,12 @@
               "w": 21,
               "h": 15,
               "sha256": "033bace8a5b94b2fc2ad4d8df600b4571acc541ddc5f05d1e259bd00cf252869"
+            },
+            "depth": {
+              "file": "sheets/aegis__barrel__d02__depth.png",
+              "w": 21,
+              "h": 15,
+              "sha256": "3bd2569acba8dbdc773a943300cbee2d75136bdcd54ab489e00965a64108c7b1"
             }
           },
           "filesHi": {
@@ -5542,6 +5972,12 @@
               "w": 22,
               "h": 16,
               "sha256": "ed461201a39355c4d8208979d31616e444b8f584aca9cea14d638de164463e1a"
+            },
+            "depth": {
+              "file": "sheets/aegis__barrel__d03__depth.png",
+              "w": 22,
+              "h": 16,
+              "sha256": "dfaf3392a88b1abca942e9ec2210b308d93df4b5dd0c2eb1d027f59c0c68a4e2"
             }
           },
           "filesHi": {
@@ -5607,6 +6043,12 @@
               "w": 21,
               "h": 18,
               "sha256": "cb6257d225a332f988387244690426b8386c59bbcef9f00992a29e27dcd6505e"
+            },
+            "depth": {
+              "file": "sheets/aegis__barrel__d04__depth.png",
+              "w": 21,
+              "h": 18,
+              "sha256": "4e855586d5d367d73ad2524464e1f790d233d6260581e20fbdd53e8586d029e3"
             }
           },
           "filesHi": {
@@ -5672,6 +6114,12 @@
               "w": 18,
               "h": 19,
               "sha256": "181828d381b9a462afd91fb4029811cfc6673c822b80abf4bd097e981e316394"
+            },
+            "depth": {
+              "file": "sheets/aegis__barrel__d05__depth.png",
+              "w": 18,
+              "h": 19,
+              "sha256": "f62e88fb0bf4f912528d4e4bf4ec1459799e2eb38192eaaf3f0f09602aab3894"
             }
           },
           "filesHi": {
@@ -5737,6 +6185,12 @@
               "w": 14,
               "h": 20,
               "sha256": "47b631d019a983715d4b7c6225fa3e01042ab92a32f9ab8c0e155081e33198e6"
+            },
+            "depth": {
+              "file": "sheets/aegis__barrel__d06__depth.png",
+              "w": 14,
+              "h": 20,
+              "sha256": "c8b89684bdd214acc56fd8c657c2e7b3f312e1428b5695ff5f724418c6fcce0a"
             }
           },
           "filesHi": {
@@ -5802,6 +6256,12 @@
               "w": 19,
               "h": 20,
               "sha256": "8ecab3dabe3842e91c7a258c611f5829e01e7eb214be8e8a1de205791cd14182"
+            },
+            "depth": {
+              "file": "sheets/aegis__barrel__d07__depth.png",
+              "w": 19,
+              "h": 20,
+              "sha256": "78f5eb94b15356bbc9694e4aba27081ef7ea646b3ca2c605252bc2c50cc18f20"
             }
           },
           "filesHi": {
@@ -5867,6 +6327,12 @@
               "w": 21,
               "h": 19,
               "sha256": "de16453cfd44acd9a09bf42d34517f36a2f5683408ad84984e4563d35feb6461"
+            },
+            "depth": {
+              "file": "sheets/aegis__barrel__d08__depth.png",
+              "w": 21,
+              "h": 19,
+              "sha256": "0a3059ad5da55095df4eedfb91f07c2f206a17aa772ed9fb3bad9a2df8610e04"
             }
           },
           "filesHi": {
@@ -5932,6 +6398,12 @@
               "w": 22,
               "h": 17,
               "sha256": "d67c77b46a71395803e12101cf3d0034b446b0e45b374df9dbba634ff6fd6a16"
+            },
+            "depth": {
+              "file": "sheets/aegis__barrel__d09__depth.png",
+              "w": 22,
+              "h": 17,
+              "sha256": "2ba1dd69e2a3712df1c4a5e156165ce17b6307c2e587ce3564bfac94dd759a16"
             }
           },
           "filesHi": {
@@ -5997,6 +6469,12 @@
               "w": 21,
               "h": 16,
               "sha256": "8c04c6191c21a19fe2ff1b9b69c68b5e2ae75fa0b7d3d86d6018eacc911b3a68"
+            },
+            "depth": {
+              "file": "sheets/aegis__barrel__d10__depth.png",
+              "w": 21,
+              "h": 16,
+              "sha256": "7663782c293280a451e77bf4cd981d3d147a987f91503551e0240cdd9c6f8caa"
             }
           },
           "filesHi": {
@@ -6062,6 +6540,12 @@
               "w": 22,
               "h": 17,
               "sha256": "84c0c6c85fd9436f3c1860b56bf094ab092d8c4c71a3abf0af5af045eb99890a"
+            },
+            "depth": {
+              "file": "sheets/aegis__barrel__d11__depth.png",
+              "w": 22,
+              "h": 17,
+              "sha256": "ef8085da329b93c4399c85bc5e1fd92e9182db0faf6995ec09b2b2ede3855fcc"
             }
           },
           "filesHi": {
@@ -6127,6 +6611,12 @@
               "w": 21,
               "h": 19,
               "sha256": "3628ac07dce5a8f397967fbb6d74a82cc64e752df60757be1abb831ef02adbfd"
+            },
+            "depth": {
+              "file": "sheets/aegis__barrel__d12__depth.png",
+              "w": 21,
+              "h": 19,
+              "sha256": "384c82bcba4dc7508de91cb5631e3d2feb5de6442d1068c797e6277a12eec417"
             }
           },
           "filesHi": {
@@ -6192,6 +6682,12 @@
               "w": 18,
               "h": 20,
               "sha256": "bcd3069c1fe04a182b2d0428ddad6ebd317163c5099136a75e2540b995823312"
+            },
+            "depth": {
+              "file": "sheets/aegis__barrel__d13__depth.png",
+              "w": 18,
+              "h": 20,
+              "sha256": "9b35464c06a871fb78fcac95a07419251be2660b7c3edbbcb7a5918be714589c"
             }
           },
           "filesHi": {
@@ -6257,6 +6753,12 @@
               "w": 14,
               "h": 20,
               "sha256": "ba56998f50136cbd36894da52bf4ce66c613d8dc3d66cafa259820dbbc45a245"
+            },
+            "depth": {
+              "file": "sheets/aegis__barrel__d14__depth.png",
+              "w": 14,
+              "h": 20,
+              "sha256": "a2a1eb0d14a1a2986f40925193579e6c3de8f8d8fa86d7801fda165928487337"
             }
           },
           "filesHi": {
@@ -6322,6 +6824,12 @@
               "w": 19,
               "h": 19,
               "sha256": "41173b8718ab9172c419e9c29dc153fcfdfa12e6af6587e99511f4e10753fbbe"
+            },
+            "depth": {
+              "file": "sheets/aegis__barrel__d15__depth.png",
+              "w": 19,
+              "h": 19,
+              "sha256": "dafa26a2354ca6bed3e7909bda8fbfa1c33e01eae1dc4d8621eb6327779f6c9f"
             }
           },
           "filesHi": {
@@ -6477,15 +6985,15 @@
         "files": {
           "albedo": {
             "file": "sheets/aegis__composite__d00__albedo.png",
-            "sha256": "77b811207796b7964200be05b8f9ff1601ffe87fcdfc8b3bdce879b4532e8b7c"
+            "sha256": "46eb2e5640aa4d085c3616850acdb9d65257c64a6a0c3087cbcf68305d4e4e7e"
           },
           "normal": {
             "file": "sheets/aegis__composite__d00__normal.png",
-            "sha256": "8a531e3833086c292c8512d28ff3ac93f35337815785cc176592c6f554f3e4b9"
+            "sha256": "9ca529ce584d0acd8146329a444fe771687394675c6121169c713cbc0d844d81"
           },
           "material": {
             "file": "sheets/aegis__composite__d00__material.png",
-            "sha256": "f17893563a5b192bb3e349413f36e4e2db96eea499c5a761f61787272179f3e3"
+            "sha256": "99cdc8379534237d47269fd122a66eb7966737a9f459350ff92b8725164c059e"
           }
         }
       },
@@ -6495,15 +7003,15 @@
         "files": {
           "albedo": {
             "file": "sheets/aegis__composite__d01__albedo.png",
-            "sha256": "58e405679b85ec85638acecfacce22222a8191b54ab93d6293ca9fda1192f33c"
+            "sha256": "d75d299c002aefccb99c09a4d099cc4e1c3676c2a618088df6bd8dcf9dc5e935"
           },
           "normal": {
             "file": "sheets/aegis__composite__d01__normal.png",
-            "sha256": "814517d710167f84f3c18d583880f04208766bc170d1243f074de3a330bdb2d7"
+            "sha256": "3d7843616116a635a932bd2a6870c0b1752fbeb9ec06077f8af5dcd81619ca54"
           },
           "material": {
             "file": "sheets/aegis__composite__d01__material.png",
-            "sha256": "1b268c54f825e8ca4ac96f9bfb1f11c81f6df11407274a9c4f1e3ff5934dd3bb"
+            "sha256": "c1f054558817b499f88013ba0b5d7d3ccf4c0aa543c6cf302477bf48fe406f48"
           }
         }
       },
@@ -6513,15 +7021,15 @@
         "files": {
           "albedo": {
             "file": "sheets/aegis__composite__d02__albedo.png",
-            "sha256": "18ce290aa84e89452172bd1edbccfb326488a99e4c24fd9f7fa6938897432e12"
+            "sha256": "cf7d870d6470cc1614078e6e6135cd1fa78bcc6da8838324897481cda3393316"
           },
           "normal": {
             "file": "sheets/aegis__composite__d02__normal.png",
-            "sha256": "ec73f439b6fcb5628b296df56884dbb84a6a897e06d3154505dbd0bbc0d7c553"
+            "sha256": "f2c46d51e435bab449d0e2e13b187376c189b15124b5ac46eb0b4d4277006b95"
           },
           "material": {
             "file": "sheets/aegis__composite__d02__material.png",
-            "sha256": "ab1e2f35d5b4db3504ebcd1124a42ba57dea9e0f14b139f667eec2c554c67ded"
+            "sha256": "8f2b447969b7b3b4037170202345dde2924c5eb563110b8c2a4261a75e65cc8e"
           }
         }
       },
@@ -6531,15 +7039,15 @@
         "files": {
           "albedo": {
             "file": "sheets/aegis__composite__d03__albedo.png",
-            "sha256": "42e4eae42977c9f3226b9dcf2ace29daf53a0ac6b0ca6373be8b91a9ca1551be"
+            "sha256": "075250f9ac9c90507bdf89a4b9f9ebed6f28dfba27b0d371f0520457567e322b"
           },
           "normal": {
             "file": "sheets/aegis__composite__d03__normal.png",
-            "sha256": "27bd87e2fc4462b915c8585ae89ec0c8f8837aac7d47fd5bd44746b1835f2755"
+            "sha256": "8999662065032e5969073a9d5477d5740bfb1da417522a0d833f5e4a62cb48cf"
           },
           "material": {
             "file": "sheets/aegis__composite__d03__material.png",
-            "sha256": "acb45cd491796246da98e59814deb7e0841176b700510955f2b7f2a4344f52e0"
+            "sha256": "83a8180bcd3dd0dfc36f679efe19af2dbecb56c455664dcc01c555ea637aca55"
           }
         }
       },
@@ -6549,15 +7057,15 @@
         "files": {
           "albedo": {
             "file": "sheets/aegis__composite__d04__albedo.png",
-            "sha256": "2b3b3b84d4e8128de29e8ac04ce77c0dafa6a2a864d5e258ea8e5c036dc186a4"
+            "sha256": "f66fcaf6dc3be0d68cf665c258a7403578e80bb3f55f09762dab99285d2df096"
           },
           "normal": {
             "file": "sheets/aegis__composite__d04__normal.png",
-            "sha256": "a8ffebd42fb9d8eae043a057e78b4de14585e68a9cf4bc0310f4c02d363f6574"
+            "sha256": "2d88a631d42ac94b1a2909714d6310a3d2e88280aff85025282a410d41c3e590"
           },
           "material": {
             "file": "sheets/aegis__composite__d04__material.png",
-            "sha256": "87cab49c0c35fe1cab564dc4733774f55e0bbb7538b96bda4a368391f267171d"
+            "sha256": "2949c718709a94ae94f77d67c570e71e54d17674342becff4a3ddfff0837c5b3"
           }
         }
       },
@@ -6567,15 +7075,15 @@
         "files": {
           "albedo": {
             "file": "sheets/aegis__composite__d05__albedo.png",
-            "sha256": "dece7e0497c6aaf88ae23debd09ec80dac3b29e93a30e3ab1f585d8aa03b64de"
+            "sha256": "14f99a21c613978d18c2645a144e97a1c0304f8a9c4f2a54f1ca739c823d65d7"
           },
           "normal": {
             "file": "sheets/aegis__composite__d05__normal.png",
-            "sha256": "8e3570ea6d447ca9bd502d806b76b34949a08a0c40144d59670a8cd262ff28b8"
+            "sha256": "eb378589951a8b9048a778e092b83d76a24b60f9a5a9b556f2047ddcbf7b9a5f"
           },
           "material": {
             "file": "sheets/aegis__composite__d05__material.png",
-            "sha256": "8eadee389e117b9751f4b24f090f267de2c62a25de55dd4136998515765ef8cf"
+            "sha256": "b3b3af19a1365f94a1bd0b8a28c271cdabdfd6158a0e6fbe3b336929be02c91f"
           }
         }
       },
@@ -6585,15 +7093,15 @@
         "files": {
           "albedo": {
             "file": "sheets/aegis__composite__d06__albedo.png",
-            "sha256": "645c0a2dfc4a05e232380b6d625e214fe5e66f3bcc4573da6d63f0eded226fc9"
+            "sha256": "fc43aab3fe6f4bbf2a64144b7c15366ffc0b78fc8b40e08942fe0ebfb83c599d"
           },
           "normal": {
             "file": "sheets/aegis__composite__d06__normal.png",
-            "sha256": "a211471cc55ab371f10b2d037a33487b007f06ac2d5a8b17439bab5e2c2d9049"
+            "sha256": "8a90463dc84d1ca02e30b87f99b8b102bc2e57275c6b7523384c7bed1bdba395"
           },
           "material": {
             "file": "sheets/aegis__composite__d06__material.png",
-            "sha256": "bb765b405177ef564355af5cfa0a9668a9a31fd416c7751c9b54dce7266fd2dc"
+            "sha256": "b20a99cc8d60a0d1268138be1c97dc64088f7841e8b7f806037a51c95c93f628"
           }
         }
       },
@@ -6603,15 +7111,15 @@
         "files": {
           "albedo": {
             "file": "sheets/aegis__composite__d07__albedo.png",
-            "sha256": "443b38133758c285c4576247baca4a51ea4b94ff76d464ef5fdaec7b4731bdfa"
+            "sha256": "effb272a4112fe26dccc36c30e906540b27870471be2cbdd76a0046740ca84ac"
           },
           "normal": {
             "file": "sheets/aegis__composite__d07__normal.png",
-            "sha256": "7d7e80a6a75e7a0e80d816ae5b66f40d3da1d3190621667e9a696bae9e434a43"
+            "sha256": "5cd3afad6fd4cf6695fa618c963afe1ff2ecbe02b68dc893ef92e62a4b088e01"
           },
           "material": {
             "file": "sheets/aegis__composite__d07__material.png",
-            "sha256": "e68b7b6903434a543029ea91033cd1f4b272827d780e79d7412e307513237c31"
+            "sha256": "7f031bb92a709b76a0278d72a3eaacbebe72d54b04d870a170bfc636eeecd9e8"
           }
         }
       },
@@ -6621,15 +7129,15 @@
         "files": {
           "albedo": {
             "file": "sheets/aegis__composite__d08__albedo.png",
-            "sha256": "6f40401332078df38d509f42fe881a8db1f41ce0f8de54792f6af32531a39c04"
+            "sha256": "365eeae2234fe133da81ba041716c38061de863a30f2d64a59401619e80fd002"
           },
           "normal": {
             "file": "sheets/aegis__composite__d08__normal.png",
-            "sha256": "610f6d0b11c4292cd3152eb0e1d30afc319db1c5357e6d53b6acfb3c852c52d8"
+            "sha256": "aea752eccc51af98509682d90f1987fb5e64b55caafe1fdf82d3e0b9ea43be18"
           },
           "material": {
             "file": "sheets/aegis__composite__d08__material.png",
-            "sha256": "906f149c33785d6b5cb70764bcccbb965d6d2cb3a50beaac5c496b80ab3c8d4a"
+            "sha256": "ddce3aef400a015ba140f4346a82068af949dfc21c4d8c404990b3783a416f14"
           }
         }
       },
@@ -6639,15 +7147,15 @@
         "files": {
           "albedo": {
             "file": "sheets/aegis__composite__d09__albedo.png",
-            "sha256": "142d14c82432035cbbe00092e9435d3757ba8b6d8ce96fc622033ea692b93f42"
+            "sha256": "bdd5a48c7dedd8001e716b6bf8ec433bcda8351b9688c9146702616e9d431e10"
           },
           "normal": {
             "file": "sheets/aegis__composite__d09__normal.png",
-            "sha256": "319a21e0bccc68ba5792bd2c4e00cc1f4f32076afda67d39e19aa87e66b21b3f"
+            "sha256": "a0c4cce94b697dcde4cc084e5e499b2cc95117ce934c35908025f3cc0e1b5b04"
           },
           "material": {
             "file": "sheets/aegis__composite__d09__material.png",
-            "sha256": "d5b7a37e03a279d38f19b033c11fca8c1abb1853466882b7e15d545a324ced14"
+            "sha256": "6cfb2a7e5b69946a0518c047dcdf9142e0c12aca406a51cac40dcc8fa777e518"
           }
         }
       },
@@ -6657,15 +7165,15 @@
         "files": {
           "albedo": {
             "file": "sheets/aegis__composite__d10__albedo.png",
-            "sha256": "97654ad1e55abf8c3efe51be1afe26262b76e12b78be4aefd782bb2c48fa686b"
+            "sha256": "428dcb99a2fa2f072ea1085c508d30e70c2ae1aa4f9afdee155e06c6ae4dfd6f"
           },
           "normal": {
             "file": "sheets/aegis__composite__d10__normal.png",
-            "sha256": "879de4a5bd0a2d6e0c55d6d33c66b651cb3281c0836cfe9c91780542a7325dba"
+            "sha256": "0c6e0e863fa9b016359cd7a193d18bb186c0a0f19061ffc9deab35b00d32faa9"
           },
           "material": {
             "file": "sheets/aegis__composite__d10__material.png",
-            "sha256": "edb1ab955362e6cdb2738dc840a49c40f7a56cdf8312fa95ba32d6e51193edd3"
+            "sha256": "f421ebcd5cf8bb802426fde92b96d03d9ec593b8726eff9a06f844a1b04f6005"
           }
         }
       },
@@ -6675,15 +7183,15 @@
         "files": {
           "albedo": {
             "file": "sheets/aegis__composite__d11__albedo.png",
-            "sha256": "625aad0d1aef709a706c72352fe63b9ac45736825006a3736b747990a1eb6f95"
+            "sha256": "62c2a1e7d466c9bfb7875a7d2a2ce959dc0ca310d83039fa293ab2226871a5d9"
           },
           "normal": {
             "file": "sheets/aegis__composite__d11__normal.png",
-            "sha256": "b8f5a8b8ce69230dc89678c9ae98527adedd19c8a1f36450eeac964b910d0ad1"
+            "sha256": "5c664df1389265e835419750153eb6c4e26a9ab329dbdf302db2a85737ecaccc"
           },
           "material": {
             "file": "sheets/aegis__composite__d11__material.png",
-            "sha256": "72b137fec1199b0da9d5a7f22f8df0ce82278fc789c3a8b030815f62bc95d53e"
+            "sha256": "233d7e06a69895fce948e7a982211edae9ad1bd2cdd87db3939eb8be96ea6f90"
           }
         }
       },
@@ -6693,15 +7201,15 @@
         "files": {
           "albedo": {
             "file": "sheets/aegis__composite__d12__albedo.png",
-            "sha256": "f5f5b207031334b4c61e72437e145404d67afcbefa8564a08777bb4b57f93f7b"
+            "sha256": "ba5c0cb93e59312bb835756a3f68f85e6fc562fdfcb2b46a0002e422c03a6de0"
           },
           "normal": {
             "file": "sheets/aegis__composite__d12__normal.png",
-            "sha256": "773244d5bdb7091fc21d226b0d82c576e5b5f4f1349529fd1ae94c69f5a8ab19"
+            "sha256": "6c4ed39c12f308f4031ac04f06fdc5e508eb22e92eb21f8594b007ac577d3b13"
           },
           "material": {
             "file": "sheets/aegis__composite__d12__material.png",
-            "sha256": "3b86b6817b0037220960f311e18082653242d850d65b469a1894142575696762"
+            "sha256": "6fbd7af5cc46632a534e9afefff6edabd441c809330a6eec1bd5b6cc90a8ac50"
           }
         }
       },
@@ -6711,15 +7219,15 @@
         "files": {
           "albedo": {
             "file": "sheets/aegis__composite__d13__albedo.png",
-            "sha256": "e19fa181dda1b37be4976ff993bfe686dfe4d2736e9d1036c263c053f85aa2d0"
+            "sha256": "091125846fef1487eb62d6ab283468ecf13bfad031943e59fd3156e196eae330"
           },
           "normal": {
             "file": "sheets/aegis__composite__d13__normal.png",
-            "sha256": "d76d8d77749ec75470a4dba2b83eeb89f5775508641b21e0b77cc2fb23456cab"
+            "sha256": "7272d3ff58c1392333dc05953b19d8d37f4604e33fed7bd5e6ce10a95582141d"
           },
           "material": {
             "file": "sheets/aegis__composite__d13__material.png",
-            "sha256": "f5792acec9fd42c0440a12d48fd6453c4498469da5c01b21e191041a156fd7a3"
+            "sha256": "02067b8e15f099a843b05a4f9ecc0f6832422bc4e62ec1de1c33d68877263b66"
           }
         }
       },
@@ -6729,15 +7237,15 @@
         "files": {
           "albedo": {
             "file": "sheets/aegis__composite__d14__albedo.png",
-            "sha256": "4184cb37b233fa477cc1a0ed97c47108d308b1dc50b8080a54af12b40a3149c1"
+            "sha256": "12f690dbd191944a4d8418508b380bfd8266ff44a487f8e49c54029f1b7a687d"
           },
           "normal": {
             "file": "sheets/aegis__composite__d14__normal.png",
-            "sha256": "4e83290f390486e8a3f79cfab2893fbe36211f0d67a3feb1dc21a3ce2459036d"
+            "sha256": "d6162f333e5471bcdb9149a1cec40932815e5558619b9eea47db49abf9f30365"
           },
           "material": {
             "file": "sheets/aegis__composite__d14__material.png",
-            "sha256": "c7dc99d52ac2ad046150d9468adafe651647e39796edab594c696ffe3381f8a1"
+            "sha256": "8586d5854c68d5f1197f9b3427bcf3ba8ff98caf0612877b1ca1033d41dca116"
           }
         }
       },
@@ -6747,15 +7255,15 @@
         "files": {
           "albedo": {
             "file": "sheets/aegis__composite__d15__albedo.png",
-            "sha256": "bad730fbecafb40d03da0788fbdea45fc77ac2a7799aeced1245509532085a1c"
+            "sha256": "64f4089c3b8d85d8ba04856ba38f0c2998d72c3212180d4846bf83b6eb1cb4d2"
           },
           "normal": {
             "file": "sheets/aegis__composite__d15__normal.png",
-            "sha256": "bbd0160452eed3ba7dc8672f81cf3676f026275898e543ce58ed3297aed16035"
+            "sha256": "1de574c912026fe6d61fa3d488bc5bdd26ec4b8cfe3c53eae86ccca04f866048"
           },
           "material": {
             "file": "sheets/aegis__composite__d15__material.png",
-            "sha256": "857bb8feaf54f786e5be666b714f15d8984db8b05e5876c4b5366d075bf735ba"
+            "sha256": "5697db945464b9a1939e279a7e59e90d48777d83dec5e6760bdc60dc21f842a9"
           }
         }
       }
@@ -6769,97 +7277,97 @@
         "file": "sheets/aegis__lit__d00__albedo.png",
         "w": 54,
         "h": 42,
-        "sha256": "b5e9924477932ba7301ad2912e924ec1afbe4a215337ca96e87cf55d1b38bdac"
+        "sha256": "a9d3e419dc3806f91952907ec885e60ca7c8bb1e5be940a6aba735606edfbe9e"
       },
       "d01": {
         "file": "sheets/aegis__lit__d01__albedo.png",
         "w": 50,
         "h": 42,
-        "sha256": "4025e3c93f92848c6fef9f6b4777a255f60aee4c1d3496ff0fa98a07041c7216"
+        "sha256": "1db157b3910a03b6ec9492ae98ce6c3d30c6954e549bdb252c9c38613de5f4f1"
       },
       "d02": {
         "file": "sheets/aegis__lit__d02__albedo.png",
         "w": 44,
         "h": 42,
-        "sha256": "4a3628c3481df45bfa677daa923c9aeadf904cbb790b9a331a23a77e7590aa20"
+        "sha256": "c6bb65f1e47fef1dbaf330a3ed1dfb2f7446c2729e5dc5d1e5dde6101c094715"
       },
       "d03": {
         "file": "sheets/aegis__lit__d03__albedo.png",
         "w": 50,
         "h": 43,
-        "sha256": "846345b1ab73bf7e18c1235ed8aa676032ecdb20d95f2fbb9cefd6aae49d45fa"
+        "sha256": "cd66aaa118f05978507a45a66538c51936ad8b618d0cbe785701d2f581f0ee7c"
       },
       "d04": {
         "file": "sheets/aegis__lit__d04__albedo.png",
         "w": 54,
         "h": 45,
-        "sha256": "458eee41966ddd87b4755f95058e76e503dbd67eb048fc42bc07ee99fce8da17"
+        "sha256": "2d463b2bd3e02618a2f02587c9130dc0935d61534d5a7a4fbbf12dfa198ea10b"
       },
       "d05": {
         "file": "sheets/aegis__lit__d05__albedo.png",
         "w": 52,
         "h": 44,
-        "sha256": "a39221e0f3b7a9b93b5070e6dcbc2422f63b2ce8797a20ab9b5c4230d4e1a735"
+        "sha256": "1ccd9e22d67695b49888f53ad351e47630cbcd6d016ae90ee887bf4a19ec916a"
       },
       "d06": {
         "file": "sheets/aegis__lit__d06__albedo.png",
         "w": 47,
         "h": 41,
-        "sha256": "04c1a8e7b5da286d1309c2d44ef87316ccc609e2179894f91afcd681af09795c"
+        "sha256": "8237b33a455b49cf0b1030dac3d5d37bf0248186634983a4a1c0a616faf4a707"
       },
       "d07": {
         "file": "sheets/aegis__lit__d07__albedo.png",
         "w": 53,
         "h": 41,
-        "sha256": "c6cde42a0fcb33ada50ad8cd850f331bab150fa9b20ced25163f13c288c8bb01"
+        "sha256": "fc3dc7447948c5cd98f152dd7083652cdc9ee0409c5885075df37566d152b897"
       },
       "d08": {
         "file": "sheets/aegis__lit__d08__albedo.png",
         "w": 54,
         "h": 43,
-        "sha256": "c0e4a09083bbf4fc30eb03b642b7bdc8f625887e22724675945d1c78af72837a"
+        "sha256": "a216f378caea3dc763c165c8961eb32982eb1ef9a8f02ce8e5ae8042470a1e91"
       },
       "d09": {
         "file": "sheets/aegis__lit__d09__albedo.png",
         "w": 50,
         "h": 42,
-        "sha256": "921cd803cb3c7fa18e91d664dc235a7f17928199e9bc5aa803e6eb0b0f4f72c0"
+        "sha256": "38597fc74ec459225e4fa93c37eda3ad97e4d05e25ce7454f349cc9f026fdbad"
       },
       "d10": {
         "file": "sheets/aegis__lit__d10__albedo.png",
         "w": 44,
         "h": 40,
-        "sha256": "5f094c7318e7403c74c38ca9320486f4e564c0f02cee0b628a4571e55db72635"
+        "sha256": "fafe4dc4270ce229efcef7801bbc17619ed4fd02f92c8b4c7ba3836c19eedb80"
       },
       "d11": {
         "file": "sheets/aegis__lit__d11__albedo.png",
         "w": 50,
         "h": 42,
-        "sha256": "e716e2d0559a181794966e400043e9d5c1baf791dc00c64cc007b065496a6b74"
+        "sha256": "0d2d30c8796b48b1be02851cc7ca5309a891184ed6505e1d720d23649a38bfce"
       },
       "d12": {
         "file": "sheets/aegis__lit__d12__albedo.png",
         "w": 54,
         "h": 43,
-        "sha256": "6a84ad2b51bdf7fd0d773eadecb2b0c175efb6572bb4fc46ddc91519fccf8dd9"
+        "sha256": "d30cd9a0ebe76cb7e26c963598e0dbee9a7d6c2cde4fbc2e9a5f7cf8b19300a1"
       },
       "d13": {
         "file": "sheets/aegis__lit__d13__albedo.png",
         "w": 52,
         "h": 41,
-        "sha256": "52a3f26d516ea770b3e89ae07dd1dcd0c7cb3b8f6335c8b0bac370f886f8af6f"
+        "sha256": "0370b707bf954d6235dc6a17f094c705a99dbb7898062265545a27b4c56c4a27"
       },
       "d14": {
         "file": "sheets/aegis__lit__d14__albedo.png",
         "w": 47,
         "h": 38,
-        "sha256": "18c37da05c5d14616c6e5ea905cb2fa712e3064135bd3d1fef3766d8b4444ff5"
+        "sha256": "b67b5b89f3817097676bc4de8dadaf2988e7acb9534e59300a5826c8b280f1f8"
       },
       "d15": {
         "file": "sheets/aegis__lit__d15__albedo.png",
         "w": 53,
         "h": 40,
-        "sha256": "8e50427a7d0ffaa944b55dbbe7ec9c9449e44e4074da30e0659bc9267f891360"
+        "sha256": "0701bd46adc1a6fd3ca371db11c94486466b99d18931249bf96a1634dedaf115"
       }
     }
   },

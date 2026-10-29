@@ -998,6 +998,21 @@
       }
     ]
   },
+  "depthMap": {
+    "note": "Per-part view depth, one PNG per part per facing. Composite by z-test on this; do NOT try to order segments by a single depth per part.",
+    "channelOrder": "rgba",
+    "meaning": [
+      "depthHi",
+      "depthLo",
+      "unused",
+      "covered"
+    ],
+    "encoding": "q = depthHi * 256 + depthLo; depth = q / scale - bias  (tile units = design voxels / 8)",
+    "scale": 256,
+    "bias": 128,
+    "coveredAlpha": 255,
+    "largerIsCloser": true
+  },
   "parts": {
     "body": {
       "name": "body",
@@ -1009,6 +1024,7 @@
         0
       ],
       "traverse": false,
+      "traverseRoot": null,
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -1059,6 +1075,12 @@
               "w": 49,
               "h": 32,
               "sha256": "744e07da8a8310913e8a9bf987b870179476093fb2a7c08f32b40bfe6c05b0c2"
+            },
+            "depth": {
+              "file": "sheets/rockets__body__d00__depth.png",
+              "w": 49,
+              "h": 32,
+              "sha256": "992303e3cf3616f21f028a785407acbcd49c45ca508c7b6199824f32dabad989"
             }
           },
           "filesHi": {
@@ -1124,6 +1146,12 @@
               "w": 42,
               "h": 32,
               "sha256": "dc39838eccca25151b7c43a45b8ba80640fd8d799dc53f53b6206cb1799536ca"
+            },
+            "depth": {
+              "file": "sheets/rockets__body__d01__depth.png",
+              "w": 42,
+              "h": 32,
+              "sha256": "a6bb13e5a37f1b7771e5fb35a4d2e2a59db3fd6e8a440e39a424c4e6d0172960"
             }
           },
           "filesHi": {
@@ -1189,6 +1217,12 @@
               "w": 32,
               "h": 30,
               "sha256": "d7ead47a37483bdc211ce8c25d399531cd1abd6cf8cd0a867e90f4522cd43e60"
+            },
+            "depth": {
+              "file": "sheets/rockets__body__d02__depth.png",
+              "w": 32,
+              "h": 30,
+              "sha256": "a100df87c6106ecd91805f15030743e14be3155230a43962354ad5487b456147"
             }
           },
           "filesHi": {
@@ -1254,6 +1288,12 @@
               "w": 42,
               "h": 31,
               "sha256": "2c4ad221787d5ce836bf311248621d3a50f25ec9a30f4e4c8558145b4b96156f"
+            },
+            "depth": {
+              "file": "sheets/rockets__body__d03__depth.png",
+              "w": 42,
+              "h": 31,
+              "sha256": "b3e2363766d95f05c863da9aa21ad50bac9777a7da53cb671fddcd97599f7a10"
             }
           },
           "filesHi": {
@@ -1319,6 +1359,12 @@
               "w": 49,
               "h": 32,
               "sha256": "b9cfe938c19653c7d068e633d87801b5689be6a0c02f8f1938c7d78127c8cd01"
+            },
+            "depth": {
+              "file": "sheets/rockets__body__d04__depth.png",
+              "w": 49,
+              "h": 32,
+              "sha256": "c8e36b6bd9f4129665a5ef05c394997ca25d76e6f4cf1b08e69f7560e7593197"
             }
           },
           "filesHi": {
@@ -1384,6 +1430,12 @@
               "w": 50,
               "h": 33,
               "sha256": "75dc5a842776b19572c3f45a1bf54bbdcb2e26109a2f0851bc886ce864cec2f6"
+            },
+            "depth": {
+              "file": "sheets/rockets__body__d05__depth.png",
+              "w": 50,
+              "h": 33,
+              "sha256": "71bbecd128cfc7e0db5cf352ea42cf079e3eac2c3ee21321db90233643714fac"
             }
           },
           "filesHi": {
@@ -1449,6 +1501,12 @@
               "w": 45,
               "h": 34,
               "sha256": "40bad6ac3d7bf19cab2e0da9a22e04d05b3a983b8a001bd1da3a52c3cfaec1af"
+            },
+            "depth": {
+              "file": "sheets/rockets__body__d06__depth.png",
+              "w": 45,
+              "h": 34,
+              "sha256": "5b1007cb449b303048fa716807b2bd1aec9d5edf92459a3d334017a16790395f"
             }
           },
           "filesHi": {
@@ -1514,6 +1572,12 @@
               "w": 49,
               "h": 37,
               "sha256": "a42cd8ae5849ae8222078d49a778668fbfd1082cbc5410f326f30dfdb56c8376"
+            },
+            "depth": {
+              "file": "sheets/rockets__body__d07__depth.png",
+              "w": 49,
+              "h": 37,
+              "sha256": "db4bb598871161bb8a4ee1abe1bab6ec97895ae611d2ef9a28f1c95f58fd3869"
             }
           },
           "filesHi": {
@@ -1579,6 +1643,12 @@
               "w": 49,
               "h": 40,
               "sha256": "d59619bdde04eade61022fd088ed48ffebac09f9a4970b936741021424e7e051"
+            },
+            "depth": {
+              "file": "sheets/rockets__body__d08__depth.png",
+              "w": 49,
+              "h": 40,
+              "sha256": "35c4ae93f1fb0b85163d68e3ec23ecaaa2a8a69487084611d316a438bb3641ac"
             }
           },
           "filesHi": {
@@ -1644,6 +1714,12 @@
               "w": 42,
               "h": 40,
               "sha256": "4a459f6744b6ff0a8d6202d92fb86c8729739169608624ec3fcca1b83cd443bf"
+            },
+            "depth": {
+              "file": "sheets/rockets__body__d09__depth.png",
+              "w": 42,
+              "h": 40,
+              "sha256": "6b2ba51aec23320474bc63f34b37e2827f61b6e75f7b112d4453845b5aeef859"
             }
           },
           "filesHi": {
@@ -1709,6 +1785,12 @@
               "w": 32,
               "h": 38,
               "sha256": "26c5c5a2aebab642b54566872dd866e813ada0c2bb8a284e58dbe723e863c512"
+            },
+            "depth": {
+              "file": "sheets/rockets__body__d10__depth.png",
+              "w": 32,
+              "h": 38,
+              "sha256": "332f976da4d5d1ed7d1760f7bb2fdeb68923704caeac174189f274cbf12c5fb3"
             }
           },
           "filesHi": {
@@ -1774,6 +1856,12 @@
               "w": 42,
               "h": 37,
               "sha256": "28e33d55e153c46657564fe449e49fc9c25a0d5aa956f0550aa0012e59d2df11"
+            },
+            "depth": {
+              "file": "sheets/rockets__body__d11__depth.png",
+              "w": 42,
+              "h": 37,
+              "sha256": "f63d43dd05a6b05c113bb4a10635946645673ef0af56e176125a76f099605c51"
             }
           },
           "filesHi": {
@@ -1839,6 +1927,12 @@
               "w": 49,
               "h": 35,
               "sha256": "d4dea6d298a702d98ba42f136d27e124b4c55c23641feee6fa7f678ad3b8553a"
+            },
+            "depth": {
+              "file": "sheets/rockets__body__d12__depth.png",
+              "w": 49,
+              "h": 35,
+              "sha256": "ea6764ac3096a1069c8b96993fc925c0deea7766499c28b62c18c9ab6e0c8838"
             }
           },
           "filesHi": {
@@ -1904,6 +1998,12 @@
               "w": 50,
               "h": 33,
               "sha256": "c70a9c1092af0cbf0b4dcc5bc2fab23ba49dcc72e464a5e674e5d9e80d66aceb"
+            },
+            "depth": {
+              "file": "sheets/rockets__body__d13__depth.png",
+              "w": 50,
+              "h": 33,
+              "sha256": "1806e381e35f2ad114afc7899e4f01a906a95df119b6ceaf1f88d1a40c3fd0e9"
             }
           },
           "filesHi": {
@@ -1969,6 +2069,12 @@
               "w": 45,
               "h": 29,
               "sha256": "5ba4c2e38f30e9f08157953f45a9ac7d6268f5d5ec0c32a42f7956895bf6bbed"
+            },
+            "depth": {
+              "file": "sheets/rockets__body__d14__depth.png",
+              "w": 45,
+              "h": 29,
+              "sha256": "2f743e2babb8e5923ba658b25ed3aec60107eb4767428dd10dd84855d9dfa191"
             }
           },
           "filesHi": {
@@ -2034,6 +2140,12 @@
               "w": 49,
               "h": 29,
               "sha256": "a86cd1b0894760bf299a93be1046073a04893ff2843a7454fd7d54eb2faf5521"
+            },
+            "depth": {
+              "file": "sheets/rockets__body__d15__depth.png",
+              "w": 49,
+              "h": 29,
+              "sha256": "428022e9d9abeb659b606474014374236b2cc030ace7e4dd5cb7b25b4d5d875f"
             }
           },
           "filesHi": {
@@ -2081,6 +2193,7 @@
         0
       ],
       "traverse": false,
+      "traverseRoot": null,
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -2131,6 +2244,12 @@
               "w": 32,
               "h": 25,
               "sha256": "9e90a07f1f22bc27f430fbe456a8bb77dda64b5848e35ed28819a054826a41f7"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.L__d00__depth.png",
+              "w": 32,
+              "h": 25,
+              "sha256": "9e28fc3c4c350594197bb3c97c63a44cfe51d3d0c2d9fc05f191ee7b430202b8"
             }
           },
           "filesHi": {
@@ -2196,6 +2315,12 @@
               "w": 25,
               "h": 27,
               "sha256": "d7d921f0ed133cd2b5c2c2d69c470c94b0144851ef16dba98b17501b71e765bb"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.L__d01__depth.png",
+              "w": 25,
+              "h": 27,
+              "sha256": "16be8cca66812d03b5cf8a4a776eb463742147fd46d838522141c771f5f6352c"
             }
           },
           "filesHi": {
@@ -2261,6 +2386,12 @@
               "w": 16,
               "h": 27,
               "sha256": "f07a66f8ee38d957250b71328ea451dedbc485717bf5039208350c9629dab942"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.L__d02__depth.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "81d3e182ee473b2b4fb9fe86fc28184002b858c2c0daa8048ca612ab65d31801"
             }
           },
           "filesHi": {
@@ -2326,6 +2457,12 @@
               "w": 25,
               "h": 26,
               "sha256": "1c669fa88200b6a99fe6cba4fc470c5655787cf4a212082ed209ceeed308a8d7"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.L__d03__depth.png",
+              "w": 25,
+              "h": 26,
+              "sha256": "2ab3c92738fd882acadb49f5117755e5d75f24227b02a911f6fc26548b5ebf83"
             }
           },
           "filesHi": {
@@ -2391,6 +2528,12 @@
               "w": 32,
               "h": 25,
               "sha256": "39e40e1a1d9ae9ec89003a9b21443746dac49096e95e028ca56851d46f4e7ea6"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.L__d04__depth.png",
+              "w": 32,
+              "h": 25,
+              "sha256": "ea548e9639e062ce982b9c759dbdabd69e8c5542dbf5d16dbf9919b0dfa2898e"
             }
           },
           "filesHi": {
@@ -2456,6 +2599,12 @@
               "w": 37,
               "h": 21,
               "sha256": "69d6ee2fd98d8b11438d9356ad17f5a11a26ebae1db7a9ad0eccdc6e3127cdc4"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.L__d05__depth.png",
+              "w": 37,
+              "h": 21,
+              "sha256": "d8b3eacfcb37b2afad5d5cfe352d3751333493563f2a393e336a7cc7c7053517"
             }
           },
           "filesHi": {
@@ -2521,6 +2670,12 @@
               "w": 37,
               "h": 18,
               "sha256": "b6c79cf6c8710617b8e4f3175f4c710d6b63510efaaa5741c6be926e3a12dce2"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.L__d06__depth.png",
+              "w": 37,
+              "h": 18,
+              "sha256": "9c753ad9c9ed7670974c6511176b382bffdc158e06737269c33e7dc2e3358084"
             }
           },
           "filesHi": {
@@ -2586,6 +2741,12 @@
               "w": 37,
               "h": 20,
               "sha256": "35cef287c845fd27edf798886a69d9cb74a4530a6164d876f71c229df412bb19"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.L__d07__depth.png",
+              "w": 37,
+              "h": 20,
+              "sha256": "e383db56db1099892cc052a3274645fbc93a0fb546407576288f250299dcda28"
             }
           },
           "filesHi": {
@@ -2651,6 +2812,12 @@
               "w": 33,
               "h": 24,
               "sha256": "af1f7c5deeea01f48930d317fedef3bdabf0eabe0a5a4a63b615192b9a08c448"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.L__d08__depth.png",
+              "w": 33,
+              "h": 24,
+              "sha256": "0f5dd9697d6543eb869d1d9bd525564a8977d6eb56dca63b92b9381fd3d16d7c"
             }
           },
           "filesHi": {
@@ -2716,6 +2883,12 @@
               "w": 25,
               "h": 26,
               "sha256": "9a3b4703e7feeadb849c08275bd4c3298a1745907f27f68912afa8e5b35cc561"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.L__d09__depth.png",
+              "w": 25,
+              "h": 26,
+              "sha256": "484ec75ca3d8037f25d2cdbea35fdbec5ff53b729335df62d9b6d89b735dc6d8"
             }
           },
           "filesHi": {
@@ -2781,6 +2954,12 @@
               "w": 16,
               "h": 27,
               "sha256": "bb8162b3ebdf40ed03a3e6c04039b32d7f2829994319623617ed733de1027e35"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.L__d10__depth.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "0e000464322fc5148f01b8e3078fd5d58956cc1179b3f464fe464b7e22f3ede7"
             }
           },
           "filesHi": {
@@ -2846,6 +3025,12 @@
               "w": 25,
               "h": 26,
               "sha256": "e8c09a34219a99f2d3fda3ab726bea552537f679445c117a82ddddc91550a2a6"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.L__d11__depth.png",
+              "w": 25,
+              "h": 26,
+              "sha256": "4fbc5a15e587f9c04ff862cff51613a7f6fa0427cf83c17e5529c6a348b53a94"
             }
           },
           "filesHi": {
@@ -2911,6 +3096,12 @@
               "w": 32,
               "h": 25,
               "sha256": "0ffaab028ceb3181b0b1b16eed8ef6d8cfc0781dca6e093b36c30946015cc34d"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.L__d12__depth.png",
+              "w": 32,
+              "h": 25,
+              "sha256": "412cc73e61f381f02b49fd82a41aa0a0d5f8a6fd8f1177edd4788a10b005c66b"
             }
           },
           "filesHi": {
@@ -2976,6 +3167,12 @@
               "w": 37,
               "h": 21,
               "sha256": "2a4bdbeb43e144af667fa282b168c7102e6279c9d6a58301cc309d46b9478db0"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.L__d13__depth.png",
+              "w": 37,
+              "h": 21,
+              "sha256": "cd1a7c2b09ac3dd84e4f4acb87d9726b58ddaa206d9b8fff89d8586dec7dfd72"
             }
           },
           "filesHi": {
@@ -3041,6 +3238,12 @@
               "w": 37,
               "h": 18,
               "sha256": "4ffc057fd860d54b6f2005aae8c20438f3731c57eb77518c22e9f77cf4e05250"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.L__d14__depth.png",
+              "w": 37,
+              "h": 18,
+              "sha256": "f30a9b486ccba1c1233cac480b3a217d69ba4d56567b09b19eea388f5c74689d"
             }
           },
           "filesHi": {
@@ -3106,6 +3309,12 @@
               "w": 37,
               "h": 21,
               "sha256": "7710043ec9fdf641c35066dd132a5f8c42858b7240cba0efd70ec3f39f1df0ee"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.L__d15__depth.png",
+              "w": 37,
+              "h": 21,
+              "sha256": "21167e5af7fc0a9ba5fad272483e46dac7468de56ed1e714cd7db69fec3a2ff2"
             }
           },
           "filesHi": {
@@ -3153,6 +3362,7 @@
         0
       ],
       "traverse": false,
+      "traverseRoot": null,
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -3203,6 +3413,12 @@
               "w": 32,
               "h": 25,
               "sha256": "1092f981885ca361f65f7cfd6994097836a5b533df082a4a0c2f646cda1cd13b"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.R__d00__depth.png",
+              "w": 32,
+              "h": 25,
+              "sha256": "049747d5c0230fb4b81fbf8f671ded414737c8c76ad33d727d3b7e5054aa561e"
             }
           },
           "filesHi": {
@@ -3268,6 +3484,12 @@
               "w": 25,
               "h": 26,
               "sha256": "c176580640f08b31215c97226d13676c31f7a5deb10abe41b8de85987ce64dad"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.R__d01__depth.png",
+              "w": 25,
+              "h": 26,
+              "sha256": "ae99cad78ddb6c3bd42fbf51d74dc1197fcba6054a382222e379af7da0977464"
             }
           },
           "filesHi": {
@@ -3333,6 +3555,12 @@
               "w": 16,
               "h": 27,
               "sha256": "5ddbd654166fa9da9b54d4f1d3b79a7425338bfeb632f5a63d11e83d7f07be33"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.R__d02__depth.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "61bc6d7f4fb4b396e546f14b62da8fc1e77311d0737a95d913e225c674b06ea8"
             }
           },
           "filesHi": {
@@ -3398,6 +3626,12 @@
               "w": 25,
               "h": 26,
               "sha256": "5362654797c2be11f7392293ffcb951618ca580fae28c4bac23b23c7b7a41f47"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.R__d03__depth.png",
+              "w": 25,
+              "h": 26,
+              "sha256": "e5e34aeb16b9a680cf60fd0ad570ec09916dee5fa48784f3318d69767ce7e286"
             }
           },
           "filesHi": {
@@ -3463,6 +3697,12 @@
               "w": 32,
               "h": 25,
               "sha256": "84784624dbb45e6d3942a7335e1bb2b1b6243d5cec1351b454e8e735f261b926"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.R__d04__depth.png",
+              "w": 32,
+              "h": 25,
+              "sha256": "570928cb03e1998dd53939413d223d4c1d55e75ccbb684062657a9fed6d1778f"
             }
           },
           "filesHi": {
@@ -3528,6 +3768,12 @@
               "w": 37,
               "h": 21,
               "sha256": "8073290bf22b6ea3c570f526a70396560e7f918781e14b09c269145af9df2d4a"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.R__d05__depth.png",
+              "w": 37,
+              "h": 21,
+              "sha256": "b06b461f6698291ce4aaebf9b87a4890828c68f1df720eb93bf48643dd7c38ee"
             }
           },
           "filesHi": {
@@ -3593,6 +3839,12 @@
               "w": 37,
               "h": 17,
               "sha256": "1eb9170f55115b919ff379ace0cf8435e5670b45a7e96428bc6cf2ad9bad4d45"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.R__d06__depth.png",
+              "w": 37,
+              "h": 17,
+              "sha256": "306a98b67995a04845913a35e823d9f19df5696a7502d5e1bd0d9216ca040aef"
             }
           },
           "filesHi": {
@@ -3658,6 +3910,12 @@
               "w": 37,
               "h": 21,
               "sha256": "c054ec7d4fde8894b65a52c2f9dccabbe53e00c66745ed2cc1740b8ff72b9f4f"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.R__d07__depth.png",
+              "w": 37,
+              "h": 21,
+              "sha256": "80e34e2f40563a4222a44372e2650ca581328d1de44fd410076f95f8f8758bb4"
             }
           },
           "filesHi": {
@@ -3723,6 +3981,12 @@
               "w": 32,
               "h": 25,
               "sha256": "325da681b52f15c0bc9f9b0fc4798d3c9036ed03c726b421596f014bad3b8986"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.R__d08__depth.png",
+              "w": 32,
+              "h": 25,
+              "sha256": "3278cde294c42aa55efa9942886f1e8493c381339c06abf1652314e9e1bab561"
             }
           },
           "filesHi": {
@@ -3788,6 +4052,12 @@
               "w": 25,
               "h": 26,
               "sha256": "6571a53e5b7e87a6252a4ff14b839b6316cde14ff2be1a84aeeeefc0a24423aa"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.R__d09__depth.png",
+              "w": 25,
+              "h": 26,
+              "sha256": "160be40fdc3688c3c3e148d8703e8352b684e3905fc50414337526580ec645be"
             }
           },
           "filesHi": {
@@ -3853,6 +4123,12 @@
               "w": 16,
               "h": 27,
               "sha256": "5ceef2d5d8cbb2d0f088c96592780c6f5ba14cc2fde1f3cb9d5e71866bc2025b"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.R__d10__depth.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "8c7a5f98da76b0ec1d6cdb3844858fd7efca9bc4c89ca45a314b418d13857f3e"
             }
           },
           "filesHi": {
@@ -3918,6 +4194,12 @@
               "w": 25,
               "h": 26,
               "sha256": "45fc62db7fb641ffa9b3e8ef14d9dd21b951c43baec29d9e02ebdf1cd024f09e"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.R__d11__depth.png",
+              "w": 25,
+              "h": 26,
+              "sha256": "d28fe96d8211ef9ee8f3113a2999d05d52b3f61a56d67be681137b15a346983c"
             }
           },
           "filesHi": {
@@ -3983,6 +4265,12 @@
               "w": 32,
               "h": 24,
               "sha256": "4ff652e88482b815167fc684d2b27dce5d4d87aacd42b847b779aad4dec4ad65"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.R__d12__depth.png",
+              "w": 32,
+              "h": 24,
+              "sha256": "6925cc7273b33d54837fffc7dc7120817d1f7fd305d3a336eff826232cf8f357"
             }
           },
           "filesHi": {
@@ -4048,6 +4336,12 @@
               "w": 37,
               "h": 21,
               "sha256": "8cefcf305e986d01e334b7d927a10f0357d6bcceb27c54c57617ed231c8d14c0"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.R__d13__depth.png",
+              "w": 37,
+              "h": 21,
+              "sha256": "af671aa541ea2a101cd61282f9368805425cb2b45a24101e215d98735b73344d"
             }
           },
           "filesHi": {
@@ -4113,6 +4407,12 @@
               "w": 37,
               "h": 17,
               "sha256": "2d93ff76dcbd20a5fcbedf1a9f89c75a3d5f4ad8ffae70677c44973acc7c31eb"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.R__d14__depth.png",
+              "w": 37,
+              "h": 17,
+              "sha256": "15f3356f7c2acdcfc310bd80fecc04a30ef5f1958322f0835b99ad9020a81c55"
             }
           },
           "filesHi": {
@@ -4178,6 +4478,12 @@
               "w": 37,
               "h": 21,
               "sha256": "eff9f77e3c1bf251c53c971f1bfe7148669729d821f0dfe02bce740d9d1e57c9"
+            },
+            "depth": {
+              "file": "sheets/rockets__wheels.R__d15__depth.png",
+              "w": 37,
+              "h": 21,
+              "sha256": "ab00b6e169a5d0284050bf943a350a8d130316c7716258dd4ac161b927e3438f"
             }
           },
           "filesHi": {
@@ -4225,6 +4531,11 @@
         138
       ],
       "traverse": true,
+      "traverseRoot": [
+        300,
+        256,
+        138
+      ],
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -4275,6 +4586,12 @@
               "w": 24,
               "h": 19,
               "sha256": "77ce1f13582d626b8c2f62c7d7e8e8eb3237fbb676fd3a95851bf8a5946de862"
+            },
+            "depth": {
+              "file": "sheets/rockets__launcher__d00__depth.png",
+              "w": 24,
+              "h": 19,
+              "sha256": "71267fb9f01defe5d0407577ba0340cf0770f61022645dc24260f39b60db6f66"
             }
           },
           "filesHi": {
@@ -4340,6 +4657,12 @@
               "w": 24,
               "h": 18,
               "sha256": "9174b9f791aec64361bf2bd13b191d940cd8ee411f74e00364354e777db6351c"
+            },
+            "depth": {
+              "file": "sheets/rockets__launcher__d01__depth.png",
+              "w": 24,
+              "h": 18,
+              "sha256": "3633b73f1020146c1a7fd3b6b5b355fbe94832187c137b9992a47a30b07f45e2"
             }
           },
           "filesHi": {
@@ -4405,6 +4728,12 @@
               "w": 23,
               "h": 18,
               "sha256": "5554c82c3a7c813fa70dc8a095e81b54dc54942b5a12505bfa318c0a2e0160c8"
+            },
+            "depth": {
+              "file": "sheets/rockets__launcher__d02__depth.png",
+              "w": 23,
+              "h": 18,
+              "sha256": "94e42ee26c4f7440a6346bda5bd2ca23140db5c8f52df2eb473a9ce4c561856b"
             }
           },
           "filesHi": {
@@ -4470,6 +4799,12 @@
               "w": 24,
               "h": 18,
               "sha256": "d5d43b2e37c99984509f9c4665783d354f3e8d9478940c86ce0d6aa4435981a5"
+            },
+            "depth": {
+              "file": "sheets/rockets__launcher__d03__depth.png",
+              "w": 24,
+              "h": 18,
+              "sha256": "959a70ede0a410e77bfa54b8a8e81adfb3168f2df71547cab1f7b81b1b2e082b"
             }
           },
           "filesHi": {
@@ -4535,6 +4870,12 @@
               "w": 24,
               "h": 19,
               "sha256": "8f898661be90cb6a7e2ef54d5749ffc57f1436a46ef1a597161e5036e6a54bf0"
+            },
+            "depth": {
+              "file": "sheets/rockets__launcher__d04__depth.png",
+              "w": 24,
+              "h": 19,
+              "sha256": "9a3e0ce4b74f079c8e8f8b5442004a8f541a0f2cd3b7031278905543c9665236"
             }
           },
           "filesHi": {
@@ -4600,6 +4941,12 @@
               "w": 24,
               "h": 19,
               "sha256": "58978abb68b11db1d84a0383b195a1183eb0b85a5010a8ebdca63f31b4f26c4e"
+            },
+            "depth": {
+              "file": "sheets/rockets__launcher__d05__depth.png",
+              "w": 24,
+              "h": 19,
+              "sha256": "23f987b1f88a276cb22c79f821180b25595ec9baea774bda27f6afd5163be682"
             }
           },
           "filesHi": {
@@ -4665,6 +5012,12 @@
               "w": 23,
               "h": 19,
               "sha256": "eed1a9f9eb4b5dff5368f019b4b546be75ccfde7369a87797b904a0563cb2fa2"
+            },
+            "depth": {
+              "file": "sheets/rockets__launcher__d06__depth.png",
+              "w": 23,
+              "h": 19,
+              "sha256": "993802439eee43f4a240d357f4a6f0b10181dfb575e61e4aaa81e379f58f0db7"
             }
           },
           "filesHi": {
@@ -4730,6 +5083,12 @@
               "w": 24,
               "h": 20,
               "sha256": "d5fd4a236b1a1405a17543b7f7828a7d9813e9bd829ae4ae568a90853c968374"
+            },
+            "depth": {
+              "file": "sheets/rockets__launcher__d07__depth.png",
+              "w": 24,
+              "h": 20,
+              "sha256": "5f5664630c0fa377c742796742158eaba17b6964d7dbb1f73b1df34bf4999087"
             }
           },
           "filesHi": {
@@ -4795,6 +5154,12 @@
               "w": 24,
               "h": 19,
               "sha256": "197ecd56c2201552b06b32ed87927553b073f85cb00819d127aec04929aabbba"
+            },
+            "depth": {
+              "file": "sheets/rockets__launcher__d08__depth.png",
+              "w": 24,
+              "h": 19,
+              "sha256": "3244fd1078a1a0cecb3615d6fd1b5f9cee6ecbed8480bd71f394b8d20d598185"
             }
           },
           "filesHi": {
@@ -4860,6 +5225,12 @@
               "w": 24,
               "h": 19,
               "sha256": "ebe15b102c998341206ba84ce99a3afecccdf4d8657285e34abf847caaa0d6a7"
+            },
+            "depth": {
+              "file": "sheets/rockets__launcher__d09__depth.png",
+              "w": 24,
+              "h": 19,
+              "sha256": "5e584b4dd8867043626d7a2fa0ced25ed4a926302fcd664adb8a7ff7cc1bdd65"
             }
           },
           "filesHi": {
@@ -4925,6 +5296,12 @@
               "w": 23,
               "h": 17,
               "sha256": "3a28219ae14d228a77d77f56c87c2282adff84fa36a392197dae84ff6d68129a"
+            },
+            "depth": {
+              "file": "sheets/rockets__launcher__d10__depth.png",
+              "w": 23,
+              "h": 17,
+              "sha256": "bc280d2ed7959925e217d2c5e176b4c7edab932c72bb35ba5f10f9a1ad556e00"
             }
           },
           "filesHi": {
@@ -4990,6 +5367,12 @@
               "w": 24,
               "h": 19,
               "sha256": "28a8a74cd82fca4bb8afd189713e661b8e36119ef2d9bf6d763771dde23624e3"
+            },
+            "depth": {
+              "file": "sheets/rockets__launcher__d11__depth.png",
+              "w": 24,
+              "h": 19,
+              "sha256": "96255a75200e2d5443bb04d7de2ebb16a3ba19650442b372c5f308ccce46efc3"
             }
           },
           "filesHi": {
@@ -5055,6 +5438,12 @@
               "w": 24,
               "h": 19,
               "sha256": "82201a31185c822d156f7930a950b39d93e989687e416823bd0271b42a951121"
+            },
+            "depth": {
+              "file": "sheets/rockets__launcher__d12__depth.png",
+              "w": 24,
+              "h": 19,
+              "sha256": "fd4b0059c8272e780bedf6248de534ba2a756d1a89a49228109b1824cb3aa27b"
             }
           },
           "filesHi": {
@@ -5120,6 +5509,12 @@
               "w": 24,
               "h": 20,
               "sha256": "969769315a913dde4230269ed26b24ba99456a661153ceccc315205c1ad7f2bc"
+            },
+            "depth": {
+              "file": "sheets/rockets__launcher__d13__depth.png",
+              "w": 24,
+              "h": 20,
+              "sha256": "55c278deb7cd5401b4a4013ba8258b995f336a9b8261b8250d78a6b79cd87cdc"
             }
           },
           "filesHi": {
@@ -5185,6 +5580,12 @@
               "w": 23,
               "h": 19,
               "sha256": "4c992c613c706247fd8eaa5c3daaab24589900631da91402a295170c6f182fcd"
+            },
+            "depth": {
+              "file": "sheets/rockets__launcher__d14__depth.png",
+              "w": 23,
+              "h": 19,
+              "sha256": "26e267d20b1e9ae8c11d9eef8acab8d8dac6e184b7d6e3ff649c5995df2f9714"
             }
           },
           "filesHi": {
@@ -5250,6 +5651,12 @@
               "w": 24,
               "h": 19,
               "sha256": "560f41efaea70c5a2b46aa6f716e780cf9a8c3a2fb06df93f5ad1b23c0a006f6"
+            },
+            "depth": {
+              "file": "sheets/rockets__launcher__d15__depth.png",
+              "w": 24,
+              "h": 19,
+              "sha256": "0a5ed66a1c20e2809ecb1411543b81b993dc2987ec79ac8b9889d5900110120f"
             }
           },
           "filesHi": {
@@ -5297,6 +5704,11 @@
         208
       ],
       "traverse": true,
+      "traverseRoot": [
+        300,
+        256,
+        138
+      ],
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -5347,6 +5759,12 @@
               "w": 24,
               "h": 23,
               "sha256": "d240feac06d83ccbb900974879eab99cb96cfe198d19594bb3f277ff0c4711dd"
+            },
+            "depth": {
+              "file": "sheets/rockets__barrel__d00__depth.png",
+              "w": 24,
+              "h": 23,
+              "sha256": "fc6b3dea5d66f9f5690dbf8003e8bac519217ad6f77f49be649fc92b4938e1f9"
             }
           },
           "filesHi": {
@@ -5412,6 +5830,12 @@
               "w": 25,
               "h": 21,
               "sha256": "320d712ef8d31b2507bc3c2140df0b1dc62ae796f2eaf02185baaf57d3828ffb"
+            },
+            "depth": {
+              "file": "sheets/rockets__barrel__d01__depth.png",
+              "w": 25,
+              "h": 21,
+              "sha256": "99f8d09a81c66515c61de6707679d0b66805699ab775207960bd790317555ad3"
             }
           },
           "filesHi": {
@@ -5477,6 +5901,12 @@
               "w": 22,
               "h": 21,
               "sha256": "9388d159783d45227fce88c1cc3f689163b582c8f42cb27196b4faeb22ce3668"
+            },
+            "depth": {
+              "file": "sheets/rockets__barrel__d02__depth.png",
+              "w": 22,
+              "h": 21,
+              "sha256": "92599977648f87e3d40e6f5e3b0bc4613f6989a64f1555e977d290721cf672ea"
             }
           },
           "filesHi": {
@@ -5542,6 +5972,12 @@
               "w": 24,
               "h": 22,
               "sha256": "94283b377339d94655db6760534a80de661adc249fb381324537c86920b5dfa2"
+            },
+            "depth": {
+              "file": "sheets/rockets__barrel__d03__depth.png",
+              "w": 24,
+              "h": 22,
+              "sha256": "a168e791fc6543c27439d73d1ab7bdc587c7029bba9cc19bba745bdeb49ca0a1"
             }
           },
           "filesHi": {
@@ -5607,6 +6043,12 @@
               "w": 24,
               "h": 23,
               "sha256": "b43c1d6aaa4a957c8506d99d77367c7a9ca7963f62c953a2017bc69d962c6a1c"
+            },
+            "depth": {
+              "file": "sheets/rockets__barrel__d04__depth.png",
+              "w": 24,
+              "h": 23,
+              "sha256": "dbd5eb0a4bff0a861a9d3ae500dcd786c5d821de12fac7be8de9b199b7cc60db"
             }
           },
           "filesHi": {
@@ -5672,6 +6114,12 @@
               "w": 23,
               "h": 23,
               "sha256": "c2382d4fc0b8591731f8bd0965e90e17eef2d7443919664d535f27d917df76ac"
+            },
+            "depth": {
+              "file": "sheets/rockets__barrel__d05__depth.png",
+              "w": 23,
+              "h": 23,
+              "sha256": "76443aa4e0872611a0f18230833d300d84ee76a4124c8fea55b9d7da7e636f8d"
             }
           },
           "filesHi": {
@@ -5737,6 +6185,12 @@
               "w": 20,
               "h": 21,
               "sha256": "ce8f12424b6f1889b6ce6f38f741cfd2b985306e14d3d3ee3a084c096059569b"
+            },
+            "depth": {
+              "file": "sheets/rockets__barrel__d06__depth.png",
+              "w": 20,
+              "h": 21,
+              "sha256": "8d4b2c6f3efbe31163067b55646358b1ba7cc448777e4c455513c408179c6f99"
             }
           },
           "filesHi": {
@@ -5802,6 +6256,12 @@
               "w": 24,
               "h": 22,
               "sha256": "4a3a2544d4a669604abf7bdeacd8874bb3944c52529a494050335621b4a8a08d"
+            },
+            "depth": {
+              "file": "sheets/rockets__barrel__d07__depth.png",
+              "w": 24,
+              "h": 22,
+              "sha256": "aad23747b1a883430454a6b05673952c876b6d235950675da6256d1b5e442c0a"
             }
           },
           "filesHi": {
@@ -5867,6 +6327,12 @@
               "w": 24,
               "h": 23,
               "sha256": "62d0bacf297dee2151884ee84f14810a1344dd9bfcccb3dbc6ba46f8726188b2"
+            },
+            "depth": {
+              "file": "sheets/rockets__barrel__d08__depth.png",
+              "w": 24,
+              "h": 23,
+              "sha256": "479e0a4ace30cfd470f69321c9d7b4577feff0b70593b70ed890990feb2620bc"
             }
           },
           "filesHi": {
@@ -5932,6 +6398,12 @@
               "w": 25,
               "h": 22,
               "sha256": "60a5502ba87566bf8f210f9d7404df02cbdafcd845c663624bf80af455d17f4b"
+            },
+            "depth": {
+              "file": "sheets/rockets__barrel__d09__depth.png",
+              "w": 25,
+              "h": 22,
+              "sha256": "00eec01bbb0dab4906c7fac0d6e0537b0054ba2088b6ab15b171ab74d8e37394"
             }
           },
           "filesHi": {
@@ -5997,6 +6469,12 @@
               "w": 22,
               "h": 21,
               "sha256": "2842664e67f93037e2ba5046c542e946c18c6c62e978cf05f5b75872252968fd"
+            },
+            "depth": {
+              "file": "sheets/rockets__barrel__d10__depth.png",
+              "w": 22,
+              "h": 21,
+              "sha256": "ab92f8077010bfae0f4d06219bfa15a35879fdac358a0a52ebc487a318b9eba2"
             }
           },
           "filesHi": {
@@ -6062,6 +6540,12 @@
               "w": 24,
               "h": 23,
               "sha256": "f1b08e814eaffe5db5b66d1d66dc540d2780bf788273e10f7ed9cd479427e05d"
+            },
+            "depth": {
+              "file": "sheets/rockets__barrel__d11__depth.png",
+              "w": 24,
+              "h": 23,
+              "sha256": "b5492810fb24918f6e28ab18ba9c5f9ffaa0c9abb8f95c4e31311c27d7fbafd6"
             }
           },
           "filesHi": {
@@ -6127,6 +6611,12 @@
               "w": 24,
               "h": 23,
               "sha256": "082b8b11136985045f5079209f1aef574ab4f13ba563aea7751e562f4a0db44c"
+            },
+            "depth": {
+              "file": "sheets/rockets__barrel__d12__depth.png",
+              "w": 24,
+              "h": 23,
+              "sha256": "58dbb028208325dc69b4a54ee67e9f66e7eeb0fb40486ada344d36b5cca527a3"
             }
           },
           "filesHi": {
@@ -6192,6 +6682,12 @@
               "w": 23,
               "h": 22,
               "sha256": "343be39ab197df5f016dc71824f755b52771b3bf68c1662617f499bd05b63aec"
+            },
+            "depth": {
+              "file": "sheets/rockets__barrel__d13__depth.png",
+              "w": 23,
+              "h": 22,
+              "sha256": "15e4a43790b999f69897590a201c3dc5b70c0b485c3efeb62d2aff75cb7c2bde"
             }
           },
           "filesHi": {
@@ -6257,6 +6753,12 @@
               "w": 20,
               "h": 21,
               "sha256": "bacb50d38a38b4ef4dacb4ce61039944b9b8234236525f262af17b02ba534a54"
+            },
+            "depth": {
+              "file": "sheets/rockets__barrel__d14__depth.png",
+              "w": 20,
+              "h": 21,
+              "sha256": "08ab1f97aa9a81853ca28a54f8504ea37515fcc3cc2ea5b60e195bfdd8523df0"
             }
           },
           "filesHi": {
@@ -6322,6 +6824,12 @@
               "w": 24,
               "h": 23,
               "sha256": "67b78338e4c8fe0080a484245253b539f21a9c7e1a137ca168f448a1111e7fc0"
+            },
+            "depth": {
+              "file": "sheets/rockets__barrel__d15__depth.png",
+              "w": 24,
+              "h": 23,
+              "sha256": "6c1109d910876aed176aba99b3801d66e890acba96a4fb9f74861a587daa4028"
             }
           },
           "filesHi": {
@@ -6477,15 +6985,15 @@
         "files": {
           "albedo": {
             "file": "sheets/rockets__composite__d00__albedo.png",
-            "sha256": "dbc04dd39ce53d46ae8f1c15514c60439828b45253aadf3b36043fee7f43945f"
+            "sha256": "a5ee4ccbddbe2f5689a1478b3128da2fe3290ea237fb903ee2277cceb574f0a5"
           },
           "normal": {
             "file": "sheets/rockets__composite__d00__normal.png",
-            "sha256": "3def626e9b8ec7de6fbf50cd7437427580fd7da7ac478f4dbb92577b1e324bf9"
+            "sha256": "8bccb4229b1003edd28089036568886ef8d6ba2511554cb97f6f5f0df5c05af0"
           },
           "material": {
             "file": "sheets/rockets__composite__d00__material.png",
-            "sha256": "6c25dd3f1e7434350fa137f4f61e5d8c8bb38ad1f7d527030837a06555f10c35"
+            "sha256": "0f02adef3399403716b5920729791804c4c1b893256650811f4f01a50fdc925b"
           }
         }
       },
@@ -6495,15 +7003,15 @@
         "files": {
           "albedo": {
             "file": "sheets/rockets__composite__d01__albedo.png",
-            "sha256": "45250fa8b928c0ed15c13b81b33ee247f255637f1f1a7298368fb5e304f55a45"
+            "sha256": "491bb2f4580c25d7b73ab03d482526cb94027339c353734c35883c425f2ef7c4"
           },
           "normal": {
             "file": "sheets/rockets__composite__d01__normal.png",
-            "sha256": "5ec8fbc82ae9e519a1463109f68fb58283f6830eb52ac0ea421cf1bba2de34b7"
+            "sha256": "488a4dba26f3e9faef14fe16676dac762c4f595ee3b8b683509fe5a6573ff816"
           },
           "material": {
             "file": "sheets/rockets__composite__d01__material.png",
-            "sha256": "91d0ece05b7c5062ff40801d39702c24a8a82d217f63941f2c3cec6003ddb72c"
+            "sha256": "cddc77f726dbf138e61595c3b2ec22af2e552d0928940d5dcd33b5309b28f32e"
           }
         }
       },
@@ -6513,15 +7021,15 @@
         "files": {
           "albedo": {
             "file": "sheets/rockets__composite__d02__albedo.png",
-            "sha256": "4371f66ccf67044a6776dd3ecc51e783b675819b28173dbe1717daa51f38f174"
+            "sha256": "5d322cdfe4707b9a2c02e6302c7c51b4ecb93776e01b1e69fd5cdf132de0eaca"
           },
           "normal": {
             "file": "sheets/rockets__composite__d02__normal.png",
-            "sha256": "d8464cfb7479157e33b828fb6938ce7f73a94169e1d50d17723974807008a25d"
+            "sha256": "01dd7aa858f04e922d32d16f5920b21a07f5444d34b3cf784dbe3a1107546bde"
           },
           "material": {
             "file": "sheets/rockets__composite__d02__material.png",
-            "sha256": "d6ce0377912b6438bcba9656e0ceb935d45b3831e40c9b3fc9fea59a841c1363"
+            "sha256": "8fc14fcabcb6ff1ed8a9caa85bc2a0dee30f1549a446e0e79dea8ed17a6d180c"
           }
         }
       },
@@ -6531,15 +7039,15 @@
         "files": {
           "albedo": {
             "file": "sheets/rockets__composite__d03__albedo.png",
-            "sha256": "4fd380b71351ced467d370a46e539de14d12b3f92cdb384583b26f612275ae4d"
+            "sha256": "416a13cea13691e6c598fe634bd217ff261b753def3c5beafafc4424b10e4145"
           },
           "normal": {
             "file": "sheets/rockets__composite__d03__normal.png",
-            "sha256": "66849e67f0e9b344ade37c3248d06d2c670e478e59ef8daac255c8421cac0de3"
+            "sha256": "d2ef9a210fbf7042636bce0fba3a85b0b8b6016d04c438c68c03dda0a95dad9b"
           },
           "material": {
             "file": "sheets/rockets__composite__d03__material.png",
-            "sha256": "0be2648caaffabb4d0ed1691ce09af156f02545eca570e976b7484c60648f0f5"
+            "sha256": "0a3bfe03fb3a89e70863db9fe7f13579d1ff6ba3bfdecc0bf860edbab24b007d"
           }
         }
       },
@@ -6549,15 +7057,15 @@
         "files": {
           "albedo": {
             "file": "sheets/rockets__composite__d04__albedo.png",
-            "sha256": "aea1d72578d235f2c0de8b94df62ba3c2d353ee18fe224d91192f1c9adc42fe8"
+            "sha256": "4eff88a8b96eb9ce4f137696c1d563303905da8b520b5f4e1b1f9dd4010b844c"
           },
           "normal": {
             "file": "sheets/rockets__composite__d04__normal.png",
-            "sha256": "3aa7f0cb43f212f1fc98e03efdbdaba43d9179967f2cd9cc7c8216fd6299d9dd"
+            "sha256": "e16b86d68c2b2b97593cef41d38fa7c3b2a78fb48cc20afbeb7ffd6e80b325e8"
           },
           "material": {
             "file": "sheets/rockets__composite__d04__material.png",
-            "sha256": "0022673f526e0418fddb22295a13b8478e94bad59dbd6f5206fd36811443eb8a"
+            "sha256": "ceb3d3b119dd0296d0020c80e3676ebdcfaf4a8939ef14b28657051494a6897e"
           }
         }
       },
@@ -6567,15 +7075,15 @@
         "files": {
           "albedo": {
             "file": "sheets/rockets__composite__d05__albedo.png",
-            "sha256": "d7b32b30b6ca603cd9947232f84957c371feeb13d6e1285ca5e9eda7b18e8fa0"
+            "sha256": "d6ce3004189e9c9689aa6a08d63df7b64972802422c63b82ac6ed7173410fba1"
           },
           "normal": {
             "file": "sheets/rockets__composite__d05__normal.png",
-            "sha256": "550bc9c0f43a38b3ed4ec17aea7d02a00d682daced773aaa41d63290e942fd95"
+            "sha256": "25c987166fcfed26c9d12bbd65294c0eec91a6ac808994795c03617418d8f8ee"
           },
           "material": {
             "file": "sheets/rockets__composite__d05__material.png",
-            "sha256": "29f54c5efaf4f5e7ff64de9da6cc7d5b99aa16ea223ced2f80da7bcfad1bc028"
+            "sha256": "2ec44521f8809b626975da26f79826d56db3e08df66de9afbe48d62cd93cc86e"
           }
         }
       },
@@ -6585,15 +7093,15 @@
         "files": {
           "albedo": {
             "file": "sheets/rockets__composite__d06__albedo.png",
-            "sha256": "9ddf34b8faaaeb818b7c4d40f96bf42c9d488f75b5efc061099a2ac64895c354"
+            "sha256": "dacb2e6d72b9ea8b2cefa27fe7a44a11cb1559b30b3fd7186eedcd896b64aeca"
           },
           "normal": {
             "file": "sheets/rockets__composite__d06__normal.png",
-            "sha256": "68d8d3e55b22474daf0765e7f156bec155253b0d44385e9da0bd549a5537ce42"
+            "sha256": "80235a26cc079251332aeb8f433780b4354fba05c72d1cfb6b0f2294cbae0b0e"
           },
           "material": {
             "file": "sheets/rockets__composite__d06__material.png",
-            "sha256": "b59a51997e26f19ba79879070b9fb208cbe9304700402fa23a9c7dae932bddca"
+            "sha256": "39c8cd2d395c2a6bf3ea99661e02a019b71284e80168362528be5274309996f4"
           }
         }
       },
@@ -6603,15 +7111,15 @@
         "files": {
           "albedo": {
             "file": "sheets/rockets__composite__d07__albedo.png",
-            "sha256": "8d01851e75c63646e703f449ab34f2156e8faaf38a0ec6dce8fef46633f23072"
+            "sha256": "e8e09072e28f0941b0176fcffc18e33894e8bb122b1414544cf095166f589a15"
           },
           "normal": {
             "file": "sheets/rockets__composite__d07__normal.png",
-            "sha256": "87755489ec8587642335409547216349ea5c36acf9215d03ca729e53a55eb7a8"
+            "sha256": "dd016b6ae7e9514ce1a3977c38cf6f39b54202b5354faeade3668368148990e7"
           },
           "material": {
             "file": "sheets/rockets__composite__d07__material.png",
-            "sha256": "4c3ddc3df4c77ba024b7033fff5b1570b5b0792c2bb52e732403a40dd8353fa9"
+            "sha256": "9e2e8c91821ecff160c3a044eaf52a2751c5b3b969180649f75e3c24f519db89"
           }
         }
       },
@@ -6621,15 +7129,15 @@
         "files": {
           "albedo": {
             "file": "sheets/rockets__composite__d08__albedo.png",
-            "sha256": "a0c76da3df943310e8e44c717e8c50309f3d981142fa1a5fea836cc522619e57"
+            "sha256": "0bb230841ea57640028ced9116f076846205c4afd29e44f1bb5d8acf8ec525b8"
           },
           "normal": {
             "file": "sheets/rockets__composite__d08__normal.png",
-            "sha256": "c0d59319efd89b59d748ba5e6f21870b1e72f12cc9d9e577f0d313f57252365e"
+            "sha256": "3dfcff63c4d08f1f6ad11add52555a44ea8255832095b5d4b8b996429b70493a"
           },
           "material": {
             "file": "sheets/rockets__composite__d08__material.png",
-            "sha256": "b95e7b5d1bb83b458301da74bd509f0f9d925ca7489fa6ef48837475be963be7"
+            "sha256": "7ec3323e5cdb4537e10d94d6bc0db1acf161cde2d885204571f963f956dba325"
           }
         }
       },
@@ -6639,15 +7147,15 @@
         "files": {
           "albedo": {
             "file": "sheets/rockets__composite__d09__albedo.png",
-            "sha256": "95fe80b07cab5afc83f998c0c6b8acb78b4b483468e06adcfbbc337e5c1de067"
+            "sha256": "54828e081dd6f6e6cd82dd06691e99ab460cc6d4ebd54e644d230c77a6de15c6"
           },
           "normal": {
             "file": "sheets/rockets__composite__d09__normal.png",
-            "sha256": "f1d9a887237fd40df36ec1e6b3c57b41dfd6950144c229dafc9d2ca2834c7c22"
+            "sha256": "2904e667ffaec48f65be7bad8a430ed443a8f0a5929aaed15cd1bd22d72f532d"
           },
           "material": {
             "file": "sheets/rockets__composite__d09__material.png",
-            "sha256": "ec4f1badd9dd952da6389771d2015069b0918f7aed8c7906c0d3974d64832cb5"
+            "sha256": "aa24cc12e94c7cc50493aafae8147b900d475a85310a6d4405a04e673b690e45"
           }
         }
       },
@@ -6657,15 +7165,15 @@
         "files": {
           "albedo": {
             "file": "sheets/rockets__composite__d10__albedo.png",
-            "sha256": "afd6cfe7a16dfce8a7b78902db4b86d2a851b029a2059f1f4bbdd6eedbe31442"
+            "sha256": "76a618ea2908c19af0a89fd8e7394e5240ab2e0534e1335f84202a613ed7f500"
           },
           "normal": {
             "file": "sheets/rockets__composite__d10__normal.png",
-            "sha256": "bb5bcce290e77b8338395bd7f8accaf484c1b9676e36caf566bd187cd86140d4"
+            "sha256": "1d1170f29757aa0d47bc6eac91f8f79dd06a944a892044db33d42196d049602c"
           },
           "material": {
             "file": "sheets/rockets__composite__d10__material.png",
-            "sha256": "1f7fccc93824817de7579ad501160e2cec1fbe02a45db6ac9a7491fb74920d1c"
+            "sha256": "fdde387505a15d9c673fde4cbd20844937bb74c8833594badc12caaa04316e7c"
           }
         }
       },
@@ -6675,15 +7183,15 @@
         "files": {
           "albedo": {
             "file": "sheets/rockets__composite__d11__albedo.png",
-            "sha256": "b0137777f7a041af274938d4dcc5583e75dcf3b4a1d87b986a4c0b1c697a7979"
+            "sha256": "63e0470e278b108ef24e863c177a24c3a51a1ac3f5924bfb9618d79d0d0939b7"
           },
           "normal": {
             "file": "sheets/rockets__composite__d11__normal.png",
-            "sha256": "298f284b199d602fa3cd42bbb91a3e61cb190892aea388acef26574c7127c370"
+            "sha256": "ef37889f84576c8903bc9881ab8623136a38d34d713bbd37b25f9690adc470ee"
           },
           "material": {
             "file": "sheets/rockets__composite__d11__material.png",
-            "sha256": "a591221e8bab79a8783dd45e5b1027acc6dbf2df25c4dab7e34237b99d4f5aef"
+            "sha256": "6085824a1d5f687f13d3f76a076f3640665cdff56f48c731499d628875d46106"
           }
         }
       },
@@ -6693,15 +7201,15 @@
         "files": {
           "albedo": {
             "file": "sheets/rockets__composite__d12__albedo.png",
-            "sha256": "af93286cb00d0004244023f735581a47293ee879a012546ad34aa40fbf6bc873"
+            "sha256": "3c165fa47390bfdba091ea89566ce976652a6fbe562ceaa5f8d13c7ce4ba9905"
           },
           "normal": {
             "file": "sheets/rockets__composite__d12__normal.png",
-            "sha256": "49e44f71e235208409c70d8f73e5f6d2e76efb22a6f5519069e56d8e7af2aa2f"
+            "sha256": "8976b76044ba44dc1c56cf08ec567fa5ca1bedd69371130001295ccf1f99fb8c"
           },
           "material": {
             "file": "sheets/rockets__composite__d12__material.png",
-            "sha256": "e86c80556fc1a4228a0ce0b29292307b96f09e8f7b66b2bdcbd9d646968be6ed"
+            "sha256": "f4b1d05831218f34a974c75acf5ce44d6225d7b5bdd98338de7d691e6916592f"
           }
         }
       },
@@ -6711,15 +7219,15 @@
         "files": {
           "albedo": {
             "file": "sheets/rockets__composite__d13__albedo.png",
-            "sha256": "7af8bf0edacfda863716e699aaa31dafde5a631dbc6a2bab2c5ffd706d572323"
+            "sha256": "b6cf962813e71e4abfbd1209a8e8dc2bee8c2c093249b8b2b1f2f6a6df879bf2"
           },
           "normal": {
             "file": "sheets/rockets__composite__d13__normal.png",
-            "sha256": "aad43deeb9e3cc46f7bec8b865da87c00c53f82753baa0ba38a200e40523ee80"
+            "sha256": "0448941a2986a895524c161743ab66821c840ec09d0632b397bd117246e3366f"
           },
           "material": {
             "file": "sheets/rockets__composite__d13__material.png",
-            "sha256": "0dc4e5677d4a6353988e74bf45be5a71c16d6dbf9402a23c41178f282a156cac"
+            "sha256": "cdb9e0ecdfa38a2b4fc9f503df1d791a4b7396c7d0baa46ab2d4d11bd2a8f1a6"
           }
         }
       },
@@ -6729,15 +7237,15 @@
         "files": {
           "albedo": {
             "file": "sheets/rockets__composite__d14__albedo.png",
-            "sha256": "ae6e10b2f8c8c44ee9719fd6fefbeaf99b4bc1614a1af4b42c14dd5ab6c2dc85"
+            "sha256": "e32937d04abe6cbfa7c82d042782e9dc1485f343bd0eae20599f4f0adf309b2c"
           },
           "normal": {
             "file": "sheets/rockets__composite__d14__normal.png",
-            "sha256": "316a545507e1ef2bc8e51cf6198f581f547fa804f675c54f13e46998918dd25f"
+            "sha256": "049543c75d0139402bb26a044af3c0f178cf5a45aea71aa03b97d1b92daca5b2"
           },
           "material": {
             "file": "sheets/rockets__composite__d14__material.png",
-            "sha256": "b7cc59c729b2352c0bd72f589717c206a46f911acd090de9e3a1a132d28ae7e6"
+            "sha256": "f2117148f3bf59840e446add810cc98596994fea0e6b601d7a5bc2c82d0b1973"
           }
         }
       },
@@ -6747,15 +7255,15 @@
         "files": {
           "albedo": {
             "file": "sheets/rockets__composite__d15__albedo.png",
-            "sha256": "ea10b751516defd15cc070fbf88f9e6d83bc22d39dd22e3fd5c9b97fa0cb66db"
+            "sha256": "9169c467eabaa8ba0f0503597110d45a068a72e60d4911f9e13cb29616535a9b"
           },
           "normal": {
             "file": "sheets/rockets__composite__d15__normal.png",
-            "sha256": "1434db6082214f745c024ec7f342cc47a0c99f93f75468391d5eb0a431fc4f95"
+            "sha256": "45f22ac2c7794b008d4f2bcea3fd24993dc022cc413c058abeaf05165c419151"
           },
           "material": {
             "file": "sheets/rockets__composite__d15__material.png",
-            "sha256": "a88dfa099ace14f051127256c0c81c2fa64b304ab4818ddc8c4c2ede53a0559a"
+            "sha256": "b1ca10ce4aa1b293371358df2845e35e14f67aec9facda394040e13017942c82"
           }
         }
       }
@@ -6769,97 +7277,97 @@
         "file": "sheets/rockets__lit__d00__albedo.png",
         "w": 53,
         "h": 39,
-        "sha256": "31ea4654be20864b386b9289b552f6b4438d8b9562b3ece72f49a3ac34d34b0a"
+        "sha256": "05c81a0239f80fcaf358e0879a52eb6ccfdf4f7e3f163deb7aad1411b36ad52e"
       },
       "d01": {
         "file": "sheets/rockets__lit__d01__albedo.png",
         "w": 47,
         "h": 37,
-        "sha256": "f24bd5dc76bad174a3c8edd0e157dd64d86163db4a28993f09a875df5bd3e09d"
+        "sha256": "47fa331e4e2dde015c1d1f37c89c2cc7353033478d2629b2041de0014474fe47"
       },
       "d02": {
         "file": "sheets/rockets__lit__d02__albedo.png",
         "w": 39,
         "h": 35,
-        "sha256": "a58487a5aa0a97969b25f975f9202f0f212b9cf7731a0ab615f2d3bece9cdd5f"
+        "sha256": "0db034a3d7a5884538b96e61365e6c7a4965f2925f339e504e5f4d3c4aef8682"
       },
       "d03": {
         "file": "sheets/rockets__lit__d03__albedo.png",
         "w": 47,
         "h": 37,
-        "sha256": "1a87203dc2732e7df4dc45854a2c05f794630b996032483cafeab615b294481b"
+        "sha256": "8f80deadfed4ae75acc74110f64b0482914c66b939a82752b6f7ec61423fcbae"
       },
       "d04": {
         "file": "sheets/rockets__lit__d04__albedo.png",
         "w": 53,
         "h": 39,
-        "sha256": "0e2defdc9ea4973bbf9968ebf39830a2d671cc7cb206a23242f3757ab3117d80"
+        "sha256": "d4ab8eced77818fdf19cd152dd8e75de74e5dbc5176dd9559ef0944a9e3d152e"
       },
       "d05": {
         "file": "sheets/rockets__lit__d05__albedo.png",
         "w": 54,
         "h": 40,
-        "sha256": "7e3a19e22eea3fac29a039612a876aae0e5b4f0b6077fda869d13d9371ee7cc4"
+        "sha256": "6656b5124ed98ea7dffac19a27f9d8b8a1cfb60aa0eb8f25471149f02b48c705"
       },
       "d06": {
         "file": "sheets/rockets__lit__d06__albedo.png",
         "w": 49,
         "h": 42,
-        "sha256": "f98b080a204632e4d43c4238c281c79f3b18dc37d2d2b1d892d0105d4a023ec5"
+        "sha256": "04171c2421e7b234cd76a59808919c032702d6ff2a99a5bf00b41049b735e106"
       },
       "d07": {
         "file": "sheets/rockets__lit__d07__albedo.png",
         "w": 53,
         "h": 45,
-        "sha256": "7b9690543aebf3e316054c46bca455d831abc4d77384c56edd54984aa4045aea"
+        "sha256": "f9c305c6f5e96945c6688027e828be92ade516ea8209ab95b8efe249e7f53e0f"
       },
       "d08": {
         "file": "sheets/rockets__lit__d08__albedo.png",
         "w": 53,
         "h": 48,
-        "sha256": "40e5a21dd2fe2b24d9e50f30a9851e9113184722436b62b3f0f3b7b7937b56f7"
+        "sha256": "dc99a8be33764abcdb8c90720687e2292c9cc8f1ae46ab2c6ee54b8467f186d6"
       },
       "d09": {
         "file": "sheets/rockets__lit__d09__albedo.png",
         "w": 47,
         "h": 47,
-        "sha256": "6a4e6c3ec6f8e9d207b26bb94f04795b84d6d67d652b4d79e1833608a8c61a46"
+        "sha256": "67bec3d50ad5e245a31d00e5c31927dde0e47d9abad11bd9e6823880b04941ac"
       },
       "d10": {
         "file": "sheets/rockets__lit__d10__albedo.png",
         "w": 39,
         "h": 45,
-        "sha256": "13c19bc5d646edd4eef8a0846cc3823d2e36814644c9d5cabdd88692ad23626c"
+        "sha256": "6a38385074b95021f933982f20c6c009496c0af66c6743506c0fa1efc7005891"
       },
       "d11": {
         "file": "sheets/rockets__lit__d11__albedo.png",
         "w": 47,
         "h": 44,
-        "sha256": "0ea04fa99936baeebc9da98f9625d19c880258d1e15ff86acd6395f235b26cf1"
+        "sha256": "f5ecd09296d2ca2f7aaa02976b333aabcbda8f2b856c1d987a22e5610cfd3f96"
       },
       "d12": {
         "file": "sheets/rockets__lit__d12__albedo.png",
         "w": 53,
         "h": 43,
-        "sha256": "39b3ebf40078ee298a847ea3042b59810ff46ec4b8399ef846c12f6b2a4e57ed"
+        "sha256": "634d46c40b0c61a6ede06e8b9cde886078cd834783102d8e890ddd90db61f624"
       },
       "d13": {
         "file": "sheets/rockets__lit__d13__albedo.png",
         "w": 54,
         "h": 41,
-        "sha256": "1ab2d437094293d4572acf70d8dca054d2c4286549c7a166763d0fae662c73d8"
+        "sha256": "fef99a69d9f8a6bb23b7468bda6492ec1a0106f696bb5787f4d6ecaa7d331c12"
       },
       "d14": {
         "file": "sheets/rockets__lit__d14__albedo.png",
         "w": 49,
         "h": 37,
-        "sha256": "5a1fd9c82289ed722e0943409af91859d8c428d30e5dbe6e0338eafcc628b669"
+        "sha256": "139ef8eb577f80f0289fc8ff2c3af990b71f0f72beda18aa25b8ecb4f768cf22"
       },
       "d15": {
         "file": "sheets/rockets__lit__d15__albedo.png",
         "w": 53,
         "h": 39,
-        "sha256": "79593ebe5b4d6ff2c7954679cfa46cc2cc32cd8d8a0140249322e08102fbcf8f"
+        "sha256": "e840ed1d0753b9caf599f8f7c744bad549edd183d13534ce5b97d1cd52d67d0c"
       }
     }
   },

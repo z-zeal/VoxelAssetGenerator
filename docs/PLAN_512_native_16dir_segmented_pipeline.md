@@ -84,7 +84,8 @@ game_assets/
         tank__body__d00__albedo.png
         tank__body__d00__normal.png
         tank__body__d00__material.png
-        tank__turret__d00__albedo.png  # … one trio per part per facing
+        tank__body__d00__depth.png     # per-pixel depth sheet (see §6.1)
+        tank__turret__d00__albedo.png  # … one quartet per part per facing
         tank__barrel__d00__albedo.png
         …
   buildings/
@@ -117,6 +118,10 @@ game_assets/
   "parts": {
     "turret": {
       "dynamic": true,
+      "parent": null,
+      "traverse": true,
+      "traverseRoot": [320, 256, 158],   // rotation centre of the chain (see Traversal contract 5)
+      "facingSet": "unit",              // this part is baked on the 16-camera ring
       "pivotDesign": [320, 256, 158],
       "facings": {
         "d00": {
@@ -125,7 +130,8 @@ game_assets/
           "w": 212, "h": 148,
           "files": { "albedo": { "file": "sheets/…", "sha256": "…" },
                      "normal": { "file": "…", "sha256": "…" },
-                     "material": { "file": "…", "sha256": "…" } }
+                     "material": { "file": "…", "sha256": "…" },
+                     "depth": { "file": "sheets/…", "sha256": "…" } }
         }
       }
     }
@@ -136,7 +142,35 @@ game_assets/
 ```
 
 Runtime rule for composition: for every part of one entity, draw at
-`screen = entityTilePos + part.facings[f].anchor`.
+`screen = entityTilePos + part.facings[f].anchor`, but **do not draw in order** — resolve each pixel by
+`files.depth` (see §6.1).
+
+### 6.1 Depth sheets — how parts are composited
+
+Sorting parts is not a valid composition rule and never was. A part does not have *a* depth; it has one per
+*pixel*. A door on the far wall must lose to the roof while the same door on the near wall must win, and a
+wall's bounding box reaches closer to the camera than either. Every order-based rule (manifest order,
+dynamic-first, centroid depth) therefore fails on some facing — the visible symptom was the barracks door
+and flag painting over the roof at `down`.
+
+So each part, per facing, ships a depth map beside its albedo:
+
+| channel | meaning |
+| --- | --- |
+| `R`, `G` | 16-bit fixed-point depth, `q = R*256 + G` |
+| `B` | unused (0) |
+| `A` | `255` where the part covers the pixel, `0` where it does not |
+
+`depth = q / 256 - 128` in tile units (1 design voxel = 1/8 tile unit), **larger = nearer**, quantised to
+1/32 voxel. A pixel the part does not cover encodes `q = 0`.
+
+Composition (`tools/voxel_pipeline/v3/composite.mjs`) keeps a `-Infinity` z-buffer, compares every part at
+every pixel, and takes albedo, normal and material **from the single nearest part** — material ids must never
+be averaged, since the mean of two ids is a third id — while alpha is the best coverage any part offers.
+Draw order becomes irrelevant, which is what makes 16 facings and a traversing turret safe.
+
+The review page must therefore *not* sort layers either; `tests/voxel-occlusion.test.js` diffs a composite
+built this way against a single-pass render of the same model and fails if order-based compositing returns.
 
 ### Traversal contract (do not rotate sprites)
 
@@ -151,6 +185,22 @@ selecting a different baked facing for the dynamic part and registering it by it
 4. **Honour the parent chain.** A part mounted on another dynamic part (a gun on a turret ring) has its pivot
    *orbited* about its parent's pivot by the same angle, transitively. Without this the turret traverses and
    leaves its barrel behind in mid-air — the pivot has to move, not just the sprite.
+5. **Correct the depth by the constant the rotation introduces.** Step 2's sheet was rendered by a *different
+   camera*, so its depth sheet measures depth along that camera's axis; the pose on screen is the part yawed
+   about its ring, seen from the *scene* camera. For a yaw α about the ring `c` the two differ by one constant,
+   because the two view axes disagree about where `c` is:
+
+   ```
+   depth_scene = depth_sheet + (v_scene − v_sheet) · c / 8     (8 design voxels per tile unit)
+   ```
+
+   with `v = normalize(sin φ + cos φ, cos φ − sin φ, 1)` (the camera axis, `cameraBasis().dHat`) and `c` the
+   **root** pivot of the chain (`parts[].traverseRoot`, i.e. the turret ring — never the gun's own trunnion).
+   Skip it and the turret is measured along one axis while its pit wall is measured along another: at-turret
+   at a quarter turn put 232 of 998 silhouette pixels 35 tile units too far back, so the hull painted over the
+   gun and the gun appeared to sink into its own pit. Measured after the fix, at-turret across all four scene
+   facings and steps 4/8/12: ≤ 10/1000 depth pixels off, ≤ 2 silhouette pixels — resolution noise, not a
+   placement error. `tests/voxel-occlusion.test.js` pins this (disabling the bias reproduces 232/998).
 
 `screenMatrix` (a 2×3 design-voxel→pixel projection, per facing) is in the manifest for exactly this, so a
 runtime never has to concatenate crop offsets. Granularity is the facing grid: 22.5° for units.
@@ -163,6 +213,9 @@ legacy scene facings, while anything that traverses is baked separately on the 1
 * `parts[].facingSet` — `scene` (4) or `unit` (16);
 * `parts[].facingOrder` — the part's own facing ids, in rotation order;
 * `parts[].traverse` — true for a turret **and, through the `parent` chain, for its gun**;
+* `parts[].traverseRoot` — the pivot the whole traversing chain turns about (the ring). Baked so a runtime
+  never has to climb the mount chain to find the rotation centre; older manifests without it are resolved by
+  climbing `parent`;
 * `facingMeta[].unitIndex` — which unit-ring index a scene facing corresponds to
   (`right` = 0, `up` = 4, `left` = 8, `down` = 12).
 
@@ -170,9 +223,12 @@ Runtime: `facing = facingOrder[(unitIndex(sceneFacing) + traverseSteps) mod 16]`
 follow the slider — a door is `dynamic` (it opens) but it does not swing about a vertical axis, and baking it
 on the unit ring would be 4× the sheets for nothing.
 
-Painter order: static structure first, then dynamic parts far-to-near. A per-part centroid depth alone is
-insufficient — once a turret swings to a facing where its centroid is deeper than the hull's, the hull paints
-over it. Dynamic parts are mounted *above* their host, so they must draw after it.
+**Order is not a painter rule.** There is no draw order to get right: every part ships a per-pixel depth
+sheet and the compositor z-tests on it (`compositeParts` in `tools/voxel_pipeline/v3/composite.mjs`), so the
+nearest part wins whatever sequence the layers arrive in. A per-part centroid depth is only a fallback for
+layers that have no depth sheet at all, and sorting on it puts a swung turret behind its own host the moment
+its centroid passes the hull's. Correct order comes from correct per-pixel depth — including the traverse bias
+above, which is why "draw the gun after the hull" was never enough.
 
 **Elevation needs geometry.** Gun elevation changes the actual silhouette (the barrel rises), which is a
 different pose, not a different azimuth — it requires a re-bake (`barrel.pitch`) and is not a runtime

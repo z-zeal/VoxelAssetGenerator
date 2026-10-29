@@ -45,6 +45,19 @@ import { buildEliteHero } from './elite-hero.mjs';
 import { buildScout } from './scout.mjs';
 import { buildAttackDog } from './attack-dog.mjs';
 import { buildMech } from './mech.mjs';
+import { buildBomber } from './bomber.mjs';
+import { buildGunboat } from './gunboat.mjs';
+import { buildSubmarine } from './submarine.mjs';
+import { buildGroundAttackJet } from './ground-attack-jet.mjs';
+import { buildStealthFighter } from './stealth-fighter.mjs';
+import { buildSpyPlane } from './spy-plane.mjs';
+import { buildSpecter } from './specter.mjs';
+import { buildTransportPlane } from './transport-plane.mjs';
+import { buildMpa } from './mpa.mjs';
+import { buildFighter } from './fighter.mjs';
+import { buildCopter } from './copter.mjs';
+import { buildLiftCopter } from './lift-copter.mjs';
+import { buildUav } from './uav.mjs';
 import { buildBarracks } from './barracks.mjs';
 import { buildAtTurret } from './at-turret.mjs';
 
@@ -233,6 +246,78 @@ export const MODELS = {
     build: buildBarracks,
     requiredParts: ['body', 'door', 'flag'],
     minSpan: 180,
+  },
+  bomber: {
+    kind: 'unit', folder: 'units', group: 'air.jet', label: 'Strategic Bomber',
+    build: buildBomber, requiredParts: ['body', 'fin', 'tail-turret'],
+    minSpan: 150,
+  },
+  copter: {
+    kind: 'unit', folder: 'units', group: 'air.rotor', label: 'Attack Helicopter',
+    build: buildCopter, requiredParts: ['body', 'rotor', 'gun'],
+    // An aircraft is deliberately thin: the 180-voxel default exists to catch a
+    // model authored for 64³, and 150 still fails one by a factor of two while
+    // letting a fuselage be a fuselage.
+    minSpan: 150,
+  },
+  fighter: {
+    kind: 'unit', folder: 'units', group: 'air.jet', label: 'Fighter Jet',
+    build: buildFighter, requiredParts: ['body', 'fin', 'stores'],
+    // Airframes are thin on purpose; see the note on `copter`.
+    minSpan: 150,
+  },
+  mpa: {
+    kind: 'unit', folder: 'units', group: 'air.jet', label: 'Maritime Patrol Aircraft',
+    build: buildMpa, requiredParts: ['body', 'fin', 'stores', 'boom'],
+    minSpan: 150,
+  },
+  'ground-attack-jet': {
+    kind: 'unit', folder: 'units', group: 'air.jet', label: 'Ground Attack Jet',
+    build: buildGroundAttackJet, requiredParts: ['body', 'fin', 'gun'],
+    // Flat on purpose: a ground-attack airframe is wide and low.
+    minSpan: { x: 180, y: 180, z: 70 },
+  },
+  'stealth-fighter': {
+    kind: 'unit', folder: 'units', group: 'air.jet', label: 'Stealth Fighter',
+    build: buildStealthFighter, requiredParts: ['body', 'fin', 'bay'],
+    // A blended lifting body is a plate: 65 voxels thick against a 400 planform.
+    minSpan: { x: 200, y: 200, z: 40 },
+  },
+  'spy-plane': {
+    kind: 'unit', folder: 'units', group: 'air.jet', label: 'Recon Aircraft',
+    build: buildSpyPlane, requiredParts: ['body', 'fin', 'sensor'],
+    minSpan: { x: 200, y: 200, z: 55 },
+  },
+  gunboat: {
+    kind: 'unit', folder: 'units', group: 'naval', label: 'Patrol Boat',
+    build: buildGunboat, requiredParts: ['body', 'gun', 'barrel'],
+    // Ships are long and narrow: 360 × 84 is a patrol boat, not a 64³ model.
+    minSpan: { x: 200, y: 75, z: 90 },
+  },
+  submarine: {
+    kind: 'unit', folder: 'units', group: 'naval', label: 'Submarine',
+    build: buildSubmarine, requiredParts: ['body', 'sail', 'planes', 'prop'],
+    minSpan: { x: 200, y: 75, z: 90 },
+  },
+  specter: {
+    kind: 'unit', folder: 'units', group: 'air.jet', label: 'Gunship',
+    build: buildSpecter, requiredParts: ['body', 'fin', 'guns'],
+    minSpan: 150,
+  },
+  'transport-plane': {
+    kind: 'unit', folder: 'units', group: 'air.jet', label: 'Heavy Transport',
+    build: buildTransportPlane, requiredParts: ['body', 'fin', 'ramp'],
+    minSpan: 150,
+  },
+  'lift-copter': {
+    kind: 'unit', folder: 'units', group: 'air.rotor', label: 'Lift Copter',
+    build: buildLiftCopter, requiredParts: ['body', 'rotor.front', 'rotor.rear'],
+    minSpan: 150,
+  },
+  uav: {
+    kind: 'unit', folder: 'units', group: 'air.rotor', label: 'Recon Drone',
+    build: buildUav, requiredParts: ['body', 'sensor'],
+    minSpan: 150,
   },
   'at-turret': {
     kind: 'building',

@@ -998,6 +998,21 @@
       }
     ]
   },
+  "depthMap": {
+    "note": "Per-part view depth, one PNG per part per facing. Composite by z-test on this; do NOT try to order segments by a single depth per part.",
+    "channelOrder": "rgba",
+    "meaning": [
+      "depthHi",
+      "depthLo",
+      "unused",
+      "covered"
+    ],
+    "encoding": "q = depthHi * 256 + depthLo; depth = q / scale - bias  (tile units = design voxels / 8)",
+    "scale": 256,
+    "bias": 128,
+    "coveredAlpha": 255,
+    "largerIsCloser": true
+  },
   "parts": {
     "body": {
       "name": "body",
@@ -1059,6 +1074,12 @@
               "w": 17,
               "h": 24,
               "sha256": "6d8d0e0e70223eb44b1695bc98e723c3e215ff57e1d3fd49bdab777a2d1e348d"
+            },
+            "depth": {
+              "file": "sheets/grenadier__body__d00__depth.png",
+              "w": 17,
+              "h": 24,
+              "sha256": "0809eacafb05a3af9f5c2c58e6c54c095bb46cb26e35b7414fd561d3b27afda0"
             }
           },
           "filesHi": {
@@ -1124,6 +1145,12 @@
               "w": 17,
               "h": 23,
               "sha256": "678dfb6bf78a9bdf56afe675c1ec6de8117642b7d688109bd4e14fa31d34bb5c"
+            },
+            "depth": {
+              "file": "sheets/grenadier__body__d01__depth.png",
+              "w": 17,
+              "h": 23,
+              "sha256": "76ad112c8f16691e981561709acc9651e7040d353db47609564560eff67bc998"
             }
           },
           "filesHi": {
@@ -1189,6 +1216,12 @@
               "w": 17,
               "h": 24,
               "sha256": "62021a696d44370cc377442acb2cb5e50eeebe10f70edb07c87d365a6d4b4d4c"
+            },
+            "depth": {
+              "file": "sheets/grenadier__body__d02__depth.png",
+              "w": 17,
+              "h": 24,
+              "sha256": "64b798b98ff3b8c0c75d2b3aef7b80d4fceaf60748538c8113477c45bde0239f"
             }
           },
           "filesHi": {
@@ -1254,6 +1287,12 @@
               "w": 18,
               "h": 24,
               "sha256": "057549a95f4d5ead3feba01b8d274c8def139f25dbee87c849978a38a6195c6c"
+            },
+            "depth": {
+              "file": "sheets/grenadier__body__d03__depth.png",
+              "w": 18,
+              "h": 24,
+              "sha256": "fd267f8640bc940dcc0f8159798943552636100b07f39e0e3ff8902e4ea418fa"
             }
           },
           "filesHi": {
@@ -1319,6 +1358,12 @@
               "w": 19,
               "h": 24,
               "sha256": "2b67eadc50dbd7141b37dd2c9b4e3d690f501ed42e0b18d54656837f8a07642c"
+            },
+            "depth": {
+              "file": "sheets/grenadier__body__d04__depth.png",
+              "w": 19,
+              "h": 24,
+              "sha256": "772939d94514f3906bd92bdf92c39829bf796c088cd9b487017947d4945e5e11"
             }
           },
           "filesHi": {
@@ -1384,6 +1429,12 @@
               "w": 20,
               "h": 24,
               "sha256": "e3747fc17fda5da364ba7d171690ffff93883bf9149fbf13321858d9bf7c2c53"
+            },
+            "depth": {
+              "file": "sheets/grenadier__body__d05__depth.png",
+              "w": 20,
+              "h": 24,
+              "sha256": "95871e7beaf404d8aaa5e58030344698688b05e4ae48fa00c62b0f0cb7f8765d"
             }
           },
           "filesHi": {
@@ -1449,6 +1500,12 @@
               "w": 20,
               "h": 23,
               "sha256": "056eef78a12cfed34410040521500945d5b9fd0ea5d5c1c9b1dbc9c848b0068a"
+            },
+            "depth": {
+              "file": "sheets/grenadier__body__d06__depth.png",
+              "w": 20,
+              "h": 23,
+              "sha256": "dc82d941a3fbc4e86a546aeccff708b38809f1489eddc949e5eb12947baae157"
             }
           },
           "filesHi": {
@@ -1514,6 +1571,12 @@
               "w": 19,
               "h": 24,
               "sha256": "d6eb2aeb1abf13da158d2a9bead49459cc7f9eae629f1f934ca1876703e27e6c"
+            },
+            "depth": {
+              "file": "sheets/grenadier__body__d07__depth.png",
+              "w": 19,
+              "h": 24,
+              "sha256": "4a604e9467972c0233443903c3f5f8e79ebf7ca2613e869c39ceaf7f91c55322"
             }
           },
           "filesHi": {
@@ -1579,6 +1642,12 @@
               "w": 17,
               "h": 24,
               "sha256": "f7a4e4a1c4d923025f3b5531af10328fb44c0645a640039f5a687c1e377d9b9b"
+            },
+            "depth": {
+              "file": "sheets/grenadier__body__d08__depth.png",
+              "w": 17,
+              "h": 24,
+              "sha256": "f75e02680aa8a0d735c997200ea1aad2ef8bd9362fbe406f7c9aae2fcea32750"
             }
           },
           "filesHi": {
@@ -1644,6 +1713,12 @@
               "w": 17,
               "h": 24,
               "sha256": "2ab0b320a42357426a18268bcbe9b76d4d6b7be75a8353621b24805d84a745bd"
+            },
+            "depth": {
+              "file": "sheets/grenadier__body__d09__depth.png",
+              "w": 17,
+              "h": 24,
+              "sha256": "ac2b0da67276a076b6654626452312f99d24f96ef267b3e0da672011665408ca"
             }
           },
           "filesHi": {
@@ -1709,6 +1784,12 @@
               "w": 17,
               "h": 25,
               "sha256": "d1f42cc5f8817d3a18c16c55b86fdd45c1ab767c95d5206d5c5860c27a530374"
+            },
+            "depth": {
+              "file": "sheets/grenadier__body__d10__depth.png",
+              "w": 17,
+              "h": 25,
+              "sha256": "8e1b1ab7a2681adc72b7360054870e8e3c1e33c65629aff6ec5f6cdaab181512"
             }
           },
           "filesHi": {
@@ -1774,6 +1855,12 @@
               "w": 18,
               "h": 24,
               "sha256": "1ffd7f0c7941b757c1a1c7c1ee34d0e0af32675da1bb536c3c2ec6d1203da3b6"
+            },
+            "depth": {
+              "file": "sheets/grenadier__body__d11__depth.png",
+              "w": 18,
+              "h": 24,
+              "sha256": "af4fa84427030a68be689e5b637e62c6e747451016aece3277322689683d14ed"
             }
           },
           "filesHi": {
@@ -1839,6 +1926,12 @@
               "w": 19,
               "h": 23,
               "sha256": "f3922f802c5f786d386866472975942fdb4e10173b69ccd4155e8318e7bb50c8"
+            },
+            "depth": {
+              "file": "sheets/grenadier__body__d12__depth.png",
+              "w": 19,
+              "h": 23,
+              "sha256": "71bcbe2ae64970784b831d7e098a91fff60b03659a04f6952ffd7d77a63fab67"
             }
           },
           "filesHi": {
@@ -1904,6 +1997,12 @@
               "w": 20,
               "h": 23,
               "sha256": "eb3b35de58a3d4998bfbadd6b8fcaa3e48db478dcd03010da98e745d377a1334"
+            },
+            "depth": {
+              "file": "sheets/grenadier__body__d13__depth.png",
+              "w": 20,
+              "h": 23,
+              "sha256": "53580adabbc4b23c6a19cc6bb20b7b27601e30c9bf3773a3c0a09690fcd46d58"
             }
           },
           "filesHi": {
@@ -1969,6 +2068,12 @@
               "w": 20,
               "h": 23,
               "sha256": "191722c981096343bbcdac2d78e629713ef8b22aa7521455bd530a1d2db93c7b"
+            },
+            "depth": {
+              "file": "sheets/grenadier__body__d14__depth.png",
+              "w": 20,
+              "h": 23,
+              "sha256": "d1607d0ad5d2ad44d3b3b471f52cf9b2506ee6369c81205b7b1d2e2060187d0b"
             }
           },
           "filesHi": {
@@ -2034,6 +2139,12 @@
               "w": 19,
               "h": 24,
               "sha256": "f08ee005a65924ae45af5a995a292b579298eef0f29b793af55c211962b0c97d"
+            },
+            "depth": {
+              "file": "sheets/grenadier__body__d15__depth.png",
+              "w": 19,
+              "h": 24,
+              "sha256": "d8c6709361187808ed54b5d9f3568a02b96f298238fe4f15f2a3feb3ba716c21"
             }
           },
           "filesHi": {
@@ -2131,6 +2242,12 @@
               "w": 13,
               "h": 13,
               "sha256": "78da1afb6357375632b4aa89051f21f2adfce9f52f1d0332f9c320d3056d2206"
+            },
+            "depth": {
+              "file": "sheets/grenadier__head__d00__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "c2d8609d6974a94c4309db587485af654a58f650942aae25f9c94591861a4beb"
             }
           },
           "filesHi": {
@@ -2196,6 +2313,12 @@
               "w": 13,
               "h": 12,
               "sha256": "5cad6175a9470d51333e2778732fe6294ba7ea9031ae0d2feedcc684e4a68cc7"
+            },
+            "depth": {
+              "file": "sheets/grenadier__head__d01__depth.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "5f0c754a597febd0389d67da9a9c85f9dd10220ea06877b034e5a8f335cf7c89"
             }
           },
           "filesHi": {
@@ -2261,6 +2384,12 @@
               "w": 12,
               "h": 13,
               "sha256": "49c140dc62e2681bd045c86dde864c7cfe82229694e1bbdd56e8383e6338c219"
+            },
+            "depth": {
+              "file": "sheets/grenadier__head__d02__depth.png",
+              "w": 12,
+              "h": 13,
+              "sha256": "3b4f0c126d394017d84684389676dcc48e568d2364348a346a5117973bf46a53"
             }
           },
           "filesHi": {
@@ -2326,6 +2455,12 @@
               "w": 13,
               "h": 13,
               "sha256": "4c94b974fd8c0d2a186ef9a952ae709097ece3a488b461ee02e1225dce9506b1"
+            },
+            "depth": {
+              "file": "sheets/grenadier__head__d03__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "bbc9959c118a5d52845b9e7298a082950bd5262645fe28a0e687011e98a9f9df"
             }
           },
           "filesHi": {
@@ -2391,6 +2526,12 @@
               "w": 13,
               "h": 13,
               "sha256": "97b109215b0b9368d167231fa2cf94ce67f250c0083a4007f355a6d532e64dab"
+            },
+            "depth": {
+              "file": "sheets/grenadier__head__d04__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "072cda9504a57e8742290b96f9e3ccb4be5d35ccdf6e866b5a092ec691f67864"
             }
           },
           "filesHi": {
@@ -2456,6 +2597,12 @@
               "w": 13,
               "h": 12,
               "sha256": "803c99b9c61718fe8860211d672b49f109081366fda9ae39f3c395537b709518"
+            },
+            "depth": {
+              "file": "sheets/grenadier__head__d05__depth.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "a64769ce4a11fab2d1ff7444f3467fd66204d0333a65958fa206da3fe3b55c0f"
             }
           },
           "filesHi": {
@@ -2521,6 +2668,12 @@
               "w": 12,
               "h": 12,
               "sha256": "e52b7dece3cfa8f1f9cc8186bb614d2f7c4f97b9d0905aed154163148105acd4"
+            },
+            "depth": {
+              "file": "sheets/grenadier__head__d06__depth.png",
+              "w": 12,
+              "h": 12,
+              "sha256": "59e42e0bc71664064ad0ad5e4ed26f82dc5eb0b11d63c3445a4d75900061c39c"
             }
           },
           "filesHi": {
@@ -2586,6 +2739,12 @@
               "w": 13,
               "h": 12,
               "sha256": "adce3c060c95b1b9c1e1f1eb098c004183e5e9ced406c8be24d398c810a0e091"
+            },
+            "depth": {
+              "file": "sheets/grenadier__head__d07__depth.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "4a32e948eabd8bf6f8a087a3af3528d6bf897c1c88c7d07575acf5da1afb9a79"
             }
           },
           "filesHi": {
@@ -2651,6 +2810,12 @@
               "w": 13,
               "h": 13,
               "sha256": "949154fe90c4132f3f73de4c56fc31bd5f91e2ea9eb6f418646cea7bf62ac5ad"
+            },
+            "depth": {
+              "file": "sheets/grenadier__head__d08__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "1da3b930fe588506334e72ecac781464b7ce749017873a823d91f53cd5217b92"
             }
           },
           "filesHi": {
@@ -2716,6 +2881,12 @@
               "w": 13,
               "h": 12,
               "sha256": "01f9909a3fbf3edfc1e9fc1c6bc33968a7c52972390f892d59bf3906be39d4c6"
+            },
+            "depth": {
+              "file": "sheets/grenadier__head__d09__depth.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "01421d19c805c38a29bb8675ed179168bc900bf167855d58e526ffb34db94eac"
             }
           },
           "filesHi": {
@@ -2781,6 +2952,12 @@
               "w": 12,
               "h": 12,
               "sha256": "bb5fd968a41cb188fa3538ce1e8efc260fdd15bc3bd1be86b52205225055c441"
+            },
+            "depth": {
+              "file": "sheets/grenadier__head__d10__depth.png",
+              "w": 12,
+              "h": 12,
+              "sha256": "66a158561b796dd9b7139d93464f747a182690ea73c7012c262540023c1d03d7"
             }
           },
           "filesHi": {
@@ -2846,6 +3023,12 @@
               "w": 13,
               "h": 13,
               "sha256": "e57f5c8ae365de7a05f8983299ee6e61d5889e58cfdfaf6614abfd7c3a9ac543"
+            },
+            "depth": {
+              "file": "sheets/grenadier__head__d11__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "6a9156f22609a3d105944c8b632f1e6c4dbca0a80e10af52113638480c1ff48e"
             }
           },
           "filesHi": {
@@ -2911,6 +3094,12 @@
               "w": 13,
               "h": 13,
               "sha256": "21ea6f8a1c60a6bfefeaefd3dff78ede10e30c081747db89ea18c43b07d102f9"
+            },
+            "depth": {
+              "file": "sheets/grenadier__head__d12__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "0cd4de7a75980495d6d1ebd7f6049c1cb8265794450138fcee0f7d79f404a966"
             }
           },
           "filesHi": {
@@ -2976,6 +3165,12 @@
               "w": 13,
               "h": 13,
               "sha256": "bafcb09ced59fdbf221efb9ed468a80382d0ed8af26c65c4d74f40304000e7b8"
+            },
+            "depth": {
+              "file": "sheets/grenadier__head__d13__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "59c60dcfe6105bf2142beaebcd0a9657b97974cd6e7e4948e5f93b02dfff5cf6"
             }
           },
           "filesHi": {
@@ -3041,6 +3236,12 @@
               "w": 12,
               "h": 12,
               "sha256": "599886d35c229719254fe9cdd0f122a8326ff3dd9f1dc57eead9248c2f076fc4"
+            },
+            "depth": {
+              "file": "sheets/grenadier__head__d14__depth.png",
+              "w": 12,
+              "h": 12,
+              "sha256": "41b4233f369ca8248a4f5fdd8addef0326813e49e743fdad07c03bf47c243c82"
             }
           },
           "filesHi": {
@@ -3106,6 +3307,12 @@
               "w": 13,
               "h": 12,
               "sha256": "08c5a8e88d1c581c97c8e36634fd257867f29b9502805094d2fdcf4a1a0e1140"
+            },
+            "depth": {
+              "file": "sheets/grenadier__head__d15__depth.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "4c09b388212effe643c5911db22d62c625c26b9bd5a75c72f9dd84a6084cb401"
             }
           },
           "filesHi": {
@@ -3203,6 +3410,12 @@
               "w": 16,
               "h": 14,
               "sha256": "8656265b21c6c9df0804ebe61c92ff1b0b261a1cc574e48cd218a2307461f114"
+            },
+            "depth": {
+              "file": "sheets/grenadier__arm.R__d00__depth.png",
+              "w": 16,
+              "h": 14,
+              "sha256": "c702d6879289d404e686379b30ace5c58b6559d019c0de87680cdc32bddd2def"
             }
           },
           "filesHi": {
@@ -3268,6 +3481,12 @@
               "w": 14,
               "h": 15,
               "sha256": "a91e36335f481106653e469f8a12fd2dbe17644d2c9e8ab034783b6d9dfc7582"
+            },
+            "depth": {
+              "file": "sheets/grenadier__arm.R__d01__depth.png",
+              "w": 14,
+              "h": 15,
+              "sha256": "cce1c6906311200d80d8c5632238a5fe9b6f1a0e8ca69abf686416aa4dd53d9e"
             }
           },
           "filesHi": {
@@ -3333,6 +3552,12 @@
               "w": 11,
               "h": 15,
               "sha256": "a188e77702e1c31a1960de8d9f9957fe3dcae7581968dd16f43dcb2ffa71cba2"
+            },
+            "depth": {
+              "file": "sheets/grenadier__arm.R__d02__depth.png",
+              "w": 11,
+              "h": 15,
+              "sha256": "013305ea7b871c066bdad7cbb1133d126bd88cc823bfb46b066e02bcaff8ded3"
             }
           },
           "filesHi": {
@@ -3398,6 +3623,12 @@
               "w": 13,
               "h": 15,
               "sha256": "c4ee318bf9669d9810ffe566680d913b6fc1ae98a8db69c4d17c60dcaac59761"
+            },
+            "depth": {
+              "file": "sheets/grenadier__arm.R__d03__depth.png",
+              "w": 13,
+              "h": 15,
+              "sha256": "acc44e1d671bf469569f2387672eda6fd63d48d436b5a0d04ad31b805f8580e2"
             }
           },
           "filesHi": {
@@ -3463,6 +3694,12 @@
               "w": 16,
               "h": 15,
               "sha256": "7cbfcbd317e061775801d510521bb566e599c1f7a5e5253b2aa65809065c55ab"
+            },
+            "depth": {
+              "file": "sheets/grenadier__arm.R__d04__depth.png",
+              "w": 16,
+              "h": 15,
+              "sha256": "ad016777e64508f0c735c2247dbe668352e129975bfe3e0e47ca0695a6afba27"
             }
           },
           "filesHi": {
@@ -3528,6 +3765,12 @@
               "w": 18,
               "h": 13,
               "sha256": "0edb28120763e941be1c34355b7846678af2be89f3cb4e114cfbd682599fd737"
+            },
+            "depth": {
+              "file": "sheets/grenadier__arm.R__d05__depth.png",
+              "w": 18,
+              "h": 13,
+              "sha256": "284f323ce3db93a53be3db455dac452a8e51781ef1f25bab447129209ab0d22e"
             }
           },
           "filesHi": {
@@ -3593,6 +3836,12 @@
               "w": 18,
               "h": 12,
               "sha256": "c0d29722af81e8ec0599fc263b59f0e07310e1739c7c9e2bba3719aa389c7b33"
+            },
+            "depth": {
+              "file": "sheets/grenadier__arm.R__d06__depth.png",
+              "w": 18,
+              "h": 12,
+              "sha256": "a7d68937ed8fd0dd9562a8514199b162eabd9493fa4cd0ff5b5be1da165938af"
             }
           },
           "filesHi": {
@@ -3658,6 +3907,12 @@
               "w": 17,
               "h": 11,
               "sha256": "e3fa6e7acd63aa308d0236e762787022b23de00358962a29af59de469c1f2c2c"
+            },
+            "depth": {
+              "file": "sheets/grenadier__arm.R__d07__depth.png",
+              "w": 17,
+              "h": 11,
+              "sha256": "9989e56467172673f9e2cf70c1b8e3e90a51b24d3962f3772f796a7b992a929e"
             }
           },
           "filesHi": {
@@ -3723,6 +3978,12 @@
               "w": 16,
               "h": 12,
               "sha256": "44cb1b8a3ee66e1b4092e378dd843ec3f89d6eab1a7a4d7260059865e1febf73"
+            },
+            "depth": {
+              "file": "sheets/grenadier__arm.R__d08__depth.png",
+              "w": 16,
+              "h": 12,
+              "sha256": "8f5a8bbb4fd40b67eadcf0222b3939db1136589c80461bbe9249d85a9bca00cf"
             }
           },
           "filesHi": {
@@ -3788,6 +4049,12 @@
               "w": 14,
               "h": 13,
               "sha256": "6909484bd15d313ab2c819b3df1ec64e4298efdcd83dbfb6bd5825bb777162d5"
+            },
+            "depth": {
+              "file": "sheets/grenadier__arm.R__d09__depth.png",
+              "w": 14,
+              "h": 13,
+              "sha256": "55098f29c21bfadd02f65096d4d5482c05ddff2248663c7af9483fa0ea863d69"
             }
           },
           "filesHi": {
@@ -3853,6 +4120,12 @@
               "w": 11,
               "h": 14,
               "sha256": "efe0343c84a703a03f991cc7d11421f45446e503dc523e4cbd24ed5356798702"
+            },
+            "depth": {
+              "file": "sheets/grenadier__arm.R__d10__depth.png",
+              "w": 11,
+              "h": 14,
+              "sha256": "80833c9d74e5e3cda364bf37f8ee34174811743683ee3058390a49e607de5dab"
             }
           },
           "filesHi": {
@@ -3918,6 +4191,12 @@
               "w": 13,
               "h": 14,
               "sha256": "4e41a4f18593d8c047b085358143d0d095f76404fce0c86a7cc6a924e2bf44aa"
+            },
+            "depth": {
+              "file": "sheets/grenadier__arm.R__d11__depth.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "e9e549b63cb61730a2313935ee1ba3d47adb910577b660b2ab15be585438187c"
             }
           },
           "filesHi": {
@@ -3983,6 +4262,12 @@
               "w": 16,
               "h": 12,
               "sha256": "6a9aab797d1fb75e6a0dab7d962a0463d6e95998dd3b6b6a187f45e0623b2431"
+            },
+            "depth": {
+              "file": "sheets/grenadier__arm.R__d12__depth.png",
+              "w": 16,
+              "h": 12,
+              "sha256": "84a3facaa76a0184266c60aee118d393d8eb37236874215211df90c491546ae3"
             }
           },
           "filesHi": {
@@ -4048,6 +4333,12 @@
               "w": 18,
               "h": 12,
               "sha256": "19f098fd1ce95142b559c222264c0c8fde697cb0ef7ecc9a851c943f7cf3f0e8"
+            },
+            "depth": {
+              "file": "sheets/grenadier__arm.R__d13__depth.png",
+              "w": 18,
+              "h": 12,
+              "sha256": "1b3032d3c298bf414638ca5e400ecbbb83db16853bf054f8fe96a3af7876acf2"
             }
           },
           "filesHi": {
@@ -4113,6 +4404,12 @@
               "w": 18,
               "h": 12,
               "sha256": "9809ceb2d3afa152a4e37b0c77f76021ad99ba80e8817b2275c4b836849f00ce"
+            },
+            "depth": {
+              "file": "sheets/grenadier__arm.R__d14__depth.png",
+              "w": 18,
+              "h": 12,
+              "sha256": "47fa8ee179cd4e95a1a527c9bea69ee64a836ae9b3fed1772880dd30db08c4e8"
             }
           },
           "filesHi": {
@@ -4178,6 +4475,12 @@
               "w": 17,
               "h": 13,
               "sha256": "657d11ca6d8638ebcc5ecd26f72535199e3363440c0cf2db0a7610b2026baa6f"
+            },
+            "depth": {
+              "file": "sheets/grenadier__arm.R__d15__depth.png",
+              "w": 17,
+              "h": 13,
+              "sha256": "0805fcf77736ee7c65c4f515e2b522ca286d6322f4592d3c83d7bc2c57a02f47"
             }
           },
           "filesHi": {
@@ -4293,15 +4596,15 @@
         "files": {
           "albedo": {
             "file": "sheets/grenadier__composite__d00__albedo.png",
-            "sha256": "ed2ae2b40f25174b83ff8dc2b7dba9ac84b051abc082f44e9e3f9be95b290cf0"
+            "sha256": "7982d4dbb2adff5cc9fc7aef3f3bdd204fe03cef04fd48c8548d1d1b27cbe018"
           },
           "normal": {
             "file": "sheets/grenadier__composite__d00__normal.png",
-            "sha256": "db3b99b05da373e366e4a6691cc7bc81c04c3c986c89e0daa0551580eab80efa"
+            "sha256": "cebbfd73caa2c48875f2c0b24faad0a0ded3600c3bf4a4fbab3e2af2ea3ce289"
           },
           "material": {
             "file": "sheets/grenadier__composite__d00__material.png",
-            "sha256": "acba78557814611039434e0e239cb00fb401ce57be22f0626816cfb249c5f684"
+            "sha256": "1849f439b9f0dde535c1ca75bffe253727b26a190815d1ac940168d190fffe17"
           }
         }
       },
@@ -4311,15 +4614,15 @@
         "files": {
           "albedo": {
             "file": "sheets/grenadier__composite__d01__albedo.png",
-            "sha256": "38281f82cd2cee4c73482b1a44bc4ace2eaa110f41343316bd852dd22a88e298"
+            "sha256": "93b9e124f2a14498c3adaaaf40dd92598c524465a62a19d2aa84714a3a8e4b3e"
           },
           "normal": {
             "file": "sheets/grenadier__composite__d01__normal.png",
-            "sha256": "ad6cf038bc6c03dcb44ee2c54dba5df11cf3f6a2b818b5fb37cc0733a8a00a11"
+            "sha256": "c73bcfdff02a2a9ffa646ff3ecedf077c260e9b1e830d115ff243d0f5082ded8"
           },
           "material": {
             "file": "sheets/grenadier__composite__d01__material.png",
-            "sha256": "a86864553b4260e46581f5e3d9dcdeda939ef9fd8312e8abc472833e46258301"
+            "sha256": "f349db235581a85f47bc1fd6ae40c40ae48403807aed9c111a9de1a9d1118c07"
           }
         }
       },
@@ -4329,15 +4632,15 @@
         "files": {
           "albedo": {
             "file": "sheets/grenadier__composite__d02__albedo.png",
-            "sha256": "a084ec3a25cfa90afafc4142cfee03edebe00c6abe42b1d17c9b7e971b808a19"
+            "sha256": "2df72246555967b6b375cd2eecdbfe08478894fa0fab75f5cfd5d8be6b770004"
           },
           "normal": {
             "file": "sheets/grenadier__composite__d02__normal.png",
-            "sha256": "e77bd21e68779b8a39f9b84cedff5024d86cdf61c36b17d589bdd1473da7787a"
+            "sha256": "75a825410f65db6d8772bab14753fb32a2a24bf2ed833e731f3c88ce3feba0c1"
           },
           "material": {
             "file": "sheets/grenadier__composite__d02__material.png",
-            "sha256": "5f2e48efe83599c99400e6c96d75b6400bf866c31c1fa6f35e5bad60df2a249a"
+            "sha256": "8c50ec4399e3765f350275e87fea83dc7b50bc921f5ce5b6f9d6ebee5a3109cc"
           }
         }
       },
@@ -4347,15 +4650,15 @@
         "files": {
           "albedo": {
             "file": "sheets/grenadier__composite__d03__albedo.png",
-            "sha256": "0732d43d2dbd7791ea0b1e8a0aaabc5633f0416154da55589515b6027381a749"
+            "sha256": "429f992d3d088283c4c86696dd803100fd5bd91b3550ef98ca5a80d9f1de8c40"
           },
           "normal": {
             "file": "sheets/grenadier__composite__d03__normal.png",
-            "sha256": "0b291fd12e06bc5669c75ca092bb3ea845fc43dac5a17232c92877507447a1fe"
+            "sha256": "39cb96025683365e624992d31e64d76810686c6a1d8aa5d23848a8ddb782ce1e"
           },
           "material": {
             "file": "sheets/grenadier__composite__d03__material.png",
-            "sha256": "6cd5ce443084508b30d98b5229bdb8516da6d149ddb133fed8227dd29f2bbc64"
+            "sha256": "7bc3c3903cfb334b75b6f26565e30376f2137365aa23d3c37b1f77eef7df0d1c"
           }
         }
       },
@@ -4365,15 +4668,15 @@
         "files": {
           "albedo": {
             "file": "sheets/grenadier__composite__d04__albedo.png",
-            "sha256": "c649caf5788ed70fef594d48c30ef9aea9ec49bc1dca99128cff2a595cc4bb8c"
+            "sha256": "aee82e2db4fc535532cae012e5cd256dd921826424c29a5ac32e3b19827f496b"
           },
           "normal": {
             "file": "sheets/grenadier__composite__d04__normal.png",
-            "sha256": "75742dc3ebc662d2db36c6dbaedfb3e4d84ce4513a147f4a79337220292ff1ab"
+            "sha256": "cab4b7392a9d1076716ad8a101b1b56c5518f51516031a0f954939e27df92ea0"
           },
           "material": {
             "file": "sheets/grenadier__composite__d04__material.png",
-            "sha256": "837340adf2ed7ee303b5353af353c48f14ff379dd9df77dde438d93bd7f90276"
+            "sha256": "e52eef30ef926c7718e9717be25fbd09649468b25962a886f53770a8b13ae04c"
           }
         }
       },
@@ -4383,15 +4686,15 @@
         "files": {
           "albedo": {
             "file": "sheets/grenadier__composite__d05__albedo.png",
-            "sha256": "47bc628273b450f245188c74063ef2ed761f20fc1fa04593d30a4f19371e2c8a"
+            "sha256": "f83f94c239b14de088685c56a0f676268fb70103817fa5f9412c77b960b8d0ca"
           },
           "normal": {
             "file": "sheets/grenadier__composite__d05__normal.png",
-            "sha256": "5dba0d5fd2cbe9eaa38966dcdb5b4b5d0ff2fe2661f2336dd6e42252aeac4290"
+            "sha256": "2ab14dd436eecab7cc42f70168caf72e0295aed6167b653ff821fd2fb8e761db"
           },
           "material": {
             "file": "sheets/grenadier__composite__d05__material.png",
-            "sha256": "7a1562dcc441407fc9990ec78dbb628a2b25608133519419ee276a6f2a3219d7"
+            "sha256": "7d153cd50b62bfe03c49b924a652ba2855000a46fc9ee557c69d2361ac537ae4"
           }
         }
       },
@@ -4401,15 +4704,15 @@
         "files": {
           "albedo": {
             "file": "sheets/grenadier__composite__d06__albedo.png",
-            "sha256": "ab5a272bcfdaccd28a81b5f822864f781502115e7a1bd1839288ed683a0041a1"
+            "sha256": "0855ac70285aa84322bc12f57c27bbdc30bad61871302d8d3ac9e51d4518171e"
           },
           "normal": {
             "file": "sheets/grenadier__composite__d06__normal.png",
-            "sha256": "170b0f3fa344203ee41ea9cdea1d8ab7b60269ff83df7dd84e000acc3be36285"
+            "sha256": "c6a1f1a346dee4dd37a0cf4ce0e7cd9113c6286d102bd2f615368607c387a43f"
           },
           "material": {
             "file": "sheets/grenadier__composite__d06__material.png",
-            "sha256": "5ea8481d80a554ba551e4279c0aec3c52d9288b60f2007dce265d9257dcb835b"
+            "sha256": "a993983056da0a369a6d43cdf141dbcfa23e223c0a47f624954db1799937cfb8"
           }
         }
       },
@@ -4419,15 +4722,15 @@
         "files": {
           "albedo": {
             "file": "sheets/grenadier__composite__d07__albedo.png",
-            "sha256": "9243e6a21f91f7e89fc26f667f38f2a5e010c2e478fa77c3f69e9ccb1fa9fbf5"
+            "sha256": "b8310f559b7db81b4a5297acf75a4d16b182fd628e3e8ab91ac9a30b41de6b48"
           },
           "normal": {
             "file": "sheets/grenadier__composite__d07__normal.png",
-            "sha256": "b89a7592bf679b8b56ba2b10eab044f759dca44a39aad52ab5cbb06b5d073205"
+            "sha256": "b2066884c81c025cec0ef0555ea75298746182b0262000429501e2b69d14236b"
           },
           "material": {
             "file": "sheets/grenadier__composite__d07__material.png",
-            "sha256": "462e1a68c1daee338d3e0a49bca3491115b941bf3c1952e5b03cc3bddbc83dc5"
+            "sha256": "52c85fa1721140b271e98917ca9d127821fd286b076f7c9a704c1796518bcedd"
           }
         }
       },
@@ -4437,15 +4740,15 @@
         "files": {
           "albedo": {
             "file": "sheets/grenadier__composite__d08__albedo.png",
-            "sha256": "fce226779a72ee0bd675e290e9fad15002a8c7bee4e0f91f25d664cbc9a91abe"
+            "sha256": "3d957156e8e5871a9c296e1444dddcce3f60571284586911d6932cab2f42a151"
           },
           "normal": {
             "file": "sheets/grenadier__composite__d08__normal.png",
-            "sha256": "61be2e4badbf2ce6195dde282bed751d0ea06c0e826de2f8788fc4d471a9be0d"
+            "sha256": "d581e00848ff2f8cf90bec644ada0aa32362bee9de3b91d093108dbb9f296486"
           },
           "material": {
             "file": "sheets/grenadier__composite__d08__material.png",
-            "sha256": "c99b948a425385307ad9750d253093f92d8c5d65f399b833b5ffec3255ace98b"
+            "sha256": "d94cd3cb8015e74d2b106d660eafc3f862830269c14ba394edb35d0c0d3248a8"
           }
         }
       },
@@ -4455,15 +4758,15 @@
         "files": {
           "albedo": {
             "file": "sheets/grenadier__composite__d09__albedo.png",
-            "sha256": "7df4e7ee3a942a9c4926a8b685839b651025cc8ec159c1a0062d959c8fa076d6"
+            "sha256": "45d71c890e69ea08b20cd4ff511da3a0711ea4ac3d0b14c6898e4eac984e6c5f"
           },
           "normal": {
             "file": "sheets/grenadier__composite__d09__normal.png",
-            "sha256": "6f2e99376fde2a5a1c0ab8d825af4bfbff4681ab51d2a7f21d946075dba4f36e"
+            "sha256": "b259d3e23dcbe9ff32bfca859d9f9f41268ac7557cfb57dd6699edbf23f8c600"
           },
           "material": {
             "file": "sheets/grenadier__composite__d09__material.png",
-            "sha256": "1db6fdedf33dd4aba58325c4e26e2c930d68868b67b8ed64ca3fd1472447de21"
+            "sha256": "25b3772c6067b429a5d51080d88a1df960f09fd72ad86cc00358f11c0e245316"
           }
         }
       },
@@ -4473,15 +4776,15 @@
         "files": {
           "albedo": {
             "file": "sheets/grenadier__composite__d10__albedo.png",
-            "sha256": "fda8ad06248078c032a44eb539cdd933542c8ec02f62b94659da300fb422bf66"
+            "sha256": "1ee22506a2d3c19cda024e31631f8da5d3d92119472467c3b82c61586eb928e7"
           },
           "normal": {
             "file": "sheets/grenadier__composite__d10__normal.png",
-            "sha256": "833ca035f858daa65a2fb086d39b2a352d1c291cbf017db525450a4747151104"
+            "sha256": "cc8d78468bd8e2de676d5548745603bb5780950f77818ec47744306bccf772a9"
           },
           "material": {
             "file": "sheets/grenadier__composite__d10__material.png",
-            "sha256": "ae13268a74fcca037726837f1b64df1bca0692f83e1d11df4357d04b0d25518c"
+            "sha256": "1fa94d8a78aea97735231e48f640195f3d2c7c7d71f61abf8f079e15662bae24"
           }
         }
       },
@@ -4491,15 +4794,15 @@
         "files": {
           "albedo": {
             "file": "sheets/grenadier__composite__d11__albedo.png",
-            "sha256": "71cec05b2842aab674329908f282443dfa89982846ee9ee67d9ad90f40a74c4e"
+            "sha256": "259ebc3ff574f057f4cc8b72c40a0f08fa2ff4e9e8f28db17c9ee6b1b9ce9d4f"
           },
           "normal": {
             "file": "sheets/grenadier__composite__d11__normal.png",
-            "sha256": "00c7770517d93a365120110c23c90709c7580126c9c77ba603547deacac1694d"
+            "sha256": "6c6c2a843f9bcf0b112fd98031c7d689bfbe3af522a120dc02ba26ae824aa519"
           },
           "material": {
             "file": "sheets/grenadier__composite__d11__material.png",
-            "sha256": "970a955c07888e0a898b3bbb4dc6ef002e98a9c1de40658f9a7e477db826501c"
+            "sha256": "3a3290809383c61e9b7440ee1d0a2f4b74d1035d9a618efa9a7393775228a2c1"
           }
         }
       },
@@ -4509,15 +4812,15 @@
         "files": {
           "albedo": {
             "file": "sheets/grenadier__composite__d12__albedo.png",
-            "sha256": "159d7aec62c2e27dc4b97ddf5c557ea0617db0a1c0f0203863bf6694859a55a2"
+            "sha256": "7a03d3672396c97e63ad368866691c0fffb70d6463307818f8accc308bfe3e11"
           },
           "normal": {
             "file": "sheets/grenadier__composite__d12__normal.png",
-            "sha256": "ef0bc4e91e4c5b7a9899917f37b040017594a67cc6f3199074e37d20176dd9a3"
+            "sha256": "2235fb02df0fc2bfce3ee706c50a19f428819fd7d06c499b943b54a4b44e2351"
           },
           "material": {
             "file": "sheets/grenadier__composite__d12__material.png",
-            "sha256": "dd57358f394af2a3549a679760a082a549a5ab7789b04b869e3195160692ca57"
+            "sha256": "5be2233106387807e0a41e047199a53586df4db5e21b45aa2748f6bea3197dd4"
           }
         }
       },
@@ -4527,15 +4830,15 @@
         "files": {
           "albedo": {
             "file": "sheets/grenadier__composite__d13__albedo.png",
-            "sha256": "4cd6283b1533d5ab90da55340462cb355bd7847a1f2b6a57affa3ef002cc43e4"
+            "sha256": "98ec1e1451bd1a3efc80ce76f8e448ed2ee87116d39660f758fb1bbea2590179"
           },
           "normal": {
             "file": "sheets/grenadier__composite__d13__normal.png",
-            "sha256": "9053202461fe42c788d75b83666de6e79d350fc4719fc529522b82ef2564d085"
+            "sha256": "3e6fa0c84c0c9d47e3d9a7099e9c520dc8d4baca90cbf8ab3e037538cc561efd"
           },
           "material": {
             "file": "sheets/grenadier__composite__d13__material.png",
-            "sha256": "2e88d84a8ef410385632d8fce3e4b2756eff1035811589cc074c759d2900acd0"
+            "sha256": "91ccdb87cfb2bd07323d6a3d31ec866916bb3344b8fdbb0340acfab24ea7f8d9"
           }
         }
       },
@@ -4545,15 +4848,15 @@
         "files": {
           "albedo": {
             "file": "sheets/grenadier__composite__d14__albedo.png",
-            "sha256": "f557cf019e35a992cff5dde3e53aa4d9b24a3204cac5f0636f30686c4844fb25"
+            "sha256": "89ede0a878ff3cc4c8821c58941bac00e4d269998f3602c601340c67709c9ede"
           },
           "normal": {
             "file": "sheets/grenadier__composite__d14__normal.png",
-            "sha256": "8759fb08d990f2e24ddfbe4d60b7fba4a0ec8e818a54492fafac00fb6bb850d9"
+            "sha256": "2764ed0c8b873dc0faf29db6310cad8a1d62e41797b5254f97d97af1e79238b1"
           },
           "material": {
             "file": "sheets/grenadier__composite__d14__material.png",
-            "sha256": "63be650f96f96f06994589b0c72f0ffeadb39cd36926c59d8e82bf8d6d4da955"
+            "sha256": "e3f7b50087330274ba482787383ead10f8574b70d6e715b363a9d980e0bb1e18"
           }
         }
       },
@@ -4563,15 +4866,15 @@
         "files": {
           "albedo": {
             "file": "sheets/grenadier__composite__d15__albedo.png",
-            "sha256": "e821b2b01e64efef29b6136449e1a950f88086f48c87ec39bbbea834291ad4b3"
+            "sha256": "f7ce15730a4faa924beb29c2670df42594db1b4f174aa253f5e7ec4a9abb99cb"
           },
           "normal": {
             "file": "sheets/grenadier__composite__d15__normal.png",
-            "sha256": "40b24edadf4eb2742f4c7528d2c297169650bf5e405cea1eb4843647dcc76c59"
+            "sha256": "f978e347181d59596f39db4aceecd1a82a9ea4c537530b615f4b59356971036b"
           },
           "material": {
             "file": "sheets/grenadier__composite__d15__material.png",
-            "sha256": "443a5d49228507045df947f43d291df45a62fd690c05a3867507f39d4912e9c1"
+            "sha256": "e687fb6fbed26098e327a0df9941d7daf5d48c0bcbd20645136bd0eabb1bdc25"
           }
         }
       }
@@ -4585,97 +4888,97 @@
         "file": "sheets/grenadier__lit__d00__albedo.png",
         "w": 21,
         "h": 29,
-        "sha256": "45f9cc4543c0823e06a9eb82f7611261d9b8423e93767062b4e21d894df00145"
+        "sha256": "5eb44c07b835b7bf4992a33896f4203d3fac1d3097bcb8b12d2ea4acd9f85007"
       },
       "d01": {
         "file": "sheets/grenadier__lit__d01__albedo.png",
         "w": 21,
         "h": 28,
-        "sha256": "3ef9f632e9731d29e1051ad3400a6eeb1a8e86d2d061bbd0eb704c5e538cb078"
+        "sha256": "1869d4b5c9ffb5db92a3f370db8539cfba260ec2a8c0410e56a7c1cc7aab8997"
       },
       "d02": {
         "file": "sheets/grenadier__lit__d02__albedo.png",
         "w": 21,
         "h": 29,
-        "sha256": "50d98fdd535fc63d4c9cad66bd0169a4b545cf7b4891bd15075bf8e61f925463"
+        "sha256": "24a28e140a55fdeb1a53475d01fc023d8c1d5c667a63d97578f43a2047796d90"
       },
       "d03": {
         "file": "sheets/grenadier__lit__d03__albedo.png",
         "w": 23,
         "h": 29,
-        "sha256": "4e8135b6f1520b3d75a41f3f91be39a913767ae852f19194e1a39f805661373d"
+        "sha256": "350fbb7f1fd37488a93c2ffece7317264f6ad377e365b81f59672cb6c947fed2"
       },
       "d04": {
         "file": "sheets/grenadier__lit__d04__albedo.png",
         "w": 25,
         "h": 29,
-        "sha256": "6ea86a29fd58e4d28ef7e866561fd052632e9411ca37568b01c3aeafe469cc3c"
+        "sha256": "1d41076f1bdbb0a9e5a7936958456de6d67bcea2221eb8cbcf951fc16736e2e7"
       },
       "d05": {
         "file": "sheets/grenadier__lit__d05__albedo.png",
         "w": 26,
         "h": 29,
-        "sha256": "1c833e5da73c49b5e1df33a2f42722600a842458e3f9cdbd35dad812e163a1c5"
+        "sha256": "a3658a6fab9c0add751facc197109036c63b40d7d5f10cb3b65134f8bb790bd1"
       },
       "d06": {
         "file": "sheets/grenadier__lit__d06__albedo.png",
         "w": 25,
         "h": 28,
-        "sha256": "364e85c5826996275377029ee0c485c8a233cbb66f2f847f7ed297745f25cb79"
+        "sha256": "0e8465290ae1a268eeb6753d8f7984165b86586528fd7fd0131f69dcdd797d14"
       },
       "d07": {
         "file": "sheets/grenadier__lit__d07__albedo.png",
         "w": 24,
         "h": 28,
-        "sha256": "d46537ab130e1c4c1971f13d0c489ebe3194bace4b8faeb4c60e55140cfd3038"
+        "sha256": "ae4c9f170c309645013712220a648fce3bf02c1f5d9f4c748013b01f7e9fac7d"
       },
       "d08": {
         "file": "sheets/grenadier__lit__d08__albedo.png",
         "w": 21,
         "h": 29,
-        "sha256": "28abac10a1142ede98d037ea8edc5b12b39d809e21974bcfacb2c7e9cfbc6c69"
+        "sha256": "4dcf2557d1c02e67c5c3dc43eb97faad77bb72f0619f192ede16019967a13872"
       },
       "d09": {
         "file": "sheets/grenadier__lit__d09__albedo.png",
         "w": 21,
         "h": 28,
-        "sha256": "819930ed93451d1357517eb852de6c2af3403be712740dc3ce34afb215573598"
+        "sha256": "8dc760b0a888b2a971e35b871364cc5663442b87449b65cfe72b381d679bf863"
       },
       "d10": {
         "file": "sheets/grenadier__lit__d10__albedo.png",
         "w": 21,
         "h": 29,
-        "sha256": "69f6684ffdb9c6f70386bad6f60e8219b176b36aaef5faf50a9b2c720a3fc3c3"
+        "sha256": "553193b8ab6fe660c97796357bbf8fb760602367902f8b1e99d307c2e6ea249c"
       },
       "d11": {
         "file": "sheets/grenadier__lit__d11__albedo.png",
         "w": 23,
         "h": 29,
-        "sha256": "18d02e1df2c3a4d99dca794905dbe2989549d864d5ca3ffaff1cb476d1931fee"
+        "sha256": "0fc4e9a25bcb77be55d94d92c06c3cdd5599aeb653698a162823244435da257f"
       },
       "d12": {
         "file": "sheets/grenadier__lit__d12__albedo.png",
         "w": 25,
         "h": 29,
-        "sha256": "a1838a7b0b87cac544927c0645c468ed4cb97a229980c1a5b966babbe7c50632"
+        "sha256": "f3f9fc332bb77dd4ffef27c8e39946a2ad887a00822952dc5a2ce995eeafd205"
       },
       "d13": {
         "file": "sheets/grenadier__lit__d13__albedo.png",
         "w": 26,
         "h": 29,
-        "sha256": "1f65339d5906d6b7c93dc5e0880dc493ed7bc5d0659c0e43ed5f3703f5836972"
+        "sha256": "0a73365b3339eed671c28d675ee5d6fce8d4190cb9e46fc1333db9816f8895d1"
       },
       "d14": {
         "file": "sheets/grenadier__lit__d14__albedo.png",
         "w": 25,
         "h": 28,
-        "sha256": "177d4c5406a54cee18be9c12476baa731e813a000ea3c1f34a06b5ceb56a647f"
+        "sha256": "b81a226259fd5962b2455f38de5948f3c8fb730660439697fe6fb31e70029ce9"
       },
       "d15": {
         "file": "sheets/grenadier__lit__d15__albedo.png",
         "w": 24,
         "h": 29,
-        "sha256": "986c958807bfe43b699f4f9bcd50c6aab84f49b9e305a9f3404fb8b374e63745"
+        "sha256": "37289bcaa6abe351ae02a3d8fe5308f5d56ab47df281d6be6c34cc63499a5803"
       }
     }
   },

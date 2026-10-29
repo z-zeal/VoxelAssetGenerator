@@ -35,10 +35,15 @@ export function validateModel(id, def, geom) {
     }
   }
   const span = [hi[0] - lo[0], hi[1] - lo[1], hi[2] - lo[2]];
+  // `minSpan` is a number or a per-axis object. A per-axis override is not a way
+  // to sneak past the gate: some aircraft are legitimately flat (a blended
+  // lifting body is 60 voxels thick and 400 wide), and the gate exists to catch a
+  // model authored for 64³, which fails the *planform* test regardless.
   const minSpan = def.minSpan ?? 180;
+  const minFor = (axis) => (typeof minSpan === 'number' ? minSpan : (minSpan[axis] ?? 180));
   for (const [i, axis] of ['x', 'y', 'z'].entries()) {
-    if (span[i] < minSpan) {
-      problems.push(`model spans only ${span[i]} voxels on ${axis} (minimum ${minSpan}) — `
+    if (span[i] < minFor(axis)) {
+      problems.push(`model spans only ${span[i]} voxels on ${axis} (minimum ${minFor(axis)}) — `
         + 'is this authored for the 512 lattice?');
     }
   }

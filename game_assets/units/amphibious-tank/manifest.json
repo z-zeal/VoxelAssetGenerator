@@ -998,6 +998,21 @@
       }
     ]
   },
+  "depthMap": {
+    "note": "Per-part view depth, one PNG per part per facing. Composite by z-test on this; do NOT try to order segments by a single depth per part.",
+    "channelOrder": "rgba",
+    "meaning": [
+      "depthHi",
+      "depthLo",
+      "unused",
+      "covered"
+    ],
+    "encoding": "q = depthHi * 256 + depthLo; depth = q / scale - bias  (tile units = design voxels / 8)",
+    "scale": 256,
+    "bias": 128,
+    "coveredAlpha": 255,
+    "largerIsCloser": true
+  },
   "parts": {
     "body": {
       "name": "body",
@@ -1009,6 +1024,7 @@
         0
       ],
       "traverse": false,
+      "traverseRoot": null,
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -1059,6 +1075,12 @@
               "w": 56,
               "h": 38,
               "sha256": "7046ce2d948ca7a450dd4ef3aea5ddda8d71f356ee7c7a6badaf74f875a175b2"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__body__d00__depth.png",
+              "w": 56,
+              "h": 38,
+              "sha256": "3661423119407729f679759deec32bccc243e6ad426cdb2ca2c8d7ac91ffd739"
             }
           },
           "filesHi": {
@@ -1124,6 +1146,12 @@
               "w": 51,
               "h": 38,
               "sha256": "92fe83e7dbb099a0ceae4c734dea7f36dc7d186142973ec2b98b40e6d235c7c1"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__body__d01__depth.png",
+              "w": 51,
+              "h": 38,
+              "sha256": "038042fb93b2d0a2a1c7c6e268e35a6d62523b9231e94a2917c8a9a3a3e3da5d"
             }
           },
           "filesHi": {
@@ -1189,6 +1217,12 @@
               "w": 42,
               "h": 36,
               "sha256": "36c15f56855ccc550bda079687b28793c8d3926267b41bf9063a38ed91ba97fe"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__body__d02__depth.png",
+              "w": 42,
+              "h": 36,
+              "sha256": "fa25139975de5e9fc5f3d970b75dd3af0ee03314b09123f0777751b63e957f26"
             }
           },
           "filesHi": {
@@ -1254,6 +1288,12 @@
               "w": 51,
               "h": 38,
               "sha256": "5eb9850c1997f5c65e9285eb30de72af11c0bf92244213d62372b2e1719001a4"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__body__d03__depth.png",
+              "w": 51,
+              "h": 38,
+              "sha256": "1e73bb36e6f872b2db358ffd225a31b1791e8c439be9e0b659503a7293adf527"
             }
           },
           "filesHi": {
@@ -1319,6 +1359,12 @@
               "w": 56,
               "h": 38,
               "sha256": "aaa526f2488b55be313d9c723197da090455bd67687b175cf15ef40c042c4399"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__body__d04__depth.png",
+              "w": 56,
+              "h": 38,
+              "sha256": "282fbc36f15251458b68cc7c62674209763feba213dfd8d77af691aa3210c02c"
             }
           },
           "filesHi": {
@@ -1384,6 +1430,12 @@
               "w": 55,
               "h": 36,
               "sha256": "be248ed0d879ce33a44bd329ac76b739b53f164ef9cb455168e4c01ef07fba29"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__body__d05__depth.png",
+              "w": 55,
+              "h": 36,
+              "sha256": "13d91a8e5be212a93c2215446cfad1e3f447627f0d333d90f94033315c6b686d"
             }
           },
           "filesHi": {
@@ -1449,6 +1501,12 @@
               "w": 49,
               "h": 32,
               "sha256": "971c5ad5545b365985099bc2e19b7de27d21d6fc74a4d530f24c7b393335cd48"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__body__d06__depth.png",
+              "w": 49,
+              "h": 32,
+              "sha256": "2ebdcba42e43b86be7957488f8d06bdd14a265aab0f3296fe38a51026a43cbf9"
             }
           },
           "filesHi": {
@@ -1514,6 +1572,12 @@
               "w": 54,
               "h": 36,
               "sha256": "b3f40f8011d17115e6fe1b234639a85ac69c4a3b7406278b236e96dd6f0d3443"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__body__d07__depth.png",
+              "w": 54,
+              "h": 36,
+              "sha256": "ee441d3865b930579ca3420500e989b05bc1cbcfafd9b0a2ce45436432e25970"
             }
           },
           "filesHi": {
@@ -1579,6 +1643,12 @@
               "w": 56,
               "h": 38,
               "sha256": "7a99226ffd6d2c6ddfe727aa844fbd61083f859a5244df18c49e552a818c1856"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__body__d08__depth.png",
+              "w": 56,
+              "h": 38,
+              "sha256": "9ca8a2f7d73824b787a49d0cd16986b3f6f0153e8af65fc4f61c1b135d73270f"
             }
           },
           "filesHi": {
@@ -1644,6 +1714,12 @@
               "w": 51,
               "h": 37,
               "sha256": "a3d6a508dc53e1f90f7c6b3e9e4ef1d6b7441731ecb0cd83454f30bcce1cf7c2"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__body__d09__depth.png",
+              "w": 51,
+              "h": 37,
+              "sha256": "1de9bb7169710a2464c840c99d0bcf7d4a9d0ee065ffa0e94c2f1970ec9d053e"
             }
           },
           "filesHi": {
@@ -1709,6 +1785,12 @@
               "w": 42,
               "h": 34,
               "sha256": "568b84bdd3a72cb1eea195478aeaa289214fb410a03b1a8d8a50bcaaa48270a6"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__body__d10__depth.png",
+              "w": 42,
+              "h": 34,
+              "sha256": "ecb8f49fd7b9c295eca96b81d645638d55e918cbe95e62a71f2dae9a7638177b"
             }
           },
           "filesHi": {
@@ -1774,6 +1856,12 @@
               "w": 51,
               "h": 36,
               "sha256": "a012ee2f7081ff4e036c7213877669a7363fe45d2642ddafe4f096f2c05d7299"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__body__d11__depth.png",
+              "w": 51,
+              "h": 36,
+              "sha256": "9f974ed7f4ef181dfcb744d54104ff049f2ed800646eddc969dc196c190716cc"
             }
           },
           "filesHi": {
@@ -1839,6 +1927,12 @@
               "w": 56,
               "h": 36,
               "sha256": "8ac4dabee57881f08d01b011837cca2412b3323aaba00ddab68ec1aa9ccc71e0"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__body__d12__depth.png",
+              "w": 56,
+              "h": 36,
+              "sha256": "6d773e5fcf3a7acf85981988d21aba20c9c4d59600c4a23ce10f517fdd31569e"
             }
           },
           "filesHi": {
@@ -1904,6 +1998,12 @@
               "w": 55,
               "h": 35,
               "sha256": "811048696b547a24e54b72f065efec19b2ffe4c484ab82f68d898eed5ac94a0d"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__body__d13__depth.png",
+              "w": 55,
+              "h": 35,
+              "sha256": "f5389f5269ed0ff8ea2913e1806da557bcdbad2f23c3396e5e7ac8720facef36"
             }
           },
           "filesHi": {
@@ -1969,6 +2069,12 @@
               "w": 49,
               "h": 32,
               "sha256": "b6dfb99aff65dfdfbc18fcf30b408427f075c1f59c84e8ecda9a05b69c6528c3"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__body__d14__depth.png",
+              "w": 49,
+              "h": 32,
+              "sha256": "eaca46fcddc7f188b5819e51bbc0406107f6d414d862b6b72b51bef7bdabe6be"
             }
           },
           "filesHi": {
@@ -2034,6 +2140,12 @@
               "w": 54,
               "h": 37,
               "sha256": "bcbd99ffd706c0a4e8d2f25b79b384f84a9ee87137a399bcef350b90059dfa24"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__body__d15__depth.png",
+              "w": 54,
+              "h": 37,
+              "sha256": "89a86a219b5e247f81e8e0ff37d1c771ec768d474f26319a14675d1bb5e70e57"
             }
           },
           "filesHi": {
@@ -2081,6 +2193,7 @@
         0
       ],
       "traverse": false,
+      "traverseRoot": null,
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -2131,6 +2244,12 @@
               "w": 38,
               "h": 28,
               "sha256": "c8cb4d69424e64008b6226d9397f719bad447bb948a0421232674119510e23df"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.L__d00__depth.png",
+              "w": 38,
+              "h": 28,
+              "sha256": "ee4aeec491a3068f5ec0af9c37a4270dc1a48bb3b5d86df07ea7de0d9bfce737"
             }
           },
           "filesHi": {
@@ -2196,6 +2315,12 @@
               "w": 27,
               "h": 31,
               "sha256": "da8fd1537dbffa2270d452738cc9121d0e2a190492b1b13d79e83918c33c7b89"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.L__d01__depth.png",
+              "w": 27,
+              "h": 31,
+              "sha256": "e8abb6366dd8d274ce6b827c3d9364376ae69ac1cd1852df18e341522bfe8d07"
             }
           },
           "filesHi": {
@@ -2261,6 +2386,12 @@
               "w": 15,
               "h": 30,
               "sha256": "7ed54a78b9dc00eb921167ebd6c9de4262f2a4430019c3d27b397e8b5980d82e"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.L__d02__depth.png",
+              "w": 15,
+              "h": 30,
+              "sha256": "f0ab3dfe8aa017f76f72e58b3c6ac025908439e467d6c80c0c022c4b4350b6ea"
             }
           },
           "filesHi": {
@@ -2326,6 +2457,12 @@
               "w": 27,
               "h": 31,
               "sha256": "17119064d5113a099b18632775b929442993a7c1c68bffaaf6c983e518c6837f"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.L__d03__depth.png",
+              "w": 27,
+              "h": 31,
+              "sha256": "883003391d47dcefa4563fb208dfaa3502eca03493692670d02a6ccccff34122"
             }
           },
           "filesHi": {
@@ -2391,6 +2528,12 @@
               "w": 37,
               "h": 28,
               "sha256": "219b510fde6db518ed17de4522d40eedbdae0003eb31fe9fcebe3c0de90aad01"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.L__d04__depth.png",
+              "w": 37,
+              "h": 28,
+              "sha256": "3b68c99c04d92ea85b6d887736ef8bedb08a6c986e02ffde9584b3c8515d9021"
             }
           },
           "filesHi": {
@@ -2456,6 +2599,12 @@
               "w": 43,
               "h": 25,
               "sha256": "351e1d87834e50ce3810d54b90103edf920fccdf84775a73f2b3d11a177d954f"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.L__d05__depth.png",
+              "w": 43,
+              "h": 25,
+              "sha256": "22dee648a88dc37723434aa519d993511115120c615d0ce7180d36b6bc7aa5d8"
             }
           },
           "filesHi": {
@@ -2521,6 +2670,12 @@
               "w": 43,
               "h": 20,
               "sha256": "57b9ed206a3b281ae77ad55917bf22f2de567e23409bd5f8ae25f3bcdb72a6cc"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.L__d06__depth.png",
+              "w": 43,
+              "h": 20,
+              "sha256": "620df479bdcc3ba8b00ae959ad415f06f95f827bf496644710e27190699bc384"
             }
           },
           "filesHi": {
@@ -2586,6 +2741,12 @@
               "w": 43,
               "h": 23,
               "sha256": "dfec8c471183071f40a059dc5fc9b27a95f18efab12fc0e6f831928ec9bac100"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.L__d07__depth.png",
+              "w": 43,
+              "h": 23,
+              "sha256": "8a8b581dcd70601853d87c3ed46297147837e925cd77b555e8bf89ec6429cfc8"
             }
           },
           "filesHi": {
@@ -2651,6 +2812,12 @@
               "w": 38,
               "h": 27,
               "sha256": "009a4641bc5895a896505f7535cf6b42aea011735f05a1f3199680668578b3cc"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.L__d08__depth.png",
+              "w": 38,
+              "h": 27,
+              "sha256": "ac7bbc3dad4a1cdaf8c137e16d3343d73b5ab5e1ddcb4c64bca578a49084bd22"
             }
           },
           "filesHi": {
@@ -2716,6 +2883,12 @@
               "w": 27,
               "h": 30,
               "sha256": "63f6dad6c2277688c07e458e1767230d92b7e9c7aeb3e0096d5d6c2684f26b2d"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.L__d09__depth.png",
+              "w": 27,
+              "h": 30,
+              "sha256": "26bb3c1d060c426dc26a3a374c52c94c998cfe0c43fbb5ae513c380b3d49bb9a"
             }
           },
           "filesHi": {
@@ -2781,6 +2954,12 @@
               "w": 15,
               "h": 30,
               "sha256": "25c3fa11acf2536da321da49365cfb7725ced32521959ac2db7f203692859f0e"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.L__d10__depth.png",
+              "w": 15,
+              "h": 30,
+              "sha256": "2e6f56fc403c540c6baa68b771a5ea80ff869af4c333b7d90358ba3ef2859cfd"
             }
           },
           "filesHi": {
@@ -2846,6 +3025,12 @@
               "w": 27,
               "h": 30,
               "sha256": "8ac2952aba6e56de079ce9cec04094f14fea4b1350ae774d070f617154aa8d23"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.L__d11__depth.png",
+              "w": 27,
+              "h": 30,
+              "sha256": "4d1b5a79c7cfd36a9251dc85f05583b7c868c27244660ab1316b36113f5e68fc"
             }
           },
           "filesHi": {
@@ -2911,6 +3096,12 @@
               "w": 37,
               "h": 28,
               "sha256": "dd56573ea47dd3ee8a03805459560f2f803658873821cda47ea7a4f09c312ebb"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.L__d12__depth.png",
+              "w": 37,
+              "h": 28,
+              "sha256": "40f92e51f3dfdf86af0ac6f7fdd9ff3309dfb8fc85fd2ea62a9ce1ec39e1ab45"
             }
           },
           "filesHi": {
@@ -2976,6 +3167,12 @@
               "w": 43,
               "h": 24,
               "sha256": "b6807050343dacc2b522771c56ba24cd12a8e8cfd4a35156b033339ce7f79893"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.L__d13__depth.png",
+              "w": 43,
+              "h": 24,
+              "sha256": "f385936136e16e50b19f892567b4da68cb9aed48296f608eb192716b36c9b1e5"
             }
           },
           "filesHi": {
@@ -3041,6 +3238,12 @@
               "w": 43,
               "h": 19,
               "sha256": "f9a29c1ec98072dd1709a202b52d07131ee7d493f33568fad0579076e8766a4a"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.L__d14__depth.png",
+              "w": 43,
+              "h": 19,
+              "sha256": "9a2d5c99fcde2394433c130fa0d51eb9874546a71dbe56922dd8ee4a4c6868cb"
             }
           },
           "filesHi": {
@@ -3106,6 +3309,12 @@
               "w": 43,
               "h": 25,
               "sha256": "01666f57f8adc798e8ef11a77758f9910a604de9c95d62dfca6aa297659dd402"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.L__d15__depth.png",
+              "w": 43,
+              "h": 25,
+              "sha256": "96cede8d2d00101f4aa5607674a9fd94e40f067bccab1753cdd03d1e7bb783c4"
             }
           },
           "filesHi": {
@@ -3153,6 +3362,7 @@
         0
       ],
       "traverse": false,
+      "traverseRoot": null,
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -3203,6 +3413,12 @@
               "w": 37,
               "h": 28,
               "sha256": "4a09af46d816676a869a65490fd1eb72d3da973037a78e70a975288dccec1d6c"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.R__d00__depth.png",
+              "w": 37,
+              "h": 28,
+              "sha256": "4759425cc396a43b2a3a15255fb8d2d2de9c275181bb5451ca83c398cec58be4"
             }
           },
           "filesHi": {
@@ -3268,6 +3484,12 @@
               "w": 27,
               "h": 30,
               "sha256": "e1b67d9ff9b0551c359244771bea211b330a5e868f3f1dce9b82c1a3813311f5"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.R__d01__depth.png",
+              "w": 27,
+              "h": 30,
+              "sha256": "058874e09b678d23b654dc7abc848ee85c2e0a58d09488458f969ac9e4f82e9d"
             }
           },
           "filesHi": {
@@ -3333,6 +3555,12 @@
               "w": 16,
               "h": 30,
               "sha256": "0cee0f111dcc95e647baf6a933ac3977782ec5216a14d24a9d424d1b66187e80"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.R__d02__depth.png",
+              "w": 16,
+              "h": 30,
+              "sha256": "c526bad9fd6b734961ca91b2c9901e33a82e05f700e551b650ff7dae046a2316"
             }
           },
           "filesHi": {
@@ -3398,6 +3626,12 @@
               "w": 27,
               "h": 30,
               "sha256": "f61a4865fdb78fc49374a955d6bc92ee6d1b3811a9b9b3f91342d9e502f89b19"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.R__d03__depth.png",
+              "w": 27,
+              "h": 30,
+              "sha256": "ba2b0f15195e6506c2a6f162206ed1b7542c44bf3ea3ed1844a9d8b4ac83c332"
             }
           },
           "filesHi": {
@@ -3463,6 +3697,12 @@
               "w": 38,
               "h": 28,
               "sha256": "1b5c6fbaaec5af9a37296b87dd74a0ee804197418ab4059221258b40b860c8c3"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.R__d04__depth.png",
+              "w": 38,
+              "h": 28,
+              "sha256": "34eee7723b7b9545138e03d55bd614568a35089f791503021e0b061415465274"
             }
           },
           "filesHi": {
@@ -3528,6 +3768,12 @@
               "w": 43,
               "h": 25,
               "sha256": "34e1a7f744f67e18ac10d6aa9d20dbc18434bea711304f9eb41a0c24e5a6d403"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.R__d05__depth.png",
+              "w": 43,
+              "h": 25,
+              "sha256": "b76e9b8f05293855dd4bf3d8b06ead4e47f1d2d8d6e4e13729663586ef386060"
             }
           },
           "filesHi": {
@@ -3593,6 +3839,12 @@
               "w": 43,
               "h": 20,
               "sha256": "69ffb0dc708658296991d742df96ff2e6c63a3035eb50e385773adf340a95912"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.R__d06__depth.png",
+              "w": 43,
+              "h": 20,
+              "sha256": "5f3c59a1ddb1cef9f7fdb2e2362ac3c5f5b10f9343e636ae2b6143070f028f06"
             }
           },
           "filesHi": {
@@ -3658,6 +3910,12 @@
               "w": 43,
               "h": 24,
               "sha256": "dd8f8031d07db9874b9f3474cd028509c434de55a16b398259fd21851c704964"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.R__d07__depth.png",
+              "w": 43,
+              "h": 24,
+              "sha256": "8fbaf7b64b64fc17437d3e900c997f71ce737a90592a5aadd721f5b6afc3b1b9"
             }
           },
           "filesHi": {
@@ -3723,6 +3981,12 @@
               "w": 37,
               "h": 28,
               "sha256": "31ffe392a028eecb7e9479ed2f6dad26f4f48aabc2969686cc72806276dd23fa"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.R__d08__depth.png",
+              "w": 37,
+              "h": 28,
+              "sha256": "aba94fefe613b7e1c0c001317cf7b35ba862af155035facb95f1b17b0a44b3f9"
             }
           },
           "filesHi": {
@@ -3788,6 +4052,12 @@
               "w": 27,
               "h": 31,
               "sha256": "47e63e994660d06ce367d6977ef2d9da0b89b0bc653a16bb7f8a6d90a51f0842"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.R__d09__depth.png",
+              "w": 27,
+              "h": 31,
+              "sha256": "f38298125f2e092aeee61a5837dac64aba2c3d2ddcacd3232f1b0751eb79c32e"
             }
           },
           "filesHi": {
@@ -3853,6 +4123,12 @@
               "w": 16,
               "h": 30,
               "sha256": "b0ea47401be4b96fbe13488057c54884c9e883f875d1e324eb4b8d1856d7d57f"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.R__d10__depth.png",
+              "w": 16,
+              "h": 30,
+              "sha256": "764276ef942c01fd20dffe911e5d64588a1107c104da6e776fe5f42376334bf0"
             }
           },
           "filesHi": {
@@ -3918,6 +4194,12 @@
               "w": 27,
               "h": 30,
               "sha256": "7d10eef9109abe559131620f8a4e317ab2022d0b1c9bd08ccc3115a6af7964b7"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.R__d11__depth.png",
+              "w": 27,
+              "h": 30,
+              "sha256": "569230d36991a3b0aa4d5f257d0da51586ee7d1ef97e15b70f7b56a185283e70"
             }
           },
           "filesHi": {
@@ -3983,6 +4265,12 @@
               "w": 38,
               "h": 27,
               "sha256": "2590dab498e4fc77e341a52f962552e65c432692c1042b061f3593bd09d0bf40"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.R__d12__depth.png",
+              "w": 38,
+              "h": 27,
+              "sha256": "5e6479aefd648c8c760c329945cf1a61f155a9ead060e1679e2a7e9c53ed4dbc"
             }
           },
           "filesHi": {
@@ -4048,6 +4336,12 @@
               "w": 43,
               "h": 23,
               "sha256": "25df10d61cab83c6ad8e1fd75d33be654efe16c82635f1922da21170c051ff51"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.R__d13__depth.png",
+              "w": 43,
+              "h": 23,
+              "sha256": "58123afbf6488d5f84dee0b5d5980dca5cbe9069248adbbf372c5fa568e63cf3"
             }
           },
           "filesHi": {
@@ -4113,6 +4407,12 @@
               "w": 43,
               "h": 19,
               "sha256": "d2b252115d122fab807d46446a5c40a7b08dba55bc4730ba37fe9ec244c339e7"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.R__d14__depth.png",
+              "w": 43,
+              "h": 19,
+              "sha256": "2b7e14e70975d7c549d4ca7699c24dac2ea7c6f331ead7e170904a660f2c4158"
             }
           },
           "filesHi": {
@@ -4178,6 +4478,12 @@
               "w": 43,
               "h": 25,
               "sha256": "97258f4680948acc72c43176d46a23b38987600445712c17c102e31d2c981351"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__running.R__d15__depth.png",
+              "w": 43,
+              "h": 25,
+              "sha256": "c343d9412d915ec28d2dfbddee28e751afaf34b1430b6ca00ae2b7f311bbe578"
             }
           },
           "filesHi": {
@@ -4225,6 +4531,11 @@
         142
       ],
       "traverse": true,
+      "traverseRoot": [
+        300,
+        256,
+        142
+      ],
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -4275,6 +4586,12 @@
               "w": 24,
               "h": 21,
               "sha256": "cf094deebfc966d1658f91f7e30d83def034f7074fd10e529b6ddf6aa4d4ddc2"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__turret__d00__depth.png",
+              "w": 24,
+              "h": 21,
+              "sha256": "791e4764c6812219ed2747e886426ac37058350ccd114d4368b6d86d79f2b19f"
             }
           },
           "filesHi": {
@@ -4340,6 +4657,12 @@
               "w": 24,
               "h": 21,
               "sha256": "a1038e98ed8f843fae72a2b4f0e04c172573e68270ec4a6cc386a9b4e2eb6f5c"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__turret__d01__depth.png",
+              "w": 24,
+              "h": 21,
+              "sha256": "ae4aa8b01ccd34dbfa308eb1efd8ea1d578a44e5536a0b326ac34a036b42a117"
             }
           },
           "filesHi": {
@@ -4405,6 +4728,12 @@
               "w": 23,
               "h": 22,
               "sha256": "84885b7b1e9d7047fe97ac16a693946b1495eef5ed55e2a3b647f018c0121904"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__turret__d02__depth.png",
+              "w": 23,
+              "h": 22,
+              "sha256": "c7b9e7c8f62bb1f96d4ef33660abd30ae47605d898b1144d7dd0277cb16fb655"
             }
           },
           "filesHi": {
@@ -4470,6 +4799,12 @@
               "w": 24,
               "h": 23,
               "sha256": "b028a2629f5d9cbf6abe11706149df6f6c78c701ab51d2cab2ff81a3487929dc"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__turret__d03__depth.png",
+              "w": 24,
+              "h": 23,
+              "sha256": "dc9e0a08e3a348168c4e3558e31c5d6524b409fe4fa8735c817811c88e068e7d"
             }
           },
           "filesHi": {
@@ -4535,6 +4870,12 @@
               "w": 24,
               "h": 23,
               "sha256": "533fad13793a98c4262d3081ffed0df18f8ed577f515089b7888a89e5408d283"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__turret__d04__depth.png",
+              "w": 24,
+              "h": 23,
+              "sha256": "42cd3b36c940d3da43b91b8d547b1eb8e5f846238b78e8c39df1303b6b067e08"
             }
           },
           "filesHi": {
@@ -4600,6 +4941,12 @@
               "w": 24,
               "h": 23,
               "sha256": "38d0998a91fb695f87e82cf25715b333d24372f7c97aa7f6b6a6c971b1ab5cc9"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__turret__d05__depth.png",
+              "w": 24,
+              "h": 23,
+              "sha256": "b1631f5d3fa050f66da64d6963a24306384af2ca85264c7f1fcfc90c200f3acb"
             }
           },
           "filesHi": {
@@ -4665,6 +5012,12 @@
               "w": 23,
               "h": 23,
               "sha256": "284314c965de8be020603d16b0158fa799c5bc4cb41c3ba97b262fd23dcff728"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__turret__d06__depth.png",
+              "w": 23,
+              "h": 23,
+              "sha256": "bcfa3aa1c9c3b494f934b7f7fa2f987639c9b1a7b50470c3e810d85625e2d9d3"
             }
           },
           "filesHi": {
@@ -4730,6 +5083,12 @@
               "w": 24,
               "h": 22,
               "sha256": "ae614bd138e778a3708c924040fd539adff2de0495586795d7b0a0404f7b6dfc"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__turret__d07__depth.png",
+              "w": 24,
+              "h": 22,
+              "sha256": "8e301e18c5e88b4e3714fe72dd97a4aaa15efe162f7fdc6817397db9a5633656"
             }
           },
           "filesHi": {
@@ -4795,6 +5154,12 @@
               "w": 24,
               "h": 21,
               "sha256": "f81734198063041657ce548f1fb6633c88ead7d7e44dc402e013139c45f7bdee"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__turret__d08__depth.png",
+              "w": 24,
+              "h": 21,
+              "sha256": "f60cd56f65a7f676abd6848209794d8ff5de4a6f84a88a94d751b8cd39ed2545"
             }
           },
           "filesHi": {
@@ -4860,6 +5225,12 @@
               "w": 24,
               "h": 21,
               "sha256": "5520ed532c5d295fcfd6dc37c2c53848570811a011b9cdb27956927df4a55782"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__turret__d09__depth.png",
+              "w": 24,
+              "h": 21,
+              "sha256": "78f17b3801aab282a59af407beb43557cad08204d3c6ab421f1cff985d9e3b0b"
             }
           },
           "filesHi": {
@@ -4925,6 +5296,12 @@
               "w": 23,
               "h": 20,
               "sha256": "6168c809b5df4de7b672f58e8c9bdc41fcd8454b7ae9cd0a95ec6dd287b956e1"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__turret__d10__depth.png",
+              "w": 23,
+              "h": 20,
+              "sha256": "56417f4f347eaad6c32d70871cc6313739fa1bc1ccbf5a65c2ea59e6bcfe62cd"
             }
           },
           "filesHi": {
@@ -4990,6 +5367,12 @@
               "w": 24,
               "h": 20,
               "sha256": "ae11f9b165f92dd23294f6c7584ff2931f06408d0cdbaadbb4e15794e44b5c95"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__turret__d11__depth.png",
+              "w": 24,
+              "h": 20,
+              "sha256": "1814e8afdf090892b9df9e4b311a5c66bbf5014e40205dbd0982f87a0467b9e6"
             }
           },
           "filesHi": {
@@ -5055,6 +5438,12 @@
               "w": 24,
               "h": 20,
               "sha256": "81b26607f208a4f4060053d8d9afe0b2847763bca4639a6bd309768ffa9043d0"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__turret__d12__depth.png",
+              "w": 24,
+              "h": 20,
+              "sha256": "0f20504dba8149f7f3a63b768cd68f6688e7b0f7626c0ae8fdc8c7ece7d2b48b"
             }
           },
           "filesHi": {
@@ -5120,6 +5509,12 @@
               "w": 24,
               "h": 21,
               "sha256": "627d43cf8cf567d0c5ebbfc661b6ea14e2b20dbdd30e472f3289800ca23fd4ba"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__turret__d13__depth.png",
+              "w": 24,
+              "h": 21,
+              "sha256": "4879993b975148d728ad1bbc64be2eb05b782eac41c21b68c3993a3a62047f7d"
             }
           },
           "filesHi": {
@@ -5185,6 +5580,12 @@
               "w": 23,
               "h": 20,
               "sha256": "d4071953b1c74ee79305db1123231c3bf1bd64c98d6902ae7f88bffa6486c971"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__turret__d14__depth.png",
+              "w": 23,
+              "h": 20,
+              "sha256": "395443d078b5965a9ec66a4532f5ff1a9fe495265134840ec33122c03420a246"
             }
           },
           "filesHi": {
@@ -5250,6 +5651,12 @@
               "w": 24,
               "h": 21,
               "sha256": "d9c828474062438ce7337e3ed366ee9203d2b2ed7ddc474db2a1b33fed6de43a"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__turret__d15__depth.png",
+              "w": 24,
+              "h": 21,
+              "sha256": "9e6f44e991a82f01ef8758b4a27acc1133d2b72ac419254cab5ed7f688b6a33e"
             }
           },
           "filesHi": {
@@ -5297,6 +5704,11 @@
         190
       ],
       "traverse": true,
+      "traverseRoot": [
+        300,
+        256,
+        142
+      ],
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -5347,6 +5759,12 @@
               "w": 17,
               "h": 14,
               "sha256": "3f02c6caf4be21cb1f4bee7f8d2b1baed95056cb0f6dd85ab58b924d5ab76dec"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__barrel__d00__depth.png",
+              "w": 17,
+              "h": 14,
+              "sha256": "20cd955239a96152855568c4380bc5ede09c1d4e3b95eba403bb256fe96c3149"
             }
           },
           "filesHi": {
@@ -5412,6 +5830,12 @@
               "w": 14,
               "h": 15,
               "sha256": "410955cf1f09ee837be7d05a251e5947ddc89eb44a95ad558ad2747252444af4"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__barrel__d01__depth.png",
+              "w": 14,
+              "h": 15,
+              "sha256": "5c224088bd7d5502e03c384a404ed21abeb30de5c324304eb7e5b0b595f9e8d4"
             }
           },
           "filesHi": {
@@ -5477,6 +5901,12 @@
               "w": 11,
               "h": 15,
               "sha256": "83dde5f4aa4f9e1e58b5c59e88ba86c89d01f376f99179ab5b0da3eb46e10282"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__barrel__d02__depth.png",
+              "w": 11,
+              "h": 15,
+              "sha256": "0ffdb370cbac78e1bfbdeaf7f6a271db99809c21721746545102a5b30714b714"
             }
           },
           "filesHi": {
@@ -5542,6 +5972,12 @@
               "w": 14,
               "h": 15,
               "sha256": "cc6d6adcabbf789e9dc7797c165e3cc25e4c065782eab72d9ac1a40fdddd4f40"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__barrel__d03__depth.png",
+              "w": 14,
+              "h": 15,
+              "sha256": "c9721fd67a696442d9670e4efa6ff8d4266ff503670179365dc3fedb093a226e"
             }
           },
           "filesHi": {
@@ -5607,6 +6043,12 @@
               "w": 17,
               "h": 14,
               "sha256": "d6139f4625ea8a04353ec0837da4bedc7cde9667f9c15d6b6ee00a32aea201e9"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__barrel__d04__depth.png",
+              "w": 17,
+              "h": 14,
+              "sha256": "b37512fe2f2a0515a66b4d1a7c33dbf3067c9f0c00c96adaf9fb49d8c5409787"
             }
           },
           "filesHi": {
@@ -5672,6 +6114,12 @@
               "w": 19,
               "h": 12,
               "sha256": "80f3721992408126c826d9125f36ac94af1742a19ea017d56b6e5e79f098a46d"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__barrel__d05__depth.png",
+              "w": 19,
+              "h": 12,
+              "sha256": "01e336052f98580f431db52790cc1a3f008c9da4a35eaee6afd1cd3550918856"
             }
           },
           "filesHi": {
@@ -5737,6 +6185,12 @@
               "w": 19,
               "h": 11,
               "sha256": "f5e3d9b92d0681983a8321a9135cf63e63368be3d38b981d63a35c5bbc7d3b03"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__barrel__d06__depth.png",
+              "w": 19,
+              "h": 11,
+              "sha256": "d59bb89849ba6e4a52e1eeda420bb54418fa1b4876e0b8e8295264570272acd1"
             }
           },
           "filesHi": {
@@ -5802,6 +6256,12 @@
               "w": 19,
               "h": 12,
               "sha256": "a4778ee693f8b31b5c39228c4e818f9cb6103f37848820f23edd8428d4238812"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__barrel__d07__depth.png",
+              "w": 19,
+              "h": 12,
+              "sha256": "99b9eacd39c185545d5698896b162007939db9474973487cc613d5eb0b1e9175"
             }
           },
           "filesHi": {
@@ -5867,6 +6327,12 @@
               "w": 17,
               "h": 14,
               "sha256": "3aaff65638c17ccc7a8c7f9c53b36bfa8517eb6b2a53836d2854dac10749a45f"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__barrel__d08__depth.png",
+              "w": 17,
+              "h": 14,
+              "sha256": "f3b452764d5c10b4fb62a1ccca1cad31300d792d96c8a76b5c1a19c6a26666aa"
             }
           },
           "filesHi": {
@@ -5932,6 +6398,12 @@
               "w": 14,
               "h": 15,
               "sha256": "ae48ec3d99ecaf43c9c074e5384f904e8c386d30e060bee0cd62922901f515d1"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__barrel__d09__depth.png",
+              "w": 14,
+              "h": 15,
+              "sha256": "e4feff58e8296b4db52a447f7c09fc555aad18279fd2bb4c0be43a7a801e827e"
             }
           },
           "filesHi": {
@@ -5997,6 +6469,12 @@
               "w": 11,
               "h": 15,
               "sha256": "f0b78dead43d6fc78b15f304ff30aa65a7f0235538e9dc41d971229ffa6becdf"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__barrel__d10__depth.png",
+              "w": 11,
+              "h": 15,
+              "sha256": "693b395c035c75780a256c3742187a9a3511b2f96a5b9a3da3f6cc2036bef37b"
             }
           },
           "filesHi": {
@@ -6062,6 +6540,12 @@
               "w": 14,
               "h": 15,
               "sha256": "8df9b763184844f27ee5801bc0da3b2ec6c6a68973a0a5e83ab87e9f8fb0df3f"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__barrel__d11__depth.png",
+              "w": 14,
+              "h": 15,
+              "sha256": "14c67e08d3b2dc2a82aab7e85d8bb82345c1741d6a0e0f27998b7e1f1c4c2453"
             }
           },
           "filesHi": {
@@ -6127,6 +6611,12 @@
               "w": 17,
               "h": 14,
               "sha256": "7987db143491cecee849dbad32d1fc1dc9cbe54869981f865bfc2293b61cc910"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__barrel__d12__depth.png",
+              "w": 17,
+              "h": 14,
+              "sha256": "e8870844392c29844d41cfd4a5670bafbd92f6ff1745346eedeed6ff31169f14"
             }
           },
           "filesHi": {
@@ -6192,6 +6682,12 @@
               "w": 19,
               "h": 12,
               "sha256": "e9163ce612c70579eadf4fafe08dec27f806c275c50d16656ad20cec7d445481"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__barrel__d13__depth.png",
+              "w": 19,
+              "h": 12,
+              "sha256": "d946146702937aa12d4ba7dc76b958c741e7a996e016dd7482e46b40865ce30a"
             }
           },
           "filesHi": {
@@ -6257,6 +6753,12 @@
               "w": 19,
               "h": 11,
               "sha256": "4d4d34dfa18c538f85ed4e8b55adc998ec36c2d3845cc4210974a54b0e336504"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__barrel__d14__depth.png",
+              "w": 19,
+              "h": 11,
+              "sha256": "f02106a3e3f6ad2b448d82fbfc57d668c6f751bf46e2ea6c8b05b1a30249102b"
             }
           },
           "filesHi": {
@@ -6322,6 +6824,12 @@
               "w": 19,
               "h": 12,
               "sha256": "3afd4579fdcb83b6657a4a0b279c41b7e09c39d170dc405be1e6a07e714de276"
+            },
+            "depth": {
+              "file": "sheets/amphibious-tank__barrel__d15__depth.png",
+              "w": 19,
+              "h": 12,
+              "sha256": "91b18456e566b779c012a442f7160f4891bca6a9cccc7b6107f97430b1bfacd8"
             }
           },
           "filesHi": {
@@ -6477,15 +6985,15 @@
         "files": {
           "albedo": {
             "file": "sheets/amphibious-tank__composite__d00__albedo.png",
-            "sha256": "8ad2b1b9d081686f04cd1dc4953c51ec8e17a641bc12a71d56579fe88b3325fb"
+            "sha256": "dfbc3d482bb8f2fbf780c67ccd90c00c878cdd174e70e56cb2bc592ca5725fae"
           },
           "normal": {
             "file": "sheets/amphibious-tank__composite__d00__normal.png",
-            "sha256": "74491c37fce4c2c6ad0dca773ee9c74c845f56545f977bbbc5197be770d06470"
+            "sha256": "913a66bc9fb614ca90d616b21081881aa8f1315c835d91a3b0d98bd4fa955f87"
           },
           "material": {
             "file": "sheets/amphibious-tank__composite__d00__material.png",
-            "sha256": "9f73adb47a81546f5a309a5f8ccab48a5a1aa82846115984319ed85cfb3f2286"
+            "sha256": "bd53fc946b66386dc7d7c88a171a311213f6c3aaac340a3e7c3feac613ced9e4"
           }
         }
       },
@@ -6495,15 +7003,15 @@
         "files": {
           "albedo": {
             "file": "sheets/amphibious-tank__composite__d01__albedo.png",
-            "sha256": "e65535eb5fc9d42354e335fbf104e08ac9d85bccb9e7d336a5711057005e8b98"
+            "sha256": "f4842976739813dcfa80f9a0913bc7ad67e6b7783c812075ace52dd23c469e50"
           },
           "normal": {
             "file": "sheets/amphibious-tank__composite__d01__normal.png",
-            "sha256": "a12d3ef2c0d699f0c63148167ab3d26f58712f2060ab84e4212295c165ffaeda"
+            "sha256": "89a5f81089f3553bb4aaa6ba2d4fe7faca04b12e6c9aec3b287e547e55a2348c"
           },
           "material": {
             "file": "sheets/amphibious-tank__composite__d01__material.png",
-            "sha256": "83e0b084009a6dc5483a96317864e265ebc86a027382e02a875664cad3ed6b9b"
+            "sha256": "f94e24fce8d4891d07f1d2426ef0dea234bf54a08bb126636edfbe04e17d7efa"
           }
         }
       },
@@ -6513,15 +7021,15 @@
         "files": {
           "albedo": {
             "file": "sheets/amphibious-tank__composite__d02__albedo.png",
-            "sha256": "5cde04ef8145840ca0e959da7daf6d9efca00d9553f5686ebb033e3487fb3d9e"
+            "sha256": "c3e56b3f45d82ac2960b18aeb03885e0a12a31d894741c088649c2f7a242c74a"
           },
           "normal": {
             "file": "sheets/amphibious-tank__composite__d02__normal.png",
-            "sha256": "1a9f63ac186f13c992af15e8485b9988b3f6355c9668299483a4098449741133"
+            "sha256": "a55b1a60d7cccda9c1f5ab517e5550654ffa5c9bbc93cad63cf55ecb35c382c7"
           },
           "material": {
             "file": "sheets/amphibious-tank__composite__d02__material.png",
-            "sha256": "eaf2d51463e9cdf4a204901501b3238864226a249058bae57aced59301e244fe"
+            "sha256": "0b96481804026318140c91e38ae46b5ef35e9189e010eda2157c01acc97f36a5"
           }
         }
       },
@@ -6531,15 +7039,15 @@
         "files": {
           "albedo": {
             "file": "sheets/amphibious-tank__composite__d03__albedo.png",
-            "sha256": "5ae9b6321ee59d8e8bcbccfb849cf97071a6febd84af5e03a27c5558314ae6b2"
+            "sha256": "ab28b9b901c88705d3f0b039f9844d78f8670935378a9d228d22f1d4f0604b43"
           },
           "normal": {
             "file": "sheets/amphibious-tank__composite__d03__normal.png",
-            "sha256": "7df13e9974e40932933fe07e24a826bf16bbb778aec225a20014f77d3e03597f"
+            "sha256": "08ad0b327365819f2dc6b143a9ce92f104970823d5c3d441a5f3d32d7df71b36"
           },
           "material": {
             "file": "sheets/amphibious-tank__composite__d03__material.png",
-            "sha256": "29d4dd5da196785e58c2c7698e9f297ad409d5eca8979de45468dbb22a10f1a7"
+            "sha256": "269770cdfd21c00b5efeb7e6d1629e5c12144f703b7dcb0f2f91bd19a5abb6fe"
           }
         }
       },
@@ -6549,15 +7057,15 @@
         "files": {
           "albedo": {
             "file": "sheets/amphibious-tank__composite__d04__albedo.png",
-            "sha256": "302a30e46ed5b6b90a87aa5b2eec1e59068c60fe8b38887e2a7b7780831cfd73"
+            "sha256": "8ed1a96f73d891fa54e67913d7b9fdd9760d93d5fde3b3f5bb886c19dd7a6c25"
           },
           "normal": {
             "file": "sheets/amphibious-tank__composite__d04__normal.png",
-            "sha256": "5132b672f6a29da96065fd985ff5a7c16dd3a6b4d44ed212f97716e1b9e62537"
+            "sha256": "797cb621661dc607e83dc823d9347dd08ecd6396e80eeb9ee73b74df7b0f80d0"
           },
           "material": {
             "file": "sheets/amphibious-tank__composite__d04__material.png",
-            "sha256": "d5f12eac1029a87eaed54031676719b9807be7b8c5963082b494a9e8eca99b1a"
+            "sha256": "be8cf1dbea071f92a5b85998ab5dbc548411077cbbc29928d212a8ed96e2599d"
           }
         }
       },
@@ -6567,15 +7075,15 @@
         "files": {
           "albedo": {
             "file": "sheets/amphibious-tank__composite__d05__albedo.png",
-            "sha256": "0cf899138776b91bc4380dc3505e75004e2f498c6ff8126d17f17e7f9d242e8a"
+            "sha256": "f94263b0c7769f6a6773f6da8f22fbabef3f76d0372d253dddd0eeafbbebf996"
           },
           "normal": {
             "file": "sheets/amphibious-tank__composite__d05__normal.png",
-            "sha256": "efafa0be0147c65bb2083ad4f9e9ace868b3c356fc0c871de328983409768503"
+            "sha256": "f32f80432033f924f850671526c68c51548209af4e62e493ec06414bb5a860aa"
           },
           "material": {
             "file": "sheets/amphibious-tank__composite__d05__material.png",
-            "sha256": "a283a7e010e988c24f1ebf610963e7927238e893ed1ed8d254863cab5c8bc8cb"
+            "sha256": "09740adff317db6a00cc74a2051674541d97275aefbaf688bd29c3756e732354"
           }
         }
       },
@@ -6585,15 +7093,15 @@
         "files": {
           "albedo": {
             "file": "sheets/amphibious-tank__composite__d06__albedo.png",
-            "sha256": "7661242a523a986a8ea6962d66211818149e8054e4a242a44827d834b40c2858"
+            "sha256": "0900f8cd345ff2a17e785f03e8110d2f5d3d8cacf34e00f2b63fffa3fd2f5592"
           },
           "normal": {
             "file": "sheets/amphibious-tank__composite__d06__normal.png",
-            "sha256": "e30f746447e68e63ed6491a69b2122aabcc086c255104a354cd53da299ac1a6f"
+            "sha256": "d05828613a6f8148cd91f7c01fceda51e0ecfd2cdb833f2de729957567868061"
           },
           "material": {
             "file": "sheets/amphibious-tank__composite__d06__material.png",
-            "sha256": "5a8e4b7bde9449e5341ccdbe7d140309c87954becda0538c8b519a8e747bd622"
+            "sha256": "4d0645d128be229ddea277698ea126ba8d215b848026f4020c107c322b6febe4"
           }
         }
       },
@@ -6603,15 +7111,15 @@
         "files": {
           "albedo": {
             "file": "sheets/amphibious-tank__composite__d07__albedo.png",
-            "sha256": "c4a78d9ce7cedce56e706265b8cda641448287f4ee86a6b7eba4fa6059357044"
+            "sha256": "e3b098b2abe121c923478de2d7c4c120fac952f4dc6ca9a4d31ea8d1e1cf3470"
           },
           "normal": {
             "file": "sheets/amphibious-tank__composite__d07__normal.png",
-            "sha256": "39ddbef823bebfb7b5c13e930fd92eca035eb529d7031a54d98041fc40cd3ee1"
+            "sha256": "a9ce99d3018dc08b7897b8c17912340306205f42cbd52840dd4a800f1f5b8c7d"
           },
           "material": {
             "file": "sheets/amphibious-tank__composite__d07__material.png",
-            "sha256": "739d8cc618fb5ef4ce23a8ba726c6b5a672e2fcb0c365f980cfe1b4a9a53a72a"
+            "sha256": "ed495a1eabf136fe23f6fee8a112aa1f0d022881524fd4b6488e76f9999287c4"
           }
         }
       },
@@ -6621,15 +7129,15 @@
         "files": {
           "albedo": {
             "file": "sheets/amphibious-tank__composite__d08__albedo.png",
-            "sha256": "7054098c2e603efe3c2e319b028f66258f0367fc154f2506f349656b99bc4d30"
+            "sha256": "caa443290d67429e2bfaede229738a7015801a4c0b24203ddf41ae58df8b5d7e"
           },
           "normal": {
             "file": "sheets/amphibious-tank__composite__d08__normal.png",
-            "sha256": "7f423785511b11e37acf15a9a3cb86f1e3b3fefeb9eb09dd9b87f0890972e34c"
+            "sha256": "8401777170f9fc2b5ea0237b52bebfece4e528e68b1f2e5703c039d1c63b9111"
           },
           "material": {
             "file": "sheets/amphibious-tank__composite__d08__material.png",
-            "sha256": "e0e21d35b414cc18fe07b505168559e94f79775a9fe7d8b68e390e2ac97f6cb6"
+            "sha256": "c87a688119d2d47cdb1906edc58fae30918fe3e253e18504646ca7516d032f1c"
           }
         }
       },
@@ -6639,15 +7147,15 @@
         "files": {
           "albedo": {
             "file": "sheets/amphibious-tank__composite__d09__albedo.png",
-            "sha256": "c66a489e9194ea06ac198464451af01b2e7cd11307447c463cafdf945426380b"
+            "sha256": "d4a5bea883104d1c65635479bf4f0bee9ac21a84e0b3ae4f19f7a6eed816fbc0"
           },
           "normal": {
             "file": "sheets/amphibious-tank__composite__d09__normal.png",
-            "sha256": "3a5f89874470324abb9e60b16d66348d9be936fa82d52b6ad5bdce6a93ca5768"
+            "sha256": "5652a79969b69ead857ab0d8829524bef518d06578333ce35502d9048991514d"
           },
           "material": {
             "file": "sheets/amphibious-tank__composite__d09__material.png",
-            "sha256": "160df5f459a7ab46b3ee6a6b2ab852804b0a4e36ccbec1dca05c52708327ca68"
+            "sha256": "4f4a08c944857f4e7518c711cf6b310a190ad0091f885b7b3477fdb89cfee2ff"
           }
         }
       },
@@ -6657,15 +7165,15 @@
         "files": {
           "albedo": {
             "file": "sheets/amphibious-tank__composite__d10__albedo.png",
-            "sha256": "026bb40b0f471230b9d1d80aad252aeadc88f985b7cc2cb293b81f5499c25853"
+            "sha256": "3b0c20ac92f2978be1b2ecaa8710c6c5dbad71143e90ebf98fd36158e8f42b2f"
           },
           "normal": {
             "file": "sheets/amphibious-tank__composite__d10__normal.png",
-            "sha256": "5ea76d172bcd7cdb62b0aceea918354fe7ed1881d1b723e33d006ea30c92cb6f"
+            "sha256": "0b034666b4f95beac5ca7d47f982c5ffa8507c209f2aa713869471d531aadd13"
           },
           "material": {
             "file": "sheets/amphibious-tank__composite__d10__material.png",
-            "sha256": "60ef51963186a5d74ccb242ad2efad858b6693e1b90171733a6185b2ccce660a"
+            "sha256": "53bb8bfc15e4520dfc187b41b65554734fa1d1ac50dbf9b6cbcf0fc23ee0936d"
           }
         }
       },
@@ -6675,15 +7183,15 @@
         "files": {
           "albedo": {
             "file": "sheets/amphibious-tank__composite__d11__albedo.png",
-            "sha256": "a22d6a1b8015f0b796033e0330bf95fc3fb31acc43bac53807e56a93c4f3d966"
+            "sha256": "8d88aa4447aa1402f6bfd06fc8dbc0db469798044c5e5c66cb78b92ef469b8b7"
           },
           "normal": {
             "file": "sheets/amphibious-tank__composite__d11__normal.png",
-            "sha256": "db8bbfe010573e3d6f88453fc95a716ad89f81d48e9cc6e6a22fc4627cb163fe"
+            "sha256": "465c22dc55685aa61973092b2990376c7079237a5f25ee3b260e5d8440896b22"
           },
           "material": {
             "file": "sheets/amphibious-tank__composite__d11__material.png",
-            "sha256": "96eeb09c477cebd32aaee22a8b56983f84ba9227ee2224f6f9ed26992d8d8c3e"
+            "sha256": "f138a51b9919570943f3594d138d7fa0f172c6b9bd6f07b0a11044c15a62291f"
           }
         }
       },
@@ -6693,15 +7201,15 @@
         "files": {
           "albedo": {
             "file": "sheets/amphibious-tank__composite__d12__albedo.png",
-            "sha256": "79410223010d9defce654bfd152a44b2804da236c945add10e92366da1e1151f"
+            "sha256": "0c5be9e13d32ddd60a816f2fde113c008f3e95ea4b73b7b48e7ba4bda4ecfd92"
           },
           "normal": {
             "file": "sheets/amphibious-tank__composite__d12__normal.png",
-            "sha256": "a7bcb2e367ab0e608bcf5fefef95ca7004a01d20def3f16df97a955ee1eeb9a7"
+            "sha256": "58bf1d616b9a959c0225873796fca1e0f5b6442afe4a5039b6c3757c17e4d3ad"
           },
           "material": {
             "file": "sheets/amphibious-tank__composite__d12__material.png",
-            "sha256": "67d3ab17114bfbaa86f6c8c30864648053bd9ce1474b171c61921aeb268ebabb"
+            "sha256": "5c953f394e6872e0f25b7cd880b14464f70e6d9ee958bb67bf13809d9c8411af"
           }
         }
       },
@@ -6711,15 +7219,15 @@
         "files": {
           "albedo": {
             "file": "sheets/amphibious-tank__composite__d13__albedo.png",
-            "sha256": "db6359908fe0cc73134d6972412d6c837372397f74ce4c10e87e57b3a218eed0"
+            "sha256": "7b6bebb6f47accff9c32e091f564171e8aae9d0ab99817a1281db6f93c437ee6"
           },
           "normal": {
             "file": "sheets/amphibious-tank__composite__d13__normal.png",
-            "sha256": "d54ea1c50deb75dd29d1282933b322640479b701ae3215b731d17fcbef72a274"
+            "sha256": "8bdc73946b52d361976522f7c6de90d775fe621865890f47c7db851874885cbc"
           },
           "material": {
             "file": "sheets/amphibious-tank__composite__d13__material.png",
-            "sha256": "408c69665fcf96bfce8a2a45100345d79c5b7b6f4aacbca95c631c4cbf1fa441"
+            "sha256": "f024a3a6a67a0dd83202d4507df4fdb7ee41fde93e60c20c43ce31bef04a9985"
           }
         }
       },
@@ -6729,15 +7237,15 @@
         "files": {
           "albedo": {
             "file": "sheets/amphibious-tank__composite__d14__albedo.png",
-            "sha256": "0005e406b0dd0e5ab2527220ad4d788af2e4a4cb00f0156c42c3b676bc98cd82"
+            "sha256": "db58bed9dfbeff166cd84aec9da548cf2775567ed1199e8b890646cb1f717088"
           },
           "normal": {
             "file": "sheets/amphibious-tank__composite__d14__normal.png",
-            "sha256": "a16db0c6bbe7485aa347a64a0c7e442c744cc249f480a191e46cd2033d9e74d1"
+            "sha256": "61a8d2474f62d3cd3193cf383f222085c6d1ba4304a1e7c4466cb811f81e5b13"
           },
           "material": {
             "file": "sheets/amphibious-tank__composite__d14__material.png",
-            "sha256": "5fe6c5fd1aaf73baff9c926c68314afb21baf26f0858ad5e40d091a83fe194eb"
+            "sha256": "9192e3c3140578ad23c675dc92bb15f3ea554fc89e9e843c5b66a27d62cc5e13"
           }
         }
       },
@@ -6747,15 +7255,15 @@
         "files": {
           "albedo": {
             "file": "sheets/amphibious-tank__composite__d15__albedo.png",
-            "sha256": "a9983ef8b5cc2598713546fd929cd02654928bc1b37300f35209183c0f776db3"
+            "sha256": "c158510e72445c10ed9799abfc482d6f95ab6a17a909b82ceeb7cbf6dca35c84"
           },
           "normal": {
             "file": "sheets/amphibious-tank__composite__d15__normal.png",
-            "sha256": "0685719af13d4c42567ca4054f54e4b473070796ed168d6d9569c126f6b36c6f"
+            "sha256": "0c7b3422b2dc3b4e1dec745a67264c8ca459eb070bfd6ac75f8be9cb141249a4"
           },
           "material": {
             "file": "sheets/amphibious-tank__composite__d15__material.png",
-            "sha256": "313c7fc0920cd00b7589286315f516de6e1bf3848857e964e606e3dfaedbc200"
+            "sha256": "ee414475901244e0b7c4798b9fa2027d19941c15f70a02cf943114f6f5acfdf8"
           }
         }
       }
@@ -6769,97 +7277,97 @@
         "file": "sheets/amphibious-tank__lit__d00__albedo.png",
         "w": 60,
         "h": 42,
-        "sha256": "4d094e5c738f745a3ba0316397b772f5770d4799624d3f3248bdf81c8852ad78"
+        "sha256": "cf9b6322dfcd1af79668cbf5cf2f753b72d0dbb489d05c3e7547edfe0b8cb879"
       },
       "d01": {
         "file": "sheets/amphibious-tank__lit__d01__albedo.png",
         "w": 55,
         "h": 42,
-        "sha256": "bcd766b7ad10992815a756cad34e2c085211aecdb8a6585c86b5698ec84d2ef7"
+        "sha256": "6964040b80d0c6dc3a4b80b3cf9e0e72d5998784782e9fab31de65fe18f092aa"
       },
       "d02": {
         "file": "sheets/amphibious-tank__lit__d02__albedo.png",
         "w": 46,
         "h": 40,
-        "sha256": "bf6fc07f6cb6407ecc14460441d45d72a51ded82f26c223ec9d7efa71e141d57"
+        "sha256": "07dac73194942e24d389826de8ae350c88f007cd513bf008fd0c1e467d67822e"
       },
       "d03": {
         "file": "sheets/amphibious-tank__lit__d03__albedo.png",
         "w": 55,
         "h": 42,
-        "sha256": "e9bfdcc49679199ee83f2c50de56c2ebdeb21bcc8c8cdfe62017a04baf257826"
+        "sha256": "7b2cbb35de08e024ddbc4b8c2dd7e3cc0d5363f27c3196b52ec638926353b475"
       },
       "d04": {
         "file": "sheets/amphibious-tank__lit__d04__albedo.png",
         "w": 60,
         "h": 42,
-        "sha256": "cb82b966085249949a837e978a8c1244e0883e443e1f01d89f0baa692888d1ea"
+        "sha256": "f6f72e489b009262149834f98b2aa948d3b774d4acd4fe59bcf3f6d49a9e4d96"
       },
       "d05": {
         "file": "sheets/amphibious-tank__lit__d05__albedo.png",
         "w": 59,
         "h": 41,
-        "sha256": "0fc298c61204483db2543f86383ce9244fd8b1fc732de1d46eaf29fd47ac8e46"
+        "sha256": "c37999206771cea5874bfbae89e46772612e89fa3b01f4d01c88b2ea1bf22351"
       },
       "d06": {
         "file": "sheets/amphibious-tank__lit__d06__albedo.png",
         "w": 54,
         "h": 40,
-        "sha256": "f2a7810580adc6cec795c3feed95ca23a14699e666f3f95bd9a754305059345b"
+        "sha256": "109d1378fac818b73b5f701f2416c29fe58505867df0f176c78682ad89c57efd"
       },
       "d07": {
         "file": "sheets/amphibious-tank__lit__d07__albedo.png",
         "w": 58,
         "h": 41,
-        "sha256": "f97cf25077c6d3b023e5ca0234eb9bc45962238c03bb41e66820a5bb0d1daf39"
+        "sha256": "502d3213146f3e917c86c7934b8ae01c1c48f2f5bbb3b4405ed12f089572c057"
       },
       "d08": {
         "file": "sheets/amphibious-tank__lit__d08__albedo.png",
         "w": 60,
         "h": 44,
-        "sha256": "979d419e944d30959efa52d2631168951784ddfacec4ded6483c6c76aad45a23"
+        "sha256": "9d0ac6211e26ad61b2331a1d2281c5f7af5acf7fb466c1450a1b75bc5a290496"
       },
       "d09": {
         "file": "sheets/amphibious-tank__lit__d09__albedo.png",
         "w": 55,
         "h": 45,
-        "sha256": "508c720e00bafc4f40fdafb7ebd1736f0a0b8e46a25e1e6bfaea877f013331ae"
+        "sha256": "39b966527059097779c8626843403eea0f4eddf7f62dbca3f38d69748342893d"
       },
       "d10": {
         "file": "sheets/amphibious-tank__lit__d10__albedo.png",
         "w": 46,
         "h": 43,
-        "sha256": "41e8198aebc5442891531444e16b1d59d73182da9714bc3ea8c827adafe40579"
+        "sha256": "0bfc905f43564fb7a4ff0cd8df558239dae86ecbb05fb96f494b5fda45a93d5a"
       },
       "d11": {
         "file": "sheets/amphibious-tank__lit__d11__albedo.png",
         "w": 55,
         "h": 45,
-        "sha256": "cd92c58ec56145e78b526a564ad3959f06056dbedcf4fc02d262b49e78915f19"
+        "sha256": "a08291a29f125fe2c841e233d7f0063b8d43986b1b30912b54f45e766f507151"
       },
       "d12": {
         "file": "sheets/amphibious-tank__lit__d12__albedo.png",
         "w": 60,
         "h": 44,
-        "sha256": "59b16ca48e9a3cacd3dc7f71279dd37c2fc3f99d4c2eb4798132b096693370a7"
+        "sha256": "dcad10335be3d320446e38a51f47819ae0feeb4cf4107a10fbb4ca68ed850437"
       },
       "d13": {
         "file": "sheets/amphibious-tank__lit__d13__albedo.png",
         "w": 59,
         "h": 41,
-        "sha256": "e8b5abd215294a9e9ca13a631d8e72d3c93d343635b107b7c650320c9735c216"
+        "sha256": "de1c3036963ebe94aff5a43014997b3720d6bdf5c5b9512af7daa635a4e2aac7"
       },
       "d14": {
         "file": "sheets/amphibious-tank__lit__d14__albedo.png",
         "w": 54,
         "h": 37,
-        "sha256": "ec8cdd5d95c6e8ea680b49a9728a5cba4f2b897eb26f95db3b55e8058844fee2"
+        "sha256": "549b41842aa63111db2874cadd9c49a8dda41cb0a1f97e51b77f564fd209f9b0"
       },
       "d15": {
         "file": "sheets/amphibious-tank__lit__d15__albedo.png",
         "w": 58,
         "h": 42,
-        "sha256": "80d43564e2fb180a8b1a2400a72659c999489e8cc07920cb11c4f2facdb7e72a"
+        "sha256": "52fa362c3f1aac698fe64cb142ddf998dfaf1c40c7ebf1ea76b44bc8548c6716"
       }
     }
   },

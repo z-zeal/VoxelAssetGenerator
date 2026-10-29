@@ -998,6 +998,21 @@
       }
     ]
   },
+  "depthMap": {
+    "note": "Per-part view depth, one PNG per part per facing. Composite by z-test on this; do NOT try to order segments by a single depth per part.",
+    "channelOrder": "rgba",
+    "meaning": [
+      "depthHi",
+      "depthLo",
+      "unused",
+      "covered"
+    ],
+    "encoding": "q = depthHi * 256 + depthLo; depth = q / scale - bias  (tile units = design voxels / 8)",
+    "scale": 256,
+    "bias": 128,
+    "coveredAlpha": 255,
+    "largerIsCloser": true
+  },
   "parts": {
     "body": {
       "name": "body",
@@ -1009,6 +1024,7 @@
         0
       ],
       "traverse": false,
+      "traverseRoot": null,
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -1059,6 +1075,12 @@
               "w": 58,
               "h": 43,
               "sha256": "0478a4da1030a54427e16ca78f2eff9e0c497b39134137311df0b1adf5f5b727"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__body__d00__depth.png",
+              "w": 58,
+              "h": 43,
+              "sha256": "2cf0f37b142706d1bc3ad7249a63b64750b4411687f2a40d266e9ccd8fcd333c"
             }
           },
           "filesHi": {
@@ -1124,6 +1146,12 @@
               "w": 54,
               "h": 42,
               "sha256": "dbe8781ca24ac4716b738a88d51fc693c7fe71de228be12e0dc9bc7fc2e33f49"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__body__d01__depth.png",
+              "w": 54,
+              "h": 42,
+              "sha256": "26917888e58183a67a075f9c474e89ebfbe23c60c3eb3733331621f6ff0bbbac"
             }
           },
           "filesHi": {
@@ -1189,6 +1217,12 @@
               "w": 50,
               "h": 42,
               "sha256": "e70581ee3ef68a6d9ecdd3dc71e242a1b7d5d9d94705b8cee66b157ebfdd1c92"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__body__d02__depth.png",
+              "w": 50,
+              "h": 42,
+              "sha256": "160174734faa87043179aa2d86fa44331db2e94a7ec18c28d3fda6532b92f074"
             }
           },
           "filesHi": {
@@ -1254,6 +1288,12 @@
               "w": 54,
               "h": 46,
               "sha256": "260091742681ed77d30b29df6777467157904939acc4d571d74891a137161902"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__body__d03__depth.png",
+              "w": 54,
+              "h": 46,
+              "sha256": "7212e65a22569e6f59d407d79e8dd9b7c6bb1cbe9438b04f41495cd88966e19d"
             }
           },
           "filesHi": {
@@ -1319,6 +1359,12 @@
               "w": 58,
               "h": 46,
               "sha256": "0f16015fa285f572e5904129554fc57eb88f7825a392979c731d9dac0a063053"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__body__d04__depth.png",
+              "w": 58,
+              "h": 46,
+              "sha256": "f79eca3cc92c2a26b605df805ba5d555f29e7284c5eec87eb0fe35d42928d218"
             }
           },
           "filesHi": {
@@ -1384,6 +1430,12 @@
               "w": 58,
               "h": 44,
               "sha256": "3fadcf511b4c900512d7c4c537db310e41312abec6ed87bd4863b2cec0423b1c"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__body__d05__depth.png",
+              "w": 58,
+              "h": 44,
+              "sha256": "f75de2647c493ef23661e0dc44b3f9ab09cdb40ab57d708256855e85da10fa75"
             }
           },
           "filesHi": {
@@ -1449,6 +1501,12 @@
               "w": 50,
               "h": 42,
               "sha256": "be697c21b0054c591a6953e34b1fd1b03264d0d12ce986c696d478a578bf4317"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__body__d06__depth.png",
+              "w": 50,
+              "h": 42,
+              "sha256": "bb4b85aeee4a84f8ec4d6f517309bb63665881eb6c4825866fe967e4139bdc67"
             }
           },
           "filesHi": {
@@ -1514,6 +1572,12 @@
               "w": 57,
               "h": 43,
               "sha256": "3f95698121815dd663d7bff43220e0f3839506d23916d90a28013eafd839e908"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__body__d07__depth.png",
+              "w": 57,
+              "h": 43,
+              "sha256": "d2c9a91d1ce8fa0a0038e0269c71adae08a27a6d06b72064a4719551d88b2641"
             }
           },
           "filesHi": {
@@ -1579,6 +1643,12 @@
               "w": 58,
               "h": 45,
               "sha256": "271cde3802a5c9c2e32f773dd77a29a13732c312854ab2a384030d8a393b7e67"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__body__d08__depth.png",
+              "w": 58,
+              "h": 45,
+              "sha256": "2f97f72801bc69982002a3f3706eeb2a9770dd7d8030c5619a97bf21ae91095a"
             }
           },
           "filesHi": {
@@ -1644,6 +1714,12 @@
               "w": 54,
               "h": 44,
               "sha256": "69c4df0dc005e521fa71d032f097fd850e350b374bfb6ec923a47b088f915e6b"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__body__d09__depth.png",
+              "w": 54,
+              "h": 44,
+              "sha256": "643ea398837f29cc076238e84968dc3837297b0dc791eaaf4e3f33583e9c96e1"
             }
           },
           "filesHi": {
@@ -1709,6 +1785,12 @@
               "w": 50,
               "h": 40,
               "sha256": "e8ce3aa421f2fd9089c55a26b00b4d8dbf77add8eeae5d790f86b037f63adc84"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__body__d10__depth.png",
+              "w": 50,
+              "h": 40,
+              "sha256": "fdb85e5df99fba6c25a09a04acce8ff5bb64690ff5fadbdef727757fe1f622a1"
             }
           },
           "filesHi": {
@@ -1774,6 +1856,12 @@
               "w": 54,
               "h": 42,
               "sha256": "102da6c19e3007a32d912ba1cb8110374e6263ed7212b9058f62a5af26da1992"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__body__d11__depth.png",
+              "w": 54,
+              "h": 42,
+              "sha256": "321394088fd4990bb48c990b47b64c1eea51d0752f0f3638a786db1ca628b493"
             }
           },
           "filesHi": {
@@ -1839,6 +1927,12 @@
               "w": 58,
               "h": 43,
               "sha256": "32f1fe1800ac7ecb18d195404e4093561db8971370457f48c95594a339453d64"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__body__d12__depth.png",
+              "w": 58,
+              "h": 43,
+              "sha256": "b8252c0b85bd81a3c5a616c9213624bc683b7d01472e0882adf596dae9a64610"
             }
           },
           "filesHi": {
@@ -1904,6 +1998,12 @@
               "w": 58,
               "h": 41,
               "sha256": "1ff43a5c76666713455fb45784122e07c2d90eb8b07e623e2f372e3539737cb0"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__body__d13__depth.png",
+              "w": 58,
+              "h": 41,
+              "sha256": "a569d8fa32ccb863bfbaa1d83d2eb45edbad00ae1c90ffa12c2f3d1f91cf429f"
             }
           },
           "filesHi": {
@@ -1969,6 +2069,12 @@
               "w": 50,
               "h": 39,
               "sha256": "b042414a072c6cd27a48e4b1d80ca4c9066b32e39dc89e89bf834a79aba109e7"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__body__d14__depth.png",
+              "w": 50,
+              "h": 39,
+              "sha256": "06acd74d03a4dc44ef1ed4915c0af5a8b83b33c8d31ea025d2c6cd08aeedadcd"
             }
           },
           "filesHi": {
@@ -2034,6 +2140,12 @@
               "w": 57,
               "h": 42,
               "sha256": "f712e07f284a55bfd9e08a53bcb8e9cbcbc7980ab79759e6f0b63b799759fcdd"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__body__d15__depth.png",
+              "w": 57,
+              "h": 42,
+              "sha256": "29c13727097327fd7ba3de9a5ede5b8fff2e4adb31fb37e753800749f73916cd"
             }
           },
           "filesHi": {
@@ -2081,6 +2193,7 @@
         0
       ],
       "traverse": false,
+      "traverseRoot": null,
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -2131,6 +2244,12 @@
               "w": 39,
               "h": 29,
               "sha256": "e3984719987cdcecc01249d055766d23340c9a105a086a96af5aec2d883a4e4f"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.L__d00__depth.png",
+              "w": 39,
+              "h": 29,
+              "sha256": "caccecc869c2ba4b800884269ad13b563d23274ef5c70f25790595c2d6d81642"
             }
           },
           "filesHi": {
@@ -2196,6 +2315,12 @@
               "w": 29,
               "h": 32,
               "sha256": "1b3bbdd60f2ecf75775ffb3b4310414307ae340c94827c0e283243c36b669258"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.L__d01__depth.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "d5488d3ffeb39f40b92cc370fec8518dbb4c69b98082c31c07dad835f47f9677"
             }
           },
           "filesHi": {
@@ -2261,6 +2386,12 @@
               "w": 15,
               "h": 32,
               "sha256": "2e467561db5be167ba613b54097b9facbb9c6424c9dc12620abf7be244647a5b"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.L__d02__depth.png",
+              "w": 15,
+              "h": 32,
+              "sha256": "e5b6b4035c33459c5e741d6070236ff5e1c6303c04d558f60c21e44419aade2e"
             }
           },
           "filesHi": {
@@ -2326,6 +2457,12 @@
               "w": 29,
               "h": 32,
               "sha256": "c6762bc2b01e737d78655ff3e06b5a1a37f72549e247d33d9ebef77c8bbe4f0b"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.L__d03__depth.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "9f6b53c04404a4aa8c4327177536b89a9937be590221efcd25dce7fbb8cf1faf"
             }
           },
           "filesHi": {
@@ -2391,6 +2528,12 @@
               "w": 39,
               "h": 30,
               "sha256": "06645f5f263b12809b6c064412719b88257f7deba69119585007c8b49088fe57"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.L__d04__depth.png",
+              "w": 39,
+              "h": 30,
+              "sha256": "3de3287e2581f8941fef2bef62feebb18c750bd5b9aaec4a4c28c8e807dee2c4"
             }
           },
           "filesHi": {
@@ -2456,6 +2599,12 @@
               "w": 45,
               "h": 25,
               "sha256": "387b8506ca485b73bf3a10f15af8a5dff5468f07f76a6902c7eff85670cafec3"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.L__d05__depth.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "b51dd62216e1d25944e32eec224f287212d36ed6a1ee726cb491073cfb3d3e48"
             }
           },
           "filesHi": {
@@ -2521,6 +2670,12 @@
               "w": 46,
               "h": 20,
               "sha256": "eea29333f4aad80583114a26d27a7fee105c6f7fad18d225dbab6c03455fcc8f"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.L__d06__depth.png",
+              "w": 46,
+              "h": 20,
+              "sha256": "5ba4ec812cf1602bec61a829fac62e0c67713812068b8dd54d0defb6dd7a8645"
             }
           },
           "filesHi": {
@@ -2586,6 +2741,12 @@
               "w": 45,
               "h": 24,
               "sha256": "949224cac8eaa56fe45946ab6d8fd3e264d38d08c7b83f428091502fab19ddb7"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.L__d07__depth.png",
+              "w": 45,
+              "h": 24,
+              "sha256": "7a3b25266dc2ef48a3375d7cd076ea11950642b106be0c29a299768735dd4384"
             }
           },
           "filesHi": {
@@ -2651,6 +2812,12 @@
               "w": 39,
               "h": 28,
               "sha256": "18ecbf18ca0db370c2c66fd1b4b1669cc4f1c503dc3009a713d2898812856277"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.L__d08__depth.png",
+              "w": 39,
+              "h": 28,
+              "sha256": "30282b924aba7578902b19ed1c10cb05b8c237600615208fbc9550b36c048384"
             }
           },
           "filesHi": {
@@ -2716,6 +2883,12 @@
               "w": 29,
               "h": 31,
               "sha256": "5483f1d30f629e7c4f7852a7733f4d985485eb15f3116cd639cbbad2260d246e"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.L__d09__depth.png",
+              "w": 29,
+              "h": 31,
+              "sha256": "103500075a66460b9491b6f3a21741306e6f11dabc3296dcc1f0b56971d915b8"
             }
           },
           "filesHi": {
@@ -2781,6 +2954,12 @@
               "w": 15,
               "h": 32,
               "sha256": "3b83eb4293e38699b1da9d75e2ad9888e79b361da347ecb679e789ea09ca8b78"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.L__d10__depth.png",
+              "w": 15,
+              "h": 32,
+              "sha256": "f0f883da7b35bc42f5f8d2761d1ca40f3b6ebf4bce7c5421ffbd3000a2551a20"
             }
           },
           "filesHi": {
@@ -2846,6 +3025,12 @@
               "w": 29,
               "h": 32,
               "sha256": "a24381a0e9e290eb13e673d86eaa078e85bde4a7c02edfb2a83c89a03468c110"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.L__d11__depth.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "ab1cb33011817b1bf0eb9ea6f0761f8f612cea9b6918774b52d00f7711589923"
             }
           },
           "filesHi": {
@@ -2911,6 +3096,12 @@
               "w": 39,
               "h": 30,
               "sha256": "dcebe6d7930c8ca862a69628972a62bc3a77174f9098330f9419144f588ab1f6"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.L__d12__depth.png",
+              "w": 39,
+              "h": 30,
+              "sha256": "2e30fe4c736bf546e5d1c7746ce676ae1fac58f65323b0f4504f068fe17b9628"
             }
           },
           "filesHi": {
@@ -2976,6 +3167,12 @@
               "w": 45,
               "h": 25,
               "sha256": "478fb486bd25d941fb97eb579533489c84425a9cc91ce34b540099562f282804"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.L__d13__depth.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "e1cda7c6e5f37c3730f5e61565f58a9840df73dbe3d8eca77fd3186ae1513ee2"
             }
           },
           "filesHi": {
@@ -3041,6 +3238,12 @@
               "w": 46,
               "h": 20,
               "sha256": "542edce65cfd339f3267ac20392458c84df6a04f0d05d52539e137041927880b"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.L__d14__depth.png",
+              "w": 46,
+              "h": 20,
+              "sha256": "132ef621dab07d16df273e606930d9251497369f6ac7d16d6a2c561eb7ba26cc"
             }
           },
           "filesHi": {
@@ -3106,6 +3309,12 @@
               "w": 45,
               "h": 26,
               "sha256": "9f3bc84cc5b48797996a6892879d122024c8f038c1c14aad8001417c77f50a05"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.L__d15__depth.png",
+              "w": 45,
+              "h": 26,
+              "sha256": "2f28cf1e2cf13230caa0fa4f8e4d4dfe72d4e9d37112e69c21eb6dbf75a18c33"
             }
           },
           "filesHi": {
@@ -3153,6 +3362,7 @@
         0
       ],
       "traverse": false,
+      "traverseRoot": null,
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -3203,6 +3413,12 @@
               "w": 39,
               "h": 30,
               "sha256": "918499759cee9f2b1b7cdd2442e26e747ee1d3c946beb9f2964ab74f72b3535f"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.R__d00__depth.png",
+              "w": 39,
+              "h": 30,
+              "sha256": "56b252e4166592b8880aab3129f95fe32106d1ac0620b9bd1d256cf8c0761ed5"
             }
           },
           "filesHi": {
@@ -3268,6 +3484,12 @@
               "w": 29,
               "h": 32,
               "sha256": "657c6788e2ae2c982404fe6b3e8a9044e0f331ae5a6805a3863455d0ddf7ecdb"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.R__d01__depth.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "f4ec544cea01c9dc14cfefcf30f1e7eb8201b4312bb7ad8378a2ea524a86a601"
             }
           },
           "filesHi": {
@@ -3333,6 +3555,12 @@
               "w": 16,
               "h": 32,
               "sha256": "fe63a5ce45b3caecffac457b990ff827fd259ac956e2d050f6729efc9e3947a4"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.R__d02__depth.png",
+              "w": 16,
+              "h": 32,
+              "sha256": "4c454dee206681f86fde4f02753ff0c500f5f595b7a78e8e641ac3df824101e9"
             }
           },
           "filesHi": {
@@ -3398,6 +3626,12 @@
               "w": 29,
               "h": 31,
               "sha256": "322aad8b186d1e2d656136136e0b3878f1118739a9a66700ac7461edaf461020"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.R__d03__depth.png",
+              "w": 29,
+              "h": 31,
+              "sha256": "ebfba3606a035bbc035648a3062e50277ab6a33522d4db903aee5e7cdd906709"
             }
           },
           "filesHi": {
@@ -3463,6 +3697,12 @@
               "w": 39,
               "h": 29,
               "sha256": "e736cbf13bb363d45cd4c97596509f1a2ff469a589a98b6606c56d36387cc36b"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.R__d04__depth.png",
+              "w": 39,
+              "h": 29,
+              "sha256": "3d88daffbf129692d764c214f236823cfe2b744919965c53a1370bbf8958273e"
             }
           },
           "filesHi": {
@@ -3528,6 +3768,12 @@
               "w": 45,
               "h": 26,
               "sha256": "42656d57533bd16be5ce904a5d5e6e24c0ef722be80ce1787f6af062930db20b"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.R__d05__depth.png",
+              "w": 45,
+              "h": 26,
+              "sha256": "4e5466e33aa869bf0732eeff2919d642b831119c1a0573dd5160fcc2e58739a6"
             }
           },
           "filesHi": {
@@ -3593,6 +3839,12 @@
               "w": 46,
               "h": 21,
               "sha256": "6dc42ae1a67f13cf0776a823f6e90c84e218e182a22928f89edf5a5b7e1a835d"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.R__d06__depth.png",
+              "w": 46,
+              "h": 21,
+              "sha256": "b7d321ee6df120a3e29f8993eb02de58ac05d7b5674540ec63d3be04104e913a"
             }
           },
           "filesHi": {
@@ -3658,6 +3910,12 @@
               "w": 45,
               "h": 25,
               "sha256": "928854dc27777be6bac45edfa5ddbe2e8cc78db05f870e2c124336f78d45ba24"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.R__d07__depth.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "2ad9089a7f50a861defacdde6b3aea01bcefbcb225f3725ce65f90ab0901b2ec"
             }
           },
           "filesHi": {
@@ -3723,6 +3981,12 @@
               "w": 39,
               "h": 30,
               "sha256": "0dc1af41c1196b01913eddcc6d1eae8cada498cac6dd863c8aa62af68ab3c60d"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.R__d08__depth.png",
+              "w": 39,
+              "h": 30,
+              "sha256": "602f5cab5fa5ab043a1b09739f93e7334b11ad8d36a6ada65c183aaff3636031"
             }
           },
           "filesHi": {
@@ -3788,6 +4052,12 @@
               "w": 29,
               "h": 32,
               "sha256": "2cbb48aa004672dd64c08baebfd04e4213991fc0a31f292970a55b71092c80ab"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.R__d09__depth.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "685819b6521f7573398ddedc43d0e6bed34373d4d9f2ac7a875a37b0b11f8631"
             }
           },
           "filesHi": {
@@ -3853,6 +4123,12 @@
               "w": 16,
               "h": 32,
               "sha256": "d19db0e388388eae1e3bde28e10e5686c69a5e4b27e3eb9e1a9eb35a0d98605b"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.R__d10__depth.png",
+              "w": 16,
+              "h": 32,
+              "sha256": "0ac404a9cced2dab9eb34ec01e930ce90a8418d822642024989bffb90f954d61"
             }
           },
           "filesHi": {
@@ -3918,6 +4194,12 @@
               "w": 29,
               "h": 31,
               "sha256": "851a8d75d547feab4389077859e0bdda4ab304d62f9e9efdf4c30be66c066bf0"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.R__d11__depth.png",
+              "w": 29,
+              "h": 31,
+              "sha256": "7efca07a14d6f76a849ecd19b6893222094b55e7471cfac3dd47f75cd7b9f8e8"
             }
           },
           "filesHi": {
@@ -3983,6 +4265,12 @@
               "w": 39,
               "h": 28,
               "sha256": "65ac75b7695094fc1187e023ba69bc6173978b2783e88683f863f122b8431002"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.R__d12__depth.png",
+              "w": 39,
+              "h": 28,
+              "sha256": "91e585f3e4a95fe1e2a24b5f1164eecddbfdd23101fdd88ba6917ef5ef2adfc7"
             }
           },
           "filesHi": {
@@ -4048,6 +4336,12 @@
               "w": 45,
               "h": 23,
               "sha256": "b69c91a04c44e3a07e7a167301c79e9e6b30652883a43c21514a388bc8f1ec88"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.R__d13__depth.png",
+              "w": 45,
+              "h": 23,
+              "sha256": "b9c4b707feb78edccaaf5abf6a738d096eb8227b5c3fa241173838e99278d9c4"
             }
           },
           "filesHi": {
@@ -4113,6 +4407,12 @@
               "w": 46,
               "h": 19,
               "sha256": "10e1278d9e25e25ce9264ea6da33ea2c2a582f70f297f8946800ff39dd1136c1"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.R__d14__depth.png",
+              "w": 46,
+              "h": 19,
+              "sha256": "3d79f18fb39930821c321d6d8c574ca1ea40de70ea5e0b8ec236c7603c9ead7d"
             }
           },
           "filesHi": {
@@ -4178,6 +4478,12 @@
               "w": 45,
               "h": 25,
               "sha256": "ce5a0292bd7b758e1a77fbcccf220babf0872553f90c0357a4d86b7f06512c66"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__running.R__d15__depth.png",
+              "w": 45,
+              "h": 25,
+              "sha256": "24d7e95df4fa91c846b83a80c3441659f9bb9e75e4e36e8beda411f3e421106f"
             }
           },
           "filesHi": {
@@ -4225,6 +4531,11 @@
         192
       ],
       "traverse": true,
+      "traverseRoot": [
+        400,
+        256,
+        192
+      ],
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -4275,6 +4586,12 @@
               "w": 13,
               "h": 11,
               "sha256": "4f0e9c1b9edb7b5e4ab0baf8f3083a381384c184376591f691e60843b6fd9759"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__turret__d00__depth.png",
+              "w": 13,
+              "h": 11,
+              "sha256": "37a1660a9430639e29bc6de7da4ae318f3242b7d8ce7d9ff34dd8f61237e5be3"
             }
           },
           "filesHi": {
@@ -4340,6 +4657,12 @@
               "w": 14,
               "h": 12,
               "sha256": "700b8a4c34dc4b6e46fced871987b214b54808a5bee1de6df9a8e2eb5a2fd16c"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__turret__d01__depth.png",
+              "w": 14,
+              "h": 12,
+              "sha256": "dd7f69a9d7781906996526ba9b3cf6191a657c63fbb106c64452ec95e09a26d1"
             }
           },
           "filesHi": {
@@ -4405,6 +4728,12 @@
               "w": 15,
               "h": 10,
               "sha256": "374b28b8d2dd190edeebb467a1e133c0ed85bca2ec09dfdb3344dddb13bc4779"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__turret__d02__depth.png",
+              "w": 15,
+              "h": 10,
+              "sha256": "5578d2e5e11c52456d45f2dfce97b6bb1de2c88b5066a0050d3bda3b899aab31"
             }
           },
           "filesHi": {
@@ -4470,6 +4799,12 @@
               "w": 14,
               "h": 11,
               "sha256": "5c412cadf3087a351f84ff43660114de401ef1d64b1e1fab85454b9b11fcd700"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__turret__d03__depth.png",
+              "w": 14,
+              "h": 11,
+              "sha256": "fa294f2fdbc3f1da450d64ec9ecc658ea93dbf93461f92ce2639828cf5a2ab74"
             }
           },
           "filesHi": {
@@ -4535,6 +4870,12 @@
               "w": 13,
               "h": 12,
               "sha256": "119ac7c0db7b1ca95b25282e35c1091c50257ce83c512b2c5b18f86fa918392c"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__turret__d04__depth.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "878892a2462d620fb9e6d640feb1921e1037b1b0581d8a7b6eb0fd7537a8565d"
             }
           },
           "filesHi": {
@@ -4600,6 +4941,12 @@
               "w": 11,
               "h": 12,
               "sha256": "11c2a0e192c75889a53aa402dedcefb0c522f72dc349e1ff2d6200d36cc7eb5e"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__turret__d05__depth.png",
+              "w": 11,
+              "h": 12,
+              "sha256": "b0c96c563f598058174957452c8da097c4d6b05e3f6cfb06800396d516190045"
             }
           },
           "filesHi": {
@@ -4665,6 +5012,12 @@
               "w": 10,
               "h": 13,
               "sha256": "556e3557e04bb4afe5d08b0093b436cce7b9f4b37071aab6df66fb3719225fc6"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__turret__d06__depth.png",
+              "w": 10,
+              "h": 13,
+              "sha256": "a76f88f08de09bd87fb80d37fc146371115e919a88e19eb14f857d1079730d32"
             }
           },
           "filesHi": {
@@ -4730,6 +5083,12 @@
               "w": 12,
               "h": 12,
               "sha256": "fa06886d85dbc39399fd0881450c7f84184311f6f62b9e0ddeec301842087cf9"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__turret__d07__depth.png",
+              "w": 12,
+              "h": 12,
+              "sha256": "bf22068451ee33093908d4541d0b0406ab38a06c792781ec1267fd51a20ca8f1"
             }
           },
           "filesHi": {
@@ -4795,6 +5154,12 @@
               "w": 13,
               "h": 11,
               "sha256": "906de438355d8cc3a62ed42ca1157d6c915f875d3f4449bc062a8e4dcf8ffa57"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__turret__d08__depth.png",
+              "w": 13,
+              "h": 11,
+              "sha256": "eec6df1756cf9148933ada25aa51c769991a27a3db6f89f8f0d42141626824b6"
             }
           },
           "filesHi": {
@@ -4860,6 +5225,12 @@
               "w": 14,
               "h": 11,
               "sha256": "35f9d4ad6718d8d4dec60ad539669750022ceb3ae90edf5fa37a96c1bf51f600"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__turret__d09__depth.png",
+              "w": 14,
+              "h": 11,
+              "sha256": "03fe7a508cb18fcb74c3631a259a231a899cffbcc87b77d363835871d5973452"
             }
           },
           "filesHi": {
@@ -4925,6 +5296,12 @@
               "w": 15,
               "h": 10,
               "sha256": "c45d0a04d2ef84e1f127e690a29d227e512bb2bbf8709f61bf22932a6fafa5bd"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__turret__d10__depth.png",
+              "w": 15,
+              "h": 10,
+              "sha256": "959f2085f1ba42bc403472e23d6ef3cc6e9b6fa888363e807c6118900aea38f8"
             }
           },
           "filesHi": {
@@ -4990,6 +5367,12 @@
               "w": 14,
               "h": 11,
               "sha256": "df45f99a53957068e597ac6a4b589562557d2d9bb39227369f84de3e0ec38329"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__turret__d11__depth.png",
+              "w": 14,
+              "h": 11,
+              "sha256": "0073b7333329bf53dde6fc8a4feffb56540c91344e4bed637a7d1a6e51930c0e"
             }
           },
           "filesHi": {
@@ -5055,6 +5438,12 @@
               "w": 13,
               "h": 11,
               "sha256": "2aa4f53ee1090ed65a966e5af6b583a57508cdc99c8f164a9c44e4f161b142b5"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__turret__d12__depth.png",
+              "w": 13,
+              "h": 11,
+              "sha256": "7fc2737e7cd8d71f02aeeaff4846f029da9b0ed4cfeec8cdb26ef83cb17b916a"
             }
           },
           "filesHi": {
@@ -5120,6 +5509,12 @@
               "w": 11,
               "h": 12,
               "sha256": "e86a8427ed7dd250a986b7fa418d9c5d3bd0a4075db0925dacbf35952a29fa95"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__turret__d13__depth.png",
+              "w": 11,
+              "h": 12,
+              "sha256": "b0311215298b546235c709413af5d627a6361ec3f4e3350e73851cc23d947627"
             }
           },
           "filesHi": {
@@ -5185,6 +5580,12 @@
               "w": 10,
               "h": 12,
               "sha256": "50c40231bd51b94472af455addc4e0502ee1f466275a31bccd5bd9a8e05a114b"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__turret__d14__depth.png",
+              "w": 10,
+              "h": 12,
+              "sha256": "082aca6cc16937bc559423753a2d342d739883ee3a4bd266130ea23ae46b30df"
             }
           },
           "filesHi": {
@@ -5250,6 +5651,12 @@
               "w": 12,
               "h": 12,
               "sha256": "284d739acfcfbf752f2ec022fe0ab76f64c9d3bc5ecff44f52c5c41379aae659"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__turret__d15__depth.png",
+              "w": 12,
+              "h": 12,
+              "sha256": "f85c71918504cc6162b20bf1b47ee9be7836f690e4e4d67635b274883ea3675e"
             }
           },
           "filesHi": {
@@ -5297,6 +5704,11 @@
         190
       ],
       "traverse": true,
+      "traverseRoot": [
+        400,
+        256,
+        192
+      ],
       "facingSet": "unit",
       "facingOrder": [
         "d00",
@@ -5347,6 +5759,12 @@
               "w": 15,
               "h": 13,
               "sha256": "43c0cec4abf0c889f40ab895612c52d7cecbc8056ff99c7a750ae432b9aacbac"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__barrel__d00__depth.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "a09165d4ec473f33ac4ea7a28725a1ba3a79326c119554b6d2dc52b0bb7f4fbf"
             }
           },
           "filesHi": {
@@ -5412,6 +5830,12 @@
               "w": 14,
               "h": 14,
               "sha256": "7eb20bfe6ee98ed15f88523597cc360eaff7890a6ca45052c7a90c8c201be7f9"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__barrel__d01__depth.png",
+              "w": 14,
+              "h": 14,
+              "sha256": "fd1007d753c21b056da5c2dfa12ff80f5a5937b4942403cd0d11f11e98b9f0ae"
             }
           },
           "filesHi": {
@@ -5477,6 +5901,12 @@
               "w": 11,
               "h": 13,
               "sha256": "a172df63adb890b4af53d02078636bb798eb61ac6aaefdf8ab2f1f9e1fb3306a"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__barrel__d02__depth.png",
+              "w": 11,
+              "h": 13,
+              "sha256": "c3ae3c7ad7cf717cf02e43c50664f4d2898f89f5f4f775143f8df99a5702d317"
             }
           },
           "filesHi": {
@@ -5542,6 +5972,12 @@
               "w": 14,
               "h": 13,
               "sha256": "e3f1fabc38103841216b1eb0ad317373b72055e7665ba8e7c4f93009e472ca45"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__barrel__d03__depth.png",
+              "w": 14,
+              "h": 13,
+              "sha256": "dc9b0b6b5fd7c857cd01e36351673ca7256fbe49abf7d5b9d4ee62edc562c93c"
             }
           },
           "filesHi": {
@@ -5607,6 +6043,12 @@
               "w": 15,
               "h": 13,
               "sha256": "b082c74f821b7edb011605a92cf9c6be802c04017f94a530ee94f0adcbb22104"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__barrel__d04__depth.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "dab84499b6e7f2cfa0093201c9afb49e8864c10039fed3ca69bdbe429a83f362"
             }
           },
           "filesHi": {
@@ -5672,6 +6114,12 @@
               "w": 15,
               "h": 13,
               "sha256": "00eec5e3429218e7ece08a78bdd32b50b69d0a5d23f278444755a11c7c072c25"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__barrel__d05__depth.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "e398bf57fd7e9a948bd82c661d130f3665660d245b8a49800bd8c8760495e09b"
             }
           },
           "filesHi": {
@@ -5737,6 +6185,12 @@
               "w": 15,
               "h": 12,
               "sha256": "b2be40f61e478755399baee17092e58330117ab6352b73a6d06364dd0db2208a"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__barrel__d06__depth.png",
+              "w": 15,
+              "h": 12,
+              "sha256": "4a0c6d21b53ac76a8e1a1179c24620b9b583e65cff501804029d31faf40fdecf"
             }
           },
           "filesHi": {
@@ -5802,6 +6256,12 @@
               "w": 15,
               "h": 12,
               "sha256": "cdc4626a2fc5d43ddd6743cba46d447b65e1f969cd9f1cd9efa400fe0035ccb8"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__barrel__d07__depth.png",
+              "w": 15,
+              "h": 12,
+              "sha256": "4a4afa9c4130745a990f55813e5dcb3695f31c12d74400be2c239f621378e480"
             }
           },
           "filesHi": {
@@ -5867,6 +6327,12 @@
               "w": 15,
               "h": 13,
               "sha256": "1ff817badd4da5fe5376cc4c4995c0f6f7a9acbbdcc9c29d5e802c9d3073c266"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__barrel__d08__depth.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "f75cc6fd5188c74c3915cad4edab3a284d1b21cf9832b268adfcfaf43ba5f7d5"
             }
           },
           "filesHi": {
@@ -5932,6 +6398,12 @@
               "w": 14,
               "h": 13,
               "sha256": "41e8418db47bf9049a6233e796b4dbb5b3718f254f6ca7d531f346365babb24d"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__barrel__d09__depth.png",
+              "w": 14,
+              "h": 13,
+              "sha256": "623e2d5bca94bb11088c302f65f03b34bd2d9f0cb13759431c0fde62803f2937"
             }
           },
           "filesHi": {
@@ -5997,6 +6469,12 @@
               "w": 11,
               "h": 14,
               "sha256": "3ef645d0e932aead0ab8f36a320498d3d937394c304c622fb0317a2ba8cfdaf3"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__barrel__d10__depth.png",
+              "w": 11,
+              "h": 14,
+              "sha256": "c5528f2a1cdca346d2a452ab3c7d42b2878ede9de093e05590a19d82a171de74"
             }
           },
           "filesHi": {
@@ -6062,6 +6540,12 @@
               "w": 14,
               "h": 14,
               "sha256": "0bfd512cf141d5de59bf7ecd24dcf481b4d18cc963f541e45a0b3266bf569948"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__barrel__d11__depth.png",
+              "w": 14,
+              "h": 14,
+              "sha256": "559be8eccf2d3d135ebce7c0f4e0f0a72c19f4f554e1ec453d1047d559e477f3"
             }
           },
           "filesHi": {
@@ -6127,6 +6611,12 @@
               "w": 15,
               "h": 13,
               "sha256": "3153ee2a7230e40c06bbdc4d98c5149d89b2d64f31ae0e14f0c9330aad3d5a1c"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__barrel__d12__depth.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "fe35809c3eeb2f8e2f176b3bae7eeef312b538da46290e932b0db815587c9004"
             }
           },
           "filesHi": {
@@ -6192,6 +6682,12 @@
               "w": 15,
               "h": 13,
               "sha256": "a265a169317f3d5b73a13101e2e00fcf4ef90211c294bbf68e796a591b22612d"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__barrel__d13__depth.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "a321cd3c669a49dcd50194bab1dcffe7a8035d6ccb70bd9a7733b60021345b02"
             }
           },
           "filesHi": {
@@ -6257,6 +6753,12 @@
               "w": 15,
               "h": 11,
               "sha256": "aff071ef10e08f66b64c3d06bb7f78b529f87a6a8e95811381bf6b88eff4b893"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__barrel__d14__depth.png",
+              "w": 15,
+              "h": 11,
+              "sha256": "853f8651c7b85e69b0a04098a43e81c59635472bdffc3bd73379d91da1642a05"
             }
           },
           "filesHi": {
@@ -6322,6 +6824,12 @@
               "w": 15,
               "h": 13,
               "sha256": "c1e251d60f1da19b9df2c544a25e2c8656fa113883245d200f93aa45090e601c"
+            },
+            "depth": {
+              "file": "sheets/tank-destroyer__barrel__d15__depth.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "2e3e51bc93162c4240494332d084576024b0d84d3dd140310747aa4a57b779bd"
             }
           },
           "filesHi": {
@@ -6477,15 +6985,15 @@
         "files": {
           "albedo": {
             "file": "sheets/tank-destroyer__composite__d00__albedo.png",
-            "sha256": "0f051940427f5381c4e5d217f54d0423c0e063acdd54ab3d2fc0e459ad4fe39b"
+            "sha256": "ac57eb69a1debf4272a4f03ffeee3135fa5cd9bd460676a67d36559c8b003d16"
           },
           "normal": {
             "file": "sheets/tank-destroyer__composite__d00__normal.png",
-            "sha256": "33b736aed675c3190b53287adb59be48220ea3a2389ab71290583d0dc7cfaadc"
+            "sha256": "4969ba9f0adb1f53526a7e1381e3ed9e513f6014abe6a07fc359a91d17b41552"
           },
           "material": {
             "file": "sheets/tank-destroyer__composite__d00__material.png",
-            "sha256": "7ac00478ba44b43658b8f12d0e37c5abd74c1a287a18ecac39d040684360c58f"
+            "sha256": "f8cb3b4ab86a057bf75e2b38baf5e6b417a05b348a802b0ba8ed21cfcece25f2"
           }
         }
       },
@@ -6495,15 +7003,15 @@
         "files": {
           "albedo": {
             "file": "sheets/tank-destroyer__composite__d01__albedo.png",
-            "sha256": "a7cdb88bb16997a7826908c0306ff1136b0b2739e5423a7605715b53d64e63fc"
+            "sha256": "2acd2aeafbe93c84390bd36201cec5d58a4634c3395a26b7760ed01c1d466681"
           },
           "normal": {
             "file": "sheets/tank-destroyer__composite__d01__normal.png",
-            "sha256": "9f46e0c25b8372bdcb2ebfd190108954d69184952da60c9e114b4c997d67845f"
+            "sha256": "619dd687d5596179970336e9793253a279bcf93a687ec059a8d0b2c3971a3b4f"
           },
           "material": {
             "file": "sheets/tank-destroyer__composite__d01__material.png",
-            "sha256": "62e7c4ecce3ce94fea29223a7b504a2d2d3b54fb7bb1983b4244ee92d160fe94"
+            "sha256": "8cc10d3452d4c12da835a84314906bb775b5bb664d8015c5f7626b7a5e4bfb5f"
           }
         }
       },
@@ -6513,15 +7021,15 @@
         "files": {
           "albedo": {
             "file": "sheets/tank-destroyer__composite__d02__albedo.png",
-            "sha256": "345e474c5fd4b71def347622d85a6829daf27eabb040f023294e4bf67f9fa995"
+            "sha256": "e7ba2f8b3d6cfa82ce7253ef4c1dd0b28ab4c9b83e8e1f451c4b369ad0051b65"
           },
           "normal": {
             "file": "sheets/tank-destroyer__composite__d02__normal.png",
-            "sha256": "e848cd554794ee44c55ef154841c0b92bfc3572fbf2e82b04b09d13a7d6e283f"
+            "sha256": "d17a964d435804b22b0a2e9f665b4e6d492f38158d054a155d79385b91272339"
           },
           "material": {
             "file": "sheets/tank-destroyer__composite__d02__material.png",
-            "sha256": "91a3ad710c715047fe5246d1d62ae85ab0ed1772c254fd1038a91f8e1905ddfd"
+            "sha256": "405dca37b6182adc64017493bbdd7938031333068339dd42ca01779cf259bf44"
           }
         }
       },
@@ -6531,15 +7039,15 @@
         "files": {
           "albedo": {
             "file": "sheets/tank-destroyer__composite__d03__albedo.png",
-            "sha256": "5d5cbc24cd4da260605632728d11faa769044233925291f9ca181f02c17dbe96"
+            "sha256": "b8c8e7d2b9c747f7ed2c4d4d5bc49978080db350eeb787b31eb59de5fc9cc694"
           },
           "normal": {
             "file": "sheets/tank-destroyer__composite__d03__normal.png",
-            "sha256": "a39fc12e31b304200dafee9bd158efd63a7654ea568901d53e199f539f0d631a"
+            "sha256": "579b93df472910996793e99a34b7138129ffd925fc39f6f3d5c7bec10f9ab712"
           },
           "material": {
             "file": "sheets/tank-destroyer__composite__d03__material.png",
-            "sha256": "102dc981ef7d5ed0f004e182d44ca7552cee571c5bea325cd5b40872f8c66f5e"
+            "sha256": "6099de7f8dab6afe15f602d65080aaa04b3b8648848d9043a8862ac3db915a8b"
           }
         }
       },
@@ -6549,15 +7057,15 @@
         "files": {
           "albedo": {
             "file": "sheets/tank-destroyer__composite__d04__albedo.png",
-            "sha256": "bd4f4f57f5489b7bcb52043b360509cea072c1d3e0fbe9bb5fe4dec2c08c9e07"
+            "sha256": "8de0057865cc3d4cdb92e09c64075426e460153bc95d55b4082b051baa63dec3"
           },
           "normal": {
             "file": "sheets/tank-destroyer__composite__d04__normal.png",
-            "sha256": "18e3a7b36961b7db651a1504895783ebdd16c7673977541f706caf78a93ba3db"
+            "sha256": "0e820370d93d704c98c1f55f431dd288ff9800da481bef8821b03f071c7b7c7c"
           },
           "material": {
             "file": "sheets/tank-destroyer__composite__d04__material.png",
-            "sha256": "fb8d3d2ef6f6d105aa06eba8bc03a3c4f72597403f89c9b6c80a15c4563ab730"
+            "sha256": "2c91931a8440dc89fff08af9518c1f5ee3c288ceb8befdda2ad563084ffe2fd9"
           }
         }
       },
@@ -6567,15 +7075,15 @@
         "files": {
           "albedo": {
             "file": "sheets/tank-destroyer__composite__d05__albedo.png",
-            "sha256": "b020f592355fe9d4a6b7a1bf4717a490af6f6d3f801ef3784ca5da188b1a0292"
+            "sha256": "3a6c52534ccb6e1bba24cd8f57ddfc302cc93b0ccaae4ccf2dfcd21fbeb138bf"
           },
           "normal": {
             "file": "sheets/tank-destroyer__composite__d05__normal.png",
-            "sha256": "53fc485af97a6d13ef479a66d7dbdb9cd036be6d5501e59200914834376a6ebf"
+            "sha256": "720e50a539dbbb1ae009a34fe438cfbed2e3d9cffed0e77fefa3070118934578"
           },
           "material": {
             "file": "sheets/tank-destroyer__composite__d05__material.png",
-            "sha256": "5cff467d572f2dc645c3f086db118a01715016272a91ce967b4b944e1a2f1013"
+            "sha256": "a6a13231413327eba148874cd91d321f1320c42baa6a354dcc21271569455e3f"
           }
         }
       },
@@ -6585,15 +7093,15 @@
         "files": {
           "albedo": {
             "file": "sheets/tank-destroyer__composite__d06__albedo.png",
-            "sha256": "22bf54826ef05e14ba4fbb946d2d165c05a9ca3cbcf78bb01ad40320ceb96565"
+            "sha256": "7cdb6129e684ccad85dc0931ae8cc2164431efdd40e5763d26a0a0a9a4d499ca"
           },
           "normal": {
             "file": "sheets/tank-destroyer__composite__d06__normal.png",
-            "sha256": "155dd5e667fdedf3674d65aaec464d65b1bfd20a795e4b4c958b15e908b95a4a"
+            "sha256": "f22a6988236dcb43c291f71d0b207bd4a8c0fce095efba57169f1eb3ecf69868"
           },
           "material": {
             "file": "sheets/tank-destroyer__composite__d06__material.png",
-            "sha256": "4170d71766bda38a2428e0f0188e7bc813730617557a003a405f32770fe022ff"
+            "sha256": "f494270601f02288c176e5f0375fe0bfeefde5f804e3f1ed3680a53194275f41"
           }
         }
       },
@@ -6603,15 +7111,15 @@
         "files": {
           "albedo": {
             "file": "sheets/tank-destroyer__composite__d07__albedo.png",
-            "sha256": "8525ffc018be7143ab3e76197931ccb5c20672a7756cf09a70c9f5c9cc7d79ef"
+            "sha256": "eb61443c4facf6b0145175222edbb39ca4e10546ad36339b861016511c5bf3d4"
           },
           "normal": {
             "file": "sheets/tank-destroyer__composite__d07__normal.png",
-            "sha256": "9bcc0f36527c28fcd9782c170b4e0bec3806fee6b6277970f2a145111686b9eb"
+            "sha256": "14d8fd71c8a94630105c4498e60643bbeea9d254c2e44b772a5826ab35cd9848"
           },
           "material": {
             "file": "sheets/tank-destroyer__composite__d07__material.png",
-            "sha256": "ceed05787dbfefc0b10d6173ffb995b67e0b6c562a7323def8d000fbd6270058"
+            "sha256": "b66117f216024b50cbf230f7ba2a59bd9c0828caf79565f9d528e7aeb3378b66"
           }
         }
       },
@@ -6621,15 +7129,15 @@
         "files": {
           "albedo": {
             "file": "sheets/tank-destroyer__composite__d08__albedo.png",
-            "sha256": "330ef46943faf6aaf02d7140a6473a953fe36c41ca7fee01b9b896caa3e588cd"
+            "sha256": "edd60305d0949467a278e865d6663c95edb87aa1760bb69d24782ce3bf1abbe8"
           },
           "normal": {
             "file": "sheets/tank-destroyer__composite__d08__normal.png",
-            "sha256": "68c51ffa40c46d9403f564f8facd044e2066715aa150abff7b44a8cce1c1505d"
+            "sha256": "4005659a2f26858ae8595fb8bf71372b50f5079ff8a3720f01ffe1e962209ae4"
           },
           "material": {
             "file": "sheets/tank-destroyer__composite__d08__material.png",
-            "sha256": "500a0e8e73b86999a7ba651799050cae1b8bd4f34a68d1cc8d9f963c66ea0f33"
+            "sha256": "eb57c1cc9d9fa97c012fac40d16fd35315ede744ec7545f8454fe9b00bc13cc2"
           }
         }
       },
@@ -6639,15 +7147,15 @@
         "files": {
           "albedo": {
             "file": "sheets/tank-destroyer__composite__d09__albedo.png",
-            "sha256": "e119eedf3e826c206c0bcf01cba618560d161bce4a1ed56a6551b52e3b9dacf0"
+            "sha256": "5a97eb90bfde55a91fe9ae90969f82aa8ddf53b5b77408cc65c2d44a0ddefa4b"
           },
           "normal": {
             "file": "sheets/tank-destroyer__composite__d09__normal.png",
-            "sha256": "1beb7bdcb7def6039d5f80d20e79526d95c9a3e0845d20df06423f7af7af98b4"
+            "sha256": "cc0350c4fbccf8e92b8f0dfe1d34642cc655b30091b3294586ac40164d2b46ee"
           },
           "material": {
             "file": "sheets/tank-destroyer__composite__d09__material.png",
-            "sha256": "ccb34ba345a4f6c67ca77bbcd5f196c8e6176805a5578bf8f62ba1147ff77401"
+            "sha256": "c283bc67268825dfa44ca62245ff8ec1cd1c056c4e3f8accb61ec2a97ed2c148"
           }
         }
       },
@@ -6657,15 +7165,15 @@
         "files": {
           "albedo": {
             "file": "sheets/tank-destroyer__composite__d10__albedo.png",
-            "sha256": "698532e2bd685e79feb07a2fb86ef02b06a7877aa0f04bc0c9f358ee37eceec9"
+            "sha256": "fb1d95278350a60dfdfc96a4c19ef4e5187fbc5842ad4c6e1bbf094f9f1780e6"
           },
           "normal": {
             "file": "sheets/tank-destroyer__composite__d10__normal.png",
-            "sha256": "a87a89a660d595ce4b019e5f3f409c09cc5130cb2bc2dad434b1c08d949710b2"
+            "sha256": "a451ef0a79470cd86b1c4183a878e5e3fc0d3bf9a747c83d8f8b4ad8dc110af1"
           },
           "material": {
             "file": "sheets/tank-destroyer__composite__d10__material.png",
-            "sha256": "d559ec9eca5cfd6d792fcfe6d1137cedffb7bc92ec8a43b86772e05d31b1567c"
+            "sha256": "8cc4c373f71e36c73d524a1c856db2c336ca72a5f9e480fce7b39797ed7c7869"
           }
         }
       },
@@ -6675,15 +7183,15 @@
         "files": {
           "albedo": {
             "file": "sheets/tank-destroyer__composite__d11__albedo.png",
-            "sha256": "d5bdf2847767716b3de55dffc1e81c57f8e01b0e460689e598823c8488b7bcc5"
+            "sha256": "7d40bf992068b79290b0636f11be787a78c8fdebf351765ace77d26848fc35f2"
           },
           "normal": {
             "file": "sheets/tank-destroyer__composite__d11__normal.png",
-            "sha256": "8b1b0a295ba50e252e741281bc2606e23644ee357d5fa6e787301e5de6fd7050"
+            "sha256": "944867b9a312b92fd5f0557af401f6cfad8fd334b394b293b5d9568f2730e40f"
           },
           "material": {
             "file": "sheets/tank-destroyer__composite__d11__material.png",
-            "sha256": "fb07ae0f00ca63ad2d1db04fa1f7fbbcb78b5b7e1cdedbf29cd1d10afc26e64a"
+            "sha256": "5ddef100080be9f686095692f4f8a8feffe5a5b6b63e3e0c7c378f4e482e3ff3"
           }
         }
       },
@@ -6693,15 +7201,15 @@
         "files": {
           "albedo": {
             "file": "sheets/tank-destroyer__composite__d12__albedo.png",
-            "sha256": "40ff136ae49c322cc00ff84295c3b09c822c42cfd7f27ed3aad2b587be1fb262"
+            "sha256": "d4ec15fb7869209183de3aaede2de0febafd9b0e5e193b8bea50b5a549c1bc1a"
           },
           "normal": {
             "file": "sheets/tank-destroyer__composite__d12__normal.png",
-            "sha256": "3b68c112c525fc98faeae06371aa9a4d999ea222a604edda4d1fbfe3ff3ec838"
+            "sha256": "7a67a4f2ca04c2ad6656f7053ddb12371a2714fe27c727bf70d9ebc921a15fee"
           },
           "material": {
             "file": "sheets/tank-destroyer__composite__d12__material.png",
-            "sha256": "5845c4fa5fe2ea30a2129f731c10c4fbb86a271d7421903a76aaf523b2a53bf6"
+            "sha256": "07d487ee277b3aa313a8a16967a5c80e8eeb5f966024272f266a36a1d4d24f31"
           }
         }
       },
@@ -6711,15 +7219,15 @@
         "files": {
           "albedo": {
             "file": "sheets/tank-destroyer__composite__d13__albedo.png",
-            "sha256": "dfae549083ecb10854fcbe3f789d2ff07ac0a4bfededc2abf20bc444f0e151f3"
+            "sha256": "27dd367d6829338b956cb7219bfbc05a686861b3434b086245a0ed804b193bb3"
           },
           "normal": {
             "file": "sheets/tank-destroyer__composite__d13__normal.png",
-            "sha256": "e7da11d4ae9eb8452e08f64191046f11321796f433f1c53c773b755a9d97642e"
+            "sha256": "f3f9988185f7f567dd6a92ce084f3fd916acbc17790fe84158376c986c4a23e4"
           },
           "material": {
             "file": "sheets/tank-destroyer__composite__d13__material.png",
-            "sha256": "c8e698566d40ffa7d8e0403b87c95679777e4d61091aadddb8bf002061f04573"
+            "sha256": "41ea76ce0f48bf8e241dfcc5642e34ab55fc10b69959d6e11a4c4d9d6978f8d3"
           }
         }
       },
@@ -6729,15 +7237,15 @@
         "files": {
           "albedo": {
             "file": "sheets/tank-destroyer__composite__d14__albedo.png",
-            "sha256": "16192c9d938685efd52192283a4a74b9b43a3c41780245b0ceb57c281cd18b0a"
+            "sha256": "4c485acc69f7b6f7fb0aa78fab56ba2aa9b06f347ad2ac815de22b37e0673e12"
           },
           "normal": {
             "file": "sheets/tank-destroyer__composite__d14__normal.png",
-            "sha256": "e0b08a3f2c704760cd50e88d7ddb01622ef6cdd4141b9f4217ff09709dfe07d8"
+            "sha256": "ba55dc6a19e6e3e5cd749d84f4db55f6ccbe7239c2d584acc925511b9042c71e"
           },
           "material": {
             "file": "sheets/tank-destroyer__composite__d14__material.png",
-            "sha256": "30106d8b4f8f55310238f5cdcb903e26baf2fc80bea21e9d5e168e943c996438"
+            "sha256": "a83555766d1ce5d6f05feb44167e5ad04c1f8ca6f649056f41211f2611d89c69"
           }
         }
       },
@@ -6747,15 +7255,15 @@
         "files": {
           "albedo": {
             "file": "sheets/tank-destroyer__composite__d15__albedo.png",
-            "sha256": "e1806c946b8fc9f0566fcebb94fc0e9b217fa3e99c89a3f9228ceef27031a557"
+            "sha256": "606fd2b0dec7713c357a9deb221c68657bcc3d82d12196204a5220a97b9c321b"
           },
           "normal": {
             "file": "sheets/tank-destroyer__composite__d15__normal.png",
-            "sha256": "fec352bdc9fcde43f94ba2ce3614d4541f6e053b522d43e908cd442ac5be3ef3"
+            "sha256": "d05df0b79100da6a12f09a6d12ba57bf49c1554b8f5ff9810c7666a9e0f2f05e"
           },
           "material": {
             "file": "sheets/tank-destroyer__composite__d15__material.png",
-            "sha256": "eb2040079317b5f27fedae3f616a5fc54854774a8f8c626232d1f05aaf953bf7"
+            "sha256": "445c9dd406c31975a372fa7718d7f580394120743b8ab255689a7c1c5987827a"
           }
         }
       }
@@ -6769,97 +7277,97 @@
         "file": "sheets/tank-destroyer__lit__d00__albedo.png",
         "w": 62,
         "h": 47,
-        "sha256": "62bca9eb41f98173bc250fbec9e6e6c2e8b03be55e8a7f2451f849d1bac7266e"
+        "sha256": "03d69e4443dbc7d13def4d6cfd350d99ac91d03aca167bf5a280fcfc195200b0"
       },
       "d01": {
         "file": "sheets/tank-destroyer__lit__d01__albedo.png",
         "w": 58,
         "h": 46,
-        "sha256": "deb18e939d88fb191836e4793320387393e429e0b546fd17e4c4cd0980813a32"
+        "sha256": "a6932bf309ac32f93e11a756a40013702ed9446da48b5f422a52b1e210a364b5"
       },
       "d02": {
         "file": "sheets/tank-destroyer__lit__d02__albedo.png",
         "w": 54,
         "h": 46,
-        "sha256": "553043a170d4762c8abe5bc22e157c2029a1ba94aa13ff4200870e4609c42e23"
+        "sha256": "43541e545dcd18e434669316a713ec4a1bb65e3d45853f71fb913114e0efb4fb"
       },
       "d03": {
         "file": "sheets/tank-destroyer__lit__d03__albedo.png",
         "w": 58,
         "h": 50,
-        "sha256": "7c750b09364086dcc7e1662e16cfd6884e2dd77029f16604d7cc026212ece796"
+        "sha256": "d01c9711c5b64066e072600e53b08c09544cbb220e7497d7ea365e60f3e5bcc0"
       },
       "d04": {
         "file": "sheets/tank-destroyer__lit__d04__albedo.png",
         "w": 62,
         "h": 50,
-        "sha256": "28d5ad368270637f97a3d15d7b6495d14e22a0c8ccb286600bf2b3730c6ba6d8"
+        "sha256": "abdc151b0d0424cc83306daddb892becfe6dcc037989cd7b76839cc59c0407dd"
       },
       "d05": {
         "file": "sheets/tank-destroyer__lit__d05__albedo.png",
         "w": 62,
         "h": 49,
-        "sha256": "341e4a7541491ca864fa14e443be1b660e182714203980868fa5724a7d78135f"
+        "sha256": "54e10142cdf7a921ad04d2455fdd1807d60bbf8b033cec2d8db6a2206120835e"
       },
       "d06": {
         "file": "sheets/tank-destroyer__lit__d06__albedo.png",
         "w": 56,
         "h": 47,
-        "sha256": "c967cf9f3d8011cd5506b8c136b9190af08eaaaccf0b3c86a5d21b798d7e11d1"
+        "sha256": "28929043e724cd94aa3c617ac9223597989f75152694c4d6bd890f1aa25b42c2"
       },
       "d07": {
         "file": "sheets/tank-destroyer__lit__d07__albedo.png",
         "w": 61,
         "h": 48,
-        "sha256": "5720432c9a71b89ee624817f5917b93d24c35f5aec29d0c8a280497df0a2538e"
+        "sha256": "77297a908445e7ee88addaf50bb4dc2fb3c22032ece1b7079aa3c216d77e673d"
       },
       "d08": {
         "file": "sheets/tank-destroyer__lit__d08__albedo.png",
         "w": 62,
         "h": 49,
-        "sha256": "15f50d48a24444303914120a3311429940b460ebb3f6c92b289c9d9aabaa0089"
+        "sha256": "8faf24f9b097c9a6f8f1678b4ab791e56156484b9e4b75ead74c611a83766416"
       },
       "d09": {
         "file": "sheets/tank-destroyer__lit__d09__albedo.png",
         "w": 58,
         "h": 48,
-        "sha256": "58b8bd6e23a867c4c3d9a5cb7679b0688cab43fca8f9c7927dc8930afb04fa48"
+        "sha256": "6f742794e2b56f46045be2da6149cee84a2bdaffa52d3fe8ae337d0be9d7c5da"
       },
       "d10": {
         "file": "sheets/tank-destroyer__lit__d10__albedo.png",
         "w": 54,
         "h": 45,
-        "sha256": "09b145f207dca037f728ae31842315a80ae0f15ace6915a5a70f52a477c3d906"
+        "sha256": "c6899744993090fd73636db879aade5681bf7cd36b2b28d6e41183c6d667c345"
       },
       "d11": {
         "file": "sheets/tank-destroyer__lit__d11__albedo.png",
         "w": 58,
         "h": 48,
-        "sha256": "1a8736ae9d8f1f393437dbdbbbe4807f2e4aa5fb88e533dc134409889ac47a5b"
+        "sha256": "d9385af97122c4bca8ada4d772bf953bdcc853629672b4c02622637e4320059c"
       },
       "d12": {
         "file": "sheets/tank-destroyer__lit__d12__albedo.png",
         "w": 62,
         "h": 49,
-        "sha256": "1db9c1f8220ec4572491288d9e571651ace2c2399435536e9007481832715f3d"
+        "sha256": "e72cfeacd850b79d13366e703f2ba4d76652abaf4638065a303a0bcd42cc3d5c"
       },
       "d13": {
         "file": "sheets/tank-destroyer__lit__d13__albedo.png",
         "w": 62,
         "h": 47,
-        "sha256": "c9e60648cbf4e18ed0d285200ec4e63c8ce2fa3b86a857f8a2f1e9ed45b58e1a"
+        "sha256": "7dde2f83d96068f0aac2e0d306010676cd808301f651b0b39df9ab099f884037"
       },
       "d14": {
         "file": "sheets/tank-destroyer__lit__d14__albedo.png",
         "w": 56,
         "h": 44,
-        "sha256": "61946531525fa882da5e816cfca0e64f5efbc994f637fe53caa2b7427765c4d4"
+        "sha256": "592e47e793ea12338aa00862e606d96a7ef8ba4f412e9d389b50dd753e063338"
       },
       "d15": {
         "file": "sheets/tank-destroyer__lit__d15__albedo.png",
         "w": 61,
         "h": 47,
-        "sha256": "02214b543593b4005d70b425e2c7d0e8ab0aa6b82d920b7c35a9fc0718772bde"
+        "sha256": "53f206e1d08a4360e3ab3703e0634fe235707dbf89eec3b6d7abbf2a4ebf7833"
       }
     }
   },
