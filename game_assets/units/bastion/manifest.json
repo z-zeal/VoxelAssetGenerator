@@ -998,6 +998,21 @@
       }
     ]
   },
+  "depthMap": {
+    "note": "Per-part view depth, one PNG per part per facing. Composite by z-test on this; do NOT try to order segments by a single depth per part.",
+    "channelOrder": "rgba",
+    "meaning": [
+      "depthHi",
+      "depthLo",
+      "unused",
+      "covered"
+    ],
+    "encoding": "q = depthHi * 256 + depthLo; depth = q / scale - bias  (tile units = design voxels / 8)",
+    "scale": 256,
+    "bias": 128,
+    "coveredAlpha": 255,
+    "largerIsCloser": true
+  },
   "parts": {
     "body": {
       "name": "body",
@@ -1059,6 +1074,12 @@
               "w": 65,
               "h": 44,
               "sha256": "57bc9697924cd7a6f170aae6346c14cf01bbe7221bceb6be170d8f5b0eb32e46"
+            },
+            "depth": {
+              "file": "sheets/bastion__body__d00__depth.png",
+              "w": 65,
+              "h": 44,
+              "sha256": "17d6985b7c205c9c1484c8a454a2961ce22598945fce4dd35e6e016e359cd4aa"
             }
           },
           "filesHi": {
@@ -1124,6 +1145,12 @@
               "w": 61,
               "h": 42,
               "sha256": "d2dd7134e59dbeb23b10453b539b78c8f4bb152c00d539ab20aa3452cb6386a5"
+            },
+            "depth": {
+              "file": "sheets/bastion__body__d01__depth.png",
+              "w": 61,
+              "h": 42,
+              "sha256": "8f556c4223704e3326b824c969e855cf1eba9f057a4e988d5008bd36351b571f"
             }
           },
           "filesHi": {
@@ -1189,6 +1216,12 @@
               "w": 51,
               "h": 39,
               "sha256": "d90f3f68c073b1a5b2b707e24fefcba1eeaed8aadca7aceea479236657fa5a91"
+            },
+            "depth": {
+              "file": "sheets/bastion__body__d02__depth.png",
+              "w": 51,
+              "h": 39,
+              "sha256": "6f19083a11ead4b99230f17b9ff24b97dfa8fa15ce334dcf2e1847ee1fbac332"
             }
           },
           "filesHi": {
@@ -1254,6 +1287,12 @@
               "w": 61,
               "h": 42,
               "sha256": "10ee80631c8bbba3f360e9f763346f748339df8367704a4dbb7e37357b338608"
+            },
+            "depth": {
+              "file": "sheets/bastion__body__d03__depth.png",
+              "w": 61,
+              "h": 42,
+              "sha256": "cf2fe221fc19022ff74d9cb56d9104385cd1f37ee1b9805a3e267e0ad32411c3"
             }
           },
           "filesHi": {
@@ -1319,6 +1358,12 @@
               "w": 66,
               "h": 44,
               "sha256": "4dfd6a4577a3ac722fbaa7915b6b3ea40cdf7bb32cf8f5bc50b1bb41f1bbf48b"
+            },
+            "depth": {
+              "file": "sheets/bastion__body__d04__depth.png",
+              "w": 66,
+              "h": 44,
+              "sha256": "53bfc24575644bf20a77a9eaf04a1e68b8db5d99a2149b8005a66da6b8f2378d"
             }
           },
           "filesHi": {
@@ -1384,6 +1429,12 @@
               "w": 63,
               "h": 42,
               "sha256": "b23550b32b05eb2a8bec0c93e58f2a34dda7cff36c6e3cc55befe0a854c59150"
+            },
+            "depth": {
+              "file": "sheets/bastion__body__d05__depth.png",
+              "w": 63,
+              "h": 42,
+              "sha256": "8f7f1f17a79f0665186b3072e318e787d6a90433f4ed3795e321509705179ff5"
             }
           },
           "filesHi": {
@@ -1449,6 +1500,12 @@
               "w": 51,
               "h": 38,
               "sha256": "25027176f74cf6d29b7408b00378a891e162b6081aa50ac5f03c4b9599a2740a"
+            },
+            "depth": {
+              "file": "sheets/bastion__body__d06__depth.png",
+              "w": 51,
+              "h": 38,
+              "sha256": "8d7420f131fd8a799fe6243e5a6b5a213fc66d2f28fb8fb36cd29d01e6ca74dc"
             }
           },
           "filesHi": {
@@ -1514,6 +1571,12 @@
               "w": 61,
               "h": 42,
               "sha256": "e19d6942c3092ae4409ecc1d66a7b0dc4225b20b3f4e47d827d504f13a4979b1"
+            },
+            "depth": {
+              "file": "sheets/bastion__body__d07__depth.png",
+              "w": 61,
+              "h": 42,
+              "sha256": "05288d061e9934d83dc20fe5d0f4905d592b9d633cd219ff23c0b606a5aa8794"
             }
           },
           "filesHi": {
@@ -1579,6 +1642,12 @@
               "w": 65,
               "h": 44,
               "sha256": "6b045e12b1e052c7cea6d1cbc4c3313d1b76da14dc5b20f002677fbc0eb1f540"
+            },
+            "depth": {
+              "file": "sheets/bastion__body__d08__depth.png",
+              "w": 65,
+              "h": 44,
+              "sha256": "a9c05074b340b890757c24277e7236bffd0137223501885e589de6011737fe12"
             }
           },
           "filesHi": {
@@ -1644,6 +1713,12 @@
               "w": 61,
               "h": 43,
               "sha256": "3b22457fd4c84c3cf70ca453b1e34df5f0313f40adf0dad7af38566e99e24471"
+            },
+            "depth": {
+              "file": "sheets/bastion__body__d09__depth.png",
+              "w": 61,
+              "h": 43,
+              "sha256": "4174745d42b312825b381b2097e5bee9ddf5b8b8e30d06c5837a5671da37bdfb"
             }
           },
           "filesHi": {
@@ -1709,6 +1784,12 @@
               "w": 51,
               "h": 40,
               "sha256": "893b3fdf2232eff290b9041537859fdb44e4e3e4e63a8f956f0c8748c346f379"
+            },
+            "depth": {
+              "file": "sheets/bastion__body__d10__depth.png",
+              "w": 51,
+              "h": 40,
+              "sha256": "eb1dd567ec74962d1bba5d74f1b06f734e0a64a1c6e6e702ab8145c2d83fc547"
             }
           },
           "filesHi": {
@@ -1774,6 +1855,12 @@
               "w": 61,
               "h": 41,
               "sha256": "83d9cd5d2bb980ec4e3d0ad2c03e01e5f8fa72a732bf2120f952573cefc1e77d"
+            },
+            "depth": {
+              "file": "sheets/bastion__body__d11__depth.png",
+              "w": 61,
+              "h": 41,
+              "sha256": "cbcce880fdd1aca901e2fe4577863e1216d4cc0040990bda6e5d8985da22dfe9"
             }
           },
           "filesHi": {
@@ -1839,6 +1926,12 @@
               "w": 66,
               "h": 42,
               "sha256": "c0bc64b9cf8c28b1d062962a72d524d09a52422f2d36f983dcba1052824aa550"
+            },
+            "depth": {
+              "file": "sheets/bastion__body__d12__depth.png",
+              "w": 66,
+              "h": 42,
+              "sha256": "608c9d38a43cba5466f4d110d7fd93fc682903641b69093d762b9c8ac8972e09"
             }
           },
           "filesHi": {
@@ -1904,6 +1997,12 @@
               "w": 63,
               "h": 40,
               "sha256": "70fa78320450e79a21dcc134073d9948c330866ebd37609807cf7019eded430f"
+            },
+            "depth": {
+              "file": "sheets/bastion__body__d13__depth.png",
+              "w": 63,
+              "h": 40,
+              "sha256": "544aa8551d50bde42e670c6e0fb09a284773b5618a7116667a12768632463947"
             }
           },
           "filesHi": {
@@ -1969,6 +2068,12 @@
               "w": 51,
               "h": 37,
               "sha256": "1ded228987d0308036ccc3fa0c839495f0989a54bbd1991b295022ff533b7357"
+            },
+            "depth": {
+              "file": "sheets/bastion__body__d14__depth.png",
+              "w": 51,
+              "h": 37,
+              "sha256": "197b082e5ddf850ffe456b3835fe4d4a14d8c82ea971793b1e55916bd9f3a734"
             }
           },
           "filesHi": {
@@ -2034,6 +2139,12 @@
               "w": 61,
               "h": 42,
               "sha256": "92995ba376758210363afcecb821a43478c2f9c350193d12f5081f16acc48250"
+            },
+            "depth": {
+              "file": "sheets/bastion__body__d15__depth.png",
+              "w": 61,
+              "h": 42,
+              "sha256": "7d4469852c4bc33959c5d5f7c5c9a049e0ff1a2b3215bd2b61d7adfcf5958fb0"
             }
           },
           "filesHi": {
@@ -2131,6 +2242,12 @@
               "w": 42,
               "h": 31,
               "sha256": "8d9a03a9d4400e530cc0797824de6fbe33fe48ce5d055bb38a5ba277a8eeae43"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.L__d00__depth.png",
+              "w": 42,
+              "h": 31,
+              "sha256": "28ea6ab4b5d511ee54da931762ef29363db914959f773b2889134e4b4816484d"
             }
           },
           "filesHi": {
@@ -2196,6 +2313,12 @@
               "w": 32,
               "h": 33,
               "sha256": "ed9d23c16c6430d756a2eea2bdc67062241d5dd4cbb62ef7b6b3762432838a55"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.L__d01__depth.png",
+              "w": 32,
+              "h": 33,
+              "sha256": "9c92f90532deaa9122a648aada9fd0b9c23b9dedb13ea6aaf5172e3977440903"
             }
           },
           "filesHi": {
@@ -2261,6 +2384,12 @@
               "w": 19,
               "h": 33,
               "sha256": "8cc1d0de998c0e9c348aba44e57b2ff9f5a67f7d43bee3fd585f9c09490ebb78"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.L__d02__depth.png",
+              "w": 19,
+              "h": 33,
+              "sha256": "34ae8750edc6ba1967f55d9d1633a94256a87dacf33052e205ec117bf5378ebc"
             }
           },
           "filesHi": {
@@ -2326,6 +2455,12 @@
               "w": 32,
               "h": 34,
               "sha256": "09a7cb76d3ed38cfa8aa9a5ed15e80a940013fce56c035949ff8b6621715ea03"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.L__d03__depth.png",
+              "w": 32,
+              "h": 34,
+              "sha256": "edbb0c2a1effbf126f13611263ba678c912523f01eb4455d849875572d768104"
             }
           },
           "filesHi": {
@@ -2391,6 +2526,12 @@
               "w": 42,
               "h": 31,
               "sha256": "f46009999a97790060435f2329cedcc19b530816205e0692a89a14a4388afb39"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.L__d04__depth.png",
+              "w": 42,
+              "h": 31,
+              "sha256": "fbc148f9cd6e11e97f8e043b139291f35244786248a453f7d8d906c74d1cdf06"
             }
           },
           "filesHi": {
@@ -2456,6 +2597,12 @@
               "w": 48,
               "h": 27,
               "sha256": "420e30e8f22cda267a9da100ebe3a6add3c29decaf1035ac8d2842ac3cc44cd7"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.L__d05__depth.png",
+              "w": 48,
+              "h": 27,
+              "sha256": "42cd82df9bde1951d6f9e48f80f14c40d6d5264a902a6f78e0dfcd0ed5632393"
             }
           },
           "filesHi": {
@@ -2521,6 +2668,12 @@
               "w": 47,
               "h": 21,
               "sha256": "81f63dd1ca1f93a0b4502fc7ef6b67be21e9b89ce532f7d4b62147ab6a4ca27f"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.L__d06__depth.png",
+              "w": 47,
+              "h": 21,
+              "sha256": "0ba27f1a590f36ca5929d2fa06ea628de91af30064dd1ea8db83f607997e2589"
             }
           },
           "filesHi": {
@@ -2586,6 +2739,12 @@
               "w": 48,
               "h": 25,
               "sha256": "49ff0a1b99faec27b5410e92ee75d855f64ea24b277ef439d368b2c7297e5704"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.L__d07__depth.png",
+              "w": 48,
+              "h": 25,
+              "sha256": "2f6969df87ced8d94a59118a51394b23e64b35a0b95d93625ec118fb2c2b6024"
             }
           },
           "filesHi": {
@@ -2651,6 +2810,12 @@
               "w": 42,
               "h": 29,
               "sha256": "e91302aed29f469aafe67914195af8f7ccb7ee4f26fa41b2356cdae9eddd7886"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.L__d08__depth.png",
+              "w": 42,
+              "h": 29,
+              "sha256": "0adfd530d5db991f4289fa34d01a325b018a829b5da72a36c8ea3dc9509e1558"
             }
           },
           "filesHi": {
@@ -2716,6 +2881,12 @@
               "w": 32,
               "h": 32,
               "sha256": "6c7f1ffbeaaac3ecfb713abd302e9c0aebd5e0c7d3b2b2925f1cc702e178d545"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.L__d09__depth.png",
+              "w": 32,
+              "h": 32,
+              "sha256": "e69996e33101a835fc5ede78b974e6e346bf278a40d2b8ef2d4a9c1df66fff65"
             }
           },
           "filesHi": {
@@ -2781,6 +2952,12 @@
               "w": 19,
               "h": 33,
               "sha256": "1c8946d3241f7f7b1de78eec93cb4a6b5845e763b5a57cf74e627f4f1687c76f"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.L__d10__depth.png",
+              "w": 19,
+              "h": 33,
+              "sha256": "509aecb598f88d2b4b6664a12b135f3f64abef47f496af98acf4f6c7b9edc88f"
             }
           },
           "filesHi": {
@@ -2846,6 +3023,12 @@
               "w": 32,
               "h": 33,
               "sha256": "903e1df9001465522892405ec8e520f8147c61995d0282c581ba3b5e3045e373"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.L__d11__depth.png",
+              "w": 32,
+              "h": 33,
+              "sha256": "f8044d9475a6bdb95b66c0a2c045416b0e30bc451fcd4ff897e1338392285766"
             }
           },
           "filesHi": {
@@ -2911,6 +3094,12 @@
               "w": 42,
               "h": 31,
               "sha256": "2ad11415b4ffafdaa4434b5baf2f6006f87c3694200292204ac6a064831fc2af"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.L__d12__depth.png",
+              "w": 42,
+              "h": 31,
+              "sha256": "73be80e6eefff84cdb531e33d09f846e5e43cd91722ba17b07727ba400b32994"
             }
           },
           "filesHi": {
@@ -2976,6 +3165,12 @@
               "w": 48,
               "h": 27,
               "sha256": "dbc4cd30112427bc07e25f7a6c5af2f7f8a4cd97127fd10332846cc490d95944"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.L__d13__depth.png",
+              "w": 48,
+              "h": 27,
+              "sha256": "8aaff7a6f47779ea5059bbb41d7bad2842d9694ad3dc011c19936e0b86fbc839"
             }
           },
           "filesHi": {
@@ -3041,6 +3236,12 @@
               "w": 47,
               "h": 22,
               "sha256": "477f16d95d5a91e5d3c9eff5073b73f7db74c43ba3dc7ceacd9e923dcbd138f1"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.L__d14__depth.png",
+              "w": 47,
+              "h": 22,
+              "sha256": "d556acf18c20cf0b56e6820dcdf94f4b5e7a4ad86936193652e61b21c34b4bd0"
             }
           },
           "filesHi": {
@@ -3106,6 +3307,12 @@
               "w": 48,
               "h": 27,
               "sha256": "1ab44a98666049f021186e17fb5f1ae92e89da5e68aecd1684f62486471b1d42"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.L__d15__depth.png",
+              "w": 48,
+              "h": 27,
+              "sha256": "2ed5f8f921853ad0b5f59b2e0a4a6fa7da0d40da58b6fa726eb98696dde4bc74"
             }
           },
           "filesHi": {
@@ -3203,6 +3410,12 @@
               "w": 42,
               "h": 31,
               "sha256": "dd653248a06c0abc6a6d5fe8e724a3938db70bc4722aa4684e90d6e448d347ac"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.R__d00__depth.png",
+              "w": 42,
+              "h": 31,
+              "sha256": "b0b185433b1787d10bcdda4e4de558016dcd057cc344d68030d0125f923bed71"
             }
           },
           "filesHi": {
@@ -3268,6 +3481,12 @@
               "w": 32,
               "h": 33,
               "sha256": "0d888187ea70131f1ef26fd22ff0b549cf76a92966ddb590747f0540136f3b08"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.R__d01__depth.png",
+              "w": 32,
+              "h": 33,
+              "sha256": "140b3264a1a9e939b5f795d821aa0b87e9a171eb385bba2b436e1f140c2a572a"
             }
           },
           "filesHi": {
@@ -3333,6 +3552,12 @@
               "w": 20,
               "h": 33,
               "sha256": "5e168d40df6ef8364062da7c1a7ca15566277c98f625a7ad82a9759b8265f849"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.R__d02__depth.png",
+              "w": 20,
+              "h": 33,
+              "sha256": "17ef921e13b5ed41a0891a28f13e360f46767472acca9fc1e115578dd05e2499"
             }
           },
           "filesHi": {
@@ -3398,6 +3623,12 @@
               "w": 32,
               "h": 33,
               "sha256": "11a64d761a625d20b7104a83f9ca283a5851bd40eeb694197ddbf5a330f61393"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.R__d03__depth.png",
+              "w": 32,
+              "h": 33,
+              "sha256": "e354fd7f2efaca2a13cd182a256a743bde64fb403117cd036194afe5fe6c38b4"
             }
           },
           "filesHi": {
@@ -3463,6 +3694,12 @@
               "w": 42,
               "h": 31,
               "sha256": "feb8a72913d397a4ee52766cb26ab2b5f1d3d177818f22a5d9e72f61cd98d097"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.R__d04__depth.png",
+              "w": 42,
+              "h": 31,
+              "sha256": "6ea387c0bfcd788960e80c5c8d212fd838bfc4b8d5d8ecd6cf6fad93c4db3479"
             }
           },
           "filesHi": {
@@ -3528,6 +3765,12 @@
               "w": 47,
               "h": 27,
               "sha256": "d06f2447087e6bdd74f68330a4e77c8aa8eb770f757d941178659641866a5788"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.R__d05__depth.png",
+              "w": 47,
+              "h": 27,
+              "sha256": "da7e5000223e7e8cc81186d9c36c2802d4c5dc727913e363f5affb895dcc0b6e"
             }
           },
           "filesHi": {
@@ -3593,6 +3836,12 @@
               "w": 47,
               "h": 22,
               "sha256": "12bb9de1c415430223cce3ecda1602b60a1b4c56d4bda2b8abac0ab70806e31b"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.R__d06__depth.png",
+              "w": 47,
+              "h": 22,
+              "sha256": "b0da957aa0959c80654ae8b1e24fc59fbb538c5a05a3e391451ef53ab2edf99f"
             }
           },
           "filesHi": {
@@ -3658,6 +3907,12 @@
               "w": 48,
               "h": 27,
               "sha256": "06f0bc26b9f5b2c7a435ebe7d5de99a7be6b2780bf799a7b9c351dc4cb054748"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.R__d07__depth.png",
+              "w": 48,
+              "h": 27,
+              "sha256": "8a0352603f3eec0669637ecbbfeabbaac0be05c3e6ffc7dccdf9ba7cda86f769"
             }
           },
           "filesHi": {
@@ -3723,6 +3978,12 @@
               "w": 42,
               "h": 31,
               "sha256": "f88e03bc0ef93157fedac19208f7ea492b5f43f963e54ef0cf8b17844e15938e"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.R__d08__depth.png",
+              "w": 42,
+              "h": 31,
+              "sha256": "9660df3c834089a62c55da30f4754a29f3f38416a9c8fc8e3100f64cf89154f7"
             }
           },
           "filesHi": {
@@ -3788,6 +4049,12 @@
               "w": 32,
               "h": 33,
               "sha256": "4aea304e3e71e95fa46478ebf16f6e0b70138d7bd096762649a88d0b23faa32f"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.R__d09__depth.png",
+              "w": 32,
+              "h": 33,
+              "sha256": "2b0e5b2031cfa1dcd025b5e3a1bf95e294e3d631367797cc52d44e45c4408e85"
             }
           },
           "filesHi": {
@@ -3853,6 +4120,12 @@
               "w": 20,
               "h": 33,
               "sha256": "34f81a83550537114da28fdb89c8b5bde058e180a02b648b621e590aa693e1d5"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.R__d10__depth.png",
+              "w": 20,
+              "h": 33,
+              "sha256": "f400409d88f0f35255ed496b6a350c9b3a73fe24cb3d5337cd75080a8bd08432"
             }
           },
           "filesHi": {
@@ -3918,6 +4191,12 @@
               "w": 32,
               "h": 32,
               "sha256": "90cab385c748c2650da0a11e6a1e9cf1ec93a96a2c7cae20956bf92330957c10"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.R__d11__depth.png",
+              "w": 32,
+              "h": 32,
+              "sha256": "6f1a11ce5616b55ed33863c6fb141b64345bbcdea3850f8a061bac51c46f1854"
             }
           },
           "filesHi": {
@@ -3983,6 +4262,12 @@
               "w": 42,
               "h": 29,
               "sha256": "44cf1d79419b41297d90b299e95f4d3315bfad5c9f30161027b26e7e4ca6bc2d"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.R__d12__depth.png",
+              "w": 42,
+              "h": 29,
+              "sha256": "f10e24f4ae5b3f2b192bcad14ac6e9f77ab76c8261cb67a58fa401efcd31ad08"
             }
           },
           "filesHi": {
@@ -4048,6 +4333,12 @@
               "w": 47,
               "h": 25,
               "sha256": "b381a1934ccf8280702d8cfa619833e1150d3b1e37aba9e94a22b22e03be4338"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.R__d13__depth.png",
+              "w": 47,
+              "h": 25,
+              "sha256": "199af1139c90f42faef0e6696b97e85ab3d0a699bf2b9263bbc936fe19079a8c"
             }
           },
           "filesHi": {
@@ -4113,6 +4404,12 @@
               "w": 47,
               "h": 21,
               "sha256": "916f529da14e299f9107521097fdd7c878d9cec62796aa38863652641c735411"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.R__d14__depth.png",
+              "w": 47,
+              "h": 21,
+              "sha256": "01c650f9f1e6c12e495a368fa265a35ec6e938818c27b301e8c6aa8237b46fe7"
             }
           },
           "filesHi": {
@@ -4178,6 +4475,12 @@
               "w": 48,
               "h": 27,
               "sha256": "c72fee4fab0eb05c7f08b7008f95751bb85fa11f6716592d89ab4bd3f3aa0479"
+            },
+            "depth": {
+              "file": "sheets/bastion__running.R__d15__depth.png",
+              "w": 48,
+              "h": 27,
+              "sha256": "5e6180e1edfa28068b5c8c5316363a669c15b5bd002c3aef423630b2c8d08621"
             }
           },
           "filesHi": {
@@ -4275,6 +4578,12 @@
               "w": 28,
               "h": 27,
               "sha256": "154596b10c5d1f4aa503d9ce2bf795c8fec09c51c4fa2d1394304eacc3a401ce"
+            },
+            "depth": {
+              "file": "sheets/bastion__turret__d00__depth.png",
+              "w": 28,
+              "h": 27,
+              "sha256": "c3bafe675e39eab9c6629cd13224d96e4bc8e2ea8892f0accf221c872f1c22cd"
             }
           },
           "filesHi": {
@@ -4340,6 +4649,12 @@
               "w": 26,
               "h": 26,
               "sha256": "edee5cc3a620a6cb4531d0adff66d719611fc2203deb21121cb6c3dd9b66f5fc"
+            },
+            "depth": {
+              "file": "sheets/bastion__turret__d01__depth.png",
+              "w": 26,
+              "h": 26,
+              "sha256": "22f4a332084786de0ca1c1a76b1309c4e3da41d71feef5621cc43d482b520262"
             }
           },
           "filesHi": {
@@ -4405,6 +4720,12 @@
               "w": 24,
               "h": 25,
               "sha256": "db33c49d0ffebe8adf1b5890abbba692648d33e2d26a14f06d5eb707778999c5"
+            },
+            "depth": {
+              "file": "sheets/bastion__turret__d02__depth.png",
+              "w": 24,
+              "h": 25,
+              "sha256": "b757cf308f8a6492e9e79f68e366ce70964628f6729eda3255f44d378579bfd5"
             }
           },
           "filesHi": {
@@ -4470,6 +4791,12 @@
               "w": 26,
               "h": 24,
               "sha256": "38c2c10782d944eddca4303f846faf6008c827e6b6c7e7710e4995ceb8380f65"
+            },
+            "depth": {
+              "file": "sheets/bastion__turret__d03__depth.png",
+              "w": 26,
+              "h": 24,
+              "sha256": "4df668fec48251963e6d6d2e99388c92b0ddc4d84b3519d0ac742ed35f838e4e"
             }
           },
           "filesHi": {
@@ -4535,6 +4862,12 @@
               "w": 28,
               "h": 25,
               "sha256": "3a609d458afb9473491e8841ea3aefc28df18537eae32d33f7b91271834f7ede"
+            },
+            "depth": {
+              "file": "sheets/bastion__turret__d04__depth.png",
+              "w": 28,
+              "h": 25,
+              "sha256": "9d5281e60132504adca4e54739cea69a3217b960be1200c9905b1ac9921827f1"
             }
           },
           "filesHi": {
@@ -4600,6 +4933,12 @@
               "w": 29,
               "h": 25,
               "sha256": "598d184827f3799a80535f30a3372d26973276687933c58c181ab56ba318021c"
+            },
+            "depth": {
+              "file": "sheets/bastion__turret__d05__depth.png",
+              "w": 29,
+              "h": 25,
+              "sha256": "fa7e7220448ca4a8a441407ac26e4810851a952a8d75abc4469fe84b3d426c2f"
             }
           },
           "filesHi": {
@@ -4665,6 +5004,12 @@
               "w": 26,
               "h": 23,
               "sha256": "0f64f9c068b68dc7de6b469e5576d5b532d823dbfb5f73f9fc1870a52421872b"
+            },
+            "depth": {
+              "file": "sheets/bastion__turret__d06__depth.png",
+              "w": 26,
+              "h": 23,
+              "sha256": "79def742403f9d94619198e1f770eb5ae709c1f35659531710a563b0d23c07d1"
             }
           },
           "filesHi": {
@@ -4730,6 +5075,12 @@
               "w": 29,
               "h": 24,
               "sha256": "7200b5572c6becb16be715326ffe641b59b4011b8cb4dd050c2f1b2eaec532c4"
+            },
+            "depth": {
+              "file": "sheets/bastion__turret__d07__depth.png",
+              "w": 29,
+              "h": 24,
+              "sha256": "28a190d26ca0132a22f5145d6bc071b11e328d075ead55d6b7b9a7e07c1aab41"
             }
           },
           "filesHi": {
@@ -4795,6 +5146,12 @@
               "w": 28,
               "h": 23,
               "sha256": "38d495c3eb04cb020fdca64838b4277c9dc4e84510894c247ab5f3ebdb644c87"
+            },
+            "depth": {
+              "file": "sheets/bastion__turret__d08__depth.png",
+              "w": 28,
+              "h": 23,
+              "sha256": "578387282b891a1dc47a3ffbc0e4a47af7d7eeda09193e9563d760f241e552e8"
             }
           },
           "filesHi": {
@@ -4860,6 +5217,12 @@
               "w": 26,
               "h": 22,
               "sha256": "52528f54bd3368703fe514da59eaafeea862dcd02100b363d3f1c15868ca1ed0"
+            },
+            "depth": {
+              "file": "sheets/bastion__turret__d09__depth.png",
+              "w": 26,
+              "h": 22,
+              "sha256": "fbe7f3760cc0fb907b795f5224f361c59048927168ffecd10848d43834b1339d"
             }
           },
           "filesHi": {
@@ -4925,6 +5288,12 @@
               "w": 24,
               "h": 22,
               "sha256": "a24be4cd711d277dd5d5c0b5ffbabcda7ff6fda71dcdd1f613745b944af5d56c"
+            },
+            "depth": {
+              "file": "sheets/bastion__turret__d10__depth.png",
+              "w": 24,
+              "h": 22,
+              "sha256": "cdad92f823e7381f65fdf8a4fe3094adf03197403e8ad7aee231db4f20fef216"
             }
           },
           "filesHi": {
@@ -4990,6 +5359,12 @@
               "w": 26,
               "h": 24,
               "sha256": "377485cb44882bcbbdbe374d844764918ba99126a8c3f005efe0482f8a163e53"
+            },
+            "depth": {
+              "file": "sheets/bastion__turret__d11__depth.png",
+              "w": 26,
+              "h": 24,
+              "sha256": "f85e524aa7edcfa1c9b0a1baba688433218af14789784a7b5e243ccc3a643b57"
             }
           },
           "filesHi": {
@@ -5055,6 +5430,12 @@
               "w": 28,
               "h": 25,
               "sha256": "f00a7fd5abe82e2803cd623fd263437b7278d0d4616f40d660533336cca353bf"
+            },
+            "depth": {
+              "file": "sheets/bastion__turret__d12__depth.png",
+              "w": 28,
+              "h": 25,
+              "sha256": "8f2c2f8973fa76442a93dee28f4efdea18c78c76d7e08c8d621ebbb2a5245c34"
             }
           },
           "filesHi": {
@@ -5120,6 +5501,12 @@
               "w": 29,
               "h": 25,
               "sha256": "068eda662d44c7776c85972de8c0968ff19ed911970837ebf5682d41cd8ea184"
+            },
+            "depth": {
+              "file": "sheets/bastion__turret__d13__depth.png",
+              "w": 29,
+              "h": 25,
+              "sha256": "2780690f6f76f56b08ed46279106641dbb806ce7f76a45d5012c2225a74fb138"
             }
           },
           "filesHi": {
@@ -5185,6 +5572,12 @@
               "w": 26,
               "h": 25,
               "sha256": "06f8af2e9faed8e9555eac8392666f641d6b87bb0e6a1281c9c34e247eff3e03"
+            },
+            "depth": {
+              "file": "sheets/bastion__turret__d14__depth.png",
+              "w": 26,
+              "h": 25,
+              "sha256": "8143f999282e2981cc43b4742dcb7c8cacd74ee28f11e8fa3a11318f60c5cffc"
             }
           },
           "filesHi": {
@@ -5250,6 +5643,12 @@
               "w": 29,
               "h": 27,
               "sha256": "927b498233b87eb4765049aef1340e2ed7c5e0b8173de670b95817b7a5392cf9"
+            },
+            "depth": {
+              "file": "sheets/bastion__turret__d15__depth.png",
+              "w": 29,
+              "h": 27,
+              "sha256": "b75f54695e9fc07f4c7a5f727925ee53014b3c41f11b1d7c8c0d512ffb32f9be"
             }
           },
           "filesHi": {
@@ -5347,6 +5746,12 @@
               "w": 19,
               "h": 17,
               "sha256": "8b527f6e0741ed197ed89ca04d55f5c831aace26947637836717c1201774886a"
+            },
+            "depth": {
+              "file": "sheets/bastion__barrel__d00__depth.png",
+              "w": 19,
+              "h": 17,
+              "sha256": "22af2c7c650a1b34158e84f234c80f677535c23da0d8660f8189249f6cb5a644"
             }
           },
           "filesHi": {
@@ -5412,6 +5817,12 @@
               "w": 18,
               "h": 17,
               "sha256": "09828da627baa1df543279450fc8840ac4caddfabc8bccf630ba66379d7d0315"
+            },
+            "depth": {
+              "file": "sheets/bastion__barrel__d01__depth.png",
+              "w": 18,
+              "h": 17,
+              "sha256": "76b2e895e3188599a9597e681682ee08469e7fc7785d9ca52c183b8b0f7f7045"
             }
           },
           "filesHi": {
@@ -5477,6 +5888,12 @@
               "w": 15,
               "h": 17,
               "sha256": "cad5921949b842c271f70ba4193baa0a25c32f04c34fde3590361f79516130f0"
+            },
+            "depth": {
+              "file": "sheets/bastion__barrel__d02__depth.png",
+              "w": 15,
+              "h": 17,
+              "sha256": "0b15135b5a99f9ac36fbad6fe2a2233dbe0fac77ba56e76b72326a3036ca00a2"
             }
           },
           "filesHi": {
@@ -5542,6 +5959,12 @@
               "w": 18,
               "h": 17,
               "sha256": "f54809f4e41b3dfe742446723becef3035057fd2e2541c6352c1f01202c6c538"
+            },
+            "depth": {
+              "file": "sheets/bastion__barrel__d03__depth.png",
+              "w": 18,
+              "h": 17,
+              "sha256": "70187ed1434278c3d1d7a31b92c61addc0a6246e9acb256e111317a7a2752531"
             }
           },
           "filesHi": {
@@ -5607,6 +6030,12 @@
               "w": 19,
               "h": 17,
               "sha256": "f076da5acbbb2e67ad5bbe1c48be59a63146df9f5cd89111a7c3beb75979042f"
+            },
+            "depth": {
+              "file": "sheets/bastion__barrel__d04__depth.png",
+              "w": 19,
+              "h": 17,
+              "sha256": "10f12cd8028554df8b5899059f37e8f3dd907fb31b2879ce0b62bb1b5dc45ab0"
             }
           },
           "filesHi": {
@@ -5672,6 +6101,12 @@
               "w": 20,
               "h": 15,
               "sha256": "2c234caaeaab6e2255650dee8a66ff6618e58cf7f7675ba0914e7fbef9d7f583"
+            },
+            "depth": {
+              "file": "sheets/bastion__barrel__d05__depth.png",
+              "w": 20,
+              "h": 15,
+              "sha256": "32cdb087a1d4895299851d90c4fa37813c778ce9c4b223cd2d3aad62e41f1f30"
             }
           },
           "filesHi": {
@@ -5737,6 +6172,12 @@
               "w": 19,
               "h": 14,
               "sha256": "65ef48bd9061d160f15a2e97882ec295716a8ca0d49f497b619f4b1a9a270af3"
+            },
+            "depth": {
+              "file": "sheets/bastion__barrel__d06__depth.png",
+              "w": 19,
+              "h": 14,
+              "sha256": "373a0852e351c6f018b91be7b735f32bc93a1a62b52e91c31527250a77333ecf"
             }
           },
           "filesHi": {
@@ -5802,6 +6243,12 @@
               "w": 19,
               "h": 14,
               "sha256": "330dcc74bac903faf4ffa34400f7636149185355016cfb3ae4ca41789b457be4"
+            },
+            "depth": {
+              "file": "sheets/bastion__barrel__d07__depth.png",
+              "w": 19,
+              "h": 14,
+              "sha256": "cd6de417d7483b85f311b47ccae3af3e1c0cbc41b93d3ae2b528ef916ec07146"
             }
           },
           "filesHi": {
@@ -5867,6 +6314,12 @@
               "w": 19,
               "h": 16,
               "sha256": "3418d7bbe30d2d47e9b381bbb443a22077be6a3725d69a98eb874fa036feab12"
+            },
+            "depth": {
+              "file": "sheets/bastion__barrel__d08__depth.png",
+              "w": 19,
+              "h": 16,
+              "sha256": "1f7be57bc9f679fc2b62e3c8d10b6f2e1fb104ac9d899128b9c9bcee3acf58a5"
             }
           },
           "filesHi": {
@@ -5932,6 +6385,12 @@
               "w": 18,
               "h": 16,
               "sha256": "f07a8fb3777e6ba844763e01814b13daf0ffac4e837e0571f058c6ed3437cdac"
+            },
+            "depth": {
+              "file": "sheets/bastion__barrel__d09__depth.png",
+              "w": 18,
+              "h": 16,
+              "sha256": "15b426f376f2d42de6e990990a402ab52d2cfe9ffe122bb9f7718fd213ab689e"
             }
           },
           "filesHi": {
@@ -5997,6 +6456,12 @@
               "w": 15,
               "h": 16,
               "sha256": "b0359d0020bbde0b8d53f608cd66e6cd4332cfe1dbd27cdc2a1de5db29873bb4"
+            },
+            "depth": {
+              "file": "sheets/bastion__barrel__d10__depth.png",
+              "w": 15,
+              "h": 16,
+              "sha256": "80e851e74b6b817820de4558c4e9fa0141f56a002a0b7f9a0e7d823739ccd99c"
             }
           },
           "filesHi": {
@@ -6062,6 +6527,12 @@
               "w": 18,
               "h": 16,
               "sha256": "50ef143ad8b8e4b2cedc09686a7d4c036f514a0ee6b33932f173156ab91f55b9"
+            },
+            "depth": {
+              "file": "sheets/bastion__barrel__d11__depth.png",
+              "w": 18,
+              "h": 16,
+              "sha256": "4dfc6a5ce6fbed413a0b2a076334557691fee420e3e25f17e11fb1d6b0366b3b"
             }
           },
           "filesHi": {
@@ -6127,6 +6598,12 @@
               "w": 19,
               "h": 16,
               "sha256": "5aed626ec1905e8fa9ecf8b0ec5d598a782a14bd896e8c93147f7c2cd61b4ea8"
+            },
+            "depth": {
+              "file": "sheets/bastion__barrel__d12__depth.png",
+              "w": 19,
+              "h": 16,
+              "sha256": "1720ae0a12d72391d563254df0d0653068e3826473cabd1ab8d338e093bdef1d"
             }
           },
           "filesHi": {
@@ -6192,6 +6669,12 @@
               "w": 20,
               "h": 14,
               "sha256": "f803d5beed55a84177cf883b6473036539b92f097639ce732d1c8b92bdfdaf25"
+            },
+            "depth": {
+              "file": "sheets/bastion__barrel__d13__depth.png",
+              "w": 20,
+              "h": 14,
+              "sha256": "b63a6e1112b1a1077d0ef9146055de8fdbb754949d8e58a86f4fd3e444ff17a9"
             }
           },
           "filesHi": {
@@ -6257,6 +6740,12 @@
               "w": 19,
               "h": 13,
               "sha256": "19b4a0dc29274a00e14fbbb3c60c1b6bfd91ceb9583e057ff5b5f2370ef6d699"
+            },
+            "depth": {
+              "file": "sheets/bastion__barrel__d14__depth.png",
+              "w": 19,
+              "h": 13,
+              "sha256": "ccd771e5b70683b662fc23f7734506d89dacc15f7bef28c6b774f2a117c73cc7"
             }
           },
           "filesHi": {
@@ -6322,6 +6811,12 @@
               "w": 19,
               "h": 15,
               "sha256": "8195969fecaf362d354489f2a6b1e051604d53c33275b809563163f7f86bdc6a"
+            },
+            "depth": {
+              "file": "sheets/bastion__barrel__d15__depth.png",
+              "w": 19,
+              "h": 15,
+              "sha256": "38ee81fc7e3d873a631abab82546132c783ae0710163b9a536276da0961a212e"
             }
           },
           "filesHi": {
@@ -6477,15 +6972,15 @@
         "files": {
           "albedo": {
             "file": "sheets/bastion__composite__d00__albedo.png",
-            "sha256": "fc4da170955a2c0f46ec2f388366d3911696a28452b60ee307c5a7858d17ae8e"
+            "sha256": "6934f2968050e2d1862ab7d385cc7bb0c7b6f30a8acc0dad4f231a13c9c6055f"
           },
           "normal": {
             "file": "sheets/bastion__composite__d00__normal.png",
-            "sha256": "8fe37283ac58320baec76ccd652649b59ef6970786021ed63ff5912554ecbc27"
+            "sha256": "297fe1f38206cbfd3602d8c6e8787070b6b9e9cd0328ed9536830d13077f71bc"
           },
           "material": {
             "file": "sheets/bastion__composite__d00__material.png",
-            "sha256": "c9fb284280785fe155eb087f8e02fc4faaf956e7a9100438893bb4f2fe3fb3de"
+            "sha256": "88abfaf4cf6b93c56254c160d280e23e328b8103acf9eddda180a16077c4f2ee"
           }
         }
       },
@@ -6495,15 +6990,15 @@
         "files": {
           "albedo": {
             "file": "sheets/bastion__composite__d01__albedo.png",
-            "sha256": "bc5de06d417b866d54f37ff2e575a0b53158f209ea69330bc786e7478fdbceee"
+            "sha256": "8a1124673a13c8fb3967f34d332b858887d684319e56e58ac2a49d26a5c5e05e"
           },
           "normal": {
             "file": "sheets/bastion__composite__d01__normal.png",
-            "sha256": "785d4ded4c680c1199af683d8c34b4376b742e6538dff5678bc7bbf772c77a4c"
+            "sha256": "90302f53dc427976e0e4728b68ca33ff3c8c71bb985d23b0ea94c953c4148c85"
           },
           "material": {
             "file": "sheets/bastion__composite__d01__material.png",
-            "sha256": "2301c9ca71f10bffec69d365a80ec297e29b7687a8d883b42f0f1bf9169c3c5e"
+            "sha256": "bef037e44cac9a3385c4a49424c1ce81ad47e0e92b943af4bca46274c8d50829"
           }
         }
       },
@@ -6513,15 +7008,15 @@
         "files": {
           "albedo": {
             "file": "sheets/bastion__composite__d02__albedo.png",
-            "sha256": "a3bbf1783015d916125b77913c60314a2cac32026e7949bcf4d5b9c5707e9669"
+            "sha256": "e6fa4b924a7a2c08b4cbbe22ecde98cc3b011f18ec4900e3ede655b8406f129f"
           },
           "normal": {
             "file": "sheets/bastion__composite__d02__normal.png",
-            "sha256": "7b1a25fb0765bbca9483e0259d9368ba0c77cab4b3831ae5cc288e03574c0d12"
+            "sha256": "a3fe3c8c7c2fe54943a8ced252622274cdb4e200ae8a86f4f222d83e7cece36f"
           },
           "material": {
             "file": "sheets/bastion__composite__d02__material.png",
-            "sha256": "91029d3fbfa17c1f197500203342573069ec7ae1978838da3b556597117f83e3"
+            "sha256": "f123924b30d159ac9031d11884d84b9eeed2810b796fd8f15d54db48dc853ce0"
           }
         }
       },
@@ -6531,15 +7026,15 @@
         "files": {
           "albedo": {
             "file": "sheets/bastion__composite__d03__albedo.png",
-            "sha256": "147d3d3ddb8d9df6a8f51770f030ec836916f0dae9ea104c618c281af4cda23e"
+            "sha256": "c2ef8417fe5f1147de85febd51c65be076e4c051df952409601e960c7ae9430a"
           },
           "normal": {
             "file": "sheets/bastion__composite__d03__normal.png",
-            "sha256": "4d4902f95d7a30359534c294042fba79aef566cf7e64c54882a23acea8d3571b"
+            "sha256": "1ead58bd7ab4bd80e077b6f049292b038778c33eedbf3dbd109725d186e4a09c"
           },
           "material": {
             "file": "sheets/bastion__composite__d03__material.png",
-            "sha256": "c0de30b454c0b09ad9f653bb57a5442e2080c264e63994c361efe097801f204b"
+            "sha256": "1155d7b5432841611fb3e7cf1c057369177c573dafabf300be8616cf4c3ff718"
           }
         }
       },
@@ -6549,15 +7044,15 @@
         "files": {
           "albedo": {
             "file": "sheets/bastion__composite__d04__albedo.png",
-            "sha256": "fa44ada82e42b3c5aea9187e0caa1df42ce96d861b55e9866eac4af137e6fa9f"
+            "sha256": "47e39ca51a2eb66ec670428ec313b87f47e529f1b81bd4e924b2a322f09a92d1"
           },
           "normal": {
             "file": "sheets/bastion__composite__d04__normal.png",
-            "sha256": "6fe1c3f4e3aafa67045e1d95c267e90c13c3642dbb13735fcab642f155073b57"
+            "sha256": "45443f98f8bc3b45844b3ff3b336e19c633b8312758ec369d3d1458cea6f558f"
           },
           "material": {
             "file": "sheets/bastion__composite__d04__material.png",
-            "sha256": "2a76d328ad1088d800c0cfbfe0510bd6a2795ea3bcb1c35f16e7f048eb29e4b4"
+            "sha256": "1cdf55b766f20a227bf66d6cfd20688fa62882048e37eaa8d70ddfceb1b00d30"
           }
         }
       },
@@ -6567,15 +7062,15 @@
         "files": {
           "albedo": {
             "file": "sheets/bastion__composite__d05__albedo.png",
-            "sha256": "568c7dc74f6d9e1702d4af8c440c8c293f71a47d4cd04e6e54e05cc830645ea6"
+            "sha256": "6f9976f3fe6c813024c740cf4bd492ad3a6aec9128d4f2d2e9adc51a23f4e126"
           },
           "normal": {
             "file": "sheets/bastion__composite__d05__normal.png",
-            "sha256": "20c7689f147b561d492cb6a748f0f92a6af5599a44e8a5dc55294bfa29ca47ef"
+            "sha256": "01e661d092fe902b88e72f11236e216cbc0ba9f0c372c3578893d5b406353534"
           },
           "material": {
             "file": "sheets/bastion__composite__d05__material.png",
-            "sha256": "336a846b1f2058f7ca2961c9cede2ef4a5eafa8f8b26d4d6fdf7d18947acada5"
+            "sha256": "4cc9455cbfaffe2e70efc14ac616bf37240457ea8e8a127b687ae981be5ec660"
           }
         }
       },
@@ -6585,15 +7080,15 @@
         "files": {
           "albedo": {
             "file": "sheets/bastion__composite__d06__albedo.png",
-            "sha256": "5f2c93ed36aa60a928502b3fa92a05cabe72064e2f112e7915e974ca844a396f"
+            "sha256": "49f4b56961b894044d2684880ca3e09d4433b6f60dffa95f5c794731c5d2d6c0"
           },
           "normal": {
             "file": "sheets/bastion__composite__d06__normal.png",
-            "sha256": "3d68a722e734c5e281370fd040a6be60be008ac9695f285f22c7209865af7172"
+            "sha256": "4d9b490ad3083f79c885834614e8504d125e17b7bb5ee8c16c1968bca8bd86d3"
           },
           "material": {
             "file": "sheets/bastion__composite__d06__material.png",
-            "sha256": "a807d175522943e36351f145f2bd6fbc420f5a7a416f7bc27de8819905b4488f"
+            "sha256": "9c73dcf2687c29d3720b677e513fb7900e66604bcd9455c31d6551b7b0fd50bd"
           }
         }
       },
@@ -6603,15 +7098,15 @@
         "files": {
           "albedo": {
             "file": "sheets/bastion__composite__d07__albedo.png",
-            "sha256": "fcb6436ad181acd646b34bd6becf1140d5d3b238f5577f65169f460503534484"
+            "sha256": "e7161f85c8ac195c49f03ad60f8fc815dad1fc4aa1c271e49eadbde2e1087005"
           },
           "normal": {
             "file": "sheets/bastion__composite__d07__normal.png",
-            "sha256": "e5daffd9a17f65ab4ccdf272a9504832e78037dc9f351816df18a729b028f5d5"
+            "sha256": "7a546291ff895a89fd58b98738de8ae79c6f823ac22c47cf8185baffeb53a3f7"
           },
           "material": {
             "file": "sheets/bastion__composite__d07__material.png",
-            "sha256": "f7ddad0b15538f3143a9c7be4dc860dcb31c20e471159fd9428b3ad0de303223"
+            "sha256": "905e4ce88536893389bc2b3677ee47e65f5e9cabbf69f1c8c7f2c5de083436e7"
           }
         }
       },
@@ -6621,15 +7116,15 @@
         "files": {
           "albedo": {
             "file": "sheets/bastion__composite__d08__albedo.png",
-            "sha256": "76865d60b593b194522ff011353bb76bd87762252e2828c0ba26c8ae468a9095"
+            "sha256": "509ae085b0205a1beba6baf2f6c0557666431b523c0adb8edf538608eade8684"
           },
           "normal": {
             "file": "sheets/bastion__composite__d08__normal.png",
-            "sha256": "1e790ecbb771210e320fc3b3ae634bf71a124e61b9f10bbc2a758fb01cabd246"
+            "sha256": "7733c2ca3cf476cee1a4a29dc4cbcd326eebbbf0df7369c9408da22c384e0dbb"
           },
           "material": {
             "file": "sheets/bastion__composite__d08__material.png",
-            "sha256": "a58ed7fdfe655c8b69dec964a2805481b74a820bf9fa5eea253a14470e55118a"
+            "sha256": "6653327646d19d4176264e08f2c1ea10e46c200b044abc8285b9b6ee90f06399"
           }
         }
       },
@@ -6639,15 +7134,15 @@
         "files": {
           "albedo": {
             "file": "sheets/bastion__composite__d09__albedo.png",
-            "sha256": "271ca769807d8cede903bdda0bf95afde3583f0a2d471d4250aa2a613658cc80"
+            "sha256": "ad9d56123a0300db93a3b2cbf4caf2e65773e7ba9cb8ba3f6fee93eddfd0bc46"
           },
           "normal": {
             "file": "sheets/bastion__composite__d09__normal.png",
-            "sha256": "b97b48d3bd546ad05a265885b95a6a6fc3201ed2f6bdcae5cf8e1663f48f54b3"
+            "sha256": "ae036b5af01e59f8ee83a2c2518b8dbf8830991c55b781d017adeb2417885f6a"
           },
           "material": {
             "file": "sheets/bastion__composite__d09__material.png",
-            "sha256": "c4004ee7b565566c4b99c772444e7951972c8e72e7d273b60f1ed210e9d93ad6"
+            "sha256": "ccb471aa872317aa811dfe1d996b741eae4ce4121421b3f425f77e2893b3a646"
           }
         }
       },
@@ -6657,15 +7152,15 @@
         "files": {
           "albedo": {
             "file": "sheets/bastion__composite__d10__albedo.png",
-            "sha256": "62371dab784062549a6011abdbeb6b16d6fc1e9de26040b760a94a8970f478a3"
+            "sha256": "35f94ff946aa0270bcf2c1b33221482d5cc9825ddfe037609a5b5e0e2de81e7c"
           },
           "normal": {
             "file": "sheets/bastion__composite__d10__normal.png",
-            "sha256": "98f524cb1684e708dd59472d1efd643cad675f040c2a77849441509e607e2f6b"
+            "sha256": "0f6ce05c8e60eb5c844aea856426a5d13e4dbf0ac06f229a2c87fd4a553eed38"
           },
           "material": {
             "file": "sheets/bastion__composite__d10__material.png",
-            "sha256": "87bd1c0cd5d5f4c594834297389f95018358db850c95f06a82d3d3ca34869f59"
+            "sha256": "bd2f99e03430fe9472e66f37ba2e8a5253c3fcc99d4822cedf6cda2e065b9516"
           }
         }
       },
@@ -6675,15 +7170,15 @@
         "files": {
           "albedo": {
             "file": "sheets/bastion__composite__d11__albedo.png",
-            "sha256": "a6ebeef590ebf21b1776d00e985a611fb63ea3f14a7875bfb32992ffda1f703e"
+            "sha256": "e9ad5534a099605b55096230284bd91080671053d5670cdf98c69ed6f930e82a"
           },
           "normal": {
             "file": "sheets/bastion__composite__d11__normal.png",
-            "sha256": "9b49b9040c695fcac2ce8f3627ca5862b0a8f30376e3421347eec942cde3147e"
+            "sha256": "11b47943eb1486a949f205f77945fa64ef803037673bdcdd8f214fbe14ad7491"
           },
           "material": {
             "file": "sheets/bastion__composite__d11__material.png",
-            "sha256": "4e49a9d1564555aadf3742eaadf44784d4bebcb1704879d2518d41a3e55efca8"
+            "sha256": "ab3ebbc60d6338d5e009bfd17f188ecaa0fe3013f6c90063dc33e6b06af6e785"
           }
         }
       },
@@ -6693,15 +7188,15 @@
         "files": {
           "albedo": {
             "file": "sheets/bastion__composite__d12__albedo.png",
-            "sha256": "5b9270659c05e06df7aa1cd82a46739deabe92d8e337d99e6098e35095c5547c"
+            "sha256": "503c41b746c7fecfaf3b4b6f5a6e2ee207347f9675fdee107fb08a3d79065271"
           },
           "normal": {
             "file": "sheets/bastion__composite__d12__normal.png",
-            "sha256": "bc55d63e7ddc12f581414c88e77de02119e39525d35bf65c8066432c371de6e8"
+            "sha256": "7f92f5a9db941ade2aedbcaaf9f894e8aec63655455f2c9e87447ffd7215533d"
           },
           "material": {
             "file": "sheets/bastion__composite__d12__material.png",
-            "sha256": "3d2a4fcd3e954df20009acd425e4462348df0c182c6392372936c6a5e63bb1e4"
+            "sha256": "26fa6347aca251aa1f26f445ca3885d243339bf333aea2fd784083bcf28e167d"
           }
         }
       },
@@ -6711,15 +7206,15 @@
         "files": {
           "albedo": {
             "file": "sheets/bastion__composite__d13__albedo.png",
-            "sha256": "86ef56c2a10f363c2f26ea793991c8e666a2e86cce7165afcfc3821f5e470ed4"
+            "sha256": "eabc542b171196d5ba9d426ef337adc86051b7e0508c06c50400ff15b1dea25f"
           },
           "normal": {
             "file": "sheets/bastion__composite__d13__normal.png",
-            "sha256": "d9d72a1f101dad72ed8633b9d69ca5c1ed6551ae6fcf8abd55a4a6c8dc1e2be2"
+            "sha256": "b5fffee42408a987a520d00a5344928e4ffc0c29f3997a6b486f00f1ab50bc07"
           },
           "material": {
             "file": "sheets/bastion__composite__d13__material.png",
-            "sha256": "1cbd376abb9401c1ffbe543fdeaced17b2fb4c6436a25e99fc18855104fe77d5"
+            "sha256": "579ea4d7e242d4c33ea002de0ea4a810a39af3e918bfd88a93d390631ee6d0f0"
           }
         }
       },
@@ -6729,15 +7224,15 @@
         "files": {
           "albedo": {
             "file": "sheets/bastion__composite__d14__albedo.png",
-            "sha256": "fee4573038277d418741f17043f945caa73ad247d520874f235bf502ea3920a5"
+            "sha256": "b6a67cf3c8901cd62c2e317b9b354f7fcf47026c68400b51271e7430fec643b7"
           },
           "normal": {
             "file": "sheets/bastion__composite__d14__normal.png",
-            "sha256": "470ed49c992d4dbb68ef97cfd62aa1ffaa289070a89026b3fc44803c42b11379"
+            "sha256": "288e6d2a13d520dee063bdfc3634ad3fc3d7ce3c1c723539f1fd988119eed1ea"
           },
           "material": {
             "file": "sheets/bastion__composite__d14__material.png",
-            "sha256": "7d1c350914d324a380da712182672394217e7c509560b1738d3fd4b6b8978007"
+            "sha256": "ca0ae6531d259350a6266e471ee455ef8dfe2958ff3dd77310d5e0d3c315d501"
           }
         }
       },
@@ -6747,15 +7242,15 @@
         "files": {
           "albedo": {
             "file": "sheets/bastion__composite__d15__albedo.png",
-            "sha256": "588b9ee400b1d4d9a823a0c1d5bbc176003799e21d70ac59e22518ef656e8b5a"
+            "sha256": "2e2432682555726317bb626bdf39681c8854e43cf2774d91b8960df581d8b326"
           },
           "normal": {
             "file": "sheets/bastion__composite__d15__normal.png",
-            "sha256": "ab9c64de4d46776951f1a829398c02a2dc8ac4559775ee6d537c25808692808a"
+            "sha256": "a0253747da9802ab52afcce29bdfa36b0377c8710969dcf4f67982d6bfe689eb"
           },
           "material": {
             "file": "sheets/bastion__composite__d15__material.png",
-            "sha256": "7e41ac65ce5f298f0302b726e497cdb5e2a5a423bad3a135d6e3d87a7ab802e4"
+            "sha256": "42699dad8a7cd4620ceb0522b96c931be1eac5fdc9c78943bd2073f38f3c82e7"
           }
         }
       }
@@ -6769,97 +7264,97 @@
         "file": "sheets/bastion__lit__d00__albedo.png",
         "w": 69,
         "h": 49,
-        "sha256": "620d02165020bba57fa4a29739a4120001e4362d057d32d447cc133740b7fba5"
+        "sha256": "e0dad1cee8c1d1980a33c54f33531892d0fecb068bad2907082561d1442e5786"
       },
       "d01": {
         "file": "sheets/bastion__lit__d01__albedo.png",
         "w": 65,
         "h": 47,
-        "sha256": "d41b0fc1afc41b1abfd09e1cda4f5e8c5fee0d7297fa1bf6b452c80e92653006"
+        "sha256": "d68555511b926130baf8eac147b0a7edbfbd726467acbe32bdc306e6ad17a6ac"
       },
       "d02": {
         "file": "sheets/bastion__lit__d02__albedo.png",
         "w": 55,
         "h": 44,
-        "sha256": "55f7069200dcb278c08728904503da72f926923c656fc63d2b9a5d8deef1094c"
+        "sha256": "37844911cb32e5c8a3e050b7df72934642550e562b4de14b0d9f7f450f654c1d"
       },
       "d03": {
         "file": "sheets/bastion__lit__d03__albedo.png",
         "w": 65,
         "h": 46,
-        "sha256": "2d1134f8a83e3914e3806ebc691bdafffb743ad9affb3e955c9af14f2a3ce650"
+        "sha256": "5535bfdd3a10116b841475eb89160dc428610ca3edfa94c051e35c4298f3be5a"
       },
       "d04": {
         "file": "sheets/bastion__lit__d04__albedo.png",
         "w": 70,
         "h": 48,
-        "sha256": "e022deb03dba39caae48d6699da4887b947eb2110e42141da894dfacb2b25dc9"
+        "sha256": "35b41ce44d3d697cbfa05c1a88d79ca09b51863c817f96b00adfe8a1dae81cae"
       },
       "d05": {
         "file": "sheets/bastion__lit__d05__albedo.png",
         "w": 67,
         "h": 48,
-        "sha256": "1c54f7770d557f8d0236b2f860dc788e60bcf8b8e2f5387402f5f5432adfe057"
+        "sha256": "c8384cbd3cc72210908406d62b182844618ba04260b046152b689ee658d6236c"
       },
       "d06": {
         "file": "sheets/bastion__lit__d06__albedo.png",
         "w": 58,
         "h": 46,
-        "sha256": "51dd9f2c1f430a5248d6fc7ceb5bdc7a5f29abc26523ded3b1b3e10b3ef6f0ca"
+        "sha256": "54098e8b60b3fa97525f3bd7472fa145d52e15f306139a4a0216b7ea52800cf4"
       },
       "d07": {
         "file": "sheets/bastion__lit__d07__albedo.png",
         "w": 65,
         "h": 49,
-        "sha256": "45622026932b19b87018a134dc3b1ec53a4de504e967aeb5bc1165bfacef17ab"
+        "sha256": "54dfce0de8b054b20f66a576160de72747a2870d6647749991f9846edb85d055"
       },
       "d08": {
         "file": "sheets/bastion__lit__d08__albedo.png",
         "w": 69,
         "h": 48,
-        "sha256": "ce4f4e2cbcfe08bab352e4194766fee1d0a1afaab338f5a8557be047202e7a13"
+        "sha256": "ba2124e5106c0f1c9c2069add8e2d514a6ea01bc2d812b6a3ba40a0bda771100"
       },
       "d09": {
         "file": "sheets/bastion__lit__d09__albedo.png",
         "w": 65,
         "h": 49,
-        "sha256": "0fc698b92d0f89f54198eb3003a5a24574cb96744b79f1cae5178b5811055b02"
+        "sha256": "b19f1503cc92d33d8b886754a1b79f029cbaa85c8c2fa77aa6df3a815b6a2492"
       },
       "d10": {
         "file": "sheets/bastion__lit__d10__albedo.png",
         "w": 55,
         "h": 47,
-        "sha256": "074c461f961c700d94b5abdfd5bd428effbf2025b0ef279dbe91cd69f7653418"
+        "sha256": "955e8919cfbe6b8cbc55f99be31f6cb6ce19cb48f2c7c4c28d0351490ca3f77b"
       },
       "d11": {
         "file": "sheets/bastion__lit__d11__albedo.png",
         "w": 65,
         "h": 49,
-        "sha256": "2dbc3cbd3732bf412f9bc46a3c8fab881ad6a266654a07428f6e1d7678013557"
+        "sha256": "64bfad05235ccaf07980c3aca50d8bfa06d142c4f440e098d84fd0418e963da3"
       },
       "d12": {
         "file": "sheets/bastion__lit__d12__albedo.png",
         "w": 70,
         "h": 50,
-        "sha256": "6ef12734f57b9aaccd69a4e34357535940c0772ca653dc316cac5eec1e93b18b"
+        "sha256": "f07fb44b7bbb3802247a79bd52f6266f42bf0d7c04d994e09bdcb3a7799f9b17"
       },
       "d13": {
         "file": "sheets/bastion__lit__d13__albedo.png",
         "w": 67,
         "h": 50,
-        "sha256": "5622aab37d04c45a53cc4ca5bd31cbfcb708abb8fe38afc7d62bee1abafc2dc2"
+        "sha256": "63ca8b949b7e9f775ded3f29371b1221a1275502e0924d0df177c96646dd2c85"
       },
       "d14": {
         "file": "sheets/bastion__lit__d14__albedo.png",
         "w": 58,
         "h": 47,
-        "sha256": "ddc3d4735d5c9cc31edc1972b95d738ee286f0010d431b46dd1d3c7bf8b51dc1"
+        "sha256": "aad06853b971de5600134b7ea402002c9756a7546d48d651e248f1cb9a88d351"
       },
       "d15": {
         "file": "sheets/bastion__lit__d15__albedo.png",
         "w": 65,
         "h": 50,
-        "sha256": "b1587acd7b70b6c68a9aca2cec29715837f60373ef1902aed4634227123375f9"
+        "sha256": "14051f46886b0c3fedd9a4a6185773a584f7c46cce26e0e3e6dcf96446d48aa8"
       }
     }
   },

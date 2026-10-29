@@ -84,7 +84,8 @@ game_assets/
         tank__body__d00__albedo.png
         tank__body__d00__normal.png
         tank__body__d00__material.png
-        tank__turret__d00__albedo.png  # … one trio per part per facing
+        tank__body__d00__depth.png     # per-pixel depth sheet (see §6.1)
+        tank__turret__d00__albedo.png  # … one quartet per part per facing
         tank__barrel__d00__albedo.png
         …
   buildings/
@@ -125,7 +126,8 @@ game_assets/
           "w": 212, "h": 148,
           "files": { "albedo": { "file": "sheets/…", "sha256": "…" },
                      "normal": { "file": "…", "sha256": "…" },
-                     "material": { "file": "…", "sha256": "…" } }
+                     "material": { "file": "…", "sha256": "…" },
+                     "depth": { "file": "sheets/…", "sha256": "…" } }
         }
       }
     }
@@ -136,7 +138,35 @@ game_assets/
 ```
 
 Runtime rule for composition: for every part of one entity, draw at
-`screen = entityTilePos + part.facings[f].anchor`.
+`screen = entityTilePos + part.facings[f].anchor`, but **do not draw in order** — resolve each pixel by
+`files.depth` (see §6.1).
+
+### 6.1 Depth sheets — how parts are composited
+
+Sorting parts is not a valid composition rule and never was. A part does not have *a* depth; it has one per
+*pixel*. A door on the far wall must lose to the roof while the same door on the near wall must win, and a
+wall's bounding box reaches closer to the camera than either. Every order-based rule (manifest order,
+dynamic-first, centroid depth) therefore fails on some facing — the visible symptom was the barracks door
+and flag painting over the roof at `down`.
+
+So each part, per facing, ships a depth map beside its albedo:
+
+| channel | meaning |
+| --- | --- |
+| `R`, `G` | 16-bit fixed-point depth, `q = R*256 + G` |
+| `B` | unused (0) |
+| `A` | `255` where the part covers the pixel, `0` where it does not |
+
+`depth = q / 256 - 128` in tile units (1 design voxel = 1/8 tile unit), **larger = nearer**, quantised to
+1/32 voxel. A pixel the part does not cover encodes `q = 0`.
+
+Composition (`tools/voxel_pipeline/v3/composite.mjs`) keeps a `-Infinity` z-buffer, compares every part at
+every pixel, and takes albedo, normal and material **from the single nearest part** — material ids must never
+be averaged, since the mean of two ids is a third id — while alpha is the best coverage any part offers.
+Draw order becomes irrelevant, which is what makes 16 facings and a traversing turret safe.
+
+The review page must therefore *not* sort layers either; `tests/voxel-occlusion.test.js` diffs a composite
+built this way against a single-pass render of the same model and fails if order-based compositing returns.
 
 ### Traversal contract (do not rotate sprites)
 

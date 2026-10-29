@@ -678,6 +678,21 @@
       }
     ]
   },
+  "depthMap": {
+    "note": "Per-part view depth, one PNG per part per facing. Composite by z-test on this; do NOT try to order segments by a single depth per part.",
+    "channelOrder": "rgba",
+    "meaning": [
+      "depthHi",
+      "depthLo",
+      "unused",
+      "covered"
+    ],
+    "encoding": "q = depthHi * 256 + depthLo; depth = q / scale - bias  (tile units = design voxels / 8)",
+    "scale": 256,
+    "bias": 128,
+    "coveredAlpha": 255,
+    "largerIsCloser": true
+  },
   "parts": {
     "body": {
       "name": "body",
@@ -727,6 +742,12 @@
               "w": 61,
               "h": 46,
               "sha256": "979cb99da7765ca4ff2522ef7aaefccb9050a1bee81857b98b3520d79164c3a3"
+            },
+            "depth": {
+              "file": "sheets/barracks__body__right__depth.png",
+              "w": 61,
+              "h": 46,
+              "sha256": "cc5496316845463a9de1f501e7557f6ed2891a4ce41263351345e4219c04afb3"
             }
           },
           "filesHi": {
@@ -792,6 +813,12 @@
               "w": 61,
               "h": 45,
               "sha256": "0497540f4183d5160d8314d18ec242173cf30bb2f24d1d5195220347bbd084fe"
+            },
+            "depth": {
+              "file": "sheets/barracks__body__up__depth.png",
+              "w": 61,
+              "h": 45,
+              "sha256": "1df55c33774c24b5f98c03690e115244ab77c3d9cf62f5287c6e00790c94cfac"
             }
           },
           "filesHi": {
@@ -857,6 +884,12 @@
               "w": 61,
               "h": 46,
               "sha256": "be681e6faf902975384199dd1a5f9b337a06fb260bea89f98cce29cb290bfcf0"
+            },
+            "depth": {
+              "file": "sheets/barracks__body__left__depth.png",
+              "w": 61,
+              "h": 46,
+              "sha256": "f9bcc0d3de6158ee9dc5f41ef5f1763ab3e68dea506861a27874ecf465fc196b"
             }
           },
           "filesHi": {
@@ -922,6 +955,12 @@
               "w": 61,
               "h": 46,
               "sha256": "fd90ccb864205654b3e3fe55f1f87a600d8adfcc147978fcef9315d1fd2b0813"
+            },
+            "depth": {
+              "file": "sheets/barracks__body__down__depth.png",
+              "w": 61,
+              "h": 46,
+              "sha256": "e9454775600ac50958f0fb873562537af0a510ad791c74a219d3f7bbbe96dca3"
             }
           },
           "filesHi": {
@@ -1007,6 +1046,12 @@
               "w": 16,
               "h": 19,
               "sha256": "d0c8d0de4454762eea357186d3236a8a32fa6be982ad6d4a5f79e8f9e9228380"
+            },
+            "depth": {
+              "file": "sheets/barracks__door__right__depth.png",
+              "w": 16,
+              "h": 19,
+              "sha256": "0d1901193d3367ced846890a8e8439100eb9c355b60d13338af8f54fcf86b75b"
             }
           },
           "filesHi": {
@@ -1072,6 +1117,12 @@
               "w": 16,
               "h": 19,
               "sha256": "7c37f69942f26bd500daaf268e2d124be8bcbf4e06d51969f61e68962052240c"
+            },
+            "depth": {
+              "file": "sheets/barracks__door__up__depth.png",
+              "w": 16,
+              "h": 19,
+              "sha256": "122efbe78dbdbae16378a0a30b28955dd34ec448d788e01517d76425865d6b5b"
             }
           },
           "filesHi": {
@@ -1137,6 +1188,12 @@
               "w": 16,
               "h": 19,
               "sha256": "86d5a4c7a5483605ecc905cdf87bd7b2ba5a9e8138a3dc03f611fe2e4e86a025"
+            },
+            "depth": {
+              "file": "sheets/barracks__door__left__depth.png",
+              "w": 16,
+              "h": 19,
+              "sha256": "9cd539d0a9bbac642c531f4df7ece06557b5fc9455757b5d2fe16a30e181db9c"
             }
           },
           "filesHi": {
@@ -1202,6 +1259,12 @@
               "w": 16,
               "h": 19,
               "sha256": "fd6ee4e7cbd96719b1c8b8945ad73cd8e63e7fbd41b8020f619b9aedafee0737"
+            },
+            "depth": {
+              "file": "sheets/barracks__door__down__depth.png",
+              "w": 16,
+              "h": 19,
+              "sha256": "895ff61a77e4b5425da76c1d6b8b6386612bdd560e66b817b6218cf1797526fc"
             }
           },
           "filesHi": {
@@ -1287,6 +1350,12 @@
               "w": 13,
               "h": 28,
               "sha256": "37f97f57bf6d7ef9073364193da95ea871ce022d8941aff18c15ab9f29a41522"
+            },
+            "depth": {
+              "file": "sheets/barracks__flag__right__depth.png",
+              "w": 13,
+              "h": 28,
+              "sha256": "3b23f08009c87c722afc3a4fa4430efa8f226a127ae38c9ffa57080ba5d62a56"
             }
           },
           "filesHi": {
@@ -1352,6 +1421,12 @@
               "w": 13,
               "h": 29,
               "sha256": "8e5e164bca587ed7ffee0d1c6089b8dd00ae95797af881f28a53802c8fb16dd0"
+            },
+            "depth": {
+              "file": "sheets/barracks__flag__up__depth.png",
+              "w": 13,
+              "h": 29,
+              "sha256": "27937393c49e6d8ce2a862e58b75613257c18544c56d36f84a39bb7fe2cde8bb"
             }
           },
           "filesHi": {
@@ -1417,6 +1492,12 @@
               "w": 13,
               "h": 29,
               "sha256": "8ce5e8dc24d24c57ccb0941d183eaf6c88fa88068883c9fab31b24ab7a63d029"
+            },
+            "depth": {
+              "file": "sheets/barracks__flag__left__depth.png",
+              "w": 13,
+              "h": 29,
+              "sha256": "cd1f09209abb12e9fcfae1b0a775591d0bd133ce0aa4233c767f6d88764e54ff"
             }
           },
           "filesHi": {
@@ -1482,6 +1563,12 @@
               "w": 13,
               "h": 28,
               "sha256": "4f650f8f431b13090f1f8671f0df2cae92db4238fb504cf0cae36e1dc6db0d2d"
+            },
+            "depth": {
+              "file": "sheets/barracks__flag__down__depth.png",
+              "w": 13,
+              "h": 28,
+              "sha256": "b098a35460bc4942ed42b47420fccdb63aed216abdb704ccfc0b131986cfdb55"
             }
           },
           "filesHi": {
@@ -1597,15 +1684,15 @@
         "files": {
           "albedo": {
             "file": "sheets/barracks__composite__right__albedo.png",
-            "sha256": "ada912505a6221322ef75172d0195407b895b4e796e5f01de1b76c7c55ff8aad"
+            "sha256": "1dca7e956d73a539a9447ea991e19611493c44c898b727ceab251330e2a38459"
           },
           "normal": {
             "file": "sheets/barracks__composite__right__normal.png",
-            "sha256": "80f2bf0025b5462a3c852e0e65863528fa45d35a2b4c5930fe5337c2479c5e63"
+            "sha256": "18e69cb1e3b5a960b0b183098a8ab5971379a416cbdf196454cb86929eeb8f2e"
           },
           "material": {
             "file": "sheets/barracks__composite__right__material.png",
-            "sha256": "fe33e85b53b444d81509fac43240d5f6ed81bc68586fff9308a24c132013e149"
+            "sha256": "20041398311aaee86c1bd3afc8493657dc96a9d85e283e3f80d4558ce42bd157"
           }
         }
       },
@@ -1615,15 +1702,15 @@
         "files": {
           "albedo": {
             "file": "sheets/barracks__composite__up__albedo.png",
-            "sha256": "4ff7ee6d63e40dd7e84fd24ae0b097f6f31cac6bd01f7d284463a8f5055a1728"
+            "sha256": "5f2c54abb61e0a7b76ef784dbac020560768d7a14625e58214aa7f7c23920540"
           },
           "normal": {
             "file": "sheets/barracks__composite__up__normal.png",
-            "sha256": "c1f7ee921531ff8cb5e88c6f8999552eeb140ba5ea0efb16b84275b693131872"
+            "sha256": "32d0697d60014861fb8ccbf9d6fe8dcb953540626278e54f585d54a8e0b7e8ac"
           },
           "material": {
             "file": "sheets/barracks__composite__up__material.png",
-            "sha256": "b5a70736d711ade1883571260e66bf0b5e7d146681766c83a1b62f453ab7cff0"
+            "sha256": "0155f5a5c426c4a6b0b74daa9a094746f2089a7fc4ea846cedc27f1341ba026c"
           }
         }
       },
@@ -1633,11 +1720,11 @@
         "files": {
           "albedo": {
             "file": "sheets/barracks__composite__left__albedo.png",
-            "sha256": "18336ec1ed5a04c253299ff39806c9f214e6552453d402c6c7ed02ec07bf266f"
+            "sha256": "fc1c876d21b61b59f6d48c0a2fbe652b8faf61ade0fa5136e7a9dc24be4d924b"
           },
           "normal": {
             "file": "sheets/barracks__composite__left__normal.png",
-            "sha256": "fd395fd64cba5b635399fa189bc72c5dae09fe00e1c36741c3d1db27f95b85c3"
+            "sha256": "787f1a422b78187b7497e6b22ddb7d28aaa3defedaf719a05ebd70ed2fbaf72d"
           },
           "material": {
             "file": "sheets/barracks__composite__left__material.png",
@@ -1651,11 +1738,11 @@
         "files": {
           "albedo": {
             "file": "sheets/barracks__composite__down__albedo.png",
-            "sha256": "3bf5d76ecf51cc681e6141070658f7fcbaa646039c69dff401bcd74e8d1af50e"
+            "sha256": "a60f85be772f76d2d6ffd8b199e482af6d97bc6959977ac101e854c72f09314f"
           },
           "normal": {
             "file": "sheets/barracks__composite__down__normal.png",
-            "sha256": "00172fa54fe5fce794d29d437a1b70d905079f042cc13e3b06668f6454cdd75b"
+            "sha256": "81726087a4d7decf8f77ce068d625e1ccc317270fc428d5f108d91e0bfdf5681"
           },
           "material": {
             "file": "sheets/barracks__composite__down__material.png",
@@ -1673,25 +1760,25 @@
         "file": "sheets/barracks__lit__right__albedo.png",
         "w": 65,
         "h": 50,
-        "sha256": "289e3084adc52342015678fc69221d023ace1d0a76a6a06365c6d71680dbb88e"
+        "sha256": "af270541feee4cd8a332462858e4154fdf367906f39101b05b4a9ff41d22caf1"
       },
       "up": {
         "file": "sheets/barracks__lit__up__albedo.png",
         "w": 65,
         "h": 49,
-        "sha256": "cf4d160407c71bec6ffe956b4eaf1631ed0ee4405d9954f95a9e881e80f0b6e6"
+        "sha256": "b6636e079c0014641b9d54e3bbab55d435708e50e2309d687dc31dabb677735f"
       },
       "left": {
         "file": "sheets/barracks__lit__left__albedo.png",
         "w": 65,
         "h": 50,
-        "sha256": "2b7ce4e656862770446afeb9eb6a0467abb7940c15cb7434b606ae6a10e90aa7"
+        "sha256": "6a187269d3663accba300a837a4c55c87aa1ea2723d1547167b1fe2f5dd03e62"
       },
       "down": {
         "file": "sheets/barracks__lit__down__albedo.png",
         "w": 65,
         "h": 56,
-        "sha256": "a49e5d4e5a90a47595accca129e4e8320a1fee4eb9e730e35d9400dac1c1d530"
+        "sha256": "ae67345cb2eb50f93bdfdd57c8d827dfbf74357d839111358b9c5d9641ae50b6"
       }
     }
   },

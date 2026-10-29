@@ -998,6 +998,21 @@
       }
     ]
   },
+  "depthMap": {
+    "note": "Per-part view depth, one PNG per part per facing. Composite by z-test on this; do NOT try to order segments by a single depth per part.",
+    "channelOrder": "rgba",
+    "meaning": [
+      "depthHi",
+      "depthLo",
+      "unused",
+      "covered"
+    ],
+    "encoding": "q = depthHi * 256 + depthLo; depth = q / scale - bias  (tile units = design voxels / 8)",
+    "scale": 256,
+    "bias": 128,
+    "coveredAlpha": 255,
+    "largerIsCloser": true
+  },
   "parts": {
     "body": {
       "name": "body",
@@ -1059,6 +1074,12 @@
               "w": 17,
               "h": 24,
               "sha256": "2a421b65c40dc3193bfe57df9eb23407d7dbc96103269722e1ee6613e21267ed"
+            },
+            "depth": {
+              "file": "sheets/infantry__body__d00__depth.png",
+              "w": 17,
+              "h": 24,
+              "sha256": "a950d8a3fc5373d740c818bc541746c312afb8b31b90b919a9141bb436854641"
             }
           },
           "filesHi": {
@@ -1124,6 +1145,12 @@
               "w": 15,
               "h": 23,
               "sha256": "56df30e63a9af91ffb8a4f00d400699ac0efb52cb3df5d1e2ecca6c22e98ae3d"
+            },
+            "depth": {
+              "file": "sheets/infantry__body__d01__depth.png",
+              "w": 15,
+              "h": 23,
+              "sha256": "30e265b91858be201e49e77f6c362a422f0f83a2de20465e1bb4edcd3993f82d"
             }
           },
           "filesHi": {
@@ -1189,6 +1216,12 @@
               "w": 15,
               "h": 24,
               "sha256": "3705c6a65818917bccac13ec249a8376d5cf088f64940b64e0279a9852e9f6c9"
+            },
+            "depth": {
+              "file": "sheets/infantry__body__d02__depth.png",
+              "w": 15,
+              "h": 24,
+              "sha256": "be96edec579ae9acb9d42f9d1b02cb647f31ba701bbf37e22aef7f9f79860d34"
             }
           },
           "filesHi": {
@@ -1254,6 +1287,12 @@
               "w": 18,
               "h": 24,
               "sha256": "4c361d312b7023f551802fca6ac268074b35c0e33950c8b62286300a8defc92a"
+            },
+            "depth": {
+              "file": "sheets/infantry__body__d03__depth.png",
+              "w": 18,
+              "h": 24,
+              "sha256": "506a7dfcd0b00bbdd04479a702bb11851bd697f2d5e708aa1b422d6ca25c663f"
             }
           },
           "filesHi": {
@@ -1319,6 +1358,12 @@
               "w": 19,
               "h": 24,
               "sha256": "84bc00193a2cb0f3392d197a1b669d593b82d75b2b2f0561a8df8f77ee0d2215"
+            },
+            "depth": {
+              "file": "sheets/infantry__body__d04__depth.png",
+              "w": 19,
+              "h": 24,
+              "sha256": "439c14276d7d6121a36b027bdd1e317e97b77bab85ff786d052f2b98528eec2c"
             }
           },
           "filesHi": {
@@ -1384,6 +1429,12 @@
               "w": 20,
               "h": 23,
               "sha256": "cb75d3b844246c86c622b9fd392080effa57532bd0fa87282d8a15b655d71973"
+            },
+            "depth": {
+              "file": "sheets/infantry__body__d05__depth.png",
+              "w": 20,
+              "h": 23,
+              "sha256": "853972568521cf9420c542ce88305a6a3a1362ec35ad036df3f569ec663c4ca8"
             }
           },
           "filesHi": {
@@ -1449,6 +1500,12 @@
               "w": 20,
               "h": 22,
               "sha256": "3bf92199e0ddb6a0370f9feb3aa105c370cf79a029c510506bb8f5da04946904"
+            },
+            "depth": {
+              "file": "sheets/infantry__body__d06__depth.png",
+              "w": 20,
+              "h": 22,
+              "sha256": "44e93b0b72f2f8ef8a574f33d3132009b6ca3f4d07ce35a74bfcec29d1d9ea37"
             }
           },
           "filesHi": {
@@ -1514,6 +1571,12 @@
               "w": 20,
               "h": 24,
               "sha256": "d594ba84e30f033e3851fff217a01fb48e266a89cd731301ee9f7010800410f0"
+            },
+            "depth": {
+              "file": "sheets/infantry__body__d07__depth.png",
+              "w": 20,
+              "h": 24,
+              "sha256": "70ad615fb9233547273e772e08bf9e0615e5548c799a50bf9f4576929da479c5"
             }
           },
           "filesHi": {
@@ -1579,6 +1642,12 @@
               "w": 17,
               "h": 25,
               "sha256": "0e49b89138d90a40f09ef9a210d2f5ca1cd303abb79688e1ab42e9ae8ee847c6"
+            },
+            "depth": {
+              "file": "sheets/infantry__body__d08__depth.png",
+              "w": 17,
+              "h": 25,
+              "sha256": "def402677a9c35e3e804251e8208563d65d337b46a57b9a116beab1bdc369760"
             }
           },
           "filesHi": {
@@ -1644,6 +1713,12 @@
               "w": 15,
               "h": 25,
               "sha256": "68388173bd6e5baf16a9876abe85f9cfe3488218778a49d7f3397425160e8a53"
+            },
+            "depth": {
+              "file": "sheets/infantry__body__d09__depth.png",
+              "w": 15,
+              "h": 25,
+              "sha256": "b727c7eb64857690300f5e3746b2b10988dd9ed9d0c145b4238f8756739c3e43"
             }
           },
           "filesHi": {
@@ -1709,6 +1784,12 @@
               "w": 15,
               "h": 25,
               "sha256": "7f7aff4e0202b2482256690295b7f8ed153a3e86154ec36f1ff9a42d688b9508"
+            },
+            "depth": {
+              "file": "sheets/infantry__body__d10__depth.png",
+              "w": 15,
+              "h": 25,
+              "sha256": "effa5ad8c1dc589f76e2ebfc79d0bb536a23df5df072a85957321514d5afeb60"
             }
           },
           "filesHi": {
@@ -1774,6 +1855,12 @@
               "w": 18,
               "h": 24,
               "sha256": "25a5bcd6ace3f1ad80b470227be7122645e56a9806ba38967a9445689e6a0b0f"
+            },
+            "depth": {
+              "file": "sheets/infantry__body__d11__depth.png",
+              "w": 18,
+              "h": 24,
+              "sha256": "ef1d0e7709c8229af628265118f5561882f1aa17da67607b7f6448f9e6c1db8a"
             }
           },
           "filesHi": {
@@ -1839,6 +1926,12 @@
               "w": 19,
               "h": 23,
               "sha256": "227541ab9fa21625960e48014bb3cfae1738f8751d460c4eb85d37f8824d1543"
+            },
+            "depth": {
+              "file": "sheets/infantry__body__d12__depth.png",
+              "w": 19,
+              "h": 23,
+              "sha256": "19ff419fabe9cf3e0818182ad53e2b9a5409725d7e5daac966cb3c7cdb401a5f"
             }
           },
           "filesHi": {
@@ -1904,6 +1997,12 @@
               "w": 20,
               "h": 23,
               "sha256": "dfcfb542f9d83677ac249f030effbe3f411c16ca45c87141866e1abdd2c573f1"
+            },
+            "depth": {
+              "file": "sheets/infantry__body__d13__depth.png",
+              "w": 20,
+              "h": 23,
+              "sha256": "6edf98f56cfa6f714298effb9e2df87778891b59c3c7926e4a51978830dd5b8e"
             }
           },
           "filesHi": {
@@ -1969,6 +2068,12 @@
               "w": 20,
               "h": 23,
               "sha256": "2bb133f02f80b30dd97ee71285d283e6ae2bd28a458e6978007903cbaaba5270"
+            },
+            "depth": {
+              "file": "sheets/infantry__body__d14__depth.png",
+              "w": 20,
+              "h": 23,
+              "sha256": "4264a2b03a7a5ff1b1f35884e955d701046f3bfbc4d810d8a992d781a35bdf10"
             }
           },
           "filesHi": {
@@ -2034,6 +2139,12 @@
               "w": 20,
               "h": 24,
               "sha256": "8d035a27e07a9adac5c5b990238302b1ed0faa714bcb72ee48c23dd035cb837a"
+            },
+            "depth": {
+              "file": "sheets/infantry__body__d15__depth.png",
+              "w": 20,
+              "h": 24,
+              "sha256": "7b970184dfae21b35a36d629fda470131b73b3eee19bcee67a880fb8033031a1"
             }
           },
           "filesHi": {
@@ -2131,6 +2242,12 @@
               "w": 13,
               "h": 13,
               "sha256": "78da1afb6357375632b4aa89051f21f2adfce9f52f1d0332f9c320d3056d2206"
+            },
+            "depth": {
+              "file": "sheets/infantry__head__d00__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "c2d8609d6974a94c4309db587485af654a58f650942aae25f9c94591861a4beb"
             }
           },
           "filesHi": {
@@ -2196,6 +2313,12 @@
               "w": 13,
               "h": 12,
               "sha256": "5cad6175a9470d51333e2778732fe6294ba7ea9031ae0d2feedcc684e4a68cc7"
+            },
+            "depth": {
+              "file": "sheets/infantry__head__d01__depth.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "5f0c754a597febd0389d67da9a9c85f9dd10220ea06877b034e5a8f335cf7c89"
             }
           },
           "filesHi": {
@@ -2261,6 +2384,12 @@
               "w": 12,
               "h": 13,
               "sha256": "49c140dc62e2681bd045c86dde864c7cfe82229694e1bbdd56e8383e6338c219"
+            },
+            "depth": {
+              "file": "sheets/infantry__head__d02__depth.png",
+              "w": 12,
+              "h": 13,
+              "sha256": "3b4f0c126d394017d84684389676dcc48e568d2364348a346a5117973bf46a53"
             }
           },
           "filesHi": {
@@ -2326,6 +2455,12 @@
               "w": 13,
               "h": 13,
               "sha256": "4c94b974fd8c0d2a186ef9a952ae709097ece3a488b461ee02e1225dce9506b1"
+            },
+            "depth": {
+              "file": "sheets/infantry__head__d03__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "bbc9959c118a5d52845b9e7298a082950bd5262645fe28a0e687011e98a9f9df"
             }
           },
           "filesHi": {
@@ -2391,6 +2526,12 @@
               "w": 13,
               "h": 13,
               "sha256": "97b109215b0b9368d167231fa2cf94ce67f250c0083a4007f355a6d532e64dab"
+            },
+            "depth": {
+              "file": "sheets/infantry__head__d04__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "072cda9504a57e8742290b96f9e3ccb4be5d35ccdf6e866b5a092ec691f67864"
             }
           },
           "filesHi": {
@@ -2456,6 +2597,12 @@
               "w": 13,
               "h": 12,
               "sha256": "803c99b9c61718fe8860211d672b49f109081366fda9ae39f3c395537b709518"
+            },
+            "depth": {
+              "file": "sheets/infantry__head__d05__depth.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "a64769ce4a11fab2d1ff7444f3467fd66204d0333a65958fa206da3fe3b55c0f"
             }
           },
           "filesHi": {
@@ -2521,6 +2668,12 @@
               "w": 12,
               "h": 12,
               "sha256": "e52b7dece3cfa8f1f9cc8186bb614d2f7c4f97b9d0905aed154163148105acd4"
+            },
+            "depth": {
+              "file": "sheets/infantry__head__d06__depth.png",
+              "w": 12,
+              "h": 12,
+              "sha256": "59e42e0bc71664064ad0ad5e4ed26f82dc5eb0b11d63c3445a4d75900061c39c"
             }
           },
           "filesHi": {
@@ -2586,6 +2739,12 @@
               "w": 13,
               "h": 12,
               "sha256": "adce3c060c95b1b9c1e1f1eb098c004183e5e9ced406c8be24d398c810a0e091"
+            },
+            "depth": {
+              "file": "sheets/infantry__head__d07__depth.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "4a32e948eabd8bf6f8a087a3af3528d6bf897c1c88c7d07575acf5da1afb9a79"
             }
           },
           "filesHi": {
@@ -2651,6 +2810,12 @@
               "w": 13,
               "h": 13,
               "sha256": "949154fe90c4132f3f73de4c56fc31bd5f91e2ea9eb6f418646cea7bf62ac5ad"
+            },
+            "depth": {
+              "file": "sheets/infantry__head__d08__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "1da3b930fe588506334e72ecac781464b7ce749017873a823d91f53cd5217b92"
             }
           },
           "filesHi": {
@@ -2716,6 +2881,12 @@
               "w": 13,
               "h": 12,
               "sha256": "01f9909a3fbf3edfc1e9fc1c6bc33968a7c52972390f892d59bf3906be39d4c6"
+            },
+            "depth": {
+              "file": "sheets/infantry__head__d09__depth.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "01421d19c805c38a29bb8675ed179168bc900bf167855d58e526ffb34db94eac"
             }
           },
           "filesHi": {
@@ -2781,6 +2952,12 @@
               "w": 12,
               "h": 12,
               "sha256": "bb5fd968a41cb188fa3538ce1e8efc260fdd15bc3bd1be86b52205225055c441"
+            },
+            "depth": {
+              "file": "sheets/infantry__head__d10__depth.png",
+              "w": 12,
+              "h": 12,
+              "sha256": "66a158561b796dd9b7139d93464f747a182690ea73c7012c262540023c1d03d7"
             }
           },
           "filesHi": {
@@ -2846,6 +3023,12 @@
               "w": 13,
               "h": 13,
               "sha256": "e57f5c8ae365de7a05f8983299ee6e61d5889e58cfdfaf6614abfd7c3a9ac543"
+            },
+            "depth": {
+              "file": "sheets/infantry__head__d11__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "6a9156f22609a3d105944c8b632f1e6c4dbca0a80e10af52113638480c1ff48e"
             }
           },
           "filesHi": {
@@ -2911,6 +3094,12 @@
               "w": 13,
               "h": 13,
               "sha256": "21ea6f8a1c60a6bfefeaefd3dff78ede10e30c081747db89ea18c43b07d102f9"
+            },
+            "depth": {
+              "file": "sheets/infantry__head__d12__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "0cd4de7a75980495d6d1ebd7f6049c1cb8265794450138fcee0f7d79f404a966"
             }
           },
           "filesHi": {
@@ -2976,6 +3165,12 @@
               "w": 13,
               "h": 13,
               "sha256": "bafcb09ced59fdbf221efb9ed468a80382d0ed8af26c65c4d74f40304000e7b8"
+            },
+            "depth": {
+              "file": "sheets/infantry__head__d13__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "59c60dcfe6105bf2142beaebcd0a9657b97974cd6e7e4948e5f93b02dfff5cf6"
             }
           },
           "filesHi": {
@@ -3041,6 +3236,12 @@
               "w": 12,
               "h": 12,
               "sha256": "599886d35c229719254fe9cdd0f122a8326ff3dd9f1dc57eead9248c2f076fc4"
+            },
+            "depth": {
+              "file": "sheets/infantry__head__d14__depth.png",
+              "w": 12,
+              "h": 12,
+              "sha256": "41b4233f369ca8248a4f5fdd8addef0326813e49e743fdad07c03bf47c243c82"
             }
           },
           "filesHi": {
@@ -3106,6 +3307,12 @@
               "w": 13,
               "h": 12,
               "sha256": "08c5a8e88d1c581c97c8e36634fd257867f29b9502805094d2fdcf4a1a0e1140"
+            },
+            "depth": {
+              "file": "sheets/infantry__head__d15__depth.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "4c09b388212effe643c5911db22d62c625c26b9bd5a75c72f9dd84a6084cb401"
             }
           },
           "filesHi": {
@@ -3203,6 +3410,12 @@
               "w": 17,
               "h": 15,
               "sha256": "d803e6a820d95168c5b4d669508defb0af2bc4c3106bc05ce84db92158919bea"
+            },
+            "depth": {
+              "file": "sheets/infantry__arm.R__d00__depth.png",
+              "w": 17,
+              "h": 15,
+              "sha256": "fd2c67a1060426f2366bfcaf0f06524f82b603f5835faeb8246d8a74c70ac6ed"
             }
           },
           "filesHi": {
@@ -3268,6 +3481,12 @@
               "w": 14,
               "h": 15,
               "sha256": "92d0506db27b9066eb32d416c03120fc1d91780f85e2f2bfc32a4c89eb835dd8"
+            },
+            "depth": {
+              "file": "sheets/infantry__arm.R__d01__depth.png",
+              "w": 14,
+              "h": 15,
+              "sha256": "c5d0b11faf3ebee618441631aa66d093b0eed0ef2495a4dd02099d7274cee74d"
             }
           },
           "filesHi": {
@@ -3333,6 +3552,12 @@
               "w": 11,
               "h": 15,
               "sha256": "a60dec7501f23a402239d2426427d2d1e18533528fcf78c52ce0f22bdbb53f71"
+            },
+            "depth": {
+              "file": "sheets/infantry__arm.R__d02__depth.png",
+              "w": 11,
+              "h": 15,
+              "sha256": "ce7da923760e8362b2e74f1d2f39a5062f5f8b4b616850acb839211ce18c3783"
             }
           },
           "filesHi": {
@@ -3398,6 +3623,12 @@
               "w": 13,
               "h": 15,
               "sha256": "33f0cfaf4b37e634ea4688408a76a9025ccc13538b8de2998fda2ef6a8c5d1fa"
+            },
+            "depth": {
+              "file": "sheets/infantry__arm.R__d03__depth.png",
+              "w": 13,
+              "h": 15,
+              "sha256": "741b59132232b0eee3ff611f2da166eda0182cbe89bb9a4e8bba2fea2156d3eb"
             }
           },
           "filesHi": {
@@ -3463,6 +3694,12 @@
               "w": 17,
               "h": 15,
               "sha256": "cf7b3b2f0792a5328fb3a58072253214548423701f2caeb41c1a78a130d63461"
+            },
+            "depth": {
+              "file": "sheets/infantry__arm.R__d04__depth.png",
+              "w": 17,
+              "h": 15,
+              "sha256": "e95fbbbc3e02d053cdd69c5a8a9c73f631b57647cb55ccf8a6cd70e8530cc400"
             }
           },
           "filesHi": {
@@ -3528,6 +3765,12 @@
               "w": 19,
               "h": 13,
               "sha256": "dd9f04b215c1f40360442ab2828d72362407564a4d24337db47c961ca55f4a94"
+            },
+            "depth": {
+              "file": "sheets/infantry__arm.R__d05__depth.png",
+              "w": 19,
+              "h": 13,
+              "sha256": "2f9427202c0e9618bdb2be0b3ed563787e59dc9ac3ccc761a80a45371936e12b"
             }
           },
           "filesHi": {
@@ -3593,6 +3836,12 @@
               "w": 20,
               "h": 12,
               "sha256": "72cb8c630095fe1901c4293008cfb041e1a5e1fe1554655d79a5872a21167132"
+            },
+            "depth": {
+              "file": "sheets/infantry__arm.R__d06__depth.png",
+              "w": 20,
+              "h": 12,
+              "sha256": "353e56404826a185a672fa0b16b35110af30b1513c26d192949d2e320932af4e"
             }
           },
           "filesHi": {
@@ -3658,6 +3907,12 @@
               "w": 19,
               "h": 12,
               "sha256": "c2cf569d9f861bfbf2ff459f2dac90659053e3a4cf97f9424f36de33c1f4f647"
+            },
+            "depth": {
+              "file": "sheets/infantry__arm.R__d07__depth.png",
+              "w": 19,
+              "h": 12,
+              "sha256": "22e2e2f5c9f4048176c31dc77ad696ab924ee8c9537b8c1ebf6088c233425dcc"
             }
           },
           "filesHi": {
@@ -3723,6 +3978,12 @@
               "w": 17,
               "h": 13,
               "sha256": "c7b2cbdc8b4c480e4b48d1a46d19a9d892c24a8593cd63dbc00390983dbae68e"
+            },
+            "depth": {
+              "file": "sheets/infantry__arm.R__d08__depth.png",
+              "w": 17,
+              "h": 13,
+              "sha256": "5f84db37f39107f16d10aa0c3030edb4047d159dd80ff2c3e2a8c8bac8e13f8c"
             }
           },
           "filesHi": {
@@ -3788,6 +4049,12 @@
               "w": 14,
               "h": 14,
               "sha256": "2cc7aeddf99586d72887f17887cbdff0553ec8e6bb8557f7d709f2c136da3fa4"
+            },
+            "depth": {
+              "file": "sheets/infantry__arm.R__d09__depth.png",
+              "w": 14,
+              "h": 14,
+              "sha256": "36760e1da3f7ee8394727a95ea2dd4a06f6fa1e5cc65e70ba4eda66c08d9d9da"
             }
           },
           "filesHi": {
@@ -3853,6 +4120,12 @@
               "w": 11,
               "h": 14,
               "sha256": "c1f51f892163787fdfc809d041719294359000402ca2fdd377488f15c27ed1df"
+            },
+            "depth": {
+              "file": "sheets/infantry__arm.R__d10__depth.png",
+              "w": 11,
+              "h": 14,
+              "sha256": "b7fc7e104e2e8740f8b8eb96718a178726f63490aa2c221848ec41639a78ada2"
             }
           },
           "filesHi": {
@@ -3918,6 +4191,12 @@
               "w": 13,
               "h": 13,
               "sha256": "61dbc9c48083561311e6fd863aed7bb17c1bce144b459978aac09ca39ab88bff"
+            },
+            "depth": {
+              "file": "sheets/infantry__arm.R__d11__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "803f278df7842b2e1017957a5378292371e8e2a6cf7ac414d019eba4b8b4007f"
             }
           },
           "filesHi": {
@@ -3983,6 +4262,12 @@
               "w": 17,
               "h": 13,
               "sha256": "e87ef5a01ab2c7a45e1d5864272f65882ba825b27506e24b5cc88c1f51241ac2"
+            },
+            "depth": {
+              "file": "sheets/infantry__arm.R__d12__depth.png",
+              "w": 17,
+              "h": 13,
+              "sha256": "7188fd9ef3a864895c4a10c5e12acecf24a809bf9f49abe1aebea67f9e84738e"
             }
           },
           "filesHi": {
@@ -4048,6 +4333,12 @@
               "w": 19,
               "h": 12,
               "sha256": "b05737508a5bf4d37d351cd75d04bbf24894c8a50914119bc95cbd2a8cfe3936"
+            },
+            "depth": {
+              "file": "sheets/infantry__arm.R__d13__depth.png",
+              "w": 19,
+              "h": 12,
+              "sha256": "9f45a1e8d8aabf559150ffb89a872e07488b8e21fc393d4a3dc31b692e9d0c71"
             }
           },
           "filesHi": {
@@ -4113,6 +4404,12 @@
               "w": 20,
               "h": 11,
               "sha256": "8b1926e9eb0acabb3dc80c69ca6547cc361847b0c339d481609b2df2e44f51ae"
+            },
+            "depth": {
+              "file": "sheets/infantry__arm.R__d14__depth.png",
+              "w": 20,
+              "h": 11,
+              "sha256": "70807c18299c3b95dc8c2e66fe4e6574025ad1a12d4bc872638bdf61352e6ff0"
             }
           },
           "filesHi": {
@@ -4178,6 +4475,12 @@
               "w": 19,
               "h": 12,
               "sha256": "3356646e6ca88dcc3d2cafb540850403b4e2e71a235f95deafe763db839d85f2"
+            },
+            "depth": {
+              "file": "sheets/infantry__arm.R__d15__depth.png",
+              "w": 19,
+              "h": 12,
+              "sha256": "72e8fb2418f7d946ffd6bdcc277da23f0bbb7a3fe9c7b93f300826733f2a677f"
             }
           },
           "filesHi": {
@@ -4293,15 +4596,15 @@
         "files": {
           "albedo": {
             "file": "sheets/infantry__composite__d00__albedo.png",
-            "sha256": "71005236feede6fe1efb0089a7982e2a524c7c4f8ce8dc0b643e44a5fd49739c"
+            "sha256": "35a3a3c1efebba478052cc677fd3c23792b79670026a12264b1d24e58bd2345e"
           },
           "normal": {
             "file": "sheets/infantry__composite__d00__normal.png",
-            "sha256": "003bc226f31c321215f90f3b372e88ae6d863269c4f4ee09aa44e8e1c2bebce4"
+            "sha256": "8efaa7fbf2ed5650b5f610cc0307b6974f64765356d324b1a942144f6a138284"
           },
           "material": {
             "file": "sheets/infantry__composite__d00__material.png",
-            "sha256": "3edd01162738cccfd3ba7bb109974d2a57ea029f8f1920f58fe9583b5158ec71"
+            "sha256": "b67b0a4639d2840b80a61df0d741acb81a2844352cfe77e4d2a3146342de08ae"
           }
         }
       },
@@ -4311,15 +4614,15 @@
         "files": {
           "albedo": {
             "file": "sheets/infantry__composite__d01__albedo.png",
-            "sha256": "423565ed6520c4a0c9a911aa1245c5064596239b33a8acbed2219db157690f96"
+            "sha256": "aeff2de025d0ecf753a103a2ceed213c8b3d4bf5f8415555b2bffc2fcdb00423"
           },
           "normal": {
             "file": "sheets/infantry__composite__d01__normal.png",
-            "sha256": "d8de9118b5a63599b9c061efb5e5dc1bf38e09c6519c419e4ac62bba3e5191fc"
+            "sha256": "89ea43cd64a90e4f6c4570984b98316fe8be26ded054f3337a2e3002de1054ba"
           },
           "material": {
             "file": "sheets/infantry__composite__d01__material.png",
-            "sha256": "76eef3991e9d1431cefdde557fc823a4c32d4f49194ab13653fb53d94f3ecf27"
+            "sha256": "461c0f32f5a2b24fcd6194ebf8d02e939dddd033df74e7b068e0594e8e510c3d"
           }
         }
       },
@@ -4329,15 +4632,15 @@
         "files": {
           "albedo": {
             "file": "sheets/infantry__composite__d02__albedo.png",
-            "sha256": "f4839882ac33dbdcf78b178d887a7e2ac3dd57a7e95d14d60dfe8746c3b8841a"
+            "sha256": "d64cd16102a52857bea5278d8a1e367a69566294683afcdc89eb2eb6dd5cb209"
           },
           "normal": {
             "file": "sheets/infantry__composite__d02__normal.png",
-            "sha256": "1ba896fe3e1bcfdfc1a3b0294739e103f465ce3a7235ed8517718805671417f9"
+            "sha256": "c4ddc51a02f183332633165c93088773c80dbe1bea5926b6deb936d966e6c7c4"
           },
           "material": {
             "file": "sheets/infantry__composite__d02__material.png",
-            "sha256": "25020964f8075bac008d9bcb5f5d98413d6f68646b3ea54c3ee129339f1c6609"
+            "sha256": "aaa5721bb483212f6cb899c7836c147426dffe4155bf5ec19a926a944fade496"
           }
         }
       },
@@ -4347,15 +4650,15 @@
         "files": {
           "albedo": {
             "file": "sheets/infantry__composite__d03__albedo.png",
-            "sha256": "7aa8bc1d1db2aff452d64ba82b41c3f1c2a8792c4fe41e91a303259a4ed56d33"
+            "sha256": "8e76de65b8a36df994bffdeb2bb59c4273af2fa6dcea7816901750dee9113e0e"
           },
           "normal": {
             "file": "sheets/infantry__composite__d03__normal.png",
-            "sha256": "7775d1b3ed3aa63fa69dc656e7d3c55ae2a3975e9a1b27cddd6731799620d061"
+            "sha256": "e2dd591bb24787f752abb5be7af854f98cd23d78ac1f34afbc9a182276f3c5d6"
           },
           "material": {
             "file": "sheets/infantry__composite__d03__material.png",
-            "sha256": "c85fb17cd627cc008e46d03fa9649f036154fc66c3582a996c2e1f2b6e53d9fe"
+            "sha256": "7ec57936cfeae58db04e9f5158ce13c4aed1d6b449a1fc6072dffc8eecd4e6b6"
           }
         }
       },
@@ -4365,15 +4668,15 @@
         "files": {
           "albedo": {
             "file": "sheets/infantry__composite__d04__albedo.png",
-            "sha256": "25cbf839b299190f226311d5d42bb2d6c83adbda83c2a612de6c02dc55270423"
+            "sha256": "fb0cb131a90dda5130ea4b1dc884da09e3a70cdbbc9224bc4c4701ceec3f2f9e"
           },
           "normal": {
             "file": "sheets/infantry__composite__d04__normal.png",
-            "sha256": "a5b66de7a34d0ac2912e9f02079f8a078eb3bf8b3303c8b605d6f9a5baa832d7"
+            "sha256": "b954a4405347d1ccd87f3f849a75694839bb9691df3e5a88d00500cd98f5b3d0"
           },
           "material": {
             "file": "sheets/infantry__composite__d04__material.png",
-            "sha256": "0423656129cdf2f2017df2f3efd16aaf5e4f2d88a744cef81a7a95efff2f0313"
+            "sha256": "e3bf58308d436fe612fbadc4cbfc4e109b88255bce1dfcea850e67def4fe848f"
           }
         }
       },
@@ -4383,15 +4686,15 @@
         "files": {
           "albedo": {
             "file": "sheets/infantry__composite__d05__albedo.png",
-            "sha256": "527d5ba24656702f85342cd257cdd8eef790f7aba5f0ccd73a8425c2267b6b55"
+            "sha256": "4112356691185497f8fe20c2708a2606dc43301c1dab2f5983557469c6e9cd6c"
           },
           "normal": {
             "file": "sheets/infantry__composite__d05__normal.png",
-            "sha256": "2f23239bc01f4ca335e341e27e266b3524c3d8836240d5462dbaff4f5953eba2"
+            "sha256": "cd20ca6cb669367e7519776f09d730a6e1a33b1fcf7062dd0bc4b5f05f10e61f"
           },
           "material": {
             "file": "sheets/infantry__composite__d05__material.png",
-            "sha256": "6b9527b33be9842a483dba88c0c178daab838b3e42a3dbc4efb013d9bdfeb174"
+            "sha256": "4629372853a3342a22960f4d4ead73c5ed735c853bb2e5d8cd0bd3cd70f0281a"
           }
         }
       },
@@ -4401,15 +4704,15 @@
         "files": {
           "albedo": {
             "file": "sheets/infantry__composite__d06__albedo.png",
-            "sha256": "b3ac098a342ddc97fb72fa8c7d97068cb7f8b817d780287ab6293975b47f017b"
+            "sha256": "b423fa1649d9c8e4f7acad3ca353d4fa332a88acb377d9a86a0af2b6a6adb2b3"
           },
           "normal": {
             "file": "sheets/infantry__composite__d06__normal.png",
-            "sha256": "86a67fb7da33315e8fa8c414c6257567c26ec690362212f2eb422e2a8088af48"
+            "sha256": "55fa52b8ab1064896b7a2f763aa7f87b5da94dbc09471e0b3964d187636cb88e"
           },
           "material": {
             "file": "sheets/infantry__composite__d06__material.png",
-            "sha256": "432a60505da806bafb409366966cfd5b3e632dab3160cea709fc3ecc8e72b49f"
+            "sha256": "dbeca0dfb5290d0276e7b83c93a1ef684d9a78fd97a4e2a865a1324aa04f1e9b"
           }
         }
       },
@@ -4419,15 +4722,15 @@
         "files": {
           "albedo": {
             "file": "sheets/infantry__composite__d07__albedo.png",
-            "sha256": "1370228f4b5a0d6469221de36cff4dce0ae21b2f5e0445a90bb65fedc8f0d878"
+            "sha256": "72569744c6d10815522a15b105018eecd2c9b5a5d44b91735605d431dd977dcf"
           },
           "normal": {
             "file": "sheets/infantry__composite__d07__normal.png",
-            "sha256": "934a7886bc49e31b98fd1c98d69b56f1ca5a1700e11e6febb5808e9f9e7190b2"
+            "sha256": "b20c1fbe665b2fff99aeacc07fc3c93bbad25bf04c9e0291528386f565a64f1c"
           },
           "material": {
             "file": "sheets/infantry__composite__d07__material.png",
-            "sha256": "78d5a3e3df3b2222717a9c56fb762d5a1f48136b4877c9f7b2559dcba267650a"
+            "sha256": "5aaacb8ebfc7f77a2ceba0b5e4116c6ab4f59b230bf1efac09dec876499e01e8"
           }
         }
       },
@@ -4437,15 +4740,15 @@
         "files": {
           "albedo": {
             "file": "sheets/infantry__composite__d08__albedo.png",
-            "sha256": "7faf6358a34f835ff34bb3520e036fd814369eb3363d7d02e4036158c5a7dc39"
+            "sha256": "13e8b45c3b4ee7c2e1d4dca65157c0a09a6324f294ace2edcbcf22a7c139cbee"
           },
           "normal": {
             "file": "sheets/infantry__composite__d08__normal.png",
-            "sha256": "41e138f4f4482287b36ea40d83a2dba19709a66f44993b44a0bd10dad05a9d30"
+            "sha256": "26bd6e109a3b90937a4bcd76b89286c42d61473874bdeeb03ff34d286de423cf"
           },
           "material": {
             "file": "sheets/infantry__composite__d08__material.png",
-            "sha256": "1fe0e5fcc367a85c68540da38c9026449b47bb253f0840b01209a8d504a1f32e"
+            "sha256": "4ca25b9174320dbd5228800e45867f4fa9bbe322365c049795e5398e6a207a4c"
           }
         }
       },
@@ -4455,15 +4758,15 @@
         "files": {
           "albedo": {
             "file": "sheets/infantry__composite__d09__albedo.png",
-            "sha256": "768bfa4ebc758ac39d070cc979deffa21c9b82fcebb541c06cb073ce0e62eb99"
+            "sha256": "7a851c6a92a498ff77d84033a61474d8c5daacdce6a89a0a5b1d3b103f8f9c5b"
           },
           "normal": {
             "file": "sheets/infantry__composite__d09__normal.png",
-            "sha256": "a5f212edbddb37e76f7520ceaa0d6ca0fbb4496b7eb7a0e3335991eb92e114fb"
+            "sha256": "6c95bdaca2d988770832d9b059aa800ae226f9996f727df2ad925dcf29101ab6"
           },
           "material": {
             "file": "sheets/infantry__composite__d09__material.png",
-            "sha256": "4f59325d68f3fbe5b6c7eb32f4d571188e17cda872fcd6466237513a8cbaedf9"
+            "sha256": "519d58a687cf2e6b310581f5dfceea1eaeb21ba15a65a0455daac416e68ecf14"
           }
         }
       },
@@ -4473,15 +4776,15 @@
         "files": {
           "albedo": {
             "file": "sheets/infantry__composite__d10__albedo.png",
-            "sha256": "f50e31234f06609bc26051b9b8d9e8e6277d4dcb65610132efed10b1190092d0"
+            "sha256": "99486fd8db795a6886f7d21e9d3c977bd2b45730c923912fe98919bba9809d69"
           },
           "normal": {
             "file": "sheets/infantry__composite__d10__normal.png",
-            "sha256": "c4c3e1497e62aff4036f17e467823ebaac90f4a7609005ee12fbee30788a6795"
+            "sha256": "16e805d3547de082d7e72712226a0fd208473e0b27efe38d8b3024e2019b045e"
           },
           "material": {
             "file": "sheets/infantry__composite__d10__material.png",
-            "sha256": "0f92b46d391b0450d6124d076f58986ee55110a74a278e4fbe232cec1b9085db"
+            "sha256": "8923d9e32d1e37a418b7fa5054be98b7f224bcd45701a2316e34596660aa852c"
           }
         }
       },
@@ -4491,15 +4794,15 @@
         "files": {
           "albedo": {
             "file": "sheets/infantry__composite__d11__albedo.png",
-            "sha256": "c14deb57ee9285461809106df22826e9f3b9a027e13c8ae6f30f85ccf57aa6be"
+            "sha256": "03d7bb4bfc879794bd153dbbcfe4ab0651dce4122f2051ae2394d33981c4ed12"
           },
           "normal": {
             "file": "sheets/infantry__composite__d11__normal.png",
-            "sha256": "aa48c053946c18e70d997deb809ac53b138afae831d706f1cf8eafb6c756f5a4"
+            "sha256": "15a922d344b5bf3ee968dd4005f80bb7930a55309917f11f52344aba41bc1c15"
           },
           "material": {
             "file": "sheets/infantry__composite__d11__material.png",
-            "sha256": "9f0c959702bb94eb9f1cc32473d641c11fd4b81fb58480aba6cc0ac017bb47fd"
+            "sha256": "255ba024397a6203cfc8e4cb125b1075475311cd8e514160335b16bcff5ca92f"
           }
         }
       },
@@ -4509,15 +4812,15 @@
         "files": {
           "albedo": {
             "file": "sheets/infantry__composite__d12__albedo.png",
-            "sha256": "e23b63bb6c5c59ffd3c6fb0bde42e62c48ba122d86b148391c302ae8f9c5db0c"
+            "sha256": "6c89b36a44abc37292925d7ffa60f401fa08556d163aebabf41d4a787e5d430f"
           },
           "normal": {
             "file": "sheets/infantry__composite__d12__normal.png",
-            "sha256": "bd32b26d505f5a8b865e12ab256886d472fbab1512d696ecdd90791c5adf52c6"
+            "sha256": "384aad153e1e597cbd90f04647831ed526481007f7b44ed9e4e59659f1637e8b"
           },
           "material": {
             "file": "sheets/infantry__composite__d12__material.png",
-            "sha256": "5771dd796b96d7065b562d32cdb6dc8dcc05ab4d4a61ee953f7e97b020806eff"
+            "sha256": "d8a8e988c6d07ef06a0e190f3a2fa409c7326ae50032765dbafd287d485cb901"
           }
         }
       },
@@ -4527,15 +4830,15 @@
         "files": {
           "albedo": {
             "file": "sheets/infantry__composite__d13__albedo.png",
-            "sha256": "35b9b4e90f681ba94e3244f9f99ece42bc22002906a9c5b04ae08382da2f6fd0"
+            "sha256": "ec3ef57e967945daa5579dc9fa79ae21d883dcd9bc98fc7f11401fc6f150e339"
           },
           "normal": {
             "file": "sheets/infantry__composite__d13__normal.png",
-            "sha256": "c9911cf1d644b3b687ba5f095ad93cec9834d7d52e8686cfe425b5786a082ecf"
+            "sha256": "7d70055af8fae2b4f403ab9040772acf5233f9cb3dc01406fa3cfa53d2d587fc"
           },
           "material": {
             "file": "sheets/infantry__composite__d13__material.png",
-            "sha256": "a9db8de874f6210e8ca91caa58f88393d4cbf2a801c0f5a70143be224455f4c4"
+            "sha256": "1b0433781d422c726e260df8a48f85c6908ef50ed463728b5b6bd05adde46f18"
           }
         }
       },
@@ -4545,15 +4848,15 @@
         "files": {
           "albedo": {
             "file": "sheets/infantry__composite__d14__albedo.png",
-            "sha256": "0da4e6e787300b6b360e46d3f0b6f087622483e57c36ddbf9dbc0cb7eb2c4ef5"
+            "sha256": "d95db4fe327e8de4c68c38f91fa69cb3c78d3d6245c7beccc6cb4c9fe4dae57b"
           },
           "normal": {
             "file": "sheets/infantry__composite__d14__normal.png",
-            "sha256": "da4b5bea8b0e28ac0364dfbea65dd133634e3d43ff630f80aee199d0614b39a4"
+            "sha256": "e8ef3f6be5d935f75e3633be58ee351148a858bc58f12ecccfe80c7decda1e5a"
           },
           "material": {
             "file": "sheets/infantry__composite__d14__material.png",
-            "sha256": "a1f82ab7258fac0870610a385f243115e9900a7a9f51a1da03ca0adcb2e1204c"
+            "sha256": "ef2603833eb9d1a5e412c26e8bd70121133bb8d570946a5120cb9975f06ef65d"
           }
         }
       },
@@ -4563,15 +4866,15 @@
         "files": {
           "albedo": {
             "file": "sheets/infantry__composite__d15__albedo.png",
-            "sha256": "ddf8a7b0a26091e822bb73ae6c5715a251353440be0da8f15e24ba341de2d7ae"
+            "sha256": "b82bd4a4ce45ae519cf9d9d1255778bfe25b8b58e06fc76b58ebb29ec07e765c"
           },
           "normal": {
             "file": "sheets/infantry__composite__d15__normal.png",
-            "sha256": "fa90b9778b03d0a4e552046fe306a8a46f83b927f04f43cba556c687f6e3742c"
+            "sha256": "896b206a94d80fa6759e3dace27eb55104c306724e21f8bf22a5bdedab29e125"
           },
           "material": {
             "file": "sheets/infantry__composite__d15__material.png",
-            "sha256": "2b9908fd305ce2cc422ffbed5a69119f959da8e5fc29c6fb32c01ddded8ea478"
+            "sha256": "dabf41805afe3760207f3811d6f3130bd4d7b4249d7582b28c528e04caab2f47"
           }
         }
       }
@@ -4585,97 +4888,97 @@
         "file": "sheets/infantry__lit__d00__albedo.png",
         "w": 22,
         "h": 29,
-        "sha256": "7f21af877a188c8f2dc976ee9eaef555ec9519babe3c347abc01fd1d0a03f8a2"
+        "sha256": "dce9e4f82de6c151bbec6ada84834e97f220a9223ce92765f553d062709a6254"
       },
       "d01": {
         "file": "sheets/infantry__lit__d01__albedo.png",
         "w": 20,
         "h": 28,
-        "sha256": "2ca8f3a216ed6bb13d4c35d8e04531bc61d2d2309798d705dc2dca6ddac601c5"
+        "sha256": "90067690b99edd9caf0ffebd7f656be712393e670118709c55bde0ab9f5f56d9"
       },
       "d02": {
         "file": "sheets/infantry__lit__d02__albedo.png",
         "w": 20,
         "h": 29,
-        "sha256": "c556826771fb44c0988c965c5007bb730b4602e5d5b44e280d096b54c71aa19c"
+        "sha256": "a195410d03513b4eb757b9fca87bfa7143820d1247a674063a92679d6ab53a3f"
       },
       "d03": {
         "file": "sheets/infantry__lit__d03__albedo.png",
         "w": 23,
         "h": 29,
-        "sha256": "d0cb7dd098e0a39c01a0598e8655d019c211a1f97fe90aedcd98fa98e2a5bd20"
+        "sha256": "707e5e3c14aa5789803a320d1d5c9cad69feee895547d464cad8e94510e38166"
       },
       "d04": {
         "file": "sheets/infantry__lit__d04__albedo.png",
         "w": 26,
         "h": 29,
-        "sha256": "9e08b2600a9bd99af4ea824f1a4961ea481ea70853d03ebb81d909265ab9ab32"
+        "sha256": "1d7cb123276c2595282057f92da3dcd41b6125522a33b6f961e0b85426d826f0"
       },
       "d05": {
         "file": "sheets/infantry__lit__d05__albedo.png",
         "w": 27,
         "h": 29,
-        "sha256": "3a16677a3934d21a8366c48e94193b70b368d04834da3d36edc7e4e76fabde08"
+        "sha256": "86db12f9eb5a3e75b0f47ec82dab7625fd263216eaecb0517f489c54ac2fdcda"
       },
       "d06": {
         "file": "sheets/infantry__lit__d06__albedo.png",
         "w": 27,
         "h": 28,
-        "sha256": "cff851978aaf3195bac1d337e0240248a577de801be31040227398e4d9ddc1d1"
+        "sha256": "355689ff3d89a91ca3141929ae367aace72349029b9511763805b628fee13c9b"
       },
       "d07": {
         "file": "sheets/infantry__lit__d07__albedo.png",
         "w": 26,
         "h": 28,
-        "sha256": "37a760482dbd6ebfba7890ac95f04b47dbdd8bea8308ddd923bc89c85e8167c5"
+        "sha256": "798613a0f60366e262210291471dc960228da43d8c18edc944f9b3a3eaf9509d"
       },
       "d08": {
         "file": "sheets/infantry__lit__d08__albedo.png",
         "w": 22,
         "h": 29,
-        "sha256": "320e17d0c95ae451f74b874eeab17f02d13c9647a9f78deb9e8ff61e0d53c4a3"
+        "sha256": "1fb22b4c1fc6105d85c3d294d5ad3911dd5fcd3e5714a237ec9a74298092d6a0"
       },
       "d09": {
         "file": "sheets/infantry__lit__d09__albedo.png",
         "w": 20,
         "h": 29,
-        "sha256": "892ba18604305b78543709a87d727dd3c69205ac39f13fbc78f9332cbaa7996f"
+        "sha256": "98d7abde823dd8b346d7ae3f6e05a63ee068aadfdac492a576b359fa812ddba3"
       },
       "d10": {
         "file": "sheets/infantry__lit__d10__albedo.png",
         "w": 20,
         "h": 29,
-        "sha256": "7e602e87fd55b96c8e90ea0c190a1f8cf51374c49f2c8b2e4c369e095d844b4b"
+        "sha256": "f64369015def6e6b9c0b371a18d2a3a5a7af40850f8c0c8c043b3af85bc3bf21"
       },
       "d11": {
         "file": "sheets/infantry__lit__d11__albedo.png",
         "w": 23,
         "h": 29,
-        "sha256": "c038b66ad342cf26b58d952da544dd96af1aae8583c60b8a733b4960ac2b772d"
+        "sha256": "4ff10a8b841e72a7e755f2a1889ce2b75c459b38bccce32de48988048ecb58af"
       },
       "d12": {
         "file": "sheets/infantry__lit__d12__albedo.png",
         "w": 26,
         "h": 29,
-        "sha256": "795377eb60b8f36b9c7972644c6b13d423784c454c2c7efab9d4a4f4dc393876"
+        "sha256": "808f9416086f4a2bebb32907337125d0dd25a552b0b6cd408cc594c150dabff6"
       },
       "d13": {
         "file": "sheets/infantry__lit__d13__albedo.png",
         "w": 27,
         "h": 29,
-        "sha256": "244c273d5f0d2565440fce088814be8f8b56cabb3c3fa8cef3bbab46f27d0e71"
+        "sha256": "8493d3c35eef5ab89aef3aeb4a4e8e3c51c15a4b3b9a1c8ee194e99bf23255e5"
       },
       "d14": {
         "file": "sheets/infantry__lit__d14__albedo.png",
         "w": 27,
         "h": 28,
-        "sha256": "a4f1ac5d34acc473d8277d8f358a1202cc6ccaa8af934e8a573c9a5d218ce95a"
+        "sha256": "ae91702630115da9f6a3d8abefeac4c473b64e70ae4d94d0d33b94ec787e8ad2"
       },
       "d15": {
         "file": "sheets/infantry__lit__d15__albedo.png",
         "w": 26,
         "h": 29,
-        "sha256": "35378b34462581fa6b87bede6e6f69ea07a584d4983c1ec00c97cd9fa71bcb82"
+        "sha256": "f9d02ed0f958db48fd7cb0f1bbcf52a63380d3a6cf3e3e66f2c82362f08a2f16"
       }
     }
   },

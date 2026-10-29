@@ -25,6 +25,7 @@ import { pngBytes } from '../bake.mjs';
 import { createScribe, CANVAS } from './scribe.mjs';
 import { MATERIALS, MATERIAL_IDS, MATERIAL_NAMES, colorFor, materialMapDescriptor } from './materials.mjs';
 import { cameraBasis, renderPart, buildPalette } from './raster.mjs';
+import { encodeDepth, DEPTH_SCALE, DEPTH_BIAS } from './depth-map.mjs';
 import { MODELS } from './models/index.mjs';
 import { validateModel } from './validate.mjs';
 import {
@@ -133,8 +134,12 @@ function compositePreview(parts, pad = 8, key = 'albedo') {
   const h = Math.ceil(maxY - minY) + pad * 2;
   const out = new Uint8ClampedArray(w * h * 4);
   const cov = new Uint8Array(w * h);      // silhouette coverage, independent of channel alpha
-  const ordered = [...parts].sort((a, b) => a.depth - b.depth);
-  for (const p of ordered) {
+  // Real occlusion: every part carries its own depth sheet, and each pixel goes
+  // to whichever part is nearest. Draw order is irrelevant — which is the whole
+  // point, because no single ordering is right for 16 facings (a far-side door
+  // must lose to the wall, a turret must win over the deck under it).
+  const zbuf = new Float32Array(w * h).fill(-Infinity);
+  for (const p of parts) {
     const ox = Math.round(maxAx - p.anchor[0] - minX) + pad;
     const oy = Math.round(maxAy - p.anchor[1] - minY) + pad;
     for (let y = 0; y < p.h; y++) {
@@ -144,18 +149,21 @@ function compositePreview(parts, pad = 8, key = 'albedo') {
         if (a <= 0) continue;
         const dx = x + ox, dy = y + oy;
         if (dx < 0 || dy < 0 || dx >= w || dy >= h) continue;
-        const d = (dy * w + dx) * 4;
-        if (a * 255 > cov[dy * w + dx]) cov[dy * w + dx] = Math.round(a * 255);
+        const d = dy * w + dx;
+        const z = p.depthBuf ? p.depthBuf[y * p.w + x] : p.depth;
+        const pixel = d * 4;
+        if (a * 255 > cov[d]) cov[d] = Math.round(a * 255);
+        if (z <= zbuf[d]) continue;                    // something nearer owns it
+        zbuf[d] = z;
         if (pickNearest) {
-          // Parts are drawn far-to-near, so a later write is nearer.
-          out[d] = p[key][s]; out[d + 1] = p[key][s + 1];
-          out[d + 2] = p[key][s + 2]; out[d + 3] = p[key][s + 3];
+          out[pixel] = p[key][s]; out[pixel + 1] = p[key][s + 1];
+          out[pixel + 2] = p[key][s + 2]; out[pixel + 3] = p[key][s + 3];
           continue;
         }
-        const da = out[d + 3] / 255;
-        const oa = a + da * (1 - a);
-        for (let i = 0; i < 3; i++) out[d + i] = (p[key][s + i] * a + out[d + i] * da * (1 - a)) / (oa || 1);
-        out[d + 3] = oa * 255;
+        // Keep the winner's own coverage in alpha so silhouette edges stay
+        // anti-aliased; the colour itself is never blended between parts.
+        out[pixel] = p[key][s]; out[pixel + 1] = p[key][s + 1];
+        out[pixel + 2] = p[key][s + 2]; out[pixel + 3] = Math.round(a * 255);
       }
     }
   }
@@ -256,6 +264,16 @@ export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, sheetK = 
     },
     normalMap: { space: 'view', channelOrder: 'rgb', range: '0..255 maps -1..1', up: '+g means screen up' },
     materialMap: { channelOrder: 'rgba', meaning: ['materialId', 'metalness', 'roughness', 'emissive'], table: materialMapDescriptor() },
+    depthMap: {
+      note: 'Per-part view depth, one PNG per part per facing. Composite by z-test on this; do NOT try to order segments by a single depth per part.',
+      channelOrder: 'rgba',
+      meaning: ['depthHi', 'depthLo', 'unused', 'covered'],
+      encoding: 'q = depthHi * 256 + depthLo; depth = q / scale - bias  (tile units = design voxels / 8)',
+      scale: DEPTH_SCALE,
+      bias: DEPTH_BIAS,
+      coveredAlpha: 255,
+      largerIsCloser: true,
+    },
     parts: {},
     clips: { idle: 1 },
     sourceGeometry: {
@@ -324,6 +342,23 @@ export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, sheetK = 
         fs.writeFileSync(path.join(sheetDir, name), blob);
         files[map] = { file: `sheets/${name}`, w: rendered.w, h: rendered.h, sha256: sha256(blob) };
       }
+      // Depth sheet: what the compositor z-tests on. See depth-map.mjs — one
+      // depth per part was never enough to order segments across 16 facings.
+      {
+        const name = partFileName(id, part.name, facing.id, 'depth');
+        const px = Buffer.alloc(rendered.w * rendered.h * 4);
+        for (let i = 0; i < rendered.w * rendered.h; i++) {
+          if (rendered.albedo[i * 4 + 3] === 0) continue;      // uncovered: A stays 0
+          const q = encodeDepth(rendered.depth[i]);
+          px[i * 4] = q >> 8;
+          px[i * 4 + 1] = q & 255;
+          px[i * 4 + 2] = 0;
+          px[i * 4 + 3] = 255;
+        }
+        const blob = pngBytes(rendered.w, rendered.h, px);
+        fs.writeFileSync(path.join(sheetDir, name), blob);
+        files.depth = { file: `sheets/${name}`, w: rendered.w, h: rendered.h, sha256: sha256(blob) };
+      }
       // Review sheet: same part, same camera, `hiK` times the detail. Anchors and
       // pivots are re-derived from THIS render, because a pivot is a pixel
       // coordinate and hi pixels are a different unit to runtime pixels.
@@ -371,6 +406,7 @@ export function bakeAsset(id, def, { k = DEFAULTS.k, ss = DEFAULTS.ss, sheetK = 
         albedo: rendered.albedo,
         normal: rendered.normal,
         material: rendered.material,
+        depthBuf: rendered.depth,
         w: rendered.w,
         h: rendered.h,
         anchor,

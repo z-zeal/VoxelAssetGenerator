@@ -4,9 +4,10 @@ Companion to `docs/PLAN_512_native_16dir_segmented_pipeline.md`. Work proceeds *
 a batch closes only when its gate passes. Legend: `[x]` done · `[~]` written but not green · `[ ]` todo ·
 `[!]` blocked.
 
-Status as of this commit — **B0 done, B1 done, B2 pipeline green (modelling open), B3 done**.
-Three assets bake end-to-end at 512³: `tank` (16 facings, 240 PNG), `barracks` (4 facings, 36 PNG) and
-`at-turret` (4 scene facings + a 16-camera turret, 124 PNG). No existing asset was modified or deleted.
+Status as of this commit — **B0–B3 done, B4a/B4b/B4c done (36 units), B5a done (air, rotor)**.
+Every unit and both buildings bake end-to-end at 512³ with the full part set: albedo, normal, material
+**and depth** per part per facing, plus a 4× review set. **Occlusion is resolved per pixel by a z-test**
+(see *Depth sheets* below), so draw order no longer affects any composite.
 
 ---
 
@@ -73,6 +74,17 @@ Three assets bake end-to-end at 512³: `tank` (16 facings, 240 PNG), `barracks` 
       `preview-parts.png` re-assembles the same parts from their sheets through the shared anchor — if the
       two ever disagree, an anchor is wrong.
 - [x] **Per-facing composites baked:** `<asset>__composite__<facing>__albedo.png` for all 16 facings.
+- [x] **Superseded: sorting parts by depth.** A part does not have *a* depth — it has one per pixel. A door
+      on the far wall has to lose to the roof while a door on the near wall has to win, and the roof's own
+      bounding box reaches closer to the camera than either. Every such "resolve by order" rule (by manifest
+      order, by centroid depth, by dynamic-first) fails on some facing; the barracks door over the roof at
+      `down` was the visible symptom. Draw order is now irrelevant — see the next item.
+- [x] **Depth sheets** — `raster.mjs` writes a per-part, per-facing depth map (16-bit fixed point, 1/32
+      voxel, `depth-map.mjs`); `composite.mjs` `compositeParts()` z-tests every pixel of every part and takes
+      the nearest surface's albedo, normal and material, so material ids never blend and a hidden part never
+      paints. `tests/voxel-occlusion.test.js` diffs composites against a single-pass render of the same
+      model: coverage, depth and (on single-part pixels) colour. It fails loudly if order-based compositing
+      is reintroduced — 109/1038 pixels on `barracks/down` if the z-test is removed.
 - [x] **Contact strip** (`tools/voxel_pipeline/v3/contact.mjs` → `contact.png`) for whole-roster review.
 - [x] Turret rebuilt flush on the ring (no floating plinth) and the barrel now clears the turret shell.
 - [x] 16-facing distinctness verified programmatically (8×8 silhouette signature: **no duplicate pairs**).
@@ -248,6 +260,17 @@ which read as a black billboard from every facing, and its engine deck was one d
 the whole vehicle. `mobile-repair`'s boom first held a constant height above its heel, so it floated
 detached in mid-air — the chords have to start at the heel and climb aft.
 
+**Air-batch lessons, recorded so they are not retried:** an aircraft authored like a vehicle comes out a
+bus — the fuselage has to be *lofted* (stations of half-width/half-height), and the first `copter` read as a
+blimp at preview scale because one wide box ran nose to tail. A rotor built from axis-aligned boxes at 45°
+is a fan of chips; the blades have to be stamped along their own angle, one chord slice at a time. A large
+canopy pane in the pale `glass` material dithers into wire mesh — from a quarter view it has to be
+`glass.dark`/`solar` with a bright streak, or `sideGlass` strips down the flanks, because the canopy alone
+only reads from the front and 12 of the 16 facings are quarter views. On `lift-copter` the two discs were
+first 30 voxels apart, which merged into one grey smudge: tandem hubs need to be far enough apart that each
+disc keeps its outline. And an aircraft *fails the default `minSpan: 180` gate*, which exists to catch a
+model authored at 64³ — airframes pass `minSpan: 150` explicitly rather than being scaled up to fit.
+
 **Foot-batch lessons, recorded so they are not retried:** a fist-sized glove drawn as a 48-voxel bar
 reads as a plank — hands are 12 voxels, and the arm has to *reach* the weapon rather than the weapon being
 dragged back to the hand. A 15-voxel-thick arm over a 30-voxel span is a sausage; 11 is a limb. A helmet in
@@ -276,9 +299,16 @@ open transom with the screws visible from behind, would settle it.
 
 ## B5 · Air + naval units
 
-- [ ] **B5a rotor** — `copter`, `lift-copter`, `uav`.
-- [ ] **B5b jet** — `fighter`, `bomber`, `specter`, `mpa`, `ground-attack-jet`, `transport-plane`,
-      `stealth-fighter`, `spy-plane`.
+- [x] **B5a rotor** — `copter` (235,282 voxels, parts `body`/`rotor`/`tail-rotor`/`gun`), `lift-copter`
+      (273,214, `body`/`rotor.front`/`rotor.rear`/`ramp`), `uav` (131,342, `body`/`sensor`/`prop`).
+      All three bake 16 facings with albedo/normal/material/depth per part (192/192/144 PNG).
+- [x] `kit-air.mjs` — lofted `fuselage` (stations of half-width/half-height), `canopy`, `rotor` (blades
+      stamped along their own angle, so a diagonal blade is a real staircase), `tailRotor`, `skids`,
+      `wingPair`/`tailPlane`/`fin`, `jetPipe`, `nacelle`, `store`, `sensorBall`, `propDisc`, `bellyHook`.
+- [x] Aircraft carry `minSpan: 150`: the default 180 exists to catch a 64³-authored model, and an airframe
+      is legitimately thin. 150 still fails a 64³ model by 2×.
+- [ ] **B5b jet** — `fighter` (174,567, `body`/`fin` = rudder pair/`stores`), `bomber`, `specter`, `mpa`,
+      `ground-attack-jet`, `transport-plane`, `stealth-fighter`, `spy-plane`.
 - [ ] **B5c naval** — `submarine`, `gunboat`, `cruiser`, `battleship`, `lander`, `uhac`, `destroyer`,
       `missile-boat`, `carrier`, `naval-repair`, `mine-layer-ship`.
 - [ ] Rotor/jet/naval part sets per §5 of the plan.
@@ -367,9 +397,9 @@ open transom with the screws visible from behind, would settle it.
 
 | Metric | Target | Current |
 | --- | --- | --- |
-| Units rebuilt at 512³ | 58 | **1** (`tank`, modelling pass pending) |
-| Buildings rebuilt at 512³ | 26 | 0 |
-| Unit facings | 16 | 16 baked for `tank` |
+| Units rebuilt at 512³ | 58 | **40** (36 land/foot + 3 rotor + `fighter`) |
+| Buildings rebuilt at 512³ | 26 | **2** (`barracks`, `at-turret`) |
+| Unit facings | 16 | 16 for every unit |
 | Building facings | 4 | 0 baked |
 | Maps per sheet | 3 (albedo/normal/material) | 3 |
 | Canvas | 512³ native | **512³ — confirmed, no downgrade** |

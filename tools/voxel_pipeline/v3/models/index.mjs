@@ -45,6 +45,10 @@ import { buildEliteHero } from './elite-hero.mjs';
 import { buildScout } from './scout.mjs';
 import { buildAttackDog } from './attack-dog.mjs';
 import { buildMech } from './mech.mjs';
+import { buildFighter } from './fighter.mjs';
+import { buildCopter } from './copter.mjs';
+import { buildLiftCopter } from './lift-copter.mjs';
+import { buildUav } from './uav.mjs';
 import { buildBarracks } from './barracks.mjs';
 import { buildAtTurret } from './at-turret.mjs';
 
@@ -233,6 +237,30 @@ export const MODELS = {
     build: buildBarracks,
     requiredParts: ['body', 'door', 'flag'],
     minSpan: 180,
+  },
+  copter: {
+    kind: 'unit', folder: 'units', group: 'air.rotor', label: 'Attack Helicopter',
+    build: buildCopter, requiredParts: ['body', 'rotor', 'gun'],
+    // An aircraft is deliberately thin: the 180-voxel default exists to catch a
+    // model authored for 64³, and 150 still fails one by a factor of two while
+    // letting a fuselage be a fuselage.
+    minSpan: 150,
+  },
+  fighter: {
+    kind: 'unit', folder: 'units', group: 'air.jet', label: 'Fighter Jet',
+    build: buildFighter, requiredParts: ['body', 'fin', 'stores'],
+    // Airframes are thin on purpose; see the note on `copter`.
+    minSpan: 150,
+  },
+  'lift-copter': {
+    kind: 'unit', folder: 'units', group: 'air.rotor', label: 'Lift Copter',
+    build: buildLiftCopter, requiredParts: ['body', 'rotor.front', 'rotor.rear'],
+    minSpan: 150,
+  },
+  uav: {
+    kind: 'unit', folder: 'units', group: 'air.rotor', label: 'Recon Drone',
+    build: buildUav, requiredParts: ['body', 'sensor'],
+    minSpan: 150,
   },
   'at-turret': {
     kind: 'building',

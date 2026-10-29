@@ -998,6 +998,21 @@
       }
     ]
   },
+  "depthMap": {
+    "note": "Per-part view depth, one PNG per part per facing. Composite by z-test on this; do NOT try to order segments by a single depth per part.",
+    "channelOrder": "rgba",
+    "meaning": [
+      "depthHi",
+      "depthLo",
+      "unused",
+      "covered"
+    ],
+    "encoding": "q = depthHi * 256 + depthLo; depth = q / scale - bias  (tile units = design voxels / 8)",
+    "scale": 256,
+    "bias": 128,
+    "coveredAlpha": 255,
+    "largerIsCloser": true
+  },
   "parts": {
     "body": {
       "name": "body",
@@ -1059,6 +1074,12 @@
               "w": 18,
               "h": 25,
               "sha256": "1f2313aa750ddbb6b633cb828b116856bb8ae36509de16a9b5ccbd98f8eaf441"
+            },
+            "depth": {
+              "file": "sheets/medic__body__d00__depth.png",
+              "w": 18,
+              "h": 25,
+              "sha256": "dced32500b6ad6e56ae4bbcb3f28179df2eb5e7abeb0a7d192feab686e18e8f0"
             }
           },
           "filesHi": {
@@ -1124,6 +1145,12 @@
               "w": 18,
               "h": 24,
               "sha256": "353a701363d11fe24c3fab4dbf0e265d7dc71df213021c2743e68cde038630a0"
+            },
+            "depth": {
+              "file": "sheets/medic__body__d01__depth.png",
+              "w": 18,
+              "h": 24,
+              "sha256": "61c7bfcd6a194bfc58451dac0ab429b604564c6f81b62b7b257d11597bc6e96d"
             }
           },
           "filesHi": {
@@ -1189,6 +1216,12 @@
               "w": 17,
               "h": 24,
               "sha256": "239807d83fd4fb759c72c5fc102cf8d376fd788e09cd928d81cdc30dd90de9e7"
+            },
+            "depth": {
+              "file": "sheets/medic__body__d02__depth.png",
+              "w": 17,
+              "h": 24,
+              "sha256": "2daaa9f301eaf5ef0da57556829c4f6c37c6f42c240abae34cea93f7e6837a36"
             }
           },
           "filesHi": {
@@ -1254,6 +1287,12 @@
               "w": 19,
               "h": 25,
               "sha256": "603d2749f06791706dca44bf15a59582ea7eed0fc9273b816b97d632552df439"
+            },
+            "depth": {
+              "file": "sheets/medic__body__d03__depth.png",
+              "w": 19,
+              "h": 25,
+              "sha256": "5b3bc745203f638029f237309c4bb26c82b3ac59994f79022a16ae3f3b7ae0df"
             }
           },
           "filesHi": {
@@ -1319,6 +1358,12 @@
               "w": 21,
               "h": 25,
               "sha256": "c4b4bb95003cbd3f7cdc9e3b4afbff5f3591c6acaf4a680c74a90431fc0c64aa"
+            },
+            "depth": {
+              "file": "sheets/medic__body__d04__depth.png",
+              "w": 21,
+              "h": 25,
+              "sha256": "e030db9e2befe34cd7c7727852c02c4e48cfef6895325f626e3e8a304336b594"
             }
           },
           "filesHi": {
@@ -1384,6 +1429,12 @@
               "w": 22,
               "h": 25,
               "sha256": "cc1deb88a0ce432bd1d1244fcd4b20a5e4d82448aeee8b0e5556639f6822cc22"
+            },
+            "depth": {
+              "file": "sheets/medic__body__d05__depth.png",
+              "w": 22,
+              "h": 25,
+              "sha256": "631cad109272b4cd2415cf39a7372b8e996cf06cde0b52b96162b1dcfc7b9cd7"
             }
           },
           "filesHi": {
@@ -1449,6 +1500,12 @@
               "w": 21,
               "h": 23,
               "sha256": "61a06fcec7c2bb2725bea3c43834402732e0863b6b19fd2e10996c259fae5d51"
+            },
+            "depth": {
+              "file": "sheets/medic__body__d06__depth.png",
+              "w": 21,
+              "h": 23,
+              "sha256": "eb989e175b960db8c4cc2787a729fc70988861d07487c4e3c3e515503853aa1f"
             }
           },
           "filesHi": {
@@ -1514,6 +1571,12 @@
               "w": 20,
               "h": 24,
               "sha256": "9752a3b91673d6c50a9b1d6070c6088ada73745cef526db2cc18ece76d908993"
+            },
+            "depth": {
+              "file": "sheets/medic__body__d07__depth.png",
+              "w": 20,
+              "h": 24,
+              "sha256": "4f300a24f1d20c3269d59c00bae71cca06414d2502be8b1e80f48de4815777c5"
             }
           },
           "filesHi": {
@@ -1579,6 +1642,12 @@
               "w": 18,
               "h": 24,
               "sha256": "4c7e3240d6ec86a20cd468b4995aa2070438383638a1dccd1e2c8e6f633794fa"
+            },
+            "depth": {
+              "file": "sheets/medic__body__d08__depth.png",
+              "w": 18,
+              "h": 24,
+              "sha256": "a7e64c19a1af91d2df071937ed1880986cae661b4820ef25c2c9c9a710537941"
             }
           },
           "filesHi": {
@@ -1644,6 +1713,12 @@
               "w": 18,
               "h": 24,
               "sha256": "9ed9f4bb9d65f7d7370c27ae2e27a8f0fd6805d3289fa98500287ada8086be7c"
+            },
+            "depth": {
+              "file": "sheets/medic__body__d09__depth.png",
+              "w": 18,
+              "h": 24,
+              "sha256": "72792328a84dd42a80af5e8ec6438e12419c5fc6eae1d6aa9eba6e75ca5be4d1"
             }
           },
           "filesHi": {
@@ -1709,6 +1784,12 @@
               "w": 17,
               "h": 24,
               "sha256": "3f51f7538d223e6961bcccb47be013f1aef18ffa176161295a7d874e8b694c0f"
+            },
+            "depth": {
+              "file": "sheets/medic__body__d10__depth.png",
+              "w": 17,
+              "h": 24,
+              "sha256": "9f2b1d4e1e8e2f19b3ffb041a7f2aaafa4af74d6ba1c60ab63d0e105bb812f35"
             }
           },
           "filesHi": {
@@ -1774,6 +1855,12 @@
               "w": 19,
               "h": 23,
               "sha256": "2a5be884063ec20231349994e01ed4be4e44b6fefc46dbc117858cffef6c60a6"
+            },
+            "depth": {
+              "file": "sheets/medic__body__d11__depth.png",
+              "w": 19,
+              "h": 23,
+              "sha256": "88d69f064415f1f17cc70cce6edf2f7a88111ceaecced4edf76343be0398d9df"
             }
           },
           "filesHi": {
@@ -1839,6 +1926,12 @@
               "w": 21,
               "h": 23,
               "sha256": "0cee92164509e8ac013cad846ebb3c9ff8cece1cf87ec38d7221a6e28f140162"
+            },
+            "depth": {
+              "file": "sheets/medic__body__d12__depth.png",
+              "w": 21,
+              "h": 23,
+              "sha256": "ff6f465ceeec5194cc84f4cf834ed5038e52c12c67c6ff770f3ae71f93d6a0ee"
             }
           },
           "filesHi": {
@@ -1904,6 +1997,12 @@
               "w": 22,
               "h": 24,
               "sha256": "29c1e558c2df9d58f732d80f6f50980fd48dee696530085c7de5b042fd99e81a"
+            },
+            "depth": {
+              "file": "sheets/medic__body__d13__depth.png",
+              "w": 22,
+              "h": 24,
+              "sha256": "58dcc8f79885095147ca6de256b055568269bbff7bfd16331080812e859efb82"
             }
           },
           "filesHi": {
@@ -1969,6 +2068,12 @@
               "w": 21,
               "h": 24,
               "sha256": "3d9180386453160d4902e90e43f36c41d4be902bd9cd379b04bbe86aaddff1ac"
+            },
+            "depth": {
+              "file": "sheets/medic__body__d14__depth.png",
+              "w": 21,
+              "h": 24,
+              "sha256": "d6bf798efc959be12a5835171786ddc834ff432afc17249a28e6c8674d157f8a"
             }
           },
           "filesHi": {
@@ -2034,6 +2139,12 @@
               "w": 20,
               "h": 25,
               "sha256": "27b0d30287884f2f540c3b83357f71d2a0e3e4a9cd3167da339d626078871432"
+            },
+            "depth": {
+              "file": "sheets/medic__body__d15__depth.png",
+              "w": 20,
+              "h": 25,
+              "sha256": "b43e789b4bd7f115ae6a5d6b2121dd765691e6b06ba5ac6c8dc1c130863e2773"
             }
           },
           "filesHi": {
@@ -2131,6 +2242,12 @@
               "w": 13,
               "h": 13,
               "sha256": "78da1afb6357375632b4aa89051f21f2adfce9f52f1d0332f9c320d3056d2206"
+            },
+            "depth": {
+              "file": "sheets/medic__head__d00__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "c2d8609d6974a94c4309db587485af654a58f650942aae25f9c94591861a4beb"
             }
           },
           "filesHi": {
@@ -2196,6 +2313,12 @@
               "w": 13,
               "h": 12,
               "sha256": "5cad6175a9470d51333e2778732fe6294ba7ea9031ae0d2feedcc684e4a68cc7"
+            },
+            "depth": {
+              "file": "sheets/medic__head__d01__depth.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "5f0c754a597febd0389d67da9a9c85f9dd10220ea06877b034e5a8f335cf7c89"
             }
           },
           "filesHi": {
@@ -2261,6 +2384,12 @@
               "w": 12,
               "h": 13,
               "sha256": "49c140dc62e2681bd045c86dde864c7cfe82229694e1bbdd56e8383e6338c219"
+            },
+            "depth": {
+              "file": "sheets/medic__head__d02__depth.png",
+              "w": 12,
+              "h": 13,
+              "sha256": "3b4f0c126d394017d84684389676dcc48e568d2364348a346a5117973bf46a53"
             }
           },
           "filesHi": {
@@ -2326,6 +2455,12 @@
               "w": 13,
               "h": 13,
               "sha256": "4c94b974fd8c0d2a186ef9a952ae709097ece3a488b461ee02e1225dce9506b1"
+            },
+            "depth": {
+              "file": "sheets/medic__head__d03__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "bbc9959c118a5d52845b9e7298a082950bd5262645fe28a0e687011e98a9f9df"
             }
           },
           "filesHi": {
@@ -2391,6 +2526,12 @@
               "w": 13,
               "h": 13,
               "sha256": "97b109215b0b9368d167231fa2cf94ce67f250c0083a4007f355a6d532e64dab"
+            },
+            "depth": {
+              "file": "sheets/medic__head__d04__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "072cda9504a57e8742290b96f9e3ccb4be5d35ccdf6e866b5a092ec691f67864"
             }
           },
           "filesHi": {
@@ -2456,6 +2597,12 @@
               "w": 13,
               "h": 12,
               "sha256": "803c99b9c61718fe8860211d672b49f109081366fda9ae39f3c395537b709518"
+            },
+            "depth": {
+              "file": "sheets/medic__head__d05__depth.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "a64769ce4a11fab2d1ff7444f3467fd66204d0333a65958fa206da3fe3b55c0f"
             }
           },
           "filesHi": {
@@ -2521,6 +2668,12 @@
               "w": 12,
               "h": 12,
               "sha256": "e52b7dece3cfa8f1f9cc8186bb614d2f7c4f97b9d0905aed154163148105acd4"
+            },
+            "depth": {
+              "file": "sheets/medic__head__d06__depth.png",
+              "w": 12,
+              "h": 12,
+              "sha256": "59e42e0bc71664064ad0ad5e4ed26f82dc5eb0b11d63c3445a4d75900061c39c"
             }
           },
           "filesHi": {
@@ -2586,6 +2739,12 @@
               "w": 13,
               "h": 12,
               "sha256": "adce3c060c95b1b9c1e1f1eb098c004183e5e9ced406c8be24d398c810a0e091"
+            },
+            "depth": {
+              "file": "sheets/medic__head__d07__depth.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "4a32e948eabd8bf6f8a087a3af3528d6bf897c1c88c7d07575acf5da1afb9a79"
             }
           },
           "filesHi": {
@@ -2651,6 +2810,12 @@
               "w": 13,
               "h": 13,
               "sha256": "949154fe90c4132f3f73de4c56fc31bd5f91e2ea9eb6f418646cea7bf62ac5ad"
+            },
+            "depth": {
+              "file": "sheets/medic__head__d08__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "1da3b930fe588506334e72ecac781464b7ce749017873a823d91f53cd5217b92"
             }
           },
           "filesHi": {
@@ -2716,6 +2881,12 @@
               "w": 13,
               "h": 12,
               "sha256": "01f9909a3fbf3edfc1e9fc1c6bc33968a7c52972390f892d59bf3906be39d4c6"
+            },
+            "depth": {
+              "file": "sheets/medic__head__d09__depth.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "01421d19c805c38a29bb8675ed179168bc900bf167855d58e526ffb34db94eac"
             }
           },
           "filesHi": {
@@ -2781,6 +2952,12 @@
               "w": 12,
               "h": 12,
               "sha256": "bb5fd968a41cb188fa3538ce1e8efc260fdd15bc3bd1be86b52205225055c441"
+            },
+            "depth": {
+              "file": "sheets/medic__head__d10__depth.png",
+              "w": 12,
+              "h": 12,
+              "sha256": "66a158561b796dd9b7139d93464f747a182690ea73c7012c262540023c1d03d7"
             }
           },
           "filesHi": {
@@ -2846,6 +3023,12 @@
               "w": 13,
               "h": 13,
               "sha256": "e57f5c8ae365de7a05f8983299ee6e61d5889e58cfdfaf6614abfd7c3a9ac543"
+            },
+            "depth": {
+              "file": "sheets/medic__head__d11__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "6a9156f22609a3d105944c8b632f1e6c4dbca0a80e10af52113638480c1ff48e"
             }
           },
           "filesHi": {
@@ -2911,6 +3094,12 @@
               "w": 13,
               "h": 13,
               "sha256": "21ea6f8a1c60a6bfefeaefd3dff78ede10e30c081747db89ea18c43b07d102f9"
+            },
+            "depth": {
+              "file": "sheets/medic__head__d12__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "0cd4de7a75980495d6d1ebd7f6049c1cb8265794450138fcee0f7d79f404a966"
             }
           },
           "filesHi": {
@@ -2976,6 +3165,12 @@
               "w": 13,
               "h": 13,
               "sha256": "bafcb09ced59fdbf221efb9ed468a80382d0ed8af26c65c4d74f40304000e7b8"
+            },
+            "depth": {
+              "file": "sheets/medic__head__d13__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "59c60dcfe6105bf2142beaebcd0a9657b97974cd6e7e4948e5f93b02dfff5cf6"
             }
           },
           "filesHi": {
@@ -3041,6 +3236,12 @@
               "w": 12,
               "h": 12,
               "sha256": "599886d35c229719254fe9cdd0f122a8326ff3dd9f1dc57eead9248c2f076fc4"
+            },
+            "depth": {
+              "file": "sheets/medic__head__d14__depth.png",
+              "w": 12,
+              "h": 12,
+              "sha256": "41b4233f369ca8248a4f5fdd8addef0326813e49e743fdad07c03bf47c243c82"
             }
           },
           "filesHi": {
@@ -3106,6 +3307,12 @@
               "w": 13,
               "h": 12,
               "sha256": "08c5a8e88d1c581c97c8e36634fd257867f29b9502805094d2fdcf4a1a0e1140"
+            },
+            "depth": {
+              "file": "sheets/medic__head__d15__depth.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "4c09b388212effe643c5911db22d62c625c26b9bd5a75c72f9dd84a6084cb401"
             }
           },
           "filesHi": {
@@ -3203,6 +3410,12 @@
               "w": 14,
               "h": 13,
               "sha256": "44f4c5b9250ea94c50826a1892e9f8175cccec4da9a08e115b2a1ac86b18f6c2"
+            },
+            "depth": {
+              "file": "sheets/medic__arm.R__d00__depth.png",
+              "w": 14,
+              "h": 13,
+              "sha256": "1793a8b2622c8f7f144206579c9ae7672168cef8d4abd0d7bcd8d4aee360fefd"
             }
           },
           "filesHi": {
@@ -3268,6 +3481,12 @@
               "w": 12,
               "h": 14,
               "sha256": "2781ae40e69f0f8e0e2920b4b3f8db2f182269a560ea02b81ed73ba96bf66b6a"
+            },
+            "depth": {
+              "file": "sheets/medic__arm.R__d01__depth.png",
+              "w": 12,
+              "h": 14,
+              "sha256": "22fdd1c9877c882bf1f1a163be16bc8fbd33b45ee41e4a2323cdb050ca1468f7"
             }
           },
           "filesHi": {
@@ -3333,6 +3552,12 @@
               "w": 11,
               "h": 14,
               "sha256": "ce1c6a72e9dffa1b922c5529aec7c099e1e7f2b4e5fea39d7ee778c5c6d3a179"
+            },
+            "depth": {
+              "file": "sheets/medic__arm.R__d02__depth.png",
+              "w": 11,
+              "h": 14,
+              "sha256": "ca3c2f48788b20f4c6a2403e46ebada0cb42383863f64ed0889f6c021e7ccbd4"
             }
           },
           "filesHi": {
@@ -3398,6 +3623,12 @@
               "w": 12,
               "h": 14,
               "sha256": "3f9e8d59fb11dfd20852754d91133f1c74a8b373a03191387b608864c6852255"
+            },
+            "depth": {
+              "file": "sheets/medic__arm.R__d03__depth.png",
+              "w": 12,
+              "h": 14,
+              "sha256": "bf3fda9c1ef59f2d193732c8d52e88d681f9a275b76abbbae69d1606e874c968"
             }
           },
           "filesHi": {
@@ -3463,6 +3694,12 @@
               "w": 14,
               "h": 13,
               "sha256": "109f2c0f20cd527817c31c8a19321454e994534d8b94328bbb316a6a6d91694b"
+            },
+            "depth": {
+              "file": "sheets/medic__arm.R__d04__depth.png",
+              "w": 14,
+              "h": 13,
+              "sha256": "e61845cb79235d2c89937e312a11dd1ee721d49a8553f7e692583039178f11a7"
             }
           },
           "filesHi": {
@@ -3528,6 +3765,12 @@
               "w": 15,
               "h": 13,
               "sha256": "edecc0cd51ee76a75a36417f4a905b77e044330bd97552ea46870773d85ffde8"
+            },
+            "depth": {
+              "file": "sheets/medic__arm.R__d05__depth.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "8e3973b9e63866728079bbfd85ee6bbf2362978ab4d4ed233f89ec9466999877"
             }
           },
           "filesHi": {
@@ -3593,6 +3836,12 @@
               "w": 15,
               "h": 12,
               "sha256": "dd37f24bfc3e2c50efe1903f6c8fab4b97ca7f7f05f9b40a94563ae92d61775d"
+            },
+            "depth": {
+              "file": "sheets/medic__arm.R__d06__depth.png",
+              "w": 15,
+              "h": 12,
+              "sha256": "1e0bb653608e015bb5a3740ad598e388220202e8262d5b98134d7e71e9a08927"
             }
           },
           "filesHi": {
@@ -3658,6 +3907,12 @@
               "w": 15,
               "h": 11,
               "sha256": "60a130f1bade181e8540eb0e85ac9591d9a2c77dba8790e914a1884dde92f3b7"
+            },
+            "depth": {
+              "file": "sheets/medic__arm.R__d07__depth.png",
+              "w": 15,
+              "h": 11,
+              "sha256": "db8c95505a69835e094db82243b93c75c2bcb2fee23b80c1864bd1c6e3d5678d"
             }
           },
           "filesHi": {
@@ -3723,6 +3978,12 @@
               "w": 14,
               "h": 12,
               "sha256": "d9cfd707a69062e9999edd70698312be77b8915357f6a84e8d7abaf9830b56da"
+            },
+            "depth": {
+              "file": "sheets/medic__arm.R__d08__depth.png",
+              "w": 14,
+              "h": 12,
+              "sha256": "06ff1b0b8c2952d5ad40bfeac0452524502bbd898415ccf47e42d7d1a97cd18f"
             }
           },
           "filesHi": {
@@ -3788,6 +4049,12 @@
               "w": 12,
               "h": 13,
               "sha256": "5726ef6ed0ad695a64bdaf577fa4789866977cbd8cba6e1771c6efad93abd6df"
+            },
+            "depth": {
+              "file": "sheets/medic__arm.R__d09__depth.png",
+              "w": 12,
+              "h": 13,
+              "sha256": "eea4be2c438cc0feb192c3a1da47dae2cf61ce72217a06a2310d1814de0e7aed"
             }
           },
           "filesHi": {
@@ -3853,6 +4120,12 @@
               "w": 11,
               "h": 13,
               "sha256": "3adb163eccb60108120f49a356a4b56355a671ef84a001e7d7d7573bf7e9c617"
+            },
+            "depth": {
+              "file": "sheets/medic__arm.R__d10__depth.png",
+              "w": 11,
+              "h": 13,
+              "sha256": "76626ebba13925beecc626749af9189d78fdec6a10a15728ff126e990c5b6958"
             }
           },
           "filesHi": {
@@ -3918,6 +4191,12 @@
               "w": 12,
               "h": 12,
               "sha256": "442ad874cef6cf30cc85a12985c9191de0f748562fb3ae04b561d0740eaed218"
+            },
+            "depth": {
+              "file": "sheets/medic__arm.R__d11__depth.png",
+              "w": 12,
+              "h": 12,
+              "sha256": "932f5cb520a31f057fa3aee205b9244e2f43d3706121932d87c04c36da1f12b1"
             }
           },
           "filesHi": {
@@ -3983,6 +4262,12 @@
               "w": 14,
               "h": 12,
               "sha256": "8e791c1591d2c34573e396b16ad690eb78fb541ddba835dc6ec5e1b6987f546d"
+            },
+            "depth": {
+              "file": "sheets/medic__arm.R__d12__depth.png",
+              "w": 14,
+              "h": 12,
+              "sha256": "1feaef8e0461b0f3f65ed97d5c72b41f91cc85287394b594571976c9e11c5c03"
             }
           },
           "filesHi": {
@@ -4048,6 +4333,12 @@
               "w": 15,
               "h": 12,
               "sha256": "38a9c9dc4839455f19eb77388a729c89e034b26a7025ad487493cf1571e32013"
+            },
+            "depth": {
+              "file": "sheets/medic__arm.R__d13__depth.png",
+              "w": 15,
+              "h": 12,
+              "sha256": "3916dc45e59aa265ea233f5d156c5f3d50cd80a1bf1c498b98b98bd891c1c271"
             }
           },
           "filesHi": {
@@ -4113,6 +4404,12 @@
               "w": 15,
               "h": 12,
               "sha256": "637a09a6445d0addbf1e1c2204933adbb8729ffbc34f4e7f28979cc5a8bcf7a0"
+            },
+            "depth": {
+              "file": "sheets/medic__arm.R__d14__depth.png",
+              "w": 15,
+              "h": 12,
+              "sha256": "5a7890d9b5e06c0552829c9b315bd1ff457944821ca5dab2fec0dc00646a18eb"
             }
           },
           "filesHi": {
@@ -4178,6 +4475,12 @@
               "w": 15,
               "h": 13,
               "sha256": "50d0a899dd94f6ab72cc8f4e31528d9cb9e71a35d978f6fea0c2d6daf32f09f5"
+            },
+            "depth": {
+              "file": "sheets/medic__arm.R__d15__depth.png",
+              "w": 15,
+              "h": 13,
+              "sha256": "b7d6d09dae6e95e22da633f7c0fe29826aeda9f4ef33c1fa0addf2bc4ec39d62"
             }
           },
           "filesHi": {
@@ -4293,15 +4596,15 @@
         "files": {
           "albedo": {
             "file": "sheets/medic__composite__d00__albedo.png",
-            "sha256": "dbe9cce1b32813c7b434b227552fd80a48a79eefac9786d9b9115475fd2e1811"
+            "sha256": "ed65a7035786029ee4ae5b141699093b5e68f658e0a6ff8aac9f791027fbd187"
           },
           "normal": {
             "file": "sheets/medic__composite__d00__normal.png",
-            "sha256": "e2e95e18ec5b6db0ff962eb9d9f389ceff1e5de6cb567257b761fd9679364565"
+            "sha256": "ac86e1369e93112e2aff19433b3589040f507d6fc8955f39f76719b8aca318e7"
           },
           "material": {
             "file": "sheets/medic__composite__d00__material.png",
-            "sha256": "4f461ddcff3b4cff7c76ac28a3df6c22fe27a5b0b1ce93fdbb2781ad7eb6c0cb"
+            "sha256": "47ca311ef0cfbe4626d9c8c383de099b674f19937d64c37467603e83c320213e"
           }
         }
       },
@@ -4311,15 +4614,15 @@
         "files": {
           "albedo": {
             "file": "sheets/medic__composite__d01__albedo.png",
-            "sha256": "e9e104665174de4ca18e1b840065ea8402fbca8ab5e2f961b9e14b91fa48b762"
+            "sha256": "8f429ed27fca012ea78d5c48edbc50d067a003fb5ecdbfff320cdff2091715c1"
           },
           "normal": {
             "file": "sheets/medic__composite__d01__normal.png",
-            "sha256": "efc823eddb95c9e740f14b691588ca9aaf3cec32de186011e8ba113cbfb1a557"
+            "sha256": "8d6f11d5aab7037f2f8bbd3b76215886f7bd0799d93deb2dff53c7897d2fa75b"
           },
           "material": {
             "file": "sheets/medic__composite__d01__material.png",
-            "sha256": "f849a685ad81af380371667e71c2ab06360612d3706002225fac9366aeba5de6"
+            "sha256": "a9fca9600cafe3330f00c24611db365813bf87cc3adc3ceee213e9d40ab14c32"
           }
         }
       },
@@ -4329,15 +4632,15 @@
         "files": {
           "albedo": {
             "file": "sheets/medic__composite__d02__albedo.png",
-            "sha256": "b36c42195e6fd8f66014b9750fe9d96418000c8e8c94a4533b07b42eef270fb1"
+            "sha256": "8a3d3348409d7dbb4399073292c323d592b0673f1b062dd78682f8cc44ab33a9"
           },
           "normal": {
             "file": "sheets/medic__composite__d02__normal.png",
-            "sha256": "7dadace636cd069680b692920170317f051908b9267a626562dc9a6a1393485e"
+            "sha256": "8cc82b67009b8bc3148fe7813c24f1ae82043f023186500f3166c60d14ded67b"
           },
           "material": {
             "file": "sheets/medic__composite__d02__material.png",
-            "sha256": "c9fd72f6bbd0ede2bfb5b3c0a65226f8bbb33a66dd3eb5f47830bbeaa711a870"
+            "sha256": "2a14906bf50491796482af50158bce37db89eba5f12307683dacd020e2414a68"
           }
         }
       },
@@ -4347,15 +4650,15 @@
         "files": {
           "albedo": {
             "file": "sheets/medic__composite__d03__albedo.png",
-            "sha256": "819a60511c708411b448004cfe36e65e99335ea9517b937efc505d4c917e97c4"
+            "sha256": "42730304fac77e93485a56bf5e70bafda4a9feea71f4eca9cb18771ab67964a3"
           },
           "normal": {
             "file": "sheets/medic__composite__d03__normal.png",
-            "sha256": "8aaad2e97e89ad39b7a0847717ac3bb56aa70a788fb9bbf9cdbe778ed176df34"
+            "sha256": "8bf2395b670fcd7d1212e8e4a766920a19fb9f5639606307c3d140a13d13dcea"
           },
           "material": {
             "file": "sheets/medic__composite__d03__material.png",
-            "sha256": "6e3bac3422a6db1dc1eda094e4ef2b11aa3bbf085e406a508a28075af3748b91"
+            "sha256": "ba86ba946d489e758f2d596b7797348d993ea314f46a70b816cddd71be9f22ee"
           }
         }
       },
@@ -4365,15 +4668,15 @@
         "files": {
           "albedo": {
             "file": "sheets/medic__composite__d04__albedo.png",
-            "sha256": "49e66ae6a9aef810735128dbfe920fa8cfe87fe87ef648b73c9700b5d561b57c"
+            "sha256": "31198868f2f9e0817865eae04e489f2dbce5c621ca39a70638281827fc92b1f5"
           },
           "normal": {
             "file": "sheets/medic__composite__d04__normal.png",
-            "sha256": "57edb521cf537d895b1d50e5257e3d80e192d63e34951822ff3e52713ad1d58b"
+            "sha256": "2dcc9cf879dc89a009dbd696dbb7b0e0afc18bd913af9d921072d257d69a6aa5"
           },
           "material": {
             "file": "sheets/medic__composite__d04__material.png",
-            "sha256": "a7ee4072807b53a24220a1ed1ce3bd07e0e62558942ebe3f7cb1769d444fa064"
+            "sha256": "7cd9c61ce1849e340ef565bb90956429f563840267eb22f216e6daae2f6a2170"
           }
         }
       },
@@ -4383,15 +4686,15 @@
         "files": {
           "albedo": {
             "file": "sheets/medic__composite__d05__albedo.png",
-            "sha256": "d16d62576fd226637acc65aee0e3aeb0b79bae8d66dd281780b97b198cbafae5"
+            "sha256": "6462da073f4ede71fa058f3c988def09df0e5d571ccea84f3d468a8bc3e1484d"
           },
           "normal": {
             "file": "sheets/medic__composite__d05__normal.png",
-            "sha256": "2dbf41a6717a7089aefa833e945be09f270b83d7caebf1bbd62c3427f9472454"
+            "sha256": "8769ae4377c5be2c084010f2e335fa2c952192fc35bdd1586a4faf8981455240"
           },
           "material": {
             "file": "sheets/medic__composite__d05__material.png",
-            "sha256": "bba34d8dfa534932b20eec3a9dfb3d80a0ca4a25071bc18ec76e6966e910d484"
+            "sha256": "266f7febaafa010361c8976b8e40b2534610902e4124990e3d55d1f05a90a59a"
           }
         }
       },
@@ -4401,15 +4704,15 @@
         "files": {
           "albedo": {
             "file": "sheets/medic__composite__d06__albedo.png",
-            "sha256": "e05e8024b9eef01e7ec1b39da68b3b085225efc5a1bece43da8141d893658004"
+            "sha256": "3db89cc4af373104c6cdf785adca03faca5011e7032a19917fa29c39cd525ba1"
           },
           "normal": {
             "file": "sheets/medic__composite__d06__normal.png",
-            "sha256": "2ea4f375e2fd6be7a902a937fdad177d296e04e31172afcbec85ed9a9ea96356"
+            "sha256": "5fa43da91dd47e02305541ffeccb48753a3b61aab5fbefd5fe935c3135dadaa6"
           },
           "material": {
             "file": "sheets/medic__composite__d06__material.png",
-            "sha256": "85eee9107a8e3866c53fcd22ff3c2a0378d2373240a8ac431cafdb3506656ef1"
+            "sha256": "4773388d809268185ca75d60e11addab94277b551dc0086e9b55510578a21e5f"
           }
         }
       },
@@ -4419,15 +4722,15 @@
         "files": {
           "albedo": {
             "file": "sheets/medic__composite__d07__albedo.png",
-            "sha256": "e73889dba9969bae76f9e08b1e89702df5c05e87a7350ce31bb6626240c7adc4"
+            "sha256": "0f521bd810bc48da1ca53d30eca753472838655bd6c887ebc2fe262511384b61"
           },
           "normal": {
             "file": "sheets/medic__composite__d07__normal.png",
-            "sha256": "e74b1c333ae5cef90128e8f17fc1da395fa468b2bebac0f8b5be5a7ce341d436"
+            "sha256": "ce38a9131deab202b72786efb9814757c140f00f25e793ec0ff98b102f89e11a"
           },
           "material": {
             "file": "sheets/medic__composite__d07__material.png",
-            "sha256": "c14eb30a0abaca166289f27d9d340fa279b4cbeb01d77fad99f95b9c8c3a3d50"
+            "sha256": "d53a4e2702f60e7c5798fb8d45d299b2b52c40a784a8ad9149cb2a3e9bba4f9b"
           }
         }
       },
@@ -4437,15 +4740,15 @@
         "files": {
           "albedo": {
             "file": "sheets/medic__composite__d08__albedo.png",
-            "sha256": "7a5e828ac15f2c73ae672511c8553d0713d9d68d07ecddc2f219e5e238c0f355"
+            "sha256": "bb5af203c6586f09965b1ac348689041c95bd75463661d95f80f373ed260c268"
           },
           "normal": {
             "file": "sheets/medic__composite__d08__normal.png",
-            "sha256": "21cb0a6b20037aa1dbf5404d19882f1f57d5c485f1b9393c807a9db60d451758"
+            "sha256": "05e2729bc90516659d51a905aa718c9cdbc383154da21f3ef549d5c152776e1b"
           },
           "material": {
             "file": "sheets/medic__composite__d08__material.png",
-            "sha256": "b707086cccfb8bacd8bb430edda30b7f4e1b8739191b5e18877552f6ba883c80"
+            "sha256": "20ddb842a66cd65fd65ef704891315b9d6f1303125a2a4f4553dc811e99c7440"
           }
         }
       },
@@ -4455,15 +4758,15 @@
         "files": {
           "albedo": {
             "file": "sheets/medic__composite__d09__albedo.png",
-            "sha256": "6cf896eec0eb6cadd52db0b88e848676e4777c7fed5d33b97e91c57ae81d800a"
+            "sha256": "90f61360729e039ff280bf6559cab09544619e78d535286b7f7f79d253fa4fc2"
           },
           "normal": {
             "file": "sheets/medic__composite__d09__normal.png",
-            "sha256": "3c4b27f48f07458727ffba52600927dad4a72b4923c094f3f968c47b5ce803f7"
+            "sha256": "f962bb98ba69cef5190e0a283c3d23e6551821e8d6fdf9eec601e36a6d067bd0"
           },
           "material": {
             "file": "sheets/medic__composite__d09__material.png",
-            "sha256": "a303ff20e8f6bfc89e3ea6523d444dee8234d756213edde82b8dd7e8defc6742"
+            "sha256": "4beace48a1def19672accfe827b7d157eb3edeed3c7cc24cf67cf35e56814f53"
           }
         }
       },
@@ -4473,15 +4776,15 @@
         "files": {
           "albedo": {
             "file": "sheets/medic__composite__d10__albedo.png",
-            "sha256": "8e063c5c2e5957eb034bff4793d484945b8829033cd5c4c6c85b82a6cbca872e"
+            "sha256": "f544657f2fae42205c1c9fdaf89fdc7f225533bc1c0e2035272fa1f35dc456d6"
           },
           "normal": {
             "file": "sheets/medic__composite__d10__normal.png",
-            "sha256": "4a01912995b526d1c6bc923fd7a3b46208e2c2d4798f20c62692f687b31f6c7d"
+            "sha256": "dff51c6f9e1ffd380ece4fb136a003d23f643913bbd1cfe61b75563962aaffd3"
           },
           "material": {
             "file": "sheets/medic__composite__d10__material.png",
-            "sha256": "3d2c6f6c811d4b4da3e640dbe263f2a8e488c2fe6ee876fe6504cfae001e4339"
+            "sha256": "ac049a6e2807ad1df089b8b69463eae9200b588e08596f92fa76f1d1b945e901"
           }
         }
       },
@@ -4491,15 +4794,15 @@
         "files": {
           "albedo": {
             "file": "sheets/medic__composite__d11__albedo.png",
-            "sha256": "754547799ce014e0ee4ce732eea89994894cde341e9fccea6f4e83a893f4e0f9"
+            "sha256": "57f950b1d9e10edc083255d222404ee5cd350db0ffc800a5055422c896ab4c77"
           },
           "normal": {
             "file": "sheets/medic__composite__d11__normal.png",
-            "sha256": "eb620e6e5bc9cbeb1916244a5024cfd214583e6e88d4ce4e1af230cafcb8e20a"
+            "sha256": "3e189561376243ffbf43d0e15507ed37f53a0bf02bcdfcc76d53d1dd4f3317da"
           },
           "material": {
             "file": "sheets/medic__composite__d11__material.png",
-            "sha256": "a81f6af874da4c73a81f277ef2da339d3afafebe74dabc74d6f287c189dbf658"
+            "sha256": "c246ca1b5a9aa43b3ad9cd54419422d91acc2e10d6b45f70294a8f436a872ccd"
           }
         }
       },
@@ -4509,15 +4812,15 @@
         "files": {
           "albedo": {
             "file": "sheets/medic__composite__d12__albedo.png",
-            "sha256": "0fa3c717c390761894aaa83c4a7feef505ce35c70cd1768e0bd1d5b9b2c23d3b"
+            "sha256": "8aa47404314cc8d5cb90d101e7604eae767d0359d7f0c536fb274e469a5dc255"
           },
           "normal": {
             "file": "sheets/medic__composite__d12__normal.png",
-            "sha256": "a944c5fbf8d0ea247672acee0e682262b904d4fa9572df4686d5d18e1563341b"
+            "sha256": "c0b243a36f1ea9df31e55b0c1936f8ff3b9a45dd6332af62614c9ad2615ee0e4"
           },
           "material": {
             "file": "sheets/medic__composite__d12__material.png",
-            "sha256": "b271c470f675dc55a52b5c4285f233abf81a61b40b18ac3d59e1d5d4e5893ccc"
+            "sha256": "8567015c7f32fc618237fc08760a977e35796fc49eeb1d922b7a1144f938559e"
           }
         }
       },
@@ -4527,15 +4830,15 @@
         "files": {
           "albedo": {
             "file": "sheets/medic__composite__d13__albedo.png",
-            "sha256": "2dcdaafd1d68657b130e53389b3c1414cefc3ab33cac376b8941981226b3dda0"
+            "sha256": "b15a64737ba13915ca6a5ccf1d761ba507acecb763d019084234f6367710cbb3"
           },
           "normal": {
             "file": "sheets/medic__composite__d13__normal.png",
-            "sha256": "640540c592086c111bf0503a6dd445098279403e2a94ef297002e1f47cdcdac0"
+            "sha256": "cad03880ba9e3a5d3a04d437784d48a3f531f7dfd11077ebe26986afeaec00e2"
           },
           "material": {
             "file": "sheets/medic__composite__d13__material.png",
-            "sha256": "6cdc339969f05427adf0e52a82d56592c59b794c6cbb0427e09cae3348981e85"
+            "sha256": "b515fd6398fe23fcec33371f0db57b08145bb13e8f6fa93c7e3472b3f84f3cdb"
           }
         }
       },
@@ -4545,15 +4848,15 @@
         "files": {
           "albedo": {
             "file": "sheets/medic__composite__d14__albedo.png",
-            "sha256": "f5bb5143e3b11e44af5f96dd61131247eefa44733e94c3b60d78a4b40b3da877"
+            "sha256": "04ac90662ccd9c191e34763ed4c67301a173777584b3c51a7c60c03426741dc0"
           },
           "normal": {
             "file": "sheets/medic__composite__d14__normal.png",
-            "sha256": "3fd621e57c0a7dff9cf5616bf1f2a5eb07507616b5ac43b1802621aecbf34ae6"
+            "sha256": "1beedc09fd1e9daec97ae8b3e913b4e8b57d655c6b5ab914f124f76b6d691ffe"
           },
           "material": {
             "file": "sheets/medic__composite__d14__material.png",
-            "sha256": "7fa2918ed10397b20dd1413c3ae9bda4ab7e16e38961818b51f82a59cb4322d1"
+            "sha256": "1137f20d9daa9bbd31df7b762949dd235d92df88d1e3c2dfda53c413412cbc7e"
           }
         }
       },
@@ -4563,15 +4866,15 @@
         "files": {
           "albedo": {
             "file": "sheets/medic__composite__d15__albedo.png",
-            "sha256": "8f178fe2d561ac59eb503eeccc6b36ad9dc1b9a7e27a07fad8981707cdfea399"
+            "sha256": "3e06b112bd1098a8a89d94b365bbd9e88e87338cd2fb229dc8dcdeff07d6e693"
           },
           "normal": {
             "file": "sheets/medic__composite__d15__normal.png",
-            "sha256": "fd0bc266f11676ad937d75bdbb2bdb0cff7f0b51a28c04fd9d08f0a653a5578f"
+            "sha256": "9836b92feed1ebbf63a8e1a87fd42cf6a1fb2f891ae85da16243c1dbb5e2c609"
           },
           "material": {
             "file": "sheets/medic__composite__d15__material.png",
-            "sha256": "258a19de531a64385eac93c14d353f315462892b4c225cd3f60a35ebe1fb0206"
+            "sha256": "f80715f3fa5517753134a9defd08131e23ba6286ccb3fb7c25c49321d0fe5e6a"
           }
         }
       }
@@ -4585,97 +4888,97 @@
         "file": "sheets/medic__lit__d00__albedo.png",
         "w": 22,
         "h": 29,
-        "sha256": "1671e6372f98b50f682bfa987232bbe22f181a385763fbe5ba67bf56e2a33a19"
+        "sha256": "93b38772d170965a45d7fa96357fb089e7f0f95444fecafa32ecdecf9662e450"
       },
       "d01": {
         "file": "sheets/medic__lit__d01__albedo.png",
         "w": 22,
         "h": 28,
-        "sha256": "9a451009821731ee5ebdec394710ac9fd24f01ae5ad506e2a048de386bd4237e"
+        "sha256": "00c2a579066412544da65ce4e023f327b709fdaa10e2a8d94add171328612ad8"
       },
       "d02": {
         "file": "sheets/medic__lit__d02__albedo.png",
         "w": 21,
         "h": 29,
-        "sha256": "67d27c7187daf87ee8132163ee4579f294e68b6c1b4a146addd0816567798f2b"
+        "sha256": "39047243da73a0f4bddabcdb628d907e4f536b62a22d0fa6af47da850c5b1cae"
       },
       "d03": {
         "file": "sheets/medic__lit__d03__albedo.png",
         "w": 23,
         "h": 29,
-        "sha256": "cc74f6bfbbf730715ee7646af307d4ca1c6e03b1fa094fdaf58e1c0ff4d66a25"
+        "sha256": "7b061ad7c07b7a18f2d417901a76042a6ad45966479e4ae3f014a58594bc7f00"
       },
       "d04": {
         "file": "sheets/medic__lit__d04__albedo.png",
         "w": 25,
         "h": 29,
-        "sha256": "738779f83866a8176d395e5151ecd9940f804717c7ede5bb676cb9dbde106c3a"
+        "sha256": "1c50dcc03b5359c0d76b5e18411a9d1e0a92da5698197a4d695fdaa0cc73465b"
       },
       "d05": {
         "file": "sheets/medic__lit__d05__albedo.png",
         "w": 26,
         "h": 29,
-        "sha256": "800079bf822b1a198fe9895918309ced66bc743366f8db5c780f1c9a7b1ea342"
+        "sha256": "453d49e8dab2195c211798adbf4afa6a7c622a8cface466af62a5be21f2279a4"
       },
       "d06": {
         "file": "sheets/medic__lit__d06__albedo.png",
         "w": 25,
         "h": 28,
-        "sha256": "a735f48e3855bfb8d228ad247b3657a1c1ac5b1383f497f7d5eecffe02c58449"
+        "sha256": "99a1a8bfadd8f8870610929d92e62432cc177d36521014878c2bb3f69e83486c"
       },
       "d07": {
         "file": "sheets/medic__lit__d07__albedo.png",
         "w": 24,
         "h": 28,
-        "sha256": "102c1b6ab5c3e7573ceec46575c0acb1385d3f80521ca9fc28d3b560cec0f746"
+        "sha256": "da67b30b7c06a3cab7404e3dbdb751b844a31dd1804e44a0456c89fc7ad15c3a"
       },
       "d08": {
         "file": "sheets/medic__lit__d08__albedo.png",
         "w": 22,
         "h": 29,
-        "sha256": "58b73b0f1fb56ac54397a64ff7ec302f47569be594ae51b0528d6e0a7fe4e87e"
+        "sha256": "c25b647ea401e3dc3a2f7b346aa8a5cb49fcc32619516edd05fdb9d533ed14b1"
       },
       "d09": {
         "file": "sheets/medic__lit__d09__albedo.png",
         "w": 22,
         "h": 28,
-        "sha256": "422abe48cb2e6e80b6fc13dccb1208535f1177b5fd87bedc2517e77334559f8d"
+        "sha256": "6b455d6cf9cb0b02615d5292798e4b3a21b05682c2be620083e0e8a77bd3e212"
       },
       "d10": {
         "file": "sheets/medic__lit__d10__albedo.png",
         "w": 21,
         "h": 29,
-        "sha256": "e207b330174cf462f068285ab347899db5e8aec1249b3ac9f8a2d924d4d13151"
+        "sha256": "88d91724a4b3ed134fe3cb066de9248f8c2962d2d51e58860110bebba0c82243"
       },
       "d11": {
         "file": "sheets/medic__lit__d11__albedo.png",
         "w": 23,
         "h": 29,
-        "sha256": "0c6eb53895d765f2cd870058885ecfeedd71c3c6449694a0d8adf72f72f15053"
+        "sha256": "b3dfa952b358ca1178a0610a9325a12d8af9eeaada3f82138fa7903f5b5c9923"
       },
       "d12": {
         "file": "sheets/medic__lit__d12__albedo.png",
         "w": 25,
         "h": 29,
-        "sha256": "9dee30886412daa3f6ef4f2c0580c23e09aa21f1c92384982f670181f118a84f"
+        "sha256": "204f8cfba00f09fcdc89015cfab92fa2ef7ce3d5077a005f247a70c35fd78b5c"
       },
       "d13": {
         "file": "sheets/medic__lit__d13__albedo.png",
         "w": 26,
         "h": 29,
-        "sha256": "85ff42b537cb9ec7419909ee2a914f59b9724ebc41ef3769b64503f701d9da9e"
+        "sha256": "e15e2c5a2d567ebe73443712d09c7177b1f11ac0ac5ea72945c8c256e7e37d4c"
       },
       "d14": {
         "file": "sheets/medic__lit__d14__albedo.png",
         "w": 25,
         "h": 28,
-        "sha256": "e63deb6aefd29e0cb12a260975a6ef612a7b550358a70c0f987d592a9d746ac7"
+        "sha256": "76bb1dd7ebd2c67f90ea86d5c7e7d105cff4324bb6ab338ab577ffbc73ac6750"
       },
       "d15": {
         "file": "sheets/medic__lit__d15__albedo.png",
         "w": 24,
         "h": 29,
-        "sha256": "11cc5d3712ca7bdc5ade3c2abf08cc1f51aee16334c66cee7f6abd4fbbd789a4"
+        "sha256": "0fea015cb0a4a969707855c5138da77ffdedd3b04f634ac8bc697bead491a21e"
       }
     }
   },

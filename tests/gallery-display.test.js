@@ -49,8 +49,15 @@ test('the live composite reads the review sheets, not the runtime sheets', () =>
   assert.match(html, /const entry = \(state\.sheetHi && rec\.filesHi\) \? rec\.filesHi : rec;/,
     'loadPartMaps must prefer the hi sheet set');
   assert.match(html, /pickSheetSet\(state\.manifest/, 'the sheet set must be chosen per asset');
-  assert.match(html, /const S = hi \? state\.sheetScale : 1;/,
-    'hi sheets are in different pixel units — the screen position must be scaled');
+  // The ratio is taken from the two crops rather than from a manifest constant:
+  // a hi crop is ceil-ed to the supersample grid at its own scale, so its width
+  // is not exactly `scale` times the runtime width and assuming one drifts the
+  // part by a growing amount.
+  assert.match(html, /const S = hi \? entry\.w \/ runtimeEntry\.w : 1;/,
+    'hi sheets are in different pixel units — the ratio must come from the crops');
+  assert.match(html, /scale: S,/, 'the same ratio must map hi pixels onto the runtime depth sheet');
+  assert.match(html, /let hires = state\.sheetHi && pick\.every/,
+    'a composite must not mix hi and runtime layers: that is two coordinate systems');
 });
 
 test('crisp pixels is the default for the live view', () => {

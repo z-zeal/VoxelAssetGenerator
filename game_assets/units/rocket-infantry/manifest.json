@@ -998,6 +998,21 @@
       }
     ]
   },
+  "depthMap": {
+    "note": "Per-part view depth, one PNG per part per facing. Composite by z-test on this; do NOT try to order segments by a single depth per part.",
+    "channelOrder": "rgba",
+    "meaning": [
+      "depthHi",
+      "depthLo",
+      "unused",
+      "covered"
+    ],
+    "encoding": "q = depthHi * 256 + depthLo; depth = q / scale - bias  (tile units = design voxels / 8)",
+    "scale": 256,
+    "bias": 128,
+    "coveredAlpha": 255,
+    "largerIsCloser": true
+  },
   "parts": {
     "body": {
       "name": "body",
@@ -1059,6 +1074,12 @@
               "w": 17,
               "h": 24,
               "sha256": "c15f791f0e028471d6a7d4290924e65e27dd478c0e04508419ab4250cb2503f8"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__body__d00__depth.png",
+              "w": 17,
+              "h": 24,
+              "sha256": "43671f2a47e211370e244a76148178cff9749c6b48ceecbf1e484c92f8a6ddf3"
             }
           },
           "filesHi": {
@@ -1124,6 +1145,12 @@
               "w": 15,
               "h": 23,
               "sha256": "2334a5605706a330a91ec8ad8bb56821fe46010c0699c7fc3b2f5a5cc24d1514"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__body__d01__depth.png",
+              "w": 15,
+              "h": 23,
+              "sha256": "0085937a7d66a1f53f9cd1cb90b10f2c62108fb0d2d9ba583b3788b6c0c81047"
             }
           },
           "filesHi": {
@@ -1189,6 +1216,12 @@
               "w": 15,
               "h": 24,
               "sha256": "534fdf35a289cf9bb4994446194e19074af77e76e0880d29c3bd37a327a68282"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__body__d02__depth.png",
+              "w": 15,
+              "h": 24,
+              "sha256": "fe37fc344589cd99f0d1337f18f9ff3a74d09822336b614a89268b817df5f79d"
             }
           },
           "filesHi": {
@@ -1254,6 +1287,12 @@
               "w": 17,
               "h": 24,
               "sha256": "7edfbdbad57e6434e7070d9da17544cd4b291453d5835c07e916dfe235e180ff"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__body__d03__depth.png",
+              "w": 17,
+              "h": 24,
+              "sha256": "87415a68b61afe08c0ffdad177034063badb1d56fc7c44aa638e9c6951a9c828"
             }
           },
           "filesHi": {
@@ -1319,6 +1358,12 @@
               "w": 20,
               "h": 24,
               "sha256": "5460895205d657a20b210a7d21564afe1e073726a07654658ad452412822650c"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__body__d04__depth.png",
+              "w": 20,
+              "h": 24,
+              "sha256": "aa8810d5068f3c2ca599e26f47e59f35defcfd58e8d21e38200483ceb52aa3c1"
             }
           },
           "filesHi": {
@@ -1384,6 +1429,12 @@
               "w": 21,
               "h": 23,
               "sha256": "296f2c9ed1f356cd14a89f262a09ee6bf33c6809931accb50cef9d93e4bc2727"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__body__d05__depth.png",
+              "w": 21,
+              "h": 23,
+              "sha256": "daf07a9a85278d92b58b7cee0115508c6a24a87c7cbcbcb87cc3258c1086a0b8"
             }
           },
           "filesHi": {
@@ -1449,6 +1500,12 @@
               "w": 21,
               "h": 22,
               "sha256": "dc52dff77b51c2c7d2732b85cb2732b94a894933e4724f61775001f47bc46994"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__body__d06__depth.png",
+              "w": 21,
+              "h": 22,
+              "sha256": "2f340ddcaf07e5203ef7d6859ce4c298582ffe7a2f970c4c0c9873a08f33b616"
             }
           },
           "filesHi": {
@@ -1514,6 +1571,12 @@
               "w": 19,
               "h": 23,
               "sha256": "355bd568c8b3c90abead3844d08889e42085543985d0ec4ab37379506577d8f9"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__body__d07__depth.png",
+              "w": 19,
+              "h": 23,
+              "sha256": "857862aad2715b5f9a9e22a1622e5bb135c78edd5a079b574a200e6523bdc585"
             }
           },
           "filesHi": {
@@ -1579,6 +1642,12 @@
               "w": 17,
               "h": 24,
               "sha256": "929a42aa94b14be8ceed3e2f0310865a2be6c9e292688a4b85d289963f53c6d0"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__body__d08__depth.png",
+              "w": 17,
+              "h": 24,
+              "sha256": "9b8557bdcf5f5154b26c18405ab446aa1715f88318faed1738160f7c6e4b2b4d"
             }
           },
           "filesHi": {
@@ -1644,6 +1713,12 @@
               "w": 15,
               "h": 24,
               "sha256": "6a6cd1a61ee11504769ec4549c64921b5f70e15528b482bc74ac9da9d1e57e68"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__body__d09__depth.png",
+              "w": 15,
+              "h": 24,
+              "sha256": "850af1e60071c18ab8197bf9e137930c12b29e3fd61c3a1fadefe0ac45e6838f"
             }
           },
           "filesHi": {
@@ -1709,6 +1784,12 @@
               "w": 15,
               "h": 25,
               "sha256": "700b2888e87367735999c3e6a44653e2fde443c8f3cdcef61f4c960f83e5d13c"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__body__d10__depth.png",
+              "w": 15,
+              "h": 25,
+              "sha256": "ca2deefa4cc85349785ea780048b91e57d9df94488fc4d093e0194de492046db"
             }
           },
           "filesHi": {
@@ -1774,6 +1855,12 @@
               "w": 17,
               "h": 24,
               "sha256": "218e33891bbccc518815680e1b9284602ade1d48b9a93e9da532ec98e93d978f"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__body__d11__depth.png",
+              "w": 17,
+              "h": 24,
+              "sha256": "be8f57c38c92a65cdc5dd074ff8087bba63288f12af8b1663a59fcef1a4a93c2"
             }
           },
           "filesHi": {
@@ -1839,6 +1926,12 @@
               "w": 20,
               "h": 23,
               "sha256": "ff2e90c247bc8e6accdfeb55e11a342064c28ca5b50286293deb96d269936e11"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__body__d12__depth.png",
+              "w": 20,
+              "h": 23,
+              "sha256": "22ae3834ae912069f77540d039182b0c05e2face4ff5e78e97d19945f9bdb1b5"
             }
           },
           "filesHi": {
@@ -1904,6 +1997,12 @@
               "w": 21,
               "h": 23,
               "sha256": "8e155768c3086cc70df97522c8520d681801e474b55bea4547088fdd2b612bd0"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__body__d13__depth.png",
+              "w": 21,
+              "h": 23,
+              "sha256": "124bfddac42ffdefa43965a847fa8f4dd8ac3029531956df74e3c86f591cd632"
             }
           },
           "filesHi": {
@@ -1969,6 +2068,12 @@
               "w": 21,
               "h": 23,
               "sha256": "b821d317f5298d9075927d40d0efe58d7d9593bb14b011b8a2d327d174ec6d64"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__body__d14__depth.png",
+              "w": 21,
+              "h": 23,
+              "sha256": "5776dffa192eb30a64e831b86f58074f56b783332bddd336965746740701c2ba"
             }
           },
           "filesHi": {
@@ -2034,6 +2139,12 @@
               "w": 19,
               "h": 24,
               "sha256": "38af1dfafe65682523384d670108bda3045bc57419c0614cd1add614b12fb501"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__body__d15__depth.png",
+              "w": 19,
+              "h": 24,
+              "sha256": "a6eeebd5c0d0ab00d4ff882fab3fb1da3990eccb8cfea6063e090495c63aeeb2"
             }
           },
           "filesHi": {
@@ -2131,6 +2242,12 @@
               "w": 13,
               "h": 13,
               "sha256": "78da1afb6357375632b4aa89051f21f2adfce9f52f1d0332f9c320d3056d2206"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__head__d00__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "c2d8609d6974a94c4309db587485af654a58f650942aae25f9c94591861a4beb"
             }
           },
           "filesHi": {
@@ -2196,6 +2313,12 @@
               "w": 13,
               "h": 12,
               "sha256": "5cad6175a9470d51333e2778732fe6294ba7ea9031ae0d2feedcc684e4a68cc7"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__head__d01__depth.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "5f0c754a597febd0389d67da9a9c85f9dd10220ea06877b034e5a8f335cf7c89"
             }
           },
           "filesHi": {
@@ -2261,6 +2384,12 @@
               "w": 12,
               "h": 13,
               "sha256": "49c140dc62e2681bd045c86dde864c7cfe82229694e1bbdd56e8383e6338c219"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__head__d02__depth.png",
+              "w": 12,
+              "h": 13,
+              "sha256": "3b4f0c126d394017d84684389676dcc48e568d2364348a346a5117973bf46a53"
             }
           },
           "filesHi": {
@@ -2326,6 +2455,12 @@
               "w": 13,
               "h": 13,
               "sha256": "4c94b974fd8c0d2a186ef9a952ae709097ece3a488b461ee02e1225dce9506b1"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__head__d03__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "bbc9959c118a5d52845b9e7298a082950bd5262645fe28a0e687011e98a9f9df"
             }
           },
           "filesHi": {
@@ -2391,6 +2526,12 @@
               "w": 13,
               "h": 13,
               "sha256": "97b109215b0b9368d167231fa2cf94ce67f250c0083a4007f355a6d532e64dab"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__head__d04__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "072cda9504a57e8742290b96f9e3ccb4be5d35ccdf6e866b5a092ec691f67864"
             }
           },
           "filesHi": {
@@ -2456,6 +2597,12 @@
               "w": 13,
               "h": 12,
               "sha256": "803c99b9c61718fe8860211d672b49f109081366fda9ae39f3c395537b709518"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__head__d05__depth.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "a64769ce4a11fab2d1ff7444f3467fd66204d0333a65958fa206da3fe3b55c0f"
             }
           },
           "filesHi": {
@@ -2521,6 +2668,12 @@
               "w": 12,
               "h": 12,
               "sha256": "e52b7dece3cfa8f1f9cc8186bb614d2f7c4f97b9d0905aed154163148105acd4"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__head__d06__depth.png",
+              "w": 12,
+              "h": 12,
+              "sha256": "59e42e0bc71664064ad0ad5e4ed26f82dc5eb0b11d63c3445a4d75900061c39c"
             }
           },
           "filesHi": {
@@ -2586,6 +2739,12 @@
               "w": 13,
               "h": 12,
               "sha256": "adce3c060c95b1b9c1e1f1eb098c004183e5e9ced406c8be24d398c810a0e091"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__head__d07__depth.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "4a32e948eabd8bf6f8a087a3af3528d6bf897c1c88c7d07575acf5da1afb9a79"
             }
           },
           "filesHi": {
@@ -2651,6 +2810,12 @@
               "w": 13,
               "h": 13,
               "sha256": "949154fe90c4132f3f73de4c56fc31bd5f91e2ea9eb6f418646cea7bf62ac5ad"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__head__d08__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "1da3b930fe588506334e72ecac781464b7ce749017873a823d91f53cd5217b92"
             }
           },
           "filesHi": {
@@ -2716,6 +2881,12 @@
               "w": 13,
               "h": 12,
               "sha256": "01f9909a3fbf3edfc1e9fc1c6bc33968a7c52972390f892d59bf3906be39d4c6"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__head__d09__depth.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "01421d19c805c38a29bb8675ed179168bc900bf167855d58e526ffb34db94eac"
             }
           },
           "filesHi": {
@@ -2781,6 +2952,12 @@
               "w": 12,
               "h": 12,
               "sha256": "bb5fd968a41cb188fa3538ce1e8efc260fdd15bc3bd1be86b52205225055c441"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__head__d10__depth.png",
+              "w": 12,
+              "h": 12,
+              "sha256": "66a158561b796dd9b7139d93464f747a182690ea73c7012c262540023c1d03d7"
             }
           },
           "filesHi": {
@@ -2846,6 +3023,12 @@
               "w": 13,
               "h": 13,
               "sha256": "e57f5c8ae365de7a05f8983299ee6e61d5889e58cfdfaf6614abfd7c3a9ac543"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__head__d11__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "6a9156f22609a3d105944c8b632f1e6c4dbca0a80e10af52113638480c1ff48e"
             }
           },
           "filesHi": {
@@ -2911,6 +3094,12 @@
               "w": 13,
               "h": 13,
               "sha256": "21ea6f8a1c60a6bfefeaefd3dff78ede10e30c081747db89ea18c43b07d102f9"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__head__d12__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "0cd4de7a75980495d6d1ebd7f6049c1cb8265794450138fcee0f7d79f404a966"
             }
           },
           "filesHi": {
@@ -2976,6 +3165,12 @@
               "w": 13,
               "h": 13,
               "sha256": "bafcb09ced59fdbf221efb9ed468a80382d0ed8af26c65c4d74f40304000e7b8"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__head__d13__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "59c60dcfe6105bf2142beaebcd0a9657b97974cd6e7e4948e5f93b02dfff5cf6"
             }
           },
           "filesHi": {
@@ -3041,6 +3236,12 @@
               "w": 12,
               "h": 12,
               "sha256": "599886d35c229719254fe9cdd0f122a8326ff3dd9f1dc57eead9248c2f076fc4"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__head__d14__depth.png",
+              "w": 12,
+              "h": 12,
+              "sha256": "41b4233f369ca8248a4f5fdd8addef0326813e49e743fdad07c03bf47c243c82"
             }
           },
           "filesHi": {
@@ -3106,6 +3307,12 @@
               "w": 13,
               "h": 12,
               "sha256": "08c5a8e88d1c581c97c8e36634fd257867f29b9502805094d2fdcf4a1a0e1140"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__head__d15__depth.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "4c09b388212effe643c5911db22d62c625c26b9bd5a75c72f9dd84a6084cb401"
             }
           },
           "filesHi": {
@@ -3203,6 +3410,12 @@
               "w": 17,
               "h": 14,
               "sha256": "aba08d6ab3a0eaef4708eeaf5bb17f2d2e978cbccfddc16ad84995960d72940e"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__arm.R__d00__depth.png",
+              "w": 17,
+              "h": 14,
+              "sha256": "ddb1c7e23e992891b6dfb5453e307682b53c0c0f43d2aa3e96654c77fc70b6e7"
             }
           },
           "filesHi": {
@@ -3268,6 +3481,12 @@
               "w": 14,
               "h": 15,
               "sha256": "ad4816c555db08e84e36452880c4d3aa54c85d4ea236733d219e896900c084d1"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__arm.R__d01__depth.png",
+              "w": 14,
+              "h": 15,
+              "sha256": "391a11831d7d936202ea992ac223707f97e7d6c479692b818c45f284cd7febd6"
             }
           },
           "filesHi": {
@@ -3333,6 +3552,12 @@
               "w": 11,
               "h": 15,
               "sha256": "cf38dadbbf0b6c8945e7a74af488f2fc500c1c67e915e2561660901ca9fa3444"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__arm.R__d02__depth.png",
+              "w": 11,
+              "h": 15,
+              "sha256": "26c2fc8e24f68f3e8564ce0e1813b0d665e2811c6dfa4a87ad9292e225fe4954"
             }
           },
           "filesHi": {
@@ -3398,6 +3623,12 @@
               "w": 14,
               "h": 15,
               "sha256": "d9f4f9b97ec6671edad6c6ae6a7fafe06ec06a92fa39da70708770c69d83d93c"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__arm.R__d03__depth.png",
+              "w": 14,
+              "h": 15,
+              "sha256": "31e03e3457d34d14713b39084f59bf3faf26945220db2c472850f50cb46d1244"
             }
           },
           "filesHi": {
@@ -3463,6 +3694,12 @@
               "w": 17,
               "h": 15,
               "sha256": "34d622799b0bc0c67bc8e02eccf6db9992163266aa80ff9defeb9bbc00860117"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__arm.R__d04__depth.png",
+              "w": 17,
+              "h": 15,
+              "sha256": "5b1d62c67211363d725fbf47cad27e93c70ae79e25c0352d719a125f7958e29b"
             }
           },
           "filesHi": {
@@ -3528,6 +3765,12 @@
               "w": 19,
               "h": 13,
               "sha256": "dfe364f0936ce41ddc328300b439c1260038b93c6408f2f1ff68570d60a5804e"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__arm.R__d05__depth.png",
+              "w": 19,
+              "h": 13,
+              "sha256": "ce2207f136f96eaf6ae92b706957c636f73625d76d3ef8c3b358de93709a4a8f"
             }
           },
           "filesHi": {
@@ -3593,6 +3836,12 @@
               "w": 19,
               "h": 12,
               "sha256": "b8c4a4fee996834d363450c2ffad1d8d04f8131d13cb78c36402afc053824990"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__arm.R__d06__depth.png",
+              "w": 19,
+              "h": 12,
+              "sha256": "ab05cbe590b33ab060de97b557e5529a1ff08de9703d6a7302b3d31206457bc4"
             }
           },
           "filesHi": {
@@ -3658,6 +3907,12 @@
               "w": 18,
               "h": 12,
               "sha256": "f41d74cbcda3b7421c5a5ab3c2e4ed508ea73989c3950bd9872f0bc7275a2898"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__arm.R__d07__depth.png",
+              "w": 18,
+              "h": 12,
+              "sha256": "8f1b3bb3adb3a1c898dc39d99c60ed82c7bd3d8ccba931dde48b1fba81a7e88d"
             }
           },
           "filesHi": {
@@ -3723,6 +3978,12 @@
               "w": 17,
               "h": 13,
               "sha256": "d43247c60b1b33b78b9208969f58b9a20b715dd3f942e27d92f61b91b4ce40e4"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__arm.R__d08__depth.png",
+              "w": 17,
+              "h": 13,
+              "sha256": "2b09fda85c482a83b40fafa9953d93c6a109589de9b5f5d22b746fe214b68a81"
             }
           },
           "filesHi": {
@@ -3788,6 +4049,12 @@
               "w": 14,
               "h": 14,
               "sha256": "2b86cdcad92b9839366b0df6a167416005cf3c1c4c14f07a721c11db9b51fcfd"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__arm.R__d09__depth.png",
+              "w": 14,
+              "h": 14,
+              "sha256": "719a2fb87563ec3b4302bf6a8b77cb339850251cfdb3686f20884e5c980e283c"
             }
           },
           "filesHi": {
@@ -3853,6 +4120,12 @@
               "w": 11,
               "h": 15,
               "sha256": "971f9d72cb98ddb264f4be7d65afaa1a83d1fcd8f1a28fa9e59efc16168c9ec6"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__arm.R__d10__depth.png",
+              "w": 11,
+              "h": 15,
+              "sha256": "53e9be74d6b018fde4cda6ba362503d88e1827b77777c4502330c7435814d3db"
             }
           },
           "filesHi": {
@@ -3918,6 +4191,12 @@
               "w": 14,
               "h": 15,
               "sha256": "d651cbeb5f51d98f71f57206c5289a2b02d779c1711548ee02ae9795c83fecaf"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__arm.R__d11__depth.png",
+              "w": 14,
+              "h": 15,
+              "sha256": "034032ce14498dc2a23b95cf0268db61a08606f64b7035c9b9bff930e35521cd"
             }
           },
           "filesHi": {
@@ -3983,6 +4262,12 @@
               "w": 17,
               "h": 13,
               "sha256": "cc1e7544f8eb3ecbda74889cdcbe129072c25c8e55969403fceebca83e3c67ce"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__arm.R__d12__depth.png",
+              "w": 17,
+              "h": 13,
+              "sha256": "fbd2a13abb1a96b24cd9ab2bcb3c4bc72687afbf1d54ac8797e661c91f9a9f67"
             }
           },
           "filesHi": {
@@ -4048,6 +4333,12 @@
               "w": 19,
               "h": 13,
               "sha256": "fbcc084b67b154fbf8c053c2320f7ae55df4043064a52398a078d936766114e4"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__arm.R__d13__depth.png",
+              "w": 19,
+              "h": 13,
+              "sha256": "dd8634db489b0aeb4d530e7e91ef6d7fb27f4216c8bc0798f20067e32ea4dd7a"
             }
           },
           "filesHi": {
@@ -4113,6 +4404,12 @@
               "w": 19,
               "h": 11,
               "sha256": "151d51bc9f6afc5d198e34adf5090fa7093dcd89bef99e065113fe41a59cfc38"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__arm.R__d14__depth.png",
+              "w": 19,
+              "h": 11,
+              "sha256": "edfbfed09d865fa79d1939c6e6d6c9e80cfd17d3f240ff34b516ec4bb8619588"
             }
           },
           "filesHi": {
@@ -4178,6 +4475,12 @@
               "w": 18,
               "h": 13,
               "sha256": "b087a319a2a1ed0ed5fafb25a18f56590c8b5d30676e48515700ea5fe1079d9a"
+            },
+            "depth": {
+              "file": "sheets/rocket-infantry__arm.R__d15__depth.png",
+              "w": 18,
+              "h": 13,
+              "sha256": "9100c0d98589d252ce9c03c7a3561b5c1bce93ac826c275111a108e03f78f364"
             }
           },
           "filesHi": {
@@ -4293,15 +4596,15 @@
         "files": {
           "albedo": {
             "file": "sheets/rocket-infantry__composite__d00__albedo.png",
-            "sha256": "83529cc7d19408daf4647f2086ed64235192c00a47f5d055feb4c785c7f10e31"
+            "sha256": "90b21b561bc9789266ff27f8d96bb4c5d4f893ba6103088299f540f091d394cb"
           },
           "normal": {
             "file": "sheets/rocket-infantry__composite__d00__normal.png",
-            "sha256": "4827f41a1f56a4b60ca7d28f8e84c2c8905631030bb2e9c80530b6391eef12c4"
+            "sha256": "af3a0827f5c75d32662df0f7dbdc16942e527bc59b807f929f5c203f6fe8b4f4"
           },
           "material": {
             "file": "sheets/rocket-infantry__composite__d00__material.png",
-            "sha256": "91717fa4b616e104530fcae1c77267c9eb6b09de26a4a8cc519546941943c36a"
+            "sha256": "bb783c69c2fe21ddf8fb4c8fb4fb5f5f1eaf0a9d1fa14679546f76fe37fdb7bf"
           }
         }
       },
@@ -4311,15 +4614,15 @@
         "files": {
           "albedo": {
             "file": "sheets/rocket-infantry__composite__d01__albedo.png",
-            "sha256": "7ec98460d293c0866affd8e415b4bbba1d304705b6e28698966be2fe806355bc"
+            "sha256": "a0196ca3b9de3638edde8f35336f4ba8f118390d9dcfe24ca0752eda26aadefd"
           },
           "normal": {
             "file": "sheets/rocket-infantry__composite__d01__normal.png",
-            "sha256": "9ed68e3a529f1191709b0884db07c3a0f5e5bc9bd45e7ff2ba41a024040416c4"
+            "sha256": "2c5db128d9c71791e4a4beba77c50aa15bdec2631c774c43c4958b328c401486"
           },
           "material": {
             "file": "sheets/rocket-infantry__composite__d01__material.png",
-            "sha256": "7e1f05b4bcee3fb608dff177f729f1126e4826a1447e699401fb6692d08bba3e"
+            "sha256": "6eec7908849b7c37ce8e1c1526cd2e970a6b18e60375c42d3d748914ab643a36"
           }
         }
       },
@@ -4329,15 +4632,15 @@
         "files": {
           "albedo": {
             "file": "sheets/rocket-infantry__composite__d02__albedo.png",
-            "sha256": "4c0a18b4731e8f14e06e2bd55423695e0da7da0d2056dfbb31a776b84e9b8b44"
+            "sha256": "1545ad9850215bf643fc7aa1b9d23278a4caf9b037fc631a8cdddf2f65ea6444"
           },
           "normal": {
             "file": "sheets/rocket-infantry__composite__d02__normal.png",
-            "sha256": "e107d26015072d88de030b0391ecc5b546bd5bb140f140c60156457e9ddc7fe7"
+            "sha256": "baeb562c4691ec1e6b9999539ed633857d1fd4441b5c382bf3e33deee5efa92d"
           },
           "material": {
             "file": "sheets/rocket-infantry__composite__d02__material.png",
-            "sha256": "f4c4a1c655e197fd2ea84615bbed9bf3b994cbd67e1555014785d49d281df1b8"
+            "sha256": "54784eac922be6be8582ee17f7d8d8472fbef670c51f86800f0341a3f15a76cf"
           }
         }
       },
@@ -4347,15 +4650,15 @@
         "files": {
           "albedo": {
             "file": "sheets/rocket-infantry__composite__d03__albedo.png",
-            "sha256": "32d390a2c621e05bacbb45f6944655d590d5c6f114c7230d2cee2ace4d39ad3e"
+            "sha256": "5dad6f27049e6e1947066a96b4e1d8ddca609167c6bf79ab34c1b6a19ca64ffe"
           },
           "normal": {
             "file": "sheets/rocket-infantry__composite__d03__normal.png",
-            "sha256": "2f2d8e9b79d48349148079478530f6d46e303a0ec49c68af231bc5b85deea657"
+            "sha256": "96cbe626e1015ffe151f07a9c3220a45f2b5d607e5b240590e5bed2c1b425074"
           },
           "material": {
             "file": "sheets/rocket-infantry__composite__d03__material.png",
-            "sha256": "dcb7f5828f7553f9b8d86bb30732f4cdb272380f67b9aa6a3cd2133eb89c9d2a"
+            "sha256": "11c5539b0e1119ee1665244b95c2a101c94f09a2ce03d6c2617ebcda056bb234"
           }
         }
       },
@@ -4365,15 +4668,15 @@
         "files": {
           "albedo": {
             "file": "sheets/rocket-infantry__composite__d04__albedo.png",
-            "sha256": "03d38d7a380f6f1e0af738d33e9bbcce9ce94901222dd57fd1258e7f0381edb0"
+            "sha256": "ab17c75cad17aaa2fc441fb633ebbacd17b8d864556fa7f3904eefbf80314303"
           },
           "normal": {
             "file": "sheets/rocket-infantry__composite__d04__normal.png",
-            "sha256": "62638bd9b56a3555ca1d03cdef3f493a8fb06baa315b4724ed39a7589acd35ef"
+            "sha256": "2b0672f7c552b23e88dedf051c9c2f378af3c8a087d0effc59b4974c1070b5fc"
           },
           "material": {
             "file": "sheets/rocket-infantry__composite__d04__material.png",
-            "sha256": "39d0c091976270794b0fce084121666ddc44f89e2edfe3e05ba27a51de8be421"
+            "sha256": "55f3e52bcf2e7fb3e47a9d043c72c0420aa4c2f911a28aee441a71ca96eb2b5e"
           }
         }
       },
@@ -4383,15 +4686,15 @@
         "files": {
           "albedo": {
             "file": "sheets/rocket-infantry__composite__d05__albedo.png",
-            "sha256": "0bcc80c0b8310ffb324ad210b4097bc5e338c53ac653f8052caeb53601391eed"
+            "sha256": "4d5690f3f4c6ed2eacfae584fb78cb984fcdda62019c08c93804fda4e4a97313"
           },
           "normal": {
             "file": "sheets/rocket-infantry__composite__d05__normal.png",
-            "sha256": "6b09bd1cfa53dc268cea2cd4871b18e242e9e41cc942088af1dbe79cff712390"
+            "sha256": "4c3ef6aa7a1c1266cbf8de4b24bc88cbcf2866d295e1dbbda1dd10f1e4b4e855"
           },
           "material": {
             "file": "sheets/rocket-infantry__composite__d05__material.png",
-            "sha256": "c05372fa02e61536ff04097c3d81c7fe5070932c65ceb64908fc9cb044e5180b"
+            "sha256": "9b64790fd0dd917314620a78518acaa2600de887a2ddccbbc0125202ab766800"
           }
         }
       },
@@ -4401,15 +4704,15 @@
         "files": {
           "albedo": {
             "file": "sheets/rocket-infantry__composite__d06__albedo.png",
-            "sha256": "3f7269456fc57592894aa318ec0de5b592a67d389e91f8da748b6929ab570118"
+            "sha256": "dbe3a6d8921a84cef69b5695958efcc262c349f3e56f98d0bcf479fd933f56ac"
           },
           "normal": {
             "file": "sheets/rocket-infantry__composite__d06__normal.png",
-            "sha256": "ccb249762aaf80f6e29f6bf8ded1371061dbd1360066fd899af29c3a57d53cea"
+            "sha256": "2d324b1f012ac007b5ac53aa1531ccc5240464a6f6c1143cc08024acd04f14fa"
           },
           "material": {
             "file": "sheets/rocket-infantry__composite__d06__material.png",
-            "sha256": "84a164e10eea33da424d88c439a53ee1c72fd136f511da3516cde54f59d00888"
+            "sha256": "87c7dd3113c675a54474458779f2c6d6a77265188067d51ec7e6422eca01ee82"
           }
         }
       },
@@ -4419,15 +4722,15 @@
         "files": {
           "albedo": {
             "file": "sheets/rocket-infantry__composite__d07__albedo.png",
-            "sha256": "e9d4686bf2ce1904a3f6b6a9c86bbe1940b038c32b4fc953a4ccf31b9d6a1de0"
+            "sha256": "22e862754e94db9a6cbe290907e26cfc9b2e84861da5620b2e3f14073e039a13"
           },
           "normal": {
             "file": "sheets/rocket-infantry__composite__d07__normal.png",
-            "sha256": "0e7baa3898168f09eba83229fa837dcc631f400b66ac5e073013bf1f60a7df2d"
+            "sha256": "17cc7fd4637f0ea7a9237408755135148fdf4b41b2c10f67c572de80de1771d1"
           },
           "material": {
             "file": "sheets/rocket-infantry__composite__d07__material.png",
-            "sha256": "156ff8a18ccbd8a5c0e307f75c7008749bd3f60429bd5256be00e457030236c5"
+            "sha256": "aabbe7c61fe13afbb105bff4271161c4c1678f5e2bf01969f48e306946911e05"
           }
         }
       },
@@ -4437,15 +4740,15 @@
         "files": {
           "albedo": {
             "file": "sheets/rocket-infantry__composite__d08__albedo.png",
-            "sha256": "7318fb8f32a6f3036cd147ea9a97e01fdc7590faf45146d598a5901cd42877d5"
+            "sha256": "ad3df6f078d436d0a65ec1fec55576d73af85481a679ecdbb6093eea65c240a4"
           },
           "normal": {
             "file": "sheets/rocket-infantry__composite__d08__normal.png",
-            "sha256": "f43cc5550d78f8389c87d2a845c4202548d895a5f49669160527192321f54ddf"
+            "sha256": "a061b319c9c432129a7f863ed08547e4c68decd899ee3dd87bf84bbcb8f9d0ee"
           },
           "material": {
             "file": "sheets/rocket-infantry__composite__d08__material.png",
-            "sha256": "cd8c1c627e4f525643157a47af45a4b9610fc40d096cbdc00b85dca4b884c57b"
+            "sha256": "01f5dfef82d0f3d4fd89a70d00c5595ce841784cca75e8e10a9b69fe6e337e2b"
           }
         }
       },
@@ -4455,15 +4758,15 @@
         "files": {
           "albedo": {
             "file": "sheets/rocket-infantry__composite__d09__albedo.png",
-            "sha256": "de56fcd209467453b20b4e7d983000a7e3adf62ca2b5ff585a967ec68b87e247"
+            "sha256": "cfc1dcc10adf60f4e167ee337e359b31bfcd3f583415c87f6c4be09bc6969319"
           },
           "normal": {
             "file": "sheets/rocket-infantry__composite__d09__normal.png",
-            "sha256": "cb6ecce6c3421a5c76fc5a9acdb04a91f5c3b395905ab439055d941e7f955bad"
+            "sha256": "cfb0b2e7239a2478e6ff3f1898f4e7e14c58a75134ec43ef20d9565a6dbe49d4"
           },
           "material": {
             "file": "sheets/rocket-infantry__composite__d09__material.png",
-            "sha256": "0dde7f13755b1fde6051eee89d794389d0a97b09a404b76638aabff1a45f9778"
+            "sha256": "d0041ce2e41e1788c70487b4b75ca42c28830e18731ad3ed62a35e6d5d7c23ba"
           }
         }
       },
@@ -4473,15 +4776,15 @@
         "files": {
           "albedo": {
             "file": "sheets/rocket-infantry__composite__d10__albedo.png",
-            "sha256": "7ec275549a47c7a11dc09454357d7549e5fcb8c5fcb41709d46f669dfb02538d"
+            "sha256": "fd359acfcb1bbaa1b9cd843ad468b08591e3dbf7fe0faf02cba3b09caec35054"
           },
           "normal": {
             "file": "sheets/rocket-infantry__composite__d10__normal.png",
-            "sha256": "e03fe161f361ddd2aea99ed026748f949d92f0424edfa1de881539d1f54354fc"
+            "sha256": "034608ce6a4a2a4944a9b659d3d9715a8b7b3be00b1c8ba92bce5b5ee991add4"
           },
           "material": {
             "file": "sheets/rocket-infantry__composite__d10__material.png",
-            "sha256": "dd5ad9f8409a187cfacf6d80337a457ada39c999d1084e1007bff58e9dd252b2"
+            "sha256": "21d4b50c2e7a9c6ab84c9560db326b72efd61618de4b1230315a07e69681cf04"
           }
         }
       },
@@ -4491,15 +4794,15 @@
         "files": {
           "albedo": {
             "file": "sheets/rocket-infantry__composite__d11__albedo.png",
-            "sha256": "fba03aea1d4b9b4e13110eee165c7a1974fe7654ebbb02790f958c08625bfac7"
+            "sha256": "d0faae48dd591dadd90d2a61e5a4b097608ffced7c88b100c882c013bf3be7b0"
           },
           "normal": {
             "file": "sheets/rocket-infantry__composite__d11__normal.png",
-            "sha256": "8a9540a040e730715056b32e5e1d731547375197840bf0d95b78b1d41abce72a"
+            "sha256": "5a4aa99f893c48a5b71503d56641e840e4cf035f238868692d53bacffbe67687"
           },
           "material": {
             "file": "sheets/rocket-infantry__composite__d11__material.png",
-            "sha256": "61b3dba3f48f9441fac92f8692e265303e568607d3766bc48cda0773096494e7"
+            "sha256": "01c4c8b23044765f55a8ffdf7a30027c27863a14aab693030e70934057e543ba"
           }
         }
       },
@@ -4509,15 +4812,15 @@
         "files": {
           "albedo": {
             "file": "sheets/rocket-infantry__composite__d12__albedo.png",
-            "sha256": "a9d8f0f6cb255d8580a4fa9c83e4d8db92978c97e1bb5b53094e5a075d933fdd"
+            "sha256": "2e9a5fb1cef734a1be8f20c78d23e186ca337339f30b0044d9efbc55638c4662"
           },
           "normal": {
             "file": "sheets/rocket-infantry__composite__d12__normal.png",
-            "sha256": "9a5c08fc8665ceb79c4203ed514abb0c0de8a4de9cd69fa699cc99f70b74776b"
+            "sha256": "9ac6c81cf08ba3dc774dbcc6800c6cf11e96ff64f29ed04cdb3dc98d7eb1188e"
           },
           "material": {
             "file": "sheets/rocket-infantry__composite__d12__material.png",
-            "sha256": "a833c64ee55b69739723c0e8b84b3ec3201427c4d712f1f1b137a9d6c93c1478"
+            "sha256": "e396d9618ff6f9380620be3ac21e937f898e3282c0024b9dbe7172e4cd930a09"
           }
         }
       },
@@ -4527,15 +4830,15 @@
         "files": {
           "albedo": {
             "file": "sheets/rocket-infantry__composite__d13__albedo.png",
-            "sha256": "95315500fc46ed5ce4d41116e3dd12a8c751ae619f1279b3fab79bc2245d06c3"
+            "sha256": "df458a3d5fc1e497ce19460afdaf4880d569072b92756031e45f7ea92d65fc4d"
           },
           "normal": {
             "file": "sheets/rocket-infantry__composite__d13__normal.png",
-            "sha256": "dffb34d49a224985a3ab4e582b23621912ba3030dd27d4f61b25b8271b1873b6"
+            "sha256": "ac126ff49fc06fccf4ed23f7cb93d6695696e06f7698b456a327763906a8d8d6"
           },
           "material": {
             "file": "sheets/rocket-infantry__composite__d13__material.png",
-            "sha256": "9f9e7fd142b8b2a2ad74e9d86e55113ae3ca58987e021591792b979517b14d7a"
+            "sha256": "a02067ed6647f51f1b20d16e752707b9cc76fcc555f25e9a5eb34342f8953cc7"
           }
         }
       },
@@ -4545,15 +4848,15 @@
         "files": {
           "albedo": {
             "file": "sheets/rocket-infantry__composite__d14__albedo.png",
-            "sha256": "fd9674a151f1289d8b097c7e54f42be87b1785a9860e6602e3fccaa101ae6e7b"
+            "sha256": "b4ab59d80903dc0d77e59fd6d6bc1e8bb9def83240b36fad699ca6050d6a2b02"
           },
           "normal": {
             "file": "sheets/rocket-infantry__composite__d14__normal.png",
-            "sha256": "035e1fe071359d05a94b95025a697d3d57775aa7eda7b8c3e27f65468f3e70cf"
+            "sha256": "e4f2ae59dfd7342a601afe39471e51039cc823ab8962008bc1fba67513a1112d"
           },
           "material": {
             "file": "sheets/rocket-infantry__composite__d14__material.png",
-            "sha256": "71904ded841b60c244d4102b0a35bee5f9560f55f0035aa16c6714dd9eb721c3"
+            "sha256": "ec37df60827cab5e77a42cb612a27993ca5ee65fa85dea3044f6b2017b500173"
           }
         }
       },
@@ -4563,11 +4866,11 @@
         "files": {
           "albedo": {
             "file": "sheets/rocket-infantry__composite__d15__albedo.png",
-            "sha256": "0751bada6a61e13710beab770bf8bf849920dffc5214386ccc90a5504d16f74d"
+            "sha256": "ab878327713e5535f7cfe6f2d3e26af8d6c8cf047e80bcf8b52c441571ea22fa"
           },
           "normal": {
             "file": "sheets/rocket-infantry__composite__d15__normal.png",
-            "sha256": "0a7d714c3046b36d38b5f414f53f3c1e809a287e98c8d0eb6470ef8e53b59303"
+            "sha256": "e90d766fdff6db77c4952dfbeed9882c74a3129708b16846f5e1cab15be627f6"
           },
           "material": {
             "file": "sheets/rocket-infantry__composite__d15__material.png",
@@ -4585,97 +4888,97 @@
         "file": "sheets/rocket-infantry__lit__d00__albedo.png",
         "w": 22,
         "h": 29,
-        "sha256": "5bc1901ecd558219ae1b75031bf1069bf061dac3390f53e8d013c8c1ffa0d1b4"
+        "sha256": "9f0e7f72a6ffe5e14199f40223b3a577de837b3126e80884fbb963eb2fa73922"
       },
       "d01": {
         "file": "sheets/rocket-infantry__lit__d01__albedo.png",
         "w": 20,
         "h": 28,
-        "sha256": "dffb13b4e2b2fef2d28eaa6586ced71fefdaec88f5680d4733fe6ed83f5a9225"
+        "sha256": "8446f29ca2054ada40cfc731840ab66202c5b082204c82ced0b3ef018bea9af0"
       },
       "d02": {
         "file": "sheets/rocket-infantry__lit__d02__albedo.png",
         "w": 20,
         "h": 29,
-        "sha256": "5b047e9f4b574ff335967d345190f56726a641f92963f0f492513de9c11d1788"
+        "sha256": "2750c4dc466218c1d5e2c40a514be7a2bd96c159479db2c10fc34e3f7ede4152"
       },
       "d03": {
         "file": "sheets/rocket-infantry__lit__d03__albedo.png",
         "w": 24,
         "h": 29,
-        "sha256": "4852df338b40d548edc93a0c80f12b96a7b4bbbcbd2e4f1cc297a89c0baa1684"
+        "sha256": "6c786138f23e2e414087b1bf302ef6b32e25d3679cd8d4644e2d6a426e5e3506"
       },
       "d04": {
         "file": "sheets/rocket-infantry__lit__d04__albedo.png",
         "w": 27,
         "h": 29,
-        "sha256": "6699aacf2857491fa8015630b4cb79e9d40b4a2a2092bfe1500d390f79a75d1b"
+        "sha256": "15c96f3eb5f2c4e95fd0cbb8ddb1eb2001a446c43038fd048d377991a38b4f6e"
       },
       "d05": {
         "file": "sheets/rocket-infantry__lit__d05__albedo.png",
         "w": 28,
         "h": 29,
-        "sha256": "2819af6fff0cb028c9b1be873b08a7472864be6fd7da4f1e2b4cb685cc32ade3"
+        "sha256": "01e2017b55512c8cf951b2cb8b29eda93c188b07d176aec1a265fa9c4fbf8414"
       },
       "d06": {
         "file": "sheets/rocket-infantry__lit__d06__albedo.png",
         "w": 27,
         "h": 28,
-        "sha256": "9dede7e00b40b19e173b9d0ae06d58f295b688568daa0c39b73c6601f15b2f7d"
+        "sha256": "5a7d3bb92527d91ccf5dd208bac374e7353e4003e5191c7ec1250be0d396996c"
       },
       "d07": {
         "file": "sheets/rocket-infantry__lit__d07__albedo.png",
         "w": 25,
         "h": 28,
-        "sha256": "dfb18097aa0b6a2aaf1f60bb5bdf6abdcf6da9c8fa7581a241a576774612b106"
+        "sha256": "0d297d2612ef20856ad0e7860fb2f7d49599796a3a4a7580c9b794464857cfbb"
       },
       "d08": {
         "file": "sheets/rocket-infantry__lit__d08__albedo.png",
         "w": 22,
         "h": 29,
-        "sha256": "066e5828abbe414af9f1de2d00822f8a0ae8b3e4841c6323392d09a5e3911588"
+        "sha256": "5227160e4a76d64f28c7666e98eeaef7374d3689fb03b027cfc52381910e073a"
       },
       "d09": {
         "file": "sheets/rocket-infantry__lit__d09__albedo.png",
         "w": 20,
         "h": 29,
-        "sha256": "60a7357e75a0fa2673efa49c84ce805d942a6f8fe3b048f42bf07b5e209e360f"
+        "sha256": "fe20c8be1327ef636cd2d627bd737da312d6fac62e6cb598fb52238b9e35cf55"
       },
       "d10": {
         "file": "sheets/rocket-infantry__lit__d10__albedo.png",
         "w": 20,
         "h": 30,
-        "sha256": "a7afb03eb91b4a791ca24a093a1056a2af8b467780b9e24615c1a247a601e70f"
+        "sha256": "5f07085e3cdf6959379114014af18a14d0f7190e300f5fae56ca837cf294fa78"
       },
       "d11": {
         "file": "sheets/rocket-infantry__lit__d11__albedo.png",
         "w": 24,
         "h": 29,
-        "sha256": "6aece0aef8a4abd509ff2584d4b5d8c4850c3c8390a1485253f1288d30d6ee21"
+        "sha256": "735b65a3112d83533c89c5a37f94bf7292544be24fd5c12a1fadce66643d232c"
       },
       "d12": {
         "file": "sheets/rocket-infantry__lit__d12__albedo.png",
         "w": 27,
         "h": 29,
-        "sha256": "ae3c8bca5a15bc1dbb300a740e46d5e4616a803fd9c427e25a5da55366f3b761"
+        "sha256": "cc280b90049bc0728ba24fb7467329f0f7fc3646d69754468090345ffe2c408d"
       },
       "d13": {
         "file": "sheets/rocket-infantry__lit__d13__albedo.png",
         "w": 28,
         "h": 29,
-        "sha256": "193b7b296c972a624ada435925e0e43e82137a6bb726dbc8ded9b67be4a80f24"
+        "sha256": "cb79ee8eaa03d4354d435c9bee84872cb0aae63819db4b8a0a39aeca2a0d0cf4"
       },
       "d14": {
         "file": "sheets/rocket-infantry__lit__d14__albedo.png",
         "w": 27,
         "h": 28,
-        "sha256": "6147b0e9eb3f29970595a581e64732b1717b610567f26320800b974986bb6ffb"
+        "sha256": "e108a5ef0acf2be38e5986d333482a510a63f466156ed1da812600b1781bd8a3"
       },
       "d15": {
         "file": "sheets/rocket-infantry__lit__d15__albedo.png",
         "w": 25,
         "h": 29,
-        "sha256": "3833069d8bd14444f511b25dcaa2800145c4fec846d64dfc5ceb54c790dba345"
+        "sha256": "a098982255674a533b388558ac299d37d27e59f26445d15cd334c63038dd7a2f"
       }
     }
   },

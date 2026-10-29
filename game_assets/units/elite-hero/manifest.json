@@ -998,6 +998,21 @@
       }
     ]
   },
+  "depthMap": {
+    "note": "Per-part view depth, one PNG per part per facing. Composite by z-test on this; do NOT try to order segments by a single depth per part.",
+    "channelOrder": "rgba",
+    "meaning": [
+      "depthHi",
+      "depthLo",
+      "unused",
+      "covered"
+    ],
+    "encoding": "q = depthHi * 256 + depthLo; depth = q / scale - bias  (tile units = design voxels / 8)",
+    "scale": 256,
+    "bias": 128,
+    "coveredAlpha": 255,
+    "largerIsCloser": true
+  },
   "parts": {
     "body": {
       "name": "body",
@@ -1059,6 +1074,12 @@
               "w": 21,
               "h": 25,
               "sha256": "7d4ebb4a0705f2dd2b567092b88947226b6f8ba9a70d03dd1a65da5a0aa18367"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__body__d00__depth.png",
+              "w": 21,
+              "h": 25,
+              "sha256": "74d5163672fa742e847600da87ac5e5c303149aef580f3cde14b905e54eca536"
             }
           },
           "filesHi": {
@@ -1124,6 +1145,12 @@
               "w": 21,
               "h": 24,
               "sha256": "c286df2e8fdd441911d0b7827157617f682761c2afe83005493d99fd246f40f1"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__body__d01__depth.png",
+              "w": 21,
+              "h": 24,
+              "sha256": "9d1cdb97c2c3a3309fe876b1bbfd26bd02b4519ff568e835016dc72280c89128"
             }
           },
           "filesHi": {
@@ -1189,6 +1216,12 @@
               "w": 19,
               "h": 25,
               "sha256": "02ba87920b5ecc71dc78f1ff6ff2770ede74cf6c38d2e98eea6b66619d5f6d1b"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__body__d02__depth.png",
+              "w": 19,
+              "h": 25,
+              "sha256": "9c5a7ea174151a4b8eb5d08ad54fbb65089e99b4ea68a5b5945a548dfe79ce87"
             }
           },
           "filesHi": {
@@ -1254,6 +1287,12 @@
               "w": 21,
               "h": 25,
               "sha256": "bebaa454fb819b03063c47c25427140c766332922619643cd8f7ab945795c9e9"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__body__d03__depth.png",
+              "w": 21,
+              "h": 25,
+              "sha256": "38a3aa7ef5495e266531b191463f793d95b7a619bd99f7efe336a482651b46d5"
             }
           },
           "filesHi": {
@@ -1319,6 +1358,12 @@
               "w": 24,
               "h": 25,
               "sha256": "8e45f9273f37975d8c58f6fa85d8a75d4da756d160c9d565905c2e1d15832b88"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__body__d04__depth.png",
+              "w": 24,
+              "h": 25,
+              "sha256": "baa981f173ee89eb30582666a9ea5c06bec9f8c35fc9bd0d1762e392d2920c7c"
             }
           },
           "filesHi": {
@@ -1384,6 +1429,12 @@
               "w": 23,
               "h": 25,
               "sha256": "9c1c4a7cb52f32f63ab2de27d8fad5258ad22279a290d44479188ca2abb06edd"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__body__d05__depth.png",
+              "w": 23,
+              "h": 25,
+              "sha256": "5a674568db40af4287313d9afec24b37761aebf3db0cd84c7f1d08e198234859"
             }
           },
           "filesHi": {
@@ -1449,6 +1500,12 @@
               "w": 22,
               "h": 24,
               "sha256": "689df32826178c07dd37ea5874e1da4d997cf6810260fbadc50481776521060a"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__body__d06__depth.png",
+              "w": 22,
+              "h": 24,
+              "sha256": "5e4c7984918497d3d7a9a1a4a7e122f57613dbdf09205991547218fcbe0bc8ce"
             }
           },
           "filesHi": {
@@ -1514,6 +1571,12 @@
               "w": 22,
               "h": 25,
               "sha256": "6196ea264505bc59de6cb6f7b5747164410c5a64cdf081595942bd693b3f5d02"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__body__d07__depth.png",
+              "w": 22,
+              "h": 25,
+              "sha256": "362642256b2f0a41ae4d2e4838d0b25995ecb7a515e5207d32f6d35284647a9e"
             }
           },
           "filesHi": {
@@ -1579,6 +1642,12 @@
               "w": 21,
               "h": 25,
               "sha256": "abe8d77a71e107b5fa3577e1232de53f01dd92cf279be7e88f3f43427fafdd49"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__body__d08__depth.png",
+              "w": 21,
+              "h": 25,
+              "sha256": "e1aefaffc1ed5510c2daacdf67312b60b4c1af889aa0600e8c77a048d3d61c51"
             }
           },
           "filesHi": {
@@ -1644,6 +1713,12 @@
               "w": 21,
               "h": 25,
               "sha256": "6f74373a5bccf61ea02b4916f9261ac9dc082d52a7d2a9aa0ec567296ae76d3b"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__body__d09__depth.png",
+              "w": 21,
+              "h": 25,
+              "sha256": "e0528df583b89651c72b11a5f021cef5accbce2019afb36f3e36e08f90c746a0"
             }
           },
           "filesHi": {
@@ -1709,6 +1784,12 @@
               "w": 19,
               "h": 25,
               "sha256": "08ab7f48cf7a001cf0373ab8c69be3f6d20f3d72fd5440bd3783256380e30cb8"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__body__d10__depth.png",
+              "w": 19,
+              "h": 25,
+              "sha256": "df47795986185bf0e9ab543812374852f65d947844f29ac203a1fcf681d53dec"
             }
           },
           "filesHi": {
@@ -1774,6 +1855,12 @@
               "w": 21,
               "h": 25,
               "sha256": "da7ebb2a0b803768cc3eb87b49950ebaa42c18b6dd23a070e736943f40afdf27"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__body__d11__depth.png",
+              "w": 21,
+              "h": 25,
+              "sha256": "6d7f35f52e3a90be67368cf21c5af2b0d93f26784ee54071514d676e677f195a"
             }
           },
           "filesHi": {
@@ -1839,6 +1926,12 @@
               "w": 24,
               "h": 26,
               "sha256": "fc90ebd0d967c8b77baef561a7904fadf4b5955942e5bde199149c5e8745b954"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__body__d12__depth.png",
+              "w": 24,
+              "h": 26,
+              "sha256": "ef654757fe430bc4a0ea15cc9e19c39302394030c3ef5c0872969bfc32b9c5b2"
             }
           },
           "filesHi": {
@@ -1904,6 +1997,12 @@
               "w": 23,
               "h": 25,
               "sha256": "4390ebae71c6ad3933c0a2c9fb1837cfaec90de1f794b71a602f630327c915d3"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__body__d13__depth.png",
+              "w": 23,
+              "h": 25,
+              "sha256": "8afcfa16381d3f9fd4762d92b011583d0266d62d7050f513683b22159c0afd84"
             }
           },
           "filesHi": {
@@ -1969,6 +2068,12 @@
               "w": 22,
               "h": 24,
               "sha256": "7d97d385b980d4f2d926cc8c0cfc1306429b23f2aff345d7033606cd0f503a73"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__body__d14__depth.png",
+              "w": 22,
+              "h": 24,
+              "sha256": "80425911e2163d32bdd5069ae6e4c538fb194635244d48247012f8ca0011709f"
             }
           },
           "filesHi": {
@@ -2034,6 +2139,12 @@
               "w": 22,
               "h": 25,
               "sha256": "742874e50bca1c15734ff412467915f55ecf0331693893034c8a44eadbd723db"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__body__d15__depth.png",
+              "w": 22,
+              "h": 25,
+              "sha256": "11e41e3668a4f478ece5ef497c72b6fdad92a867ce5b66b09082e1e0f57585e9"
             }
           },
           "filesHi": {
@@ -2131,6 +2242,12 @@
               "w": 13,
               "h": 13,
               "sha256": "78da1afb6357375632b4aa89051f21f2adfce9f52f1d0332f9c320d3056d2206"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__head__d00__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "c2d8609d6974a94c4309db587485af654a58f650942aae25f9c94591861a4beb"
             }
           },
           "filesHi": {
@@ -2196,6 +2313,12 @@
               "w": 13,
               "h": 12,
               "sha256": "5cad6175a9470d51333e2778732fe6294ba7ea9031ae0d2feedcc684e4a68cc7"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__head__d01__depth.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "b80f9c8074a9fd16939c8b1ad99643f6fca4d455b0ed395561c3c2ba32bc17cc"
             }
           },
           "filesHi": {
@@ -2261,6 +2384,12 @@
               "w": 12,
               "h": 13,
               "sha256": "49c140dc62e2681bd045c86dde864c7cfe82229694e1bbdd56e8383e6338c219"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__head__d02__depth.png",
+              "w": 12,
+              "h": 13,
+              "sha256": "3b4f0c126d394017d84684389676dcc48e568d2364348a346a5117973bf46a53"
             }
           },
           "filesHi": {
@@ -2326,6 +2455,12 @@
               "w": 13,
               "h": 13,
               "sha256": "4c94b974fd8c0d2a186ef9a952ae709097ece3a488b461ee02e1225dce9506b1"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__head__d03__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "fd87c4e7dac1dc1d61c8a950a8ffb424c5490db328bada3311e07fb16186bbb5"
             }
           },
           "filesHi": {
@@ -2391,6 +2526,12 @@
               "w": 13,
               "h": 13,
               "sha256": "97b109215b0b9368d167231fa2cf94ce67f250c0083a4007f355a6d532e64dab"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__head__d04__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "072cda9504a57e8742290b96f9e3ccb4be5d35ccdf6e866b5a092ec691f67864"
             }
           },
           "filesHi": {
@@ -2456,6 +2597,12 @@
               "w": 13,
               "h": 12,
               "sha256": "803c99b9c61718fe8860211d672b49f109081366fda9ae39f3c395537b709518"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__head__d05__depth.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "1a08009b3fe6d27919274c65c2155511d8947ae5f97b99495deb353dbd595193"
             }
           },
           "filesHi": {
@@ -2521,6 +2668,12 @@
               "w": 12,
               "h": 12,
               "sha256": "e52b7dece3cfa8f1f9cc8186bb614d2f7c4f97b9d0905aed154163148105acd4"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__head__d06__depth.png",
+              "w": 12,
+              "h": 12,
+              "sha256": "b46805f4d91bc331cd94891ea1c5d7ef0c7d5f97c0c8bffeb1a4855c7c2e704e"
             }
           },
           "filesHi": {
@@ -2586,6 +2739,12 @@
               "w": 13,
               "h": 12,
               "sha256": "adce3c060c95b1b9c1e1f1eb098c004183e5e9ced406c8be24d398c810a0e091"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__head__d07__depth.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "4a32e948eabd8bf6f8a087a3af3528d6bf897c1c88c7d07575acf5da1afb9a79"
             }
           },
           "filesHi": {
@@ -2651,6 +2810,12 @@
               "w": 13,
               "h": 13,
               "sha256": "949154fe90c4132f3f73de4c56fc31bd5f91e2ea9eb6f418646cea7bf62ac5ad"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__head__d08__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "1da3b930fe588506334e72ecac781464b7ce749017873a823d91f53cd5217b92"
             }
           },
           "filesHi": {
@@ -2716,6 +2881,12 @@
               "w": 13,
               "h": 12,
               "sha256": "01f9909a3fbf3edfc1e9fc1c6bc33968a7c52972390f892d59bf3906be39d4c6"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__head__d09__depth.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "dfb98f4aeb9c972716241f925fb1b3a72d2095d0e11bb1c7f9fb265901faa326"
             }
           },
           "filesHi": {
@@ -2781,6 +2952,12 @@
               "w": 12,
               "h": 12,
               "sha256": "bb5fd968a41cb188fa3538ce1e8efc260fdd15bc3bd1be86b52205225055c441"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__head__d10__depth.png",
+              "w": 12,
+              "h": 12,
+              "sha256": "66a158561b796dd9b7139d93464f747a182690ea73c7012c262540023c1d03d7"
             }
           },
           "filesHi": {
@@ -2846,6 +3023,12 @@
               "w": 13,
               "h": 13,
               "sha256": "e57f5c8ae365de7a05f8983299ee6e61d5889e58cfdfaf6614abfd7c3a9ac543"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__head__d11__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "5652802edcf0db8c3351896a704d6223d787a29257ed66b1a2c91796f6b048df"
             }
           },
           "filesHi": {
@@ -2911,6 +3094,12 @@
               "w": 13,
               "h": 13,
               "sha256": "21ea6f8a1c60a6bfefeaefd3dff78ede10e30c081747db89ea18c43b07d102f9"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__head__d12__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "36bc86e4dd349a8d08e24224a5cd52a60f588c704232dca596125019740b680d"
             }
           },
           "filesHi": {
@@ -2976,6 +3165,12 @@
               "w": 13,
               "h": 13,
               "sha256": "bafcb09ced59fdbf221efb9ed468a80382d0ed8af26c65c4d74f40304000e7b8"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__head__d13__depth.png",
+              "w": 13,
+              "h": 13,
+              "sha256": "464f6ae95bbce21146c786cd5b94ef45b38f61923566bc973abf872bf442a470"
             }
           },
           "filesHi": {
@@ -3041,6 +3236,12 @@
               "w": 12,
               "h": 12,
               "sha256": "599886d35c229719254fe9cdd0f122a8326ff3dd9f1dc57eead9248c2f076fc4"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__head__d14__depth.png",
+              "w": 12,
+              "h": 12,
+              "sha256": "41b4233f369ca8248a4f5fdd8addef0326813e49e743fdad07c03bf47c243c82"
             }
           },
           "filesHi": {
@@ -3106,6 +3307,12 @@
               "w": 13,
               "h": 12,
               "sha256": "08c5a8e88d1c581c97c8e36634fd257867f29b9502805094d2fdcf4a1a0e1140"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__head__d15__depth.png",
+              "w": 13,
+              "h": 12,
+              "sha256": "2da70ca9452d9d267587b40e52a1450ea164dc888e3387f0497416b01cedf395"
             }
           },
           "filesHi": {
@@ -3203,6 +3410,12 @@
               "w": 16,
               "h": 13,
               "sha256": "b6547b6e1569e02cafe2e4fe9bf33c2900ceb295965177858614c4729d3a9495"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__arm.R__d00__depth.png",
+              "w": 16,
+              "h": 13,
+              "sha256": "15e1b54b3df7e51e4f02202254915293a9e48519097a6341c6a51e4f40cb1ea2"
             }
           },
           "filesHi": {
@@ -3268,6 +3481,12 @@
               "w": 13,
               "h": 15,
               "sha256": "ed1950d7cd3106819cd1518133e563d384372ca84bfc179a5a7437614ebd741b"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__arm.R__d01__depth.png",
+              "w": 13,
+              "h": 15,
+              "sha256": "7fa9fd08e9153d258d9a4017776cf0c8f0830c3e9fe6db9b402aebc4d5cbb8e3"
             }
           },
           "filesHi": {
@@ -3333,6 +3552,12 @@
               "w": 10,
               "h": 15,
               "sha256": "78d5ee51bc225e0dcfe5e7d2db8622e4371f2b94f107ec472a69ceb350ee4b77"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__arm.R__d02__depth.png",
+              "w": 10,
+              "h": 15,
+              "sha256": "2ad17843d3060db471372c91d3633cf0c7c2ae620fb2c540e3e0f996d9657b32"
             }
           },
           "filesHi": {
@@ -3398,6 +3623,12 @@
               "w": 13,
               "h": 15,
               "sha256": "1cdc9635c23d7fe3236220548704e2294db0904d69fb419f9e69f3e284960264"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__arm.R__d03__depth.png",
+              "w": 13,
+              "h": 15,
+              "sha256": "fd153b90b35958a41da78c47e847b526c05bd8dcb5220901cdd374e95f1a890f"
             }
           },
           "filesHi": {
@@ -3463,6 +3694,12 @@
               "w": 16,
               "h": 14,
               "sha256": "961c8b5defa3ce8a4ca5c91518dafce487df34c685a5d649a606418e3b337e95"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__arm.R__d04__depth.png",
+              "w": 16,
+              "h": 14,
+              "sha256": "5f831c2bd352b2ccd9268017b687bba4a8d636b8f1fde0f5da666afc4757960a"
             }
           },
           "filesHi": {
@@ -3528,6 +3765,12 @@
               "w": 17,
               "h": 12,
               "sha256": "ab3c2e803a9645464f3c3085e5d1b056ba2fd937704354f9f87b4d4eeb05b7b4"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__arm.R__d05__depth.png",
+              "w": 17,
+              "h": 12,
+              "sha256": "38aeba32d2c9a7e3e595760ce9502ad15f2f49582b9a9886d7e29bfa0991e09f"
             }
           },
           "filesHi": {
@@ -3593,6 +3836,12 @@
               "w": 17,
               "h": 12,
               "sha256": "2a2ce49fa2f92d2000f75622361cc18d0853dab3cad80057e74a7eec0feac974"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__arm.R__d06__depth.png",
+              "w": 17,
+              "h": 12,
+              "sha256": "769ad9c1e876a4e396647ba0b4e293dc546ac64745eb62b6f3b75d0d6f752ce0"
             }
           },
           "filesHi": {
@@ -3658,6 +3907,12 @@
               "w": 17,
               "h": 12,
               "sha256": "f68efbd513905d23706babd2cca25f022bdf574be7dab6ecc74a31f684e03564"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__arm.R__d07__depth.png",
+              "w": 17,
+              "h": 12,
+              "sha256": "81f4a5bc7ec32be60662e54aaefef5ad545c58bb18573dc8f4416aa007d555d2"
             }
           },
           "filesHi": {
@@ -3723,6 +3978,12 @@
               "w": 16,
               "h": 13,
               "sha256": "b923dca6748e29f403a49b60a018dfd2fbb182d152db624e059f5917425a13d0"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__arm.R__d08__depth.png",
+              "w": 16,
+              "h": 13,
+              "sha256": "88b2d7985da81b80b718ee27c6be842f67677e18895514993891782844e8f0a4"
             }
           },
           "filesHi": {
@@ -3788,6 +4049,12 @@
               "w": 13,
               "h": 14,
               "sha256": "e60693c39e0797034fc936abc59e0ea662cd44c75e70993b7b8cfecf868258e6"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__arm.R__d09__depth.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "fc921fb93998901f98ab398c4e03018874e7cbf8af09e30fba4decf30f14085e"
             }
           },
           "filesHi": {
@@ -3853,6 +4120,12 @@
               "w": 10,
               "h": 14,
               "sha256": "73ea2adf0f11ebfbc9d37dea82a26c9026e5dd805aa33e67f3fd43afe0b33f3c"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__arm.R__d10__depth.png",
+              "w": 10,
+              "h": 14,
+              "sha256": "ab45f17c3f24e8533704d457db8a3a782318d98d2abf529227beb4bd02b5126e"
             }
           },
           "filesHi": {
@@ -3918,6 +4191,12 @@
               "w": 13,
               "h": 14,
               "sha256": "b5945013bcfd8d6900630812d1721f8d502ea5c4a500d9ef5705760038894bd8"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__arm.R__d11__depth.png",
+              "w": 13,
+              "h": 14,
+              "sha256": "f6016e046a8f95ac39b2b174470e6aad8dc6cf53f1585ce9a5c1a4286f3dedd3"
             }
           },
           "filesHi": {
@@ -3983,6 +4262,12 @@
               "w": 16,
               "h": 13,
               "sha256": "b564dd9a28809ad68b42122b46509eb275556888ef7968f241f5f2024f7d2f26"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__arm.R__d12__depth.png",
+              "w": 16,
+              "h": 13,
+              "sha256": "80b717518488698f8cbb1866db61b370193e753a3ed8707a3f373b5dfcda738f"
             }
           },
           "filesHi": {
@@ -4048,6 +4333,12 @@
               "w": 17,
               "h": 12,
               "sha256": "c115786446323afed021dbc7e98e831022c8e6bae831290ee14cf07d1641d39f"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__arm.R__d13__depth.png",
+              "w": 17,
+              "h": 12,
+              "sha256": "4bf1901959be8d29efbd5da827137af6c9e2ff3c7f3694027bd6516199c0d002"
             }
           },
           "filesHi": {
@@ -4113,6 +4404,12 @@
               "w": 17,
               "h": 12,
               "sha256": "0d9012b5ed8676530a3eb37774f8f645f15782247d81808e8c26a3f54c3755af"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__arm.R__d14__depth.png",
+              "w": 17,
+              "h": 12,
+              "sha256": "d9c7d097549dd781b6edb9530ff39bb5cfda68b29b801e3683aa8145ac70ac5d"
             }
           },
           "filesHi": {
@@ -4178,6 +4475,12 @@
               "w": 17,
               "h": 12,
               "sha256": "c04ce12683841ed65c1ee7b79b681e338b259c1693c3f4ec61370ac2d705afcf"
+            },
+            "depth": {
+              "file": "sheets/elite-hero__arm.R__d15__depth.png",
+              "w": 17,
+              "h": 12,
+              "sha256": "897e1a66e81bec02cf411bd22556fe93b64ab8369a8ffb64fad876adc5c510f4"
             }
           },
           "filesHi": {
@@ -4293,15 +4596,15 @@
         "files": {
           "albedo": {
             "file": "sheets/elite-hero__composite__d00__albedo.png",
-            "sha256": "8c76aba34415e3905046246c3612d98749aecc8cf62c4a3efe4e9c61a171fd7b"
+            "sha256": "a0604c450c73197fdbc2c2d2d93225bb0dcc39f05c0997e899f5ff483e1c0897"
           },
           "normal": {
             "file": "sheets/elite-hero__composite__d00__normal.png",
-            "sha256": "f7b61493d11b9f39c7400dfec0a01f437381349c4bd05d470d6b43117d28b87b"
+            "sha256": "b1a3c0afdb31ab0422e9bea6122ddf3caf5201bc87b7cb620afcafccda61a61c"
           },
           "material": {
             "file": "sheets/elite-hero__composite__d00__material.png",
-            "sha256": "71567f75d6baf306a2d7b5c7f51c482b2a764729b9bc672642024fae95554e8d"
+            "sha256": "1f2636094e2033f2d1368205ddc4bd27040e74d1a5ea815114fcd83823d15267"
           }
         }
       },
@@ -4311,15 +4614,15 @@
         "files": {
           "albedo": {
             "file": "sheets/elite-hero__composite__d01__albedo.png",
-            "sha256": "a7d9fb4a51666bf5534e8086e6b2d9ba3f3e91b8a5775a9673448a228924538f"
+            "sha256": "92c1abcbbd0f619056ec246eaf1cd7d09842ed4c023f2de67c5e1105d7915236"
           },
           "normal": {
             "file": "sheets/elite-hero__composite__d01__normal.png",
-            "sha256": "4a3c689d0fb97aac55e830c35ddc94e7a26ec16c6f44bd337bfacc64f0a70431"
+            "sha256": "3f3efec25561b9719b9c137e4f869ff764f820d0eed39db3290f48da749ade66"
           },
           "material": {
             "file": "sheets/elite-hero__composite__d01__material.png",
-            "sha256": "1f224a15fca66b86e16b150994349727fc4dedb058b979ffca92df213fa7c790"
+            "sha256": "4bf4b469863de2aacad63822064405576162eedbe8adb0044ef7ff205e56b4a5"
           }
         }
       },
@@ -4329,15 +4632,15 @@
         "files": {
           "albedo": {
             "file": "sheets/elite-hero__composite__d02__albedo.png",
-            "sha256": "8c1fce472c9bd4fbf1c990b31c2f258d6565298c08f5edb7739a9216b2ce574f"
+            "sha256": "12b567c716681782a1dace82f9c2a194255c72cec52b373c46ee8b771eac4299"
           },
           "normal": {
             "file": "sheets/elite-hero__composite__d02__normal.png",
-            "sha256": "0e289f711192da482dbf1b75815ea744a0241b8d21e35c8789c3c7bead4572d7"
+            "sha256": "fe512e3748a6a189cc585eb1f8582bb4faf375cd821604017d06800cf4de2988"
           },
           "material": {
             "file": "sheets/elite-hero__composite__d02__material.png",
-            "sha256": "68b2c0a677bd6c9310aed26b57b1dba6e5c927c24bddb3fecd7340af48573411"
+            "sha256": "94750444e85165ad5f6c5cb3649620be090f4a038de68d815b19f0764513edc2"
           }
         }
       },
@@ -4347,15 +4650,15 @@
         "files": {
           "albedo": {
             "file": "sheets/elite-hero__composite__d03__albedo.png",
-            "sha256": "9860ab82cd9f332fc36750a97c8d4ae2e005bf0093ee77a92c489d4f58710248"
+            "sha256": "89df9e5bff88e43b4ab407389788a62f434e2b634879f841b275a873ce4a76fa"
           },
           "normal": {
             "file": "sheets/elite-hero__composite__d03__normal.png",
-            "sha256": "a468b1b9e23ff08645aababd9bfae38c8e6e463c9cc8893136ddb6f034a42b11"
+            "sha256": "8caab11c390d83d8f4f28899853981ad00c0f244c4c9bf6e711f5f67e7eb342b"
           },
           "material": {
             "file": "sheets/elite-hero__composite__d03__material.png",
-            "sha256": "29ecf6471d3b1f220c3b76030d4c427d1e95e2fc84044d0885cecc8e88838c93"
+            "sha256": "32d85f349b900f6aa204173bcb72b8155757f19ed5b4722d4d8fefb3bf8ac8f3"
           }
         }
       },
@@ -4365,15 +4668,15 @@
         "files": {
           "albedo": {
             "file": "sheets/elite-hero__composite__d04__albedo.png",
-            "sha256": "826913fafc0f9660262bce6318250572a7e060c7d87e1447a75295e35c0ba376"
+            "sha256": "c67a0f646c7779fa55a48c265afe54238b00600ed9c7c7ebd4ecaba6f42a027f"
           },
           "normal": {
             "file": "sheets/elite-hero__composite__d04__normal.png",
-            "sha256": "140f69e7ac942449a2234c420b04fcb6764350371d39dcf001fc22828da5837f"
+            "sha256": "705f918352a75fe5a6363ef20d5e6c6ea52149dcd899e70a5eaf38f53e51b49e"
           },
           "material": {
             "file": "sheets/elite-hero__composite__d04__material.png",
-            "sha256": "caead768d88219975d8c1800e1b4052535fa97d110abc62daa91608d9e9bb61f"
+            "sha256": "62488900891adcef559b364e5a6e54aa9c594379cb0a0537ceab83eaf8aa3210"
           }
         }
       },
@@ -4383,15 +4686,15 @@
         "files": {
           "albedo": {
             "file": "sheets/elite-hero__composite__d05__albedo.png",
-            "sha256": "df82db3e289d84b0bb16c7cb6986b2421c1ffd42b4ce818a21d4abce5b3f23ab"
+            "sha256": "f6de25e1f013d5272c951e54cda483bfe41cbd2545bf2173def9be4e71ca83be"
           },
           "normal": {
             "file": "sheets/elite-hero__composite__d05__normal.png",
-            "sha256": "dedec6d2b9e8ba5983559ab0aa6bc4075e861177b7e614dbc316d98c35d6ef0e"
+            "sha256": "9e4d3d050a40a20777a5f89cc817adffa67d354c7b3e85bc5c7b61d18031db71"
           },
           "material": {
             "file": "sheets/elite-hero__composite__d05__material.png",
-            "sha256": "f4ea994181dfae20c5f544653d65b6bda9a80a8ba8043138e672c79368ec120c"
+            "sha256": "553a842fe8ac71af2c337fe2c3c49b490400e3626b2505515caaa64f189abb74"
           }
         }
       },
@@ -4401,15 +4704,15 @@
         "files": {
           "albedo": {
             "file": "sheets/elite-hero__composite__d06__albedo.png",
-            "sha256": "d3ca12f0756377b481a83442a93dd4804d2fc044864d03b367c24bb84711c60a"
+            "sha256": "6c9285be73441db1945dc5fe854e3e7aadf9bad8cec4c07efcca01aaad4b4ec6"
           },
           "normal": {
             "file": "sheets/elite-hero__composite__d06__normal.png",
-            "sha256": "07ce4ecac5c75852fe1073dd14a5dede014b8e95c6c58924be70bf5f1c64a7cc"
+            "sha256": "c89299aef3042e2534596f7c869d41c23e621449445f0d2b64bd6c820d5b8f53"
           },
           "material": {
             "file": "sheets/elite-hero__composite__d06__material.png",
-            "sha256": "7a8ab8748556b82fcd2a69808dd79ab2e29df73826d70c14b742a824e5b2bbfa"
+            "sha256": "30589158181dbb8195e713284295eea6367b9e0bb8fb6eeced5e1e5714c63543"
           }
         }
       },
@@ -4419,15 +4722,15 @@
         "files": {
           "albedo": {
             "file": "sheets/elite-hero__composite__d07__albedo.png",
-            "sha256": "0aea72bb2fbab355a63479a5ad249ec479492dcf3bf60056b8320c461c1562b5"
+            "sha256": "624552a2bad00bed316ca1d88dcaab6af601faf1ba6a21b2e2843b9f859ee5dd"
           },
           "normal": {
             "file": "sheets/elite-hero__composite__d07__normal.png",
-            "sha256": "3a4883c0e2f1247f5cc7aea9b15838bcd572d4c61d0daff1f4b6dd06c539a3c6"
+            "sha256": "b239c9d05a7e6dbe036257e407661b9f2864b9694e64e582e726c9e80b4de3ef"
           },
           "material": {
             "file": "sheets/elite-hero__composite__d07__material.png",
-            "sha256": "3c0dea1c0aa7eef6703bec3015d5f8456a2b288a1dd6678938b44f3d888f996e"
+            "sha256": "8b427a1ef0573b08f76c272449a49c0c5e6261e73b3f8885fca8eb8f1c2f698d"
           }
         }
       },
@@ -4437,15 +4740,15 @@
         "files": {
           "albedo": {
             "file": "sheets/elite-hero__composite__d08__albedo.png",
-            "sha256": "430043865dcd752fc6aeb45f1017b78ec1594c4fba9e205804dc19a4d6b62e79"
+            "sha256": "6812e02ffd37a6fe8ec44fc6e3bd67f3aebaf345f1a5777d5a8e38a66f999283"
           },
           "normal": {
             "file": "sheets/elite-hero__composite__d08__normal.png",
-            "sha256": "012560fd068dac8fe0435e448e7499f1cd07cc847a6b926b42d3401264fc0ef0"
+            "sha256": "0cf7d69c9b2694419971e4971a929cc762b7247a407ee32ae3d2423540601e0f"
           },
           "material": {
             "file": "sheets/elite-hero__composite__d08__material.png",
-            "sha256": "ea3d70a1207d52b407d5e50dde4bf9b2c7a555df4fbf999555359029a6759170"
+            "sha256": "91cbb9c37d5f98fd19ef2663995556ddddbfd8328588b1026075df0fc835f3e7"
           }
         }
       },
@@ -4455,15 +4758,15 @@
         "files": {
           "albedo": {
             "file": "sheets/elite-hero__composite__d09__albedo.png",
-            "sha256": "549ce01747af4d1206f6e7a7463d167d38dbd8ddbfa211e494557ff9adc84c77"
+            "sha256": "f1d55ea1d7e6059b6f67a6e6fc6af911c025a2a8c822f498cdb1aac7ba6fc0a7"
           },
           "normal": {
             "file": "sheets/elite-hero__composite__d09__normal.png",
-            "sha256": "ddfb8d86fb3af5fdc2987343154b7f9130a8450435fca2c65b29b51bc9744441"
+            "sha256": "4f8d166a241dc3223d084a3dcd73054509039fd63b84403a3a46bcf1e3b4823d"
           },
           "material": {
             "file": "sheets/elite-hero__composite__d09__material.png",
-            "sha256": "628940fa145a51da2eaa0db1f7b76f3327077f4a3eb316793630c32499fec51b"
+            "sha256": "ad7aa71791c50d8f93a27dd9a85a16c132a1d551db46e6ca595b38580e029db7"
           }
         }
       },
@@ -4473,15 +4776,15 @@
         "files": {
           "albedo": {
             "file": "sheets/elite-hero__composite__d10__albedo.png",
-            "sha256": "e109bdd818938785d91580341f2373835389fbf9ae9c73baa8f5dc7ee1cf9685"
+            "sha256": "229b64cce3a44fd446bc59acd7e127469484606f3db66c15c313367781c885de"
           },
           "normal": {
             "file": "sheets/elite-hero__composite__d10__normal.png",
-            "sha256": "e67075572e48179ce08175e445c5cdd59e00cdeeb4cf832ee760c45a6e3d376a"
+            "sha256": "6f0809efcc62042949daf11c8ad886989513892545b207c304ea66b4e2a736d6"
           },
           "material": {
             "file": "sheets/elite-hero__composite__d10__material.png",
-            "sha256": "c3c904c51be3e671cbe1f359137f56d658379d003841424be101fd0eb70a79a8"
+            "sha256": "905a1ae4fe94cd3cf5714cf4904bb9cd8080ff3aa867b0f85aaf6e68b2edc2af"
           }
         }
       },
@@ -4491,15 +4794,15 @@
         "files": {
           "albedo": {
             "file": "sheets/elite-hero__composite__d11__albedo.png",
-            "sha256": "9b7f05f302d728863f820df299df98e85318483554a9145f89cb9aa3fc69511f"
+            "sha256": "e28ab49c8ce82b4f6f8b1604ff3ecd2947137d887351f302a272b7b421115a64"
           },
           "normal": {
             "file": "sheets/elite-hero__composite__d11__normal.png",
-            "sha256": "6353cd037263e704a538819fa8428d7e85377f0aeee4639bb21c7c13e9bf6d7e"
+            "sha256": "e649321d43cad68b409699a95212540db54866e6c5b84c18e86b315bded13b73"
           },
           "material": {
             "file": "sheets/elite-hero__composite__d11__material.png",
-            "sha256": "d340946cbee8670792b450a3a57d9e4d4a79fbb086a08487b579fbe83fe6ca62"
+            "sha256": "78e9435589ce4cb2405171a3463873a090e7e410add1ca1b3241a2b43140c564"
           }
         }
       },
@@ -4509,15 +4812,15 @@
         "files": {
           "albedo": {
             "file": "sheets/elite-hero__composite__d12__albedo.png",
-            "sha256": "39d6f316a40424e4fca1867b7703d913d07e4c2b27e635eda28ea6c8fb7d1a76"
+            "sha256": "1df275f6ef4977026f54609e7b5f4b6153b26c67769d046cadd22bd23e5d3706"
           },
           "normal": {
             "file": "sheets/elite-hero__composite__d12__normal.png",
-            "sha256": "5f7a1f208a2a8d5beb464f2db37a4937600acd00f66d42a632fe4fd88a0d7a0a"
+            "sha256": "355895d8ef35865e7f40f49ee565ebc7a5ab7d3c566d9965e4b298ec3e51d2e5"
           },
           "material": {
             "file": "sheets/elite-hero__composite__d12__material.png",
-            "sha256": "31e5459fbd11f9814a326f79f6d335bf273feac9e99f09cf30570794315d53d1"
+            "sha256": "ffcfa2a16c4a7ecbac98d55d34dea614e455f64390ba44997cda43c56615b9cf"
           }
         }
       },
@@ -4527,15 +4830,15 @@
         "files": {
           "albedo": {
             "file": "sheets/elite-hero__composite__d13__albedo.png",
-            "sha256": "196b44957b14cd384dbe6c5b8149c817608f797f63bd78abadf5b1ef98f1c191"
+            "sha256": "c278433f82105ae3597cf66454c29d5a459cda4031fe048f22209f0a4a433eb5"
           },
           "normal": {
             "file": "sheets/elite-hero__composite__d13__normal.png",
-            "sha256": "9bf09134be2c58be687015ef6a8ca4d68a614860ba45dc91e1b5e5cfb02801db"
+            "sha256": "9e66ad9fcbeb2c7cd7464559f3b67038c10d335132a7ca7c4020c3ea28fbafa9"
           },
           "material": {
             "file": "sheets/elite-hero__composite__d13__material.png",
-            "sha256": "a691d27bd31adb3bca9156c074503616df742bad9c6f99bd539a3ed74ff26447"
+            "sha256": "e0746c56cb18330c2f57582e434f6e9d23f1a7190da3bec035e2b6ef869c4952"
           }
         }
       },
@@ -4545,15 +4848,15 @@
         "files": {
           "albedo": {
             "file": "sheets/elite-hero__composite__d14__albedo.png",
-            "sha256": "b38ac9b27229530c0ecf24b6b3311bcef339a3310d772f3d882b3aee2207f7bf"
+            "sha256": "d7bf34ac9c11ec631c6d25e29e304739b70abcf14ed822095cb5e7520c6012be"
           },
           "normal": {
             "file": "sheets/elite-hero__composite__d14__normal.png",
-            "sha256": "5cc09a7900ccaf878143dae53de6d35b9e6d5d31cc9afb4797e4cd29d04070cf"
+            "sha256": "480f08f9854a8c933e34f81ecf38e359c785607437ddd9bef7b3ca7edcb1b0c0"
           },
           "material": {
             "file": "sheets/elite-hero__composite__d14__material.png",
-            "sha256": "e97b38016b765a7ee11647ab2afb15bdd035944cd76d0102f37bf82f5eeaa8f8"
+            "sha256": "aca8e71a19d44d9e086fa791562ad16ba16132600ff00c061224da60313dc8ac"
           }
         }
       },
@@ -4563,15 +4866,15 @@
         "files": {
           "albedo": {
             "file": "sheets/elite-hero__composite__d15__albedo.png",
-            "sha256": "e991d59b1223ac36b2932db6a8a74ed15f9aa43305e11766c7d02c727d92c668"
+            "sha256": "d7e75a22acb023c53fc74413e374778f551c6106dc0f40003b1e686a3ef33b24"
           },
           "normal": {
             "file": "sheets/elite-hero__composite__d15__normal.png",
-            "sha256": "42af9c749e659905c0497532d98b2fc9a67c0150ba092c682dff385f6e0263c7"
+            "sha256": "90111d5d2bcff472f451567e1e39a911ad39211e3e4bcf1ab05148f5a97fa8b5"
           },
           "material": {
             "file": "sheets/elite-hero__composite__d15__material.png",
-            "sha256": "81dadda288bd76338b983a56b6a569e0246c4c9a2f5227cc8915d18b7c7df1cd"
+            "sha256": "e31eccb9d1a7abbf3051d822433043645fd148ab5b1e0652db09804476227cb5"
           }
         }
       }
@@ -4585,97 +4888,97 @@
         "file": "sheets/elite-hero__lit__d00__albedo.png",
         "w": 26,
         "h": 29,
-        "sha256": "4d5e278d752e8784e8d94c2629d890f80f86ab7ec4196f51d2878be343cbf7a9"
+        "sha256": "bc6e704df96947d4ae0d70f8999cde5bb04b617d3bcf6f20aa7643f4fddc5ec0"
       },
       "d01": {
         "file": "sheets/elite-hero__lit__d01__albedo.png",
         "w": 25,
         "h": 28,
-        "sha256": "82a6fc21e4c5e87de18d0dde1ffb033cbd1b70e0b5c1c7292e91311c5e9a2784"
+        "sha256": "7d8bb4c1db35dcdb0bdd304ec93c7fbc7d33ac8e80f453d8c500ae1f845c85bb"
       },
       "d02": {
         "file": "sheets/elite-hero__lit__d02__albedo.png",
         "w": 23,
         "h": 29,
-        "sha256": "98f654d3c2c8f7a3676f2cd461f36bcd8187d7bfaddfd47703972fa05221230c"
+        "sha256": "5645e3ab28397f57a57adefbb62785b2de2215ff961c3985668941d7492d40d2"
       },
       "d03": {
         "file": "sheets/elite-hero__lit__d03__albedo.png",
         "w": 27,
         "h": 29,
-        "sha256": "372f756e5b12cd21aa7bd163c39d76d69036c76a36c78743a10b3142568de979"
+        "sha256": "77e17187f6f48cea3613050fa7c0c77505c06d5b130b04d94b2a7f8ee364c126"
       },
       "d04": {
         "file": "sheets/elite-hero__lit__d04__albedo.png",
         "w": 31,
         "h": 29,
-        "sha256": "f2bd00476aea2fdbdddbcd058336c8a69c4fed7a1a2b4a61fba808e8e188e917"
+        "sha256": "2c47ff4da4fc724f4bea02b3e91cc3f35f78dbf1660c97040c08977111e8382c"
       },
       "d05": {
         "file": "sheets/elite-hero__lit__d05__albedo.png",
         "w": 31,
         "h": 29,
-        "sha256": "037c83ba0e813e72f8cd848023b465a9271b7fde159ce2b52fc0a0ba3876a59e"
+        "sha256": "462e146a3f571a83129e8e9a7273c8eb8d17d07af65f35bdcc367c83f990f874"
       },
       "d06": {
         "file": "sheets/elite-hero__lit__d06__albedo.png",
         "w": 29,
         "h": 28,
-        "sha256": "51fbbfe0a9bcf9bb5d79cb0e0f48ef76d64255e4344310cef4ae0c9bc6350039"
+        "sha256": "714ca356ef0071db8a6a7f806ad651487ee7ee03fd2637a9c0b3f6ca24192611"
       },
       "d07": {
         "file": "sheets/elite-hero__lit__d07__albedo.png",
         "w": 28,
         "h": 29,
-        "sha256": "47cb6165c24141a87d13e502766145298969b30192bb43916344239593f2eef6"
+        "sha256": "c1788337b27f6aae5592a4460ebb83bc0e915654e41bd15b473841407ed2b9c7"
       },
       "d08": {
         "file": "sheets/elite-hero__lit__d08__albedo.png",
         "w": 26,
         "h": 29,
-        "sha256": "e9b32e22bd3d145ab84b2d1ee4e5dac2f70e2f1b6ad427f998043b5bb0230a71"
+        "sha256": "210866fe40e02add0a97db14b1b10b04c702f27592d4ac92ee258d0dbd4bf5eb"
       },
       "d09": {
         "file": "sheets/elite-hero__lit__d09__albedo.png",
         "w": 25,
         "h": 30,
-        "sha256": "121b09bcfc9f6e3798242dc0cba8f6b460640b435d19d0700baf79d4444b6e9f"
+        "sha256": "c679e5a3733c2a9dbdcb77a7b1d19adb1083d3246e030d31f8a256e967abf287"
       },
       "d10": {
         "file": "sheets/elite-hero__lit__d10__albedo.png",
         "w": 23,
         "h": 30,
-        "sha256": "6735d659e7a9af053486c74278225c7250814b1c15883dfe59df09ec6e848d3a"
+        "sha256": "e7e3afea4c8d754d1297c9140472f0fb93c9e0ae1b2eccfa1bde8193df7eca11"
       },
       "d11": {
         "file": "sheets/elite-hero__lit__d11__albedo.png",
         "w": 27,
         "h": 29,
-        "sha256": "1e9edcf792b433053e301eb250ed8f18d1d280c14254a98fec48783b73a851a4"
+        "sha256": "d136b1c5ad50626f695951cc388367691ee330a504a55b400147adfa1515e1cf"
       },
       "d12": {
         "file": "sheets/elite-hero__lit__d12__albedo.png",
         "w": 31,
         "h": 30,
-        "sha256": "e04614ff344f61ae111c9f9b20e031496dfd0f167ac4308c9ba5420d54b4d194"
+        "sha256": "b861894a69553e13379106b7b8b1869bd138ae4f3d10e00c21c451b662ad6099"
       },
       "d13": {
         "file": "sheets/elite-hero__lit__d13__albedo.png",
         "w": 31,
         "h": 29,
-        "sha256": "b139bae203e40fba5566ae64b3efc778c6cf483d663b8ea6ab63810c068ee0a1"
+        "sha256": "f85da7c7bd35c2ba267f30386e8d3611c954bc4fa08e0b7704bde9607ff903c3"
       },
       "d14": {
         "file": "sheets/elite-hero__lit__d14__albedo.png",
         "w": 29,
         "h": 28,
-        "sha256": "806facc49ab4d640aa7e81ce9fcd810a4bd0c0d0303cf6a045954eda79400f1b"
+        "sha256": "19dee1e6f6d9d7fc8c1ccbbe92a3479748951ed82aa49f80e244ef1b2eff9b75"
       },
       "d15": {
         "file": "sheets/elite-hero__lit__d15__albedo.png",
         "w": 28,
         "h": 29,
-        "sha256": "30d239f1fb728a37d63fb32ed8a697845ea12d1434c3ee8779c4d2d9080e5a94"
+        "sha256": "8c34bff1000aa452071f232702cbd36f5c3dbc9260d12c976c63205087e77a04"
       }
     }
   },

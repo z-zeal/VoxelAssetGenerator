@@ -209,12 +209,18 @@ export function renderPart(voxels, { basis, palette, superSample = 2, occluders 
   const albedo = new Uint8ClampedArray(outW * outH * 4);
   const nrm = new Uint8ClampedArray(outW * outH * 4);
   const mat = new Uint8ClampedArray(outW * outH * 4);
+  // Per-output-pixel view depth of the NEAREST surface this part put there.
+  // `-Infinity` means the part covers no sample of that pixel. This is the sheet
+  // that lets a compositor resolve occlusion between parts per pixel instead of
+  // guessing a draw order from a single number per part.
+  const outDepth = new Float32Array(outW * outH).fill(-Infinity);
 
   for (let py = 0; py < outH; py++) {
     for (let px = 0; px < outW; px++) {
       let r = 0, g = 0, b = 0, a = 0, nx = 0, ny = 0, nz = 0;
       const matCount = new Map();
       let shadeSum = 0, shadeN = 0;
+      let dNear = -Infinity;
       for (let dy = 0; dy < ss; dy++) {
         for (let dx = 0; dx < ss; dx++) {
           const sx = px * ss + dx, sy = py * ss + dy;
@@ -228,9 +234,11 @@ export function renderPart(voxels, { basis, palette, superSample = 2, occluders 
           matCount.set(id, (matCount.get(id) ?? 0) + 1);
           shadeSum += matBuf[i * 2 + 1];
           shadeN++;
+          if (depth[i] > dNear) dNear = depth[i];
         }
       }
       const o = (py * outW + px) * 4;
+      outDepth[py * outW + px] = dNear;
       if (!a) { albedo[o + 3] = 0; continue; }
       albedo[o] = r / a;
       albedo[o + 1] = g / a;
@@ -252,7 +260,7 @@ export function renderPart(voxels, { basis, palette, superSample = 2, occluders 
   }
 
   const origin = [x0 / ss, y0 / ss];
-  return { w: outW, h: outH, albedo, normal: nrm, material: mat, origin };
+  return { w: outW, h: outH, albedo, normal: nrm, material: mat, depth: outDepth, origin };
 }
 
 /** Build the per-material render palette from a livery-resolved material list. */

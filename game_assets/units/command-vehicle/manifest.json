@@ -998,6 +998,21 @@
       }
     ]
   },
+  "depthMap": {
+    "note": "Per-part view depth, one PNG per part per facing. Composite by z-test on this; do NOT try to order segments by a single depth per part.",
+    "channelOrder": "rgba",
+    "meaning": [
+      "depthHi",
+      "depthLo",
+      "unused",
+      "covered"
+    ],
+    "encoding": "q = depthHi * 256 + depthLo; depth = q / scale - bias  (tile units = design voxels / 8)",
+    "scale": 256,
+    "bias": 128,
+    "coveredAlpha": 255,
+    "largerIsCloser": true
+  },
   "parts": {
     "body": {
       "name": "body",
@@ -1059,6 +1074,12 @@
               "w": 50,
               "h": 37,
               "sha256": "13c7183433aa6a60f41c5478b5120f874da06cd7e59e6110b088e3c23a8e3387"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__body__d00__depth.png",
+              "w": 50,
+              "h": 37,
+              "sha256": "a00b9c210fa9f4ed57508b3be2003fc48ac5666002af6bcec01bca5d973d58f6"
             }
           },
           "filesHi": {
@@ -1124,6 +1145,12 @@
               "w": 44,
               "h": 37,
               "sha256": "998ad7ab25db8d7b29d025f7531267a748c80c9f17f4021dcbaef8a7e44cfd39"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__body__d01__depth.png",
+              "w": 44,
+              "h": 37,
+              "sha256": "0cc92bf915be91a9b1b7dfa4b72ac8ba9c7c2d229ae3a6568ad909c4fad36afa"
             }
           },
           "filesHi": {
@@ -1189,6 +1216,12 @@
               "w": 33,
               "h": 36,
               "sha256": "611e268d9f2411d71d0e61135b3279c76e5e1fc7895c46d91abaddbaf1ae1145"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__body__d02__depth.png",
+              "w": 33,
+              "h": 36,
+              "sha256": "2dc81591e0c6cff893c8486f3ec7f8b25aff48b261bc7bb5d60079d885fabe88"
             }
           },
           "filesHi": {
@@ -1254,6 +1287,12 @@
               "w": 44,
               "h": 38,
               "sha256": "299a9fdbcd9fa61fb282368514f766d2ceb1a1d4b099685472296f6bef5f9c79"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__body__d03__depth.png",
+              "w": 44,
+              "h": 38,
+              "sha256": "16e60dd5d3bab2c4f2615ecd11bc229cc2e6bed19fbff26d99fef8ba24615856"
             }
           },
           "filesHi": {
@@ -1319,6 +1358,12 @@
               "w": 50,
               "h": 37,
               "sha256": "b2739d0a5bff1332dccffc98e3918186d564a37ea2b9a92c4137f40af736122b"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__body__d04__depth.png",
+              "w": 50,
+              "h": 37,
+              "sha256": "6cab56047231daaf9e54254cb59c1dfdeeffd976675e469c7c0c6d3de3821dad"
             }
           },
           "filesHi": {
@@ -1384,6 +1429,12 @@
               "w": 50,
               "h": 37,
               "sha256": "fdff1fd214b6f74fea400f9f71a42b633025e209408cbb083e43d4c5c8aa3f90"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__body__d05__depth.png",
+              "w": 50,
+              "h": 37,
+              "sha256": "3dbf2de3bdab967ff453478e79faa36109d755360d6a6b156a3b6d4cfaa357df"
             }
           },
           "filesHi": {
@@ -1449,6 +1500,12 @@
               "w": 45,
               "h": 33,
               "sha256": "a45b5e892bdd8a098235b3cc01259b840fb7ea48d1d3e463e932ce7d68202a14"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__body__d06__depth.png",
+              "w": 45,
+              "h": 33,
+              "sha256": "e6cd868249a47f690ae3b820f5f8de05f6b87d8dcde0c5622d5ab221d0fa02dc"
             }
           },
           "filesHi": {
@@ -1514,6 +1571,12 @@
               "w": 50,
               "h": 37,
               "sha256": "a8731fd47282a786598873f3afc57554881224005823946a9e5d82ff05e7c9ce"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__body__d07__depth.png",
+              "w": 50,
+              "h": 37,
+              "sha256": "6f82885b5a61c32d2b16df35c0addd573395b865b0558b3bab3619f3f98057bd"
             }
           },
           "filesHi": {
@@ -1579,6 +1642,12 @@
               "w": 50,
               "h": 39,
               "sha256": "2ab32fdf9e3dc03d4e54201ab220f251f224e78b777908efe447951bebfbb380"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__body__d08__depth.png",
+              "w": 50,
+              "h": 39,
+              "sha256": "840538de2fc7fa4ad95a1397e6b2359146c0ee0bcd7f69081651f4d1359aecce"
             }
           },
           "filesHi": {
@@ -1644,6 +1713,12 @@
               "w": 44,
               "h": 40,
               "sha256": "7e1b689ca72c64cd85a60e0165a78f526d477df5d2f721c79bb98241597f22da"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__body__d09__depth.png",
+              "w": 44,
+              "h": 40,
+              "sha256": "15e1d50a54315efa928fdd394e1acef7b7cda0da9ba723fdb72141b4a466f496"
             }
           },
           "filesHi": {
@@ -1709,6 +1784,12 @@
               "w": 33,
               "h": 37,
               "sha256": "2fec876e13632029d7a3c578e312d411edd7134af7d031669b884359e2bde0e1"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__body__d10__depth.png",
+              "w": 33,
+              "h": 37,
+              "sha256": "38e631967a161d9aeecfa26a23e88fb859d252b22ca043c1c1e0f2f9f6703316"
             }
           },
           "filesHi": {
@@ -1774,6 +1855,12 @@
               "w": 44,
               "h": 37,
               "sha256": "5b6c48ceb0f4539056f911e86851e8eddb77ced439b13839f0a4d6d895e3aacc"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__body__d11__depth.png",
+              "w": 44,
+              "h": 37,
+              "sha256": "0c2fbd5934fd1345c0d2652ce7e7ef78d903a609a346e748c0a02ef91005389a"
             }
           },
           "filesHi": {
@@ -1839,6 +1926,12 @@
               "w": 50,
               "h": 38,
               "sha256": "b640fe47722589fcdeb1dc66e21e0f9e52b5bada25485c3f341e528480b51b2b"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__body__d12__depth.png",
+              "w": 50,
+              "h": 38,
+              "sha256": "f82ad9e4e0ff4601e2995369c14320c6aab9b7a36891055c34c37c18883f62dc"
             }
           },
           "filesHi": {
@@ -1904,6 +1997,12 @@
               "w": 50,
               "h": 36,
               "sha256": "bdee33bc842263c39d30ba0f7388090ea10e25317ec91e9b03e6ed5beb9e70dc"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__body__d13__depth.png",
+              "w": 50,
+              "h": 36,
+              "sha256": "5b4c136df30a642b1dc644c664e579d651fa71d3dd995633c9bba899b4d850e6"
             }
           },
           "filesHi": {
@@ -1969,6 +2068,12 @@
               "w": 45,
               "h": 33,
               "sha256": "3a110006a2a33694c3a0efa41e578397e0a56d27079eeb219a6515c82b11b2ff"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__body__d14__depth.png",
+              "w": 45,
+              "h": 33,
+              "sha256": "36bc4f04b271887023b865864785c4894e2b277679abb3c619f32605ac403aa1"
             }
           },
           "filesHi": {
@@ -2034,6 +2139,12 @@
               "w": 50,
               "h": 37,
               "sha256": "85050fc04f6640734afefc2b703cf33e44b2ab85372b6a61117b819139dd6900"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__body__d15__depth.png",
+              "w": 50,
+              "h": 37,
+              "sha256": "1d1b82b136bf25b2a38fc096d413e3d31d7a8f0ef8a72f96a6c91da2a68f4623"
             }
           },
           "filesHi": {
@@ -2131,6 +2242,12 @@
               "w": 34,
               "h": 25,
               "sha256": "9fb0bfe6aad92f8a86ef81a7d95fa0d00e5f89a69dbf9f41e67db252722d2a11"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.L__d00__depth.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "38e2ec58f360a6ce30553f6e1fd7969e26219b6148bc131c7c463e7e9cdbeca0"
             }
           },
           "filesHi": {
@@ -2196,6 +2313,12 @@
               "w": 26,
               "h": 27,
               "sha256": "23a85b43b76552daf19b9c51c4ae05d799738a98dee00fa4cd3bec04bb337b0e"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.L__d01__depth.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "1e863458f55b473c1077616c432396694c52323898af3e816868aa509e9cde53"
             }
           },
           "filesHi": {
@@ -2261,6 +2384,12 @@
               "w": 16,
               "h": 27,
               "sha256": "196768c245fd9f6120f7165d8d766703cd6c4f12db086c38c36fa9c1e57f5123"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.L__d02__depth.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "c8fcbde52aeda4e9558d79eaf080396fd2b623c71a2c5f886e27574ca99386b5"
             }
           },
           "filesHi": {
@@ -2326,6 +2455,12 @@
               "w": 25,
               "h": 27,
               "sha256": "dbebe3a813a4ca8f2b5b5f5671496169f4dbad0c07d06c0c150f825835e44a2d"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.L__d03__depth.png",
+              "w": 25,
+              "h": 27,
+              "sha256": "2ba222fd8d4494fa83ca822d956a0dd69a68f11fbc60880b74a8713437c8d628"
             }
           },
           "filesHi": {
@@ -2391,6 +2526,12 @@
               "w": 34,
               "h": 25,
               "sha256": "43c52c7d1e702888d422d66b50f3b4a056a1792b151e326a2830511b7aac1227"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.L__d04__depth.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "9ec38dbae78e44604a2cfc9d1f05b4c2c738469a3fa3fd4619a65b02889f3f1c"
             }
           },
           "filesHi": {
@@ -2456,6 +2597,12 @@
               "w": 38,
               "h": 22,
               "sha256": "32ed8db4a188700a3c5eff267a14dff178752160c65270f2df6c46d7332a3672"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.L__d05__depth.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "f5a7aff8e4b892abd92051ad6d0fc4f0f49b3a0be858f81791a20937b47370ac"
             }
           },
           "filesHi": {
@@ -2521,6 +2668,12 @@
               "w": 38,
               "h": 17,
               "sha256": "cbd892e6bff7e312236c0a470b9b4d94067fa0a13e4c5ac9d701703475ba0750"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.L__d06__depth.png",
+              "w": 38,
+              "h": 17,
+              "sha256": "3ac3bc0986314a387926f332172a3447c7624557f0aa869281ebbf7d888ab952"
             }
           },
           "filesHi": {
@@ -2586,6 +2739,12 @@
               "w": 39,
               "h": 21,
               "sha256": "153c7ea92bfe2e2978ba3ef3f615c9ef6439c9182af87e7685a8ac7897fc1c7b"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.L__d07__depth.png",
+              "w": 39,
+              "h": 21,
+              "sha256": "a06fa8b04db1ecf65a5617882fb6c9f46059e18908f9be9eeef9660c32160576"
             }
           },
           "filesHi": {
@@ -2651,6 +2810,12 @@
               "w": 34,
               "h": 25,
               "sha256": "c4a046f69e70af448cd18cf92b70d7b819a267c8526668aae08af0b8a940b560"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.L__d08__depth.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "82d81bb70aa9f13f320d0926f2a2200870a68759a7dea970e2f099bdde0dfd5c"
             }
           },
           "filesHi": {
@@ -2716,6 +2881,12 @@
               "w": 26,
               "h": 27,
               "sha256": "b5a2e111d6aa23c2088b23a24b2c5aaf9147404c596831dd8063c7cc1821dac5"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.L__d09__depth.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "53f11d6edd1a915fcf1eb936eac8e5dc88b8d712f732b6846ad70b35355b8d46"
             }
           },
           "filesHi": {
@@ -2781,6 +2952,12 @@
               "w": 16,
               "h": 27,
               "sha256": "db7f85ebdb4f4e0191b5e6cf665b9f367f80f3da554d885d96b2688823c677b4"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.L__d10__depth.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "ad26407f84f24f7117d38a010a2b35bc05abbce386dc1f1b79fda8467a5857a9"
             }
           },
           "filesHi": {
@@ -2846,6 +3023,12 @@
               "w": 25,
               "h": 27,
               "sha256": "680f3510ddbaf56dc8b56828d2529d92a45e82f8e6728f6c3965f1698be866c6"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.L__d11__depth.png",
+              "w": 25,
+              "h": 27,
+              "sha256": "84fbe386e9c05aa35b30cd77bef2b306a0530f9a7388ce80992849b148c278d3"
             }
           },
           "filesHi": {
@@ -2911,6 +3094,12 @@
               "w": 34,
               "h": 25,
               "sha256": "14a5c06ab35625577a4ab77f4e8b1c480f163b15f18a15205df0c7c34c6fecf7"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.L__d12__depth.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "fd936c3f3b2c84a8a6e44014457b30b622b7e067cfe2cfe358aebdf5e99412c1"
             }
           },
           "filesHi": {
@@ -2976,6 +3165,12 @@
               "w": 38,
               "h": 22,
               "sha256": "21209a6a92cb3abfed0c8f7743576cea591c7ebc66eaeba10c1a6bf316d15714"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.L__d13__depth.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "8041a5fa034a2566834dc7f9001bfd538f154080eddb636305450f297dfb1edb"
             }
           },
           "filesHi": {
@@ -3041,6 +3236,12 @@
               "w": 38,
               "h": 17,
               "sha256": "2b41f4483f57440996ce8b960df39a1a62dff74e8c301a77aafda798ce7627a7"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.L__d14__depth.png",
+              "w": 38,
+              "h": 17,
+              "sha256": "393557cbb5b5a20e14c84dfa886fec1c51ff74eaacfe72f40bab24a1a58de965"
             }
           },
           "filesHi": {
@@ -3106,6 +3307,12 @@
               "w": 39,
               "h": 22,
               "sha256": "4c6f6d9077f7a6230e403625d5bc36e8b975de52bc7725db1ed6276dc0af757c"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.L__d15__depth.png",
+              "w": 39,
+              "h": 22,
+              "sha256": "5db8a5843b39f10d425c1bcbcbe22a26aac56ec49c940ae7e3a4bdff76c72147"
             }
           },
           "filesHi": {
@@ -3203,6 +3410,12 @@
               "w": 34,
               "h": 25,
               "sha256": "a07195a474f5afef222180ea6fa3d79b0a9d312d284623dda9c85faf201da698"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.R__d00__depth.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "8edbea70654e194b032364c93424322aecfa0489439c9cce43fc9081cdabea23"
             }
           },
           "filesHi": {
@@ -3268,6 +3481,12 @@
               "w": 25,
               "h": 27,
               "sha256": "94dcb16e935b3736ae7d05d57feac0cc7bc31a46c53dfffe4ae843af1fa1718a"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.R__d01__depth.png",
+              "w": 25,
+              "h": 27,
+              "sha256": "cd6fe8a66c121301af5b3ec12be9190ccd185b01852835191f45c34b9f8d36dd"
             }
           },
           "filesHi": {
@@ -3333,6 +3552,12 @@
               "w": 16,
               "h": 27,
               "sha256": "893450d9449bcde707690a2e931d46733cda4356ce1932354e998bc0ab285a48"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.R__d02__depth.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "172fe904431de8da101bcbb13d33c68a199676fbb52098dea4191ec4c548439a"
             }
           },
           "filesHi": {
@@ -3398,6 +3623,12 @@
               "w": 26,
               "h": 28,
               "sha256": "6fcbc6d84624f54e39086cd88e3c46fa3182c16fb3363ee9c27ae90c50e0aa0c"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.R__d03__depth.png",
+              "w": 26,
+              "h": 28,
+              "sha256": "c874ea9c5785b142c45c7f933b36e5812479f340886b3766e5432cc63f4668ce"
             }
           },
           "filesHi": {
@@ -3463,6 +3694,12 @@
               "w": 34,
               "h": 25,
               "sha256": "aecd1105db3fbc9aa45a850012f7c83a0d8ec908e5b7f02ed1ac697f178c6d54"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.R__d04__depth.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "d17769417a43f01fe359576ee597cda08ca2345cc879a7cdbc30854f9e685f09"
             }
           },
           "filesHi": {
@@ -3528,6 +3765,12 @@
               "w": 39,
               "h": 22,
               "sha256": "a6ec38b6df4d33e8aa794596d2b26b2db99386f6f1cc65f2eb4bc68fc394b3c0"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.R__d05__depth.png",
+              "w": 39,
+              "h": 22,
+              "sha256": "04e78348a113e6aa508c4c7d82adacdbbf37ec1ac4f3c3e83cb275188cdf0685"
             }
           },
           "filesHi": {
@@ -3593,6 +3836,12 @@
               "w": 38,
               "h": 18,
               "sha256": "543358beee4e33daf4383978bd90368e8980f7fa8af9d2be878c1ba2b2a3eb29"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.R__d06__depth.png",
+              "w": 38,
+              "h": 18,
+              "sha256": "053372aaac55f541fdfab10f268c33dc36b83826ebd37bd3859e82508956c8dd"
             }
           },
           "filesHi": {
@@ -3658,6 +3907,12 @@
               "w": 38,
               "h": 22,
               "sha256": "0f662490cebdb7e026fe9bb221bc282eecc525c75f667ac204e70c311ec17aad"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.R__d07__depth.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "8dc8d410180eca7b870d9866bab35856b47a7eea0336f6c0b01d359169aa2fb6"
             }
           },
           "filesHi": {
@@ -3723,6 +3978,12 @@
               "w": 34,
               "h": 25,
               "sha256": "005a32b116d9c0850f08058a474cff27988733d76058e5de563b08126fe87ffc"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.R__d08__depth.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "ee811a8f1eee6a986888a9af166e4006027086397a548ee600b032f64f089e1a"
             }
           },
           "filesHi": {
@@ -3788,6 +4049,12 @@
               "w": 25,
               "h": 27,
               "sha256": "710e86dcee63e5804b97dd7f5b0e1f1262b76c6e2e423dc9c4a32fe5746d99bd"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.R__d09__depth.png",
+              "w": 25,
+              "h": 27,
+              "sha256": "34df9aa04b1a4be0c66334f3bb4e27c931c987ba7b6e7a042f36a31be69224e7"
             }
           },
           "filesHi": {
@@ -3853,6 +4120,12 @@
               "w": 16,
               "h": 27,
               "sha256": "9d14450fee67deff56f973254274a3a9f005eaf61774a707e6a8c9604296cb0c"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.R__d10__depth.png",
+              "w": 16,
+              "h": 27,
+              "sha256": "73c0779dc31affeec06d6e45b7a9f7fbcdfcb3cd9a07509aeedc062645aadaa0"
             }
           },
           "filesHi": {
@@ -3918,6 +4191,12 @@
               "w": 26,
               "h": 27,
               "sha256": "3c59f7c5154cb0b0b84b422a577805b1610a68cc06389c6bfc777f2c30c8486e"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.R__d11__depth.png",
+              "w": 26,
+              "h": 27,
+              "sha256": "01ab097633a5bf0e543a28e5b065eb3f4883e0ceb8f9d09b9d1f0b6b93b83817"
             }
           },
           "filesHi": {
@@ -3983,6 +4262,12 @@
               "w": 34,
               "h": 25,
               "sha256": "df4abe606bb65baef31d4fd44a491b7eeed0789c46409a96dab670daa898aabb"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.R__d12__depth.png",
+              "w": 34,
+              "h": 25,
+              "sha256": "46f482a1b322d03bfb99b31b7913c9334e88b1d818e1522eb15cf9cc3af7e25a"
             }
           },
           "filesHi": {
@@ -4048,6 +4333,12 @@
               "w": 39,
               "h": 21,
               "sha256": "aaa19b14821cc8d34dbd7cd64b04f756e6f23a3dfe64770f260c777810b713b6"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.R__d13__depth.png",
+              "w": 39,
+              "h": 21,
+              "sha256": "1e150055ab1d47cc0b767181cac7fd33571586d5111504993aa4409a37e6c3b6"
             }
           },
           "filesHi": {
@@ -4113,6 +4404,12 @@
               "w": 38,
               "h": 18,
               "sha256": "aa63655e30a0f6da916aa4595962c952f6add852f0ec49f2d0b715bfc1e7045b"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.R__d14__depth.png",
+              "w": 38,
+              "h": 18,
+              "sha256": "1a78a9717900ffd23c38affc7ed5f3678a2aefd89c0a02d962fd00b91511e721"
             }
           },
           "filesHi": {
@@ -4178,6 +4475,12 @@
               "w": 38,
               "h": 22,
               "sha256": "973d15174ccfc843cec1258613c9607f68a488a62b2ad3199f48325c5ca8f1c9"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__wheels.R__d15__depth.png",
+              "w": 38,
+              "h": 22,
+              "sha256": "bf5531903df5619a39a4fe7cc546a14518fdf404242a27debcef244516d7135e"
             }
           },
           "filesHi": {
@@ -4275,6 +4578,12 @@
               "w": 16,
               "h": 19,
               "sha256": "4e44642156f2143b37f0ba2a35c1027160c8fc72c3fe56a7838725d03d89304d"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__mast__d00__depth.png",
+              "w": 16,
+              "h": 19,
+              "sha256": "af2317edc33e7da81e6575e2a74691289d298f6927fccba61545763a83f7a085"
             }
           },
           "filesHi": {
@@ -4340,6 +4649,12 @@
               "w": 18,
               "h": 19,
               "sha256": "b7c2c44515cfe14b8783b3b0a88f3d8e44c73ed8df5fcd46a63515f6269e150a"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__mast__d01__depth.png",
+              "w": 18,
+              "h": 19,
+              "sha256": "74fe8a66520b327f4ebe0e5731c1161c67cf6de209a27fe71dbe0ccbdc9521de"
             }
           },
           "filesHi": {
@@ -4405,6 +4720,12 @@
               "w": 18,
               "h": 19,
               "sha256": "e465f4fdf01d16320cb6efed4e14b6afd821d3214bc6e1dc0836c829c82431fd"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__mast__d02__depth.png",
+              "w": 18,
+              "h": 19,
+              "sha256": "c1bb7e6ae4d082e79eae649b712de1df38871373f2afdc0bda450d8a06b0094c"
             }
           },
           "filesHi": {
@@ -4470,6 +4791,12 @@
               "w": 18,
               "h": 19,
               "sha256": "238924344265bbf860c04fc5d4bb4e767d7e33d7947c1e05f97a84fb14d13c8b"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__mast__d03__depth.png",
+              "w": 18,
+              "h": 19,
+              "sha256": "454b0beeec1fe6dda89e56c7d23c29ae176ea7f766c23fbf1bf05946fcff5212"
             }
           },
           "filesHi": {
@@ -4535,6 +4862,12 @@
               "w": 16,
               "h": 19,
               "sha256": "21731e7444209e6f516f621598839335dc4ccad5fbc8e7e8d1d79ab40caa15cc"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__mast__d04__depth.png",
+              "w": 16,
+              "h": 19,
+              "sha256": "721a058a4dcc37297c323a379070755b92e0d5183785b44385567651a6fa9014"
             }
           },
           "filesHi": {
@@ -4600,6 +4933,12 @@
               "w": 15,
               "h": 19,
               "sha256": "65f39cfc6ba9086c32934f4529671b8d90722f25ea4b8ab444f7c27816317bb9"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__mast__d05__depth.png",
+              "w": 15,
+              "h": 19,
+              "sha256": "315c58478d15d5d230447c1758b92af1c8ece1967c0ac9bc9cf8e5093549c230"
             }
           },
           "filesHi": {
@@ -4665,6 +5004,12 @@
               "w": 13,
               "h": 19,
               "sha256": "f4f6a2f6d09e3b170d16abe163475d6c24bb09992563eb219d3cb197e0d5e8a2"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__mast__d06__depth.png",
+              "w": 13,
+              "h": 19,
+              "sha256": "59ed0e17e1335ed95d4b5275d96f3e703e69e6a2ced3ec89e6c2e8bf7414a8b2"
             }
           },
           "filesHi": {
@@ -4730,6 +5075,12 @@
               "w": 14,
               "h": 20,
               "sha256": "93a1af5e3db07ec889ea3b42577a1d9f33b07368c08417fb209525284f9054c6"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__mast__d07__depth.png",
+              "w": 14,
+              "h": 20,
+              "sha256": "6fe00545a45ad1ca6310b9615ad98f60eb8d0996359c4470c990df23b641888e"
             }
           },
           "filesHi": {
@@ -4795,6 +5146,12 @@
               "w": 16,
               "h": 19,
               "sha256": "53e10d3a1f0573deceaf0f4e457d1de659d4b05402c1a5e5b0a5358c89462cdf"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__mast__d08__depth.png",
+              "w": 16,
+              "h": 19,
+              "sha256": "779766d97ab1ef4c8f12857c5e0560328e464dc44acfbd4ed622b585e7001ede"
             }
           },
           "filesHi": {
@@ -4860,6 +5217,12 @@
               "w": 18,
               "h": 18,
               "sha256": "9a64db3334048880683527c8f0f6da0b0730b1641c8f85dd11b9aa0196952b88"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__mast__d09__depth.png",
+              "w": 18,
+              "h": 18,
+              "sha256": "7540a67a08ef2df18f75724f422df83f22dd50e7c43bd65057008eb889e28e65"
             }
           },
           "filesHi": {
@@ -4925,6 +5288,12 @@
               "w": 18,
               "h": 19,
               "sha256": "40232d33014a2e85363fb6507560eb23092d522e1b8f2c87811513a9852d49b7"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__mast__d10__depth.png",
+              "w": 18,
+              "h": 19,
+              "sha256": "811617849741b90b5e50c7de50ec42fdd51a3e2cc0274e64f30bcad3bbf513ff"
             }
           },
           "filesHi": {
@@ -4990,6 +5359,12 @@
               "w": 18,
               "h": 19,
               "sha256": "62b8da5dab5f60bb51d66239b564bd56057916685a8ea8bdf8ae40f18733ee74"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__mast__d11__depth.png",
+              "w": 18,
+              "h": 19,
+              "sha256": "431a05de20211df3df2ead4277fc1e9965de28a4ed1a725d82e2bbd79f861572"
             }
           },
           "filesHi": {
@@ -5055,6 +5430,12 @@
               "w": 16,
               "h": 19,
               "sha256": "4320edab32333b268f2cd67b051fa675a5c7aec2c2653c3161cb81e0ed46c0ec"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__mast__d12__depth.png",
+              "w": 16,
+              "h": 19,
+              "sha256": "b91e694d5ec0b6272029818a630896f202bd46c0725caca449898cff60d6aaf2"
             }
           },
           "filesHi": {
@@ -5120,6 +5501,12 @@
               "w": 15,
               "h": 19,
               "sha256": "8dee368988350a7452c1adcc18a9979994528e372b39acc20b1e3e2ecd376bed"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__mast__d13__depth.png",
+              "w": 15,
+              "h": 19,
+              "sha256": "7725dd3bdd7e06e2332d05bbd6ef8b44ad1ece454ecda08e331b8dfd512e85ed"
             }
           },
           "filesHi": {
@@ -5185,6 +5572,12 @@
               "w": 13,
               "h": 19,
               "sha256": "5f23a69a62070991d5e60d032ca37f8fa6a479847376a7e876306644de09df90"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__mast__d14__depth.png",
+              "w": 13,
+              "h": 19,
+              "sha256": "db429b2e3c0eed7d0c6a704c9f08ed638373da147841a8e03effdbf58c6ae809"
             }
           },
           "filesHi": {
@@ -5250,6 +5643,12 @@
               "w": 14,
               "h": 20,
               "sha256": "dfd2717e6bd83ff4cf431a904e2555966437f5f872db0a4a1868b3b70f057dc2"
+            },
+            "depth": {
+              "file": "sheets/command-vehicle__mast__d15__depth.png",
+              "w": 14,
+              "h": 20,
+              "sha256": "dbfe8edaedfbe2dbf11d19c778eb277c3fa67669c7d6d05e8622bbbcf90a2877"
             }
           },
           "filesHi": {
@@ -5385,15 +5784,15 @@
         "files": {
           "albedo": {
             "file": "sheets/command-vehicle__composite__d00__albedo.png",
-            "sha256": "e7ec0d6d8974a9a165564021005a30773fdc05d493b17353c4591f14989b139b"
+            "sha256": "8ac975997fd3fd5ae10865007516bf57d5aed7048f59a5919e368cba341b1e70"
           },
           "normal": {
             "file": "sheets/command-vehicle__composite__d00__normal.png",
-            "sha256": "90de26f02ce5f8f7d042de195f56647253709c77d6dc1143adb4ccab47b7930e"
+            "sha256": "97041e05b555cb8ac702fb12857144d7fd863271117dad796fbf4efd0e99466e"
           },
           "material": {
             "file": "sheets/command-vehicle__composite__d00__material.png",
-            "sha256": "587102ac6214ecd52be657ea26283094b121e7c441f85bee3c5e2e1d7443da1c"
+            "sha256": "a770c04a50c455d00297935695a5fea755e42d32e5ff242a868b7b741fc6c407"
           }
         }
       },
@@ -5403,15 +5802,15 @@
         "files": {
           "albedo": {
             "file": "sheets/command-vehicle__composite__d01__albedo.png",
-            "sha256": "44ea7355076d95eef56a8a00846b2bd7486a0492124483f1155d9566f75c40a3"
+            "sha256": "e7257d3cfab5f5d311eef0ff65745dc0d7551054f2390937ad82b41221d0d3af"
           },
           "normal": {
             "file": "sheets/command-vehicle__composite__d01__normal.png",
-            "sha256": "d507a63283b8a805089d729a126f8b87cc118515cdfc3e511a59c68dd68d7419"
+            "sha256": "6e81abff609d6402cf0eece521f19e63c90c194515028d6c64cccd17cae07485"
           },
           "material": {
             "file": "sheets/command-vehicle__composite__d01__material.png",
-            "sha256": "37016599b48efff54b049f57164fe89f30695f00a07c88619adfb6bcc9b4a388"
+            "sha256": "a1658a8a937c9bc609532d97b8ab1d962a1592bc0038e69b045d1363fabe45bc"
           }
         }
       },
@@ -5421,15 +5820,15 @@
         "files": {
           "albedo": {
             "file": "sheets/command-vehicle__composite__d02__albedo.png",
-            "sha256": "118c56a4218257b4786f46d5678d717e214715d95d409124f231b901a475199c"
+            "sha256": "4a9ae463f1252f62960218eaa15bfb15b1bb3c532d281ca42fdf0d3424458dbd"
           },
           "normal": {
             "file": "sheets/command-vehicle__composite__d02__normal.png",
-            "sha256": "b154c24ab5d3af344756c741406d8c7ccc10c51a47f024ae09b1b63762c13b18"
+            "sha256": "4fd65f2aae75f066fbdb0c8404f6103cdd29b2a725615d19aecd3f1385b85829"
           },
           "material": {
             "file": "sheets/command-vehicle__composite__d02__material.png",
-            "sha256": "36ef835291ed8c44cddbbe62e21576c759686ec50d1b3b9e3cf0d18a5d9f957e"
+            "sha256": "4ff358fb4338568f5ba24b5a800606a323577f84a15179f1b3387de55f98cfd0"
           }
         }
       },
@@ -5439,15 +5838,15 @@
         "files": {
           "albedo": {
             "file": "sheets/command-vehicle__composite__d03__albedo.png",
-            "sha256": "fc98e5df29fa5846dc022aac63f9a04471176ae54d0e50e77338ef1016bcd060"
+            "sha256": "30ce7ceca70786b720e826c7c53448e2ffa8729968f31e963c816b97ad18985b"
           },
           "normal": {
             "file": "sheets/command-vehicle__composite__d03__normal.png",
-            "sha256": "cab6a9b06efe71d2891357227b05d3e08beea9a309ed560b9ffd381815b86373"
+            "sha256": "96f1ae77a2714dd850d7b0e21764b084e742c1e2a68f48603f062e65a53e83af"
           },
           "material": {
             "file": "sheets/command-vehicle__composite__d03__material.png",
-            "sha256": "9384edd3da82ceaaa9259cc5f9642e3a80d8a0d3ee70dbd837d591ca16b20271"
+            "sha256": "328c1d8e142832aff0da3a09ee45a3ce790ae8189ca6881ea5bdbcf4361bbe53"
           }
         }
       },
@@ -5457,15 +5856,15 @@
         "files": {
           "albedo": {
             "file": "sheets/command-vehicle__composite__d04__albedo.png",
-            "sha256": "c04be928bfcf586389c904f06a24cb9c7b4dac3318e397cfcfcd449d4294da16"
+            "sha256": "7fc1082c6531eca6858ab130bb037023e94e369e539c6109309f011ffc8d171f"
           },
           "normal": {
             "file": "sheets/command-vehicle__composite__d04__normal.png",
-            "sha256": "8560883adff9a3f3de7629dceb98efc6f8a28837c0a57604b286f2e5f95e5577"
+            "sha256": "7a09865036696f00e07df211db508bba8818f0f1cc7e33d9fd780ee2696b4a20"
           },
           "material": {
             "file": "sheets/command-vehicle__composite__d04__material.png",
-            "sha256": "f012e52490594924e52513f31fb6487b502cebecdfd806443b84f29b6d533ea8"
+            "sha256": "1a8abc8630b02303dd677962e516f27d8204105cfd7b69157c65e7f8f11aa744"
           }
         }
       },
@@ -5475,15 +5874,15 @@
         "files": {
           "albedo": {
             "file": "sheets/command-vehicle__composite__d05__albedo.png",
-            "sha256": "9cfaa868d8e3866f3ef5dcc98a5069f8f8bba875f53b05f71a4e1bf7bbadfae7"
+            "sha256": "60672497d7c6dedd864e70c51cb8958e4bc98853ed42dfe19314255f34c54e1e"
           },
           "normal": {
             "file": "sheets/command-vehicle__composite__d05__normal.png",
-            "sha256": "26a32c00b793982531b824765133281c729e6b386d566fb350279f1e126ae8c8"
+            "sha256": "ff637d834f3647166e9229dd40fd2ac34c96d52eec02d03ee5db4bf8e61dac63"
           },
           "material": {
             "file": "sheets/command-vehicle__composite__d05__material.png",
-            "sha256": "0110fc3a76fca73d083e2b953c34df3a4829ba2be22d58cfefe678c8f7821b06"
+            "sha256": "82e80526591b609037bd7b4409c91623bb18d6b6c036e981bbc5fa8ef39feec4"
           }
         }
       },
@@ -5493,15 +5892,15 @@
         "files": {
           "albedo": {
             "file": "sheets/command-vehicle__composite__d06__albedo.png",
-            "sha256": "4ded9211d1343a07c4e03366990139a3d683d36e2d136cf8a6346febfe7a5a1f"
+            "sha256": "d1e8686d368275325eade610a64235a1d72e169576572ba62e3263ea8f7e9a4e"
           },
           "normal": {
             "file": "sheets/command-vehicle__composite__d06__normal.png",
-            "sha256": "232133a45464ef77b7d119343c835ae3c35494d0f52650cbbfecce38884d1b82"
+            "sha256": "dfc647faef694bc9a13674b0eff3660dbfd8ea80a5c19c3c9b91872f271c4090"
           },
           "material": {
             "file": "sheets/command-vehicle__composite__d06__material.png",
-            "sha256": "744ab9d069fcfc2f550523cc012af09ecca6f18dd41848fc17aa7707245d2c9d"
+            "sha256": "47628ca8a5d7feaa12e90aafb8860e861720212767e1212422814dc3d6519daf"
           }
         }
       },
@@ -5511,15 +5910,15 @@
         "files": {
           "albedo": {
             "file": "sheets/command-vehicle__composite__d07__albedo.png",
-            "sha256": "568fdc96bde300d56dfff9cb276f8d7bc1ed7b6c1e834d57a2b4d1f7b1094e4a"
+            "sha256": "9241e62a395e10302c07f5bd0fba76c6f25f9fbeb36e1e3182127482df95b263"
           },
           "normal": {
             "file": "sheets/command-vehicle__composite__d07__normal.png",
-            "sha256": "c81541ea5f328b92527136d5eba923db6723d89e45c740993c19d431635d5bd1"
+            "sha256": "368de55e34f5f106591e5552d3e45be03efb429cbe4dc085b677e4c8d85c37fe"
           },
           "material": {
             "file": "sheets/command-vehicle__composite__d07__material.png",
-            "sha256": "97c2d51332a3bf6323393a1c533c3bd1f13e8340311a6befb63b17ffdceb62bc"
+            "sha256": "2598865ac61f2aec4c8b095d78bafe5669594928c9b388257765e4545c9ac3ba"
           }
         }
       },
@@ -5529,15 +5928,15 @@
         "files": {
           "albedo": {
             "file": "sheets/command-vehicle__composite__d08__albedo.png",
-            "sha256": "cd5163dd06ee0e5352864a5116148e903a1339c8ccc45d56d7a450bd7320f402"
+            "sha256": "93cb9b63ff28bd2d76bd12782bb220fe9870783f63de2392cc5accbc82998cb1"
           },
           "normal": {
             "file": "sheets/command-vehicle__composite__d08__normal.png",
-            "sha256": "8d216d67d217d4f8897473633e8803f52f2930e92086a2c30e888f13478cd2af"
+            "sha256": "6456fc9777d64baa5a7a19ecff750aa16bbed2fddb3c5802b1cbacb1622bb427"
           },
           "material": {
             "file": "sheets/command-vehicle__composite__d08__material.png",
-            "sha256": "3213adc269a45a80a6a6f3c0517a9b4d1a63bc92cc2c21ccda5e566ed4fd5dd0"
+            "sha256": "9f064ac5c645077f4bb16f26719bddfa2f4567333c09b6a3c98d21e2d1f31d85"
           }
         }
       },
@@ -5547,15 +5946,15 @@
         "files": {
           "albedo": {
             "file": "sheets/command-vehicle__composite__d09__albedo.png",
-            "sha256": "894a1d6a7ac17748fed2fda0fd7f463b3707f0a9b13355f5a0baef8899d885c3"
+            "sha256": "5f6421b6fb5ca488512ead3f6c96ae9c9fe8812b2f01e95bcb1b9a9492cb27fd"
           },
           "normal": {
             "file": "sheets/command-vehicle__composite__d09__normal.png",
-            "sha256": "315bac6c7d95715cfe1287067e5093f3f0743fb8f95155830431bf3c2d6c8aeb"
+            "sha256": "2ad382d04e0060f8f4b7e84802f37a72580b4e971ffb9d6f7892826e9c5f1de3"
           },
           "material": {
             "file": "sheets/command-vehicle__composite__d09__material.png",
-            "sha256": "b39087efde88a33737546c950b91320374766667102851fbe96805bf88e9796c"
+            "sha256": "ae382941d39b363fdcb1a3879cfd7666c2b4cf38d5f2a7ba1df5e07c92f4d981"
           }
         }
       },
@@ -5565,15 +5964,15 @@
         "files": {
           "albedo": {
             "file": "sheets/command-vehicle__composite__d10__albedo.png",
-            "sha256": "2818c0ca11194e6e28b0f04db7ce7a9a999292b1e0e0a9865120f43f12c7c7b8"
+            "sha256": "40d19acea51f5665e60d747f5ce9cc29ebd4b95dd165ac2b40b05ec8e28b95ac"
           },
           "normal": {
             "file": "sheets/command-vehicle__composite__d10__normal.png",
-            "sha256": "1ef24b7f05dab63462e2a11ebecd0e15ff8fde94e8429cfe0134890b74cbddc0"
+            "sha256": "f6d74c2bbbbc32901c850b1cb994837999854895cd5ebdfd5c4c8e42af507fe5"
           },
           "material": {
             "file": "sheets/command-vehicle__composite__d10__material.png",
-            "sha256": "e2db830a05cf37fa0eaabf3b89170fadc290625af945795b1bf2c1827360f57e"
+            "sha256": "843a8fdc0c08e04e141bb77acc9889914015f8bb2e2146d9e9e61b01c0b36461"
           }
         }
       },
@@ -5583,15 +5982,15 @@
         "files": {
           "albedo": {
             "file": "sheets/command-vehicle__composite__d11__albedo.png",
-            "sha256": "6157dee7270c338990f6b6de85bd0ae4793a661f10e1ea4cdb027ecef0cff84e"
+            "sha256": "9ad6078448dc98bf17a8f801211b34fa276c343c0bb7d122da72955c0a42ba9a"
           },
           "normal": {
             "file": "sheets/command-vehicle__composite__d11__normal.png",
-            "sha256": "f87c4bfa4ae8045dea2e9e113b7d8f8a64d0fd7ff40465975e47a32dd7b10085"
+            "sha256": "bc276b9af8a266741f1812b4131e2160084fb2f74b13ac7b2722e70db2d61e44"
           },
           "material": {
             "file": "sheets/command-vehicle__composite__d11__material.png",
-            "sha256": "566aed852081d01bf33f056090a76f591d71dcb20eaca98ea1bb20187ad3e322"
+            "sha256": "89b2d7b8441208eb72d99abf18f89eeb1be9c3485fe84893a32b3da2cf41b5ae"
           }
         }
       },
@@ -5601,15 +6000,15 @@
         "files": {
           "albedo": {
             "file": "sheets/command-vehicle__composite__d12__albedo.png",
-            "sha256": "e469de98f469654469d148b3bbfa400d5a2c238e68fabbc1abbd2cc887c595aa"
+            "sha256": "37aced49241a2cb9712e6402a9a5d9561e59fe9df03aba53793bbd80222a0977"
           },
           "normal": {
             "file": "sheets/command-vehicle__composite__d12__normal.png",
-            "sha256": "87796d69544f3f252cce643d2b72052a30c5cee8f370882e1554858c9593a655"
+            "sha256": "f06c24eca6024da04699a9c32516227b71cce542e4af31975b92e7953b1f7882"
           },
           "material": {
             "file": "sheets/command-vehicle__composite__d12__material.png",
-            "sha256": "c4fedd9afa3b96b1f7d18276650eefe87bd7864b216d2b6d064968024fee5eb8"
+            "sha256": "71841b54e3a367c802cd6b43cde4b0e44f8f2d2b950a30ecd8bd9b5e51184f2a"
           }
         }
       },
@@ -5619,15 +6018,15 @@
         "files": {
           "albedo": {
             "file": "sheets/command-vehicle__composite__d13__albedo.png",
-            "sha256": "39d06a296a23286380489706e26a3cc95be4ef8e8c40a45b97c1ceaf9a093d25"
+            "sha256": "c1ee824cc336c9a81acc3895c01c224f13fc3753f29379f5df5cce70eca39aeb"
           },
           "normal": {
             "file": "sheets/command-vehicle__composite__d13__normal.png",
-            "sha256": "6ab9b544477ff3caad4d15b6b0cf6803d3de30917a5a62b471f76a7b351f4a0d"
+            "sha256": "2ae4ef2555bde20c77b32b801c32bf6f76d667d9304d34906a028357c3ef8202"
           },
           "material": {
             "file": "sheets/command-vehicle__composite__d13__material.png",
-            "sha256": "599327e9d7623b25f4aef51a603ed94655519232316748016e724a1f5f537449"
+            "sha256": "64cd971049491a5dcf04b80a666a6b232984ac43d70e0788ede3068675814b87"
           }
         }
       },
@@ -5637,15 +6036,15 @@
         "files": {
           "albedo": {
             "file": "sheets/command-vehicle__composite__d14__albedo.png",
-            "sha256": "021c49868687a0f732cd5cf680abd6a93eda76113a071b06022017123161ab80"
+            "sha256": "3ba7c59028ba22e10d6968f3a65b91f0310d7a8e33232c275fb69e34a342c7e1"
           },
           "normal": {
             "file": "sheets/command-vehicle__composite__d14__normal.png",
-            "sha256": "1ea81f31b15844ae91d53df8605593f231b43c525e36065817f73d4cd09023d1"
+            "sha256": "6290e56968d49bcc580a1ce0d5d40154670b417c5909dfe1a7b2421fe5eaee97"
           },
           "material": {
             "file": "sheets/command-vehicle__composite__d14__material.png",
-            "sha256": "c01ddfbe63cb9756b935fae9a23d3c27d518e67c1c303dc0f57040c7134b8794"
+            "sha256": "3e9fbaf4179e54fc3b8ee03ab2606cf61707463f51fdeccf27390cdb04250310"
           }
         }
       },
@@ -5655,15 +6054,15 @@
         "files": {
           "albedo": {
             "file": "sheets/command-vehicle__composite__d15__albedo.png",
-            "sha256": "0f0c700492a431b65247b4a3180e64f7238134a8a7cdaf18acc0f8b23d06b64b"
+            "sha256": "5c8a8a785c2a75bf329b62f35763e337a8715967fcd5c4abeabd2111fa02f21d"
           },
           "normal": {
             "file": "sheets/command-vehicle__composite__d15__normal.png",
-            "sha256": "d1374a171ec7197ff702032532c6579f7ee0d53697b8ac3d7845437c13abef40"
+            "sha256": "0762f2411421f88fa2f92446f0b621ab1e40655ea978a667dd26d80d0621b164"
           },
           "material": {
             "file": "sheets/command-vehicle__composite__d15__material.png",
-            "sha256": "9a1d617170a0110522bb02b8039d08124b455be8822ef726e827751d2b69e6f1"
+            "sha256": "3cedc6ea2563b12420719cdff19b9100b5a634293799164623b58f15ad7afbab"
           }
         }
       }
@@ -5677,97 +6076,97 @@
         "file": "sheets/command-vehicle__lit__d00__albedo.png",
         "w": 54,
         "h": 48,
-        "sha256": "fae0a0bf274fd99a5f3d689560f785fbc632835cc7bb7cdade8cae57d5219dd5"
+        "sha256": "9b92b6e8b8c5ca8c1cfc574b78566753beb5a69714d4e4ef7e248b6d52fbebc5"
       },
       "d01": {
         "file": "sheets/command-vehicle__lit__d01__albedo.png",
         "w": 48,
         "h": 48,
-        "sha256": "4d22b1186bb711ea6f86c0364a240604d336820cdb401465da5604f224acd116"
+        "sha256": "077985e94bc592c92b5a61755216a86b212f373687b54b5fd85efbd10ed33308"
       },
       "d02": {
         "file": "sheets/command-vehicle__lit__d02__albedo.png",
         "w": 40,
         "h": 44,
-        "sha256": "d96a4b72cab099c4896b6a8e104b28fffad0a31fd66878f5ea764841ec7b3341"
+        "sha256": "f9427af2f62b366749a1ae241fc5adb1ce4a4c0666b964d047f6f4e8822c1e1e"
       },
       "d03": {
         "file": "sheets/command-vehicle__lit__d03__albedo.png",
         "w": 48,
         "h": 45,
-        "sha256": "516c55406734c10533bfba059f8e7ff89761614ac31ca24f33cf22e485aa0cb0"
+        "sha256": "8b4a6fa4cd1a55a2746a3d6675d392c4e1ffc552d56d8cc7ce8b061b9ce4a279"
       },
       "d04": {
         "file": "sheets/command-vehicle__lit__d04__albedo.png",
         "w": 54,
         "h": 44,
-        "sha256": "1cb9d75c1029a1e9537965d8f6918725b6ad45648cb5ce13edd0f3b4ac6dde6d"
+        "sha256": "29e130c1733dd15e3a90eaf91fec086d9e91b9772b31bcea9cd71ba3a5464d53"
       },
       "d05": {
         "file": "sheets/command-vehicle__lit__d05__albedo.png",
         "w": 54,
         "h": 44,
-        "sha256": "841de605a6c557bb80425d1e61c738d4b2727b062636e0d501672e631c7b390e"
+        "sha256": "15f9b5da7c209bb053cf4f597510d873806f0e9998b9e5c48634e27f06a2413a"
       },
       "d06": {
         "file": "sheets/command-vehicle__lit__d06__albedo.png",
         "w": 49,
         "h": 42,
-        "sha256": "0e05ba5b66168ea6d70af1ef177c1c00a7e56900236f98d7abfafd131ddd8ef1"
+        "sha256": "ade65a2800d28f65167232561b4e48ab2ca318a2ad74e90f13460045ea6e7878"
       },
       "d07": {
         "file": "sheets/command-vehicle__lit__d07__albedo.png",
         "w": 54,
         "h": 45,
-        "sha256": "82349a306cb72571417895c39f071316a048938c89f97ecbe3dee4e0f328b747"
+        "sha256": "482a4cca1df133cd17a1687c774efd2e83db54a5266a88a0061c637063d16776"
       },
       "d08": {
         "file": "sheets/command-vehicle__lit__d08__albedo.png",
         "w": 54,
         "h": 47,
-        "sha256": "f5bf5cfd846d4953d6f3a4ea180d1b39f11e301f7a9d741b106938b87c40aef2"
+        "sha256": "2583aef8863018959973d4c492d58a8d7add33d2b38771beef04ae05428f99fb"
       },
       "d09": {
         "file": "sheets/command-vehicle__lit__d09__albedo.png",
         "w": 48,
         "h": 47,
-        "sha256": "aae659cd915a0f0af3a545e1a4c96bf2016b8e95020b04014cb08250b26035cd"
+        "sha256": "e4a3d35639ed1580266c177ab16f102b6ef2d9fa26e911cbb0b2e6339363a093"
       },
       "d10": {
         "file": "sheets/command-vehicle__lit__d10__albedo.png",
         "w": 40,
         "h": 44,
-        "sha256": "14c47dc18f50b37f36e83f2a97ebeba3acc6030af18d582d851e050fe7a21afc"
+        "sha256": "1f8422bec259ec9b08d8fbe64ef4666f80b7061c2db797d4d96589619f83897b"
       },
       "d11": {
         "file": "sheets/command-vehicle__lit__d11__albedo.png",
         "w": 48,
         "h": 47,
-        "sha256": "7f3aae1c5c7cdd76ae17ecdb9ed9122aced846176a4720a5400b0c2e02b16fbe"
+        "sha256": "19ce7664e63f9a8ffaecc462bd9d21cb77b09f5ac6e81b38398f6edcca99ccee"
       },
       "d12": {
         "file": "sheets/command-vehicle__lit__d12__albedo.png",
         "w": 54,
         "h": 49,
-        "sha256": "384760340dceb69521e5cfc55956931d21a97c71ed3268a525c7e54ff219b283"
+        "sha256": "509598a6b6ff9dd00975a9eb232804701c5e0146441a80030dd0346bccb13a76"
       },
       "d13": {
         "file": "sheets/command-vehicle__lit__d13__albedo.png",
         "w": 54,
         "h": 49,
-        "sha256": "3b985c8fff96a3f0f5a648d1dcb8a94a910e217f303e8798327b1167b2e6e252"
+        "sha256": "d5c0a6b4d3b4709c9615e00c10416dfaede777e0b10490e049d8679a285ca539"
       },
       "d14": {
         "file": "sheets/command-vehicle__lit__d14__albedo.png",
         "w": 49,
         "h": 48,
-        "sha256": "a23713115e10e21ae0d568aec97e4a6fd0c04558ed3521b4e6c2ae83bc90ed58"
+        "sha256": "a9e135a8a2b39f037110a6a517374a4303cfcc6e73f63c40ec82e06deb586581"
       },
       "d15": {
         "file": "sheets/command-vehicle__lit__d15__albedo.png",
         "w": 54,
         "h": 50,
-        "sha256": "add00e62812bc3c2abcd9e8653c175c78d5fcfa18518a1ac260d153fc28c23ba"
+        "sha256": "1a97e3c23effe37064b7f18a84dc7eac813bbb69ac511cfbe8020b5edabc75ae"
       }
     }
   },

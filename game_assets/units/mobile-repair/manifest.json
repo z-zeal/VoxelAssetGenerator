@@ -998,6 +998,21 @@
       }
     ]
   },
+  "depthMap": {
+    "note": "Per-part view depth, one PNG per part per facing. Composite by z-test on this; do NOT try to order segments by a single depth per part.",
+    "channelOrder": "rgba",
+    "meaning": [
+      "depthHi",
+      "depthLo",
+      "unused",
+      "covered"
+    ],
+    "encoding": "q = depthHi * 256 + depthLo; depth = q / scale - bias  (tile units = design voxels / 8)",
+    "scale": 256,
+    "bias": 128,
+    "coveredAlpha": 255,
+    "largerIsCloser": true
+  },
   "parts": {
     "body": {
       "name": "body",
@@ -1059,6 +1074,12 @@
               "w": 59,
               "h": 44,
               "sha256": "47ee448305309ed29a33f47df48abd58aac546d73510cd83fdb469e2465137bf"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__body__d00__depth.png",
+              "w": 59,
+              "h": 44,
+              "sha256": "f61cfc2d0293ce0c9dea077eea67968588aaa37d37626761d62d44df56cec661"
             }
           },
           "filesHi": {
@@ -1124,6 +1145,12 @@
               "w": 53,
               "h": 46,
               "sha256": "b53a2d05c161c27a76421ce15e5998a0a426b7288b4ea1407d852a26d3c43ee3"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__body__d01__depth.png",
+              "w": 53,
+              "h": 46,
+              "sha256": "54d5bdddabb72b2d204c3974fae3f2a859193a1842aec2acfea56658b765b75c"
             }
           },
           "filesHi": {
@@ -1189,6 +1216,12 @@
               "w": 43,
               "h": 44,
               "sha256": "a361c552f0e49e2cc1f85de42ce3fd4e053b342e7414d3a92f38b4421e50faf5"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__body__d02__depth.png",
+              "w": 43,
+              "h": 44,
+              "sha256": "d61a589878feb42d0e7fe7c8db6a153f2c562fadf5dfa5dac952ca05c1ec1594"
             }
           },
           "filesHi": {
@@ -1254,6 +1287,12 @@
               "w": 53,
               "h": 46,
               "sha256": "2b7391f98e1567044e71b87215864b350c6094dcd5058ff0ce223c9764f35c15"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__body__d03__depth.png",
+              "w": 53,
+              "h": 46,
+              "sha256": "d83b599db21091d29b38f8448352e90666f331bca78c2ca74fd4301eeec6bb06"
             }
           },
           "filesHi": {
@@ -1319,6 +1358,12 @@
               "w": 60,
               "h": 44,
               "sha256": "ee5e5d67531b71186b68c35cec9c1de962e1dae7415965e4f5c16dabebb9c6fb"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__body__d04__depth.png",
+              "w": 60,
+              "h": 44,
+              "sha256": "5a4643b0b0e8abb4511c2bb3c42f2422c366c843f6be70f4cd6d19eeacaa0441"
             }
           },
           "filesHi": {
@@ -1384,6 +1429,12 @@
               "w": 59,
               "h": 42,
               "sha256": "fba8736c05ca0e89db78f6075e1c0d174b55b2a219db64d2b889e87710c6dfb7"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__body__d05__depth.png",
+              "w": 59,
+              "h": 42,
+              "sha256": "81bb42baf52526d57614204b46836b8dd413935ac8279703b2127ab74581b608"
             }
           },
           "filesHi": {
@@ -1449,6 +1500,12 @@
               "w": 51,
               "h": 39,
               "sha256": "2d25941a92383dbf0c2383fee9f3c11464c150d91f8fed148fc16d6dad51713c"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__body__d06__depth.png",
+              "w": 51,
+              "h": 39,
+              "sha256": "e7cc44672cc19898385b9a7ba2b608ee69ae3969ec42e6ac4dac9c1b68137b89"
             }
           },
           "filesHi": {
@@ -1514,6 +1571,12 @@
               "w": 57,
               "h": 41,
               "sha256": "c225b522544b347f1fa051295144359deba53298049e2adc56bcb6704e2c9ed7"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__body__d07__depth.png",
+              "w": 57,
+              "h": 41,
+              "sha256": "4a7a2dfefa862fb47b1afc03ffa4585925305213dae6947a014e9d80a0b3a041"
             }
           },
           "filesHi": {
@@ -1579,6 +1642,12 @@
               "w": 59,
               "h": 44,
               "sha256": "9e35f0201ea7e6bec0bbb61b6ffce7c44fb110fcba2b1de81aaee54abd2883a1"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__body__d08__depth.png",
+              "w": 59,
+              "h": 44,
+              "sha256": "8029aa5ae8a3834d2e6613eb229287ed6bc7c9971aeffc34e3e8d7f1d44ef2d5"
             }
           },
           "filesHi": {
@@ -1644,6 +1713,12 @@
               "w": 53,
               "h": 44,
               "sha256": "ec642859176eecd6cf585aca218a84428bf48bd245bd0e470d59409021cde91b"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__body__d09__depth.png",
+              "w": 53,
+              "h": 44,
+              "sha256": "c95573063475a2b00ccd7b6cb03d7fd8b9f3b9961c34c08334826a9ff12cd0d0"
             }
           },
           "filesHi": {
@@ -1709,6 +1784,12 @@
               "w": 43,
               "h": 41,
               "sha256": "863f3654a351f55a2276bf4a1178741c5d377c8d1340a8b62b0447eb0059d407"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__body__d10__depth.png",
+              "w": 43,
+              "h": 41,
+              "sha256": "1c496d047b897305275f4ccd8a509eea8b0dc5eca29ea23e87ca1b7a6cf3fe45"
             }
           },
           "filesHi": {
@@ -1774,6 +1855,12 @@
               "w": 53,
               "h": 40,
               "sha256": "7e5b44bb0bf4b88da845ddbfbcfbbf809c93e848673edd5105d3909f8aea11da"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__body__d11__depth.png",
+              "w": 53,
+              "h": 40,
+              "sha256": "53a4c0a8c1c9dd07edcddf979430c51818b3f85a6b4448fa01689db5e28c762a"
             }
           },
           "filesHi": {
@@ -1839,6 +1926,12 @@
               "w": 60,
               "h": 39,
               "sha256": "c7e6f1be6686da0cd42e13dcdef6eaf2a84b039ae814aa2a22a301be3fde8ea1"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__body__d12__depth.png",
+              "w": 60,
+              "h": 39,
+              "sha256": "b62fa657481354a4b3c1a9081d611e6ddfcad60af7e3d10931ec788dc280ad44"
             }
           },
           "filesHi": {
@@ -1904,6 +1997,12 @@
               "w": 59,
               "h": 36,
               "sha256": "7af10ba86cdb16e2b7aade2d672b0165133c52c8c86d7b02447d8fae29f99674"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__body__d13__depth.png",
+              "w": 59,
+              "h": 36,
+              "sha256": "900e2a94811d33f92ac1f4dcc2719b28af0f9f6b3e46538cef6fae74c378441c"
             }
           },
           "filesHi": {
@@ -1969,6 +2068,12 @@
               "w": 51,
               "h": 36,
               "sha256": "b0fcb36a1cd0ef5e653b696d48823847bea7fa292ef83d11dd71909476889da5"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__body__d14__depth.png",
+              "w": 51,
+              "h": 36,
+              "sha256": "06365302a92707bfa192031246008352832b63c7cf83f64daa39b295742e4e2e"
             }
           },
           "filesHi": {
@@ -2034,6 +2139,12 @@
               "w": 57,
               "h": 40,
               "sha256": "04e6cdd48c3337e465921bee01255fd347939f47fad50bcc85b2b4e2bc5e318b"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__body__d15__depth.png",
+              "w": 57,
+              "h": 40,
+              "sha256": "15bed1ca91f55bcf73568bc6ace40127b983771ba5b5768e72e2f3910a651335"
             }
           },
           "filesHi": {
@@ -2131,6 +2242,12 @@
               "w": 40,
               "h": 29,
               "sha256": "67753b9343a8048ecf96f8ea11aa1933bbab2a34298cb236ab02155d3117ca14"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.L__d00__depth.png",
+              "w": 40,
+              "h": 29,
+              "sha256": "8143c21d855c101f73e8745dc1867a4d713ce8160091a95ffac62079ef6d4d7a"
             }
           },
           "filesHi": {
@@ -2196,6 +2313,12 @@
               "w": 29,
               "h": 32,
               "sha256": "aa9aa6f31c9fba784bcab353b714864bea617d6e74445694e22ff00db16ecb32"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.L__d01__depth.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "7e80b533a830c38c6ad6bc01e0df5d94c6cea28f08a455a998e548c7c34e686e"
             }
           },
           "filesHi": {
@@ -2261,6 +2384,12 @@
               "w": 16,
               "h": 32,
               "sha256": "15f8d2a4dfcfb8047f3dff3502d80c1e240d2e41895975eefea2e2a6de9b0361"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.L__d02__depth.png",
+              "w": 16,
+              "h": 32,
+              "sha256": "3c0aa2c50b03036f167e091ee6510a7d306871a77009a111871777c60630130e"
             }
           },
           "filesHi": {
@@ -2326,6 +2455,12 @@
               "w": 29,
               "h": 32,
               "sha256": "0e49514703e6570466132fcabc9bf1e9bdcbf0daf2b1a749e77429587f4bf97d"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.L__d03__depth.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "3cc1e12e7c2ffd68da21e03fbdf0f8fdf294dc9874347839f6bdf57b3faa27b2"
             }
           },
           "filesHi": {
@@ -2391,6 +2526,12 @@
               "w": 40,
               "h": 30,
               "sha256": "4b495d23010d075a289e0d0d955fa2743655ebcf64ef073968573b803b56dac5"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.L__d04__depth.png",
+              "w": 40,
+              "h": 30,
+              "sha256": "5f1e04eb6fa826950d94a3b764b68685bfca5be35fbe1fc5f36a97dee39fe38b"
             }
           },
           "filesHi": {
@@ -2456,6 +2597,12 @@
               "w": 46,
               "h": 25,
               "sha256": "ec874b5b073006499b6ac2fc10c3172242d757354743adbd335b30e1e234662c"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.L__d05__depth.png",
+              "w": 46,
+              "h": 25,
+              "sha256": "d3f9083a8ef34210c12e6beebe6e68c51024e4f137148c450f9828585e07c800"
             }
           },
           "filesHi": {
@@ -2521,6 +2668,12 @@
               "w": 46,
               "h": 20,
               "sha256": "ac70f4420a7bd442dd816be49920504c1405d0249f8752e725b8436c1edf50ed"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.L__d06__depth.png",
+              "w": 46,
+              "h": 20,
+              "sha256": "912cacf4ac2bde2a7095fb900925d7ff2ecd198f315171b4878b0000ea59d739"
             }
           },
           "filesHi": {
@@ -2586,6 +2739,12 @@
               "w": 46,
               "h": 24,
               "sha256": "3e2c0f40835eebb508005cb4026ded21187d25dfae9af39cf9681fa2cdcea42b"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.L__d07__depth.png",
+              "w": 46,
+              "h": 24,
+              "sha256": "74350261e090b4ec86cf5711b7c65065abf4feaa7dfbe9fa33693cf8bb457f86"
             }
           },
           "filesHi": {
@@ -2651,6 +2810,12 @@
               "w": 40,
               "h": 28,
               "sha256": "3f698e107e560156070149a072f0677d5ac20d6aa9836c02f37c4604940f5cc1"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.L__d08__depth.png",
+              "w": 40,
+              "h": 28,
+              "sha256": "a21bbe9d29cb5b9afd509f004bde1fa976d8abc6867414a4d6864f3e84584fc4"
             }
           },
           "filesHi": {
@@ -2716,6 +2881,12 @@
               "w": 29,
               "h": 31,
               "sha256": "d5fb11b3ab20a2a1af4c96a3d96af435e1d17e7281b1eb7bcde749c42328efa8"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.L__d09__depth.png",
+              "w": 29,
+              "h": 31,
+              "sha256": "2bf106863f077a7e37998cafdadcbf6e435a5017fdbdb57355791553959510d2"
             }
           },
           "filesHi": {
@@ -2781,6 +2952,12 @@
               "w": 16,
               "h": 32,
               "sha256": "7814c64037e08dde40af5415b66ffc7be0dcfc07e7ed67693b5908a2dbfb43a0"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.L__d10__depth.png",
+              "w": 16,
+              "h": 32,
+              "sha256": "de871b747e7a9066a7c7d2bd156078f809cc41d81530811d395f4b60617440d6"
             }
           },
           "filesHi": {
@@ -2846,6 +3023,12 @@
               "w": 29,
               "h": 32,
               "sha256": "50b95ec09e6d3d63fa3b5e00f79554cc14dcf4d19ba77584b95c8ef1627fbba2"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.L__d11__depth.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "8e9e10174f744f1985de5c8cb41d57f4a0c5e1271aea8b7228fc9d940095cdf3"
             }
           },
           "filesHi": {
@@ -2911,6 +3094,12 @@
               "w": 40,
               "h": 30,
               "sha256": "2bcd2638896da9a82547ad8b02fb0791ed8ea62120d255ea691810f5a42490f1"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.L__d12__depth.png",
+              "w": 40,
+              "h": 30,
+              "sha256": "fd66413f258ff83c7e6cfdf5fb248f4ebf4a5d99a48f146b4350466cc364d89e"
             }
           },
           "filesHi": {
@@ -2976,6 +3165,12 @@
               "w": 46,
               "h": 25,
               "sha256": "08d7680e1b02f89b4ebcbb1d03938ad5094f3010d321902e98f74a7997d99b8a"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.L__d13__depth.png",
+              "w": 46,
+              "h": 25,
+              "sha256": "7c1199f21948041f4160de0403141ea779837aac7d4f2e4a095b39d7b2b7a9a1"
             }
           },
           "filesHi": {
@@ -3041,6 +3236,12 @@
               "w": 46,
               "h": 20,
               "sha256": "53b920cb321625ebe72122efbeceacaa857a6e37a35dd15844e72ba12be3d371"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.L__d14__depth.png",
+              "w": 46,
+              "h": 20,
+              "sha256": "3a9826bdc68b1bd55857a6c98b2e98564db9fb713ad997731c75dc0a5425eb7c"
             }
           },
           "filesHi": {
@@ -3106,6 +3307,12 @@
               "w": 46,
               "h": 26,
               "sha256": "78366f40c327fea2e0c0149c8b26fe9a2ae0ac2d49a357781a4b82b4cdfd5763"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.L__d15__depth.png",
+              "w": 46,
+              "h": 26,
+              "sha256": "f96379e44e49e236c64a7c76d70839cda14c760c0f0d3360bdc34082913ea973"
             }
           },
           "filesHi": {
@@ -3203,6 +3410,12 @@
               "w": 40,
               "h": 30,
               "sha256": "0a8acb9d9432e490ce86c545c4fe73a2227a06901c7945241111d45a40348a8d"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.R__d00__depth.png",
+              "w": 40,
+              "h": 30,
+              "sha256": "f688f10b40898ff92acaa5fd90c05ef185b3d04f5ca6b747ec276b1dc653c616"
             }
           },
           "filesHi": {
@@ -3268,6 +3481,12 @@
               "w": 29,
               "h": 32,
               "sha256": "23cb717b24ef7abdf01a0469debf26df62ee3f369c1b7471bcd603e5338fd544"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.R__d01__depth.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "27757b3d9fe953d82b60cdef4b66bf926a3bb7d6fda0c243810caf4f6c8c8619"
             }
           },
           "filesHi": {
@@ -3333,6 +3552,12 @@
               "w": 17,
               "h": 32,
               "sha256": "d8c2eaaffae4887c4e4b5ff98433d58069016375e596f2f6d073dea1a3550754"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.R__d02__depth.png",
+              "w": 17,
+              "h": 32,
+              "sha256": "c3802ca7b8a130ca5a2346922a6c5695b84f90c8b6877ce04ebcc61cf879c599"
             }
           },
           "filesHi": {
@@ -3398,6 +3623,12 @@
               "w": 29,
               "h": 32,
               "sha256": "ff9004b26dee5872d7e337f971bde64e39d6b622429ba7934302e412f480f377"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.R__d03__depth.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "f68c860d93e9953965c2eec8d6acf848e8ac953e398bb47a827fe97203f5303b"
             }
           },
           "filesHi": {
@@ -3463,6 +3694,12 @@
               "w": 40,
               "h": 29,
               "sha256": "71b7689df8e72f18f4023ce50068fd6a5250833c8914147d24ebb775451bcb4c"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.R__d04__depth.png",
+              "w": 40,
+              "h": 29,
+              "sha256": "866dd9eb0b1b8112a0feb762cde60d71206d1ef85df16e1beb0b35502999dd58"
             }
           },
           "filesHi": {
@@ -3528,6 +3765,12 @@
               "w": 46,
               "h": 25,
               "sha256": "6e71432160e58a71274775517b5b987819b32920c090f3b400ce0c6c44c6d9ac"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.R__d05__depth.png",
+              "w": 46,
+              "h": 25,
+              "sha256": "7ca7f9b369610af301660a29cccc890fdaad1bb61211e9e4b7c193a64463b0fe"
             }
           },
           "filesHi": {
@@ -3593,6 +3836,12 @@
               "w": 46,
               "h": 20,
               "sha256": "96aac1b3062ef5eeebc41a1cd12f28c34c7f02193aeacbdffa5255408be90f81"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.R__d06__depth.png",
+              "w": 46,
+              "h": 20,
+              "sha256": "f2e46cbc251726992a57e9ee743a71965dd2e8b91a1cdada7326a8a199011067"
             }
           },
           "filesHi": {
@@ -3658,6 +3907,12 @@
               "w": 46,
               "h": 26,
               "sha256": "682065cceccbc398afcd259d196b22e8b63ac92a3806443a7175c0fef427bcb8"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.R__d07__depth.png",
+              "w": 46,
+              "h": 26,
+              "sha256": "d9049e770f431dd36465e87503467b076c7b2ecde64ff586010ba6922bab08be"
             }
           },
           "filesHi": {
@@ -3723,6 +3978,12 @@
               "w": 40,
               "h": 30,
               "sha256": "14ac9d40fe0cfc6c71cc00fea1a07d03c79e1eae93aee14494fb096c8352cf55"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.R__d08__depth.png",
+              "w": 40,
+              "h": 30,
+              "sha256": "767951912d23c2cfae588818b8879c104646b765ece423d39edce44edb69beef"
             }
           },
           "filesHi": {
@@ -3788,6 +4049,12 @@
               "w": 29,
               "h": 32,
               "sha256": "4b1ddfe4094f9539e38455bae06373bae7989d5a3f55c9334a84e9b73767b4a1"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.R__d09__depth.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "d8276bed1e7f3438490d694f9c3d2c3ffb5c87e79ed7f4469f53076f2e6c2e1e"
             }
           },
           "filesHi": {
@@ -3853,6 +4120,12 @@
               "w": 17,
               "h": 32,
               "sha256": "acf3b0a01b1349abb741b4a562f7032eec1fbd15fae75b3eea7a296b7f2bd6d8"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.R__d10__depth.png",
+              "w": 17,
+              "h": 32,
+              "sha256": "e34f59674b733fae7473b3119a70606da1b81bd4e35d8c9ec79143a7f7d2c45c"
             }
           },
           "filesHi": {
@@ -3918,6 +4191,12 @@
               "w": 29,
               "h": 32,
               "sha256": "3e42df822a51a304577cb8b5b6249f8e7063ac3cb4494a8229aa1c365c92bc44"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.R__d11__depth.png",
+              "w": 29,
+              "h": 32,
+              "sha256": "0e2a386d8e8cc6f1c0448ebbb7ddc7aef1fae7b4ab947d27acb992b2750958e3"
             }
           },
           "filesHi": {
@@ -3983,6 +4262,12 @@
               "w": 40,
               "h": 28,
               "sha256": "6621751c7e2939ef80c043a6dfba5cc872a87f81653bf3d180a13c061d77c4eb"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.R__d12__depth.png",
+              "w": 40,
+              "h": 28,
+              "sha256": "1882775ace5464c6c617b09e838b1be062c7dec3c6727a097b18cb53f3506b9b"
             }
           },
           "filesHi": {
@@ -4048,6 +4333,12 @@
               "w": 46,
               "h": 24,
               "sha256": "569499313d8afb19624bb6e455ca29bbc9ab16a08f36df61faa4b259ec475572"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.R__d13__depth.png",
+              "w": 46,
+              "h": 24,
+              "sha256": "70d655db59964660649e47e106a4672082ff32944c7e6f700b41bac5d2e62483"
             }
           },
           "filesHi": {
@@ -4113,6 +4404,12 @@
               "w": 46,
               "h": 20,
               "sha256": "8e56c7e57b71b6f497a208d5730e8f68896e3442b96632b5fa67c38a2675df50"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.R__d14__depth.png",
+              "w": 46,
+              "h": 20,
+              "sha256": "756716830212aa8433d618dc06988801a87b076b639bace34780dc67b92cf550"
             }
           },
           "filesHi": {
@@ -4178,6 +4475,12 @@
               "w": 46,
               "h": 25,
               "sha256": "e09b1ef2f5ae78ed660ac6044872ffe017fd47db20a1f380be7dc204f7f7066b"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__running.R__d15__depth.png",
+              "w": 46,
+              "h": 25,
+              "sha256": "e254f10cad1a5d42aff2ce9a5787f2f230ac4e599f8e4541533c3911f927e469"
             }
           },
           "filesHi": {
@@ -4275,6 +4578,12 @@
               "w": 25,
               "h": 20,
               "sha256": "69e678e7d505786418577d9a7c4200570c3ddf725555737aad77b1d728f0893d"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__crane__d00__depth.png",
+              "w": 25,
+              "h": 20,
+              "sha256": "17bb076c7792c1e196665655c71bc78891124fc0bb44f8347ba5045c8f3c6b4f"
             }
           },
           "filesHi": {
@@ -4340,6 +4649,12 @@
               "w": 24,
               "h": 20,
               "sha256": "66690c9ce7fa211d5029114e58da359601c74378742f76feae6a83035d143810"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__crane__d01__depth.png",
+              "w": 24,
+              "h": 20,
+              "sha256": "f35a5e59e41becc83797d6fe346fbf2a9e61cb7601869a8850933122ba08d1e7"
             }
           },
           "filesHi": {
@@ -4405,6 +4720,12 @@
               "w": 21,
               "h": 20,
               "sha256": "8a25be181b23bd23b0ddc9e4518c66d8b3bfc5061dfb8e586055ce60fc03a4ad"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__crane__d02__depth.png",
+              "w": 21,
+              "h": 20,
+              "sha256": "1789bccb0cbf998bb26384838becc5f4a59304f7049d7f72f272eb234a496ed5"
             }
           },
           "filesHi": {
@@ -4470,6 +4791,12 @@
               "w": 21,
               "h": 21,
               "sha256": "ba92143a09f170c59ff6db486fa73a07f99e96e734a286a654ebd86a09729257"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__crane__d03__depth.png",
+              "w": 21,
+              "h": 21,
+              "sha256": "ee06b00bfa5ccd2fd98b7f6763a0a7182c29524d30d9902d81902d1bb87814f3"
             }
           },
           "filesHi": {
@@ -4535,6 +4862,12 @@
               "w": 21,
               "h": 23,
               "sha256": "6acde667b7b2a917bcc0c6cc75f1911fd523f9930f697c1b165ab3d6eba391a9"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__crane__d04__depth.png",
+              "w": 21,
+              "h": 23,
+              "sha256": "040e285fc41e8975be1b47bd2755ed1a472c94b0f8ba9f2f4cf12823edec8e2e"
             }
           },
           "filesHi": {
@@ -4600,6 +4933,12 @@
               "w": 22,
               "h": 22,
               "sha256": "592669ebc705521c86b33fd117155b73707fcf154b7556a9d321076fbc474b31"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__crane__d05__depth.png",
+              "w": 22,
+              "h": 22,
+              "sha256": "7cdb7b9b694f441bfa379ae774bd745774d87a1af04230a6dc957d0ecc57d699"
             }
           },
           "filesHi": {
@@ -4665,6 +5004,12 @@
               "w": 20,
               "h": 21,
               "sha256": "a2f4051656b2affb9b400e00e3cf7ebb96f46fb6c2b3c790ed52b1754c33f0e1"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__crane__d06__depth.png",
+              "w": 20,
+              "h": 21,
+              "sha256": "6be7ce16dd9c0a28227929297c4f4a88cc8ac332d01b7fcdafb445b2b17856de"
             }
           },
           "filesHi": {
@@ -4730,6 +5075,12 @@
               "w": 25,
               "h": 18,
               "sha256": "d168e628eeda7d4e6aed946d7f41dcc27c996422c8f015fe8a743d7aacb408f7"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__crane__d07__depth.png",
+              "w": 25,
+              "h": 18,
+              "sha256": "baa334aa2fea1beca4e7c9889c353b44b8839c32350c76d834fd428bbe8ca6ef"
             }
           },
           "filesHi": {
@@ -4795,6 +5146,12 @@
               "w": 25,
               "h": 16,
               "sha256": "5ace6e9fc98b67cf737e37273f7274b2678527f51044fcf092d206b7d9a16b66"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__crane__d08__depth.png",
+              "w": 25,
+              "h": 16,
+              "sha256": "542b6ae7780d567158545044c29d2775ff825bbd1d4c62a2bd90b03e29e78900"
             }
           },
           "filesHi": {
@@ -4860,6 +5217,12 @@
               "w": 24,
               "h": 14,
               "sha256": "ee4339fda050e7ad4a312affe3462fff3e586f38f7ec601bb24214f6ae653415"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__crane__d09__depth.png",
+              "w": 24,
+              "h": 14,
+              "sha256": "9aa6a063d319d17d6871fac4558d2fb1f2ffb004a7dd8893094ce8b751509d7d"
             }
           },
           "filesHi": {
@@ -4925,6 +5288,12 @@
               "w": 21,
               "h": 13,
               "sha256": "dc709d2b5e84934e060f696c503965eb3a2dcafa9d91f8774ae2fdd956b3c0fe"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__crane__d10__depth.png",
+              "w": 21,
+              "h": 13,
+              "sha256": "0a309e5503d45ba8b21c73bae9c164026f0c257b1ba8c67ac389d3de1f44580a"
             }
           },
           "filesHi": {
@@ -4990,6 +5359,12 @@
               "w": 21,
               "h": 15,
               "sha256": "071bdaac56b7dd9a11d8c73ec0403c2da8808b2eaa132bf13883951e054957f1"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__crane__d11__depth.png",
+              "w": 21,
+              "h": 15,
+              "sha256": "c3aae3fd55f5e7f820d64148e78f43c52d89d79bab6f64019d286e080a89864c"
             }
           },
           "filesHi": {
@@ -5055,6 +5430,12 @@
               "w": 21,
               "h": 15,
               "sha256": "48a18296df485e7f471389a94ccc4760463f21d547f4da9dd4c852ff4dd649c2"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__crane__d12__depth.png",
+              "w": 21,
+              "h": 15,
+              "sha256": "9702600aa594fc1ff9cc03fd1f6d9e159a2f8c2fbfc7c61d08bbd9c5c60302f6"
             }
           },
           "filesHi": {
@@ -5120,6 +5501,12 @@
               "w": 22,
               "h": 16,
               "sha256": "d31025b1fc5e1983bb75ce2d320bb4ca06910c66daa20bce685677e40b6054a5"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__crane__d13__depth.png",
+              "w": 22,
+              "h": 16,
+              "sha256": "9efd5ceb6132f52227bf3f2ae7333870290982b94a34484968e3445f3f5a93ec"
             }
           },
           "filesHi": {
@@ -5185,6 +5572,12 @@
               "w": 20,
               "h": 17,
               "sha256": "5ceafa921d37a247bd0fa7ae33772f2905fd83f07c0b0f3999f3439da8c49b8d"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__crane__d14__depth.png",
+              "w": 20,
+              "h": 17,
+              "sha256": "dc2089abfe23f04a1871ea4ce0e6bfbc14911bafd320d82d2d4e8ec3ea5cece0"
             }
           },
           "filesHi": {
@@ -5250,6 +5643,12 @@
               "w": 25,
               "h": 18,
               "sha256": "ca3aa97dd897c5ada5886cbc5e31792b8d92b1c568e7a71ffa38b564f22fc235"
+            },
+            "depth": {
+              "file": "sheets/mobile-repair__crane__d15__depth.png",
+              "w": 25,
+              "h": 18,
+              "sha256": "9ad609d5a3b9e456db62f93a79ae3b40af6570c1fe6896ceb4ccb0444b16311f"
             }
           },
           "filesHi": {
@@ -5385,15 +5784,15 @@
         "files": {
           "albedo": {
             "file": "sheets/mobile-repair__composite__d00__albedo.png",
-            "sha256": "a32b54eef0cf6edd5c1dcd4b2ec24b09e989acef20f412202404b36b14de5c7c"
+            "sha256": "b5728ed82d63f3f12f381683da8d115cbefa56fce0c60d1b4dc42e1aeaaff876"
           },
           "normal": {
             "file": "sheets/mobile-repair__composite__d00__normal.png",
-            "sha256": "922fa64bb8edf6ac85537653c228056a89887f38f9211240c0e6007e797608b3"
+            "sha256": "ea5dccf27000bcbf4a3c610c703ca92ea2eacbfc058ce16a0ec6698ce44f350f"
           },
           "material": {
             "file": "sheets/mobile-repair__composite__d00__material.png",
-            "sha256": "673005598e34496f20fc1afb2e2281d21880a9ad3b722cb0c9dfa195aa80f131"
+            "sha256": "d4feeb6e7c665549949e263c5e987246f173f2315dd0bfaed3477a509abc0164"
           }
         }
       },
@@ -5403,15 +5802,15 @@
         "files": {
           "albedo": {
             "file": "sheets/mobile-repair__composite__d01__albedo.png",
-            "sha256": "b497097bcf94079ac91ee8c9f7906140b78ea564eb09fe712b61688e269fb21c"
+            "sha256": "25f9641c4f1c97ae9d80cf1280dcd193dbc18cde2b53e446a17b7c4e9e8ceb81"
           },
           "normal": {
             "file": "sheets/mobile-repair__composite__d01__normal.png",
-            "sha256": "dcb23763bbc7c14d898e8320ee0738d42e2cd71e2286d984087d25ce892fab49"
+            "sha256": "77dc607932d5e9a115cc8bcb2de9034f81a4a8c97ada5658f68dc0705d88af02"
           },
           "material": {
             "file": "sheets/mobile-repair__composite__d01__material.png",
-            "sha256": "28ff34943b0e1e5b853e236b9bbacfec39982b46b7d9329a9abba145b4f40801"
+            "sha256": "611d88b857d1ac3f3cf364cbfa92ed6234ab40a91202e1b029c420799bcc9b52"
           }
         }
       },
@@ -5421,15 +5820,15 @@
         "files": {
           "albedo": {
             "file": "sheets/mobile-repair__composite__d02__albedo.png",
-            "sha256": "1ed19fe092954bd721f8dd3465677981026e970523eee83cd61a203d9427f611"
+            "sha256": "de46442c7f50dd00e1d32a93ee07d8c38acda5e353fb7b3b93a4f43a610dcdde"
           },
           "normal": {
             "file": "sheets/mobile-repair__composite__d02__normal.png",
-            "sha256": "991566ccd966ca544fda524e30d16ad171e9a2155a99764fe630e1a87450fc63"
+            "sha256": "a8b2fc1c52570df50c5333e31a0fd8516536516f2580f5c01fd1b2529c6345a0"
           },
           "material": {
             "file": "sheets/mobile-repair__composite__d02__material.png",
-            "sha256": "661380f0f23f06dc86e2a289beb36ae8275b907a85698b62f5a4c5899b1b8558"
+            "sha256": "db1e38173ddc999e22b3d05bbf8edaa6f1b07a35e6d503d6c144d3138ba58038"
           }
         }
       },
@@ -5439,15 +5838,15 @@
         "files": {
           "albedo": {
             "file": "sheets/mobile-repair__composite__d03__albedo.png",
-            "sha256": "ff145ed65a9f1c468dbbe57b54e82edc5d562ee5a8bd3548a75f534602cf5d45"
+            "sha256": "298f2eb293112dc9ed8bb4bcb6c3e6ce31b2f15a3ca7e7dd4667462d43926f1b"
           },
           "normal": {
             "file": "sheets/mobile-repair__composite__d03__normal.png",
-            "sha256": "4bbcc5865b6b8039d5e4e5bc659b52d94136e81bb5845fe3a06947baa42f4d61"
+            "sha256": "4e017a43af818dc81efc0994f9598ac6809fe98e0aea5aabb482cb072e7165a1"
           },
           "material": {
             "file": "sheets/mobile-repair__composite__d03__material.png",
-            "sha256": "f31d290ce02c8f6252680c7132ef704793fe6d47c840203a531ff449a438d675"
+            "sha256": "9e24871000cd98ae250ee3bf34a62681a2d8955be7218e2f855931c5d23d7738"
           }
         }
       },
@@ -5457,15 +5856,15 @@
         "files": {
           "albedo": {
             "file": "sheets/mobile-repair__composite__d04__albedo.png",
-            "sha256": "19bd8637b5d3cd62e3a9d3f702b167200da7fe01925a27e1ac9f41771765492d"
+            "sha256": "d8bbc3e369798c36e5109e19c3e3ae2d6bf3b30fdd455da632729bddf7fdbc06"
           },
           "normal": {
             "file": "sheets/mobile-repair__composite__d04__normal.png",
-            "sha256": "32e9331c1baa27a83839d2e566638435f7139161e686aab6b0e61403bbfd9f03"
+            "sha256": "1d1872393bfb7924f6af75b576f3005b4417e7bf42f8b0625f78c6b6e53677fc"
           },
           "material": {
             "file": "sheets/mobile-repair__composite__d04__material.png",
-            "sha256": "9cfdc957daadead36a8c7ac6b8bf0faefc822e608896ce6bd1c145e4e15bec5d"
+            "sha256": "f19cee25ffa7d7ff5acc378c9d60421ea0e943a7e052a9a60afdfdc1b744a34d"
           }
         }
       },
@@ -5475,15 +5874,15 @@
         "files": {
           "albedo": {
             "file": "sheets/mobile-repair__composite__d05__albedo.png",
-            "sha256": "5e1d9e9a45b9772394199f40ca600ac73b99253fb1f969f205793f78770efdd2"
+            "sha256": "8007fcfe694855dce569b52f070bcbb16d08b11d37067e3031b07ce26a2355a6"
           },
           "normal": {
             "file": "sheets/mobile-repair__composite__d05__normal.png",
-            "sha256": "bde3cbaca644e64820fd1df6287bbaf8663a06c6e43e8e179e4c4d7244ff5676"
+            "sha256": "6b52bbac8ec580efba37764bd7f39fcf7b73bc068628740183680a0e9a6cdae4"
           },
           "material": {
             "file": "sheets/mobile-repair__composite__d05__material.png",
-            "sha256": "00951970ac47a157ed0cad36c590f14a211f08988093c429debd2460612cca4b"
+            "sha256": "fcfc48bd85d31da71dce2a8ffe1bac700ec3596e73680dbc5147668bb25d83bf"
           }
         }
       },
@@ -5493,15 +5892,15 @@
         "files": {
           "albedo": {
             "file": "sheets/mobile-repair__composite__d06__albedo.png",
-            "sha256": "1dc49927bb9a386ac3a809aab4241d2d11bd1258c154f5fec1b18f0bd4aba372"
+            "sha256": "cbb32ec708eb4208e1a92d2aecc4cb26846ee4698d9157ac77b36d944f99c4e3"
           },
           "normal": {
             "file": "sheets/mobile-repair__composite__d06__normal.png",
-            "sha256": "818bd2cacf4bc8d2095976aff6d8071d7f9dc6d494ab18cc3d29a1ee643ff37a"
+            "sha256": "27bbe1fe47e14479b83bdc4333d771b65514b7b164fee7ec8eb8203eed9aa509"
           },
           "material": {
             "file": "sheets/mobile-repair__composite__d06__material.png",
-            "sha256": "28fee3059b73b0df0be8ec193792b7bd9c301d0789d0d3446fd5f1ca3a80692d"
+            "sha256": "475d36215f5d5fa7de9af684a85c0af965f9376a9bd20b4bb5077c02fd1e10d9"
           }
         }
       },
@@ -5511,15 +5910,15 @@
         "files": {
           "albedo": {
             "file": "sheets/mobile-repair__composite__d07__albedo.png",
-            "sha256": "c1ba6e09b76aca4f79063e2d928d27745aa4cd29dd27302f5e89c1cdf1e46a8a"
+            "sha256": "b7a5cd8a61af89f77453cba8b90d56332488fe2ce571b8296d8746fc850de874"
           },
           "normal": {
             "file": "sheets/mobile-repair__composite__d07__normal.png",
-            "sha256": "de4ddc5e52fe44f1f3955600b4fe882793cbaafd022c7a6c11c186db44e5eacd"
+            "sha256": "a949998b1aab480d2a116a43b4a179b5676a8a54d746bffbb203fe4bec49d341"
           },
           "material": {
             "file": "sheets/mobile-repair__composite__d07__material.png",
-            "sha256": "0c05a1f95585ed982f4dd673cb85c8b48748dbaee674aa690a23160a5fa89ab9"
+            "sha256": "1bce2a931fa76f45744e065333048433f31000fd5ff809a68e5997ff95bfcba6"
           }
         }
       },
@@ -5529,15 +5928,15 @@
         "files": {
           "albedo": {
             "file": "sheets/mobile-repair__composite__d08__albedo.png",
-            "sha256": "63c9f9370fcf5578bcf16fb9fd7285b8b1acf769d1a9b9404ec9692b65fb7fae"
+            "sha256": "8b24772357d16b5470fb3d21956429b00492db98f72a0b103880e7ee5142e0d4"
           },
           "normal": {
             "file": "sheets/mobile-repair__composite__d08__normal.png",
-            "sha256": "bd42c7bc0d17e0fb21cca58b365a40a2a5393ff2446338bf553f863947755460"
+            "sha256": "509d2f79c842f44f1e8146b207c56b71eb87b207d386566f6de0202ef938e3e7"
           },
           "material": {
             "file": "sheets/mobile-repair__composite__d08__material.png",
-            "sha256": "5292f35fea854d21d5132ffdf5db95dcadd2b4279edceba212ca30fbe0ef1d12"
+            "sha256": "b7b68df4b69b6d4500ffd4f495a9d5dbee2ebe8378584ae1b596125b984fa1f2"
           }
         }
       },
@@ -5547,15 +5946,15 @@
         "files": {
           "albedo": {
             "file": "sheets/mobile-repair__composite__d09__albedo.png",
-            "sha256": "6521248872146ff7b405a838c4427142b602020272ae179c84c89f67b36e91ae"
+            "sha256": "6fedcd136f237ddf4946186105677ded4b425c8a8d77f6e80bad9f24dffc3ea2"
           },
           "normal": {
             "file": "sheets/mobile-repair__composite__d09__normal.png",
-            "sha256": "9b9d04f6b07b81e849195f5fdbc5c0fdc32ce581ff414448872782bb20a3d975"
+            "sha256": "7f4a27ba55d5c6f965dd4965af936f5c57ba4c4cd8af1ef13636c6ee6d8dd374"
           },
           "material": {
             "file": "sheets/mobile-repair__composite__d09__material.png",
-            "sha256": "3d36e0d900a011283cf18f47ace2b48e6cd0326e9b9c5b68dc16858256af9768"
+            "sha256": "5040b0345c5a0274811049cf2df62b3c8fda977b203e96a84ee98c2a263e5ad1"
           }
         }
       },
@@ -5565,15 +5964,15 @@
         "files": {
           "albedo": {
             "file": "sheets/mobile-repair__composite__d10__albedo.png",
-            "sha256": "961fe19839fe485f1070eb38ac859d4dd524458f804b1d556a5aa6c5372f30e9"
+            "sha256": "5e777ab8cfdbc5a33d5269da413d1b1e0c5375061d84165b86262f10c8ecece7"
           },
           "normal": {
             "file": "sheets/mobile-repair__composite__d10__normal.png",
-            "sha256": "d4b05224391e5956a62953132bdfcd4b442e0502532e2672bdf29c22112a7a38"
+            "sha256": "3f98ced3687135294580ea32e4901814e76a4993e607b79e237157f2553655fe"
           },
           "material": {
             "file": "sheets/mobile-repair__composite__d10__material.png",
-            "sha256": "239f50654d13b8e68d2f5faafc0095685d64808f38433d0b7482680f829614b0"
+            "sha256": "dc468cdcc4f29b026ada0cb1df391bdf5a3258ca10782b2b85d89b5948fa6f71"
           }
         }
       },
@@ -5583,15 +5982,15 @@
         "files": {
           "albedo": {
             "file": "sheets/mobile-repair__composite__d11__albedo.png",
-            "sha256": "7147ffed9958e611b0316c5142c993e62776e14125df56b59e7bffce210b87a6"
+            "sha256": "0c645cb0bdf1595557f8d566d20ed38d030257acaee7b64c646e329c709e67c6"
           },
           "normal": {
             "file": "sheets/mobile-repair__composite__d11__normal.png",
-            "sha256": "2d48f3c4e4c982c576e75b9f0909cd9504e38d686af6061389257f9d70704b09"
+            "sha256": "70f51db68a7478bb223336c8b5951035f702d0d5279729868cdb14418d7b2ab0"
           },
           "material": {
             "file": "sheets/mobile-repair__composite__d11__material.png",
-            "sha256": "dfed1ccfd596047d3eea05dee1270a8940c773b10db81dab2d15ba68cc69f66e"
+            "sha256": "5ebd60235b16ee61442835cf4f6b66be52e61559a9464669282b7871253da2ee"
           }
         }
       },
@@ -5601,15 +6000,15 @@
         "files": {
           "albedo": {
             "file": "sheets/mobile-repair__composite__d12__albedo.png",
-            "sha256": "e9049826f000dc7c48355d8fd4b24602cc959cab11a45a952e102d7bcfd031be"
+            "sha256": "0202c72cf248d5d2905014f9b1ad2aea64ccb946fe49380428d57d691fe65932"
           },
           "normal": {
             "file": "sheets/mobile-repair__composite__d12__normal.png",
-            "sha256": "52e4bcf599e8c6f92f481cb064b29922ace84614c9357938fa1be082206a62e1"
+            "sha256": "3c5d423a7ec4e1a225942b901f19ceca52619548fcfa70a91f3b2907f88bcd3a"
           },
           "material": {
             "file": "sheets/mobile-repair__composite__d12__material.png",
-            "sha256": "8b8183b1ac0180b27f5eb2a573550f49b47886965e2bc54a75dc9761ca22b57f"
+            "sha256": "8d1b35b57d4613d4835c4294788fd8b60d28a41d620ecdda2c2e7de7fc46dfa3"
           }
         }
       },
@@ -5619,15 +6018,15 @@
         "files": {
           "albedo": {
             "file": "sheets/mobile-repair__composite__d13__albedo.png",
-            "sha256": "a4d3d120b7819441bbedbd3764548081de30c97c2d8c63c4f514132fcaa2c41a"
+            "sha256": "b189d59523d035b447fd4de5b3ddd5ea5191453294bdb87c5a8567f030226a1c"
           },
           "normal": {
             "file": "sheets/mobile-repair__composite__d13__normal.png",
-            "sha256": "1d07e521fad78cd56cff15cf90e65e3229d63bfe3bd71f102f3d8d6a26b37007"
+            "sha256": "8dbff6c651f3c9e614ecb1a1402c8a48bb5762885c9a649b10485c9de7c26d8c"
           },
           "material": {
             "file": "sheets/mobile-repair__composite__d13__material.png",
-            "sha256": "be966018e8da8b0dcb6bd8ec1952a50760244f3c5f26237771d809960b4f71e7"
+            "sha256": "e3f0934545acfc8dffd9f3e04850b852c9f4e2181030845d89bd6de00ee5b538"
           }
         }
       },
@@ -5637,15 +6036,15 @@
         "files": {
           "albedo": {
             "file": "sheets/mobile-repair__composite__d14__albedo.png",
-            "sha256": "9113678918760a12a00933de443ff3400299ad99e07b4ce0220ec342601ac207"
+            "sha256": "5faff3f59e5d0af829ead1bb0273b38af228bac6ba4a894a232b3af6d856ce4a"
           },
           "normal": {
             "file": "sheets/mobile-repair__composite__d14__normal.png",
-            "sha256": "0f5c37a0d17b148d6568e082093a0e141e8cab75168a6d6648a42ddbbaef0867"
+            "sha256": "6fdf55312a32016a7732c4a9984c13bbcb47e1b8922a2e38048e60cfd6163b46"
           },
           "material": {
             "file": "sheets/mobile-repair__composite__d14__material.png",
-            "sha256": "95d04b5df5f5ff2378b158dcd7ffd5a36fb849b373df12e9d06f918ead33c4bf"
+            "sha256": "443af25f93695b6bb1462817db46740b766051b47b16b135cc93be559f51aacf"
           }
         }
       },
@@ -5655,15 +6054,15 @@
         "files": {
           "albedo": {
             "file": "sheets/mobile-repair__composite__d15__albedo.png",
-            "sha256": "8ae0676c1da4e78e0b92ff91cac4a5bfe3a8745d2d48742e3fc46ab122ff5975"
+            "sha256": "ea029dbe8e9032e0bb9c58b17ddc4ded1756a394c43034a989fb8bfb7cf3ea9d"
           },
           "normal": {
             "file": "sheets/mobile-repair__composite__d15__normal.png",
-            "sha256": "551554f11e667e6018c49c8a9fe2767a0666ac0f02a2dc42259ab779371111fd"
+            "sha256": "628fdcda5979c48486b6d357f55abfa6b5becb34f27e4bbce78aaf61a2b8be74"
           },
           "material": {
             "file": "sheets/mobile-repair__composite__d15__material.png",
-            "sha256": "342241324a2d6f611bba91c869d2a47de513fd7e0f4f5af10f75f9e0f5d0080c"
+            "sha256": "a53b9a257a090b5f4d76d30ba7e00263383b193592455f419301a67be719d653"
           }
         }
       }
@@ -5677,97 +6076,97 @@
         "file": "sheets/mobile-repair__lit__d00__albedo.png",
         "w": 63,
         "h": 50,
-        "sha256": "83426511f1dd41f79ff19cade3c8c345fa30c73bd6566730f75a7e0b7b2fe332"
+        "sha256": "4ddf602862f37d6f8f9d59ace14f2f04709a92b8d550edfb34e3427c9cccf511"
       },
       "d01": {
         "file": "sheets/mobile-repair__lit__d01__albedo.png",
         "w": 57,
         "h": 52,
-        "sha256": "691b02082e76e1283a27857a41fa10dc58e09e890495ad0cead5730ccb6d5c8c"
+        "sha256": "7371801b8f5749da8b7664b65ad27655b20d0943b1353576ecf7eec3b55958a5"
       },
       "d02": {
         "file": "sheets/mobile-repair__lit__d02__albedo.png",
         "w": 47,
         "h": 50,
-        "sha256": "f61cd8c4c057dc7f19069b667ac0683ef1f1253138ababc86ad4c6b46169e012"
+        "sha256": "d372d5da6646f602323e7af387e3ce1e61c6dbb740d62ad9b4c607b4577b4e80"
       },
       "d03": {
         "file": "sheets/mobile-repair__lit__d03__albedo.png",
         "w": 57,
         "h": 53,
-        "sha256": "799d22896ba62865c2c862a1da346eb9117b679e709e1e9df070419c4468802d"
+        "sha256": "5af090dcb9b32b4576817949a7067d3ed5b22fda71de7a3bde6f9624b64bff1a"
       },
       "d04": {
         "file": "sheets/mobile-repair__lit__d04__albedo.png",
         "w": 64,
         "h": 53,
-        "sha256": "478eb167a394898001fa2c296d4a215b98c70248945a2640121a544dd9a5c4d6"
+        "sha256": "ced68409ae5536e7b9800c0a25b547bf51fa4e1adb353a0ea553d1a583ee9271"
       },
       "d05": {
         "file": "sheets/mobile-repair__lit__d05__albedo.png",
         "w": 63,
         "h": 50,
-        "sha256": "44272d611bf23a68bedbd06c8edc1d89478bcd69a82c6c4e3a74a6ac64837e48"
+        "sha256": "cc5b9c040926f2a58a5ada5fafa2e5627ee1b07b18729be4d2dbb118edba4c61"
       },
       "d06": {
         "file": "sheets/mobile-repair__lit__d06__albedo.png",
         "w": 55,
         "h": 45,
-        "sha256": "e2fe45a3574071955398d497c7a2aabae12c186b256c5994bc5a3ccd024d2267"
+        "sha256": "a5c7127de62951d762d752cf5758be9ad38c8486f4e929fe996c0faa1f538032"
       },
       "d07": {
         "file": "sheets/mobile-repair__lit__d07__albedo.png",
         "w": 61,
         "h": 46,
-        "sha256": "8ecdb079c61097a92e1cb5de7e3b932f045de92ed37dfe692c2de5db2af52028"
+        "sha256": "f445f5dcd6f2bd43aaabc6c4b029c869477e21b63f950c06804ee5449b9e792e"
       },
       "d08": {
         "file": "sheets/mobile-repair__lit__d08__albedo.png",
         "w": 63,
         "h": 48,
-        "sha256": "349a8767bff35a75b824b862fda660c36976dc37edb97e09a0678ba2d0c9a3a2"
+        "sha256": "5e77bdb7fb5e881d4b873b151d2697ff5e6363226feef380f6e8a1608bddb3a2"
       },
       "d09": {
         "file": "sheets/mobile-repair__lit__d09__albedo.png",
         "w": 57,
         "h": 48,
-        "sha256": "092d1fb32fc68786bc2d086294474c67e128547e06f60908a664183d75c14cdf"
+        "sha256": "e2253d363338bfb0efc6531fbcfb505a1c2ed1a2384f5b96c97d56454f3f2363"
       },
       "d10": {
         "file": "sheets/mobile-repair__lit__d10__albedo.png",
         "w": 47,
         "h": 45,
-        "sha256": "c79b879e9adb24ee5e008b8cf3ad3e882cafc8a7df36e7eb54c90b0d36561cf7"
+        "sha256": "6159fc563018b639383d7620e5cd05399a574b941c3acce70a56047b129e5fe4"
       },
       "d11": {
         "file": "sheets/mobile-repair__lit__d11__albedo.png",
         "w": 57,
         "h": 47,
-        "sha256": "61d7120f724ec7739dafa69fa1ee586dd90463e21d2733e387c887a32d1f65c4"
+        "sha256": "7b9abd0b9c04c832e0ee6e3f897aa2aca814eb78817000455c7baf0bcaa4e492"
       },
       "d12": {
         "file": "sheets/mobile-repair__lit__d12__albedo.png",
         "w": 64,
         "h": 45,
-        "sha256": "50a2222a74371c1da48315639a873de49c93d74391a89637e9ae900b66224b76"
+        "sha256": "8a9fb366d148d16728cb8992c55eb7012b49459ca0093e2352970ee30b9e459e"
       },
       "d13": {
         "file": "sheets/mobile-repair__lit__d13__albedo.png",
         "w": 63,
         "h": 43,
-        "sha256": "fd47d2ef0893a244271b1db1fb645fd0175c06c6a8af87e3ec72baac3a143aff"
+        "sha256": "f58d21a9bb488a14454cae712ee49eca8c57ef024d8056beaf4a6971c4f64eae"
       },
       "d14": {
         "file": "sheets/mobile-repair__lit__d14__albedo.png",
         "w": 55,
         "h": 40,
-        "sha256": "69d8353c02ceca6902a8c61358b7291f74f911c4368a67101b38a1bd7d9e32ae"
+        "sha256": "830edbd3f36abbeb930d54d97c7001d070b9a96b3c7a21d42c2f47395bf4de7b"
       },
       "d15": {
         "file": "sheets/mobile-repair__lit__d15__albedo.png",
         "w": 61,
         "h": 46,
-        "sha256": "7132f4dfed37678f78b72f09f49d1ddd7e5c4a2e6b41d881cd9c0fa3b2aa2b4a"
+        "sha256": "4da986183fe3c5b181a3304fe0a7b54e5fa791fed4069f6d4e10c03be3737747"
       }
     }
   },
